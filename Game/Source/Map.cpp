@@ -193,8 +193,8 @@ iPoint Map::WorldToMap(int x, int y) const
 	// L05: TODO_D 3: Add the case for isometric maps to WorldToMap
 	if (mapData.type == MAPTYPE_ISOMETRIC)
 	{
-		y = (ret.y - ret.x) / (2 * (mapData.tileHeight * 0.5f));
-		x = (ret.x + (ret.y - ret.x) / (2 * (mapData.tileHeight * 0.5f)) * (mapData.tileWidth * 0.5f)) / (mapData.tileWidth * 0.5f);
+		y = (ret.y - abs(ret.x) * 0.5f) / (2 * (mapData.tileHeight * 0.5f));
+		x = ret.x / ((2 * (mapData.tileHeight * 0.5f)) * (mapData.tileWidth * 0.5f)) / (mapData.tileWidth * 0.5f);
 	}
 
 
