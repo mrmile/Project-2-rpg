@@ -119,17 +119,17 @@ void Map::Draw()
 						
 						if (mapLayerItem->data->properties.GetProperty("Parallax") == 2)
 						{
-							app->render->DrawTexture(tileset->texture, pos.x, pos.y - MapToWorldSingle(4), &r, 0.5f);
+							app->render->DrawTexture(tileset->texture, pos.x, pos.y /*- MapToWorldSingle(4)*/, &r, 0.5f);
 						}
 						
 						if (mapLayerItem->data->properties.GetProperty("Parallax") == 3)
 						{
-							app->render->DrawTexture(tileset->texture, pos.x, pos.y - MapToWorldSingle(5), &r, 0.4f);
+							app->render->DrawTexture(tileset->texture, pos.x, pos.y /*- MapToWorldSingle(5)*/, &r, 0.4f);
 						}
 
 						if (mapLayerItem->data->properties.GetProperty("Parallax") == 4)
 						{
-							app->render->DrawTexture(tileset->texture, pos.x, pos.y - MapToWorldSingle(5), &r, 0.3f);
+							app->render->DrawTexture(tileset->texture, pos.x, pos.y /*- MapToWorldSingle(5)*/, &r, 0.3f);
 						}
 					}
 
@@ -501,10 +501,10 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 	//Load the attributes
 	object->id = node.attribute("id").as_int();
 	object->name = node.attribute("name").as_string();
-
+	app->map->MapToWorld(0,0).y;
 	if (object->name == "collisionChains")
 	{
-		app->collisions->AddCollider({ app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(1200), app->map->MapToWorldSingle(100) }, Collider::Type::NULL_COLLIDER); // No tiene sentido que esté aquí pero tiene que estarlo
+		app->collisions->AddCollider({ app->map->MapToWorld(0,0).x, app->map->MapToWorld(0,0).y, app->map->MapToWorld(900,900).x,app->map->MapToWorld(900,900).y }, Collider::Type::NULL_COLLIDER); // No tiene sentido que esté aquí pero tiene que estarlo
 
 		//L06: TODO_D 6 Call Load Properties
 		LoadProperties(node, object->properties);
