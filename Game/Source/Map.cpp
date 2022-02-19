@@ -153,7 +153,6 @@ iPoint Map::MapToWorld(int x, int y) const
 	}
 
 	// L05: TODO_D 1: Add isometric map to world coordinates
-	//..
 	if (mapData.type == MAPTYPE_ISOMETRIC)
 	{
 		ret.x = (x - y) * (mapData.tileWidth * 0.5f);
@@ -163,16 +162,19 @@ iPoint Map::MapToWorld(int x, int y) const
 	return ret;
 }
 
-int Map::MapToWorldSingle(int number) const
+int Map::MapToWorldSingle(int number) const // Only for orthogonal maptype (usar MapToWorld().x() || MapToWorld().y())
 {
 	int ret = number;
 
 	if (mapData.type == MAPTYPE_ORTHOGONAL)
 	{
-		
+		ret = number * mapData.tileWidth;
 	}
 
-	ret = number * mapData.tileWidth;
+	if (mapData.type == MAPTYPE_ISOMETRIC)
+	{
+		// No possible solution. Porque la X y la Y están deformadas.
+	}
 
 	return ret;
 }
