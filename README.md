@@ -13,7 +13,19 @@
  
 ## Controls
 
- - {ControlsScheme}
+ ### Keyboard
+- Arrow Keys: Move the character/change item/change options
+- Z: Interact with the environment (examples: grab an object, press a switch…)/select item/select options
+- X: Use item (keep in mind each item may have very different behavior) / go back (in menu)
+- C: Throw things away (normally items)
+- Left Shift: Run
+
+### Gamepad
+- Left Joystick: Move the character/change item/change options
+- X: Interact with the environment (examples: grab an object, press a switch…)/select item/select options
+- B: Use item (keep in mind each item may have very different behavior) / go back (in menu)
+- A: Throw things away (normally items)
+- Left Trigger: Run
 
 ## Developers
 
