@@ -29,13 +29,38 @@
 
 ## Developers
 
- - {Dev01} - {Role(s)}
- - {Dev02} - {Role(s)}
- - {Dev03} - {Role(s)}
- - {Dev04} - {Role(s)}
+* Otto Tolo
+
+    - Lead & Management
+    - Github account: [ottotolo](https://github.com/ottotolo)
+
+* Alejandro Martin
+
+    - Code
+    - Github account: [Alejandromo125](https://github.com/Alejandromo125)
+
+* Gerard Martinez
+
+    - Art & Audio
+    - Github account: [GerardMartinez02](https://github.com/GerardMartinez02)
+
+* Álvaro Milla
+
+    - Design
+    - Github account: [mrmile](https://github.com/mrmile)
+
+* Ogylandy Yespagambetov
+
+    - QA
+    - Github account: [Oga29](https://github.com/Oga29)
+
+* Albert Ramisa
+
+    - UI
+    - Github account: [Taks7](https://github.com/Taks7)
 
 ## License
 
-This project is licensed under an unmodified MIT license, which is an OSI-certified license that allows static linking with closed source software. Check [LICENSE](LICENSE) for further details.
+This project is licensed under an unmodified GNU license, which is an OSI-certified license that allows static linking with closed source software. Check [LICENSE](LICENSE) for further details.
 
 {AdditionalLicenses}
