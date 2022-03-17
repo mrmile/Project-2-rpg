@@ -1,8 +1,12 @@
-# {Project Name}
+# Area 52
 
 ## Description
 
-{project description}
+Our city has been devasteted by an unknown virus, swiftly propagating from the military base in the outskirts to the city's center. While the panic and confusion spreads, our main character finds himself surrounded in SWAT patrol vehicle by a pack of zombies.
+
+Their mission... find the doctor and stop the endemic virus that has asolated the whole city.
+
+Embarc in this horror adventure to save humanity from destruction, finding a cure for the virus while you fight numerous groups of zombies. And always remember, sometimes it's better to just run.
 
 ## Key Features
 
