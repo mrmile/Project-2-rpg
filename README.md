@@ -10,10 +10,9 @@ Embarc in this horror adventure to save humanity from destruction, finding a cur
 
 ## Key Features
 
- - {Feature01}
- - {Feature02}
- - {Feature03}
- - {Feature04}
+- Engaging story
+- Immersive ambience
+- Open world exploration
  
 ## Controls
 
