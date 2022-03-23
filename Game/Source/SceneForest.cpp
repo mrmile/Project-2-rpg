@@ -44,7 +44,7 @@ bool SceneForest::Start()
 {
 	// L03: DONE: Load map
 	//app->map->Load("hello.tmx");
-	app->map->Load("forest.tmx");
+	app->map->Load("main.tmx");
 	Mix_ResumeMusic();
 	Mix_SetMusicPosition(0);
 	// Load music
@@ -67,8 +67,8 @@ bool SceneForest::Start()
 	//h_CB2->listener = this;
 	//h_CB2->body->GetFixtureList()->SetFilterData(filter);
 
-	app->render->camera.x = app->map->MapToWorld(-87, -12).x;
-	app->render->camera.y = app->map->MapToWorld(-87, -12).y;
+	app->render->camera.x = app->map->MapToWorld(-0, -0).x;
+	app->render->camera.y = app->map->MapToWorld(-0, -0).y;
 
 	 godMode = false;
 	 playerRestart = false;
@@ -165,9 +165,6 @@ bool SceneForest::PostUpdate()
 {
 	bool ret = true;
 
-
-
-	// L08: TODO 6: Make the camera movement independent of framerate
 
 	if (app->player->horizontalCB == false && app->player->bidimensionalCB == false && sceneTimer > 1) app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 150) + 630);
 	

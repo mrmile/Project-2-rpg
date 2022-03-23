@@ -159,6 +159,35 @@ iPoint Map::MapToWorld(int x, int y) const
 		ret.y = (x + y) * (mapData.tileHeight * 0.5f);
 	}
 
+	if (mapData.type == MAPTYPE_STAGGERED)
+	{
+		int offset = 0;
+
+		if (y % 2 == 0)
+		{
+			offset = 0;
+			ret.x = x * mapData.tileWidth;
+		}
+		else
+		{
+			offset = 1;
+			ret.x = x * mapData.tileWidth + mapData.tileWidth * 0.5f;
+		}
+
+
+		if (y % 2 == 0)
+		{
+			if (offset == 0)ret.y = y * mapData.tileHeight * 0.5f;
+			if (offset == 1)ret.y = y * mapData.tileHeight + mapData.tileHeight;
+		}
+		else
+		{
+			if (offset == 0)ret.y = y * mapData.tileHeight + mapData.tileHeight;
+			if (offset == 1)ret.y = y * mapData.tileHeight * 0.5f;
+
+		}
+	}
+
 	return ret;
 }
 
@@ -172,6 +201,11 @@ int Map::MapToWorldSingle(int number) const // Only for orthogonal maptype (usar
 	}
 
 	if (mapData.type == MAPTYPE_ISOMETRIC)
+	{
+		// No possible solution. Porque la X y la Y están deformadas.
+	}
+
+	if (mapData.type == MAPTYPE_STAGGERED)
 	{
 		// No possible solution. Porque la X y la Y están deformadas.
 	}
@@ -196,7 +230,12 @@ iPoint Map::WorldToMap(int x, int y) const
 		y = (ret.y - abs(ret.x) * 0.5f) / (2 * (mapData.tileHeight * 0.5f));
 		x = ret.x / ((2 * (mapData.tileHeight * 0.5f)) * (mapData.tileWidth * 0.5f)) / (mapData.tileWidth * 0.5f);
 	}
-
+	
+	if (mapData.type == MAPTYPE_STAGGERED)
+	{
+		y = (ret.y - abs(ret.x) * 0.5f) / (2 * (mapData.tileHeight * 0.5f));
+		x = ret.x / ((2 * (mapData.tileHeight * 0.5f)) * (mapData.tileWidth * 0.5f)) / (mapData.tileWidth * 0.5f);
+	}
 
 	return ret;
 }
@@ -394,6 +433,10 @@ bool Map::LoadMap(pugi::xml_node mapFile)
 
 		// L05: DONE 1: Add formula to go from isometric map to world coordinates
 		mapData.type = MAPTYPE_UNKNOWN;
+		if (strcmp(map.attribute("orientation").as_string(), "staggered") == 0)
+		{
+			mapData.type = MAPTYPE_STAGGERED;
+		}
 		if (strcmp(map.attribute("orientation").as_string(), "isometric") == 0)
 		{
 			mapData.type = MAPTYPE_ISOMETRIC;
