@@ -44,7 +44,7 @@ bool SceneForest::Start()
 {
 	// L03: DONE: Load map
 	//app->map->Load("hello.tmx");
-	app->map->Load("main.tmx");
+	app->map->Load("test_map.tmx");
 	Mix_ResumeMusic();
 	Mix_SetMusicPosition(0);
 	// Load music
