@@ -188,6 +188,8 @@ private:
 	// L06: TODO_D 6: Load a group of properties 
 	bool LoadProperties(pugi::xml_node& node, Properties& properties);
 
+	void setTilePos(int x, int y, int width, int height);
+
 	// L06: TODO_D 3: Pick the right Tileset based on a tile id
 	TileSet* GetTilesetFromTileId(int id) const;
 

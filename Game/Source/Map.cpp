@@ -159,33 +159,39 @@ iPoint Map::MapToWorld(int x, int y) const
 		ret.y = (x + y) * (mapData.tileHeight * 0.5f);
 	}
 
-	if (mapData.type == MAPTYPE_STAGGERED)
+	/*if (mapData.type == MAPTYPE_STAGGERED)
 	{
-		int offset = 0;
-
-		if (y % 2 == 0)
-		{
-			offset = 0;
+		if ((y % 2) == 0)
 			ret.x = x * mapData.tileWidth;
-		}
 		else
-		{
-			offset = 1;
-			ret.x = x * mapData.tileWidth + mapData.tileWidth * 0.5f;
-		}
+			ret.x = x * mapData.tileWidth + mapData.tileWidth / 2;
+		app->map->setTilePos(ret.x, y * mapData.tileHeight / 2, mapData.width, mapData.height);
+	}*/
+
+	int offset = 0;
+
+	if (y % 2 == 0)
+	{
+		offset = 0;
+		ret.x = x * mapData.tileWidth;
+	}
+	else
+	{
+		offset = 1;
+		ret.x = x * mapData.tileWidth + mapData.tileWidth * 0.5f;
+	}
 
 
-		if (y % 2 == 0)
-		{
-			if (offset == 0)ret.y = y * mapData.tileHeight * 0.5f;
-			if (offset == 1)ret.y = y * mapData.tileHeight + mapData.tileHeight;
-		}
-		else
-		{
-			if (offset == 0)ret.y = y * mapData.tileHeight + mapData.tileHeight;
-			if (offset == 1)ret.y = y * mapData.tileHeight * 0.5f;
+	if (y % 2 == 0)
+	{
+		if (offset == 0)ret.y = y * mapData.tileHeight * 0.5f;
+		if (offset == 1)ret.y = y * mapData.tileHeight + mapData.tileHeight;
+	}
+	else
+	{
+		if (offset == 0)ret.y = y * mapData.tileHeight + mapData.tileHeight;
+		if (offset == 1)ret.y = y * mapData.tileHeight * 0.5f;
 
-		}
 	}
 
 	return ret;
@@ -1008,6 +1014,20 @@ bool Map::CreateWalkabilityMap(int& width, int& height, uchar** buffer) const
 
 	return ret;
 }
+
+void Map::setTilePos(int x, int y, int width, int height)
+{
+	int position1;
+	int position2;
+	int position3;
+	int position4;
+
+	position1 = (x, y);
+	position2 = (x + width, y);
+	position3 = (x + width, y + height);
+	position4 = (x, y + height);
+}
+
 /*
 void Map::LoadLavaColliders() // Los lava colliders se tienen que hazer con los sensores del año pasado
 {
