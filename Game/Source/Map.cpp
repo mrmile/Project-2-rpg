@@ -100,7 +100,7 @@ void Map::Draw()
 						//now we always use the firt tileset in the list
 						//TileSet* tileset = mapData.tilesets.start->data;
 						TileSet* tileset = GetTilesetFromTileId(gid);
-
+						
 						SDL_Rect r = tileset->GetTileRect(gid);
 						iPoint pos = MapToWorld(x, y);
 						
@@ -109,27 +109,27 @@ void Map::Draw()
 						{
 							if (mapLayerItem->data->properties.GetProperty("Reveal") == 1)
 							{
-								if(app->player->layerZeroReveal == false) app->render->DrawTexture(tileset->texture, pos.x, pos.y, &r, 1);
+								if(app->player->layerZeroReveal == false) app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + ( MAP_TILEHEIGHT - tileset->tileHeight), &r, 1);
 							}
 							if (mapLayerItem->data->properties.GetProperty("Reveal") == 0)
 							{
-								app->render->DrawTexture(tileset->texture, pos.x, pos.y, &r, 1);
+								app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight), &r, 1);
 							}
 						}
 						
 						if (mapLayerItem->data->properties.GetProperty("Parallax") == 2)
 						{
-							app->render->DrawTexture(tileset->texture, pos.x, pos.y /*- MapToWorldSingle(4)*/, &r, 0.5f);
+							app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(4)*/, &r, 0.5f);
 						}
 						
 						if (mapLayerItem->data->properties.GetProperty("Parallax") == 3)
 						{
-							app->render->DrawTexture(tileset->texture, pos.x, pos.y /*- MapToWorldSingle(5)*/, &r, 0.4f);
+							app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(5)*/, &r, 0.4f);
 						}
 
 						if (mapLayerItem->data->properties.GetProperty("Parallax") == 4)
 						{
-							app->render->DrawTexture(tileset->texture, pos.x, pos.y /*- MapToWorldSingle(5)*/, &r, 0.3f);
+							app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(5)*/, &r, 0.3f);
 						}
 					}
 
@@ -159,40 +159,36 @@ iPoint Map::MapToWorld(int x, int y) const
 		ret.y = (x + y) * (mapData.tileHeight * 0.5f);
 	}
 
-	/*if (mapData.type == MAPTYPE_STAGGERED)
+	if (mapData.type == MAPTYPE_STAGGERED) // DESCUBRIMIENTO IMPORTANTE: ESTO NO ESTÁ MAL. ES PROBLEMA DEL TILED QUE LO MUEVE. LO HE COMPROBADO
 	{
-		if ((y % 2) == 0)
+		int offset = 0;
+
+		if (y % 2 == 0)
+		{
+			offset = 0;
 			ret.x = x * mapData.tileWidth;
+		}
 		else
-			ret.x = x * mapData.tileWidth + mapData.tileWidth / 2;
-		app->map->setTilePos(ret.x, y * mapData.tileHeight / 2, mapData.width, mapData.height);
-	}*/
+		{
+			offset = 1;
+			ret.x = x * mapData.tileWidth + mapData.tileWidth * 0.5f;
+		}
 
-	int offset = 0;
 
-	if (y % 2 == 0)
-	{
-		offset = 0;
-		ret.x = x * mapData.tileWidth;
+		if (y % 2 == 0)
+		{
+			if (offset == 0)ret.y = y * mapData.tileHeight * 0.5f;
+			if (offset == 1)ret.y = y * mapData.tileHeight + mapData.tileHeight;
+		}
+		else
+		{
+			if (offset == 0)ret.y = y * mapData.tileHeight + mapData.tileHeight;
+			if (offset == 1)ret.y = y * mapData.tileHeight * 0.5f;
+
+		}
 	}
-	else
-	{
-		offset = 1;
-		ret.x = x * mapData.tileWidth + mapData.tileWidth * 0.5f;
-	}
 
-
-	if (y % 2 == 0)
-	{
-		if (offset == 0)ret.y = y * mapData.tileHeight * 0.5f;
-		if (offset == 1)ret.y = y * mapData.tileHeight + mapData.tileHeight;
-	}
-	else
-	{
-		if (offset == 0)ret.y = y * mapData.tileHeight + mapData.tileHeight;
-		if (offset == 1)ret.y = y * mapData.tileHeight * 0.5f;
-
-	}
+	
 
 	return ret;
 }
@@ -239,8 +235,7 @@ iPoint Map::WorldToMap(int x, int y) const
 	
 	if (mapData.type == MAPTYPE_STAGGERED)
 	{
-		y = (ret.y - abs(ret.x) * 0.5f) / (2 * (mapData.tileHeight * 0.5f));
-		x = ret.x / ((2 * (mapData.tileHeight * 0.5f)) * (mapData.tileWidth * 0.5f)) / (mapData.tileWidth * 0.5f);
+		// Not needed yet
 	}
 
 	return ret;
@@ -279,7 +274,7 @@ SDL_Rect TileSet::GetTileRect(int id) const
 	rect.h = tileHeight;
 	rect.x = margin + ((rect.w + spacing) * (relativeId % columns));
 	rect.y = margin + ((rect.h + spacing) * (relativeId / columns));
-	
+
 	return rect;
 }
 
@@ -469,7 +464,7 @@ bool Map::LoadTileSets(pugi::xml_node mapFile) {
 		if (ret == true) ret = LoadTilesetImage(tileset, set);
 		mapData.tilesets.add(set);
 	}
-
+	
 	return true; //<-- Tiene que ser true para que funcionen el resto de cosas asi que se pone fijo
 }
 

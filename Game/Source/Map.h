@@ -8,6 +8,8 @@
 #include "PugiXml\src\pugixml.hpp"
 
 #define MAX_MAP_CHAINS 99999
+#define MAP_TILEWIDTH 75
+#define MAP_TILEHEIGHT 39
 
 // L03: DONE 2: Create a struct to hold information for a TileSet
 // Ignore Terrain Types and Tile Types for now, but we want the image!
