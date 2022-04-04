@@ -48,7 +48,7 @@ bool TitleScreen::Awake()
 
 bool TitleScreen::Start()
 {
-	titleScreen = app->tex->Load("Assets/textures/titleScreen3.png");
+	titleScreen = app->tex->Load("Assets/textures/Scenes/mainTitleBackground.png");
 	titleScreen2 = app->tex->Load("Assets/textures/island.png");
 	loading = app->tex->Load("Assets/textures/loadingScreen3.png");
 	creditsScene = app->tex->Load("Assets/textures/creditsScreen3.png");
