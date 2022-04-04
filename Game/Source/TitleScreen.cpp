@@ -49,6 +49,8 @@ bool TitleScreen::Awake()
 bool TitleScreen::Start()
 {
 	titleScreen = app->tex->Load("Assets/textures/Scenes/mainTitleBackground.png");
+	titleScreenLetters = app->tex->Load("Assets/textures/Scenes/mainTitleLetters.png");
+
 	titleScreen2 = app->tex->Load("Assets/textures/island.png");
 	loading = app->tex->Load("Assets/textures/loadingScreen3.png");
 	creditsScene = app->tex->Load("Assets/textures/creditsScreen3.png");
@@ -270,7 +272,8 @@ bool TitleScreen::PostUpdate()
 
 	
 
-	app->render->DrawTexture2(titleScreen, 0, 0, NULL);	
+	app->render->DrawTexture2(titleScreen, 0, 0, NULL);
+	app->render->DrawTexture2(titleScreenLetters, -120, 90, NULL);
 	
 	if (MainMenu == true) 
 	{

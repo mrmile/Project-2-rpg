@@ -71,6 +71,7 @@ public:
 	bool OptionsMenu = false;
 
 	SDL_Texture* titleScreen;
+	SDL_Texture* titleScreenLetters;
 	SDL_Texture* titleScreen2;
 	SDL_Texture* creditsScene;
 	SDL_Texture* loading;
