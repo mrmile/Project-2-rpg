@@ -61,7 +61,7 @@ bool TitleScreen::Start()
 	VSyncOff = app->tex->Load("Assets/textures/GUI/Vsync_tag.png");
 	VSyncOn = app->tex->Load("Assets/textures/GUI/VsyncOn.png");
 
-	startButton = app->tex->Load("Assets/textures/GUI/startButton.png");
+	newGameButton = app->tex->Load("Assets/textures/GUI/startButton.png");
 	continueButton = app->tex->Load("Assets/textures/GUI/continueButton.png");
 	continueButtonOff = app->tex->Load("Assets/textures/GUI/continueButtonOff.png");
 	optionsButton = app->tex->Load("Assets/textures/GUI/optionsButton.png");
@@ -72,7 +72,7 @@ bool TitleScreen::Start()
 	fullScreenCheckOff = app->tex->Load("Assets/textures/GUI/checkBoxOff.png");
 	fullScreenCheckOn = app->tex->Load("Assets/textures/GUI/checkBoxOn.png");
 
-	startButtonOnIdle = app->tex->Load("Assets/textures/GUI/startButton_onIdle.png");
+	newGameButtonOnIdle = app->tex->Load("Assets/textures/GUI/startButton_onIdle.png");
 	continueButtonOnIdle = app->tex->Load("Assets/textures/GUI/continueButton_onIdle.png");
 	continueButtonOffOnIdle = app->tex->Load("Assets/textures/GUI/continueButtonOff_onIdle.png");
 	optionsButtonOnIdle = app->tex->Load("Assets/textures/GUI/optionsButton_onIdle.png");
@@ -81,7 +81,7 @@ bool TitleScreen::Start()
 	returnButtonOnIdle = app->tex->Load("Assets/textures/GUI/returnButton_onIdle.png");
 	sliderSelectorOnIdle = app->tex->Load("Assets/textures/GUI/sliderInput_onIdle.png");
 
-	startButtonPressed = app->tex->Load("Assets/textures/GUI/startButton_pressed.png");
+	newGameButtonPressed = app->tex->Load("Assets/textures/GUI/startButton_pressed.png");
 	continueButtonPressed = app->tex->Load("Assets/textures/GUI/continueButton_pressed.png");
 	continueButtonOffPressed = app->tex->Load("Assets/textures/GUI/continueButtonOff_pressed.png");
 	optionsButtonPressed = app->tex->Load("Assets/textures/GUI/optionsButton_pressed.png");
@@ -97,11 +97,11 @@ bool TitleScreen::Start()
 
 	// L14: TODO 2_D: Declare a GUI Button and create it using the GuiManager
 	//BUTTONS
-	startButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 1, "Start Button", { 105, 120, 108, 35 }, this,startButton,NULL, {}); //Observer (this): Class that will receive the event
-	continueButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 2, "Continue Button", { 105, 160, 108, 35 }, this,continueButton, NULL, {});
-	optionsButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, "Options Button", { 105, 200, 108, 35 }, this,optionsButton, NULL, {});
-	creditsButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 4, "Credits Button", { 215, 120, 108, 35 }, this,creditsButton, NULL, {});
-	exitButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 5, "Exit Button", { 215, 160, 108, 35 }, this,exitButton, NULL, {});
+	newGameButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 1, "Start Button", { 10, 170, 108, 35 }, this, newGameButton,NULL, {}); //Observer (this): Class that will receive the event
+	continueButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 2, "Continue Button", { 10, 200, 108, 35 }, this,continueButton, NULL, {});
+	optionsButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 3, "Options Button", { 10, 240, 108, 35 }, this,optionsButton, NULL, {});
+	creditsButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 4, "Credits Button", { 10, 270, 108, 35 }, this,creditsButton, NULL, {});
+	exitButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 5, "Exit Button", { 10, 310, 108, 35 }, this,exitButton, NULL, {});
 	returnButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, "Return Button", { 10, 10, 71, 35 }, this, returnButton, NULL, {});
 
 	//SLIDERS
@@ -158,7 +158,7 @@ bool TitleScreen::Update(float dt)
 	}
 	if (MainMenu == true)
 	{
-		startButton_->canClick = true;
+		newGameButton_->canClick = true;
 		continueButton_->canClick = true;
 		optionsButton_->canClick = true;
 		creditsButton_->canClick = true;
@@ -173,7 +173,7 @@ bool TitleScreen::Update(float dt)
 	}
 	if (OptionsMenu == true)
 	{
-		startButton_->canClick = false;
+		newGameButton_->canClick = false;
 		continueButton_->canClick = false;
 		optionsButton_->canClick = false;
 		creditsButton_->canClick = false;
@@ -188,7 +188,7 @@ bool TitleScreen::Update(float dt)
 	}
 	if (credits == true)
 	{
-		startButton_->canClick = false;
+		newGameButton_->canClick = false;
 		continueButton_->canClick = false;
 		optionsButton_->canClick = false;
 		creditsButton_->canClick = false;
@@ -273,15 +273,15 @@ bool TitleScreen::PostUpdate()
 	
 
 	app->render->DrawTexture2(titleScreen, 0, 0, NULL);
-	app->render->DrawTexture2(titleScreenLetters, -120, 90, NULL);
+	app->render->DrawTexture2(titleScreenLetters, -120, 60, NULL);
 	
 	if (MainMenu == true) 
 	{
 
-		if (startButton_->state == GuiControlState::NORMAL && startButton_->canClick == true) startButton_->SetTexture(startButton);
-		if (startButton_->state == GuiControlState::FOCUSED && startButton_->canClick == true) startButton_->SetTexture(startButtonOnIdle);
-		if (startButton_->state == GuiControlState::SELECTED && startButton_->canClick == true) startButton_->SetTexture(startButtonPressed);
-		startButton_->Draw(app->render);
+		if (newGameButton_->state == GuiControlState::NORMAL && newGameButton_->canClick == true) newGameButton_->SetTexture(newGameButton);
+		if (newGameButton_->state == GuiControlState::FOCUSED && newGameButton_->canClick == true) newGameButton_->SetTexture(newGameButtonOnIdle);
+		if (newGameButton_->state == GuiControlState::SELECTED && newGameButton_->canClick == true) newGameButton_->SetTexture(newGameButtonPressed);
+		newGameButton_->Draw(app->render);
 
 		if (SavedGame == true)
 		{
@@ -363,7 +363,8 @@ bool TitleScreen::PostUpdate()
 bool TitleScreen::CleanUp()
 {
 	app->tex->UnLoad(titleScreen);
-	app->tex->UnLoad(startButton);
+	app->tex->UnLoad(newGameButton);
+	app->tex->UnLoad(titleScreenLetters);
 	app->tex->UnLoad(creditsScene);
 	app->tex->UnLoad(titleScreen2);
 	app->tex->UnLoad(loading);
@@ -421,7 +422,7 @@ bool TitleScreen::OnGuiMouseClickEvent(GuiControl* control)
 		case GuiControlType::BUTTON:
 		{
 			//Checks the GUI element ID
-			if (control->id == 1 && startButton_->canClick == true)
+			if (control->id == 1 && newGameButton_->canClick == true)
 			{
 				app->audio->PlayFx(buttonClickedFx, 0);
 				transition = true;

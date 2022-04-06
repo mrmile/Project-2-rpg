@@ -76,7 +76,7 @@ public:
 	SDL_Texture* creditsScene;
 	SDL_Texture* loading;
 	//BUTTONS TEXTURES
-	SDL_Texture* startButton;
+	SDL_Texture* newGameButton;
 	SDL_Texture* continueButton;
 	SDL_Texture* continueButtonOff;
 	SDL_Texture* optionsButton;
@@ -84,7 +84,7 @@ public:
 	SDL_Texture* returnButton;
 	SDL_Texture* exitButton;
 
-	SDL_Texture* startButtonOnIdle;
+	SDL_Texture* newGameButtonOnIdle;
 	SDL_Texture* continueButtonOnIdle;
 	SDL_Texture* continueButtonOffOnIdle;
 	SDL_Texture* optionsButtonOnIdle;
@@ -92,7 +92,7 @@ public:
 	SDL_Texture* returnButtonOnIdle;
 	SDL_Texture* exitButtonOnIdle;
 
-	SDL_Texture* startButtonPressed;
+	SDL_Texture* newGameButtonPressed;
 	SDL_Texture* continueButtonPressed;
 	SDL_Texture* continueButtonOffPressed;
 	SDL_Texture* optionsButtonPressed;
@@ -125,7 +125,7 @@ public:
 	SDL_Texture* sliderSelectorPressed;
 
 	//GUI BUTTONS
-	GuiButton* startButton_;
+	GuiButton* newGameButton_;
 	GuiButton* continueButton_;
 	GuiButton* optionsButton_;
 	GuiButton* creditsButton_;
