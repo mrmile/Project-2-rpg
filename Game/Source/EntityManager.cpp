@@ -44,7 +44,7 @@ bool EntityManager::Update(float dt)
 {
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
-		if (entities[i] != nullptr)
+		//if (entities[i] != nullptr)
 			//entities[i]->Update(dt);
 	}
 }
