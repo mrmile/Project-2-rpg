@@ -74,10 +74,10 @@ bool PauseMenu::Start()
 	returnButtonOnIdle = app->tex->Load("Assets/textures/GUI/returnButton_onIdle.png");
 	returnButtonPressed = app->tex->Load("Assets/textures/GUI/returnButton_pressed.png");
 
-	resumeButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 12, "Resume Button", { 20,170,108,35 }, this, resumeButton, NULL, {});
-	optionsButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 13, "Settings Button", { 20,200,108,35 }, this,optionsButton, NULL, {});
-	backToTitleButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 14, "Title Button", { 20,230,108,35 }, this,backToTitleButton, NULL, {});
-	exitButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 15, "Exit Button", { 20, 260, 108, 35 }, this,exitButton, NULL, {});
+	resumeButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 12, "Resume Button", { 25,160,108,35 }, this, resumeButton, NULL, {});
+	optionsButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 13, "Settings Button", { 25,190,108,35 }, this,optionsButton, NULL, {});
+	backToTitleButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 14, "Title Button", { 25,220,108,35 }, this,backToTitleButton, NULL, {});
+	exitButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 15, "Exit Button", { 25, 250, 108, 35 }, this,exitButton, NULL, {});
 	returnButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 16, "Return Button", { 290, 10, 71, 35 }, this, returnButton, NULL, {});
 	
 	//SLIDERS
@@ -204,9 +204,9 @@ bool PauseMenu::PostUpdate()
 
 		SDL_Rect bgquad;
 		bgquad = { 20, 20, 380, 200 };
-		app->render->DrawRectangle2(bgquad, 255, 255, 255, 150, 0.0f, true);
+		/*app->render->DrawRectangle2(bgquad, 255, 255, 255, 150, 0.0f, true);*/
 		app->render->DrawTexture2(PauseFrame, 0, 0, NULL);
-		app->render->DrawTexture2(PauseTitle, -110, 70, NULL);
+		app->render->DrawTexture2(PauseTitle, -105, 60, NULL);
 		if (options == false)
 		{
 			if (exitButton_->state == GuiControlState::NORMAL && exitButton_->canClick == true) exitButton_->SetTexture(exitButton);
