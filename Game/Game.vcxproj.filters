@@ -103,6 +103,12 @@
     <ClCompile Include="Source\PauseMenu.cpp">
       <Filter>General</Filter>
     </ClCompile>
+    <ClCompile Include="Source\EntityManager.cpp">
+      <Filter>General\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Entity.cpp">
+      <Filter>General\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -237,6 +243,12 @@
     <ClInclude Include="Source\PauseMenu.h">
       <Filter>General</Filter>
     </ClInclude>
+    <ClInclude Include="Source\EntityManager.h">
+      <Filter>General\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Entity.h">
+      <Filter>General\Entities</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -253,6 +265,9 @@
     </Filter>
     <Filter Include="General">
       <UniqueIdentifier>{da383c87-f81b-40c1-9d7c-f3857ba48893}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General\Entities">
+      <UniqueIdentifier>{97e41b52-858c-4ca0-b9cd-4e56a8881753}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

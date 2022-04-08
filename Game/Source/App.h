@@ -25,7 +25,7 @@ class ModuleFadeToBlack;
 class ModulePhysics;
 class ModulePlayer;
 class ModuleCollisions;
-class Enemies;
+class EntityManager;
 class ModuleParticles;
 //class Enemy;
 class PathFinding;
@@ -113,13 +113,13 @@ public:
 	ModulePhysics* physics;
 	ModulePlayer* player;
 	ModuleCollisions* collisions;
-	Enemies* enemies;
 	ModuleParticles* particles;
 	//Enemy* enemy;
 	PathFinding* pathfinding;
 	ModuleFonts* fonts;
 	GuiManager* guiManager;
 	PauseMenu* pause_menu;
+	EntityManager* entity_manager;
 
 	bool AppTitleScreenFull = false;
 

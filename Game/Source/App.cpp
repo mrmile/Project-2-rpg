@@ -14,14 +14,13 @@
 #include "ModuleCollisions.h"
 #include "ModuleParticles.h"
 #include "TitleScreen.h"
-#include "Enemies.h"
 #include "Defs.h"
 #include "Log.h"
 #include "Enemy.h"
 #include "Pathfinding.h"
 #include "GuiManager.h"
 #include "PauseMenu.h"
-
+#include "EntityManager.h"
 #include <iostream>
 #include <sstream>
 #include <Optick/include/optick.h>

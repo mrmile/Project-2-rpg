@@ -131,6 +131,8 @@
     <ClCompile Include="Source\Collider.cpp" />
     <ClCompile Include="Source\Enemies.cpp" />
     <ClCompile Include="Source\Enemy.cpp" />
+    <ClCompile Include="Source\Entity.cpp" />
+    <ClCompile Include="Source\EntityManager.cpp" />
     <ClCompile Include="Source\Flying_Enemy.cpp" />
     <ClCompile Include="Source\Flying_Enemy_2.cpp" />
     <ClCompile Include="Source\GuiButton.cpp" />
@@ -164,6 +166,8 @@
     <ClInclude Include="Source\Collider.h" />
     <ClInclude Include="Source\Enemies.h" />
     <ClInclude Include="Source\Enemy.h" />
+    <ClInclude Include="Source\Entity.h" />
+    <ClInclude Include="Source\EntityManager.h" />
     <ClInclude Include="Source\Flying_Enemy.h" />
     <ClInclude Include="Source\Flying_Enemy_2.h" />
     <ClInclude Include="Source\GuiButton.h" />
