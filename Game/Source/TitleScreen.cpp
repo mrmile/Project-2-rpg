@@ -92,7 +92,7 @@ bool TitleScreen::Start()
 
 	// Load music
 	//app->audio->PlayMusic("Assets/audio/music/fortress.ogg");
-	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/Advice.wav");
+	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/buttonClickedFX.wav");
 	buttonNotClickedFx = app->audio->LoadFx("Assets/audio/fx/No.wav");
 
 	// L14: TODO 2_D: Declare a GUI Button and create it using the GuiManager
