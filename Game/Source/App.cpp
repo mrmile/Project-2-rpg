@@ -17,6 +17,7 @@
 #include "Defs.h"
 #include "Log.h"
 #include "Enemy.h"
+#include "Enemies.h"
 #include "Pathfinding.h"
 #include "GuiManager.h"
 #include "PauseMenu.h"

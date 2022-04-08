@@ -21,6 +21,7 @@ class TitleScreen;
 class SceneForest;
 class SceneCastle;
 class Map;
+class Enemies;
 class ModuleFadeToBlack;
 class ModulePhysics;
 class ModulePlayer;
@@ -109,6 +110,7 @@ public:
 	SceneForest* sceneForest;
 	SceneCastle* sceneCastle;
 	Map* map;
+	Enemies* enemies;
 	ModuleFadeToBlack* fade;
 	ModulePhysics* physics;
 	ModulePlayer* player;

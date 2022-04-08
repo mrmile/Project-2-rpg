@@ -11,9 +11,9 @@ class Entity : public Module
 {
 public:
 
-	EntityType type;
+	/*EntityType type;
 	iPoint position;
-	SDL_Texture* texture;
+	SDL_Texture* texture;*/
 
 private:
 

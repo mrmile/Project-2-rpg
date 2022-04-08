@@ -43,6 +43,7 @@ bool PauseMenu::Awake()
 bool PauseMenu::Start()
 {
 	PauseFrame = app->tex->Load("Assets/textures/GUI/PauseMenuFrame.png");
+	PauseTitle = app->tex->Load("Assets/textures/Scenes/mainTitleLettersPauseMenu.png");
 
 	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/Advice.wav");
 	resumeButton = app->tex->Load("Assets/textures/GUI/resumeButton.png");
@@ -73,11 +74,11 @@ bool PauseMenu::Start()
 	returnButtonOnIdle = app->tex->Load("Assets/textures/GUI/returnButton_onIdle.png");
 	returnButtonPressed = app->tex->Load("Assets/textures/GUI/returnButton_pressed.png");
 
-	resumeButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 12, "Resume Button", { 225,75,108,35 }, this, resumeButton, NULL, {});
-	optionsButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 13, "Settings Button", { 225,125,108,35 }, this,optionsButton, NULL, {});
-	backToTitleButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 14, "Title Button", { 75,125,108,35 }, this,backToTitleButton, NULL, {});
-	exitButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 15, "Exit Button", { 75, 75, 108, 35 }, this,exitButton, NULL, {});
-	returnButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 16, "Return Button", { 10, 10, 71, 35 }, this, returnButton, NULL, {});
+	resumeButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 12, "Resume Button", { 20,170,108,35 }, this, resumeButton, NULL, {});
+	optionsButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 13, "Settings Button", { 20,200,108,35 }, this,optionsButton, NULL, {});
+	backToTitleButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 14, "Title Button", { 20,230,108,35 }, this,backToTitleButton, NULL, {});
+	exitButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 15, "Exit Button", { 20, 260, 108, 35 }, this,exitButton, NULL, {});
+	returnButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 16, "Return Button", { 290, 10, 71, 35 }, this, returnButton, NULL, {});
 	
 	//SLIDERS
 	fxVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 17, "Fx slider", { 80,50,195,35 }, this, baseSlider_fx, sliderSelector, { 274,60,14,16 });
@@ -205,6 +206,7 @@ bool PauseMenu::PostUpdate()
 		bgquad = { 20, 20, 380, 200 };
 		app->render->DrawRectangle2(bgquad, 255, 255, 255, 150, 0.0f, true);
 		app->render->DrawTexture2(PauseFrame, 20, 20, NULL);
+		app->render->DrawTexture2(PauseTitle, -110, 70, NULL);
 		if (options == false)
 		{
 			if (exitButton_->state == GuiControlState::NORMAL && exitButton_->canClick == true) exitButton_->SetTexture(exitButton);
@@ -268,6 +270,7 @@ bool PauseMenu::PostUpdate()
 bool PauseMenu::CleanUp()
 {
 	app->tex->UnLoad(PauseFrame);
+	app->tex->UnLoad(PauseTitle);
 
 	app->tex->UnLoad(exitButton);
 	app->tex->UnLoad(resumeButton);
