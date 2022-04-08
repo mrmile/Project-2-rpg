@@ -42,7 +42,7 @@ bool PauseMenu::Awake()
 // Called before the first frame
 bool PauseMenu::Start()
 {
-	PauseFrame = app->tex->Load("Assets/textures/GUI/PauseMenuFrame.png");
+	PauseFrame = app->tex->Load("Assets/textures/GUI/PauseScreenEffects.png");
 	PauseTitle = app->tex->Load("Assets/textures/Scenes/mainTitleLettersPauseMenu.png");
 
 	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/Advice.wav");
@@ -205,7 +205,7 @@ bool PauseMenu::PostUpdate()
 		SDL_Rect bgquad;
 		bgquad = { 20, 20, 380, 200 };
 		app->render->DrawRectangle2(bgquad, 255, 255, 255, 150, 0.0f, true);
-		app->render->DrawTexture2(PauseFrame, 20, 20, NULL);
+		app->render->DrawTexture2(PauseFrame, 0, 0, NULL);
 		app->render->DrawTexture2(PauseTitle, -110, 70, NULL);
 		if (options == false)
 		{
