@@ -178,10 +178,7 @@ public:
 
 	//Action things
 	bool run = false;
-	bool jump;
-	bool doubleJump;
-	bool inTheAir = false;
-	bool hover = false;
+	bool talking = false;
 	bool horizontalCB = false;
 	bool verticalCB = false;
 	bool bidimensionalCB = false;

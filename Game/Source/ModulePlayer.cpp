@@ -134,7 +134,6 @@ bool ModulePlayer::Start()
 	winDelay = 0;
 	gameOverDelay = 0;
 	TransationToTilteDelay = 0;
-	jump = false;
 	createPlayer = false;
 
 	playerWin = false;
@@ -179,383 +178,409 @@ bool ModulePlayer::Update(float dt)
 		//Player->body->SetTransform({ positionToB2D.x, positionToB2D.y }, 0);
 		playerTimer++;
 		//------------------------------------------------------------------------------------------------------------------------------------------
-		if (destroyed == false && playerWin == false && app->sceneCastle->godMode == false && app->sceneMainMap->godMode == false)
+		if (talking == false)
 		{
-			/* Mejor no usarlo para este juego
-			if ((playerFPS % 60) == 0) sceneTimer--;
-			if (sceneTimer <= 0)
+			if (destroyed == false && playerWin == false && app->sceneCastle->godMode == false && app->sceneMainMap->godMode == false)
 			{
-				sceneTimer = 0;
-				app->player->playerHP = 0;
+				/* Mejor no usarlo para este juego
+				if ((playerFPS % 60) == 0) sceneTimer--;
+				if (sceneTimer <= 0)
+				{
+					sceneTimer = 0;
+					app->player->playerHP = 0;
+				}
+				*/
+
+				if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT
+					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE)
+				{
+					if (run == false)Player->body->SetLinearVelocity({ -2.0f,0.0f });
+					if (run == true)Player->body->SetLinearVelocity({ -4.0f,0.0f });
+				}
+				else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT
+					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE)
+				{
+					if (run == false)Player->body->SetLinearVelocity({ 2.0f,0.0f });
+					if (run == true)Player->body->SetLinearVelocity({ 4.0f,0.0f });
+				}
+				else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT
+					&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE)
+				{
+					if (run == false)Player->body->SetLinearVelocity({ 0.0f,-2.0f });
+					if (run == true)Player->body->SetLinearVelocity({ 0.0f,-4.0f });
+				}
+				else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
+				{
+					if (run == false)Player->body->SetLinearVelocity({ 0.0f,2.0f });
+					if (run == true)Player->body->SetLinearVelocity({ 0.0f,4.0f });
+				}
+				else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT
+					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT
+					&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE)
+				{
+					if (run == false)Player->body->SetLinearVelocity({ -2.0f,-2.0f });
+					if (run == true)Player->body->SetLinearVelocity({ -4.0f,-4.0f });
+				}
+				else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT
+					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
+				{
+					if (run == false)Player->body->SetLinearVelocity({ -2.0f,2.0f });
+					if (run == true)Player->body->SetLinearVelocity({ -4.0f,4.0f });
+				}
+				else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT
+					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT
+					&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE)
+				{
+					if (run == false)Player->body->SetLinearVelocity({ 2.0f,-2.0f });
+					if (run == true)Player->body->SetLinearVelocity({ 4.0f,-4.0f });
+				}
+				else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT
+					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
+				{
+					if (run == false)Player->body->SetLinearVelocity({ 2.0f,2.0f });
+					if (run == true)Player->body->SetLinearVelocity({ 4.0f,4.0f });
+				}
+
+
+				if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT)
+				{
+					if (run == false)
+					{
+						if (currentAnimation != &leftWalkAnim)
+						{
+							leftWalkAnim.Reset();
+							currentAnimation = &leftWalkAnim;
+						}
+					}
+					else if (run == true)
+					{
+						if (currentAnimation != &leftRunAnim)
+						{
+							leftRunAnim.Reset();
+							currentAnimation = &leftRunAnim;
+						}
+					}
+
+					PlayerLookingPosition = 1;
+
+				}
+
+				if (app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT)
+				{
+					if (run == false)
+					{
+						if (currentAnimation != &upWalkAnim)
+						{
+							upWalkAnim.Reset();
+							currentAnimation = &upWalkAnim;
+							PlayerLookingPosition = 4;
+						}
+					}
+					else if (run == true)
+					{
+						if (currentAnimation != &upRunAnim)
+						{
+							upRunAnim.Reset();
+							currentAnimation = &upRunAnim;
+							PlayerLookingPosition = 4;
+						}
+					}
+
+				}
+
+				if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT)
+				{
+
+					if (run == false)
+					{
+						if (currentAnimation != &rightWalkAnim)
+						{
+							rightWalkAnim.Reset();
+							currentAnimation = &rightWalkAnim;
+						}
+					}
+					else if (run == true)
+					{
+						if (currentAnimation != &rightRunAnim)
+						{
+							rightRunAnim.Reset();
+							currentAnimation = &rightRunAnim;
+						}
+					}
+					PlayerLookingPosition = 2;
+
+				}
+
+				if (app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
+				{
+					if (run == false)
+					{
+
+						if (currentAnimation != &downWalkAnim)
+						{
+							downWalkAnim.Reset();
+							currentAnimation = &downWalkAnim;
+							PlayerLookingPosition = 3;
+						}
+					}
+					else if (run == true)
+					{
+
+						if (currentAnimation != &downRunAnim)
+						{
+							downRunAnim.Reset();
+							currentAnimation = &downRunAnim;
+							PlayerLookingPosition = 3;
+						}
+					}
+
+				}
+
+				if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
+				{
+					if (run == false)
+					{
+						if (currentAnimation != &leftDownWalkAnim)
+						{
+							leftDownWalkAnim.Reset();
+							currentAnimation = &leftDownWalkAnim;
+							PlayerLookingPosition = 5;
+						}
+					}
+					else if (run == true)
+					{
+						if (currentAnimation != &leftDownRunAnim)
+						{
+							leftDownRunAnim.Reset();
+							currentAnimation = &leftDownRunAnim;
+							PlayerLookingPosition = 5;
+						}
+					}
+
+				}
+
+				if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
+				{
+					if (run == false)
+					{
+						if (currentAnimation != &rightDownWalkAnim)
+						{
+							rightDownWalkAnim.Reset();
+							currentAnimation = &rightDownWalkAnim;
+							PlayerLookingPosition = 6;
+						}
+					}
+					else if (run == true)
+					{
+						if (currentAnimation != &rightDownRunAnim)
+						{
+							rightDownRunAnim.Reset();
+							currentAnimation = &rightDownRunAnim;
+							PlayerLookingPosition = 6;
+						}
+					}
+				}
+
+				if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT)
+				{
+					if (run == false)
+					{
+						if (currentAnimation != &leftUpWalkAnim)
+						{
+							leftUpWalkAnim.Reset();
+							currentAnimation = &leftUpWalkAnim;
+							PlayerLookingPosition = 7;
+						}
+					}
+					else if (run == true)
+					{
+						if (currentAnimation != &leftUpRunAnim)
+						{
+							leftUpRunAnim.Reset();
+							currentAnimation = &leftUpRunAnim;
+							PlayerLookingPosition = 7;
+						}
+					}
+				}
+
+				if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT)
+				{
+					if (run == false)
+					{
+						if (currentAnimation != &rightUpWalkAnim)
+						{
+							rightUpWalkAnim.Reset();
+							currentAnimation = &rightUpWalkAnim;
+							PlayerLookingPosition = 8;
+						}
+					}
+					else if (run == true)
+					{
+						if (currentAnimation != &rightUpRunAnim)
+						{
+							rightUpRunAnim.Reset();
+							currentAnimation = &rightUpRunAnim;
+							PlayerLookingPosition = 8;
+						}
+					}
+				}
+
+				if (app->input->GetKey(SDL_SCANCODE_Z) == KeyState::KEY_DOWN)
+				{
+					// To implement: interact with the environment (examples: grab an object, press a switch…)/select item/select options
+				}
+
+				if (app->input->GetKey(SDL_SCANCODE_X) == KeyState::KEY_DOWN)
+				{
+					// To implement: use item
+				}
+
+				if (app->input->GetKey(SDL_SCANCODE_C) == KeyState::KEY_DOWN)
+				{
+					// To implement: throw things away
+				}
+
+				if ((app->input->GetKey(SDL_SCANCODE_LSHIFT) == KeyState::KEY_REPEAT))
+				{
+					run = true;
+				}
+				else
+				{
+					run = false;
+				}
+
+
+
+				// If no up/down movement detected, set the current animation back to idle
+				if (app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
+					&& app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE)
+				{
+					Player->body->SetLinearVelocity({ 0.0f,0.0f });
+
+					playerIdleAnimationTimer++;
+					speed = 0;
+
+					switch (PlayerLookingPosition)
+					{
+					case 1:
+						if (currentAnimation != &idleLeftAnim)
+						{
+							idleLeftAnim.Reset();
+							currentAnimation = &idleLeftAnim;
+						}
+
+						break;
+					case 2:
+						if (currentAnimation != &idleRightAnim)
+						{
+							idleRightAnim.Reset();
+							currentAnimation = &idleRightAnim;
+						}
+
+						break;
+
+					case 3:
+						if (currentAnimation != &idleDownAnim)
+						{
+							idleDownAnim.Reset();
+							currentAnimation = &idleDownAnim;
+						}
+
+						break;
+
+					case 4:
+						if (currentAnimation != &idleUpAnim)
+						{
+							idleUpAnim.Reset();
+							currentAnimation = &idleUpAnim;
+						}
+
+						break;
+
+					case 5:
+						if (currentAnimation != &idleDownLeftAnim)
+						{
+							idleDownLeftAnim.Reset();
+							currentAnimation = &idleDownLeftAnim;
+						}
+
+						break;
+
+					case 6:
+						if (currentAnimation != &idleDownRightAnim)
+						{
+							idleDownRightAnim.Reset();
+							currentAnimation = &idleDownRightAnim;
+						}
+
+						break;
+
+					case 7:
+						if (currentAnimation != &idleUpLeftAnim)
+						{
+							idleUpLeftAnim.Reset();
+							currentAnimation = &idleUpLeftAnim;
+						}
+
+						break;
+
+					case 8:
+						if (currentAnimation != &idleUpRightAnim)
+						{
+							idleUpRightAnim.Reset();
+							currentAnimation = &idleUpRightAnim;
+						}
+
+						break;
+					}
+
+				}
 			}
+			//------------------------------------------------------------------------------------------------------------------------------------------
+			if (destroyed == false && playerWin == false && (app->sceneCastle->godMode == true || app->sceneMainMap->godMode == true))
+			{
+				//Aquí no hace falta
+			}
+		}
+		else if (talking == true)
+		{
+			//Cosas comentadas ya que aún no han sido implementadas --> To implement: Dialog manager <-- Es un handout de una presentación de clase
+			
+			if (app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_DOWN)
+			{
+				//selection--;
+			}
+			if (app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_DOWN)
+			{
+				//selection++;
+			}
+
+			/*
+			if(selection > totalSelectionsAvailable) selection = 0;
+			if(selection < 0) selection = totalSelectionsAvailable;
 			*/
-
-			if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT
-				&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE)
-			{
-				if (run == false)Player->body->SetLinearVelocity({ -2.0f,0.0f });
-				if (run == true)Player->body->SetLinearVelocity({ -4.0f,0.0f });
-			}
-			else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT
-				&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE)
-			{
-				if (run == false)Player->body->SetLinearVelocity({ 2.0f,0.0f });
-				if (run == true)Player->body->SetLinearVelocity({ 4.0f,0.0f });
-			}
-			else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT
-				&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE)
-			{
-				if (run == false)Player->body->SetLinearVelocity({ 0.0f,-2.0f });
-				if (run == true)Player->body->SetLinearVelocity({ 0.0f,-4.0f });
-			}
-			else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
-			{
-				if (run == false)Player->body->SetLinearVelocity({ 0.0f,2.0f });
-				if (run == true)Player->body->SetLinearVelocity({ 0.0f,4.0f });
-			}
-			else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT
-				&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT
-				&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE)
-			{
-				if (run == false)Player->body->SetLinearVelocity({ -2.0f,-2.0f });
-				if (run == true)Player->body->SetLinearVelocity({ -4.0f,-4.0f });
-			}
-			else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT
-				&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
-			{
-				if (run == false)Player->body->SetLinearVelocity({ -2.0f,2.0f });
-				if (run == true)Player->body->SetLinearVelocity({ -4.0f,4.0f });
-			}
-			else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT
-				&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT
-				&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE)
-			{
-				if (run == false)Player->body->SetLinearVelocity({ 2.0f,-2.0f });
-				if (run == true)Player->body->SetLinearVelocity({ 4.0f,-4.0f });
-			}
-			else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT
-				&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
-			{
-				if (run == false)Player->body->SetLinearVelocity({ 2.0f,2.0f });
-				if (run == true)Player->body->SetLinearVelocity({ 4.0f,4.0f });
-			}
-
-
-			if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT)
-			{
-				if (run == false)
-				{
-					if (currentAnimation != &leftWalkAnim)
-					{
-						leftWalkAnim.Reset();
-						currentAnimation = &leftWalkAnim;
-					}
-				}
-				else if (run == true)
-				{
-					if (currentAnimation != &leftRunAnim)
-					{
-						leftRunAnim.Reset();
-						currentAnimation = &leftRunAnim;
-					}
-				}
-
-				PlayerLookingPosition = 1;
-
-			}
-
-			if (app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT)
-			{
-				if (run == false)
-				{
-					if (currentAnimation != &upWalkAnim)
-					{
-						upWalkAnim.Reset();
-						currentAnimation = &upWalkAnim;
-						PlayerLookingPosition = 4;
-					}
-				}
-				else if (run == true)
-				{
-					if (currentAnimation != &upRunAnim)
-					{
-						upRunAnim.Reset();
-						currentAnimation = &upRunAnim;
-						PlayerLookingPosition = 4;
-					}
-				}
-
-			}
-
-			if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT)
-			{
-
-				if (run == false)
-				{
-					if (currentAnimation != &rightWalkAnim)
-					{
-						rightWalkAnim.Reset();
-						currentAnimation = &rightWalkAnim;
-					}
-				}
-				else if (run == true)
-				{
-					if (currentAnimation != &rightRunAnim)
-					{
-						rightRunAnim.Reset();
-						currentAnimation = &rightRunAnim;
-					}
-				}
-				PlayerLookingPosition = 2;
-
-			}
-
-			if (app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
-			{
-				if (run == false)
-				{
-
-					if (currentAnimation != &downWalkAnim)
-					{
-						downWalkAnim.Reset();
-						currentAnimation = &downWalkAnim;
-						PlayerLookingPosition = 3;
-					}
-				}
-				else if (run == true)
-				{
-
-					if (currentAnimation != &downRunAnim)
-					{
-						downRunAnim.Reset();
-						currentAnimation = &downRunAnim;
-						PlayerLookingPosition = 3;
-					}
-				}
-
-			}
-
-			if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
-			{
-				if (run == false)
-				{
-					if (currentAnimation != &leftDownWalkAnim)
-					{
-						leftDownWalkAnim.Reset();
-						currentAnimation = &leftDownWalkAnim;
-						PlayerLookingPosition = 5;
-					}
-				}
-				else if (run == true)
-				{
-					if (currentAnimation != &leftDownRunAnim)
-					{
-						leftDownRunAnim.Reset();
-						currentAnimation = &leftDownRunAnim;
-						PlayerLookingPosition = 5;
-					}
-				}
-
-			}
-
-			if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
-			{
-				if (run == false)
-				{
-					if (currentAnimation != &rightDownWalkAnim)
-					{
-						rightDownWalkAnim.Reset();
-						currentAnimation = &rightDownWalkAnim;
-						PlayerLookingPosition = 6;
-					}
-				}
-				else if (run == true)
-				{
-					if (currentAnimation != &rightDownRunAnim)
-					{
-						rightDownRunAnim.Reset();
-						currentAnimation = &rightDownRunAnim;
-						PlayerLookingPosition = 6;
-					}
-				}
-			}
-
-			if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT)
-			{
-				if (run == false)
-				{
-					if (currentAnimation != &leftUpWalkAnim)
-					{
-						leftUpWalkAnim.Reset();
-						currentAnimation = &leftUpWalkAnim;
-						PlayerLookingPosition = 7;
-					}
-				}
-				else if (run == true)
-				{
-					if (currentAnimation != &leftUpRunAnim)
-					{
-						leftUpRunAnim.Reset();
-						currentAnimation = &leftUpRunAnim;
-						PlayerLookingPosition = 7;
-					}
-				}
-			}
-
-			if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT)
-			{
-				if (run == false)
-				{
-					if (currentAnimation != &rightUpWalkAnim)
-					{
-						rightUpWalkAnim.Reset();
-						currentAnimation = &rightUpWalkAnim;
-						PlayerLookingPosition = 8;
-					}
-				}
-				else if (run == true)
-				{
-					if (currentAnimation != &rightUpRunAnim)
-					{
-						rightUpRunAnim.Reset();
-						currentAnimation = &rightUpRunAnim;
-						PlayerLookingPosition = 8;
-					}
-				}
-			}
 
 			if (app->input->GetKey(SDL_SCANCODE_Z) == KeyState::KEY_DOWN)
 			{
-				// To implement: interact with the environment (examples: grab an object, press a switch…)/select item/select options
+				//select answer/continue reading
 			}
-
-			if (app->input->GetKey(SDL_SCANCODE_X) == KeyState::KEY_DOWN)
-			{
-				// To implement: use item
-			}
-
-			if (app->input->GetKey(SDL_SCANCODE_C) == KeyState::KEY_DOWN)
-			{
-				// To implement: throw things away
-			}
-
-			if ((app->input->GetKey(SDL_SCANCODE_LSHIFT) == KeyState::KEY_REPEAT))
-			{
-				run = true;
-			}
-			else
-			{
-				run = false;
-			}
-			
-
-
-			// If no up/down movement detected, set the current animation back to idle
-			if (app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
-				&& app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE)
-			{
-				Player->body->SetLinearVelocity({ 0.0f,0.0f });
-
-				playerIdleAnimationTimer++;
-				speed = 0;
-
-				switch (PlayerLookingPosition)
-				{
-				case 1:
-					if (currentAnimation != &idleLeftAnim)
-					{
-						idleLeftAnim.Reset();
-						currentAnimation = &idleLeftAnim;
-					}
-
-					break;
-				case 2:
-					if (currentAnimation != &idleRightAnim)
-					{
-						idleRightAnim.Reset();
-						currentAnimation = &idleRightAnim;
-					}
-
-					break;
-
-				case 3:
-					if (currentAnimation != &idleDownAnim)
-					{
-						idleDownAnim.Reset();
-						currentAnimation = &idleDownAnim;
-					}
-
-					break;
-
-				case 4:
-					if (currentAnimation != &idleUpAnim)
-					{
-						idleUpAnim.Reset();
-						currentAnimation = &idleUpAnim;
-					}
-
-					break;
-
-				case 5:
-					if (currentAnimation != &idleDownLeftAnim)
-					{
-						idleDownLeftAnim.Reset();
-						currentAnimation = &idleDownLeftAnim;
-					}
-
-					break;
-
-				case 6:
-					if (currentAnimation != &idleDownRightAnim)
-					{
-						idleDownRightAnim.Reset();
-						currentAnimation = &idleDownRightAnim;
-					}
-
-					break;
-
-				case 7:
-					if (currentAnimation != &idleUpLeftAnim)
-					{
-						idleUpLeftAnim.Reset();
-						currentAnimation = &idleUpLeftAnim;
-					}
-
-					break;
-
-				case 8:
-					if (currentAnimation != &idleUpRightAnim)
-					{
-						idleUpRightAnim.Reset();
-						currentAnimation = &idleUpRightAnim;
-					}
-
-					break;
-				}
-				
-			}
-		}
-		//------------------------------------------------------------------------------------------------------------------------------------------
-		if (destroyed == false && playerWin == false && (app->sceneCastle->godMode == true || app->sceneMainMap->godMode == true))
-		{
-			//Aquí no hace falta
 		}
 		//------------------------------------------------------------------------------------------------------------------------------------------
 		if (destroyed == true)
