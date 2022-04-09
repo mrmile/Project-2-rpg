@@ -5,22 +5,26 @@
 #include "EntityManager.h"
 #include "Point.h"
 
-class SDL_Texture;
+class EntityManager;
 
-class Entity : public Module
+class Entity : public EntityManager 
 {
 public:
+	/*
+	Entity();
+	virtual ~Entity();
 
-	/*EntityType type;
+	EntityType type;
 	iPoint position;
-	SDL_Texture* texture;*/
+	
+	*/
+	//logic of the entity
+	virtual bool Update(float dt);
 
-private:
-
-	virtual void Update();
-
+	//Drawing methodology
 	virtual void Draw();
 
+	//For entities that will be handed by inputs (such as the player)
 	virtual void HandleInput();
 };
 

@@ -4,10 +4,13 @@
 #include "Module.h"
 #include "Entity.h"	
 #include "List.h"
+#include "Point.h"
 
 #define MAX_ENTITIES 5000
 
 class Entity;
+class SDL_Texture;
+
 enum class EntityType
 {
 	PLAYER,
@@ -18,9 +21,11 @@ enum class EntityType
 	OBJECTS,
 	NONE,
 };
+
 class EntityManager : public Module
 {
 public:
+
 
 	EntityManager(bool start_enabled = false);
 
@@ -43,7 +48,7 @@ public:
 	bool CleanUp();
 
 	//Function to create entites depending on the type
-	Entity* CreateEntity(EntityType type);
+	bool AddEntity(EntityType type,iPoint position);
 
 	//Function to destroy an entity
 	void DestroyEntity(Entity* entity);
@@ -51,6 +56,8 @@ public:
 private:
 
 	Entity* entities[MAX_ENTITIES] = { nullptr };
+
+	SDL_Texture* texture;
 
 };
 
