@@ -48,11 +48,15 @@ bool EntityManager::PreUpdate()
 }
 bool EntityManager::Update(float dt)
 {
+	HandleEntitiesSpawn();
+
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
 		if (entities[i] != nullptr)
 			entities[i]->Update(dt);
 	}
+
+	HandleEntitiesDespawn();
 	return true;
 }
 

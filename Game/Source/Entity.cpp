@@ -13,7 +13,8 @@ Entity::Entity(iPoint position) : position()
 
 Entity::~Entity()
 {
-
+	if (collider != nullptr)
+		collider->pendingToDelete = true;
 }
 const Collider* Entity::GetColldier() const
 {
