@@ -1,18 +1,18 @@
-#ifndef __SCENE_FOREST_H__
-#define __SCENE_FOREST_H__
+#ifndef __SCENE_MAIN_MAP_H__
+#define __SCENE_MAIN_MAP_H__
 
 #include "Module.h"
 
 struct SDL_Texture;
 
-class SceneForest : public Module
+class SceneMainMap : public Module
 {
 public:
 
-	SceneForest(bool start_enabled = false);
+	SceneMainMap(bool start_enabled = false);
 
 	// Destructor
-	virtual ~SceneForest();
+	virtual ~SceneMainMap();
 
 	// Called before render is available
 	bool Awake();
@@ -45,7 +45,7 @@ public:
 
 	bool destroyScene;
 
-	bool sceneForest;
+	bool sceneMainMap;
 
 	int PauseDelay=0;
 
@@ -56,4 +56,4 @@ private:
 	SDL_Texture* PauseFrame;
 };
 
-#endif // __SCENE_FOREST_H__
+#endif // __SCENE_MAIN_MAP_H__

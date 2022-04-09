@@ -58,7 +58,7 @@
     <ClCompile Include="Source\SceneCastle.cpp">
       <Filter>General</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SceneForest.cpp">
+    <ClCompile Include="Source\SceneMainMap.cpp">
       <Filter>General</Filter>
     </ClCompile>
     <ClCompile Include="Source\Enemies.cpp">
@@ -195,7 +195,7 @@
     <ClInclude Include="Source\SceneCastle.h">
       <Filter>General</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SceneForest.h">
+    <ClInclude Include="Source\SceneMainMap.h">
       <Filter>General</Filter>
     </ClInclude>
     <ClInclude Include="Source\Enemies.h">

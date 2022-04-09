@@ -5,7 +5,7 @@
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
-#include "SceneForest.h"
+#include "SceneMainMap.h"
 #include "TitleScreen.h"
 #include "ModulePlayer.h"
 #include "GuiManager.h"
@@ -131,7 +131,7 @@ bool PauseMenu::Update(float dt)
 			app->map->Disable();
 			app->collisions->Disable();
 			app->particles->Disable();
-			app->sceneForest->Disable();
+			app->sceneMainMap->Disable();
 			app->player->Disable();
 			app->enemies->Disable();
 			app->fonts->Disable();

@@ -4,7 +4,7 @@
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
-#include "SceneForest.h"
+#include "SceneMainMap.h"
 #include "SceneCastle.h"
 #include "Map.h"
 #include "ModulePhysics.h"
@@ -85,7 +85,7 @@ bool SceneCastle::Start()
 	 playerRestart = false;
 	 destroyScene = false;
 	 sceneCastle = true;
-	 app->sceneForest->sceneForest = false;
+	 app->sceneMainMap->sceneMainMap = false;
 
 	return true;
 }
@@ -208,7 +208,7 @@ bool SceneCastle::PostUpdate()
 		app->titleScreen->Enable();
 
 		app->player->Disable();
-		app->sceneForest->Disable();
+		app->sceneMainMap->Disable();
 		app->collisions->Disable();
 		app->map->Disable();
 		app->enemies->Disable();

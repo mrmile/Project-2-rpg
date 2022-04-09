@@ -18,7 +18,7 @@ class Render;
 class Textures;
 class Audio;
 class TitleScreen;
-class SceneForest;
+class SceneMainMap;
 class SceneCastle;
 class Map;
 class Enemies;
@@ -107,7 +107,7 @@ public:
 	Textures* tex;
 	Audio* audio;
 	TitleScreen* titleScreen;
-	SceneForest* sceneForest;
+	SceneMainMap* sceneMainMap;
 	SceneCastle* sceneCastle;
 	Map* map;
 	Enemies* enemies;

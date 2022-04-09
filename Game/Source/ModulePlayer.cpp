@@ -13,7 +13,7 @@
 //#include "ModuleFonts.h"
 #include "Log.h"
 
-#include "SceneForest.h"
+#include "SceneMainMap.h"
 #include "SceneCastle.h"
 #include "Map.h"
 #include "ModulePhysics.h"
@@ -179,7 +179,7 @@ bool ModulePlayer::Update(float dt)
 		colliderFeet->SetPos(position.x + 5, position.y + 23);
 		playerTimer++;
 		//------------------------------------------------------------------------------------------------------------------------------------------
-		if (destroyed == false && playerWin == false && app->sceneCastle->godMode == false && app->sceneForest->godMode == false)
+		if (destroyed == false && playerWin == false && app->sceneCastle->godMode == false && app->sceneMainMap->godMode == false)
 		{
 			if ((playerFPS % 60) == 0) sceneTimer--;
 			if (sceneTimer <= 0)
@@ -435,7 +435,7 @@ bool ModulePlayer::Update(float dt)
 			}
 		}
 		//------------------------------------------------------------------------------------------------------------------------------------------
-		if (destroyed == false && playerWin == false && (app->sceneCastle->godMode == true || app->sceneForest->godMode == true))
+		if (destroyed == false && playerWin == false && (app->sceneCastle->godMode == true || app->sceneMainMap->godMode == true))
 		{
 			if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT || app->input->GetKey(SDL_SCANCODE_A))
 			{
@@ -638,7 +638,7 @@ bool ModulePlayer::Update(float dt)
 			app->map->Disable();
 			app->collisions->Disable();
 			app->particles->Disable();
-			app->sceneForest->Disable();
+			app->sceneMainMap->Disable();
 			app->player->Disable();
 			app->enemies->Disable();
 			app->fonts->Disable();
@@ -768,15 +768,15 @@ bool ModulePlayer::PostUpdate()
 			app->sceneCastle->playerRestart = false;
 		}
 
-		if (app->sceneForest->playerRestart == true)
+		if (app->sceneMainMap->playerRestart == true)
 		{
 			//horizontalCB = true;
-			app->sceneForest->sceneTimer = 0;
+			app->sceneMainMap->sceneTimer = 0;
 
 			//if (checkPointReached == false) position = app->map->MapToWorld(32, 14);
 				//if (checkPointReached == true) position = app->map->MapToWorld(32, 14);
 			app->player->Disable();
-			app->sceneForest->Disable();
+			app->sceneMainMap->Disable();
 			app->collisions->Disable();
 			app->map->Disable();
 			app->enemies->Disable();
@@ -787,14 +787,14 @@ bool ModulePlayer::PostUpdate()
 			if (checkPointReached == true) position = app->map->playerCheckPointPos;
 
 			app->player->Enable();
-			app->sceneForest->Enable();
+			app->sceneMainMap->Enable();
 			app->collisions->Enable();
 			app->map->Enable();
 			app->enemies->Enable();
 			app->particles->Enable();
 			app->fonts->Enable();
 
-			app->sceneForest->playerRestart = false;
+			app->sceneMainMap->playerRestart = false;
 		}
 
 		if (app->titleScreen->toTitleScreen == true)
@@ -814,7 +814,7 @@ bool ModulePlayer::PostUpdate()
 				app->map->Disable();
 				app->collisions->Disable();
 				app->particles->Disable();
-				app->sceneForest->Disable();
+				app->sceneMainMap->Disable();
 				app->player->Disable();
 				app->enemies->Disable();
 				app->fonts->Disable();
@@ -903,7 +903,7 @@ bool ModulePlayer::SaveState(pugi::xml_node& data) const
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (app->sceneCastle->godMode == false && app->sceneForest->godMode == false && destroyed == false && playerWin == false)
+	if (app->sceneCastle->godMode == false && app->sceneMainMap->godMode == false && destroyed == false && playerWin == false)
 	{
 		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY) && destroyed == false && invincibleDelay >= 120)
 		{

@@ -5,7 +5,7 @@
 #include "Render.h"
 #include "Window.h"
 #include "SceneCastle.h"
-#include "SceneForest.h"
+#include "SceneMainMap.h"
 #include "Map.h"
 #include "ModulePhysics.h"
 #include "ModulePlayer.h"
@@ -21,17 +21,17 @@
 #include "Log.h"
 #include <SDL_mixer/include/SDL_mixer.h>
 
-SceneForest::SceneForest(bool start_enabled) : Module(start_enabled)
+SceneMainMap::SceneMainMap(bool start_enabled) : Module(start_enabled)
 {
-	name.Create("SceneForest");
+	name.Create("SceneMainMap");
 }
 
 // Destructor
-SceneForest::~SceneForest()
+SceneMainMap::~SceneMainMap()
 {}
 
 // Called before render is available
-bool SceneForest::Awake()
+bool SceneMainMap::Awake()
 {
 	LOG("Loading Scene");
 	bool ret = true;
@@ -40,7 +40,7 @@ bool SceneForest::Awake()
 }
 
 // Called before the first frame
-bool SceneForest::Start()
+bool SceneMainMap::Start()
 {
 	// L03: DONE: Load map
 	//app->map->Load("hello.tmx");
@@ -73,7 +73,7 @@ bool SceneForest::Start()
 	 godMode = false;
 	 playerRestart = false;
 	 destroyScene = false;
-	 sceneForest = true;
+	 sceneMainMap = true;
 	
 	 app->sceneCastle->sceneCastle = false;
 
@@ -85,7 +85,7 @@ bool SceneForest::Start()
 }
 
 // Called each loop iteration
-bool SceneForest::PreUpdate()
+bool SceneMainMap::PreUpdate()
 {
 	if (app->titleScreen->GameHasContinued == true)
 	{
@@ -97,7 +97,7 @@ bool SceneForest::PreUpdate()
 }
 
 // Called each loop iteration
-bool SceneForest::Update(float dt)
+bool SceneMainMap::Update(float dt)
 {
 	sceneTimer++;
 	//F9 --> See colliders
@@ -161,7 +161,7 @@ bool SceneForest::Update(float dt)
 }
 
 // Called each loop iteration
-bool SceneForest::PostUpdate()
+bool SceneMainMap::PostUpdate()
 {
 	bool ret = true;
 
@@ -195,7 +195,7 @@ bool SceneForest::PostUpdate()
 		app->titleScreen->Enable();
 
 		app->player->Disable();
-		app->sceneForest->Disable();
+		app->sceneMainMap->Disable();
 		app->collisions->Disable();
 		app->map->Disable();
 		app->enemies->Disable();
@@ -211,11 +211,11 @@ bool SceneForest::PostUpdate()
 }
 
 // Called before quitting
-bool SceneForest::CleanUp()
+bool SceneMainMap::CleanUp()
 {
 	LOG("Freeing scene");
 	destroyScene = true;
-	sceneForest = false;
+	sceneMainMap = false;
 
 	return true;
 }

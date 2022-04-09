@@ -4,7 +4,7 @@
 #include "Render.h"
 #include "Textures.h"
 #include "Audio.h"
-#include "SceneForest.h"
+#include "SceneMainMap.h"
 #include "SceneCastle.h"
 #include "Map.h"
 #include "ModuleFadeToBlack.h"
@@ -40,7 +40,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	tex = new Textures(true);
 	audio = new Audio(true);
 	titleScreen = new TitleScreen(true);
-	sceneForest = new SceneForest(false);
+	sceneMainMap = new SceneMainMap(false);
 	sceneCastle = new SceneCastle(false);
 	map = new Map(true);
 	physics = new ModulePhysics(true);
@@ -63,7 +63,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(physics);
 	AddModule(map);
 	AddModule(titleScreen);
-	AddModule(sceneForest);
+	AddModule(sceneMainMap);
 	AddModule(sceneCastle);
 	AddModule(fonts);
 	AddModule(player);
@@ -240,7 +240,7 @@ void App::FinishUpdate()
 	{
 		app->player->Player->body->DestroyFixture(app->player->Player->body->GetFixtureList());
 
-		//if(app->sceneCastle->playerRestart == true || app->sceneForest->playerRestart == true) app->player->Player = app->physics->CreatePlayerBox(app->player->position.x, app->player->position.y, 28, 33);
+		//if(app->sceneCastle->playerRestart == true || app->sceneMainMap->playerRestart == true) app->player->Player = app->physics->CreatePlayerBox(app->player->position.x, app->player->position.y, 28, 33);
 
 		app->player->deletePlayer = false;
 	}

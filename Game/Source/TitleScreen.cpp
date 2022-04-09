@@ -5,7 +5,7 @@
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
-#include "SceneForest.h"
+#include "SceneMainMap.h"
 #include "SceneCastle.h"
 #include "Map.h"
 #include "ModulePhysics.h"
@@ -214,14 +214,14 @@ bool TitleScreen::Update(float dt)
 			app->map->Enable();
 			app->map->Start();
 			app->particles->Enable();
-			app->sceneForest->Enable();
+			app->sceneMainMap->Enable();
 			app->player->Enable();
 			app->enemies->Enable();
 			app->fonts->Enable();
 			app->collisions->Enable();
 			app->map->Enable();
 			app->particles->Enable();
-			app->sceneForest->Enable();
+			app->sceneMainMap->Enable();
 			app->player->Enable();
 			app->enemies->Enable();
 			app->fonts->Enable();
@@ -244,7 +244,7 @@ bool TitleScreen::Update(float dt)
 			app->collisions->Enable();
 			app->map->Enable();
 			app->particles->Enable();
-			app->sceneForest->Enable();
+			app->sceneMainMap->Enable();
 			app->player->Enable();
 			app->enemies->Enable();
 			app->fonts->Enable();

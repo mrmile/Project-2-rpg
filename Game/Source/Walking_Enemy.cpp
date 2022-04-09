@@ -11,7 +11,7 @@
 #include "Map.h"
 #include "ModulePhysics.h"
 #include "Pathfinding.h"
-#include "SceneForest.h"
+#include "SceneMainMap.h"
 
 Walking_Enemy::Walking_Enemy(int x, int y) : Enemy(x, y)
 {	
