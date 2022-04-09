@@ -91,7 +91,7 @@ bool TitleScreen::Start()
 	sliderSelectorPressed = app->tex->Load("Assets/textures/GUI/sliderInput_pressed.png");
 
 	// Load music
-	//app->audio->PlayMusic("Assets/audio/music/fortress.ogg");
+	app->audio->PlayMusic("Assets/audio/music/mainTitleMusic.ogg");
 	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/buttonClickedFX.wav");
 	buttonNotClickedFx = app->audio->LoadFx("Assets/audio/fx/No.wav");
 
