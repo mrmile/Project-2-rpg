@@ -53,15 +53,15 @@ void Enemy::Draw()
 
 void Enemy::OnCollision(Collider* c2)
 {
-	if (enemyHit == false && EnemyCounter>2)
+	if (enemyHit == false && EnemyCounter>2) // Cambiar ya que los pies del jugador ya no sirven para nada
 	{
 		if (app->player->jump == true || app->player->hover==true || app->player->inTheAir==true)
 		{
 			if (c2->type == Collider::Type::PLAYER_FEET)
 			{
 				app->player->Player->body->SetLinearVelocity({ 0.0f,0.0f });
-				if (app->player->PlayerLookingPosition == 1) app->player->currentAnimation = &app->player->jumpLeftAnim;
-				if (app->player->PlayerLookingPosition == 2) app->player->currentAnimation = &app->player->jumpRightAnim;
+				//if (app->player->PlayerLookingPosition == 1) app->player->currentAnimation = &app->player->jumpLeftAnim;
+				//if (app->player->PlayerLookingPosition == 2) app->player->currentAnimation = &app->player->jumpRightAnim;
 				app->player->Player->body->ApplyLinearImpulse({ 0.0f,-150.0f }, { 0.0f,0.0f }, true);
 				enemyHit = true;
 				//LOG("Enemy particle test");

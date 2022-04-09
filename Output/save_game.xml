@@ -9,12 +9,12 @@
 	<TitleScreen>
 		<saved_game bool="true" Fx="90" Music="90" FullScreen="false" />
 	</TitleScreen>
-	<SceneForest />
+	<SceneMainMap />
 	<SceneCastle />
 	<:anonymous />
 	<player>
-		<position x="-14" y="27683" />
-		<atributes score="0" hp="100" lives="3" timer="444" />
+		<position x="132" y="58" />
+		<atributes score="0" hp="100" lives="3" timer="450" />
 	</player>
 	<enemies />
 	<:anonymous />
@@ -24,6 +24,6 @@
 	<guiManager />
 	<PauseMenu />
 	<renderer>
-		<camera x="0" y="0" />
+		<camera x="2" y="1" />
 	</renderer>
 </save_state>

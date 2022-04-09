@@ -48,6 +48,7 @@ public:
 public:
 	// Position of the player in the map
 	iPoint position;
+	//b2Vec2 positionToB2D;
 
 	//Player body for physics implementation
 	PhysBody* Player;
@@ -80,21 +81,39 @@ public:
 	// A set of animations
 	Animation idleRightAnim;
 	Animation idleLeftAnim;
-	Animation idleRightAnim2;
-	Animation idleLeftAnim2;
-	Animation rightAnim;
-	Animation leftAnim;
-	Animation rightRunAnim;
-	Animation leftRunAnim;
-	Animation jumpRightAnim;
-	Animation jumpLeftAnim;
-	Animation fallRightAnim;
-	Animation fallLeftAnim;
-	Animation hoverRightAnim;
-	Animation hoverLeftAnim;
-	Animation dieLeft;
-	Animation dieRight;
+	Animation idleDownAnim;
+	Animation idleUpAnim;
 
+	Animation idleUpLeftAnim;
+	Animation idleUpRightAnim;
+	Animation idleDownLeftAnim;
+	Animation idleDownRightAnim;
+
+
+	Animation rightWalkAnim;
+	Animation leftWalkAnim;
+	Animation downWalkAnim;
+	Animation upWalkAnim;
+
+	Animation rightDownWalkAnim;
+	Animation leftDownWalkAnim;
+	Animation rightUpWalkAnim;
+	Animation leftUpWalkAnim;
+
+
+	Animation rightRunAnim; // Las animaciones de Run son las mismas que las del walk pero se le cambia la velocidad del pushBack()
+	Animation leftRunAnim;
+	Animation downRunAnim;
+	Animation upRunAnim;
+
+	Animation rightDownRunAnim;
+	Animation leftDownRunAnim;
+	Animation rightUpRunAnim;
+	Animation leftUpRunAnim;
+
+
+	Animation die;
+	Animation battleWin;
 
 	
 

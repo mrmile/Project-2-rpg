@@ -142,7 +142,7 @@ PhysBody* ModulePhysics::CreatePlayerBox(int x, int y, int width, int height)
 	b2BodyDef body;
 	body.type = b2_dynamicBody;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
-
+	body.gravityScale = 0.0f;
 	b2Body* b = world->CreateBody(&body);
 	b2PolygonShape box;
 
