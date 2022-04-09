@@ -38,6 +38,7 @@ bool LogoScreen::Awake()
 bool LogoScreen::Start()
 {
 	logoScreen1 = app->tex->Load("Assets/textures/Scenes/logoScreen1.png");
+	logoScreen10 = app->tex->Load("Assets/textures/Scenes/logoScreen10.png");
 	logoScreen11 = app->tex->Load("Assets/textures/Scenes/logoScreen11.png");
 	logoScreen12 = app->tex->Load("Assets/textures/Scenes/logoScreen12.png");
 	logoScreen2 = app->tex->Load("Assets/textures/Scenes/logoScreen2.png");
@@ -74,17 +75,22 @@ bool LogoScreen::PostUpdate()
 {
 	bool ret = true;
 
-	if (delay < 160)
+	if (delay < 80)
+	{
+		app->render->DrawTexture2(logoScreen10, 0, 0, NULL);
+	}
+
+	if (delay >= 80 && delay < 190)
 	{
 		app->render->DrawTexture2(logoScreen11, 0, 0, NULL);
 	}
 
-	if (delay >= 160 && delay < 210)
+	if (delay >= 190 && delay < 230)
 	{
 		app->render->DrawTexture2(logoScreen12, 0, 0, NULL);
 	}
 
-	if (delay >= 210 && delay < 260)
+	if (delay >= 230 && delay < 260)
 	{
 		app->render->DrawTexture2(logoScreen1, 0, 0, NULL);
 	}
@@ -120,6 +126,7 @@ bool LogoScreen::PostUpdate()
 bool LogoScreen::CleanUp()
 {
 	app->tex->UnLoad(logoScreen1);
+	app->tex->UnLoad(logoScreen10);
 	app->tex->UnLoad(logoScreen11);
 	app->tex->UnLoad(logoScreen12);
 	app->tex->UnLoad(logoScreen2);
