@@ -206,9 +206,11 @@ bool PauseMenu::PostUpdate()
 		bgquad = { 20, 20, 380, 200 };
 		/*app->render->DrawRectangle2(bgquad, 255, 255, 255, 150, 0.0f, true);*/
 		app->render->DrawTexture2(PauseFrame, 0, 0, NULL);
-		app->render->DrawTexture2(PauseTitle, -105, 60, NULL);
+
 		if (options == false)
 		{
+			app->render->DrawTexture2(PauseTitle, -105, 60, NULL);
+
 			if (exitButton_->state == GuiControlState::NORMAL && exitButton_->canClick == true) exitButton_->SetTexture(exitButton);
 			if (exitButton_->state == GuiControlState::FOCUSED && exitButton_->canClick == true) exitButton_->SetTexture(exitButtonOnIdle);
 			if (exitButton_->state == GuiControlState::SELECTED && exitButton_->canClick == true) exitButton_->SetTexture(exitButtonPressed);
