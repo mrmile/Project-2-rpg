@@ -7,21 +7,6 @@
     <ClCompile Include="Source\External\PugiXml\src\pugixml.cpp">
       <Filter>External\PugiXml</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Collider.cpp">
-      <Filter>imported_modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModuleFadeToBlack.cpp">
-      <Filter>imported_modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModulePlayer.cpp">
-      <Filter>imported_modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModulePhysics.cpp">
-      <Filter>imported_modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModuleCollisions.cpp">
-      <Filter>imported_modules</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Timer.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
@@ -61,32 +46,8 @@
     <ClCompile Include="Source\SceneMainMap.cpp">
       <Filter>General</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Enemies.cpp">
-      <Filter>imported_modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Enemy.cpp">
-      <Filter>imported_modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Flying_Enemy.cpp">
-      <Filter>imported_modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Walking_Enemy.cpp">
-      <Filter>imported_modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Pathfinding.cpp">
-      <Filter>imported_modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModuleParticles.cpp">
-      <Filter>imported_modules</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Particle.cpp">
       <Filter>Utils</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Flying_Enemy_2.cpp">
-      <Filter>imported_modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\ModuleFonts.cpp">
-      <Filter>imported_modules</Filter>
     </ClCompile>
     <ClCompile Include="Source\GuiManager.cpp">
       <Filter>General</Filter>
@@ -108,6 +69,45 @@
     </ClCompile>
     <ClCompile Include="Source\Entity.cpp">
       <Filter>General\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Collider.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Enemies.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Enemy.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Flying_Enemy.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Flying_Enemy_2.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModuleCollisions.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModuleFadeToBlack.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModuleFonts.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModuleParticles.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModulePhysics.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModulePlayer.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Pathfinding.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Walking_Enemy.cpp">
+      <Filter>General</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -134,24 +134,6 @@
     </ClInclude>
     <ClInclude Include="Source\External\PugiXml\src\pugixml.hpp">
       <Filter>External\PugiXml</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Collider.h">
-      <Filter>imported_modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModuleFadeToBlack.h">
-      <Filter>imported_modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModulePlayer.h">
-      <Filter>imported_modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Animation.h">
-      <Filter>imported_modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModulePhysics.h">
-      <Filter>imported_modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModuleCollisions.h">
-      <Filter>imported_modules</Filter>
     </ClInclude>
     <ClInclude Include="Source\PerfTimer.h">
       <Filter>Utils</Filter>
@@ -198,32 +180,8 @@
     <ClInclude Include="Source\SceneMainMap.h">
       <Filter>General</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Enemies.h">
-      <Filter>imported_modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Enemy.h">
-      <Filter>imported_modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Flying_Enemy.h">
-      <Filter>imported_modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Walking_Enemy.h">
-      <Filter>imported_modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Pathfinding.h">
-      <Filter>imported_modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModuleParticles.h">
-      <Filter>imported_modules</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Particle.h">
       <Filter>Utils</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Flying_Enemy_2.h">
-      <Filter>imported_modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ModuleFonts.h">
-      <Filter>imported_modules</Filter>
     </ClInclude>
     <ClInclude Include="Source\GuiControl.h">
       <Filter>General</Filter>
@@ -249,6 +207,48 @@
     <ClInclude Include="Source\Entity.h">
       <Filter>General\Entities</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Animation.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Collider.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enemies.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Enemy.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Flying_Enemy.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Flying_Enemy_2.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModuleCollisions.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModuleFadeToBlack.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModuleFonts.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModuleParticles.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModulePhysics.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModulePlayer.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Pathfinding.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Walking_Enemy.h">
+      <Filter>General</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -259,9 +259,6 @@
     </Filter>
     <Filter Include="External\PugiXml">
       <UniqueIdentifier>{2855ff7f-53a1-413d-a75b-18b4ade921dd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="imported_modules">
-      <UniqueIdentifier>{f0115a94-0967-4a5e-8e0d-1b737d114b02}</UniqueIdentifier>
     </Filter>
     <Filter Include="General">
       <UniqueIdentifier>{da383c87-f81b-40c1-9d7c-f3857ba48893}</UniqueIdentifier>

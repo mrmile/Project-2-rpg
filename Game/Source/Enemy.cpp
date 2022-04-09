@@ -55,6 +55,7 @@ void Enemy::OnCollision(Collider* c2)
 {
 	if (enemyHit == false && EnemyCounter>2) // Cambiar ya que los pies del jugador ya no sirven para nada
 	{
+		/*
 		if (app->player->jump == true || app->player->hover==true || app->player->inTheAir==true)
 		{
 			if (c2->type == Collider::Type::PLAYER_FEET)
@@ -69,6 +70,7 @@ void Enemy::OnCollision(Collider* c2)
 				EnemyHP -= 1;
 			}
 		}
+		*/
 		
 	}
 	enemyHit = false;
