@@ -1,21 +1,21 @@
-#ifndef __MODULE_GAMEPADINPUT_H__
-#define __MODULE_GAMEPADINPUT_H__
+#ifndef __GAMEPAD_INPUT_H__
+#define __GAMEPAD_INPUT_H__
 
 #include "Module.h"
 #include "Animation.h"
-#include "p2Point.h"
+#include "Point.h"
 
 struct SDL_Texture;
 struct Collider;
 
-class ModuleGamepadInput : public Module
+class GamepadInput : public Module
 {
 public:
 	// Constructor
-	ModuleGamepadInput(bool startEnabled);
+	GamepadInput(bool start_enabled = true);
 
 	// Destructor
-	~ModuleGamepadInput();
+	~GamepadInput();
 
 	// Called when the module is activated
 	// Loads the necessary textures for the player
@@ -23,7 +23,7 @@ public:
 
 	// Called at the middle of the application loop
 	// Processes new input and handles player movement
-	Update_Status Update() override;
+	bool Update(float dt) override;
 
 	// Draws gamepad debug info in the screen
 	void DebugDrawGamepadInfo();
@@ -38,8 +38,8 @@ public:
 	// Debugdraw for gamepad data
 	bool debugGamepadInfo = false;
 
-	UINT32 keyDownDelay;
+	uint32 keyDownDelay;
 
 };
 
-#endif //!__MODULE_GAMEPADINPUT_H__
+#endif //!__GAMEPADINPUT_H__

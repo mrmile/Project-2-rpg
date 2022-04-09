@@ -14,6 +14,7 @@
 // Modules
 class Window;
 class Input;
+class GamepadInput;
 class Render;
 class Textures;
 class Audio;
@@ -104,6 +105,7 @@ public:
 	// Modules
 	Window* win;
 	Input* input;
+	GamepadInput* gamepadInput;
 	Render* render;
 	Textures* tex;
 	Audio* audio;

@@ -1,6 +1,7 @@
 #include "App.h"
 #include "Window.h"
 #include "Input.h"
+#include "GamepadInput.h"
 #include "Render.h"
 #include "Textures.h"
 #include "Audio.h"
@@ -37,6 +38,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 
 	win = new Window(true);
 	input = new Input(true);
+	gamepadInput = new GamepadInput(true);
 	render = new Render(true);
 	tex = new Textures(true);
 	audio = new Audio(true);
@@ -60,6 +62,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	// Reverse order of CleanUp
 	AddModule(win);
 	AddModule(input);
+	AddModule(gamepadInput);
 	AddModule(tex);
 	AddModule(audio);
 	AddModule(physics);
