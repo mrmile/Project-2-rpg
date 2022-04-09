@@ -109,6 +109,9 @@
     <ClCompile Include="Source\Walking_Enemy.cpp">
       <Filter>General</Filter>
     </ClCompile>
+    <ClCompile Include="Source\LogoScreen.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -247,6 +250,9 @@
       <Filter>General</Filter>
     </ClInclude>
     <ClInclude Include="Source\Walking_Enemy.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LogoScreen.h">
       <Filter>General</Filter>
     </ClInclude>
   </ItemGroup>

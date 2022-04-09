@@ -17,6 +17,7 @@ class Input;
 class Render;
 class Textures;
 class Audio;
+class LogoScreen;
 class TitleScreen;
 class SceneMainMap;
 class SceneCastle;
@@ -106,6 +107,7 @@ public:
 	Render* render;
 	Textures* tex;
 	Audio* audio;
+	LogoScreen* logoScreen;
 	TitleScreen* titleScreen;
 	SceneMainMap* sceneMainMap;
 	SceneCastle* sceneCastle;

@@ -20,6 +20,7 @@
 #include "Enemies.h"
 #include "Pathfinding.h"
 #include "GuiManager.h"
+#include "LogoScreen.h"
 #include "PauseMenu.h"
 #include "EntityManager.h"
 #include <iostream>
@@ -39,7 +40,8 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	render = new Render(true);
 	tex = new Textures(true);
 	audio = new Audio(true);
-	titleScreen = new TitleScreen(true);
+	logoScreen = new LogoScreen(true);
+	titleScreen = new TitleScreen(false);
 	sceneMainMap = new SceneMainMap(false);
 	sceneCastle = new SceneCastle(false);
 	map = new Map(true);
@@ -62,6 +64,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(audio);
 	AddModule(physics);
 	AddModule(map);
+	AddModule(logoScreen);
 	AddModule(titleScreen);
 	AddModule(sceneMainMap);
 	AddModule(sceneCastle);
