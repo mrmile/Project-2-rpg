@@ -50,6 +50,7 @@ bool TitleScreen::Start()
 {
 	titleScreen = app->tex->Load("Assets/textures/Scenes/mainTitleBackground.png");
 	titleScreenLetters = app->tex->Load("Assets/textures/Scenes/mainTitleLetters.png");
+	settingsLetters = app->tex->Load("Assets/textures/Scenes/settingsLetters.png");
 
 	titleScreen2 = app->tex->Load("Assets/textures/island.png");
 	loading = app->tex->Load("Assets/textures/loadingScreen3.png");
@@ -105,15 +106,15 @@ bool TitleScreen::Start()
 	returnButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, "Return Button", { 10, 10, 71, 35 }, this, returnButton, NULL, {});
 
 	//SLIDERS
-	fxVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 7, "Fx slider", { 20,60,195,35 }, this, baseSlider_fx, sliderSelector, {214,70,14,16});
-	musicVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 8, "Music slider", { 20,100,195,35 }, this, baseSlider_music, sliderSelector, { 214,110,14,16 });
+	fxVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 7, "Fx slider", { 20,140,195,35 }, this, baseSlider_fx, sliderSelector, {0,157,14,16});
+	musicVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 8, "Music slider", { 20,190,195,35 }, this, baseSlider_music, sliderSelector, { 0,207,14,16 });
 
 	//CHECKBOXES
-	fullScreenCheck_ = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 9, "Full Screen Check Box", { 300, 149, 35, 35 }, this, fullScreenCheckOff, NULL, {});
-	fullScreenCheck_tag_ = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 10, "Full Screen Tag", { 20, 140, 161, 9 }, this, fullScreenTag, NULL, {});
+	fullScreenCheck_ = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 9, "Full Screen Check Box", { 300, 249, 35, 35 }, this, fullScreenCheckOff, NULL, {});
+	fullScreenCheck_tag_ = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 10, "Full Screen Tag", { 20, 240, 161, 9 }, this, fullScreenTag, NULL, {});
 
-	VSyncCheck = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 11, "Vsync", { 300,189,35,35 }, this, fullScreenCheckOff, NULL, {});
-	VSyncCheck_tag_ = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 23, "Vsync", { 20,180,213,35 }, this, VSyncOff, NULL, {});
+	VSyncCheck = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 11, "Vsync", { 300,299,35,35 }, this, fullScreenCheckOff, NULL, {});
+	VSyncCheck_tag_ = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 23, "Vsync", { 20,290,213,35 }, this, VSyncOff, NULL, {});
 
 	app->CheckGameRequest();
 	app->SaveGameAudio();
@@ -313,7 +314,8 @@ bool TitleScreen::PostUpdate()
 	}
 	if (OptionsMenu == true)
 	{
-		app->render->DrawTexture2(titleScreen2, 0, 0, NULL);
+		/*app->render->DrawTexture2(titleScreen2, 0, 0, NULL);*/
+		app->render->DrawTexture2(settingsLetters, -130, 30, NULL);
 
 		if (returnButton_->state == GuiControlState::NORMAL && returnButton_->canClick == true) returnButton_->SetTexture(returnButton);
 		if (returnButton_->state == GuiControlState::FOCUSED && returnButton_->canClick == true) returnButton_->SetTexture(returnButtonOnIdle);
