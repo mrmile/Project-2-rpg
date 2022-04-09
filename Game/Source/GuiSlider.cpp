@@ -29,7 +29,7 @@ bool GuiSlider::Update(float dt)
 			app->input->GetMousePosition(mouseX, mouseY);
 
 
-			if ((mouseX > bounds.x && mouseX < (bounds.x + bounds.w)) &&
+			if ((mouseX > bounds.x + 160 && mouseX < (bounds.x + bounds.w)) &&
 				(mouseY > bounds.y && mouseY < bounds.y + bounds.h))
 			{
 				state = GuiControlState::FOCUSED;

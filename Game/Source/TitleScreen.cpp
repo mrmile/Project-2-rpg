@@ -106,8 +106,8 @@ bool TitleScreen::Start()
 	returnButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 6, "Return Button", { 10, 10, 71, 35 }, this, returnButton, NULL, {});
 
 	//SLIDERS
-	fxVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 7, "Fx slider", { 20,140,195,35 }, this, baseSlider_fx, sliderSelector, {0,157,14,16});
-	musicVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 8, "Music slider", { 20,190,195,35 }, this, baseSlider_music, sliderSelector, { 0,207,14,16 });
+	fxVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 7, "Fx slider", { 20,140,350,35 }, this, baseSlider_fx, sliderSelector, { 250,157,14,16});
+	musicVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 8, "Music slider", { 20,190,350,35 }, this, baseSlider_music, sliderSelector, { 50,207,150,16 });
 
 	//CHECKBOXES
 	fullScreenCheck_ = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 9, "Full Screen Check Box", { 300, 249, 35, 35 }, this, fullScreenCheckOff, NULL, {});
@@ -133,8 +133,6 @@ bool TitleScreen::Start()
 
 	fxVolumeSlider->extraBounds.x = 33 + fxVolumeSlider->bounds.x * (app->audio->SliderLevelFX / 10);
 	musicVolumeSlider->extraBounds.x = 33 + musicVolumeSlider->bounds.x * (app->audio->SliderLevelMusic / 10);
-
-	
 
 	return true;
 }
@@ -482,43 +480,43 @@ bool TitleScreen::OnGuiMouseClickEvent(GuiControl* control)
 			if (control->id == 7 && fxVolumeSlider->canClick == true)
 			{
 				
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.9f) && control->extraBounds.x < control->bounds.x + control->bounds.w)
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.9f) + 160 && control->extraBounds.x < control->bounds.x + control->bounds.w + 160)
 				{
 					app->audio->SliderLevelFX = 90;
 				}
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.8f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.9f))
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.8f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.9f)+160)
 				{
 					app->audio->SliderLevelFX = 80;
 				}
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.7f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.8f))
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.7f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.8f)+160)
 				{
 					app->audio->SliderLevelFX = 70;
 				}
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.6f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.7f))
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.6f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.7f)+160)
 				{
 					app->audio->SliderLevelFX = 60;
 				}
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.5f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.6f))
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.5f) +160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.6f)+160)
 				{
 					app->audio->SliderLevelFX = 50;
 				}
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.4f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.5f))
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.4f)+160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.5f)+160)
 				{
 					app->audio->SliderLevelFX = 40;
 				}
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.3f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.4f))
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.3f)+160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.4f)+160)
 				{
 					app->audio->SliderLevelFX = 30;
 				}
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.2f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.3f))
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.2f)+160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.3f)+160)
 				{
 					app->audio->SliderLevelFX = 20;
 				}
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.1f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.2f))
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.1f)+160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.2f)+160)
 				{
 					app->audio->SliderLevelFX = 10;
 				}
-				if (control->extraBounds.x > control->bounds.x && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.1f))
+				if (control->extraBounds.x > control->bounds.x +160&& control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.1f)+160)
 				{
 					app->audio->SliderLevelFX = 0;
 				}
@@ -528,43 +526,43 @@ bool TitleScreen::OnGuiMouseClickEvent(GuiControl* control)
 			if (control->id == 8 && musicVolumeSlider->canClick == true)
 			{
 				
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.9f) && control->extraBounds.x < control->bounds.x + control->bounds.w)
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.9f)+160 && control->extraBounds.x < control->bounds.x + control->bounds.w +160)
 				{
 					app->audio->SliderLevelMusic = 90;
 				}
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.8f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.9f))
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.8f)+160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.9f) + 160)
 				{
 					app->audio->SliderLevelMusic = 80;
 				}
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.7f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.8f))
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.7f)+160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.8f)+160)
 				{
 					app->audio->SliderLevelMusic = 70;
 				}
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.6f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.7f))
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.6f)+160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.7f)+160)
 				{
 					app->audio->SliderLevelMusic = 60;
 				}
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.5f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.6f))
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.5f)+160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.6f)+160)
 				{
 					app->audio->SliderLevelMusic = 50;
 				}
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.4f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.5f))
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.4f)+160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.5f)+160)
 				{
 					app->audio->SliderLevelMusic = 40;
 				}
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.3f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.4f))
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.3f)+160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.4f)+160)
 				{
 					app->audio->SliderLevelMusic = 30;
 				}
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.2f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.3f))
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.2f)+160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.3f)+160)
 				{
 					app->audio->SliderLevelMusic = 20;
 				}
-				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.1f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.2f))
+				if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.1f)+160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.2f)+160)
 				{
 					app->audio->SliderLevelMusic = 10;
 				}
-				if (control->extraBounds.x > control->bounds.x && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.1f))
+				if (control->extraBounds.x > control->bounds.x +160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.1f)+160)
 				{
 					app->audio->SliderLevelMusic = 0;
 				}
