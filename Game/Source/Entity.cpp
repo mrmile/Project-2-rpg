@@ -5,6 +5,7 @@
 #include "Collider.h"
 #include "Render.h"
 #include "Textures.h"
+
 Entity::Entity(iPoint position) : position()
 {
 
@@ -37,7 +38,6 @@ void Entity::Draw()
 {
 	if (currentAnim != nullptr)
 	{
-		//app->render->DrawTexture(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
-	
+		app->render->DrawTexture2(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
 	}
 }

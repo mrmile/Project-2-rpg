@@ -81,8 +81,8 @@ bool PauseMenu::Start()
 	returnButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 16, "Return Button", { 290, 10, 71, 35 }, this, returnButton, NULL, {});
 	
 	//SLIDERS
-	fxVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 17, "Fx slider", { 80,50,195,35 }, this, baseSlider_fx, sliderSelector, { 274,60,14,16 });
-	musicVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 18, "Music slider", { 80,90,195,35 }, this, baseSlider_music, sliderSelector, { 274,100,14,16 });
+	fxVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 17, "Fx slider", { 80,50,195,35 }, this, baseSlider_fx, sliderSelector, { 274,60,100,16 });
+	musicVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 18, "Music slider", { 80,90,195,35 }, this, baseSlider_music, sliderSelector, { 274,100,100,16 });
 
 	//CHECKBOXES
 	fullScreenCheck_ = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 19, "Full Screen Check Box", { 245, 139, 17, 17 }, this, fullScreenCheckOff, NULL, {});

@@ -30,6 +30,7 @@ public:
 
 	//Drawing methodology
 	virtual void Draw();
+
 protected:
 	Animation* currentAnim = nullptr;
 

@@ -9,7 +9,7 @@
 #define MAX_ENTITIES 5000
 
 class Entity;
-class SDL_Texture;
+struct SDL_Texture;
 
 enum class EntityType
 {

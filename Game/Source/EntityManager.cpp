@@ -25,6 +25,7 @@ EntityManager::~EntityManager()
 
 bool EntityManager::Start()
 {
+	texture_enemies = app->tex->Load("Assets/textures/Enemies/zombie_farmer.png");
 	return true;
 }
 
