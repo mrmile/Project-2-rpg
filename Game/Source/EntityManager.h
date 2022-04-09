@@ -22,6 +22,13 @@ enum class EntityType
 	NONE,
 };
 
+struct EntitySpawnPoint
+{
+	EntityType type = EntityType::NONE;
+	iPoint startingPosition;
+
+};
+
 class EntityManager : public Module
 {
 public:
@@ -30,22 +37,22 @@ public:
 	EntityManager(bool start_enabled = false);
 
 	// Destructor
-	virtual ~EntityManager();
+	~EntityManager();
 
 	// Called before render is available
 	bool Start();
 
 	//Called before each loop iteration
-	bool PreUpdate();
+	bool PreUpdate() override;
 
 	// Called each loop iteration
-	bool Update(float dt);
+	bool Update(float dt) override;
 
 	// Called after each loop iteration(where we draw)
-	bool PostUpdate();
+	bool PostUpdate() override;
 
 	// Called before quitting
-	bool CleanUp();
+	bool CleanUp() override;
 
 	//Function to create entites depending on the type
 	bool AddEntity(EntityType type,iPoint position);
@@ -53,11 +60,20 @@ public:
 	//Function to destroy an entity
 	void DestroyEntity(Entity* entity);
 
+
+
+	
+
 private:
+
+	void SpawnEntity(const EntitySpawnPoint& info);
 
 	Entity* entities[MAX_ENTITIES] = { nullptr };
 
-	SDL_Texture* texture;
+	// A queue with all spawn points information
+	EntitySpawnPoint spawnQueue[MAX_ENTITIES];
+
+	SDL_Texture* texture=nullptr;
 
 };
 

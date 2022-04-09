@@ -13,9 +13,7 @@ EntityManager::EntityManager(bool start_enabled) : Module(start_enabled)
 	for (uint i = 0; i < MAX_ENTITIES; i++)
 	{
 		entities[i] = nullptr;
-		
 
-		
 	}
 }
 EntityManager::~EntityManager()
@@ -76,17 +74,45 @@ bool EntityManager::CleanUp()
 }
 bool EntityManager::AddEntity(EntityType type,iPoint position)
 {
+	bool ret = false;
+
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
-		if (entities[i] != nullptr)
+		if (spawnQueue[i].type == EntityType::NONE)
 		{
-			//entities[i]->type = type;
-			//entities[i]->position = position;
+			spawnQueue[i].type = type;
+			spawnQueue[i].startingPosition = position;
+			ret = true;
+			break;
 		}
 	}
-	return true;
-}
-void EntityManager::DestroyEntity(Entity* entity)
-{
 
+	return ret;
+}
+void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
+{
+	// Find an empty slot in the enemies array
+	for (uint i = 0; i < MAX_ENTITIES; ++i)
+	{
+
+		if (entities[i] == nullptr)
+		{
+			switch (info.type)
+			{
+			case EntityType::PLAYER:
+				break;
+			case EntityType::NPC:
+				break;
+			case EntityType::OBJECTS:
+				break;
+			case EntityType::ZOMBIE_STANDART:
+				break;
+			default:
+				break;
+			}
+			entities[i]->texture = texture;
+			
+			break;
+		}
+	}
 }

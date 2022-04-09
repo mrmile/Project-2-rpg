@@ -5,27 +5,30 @@
 #include "EntityManager.h"
 #include "Point.h"
 
-class EntityManager;
 
-class Entity : public EntityManager 
+
+class Entity
 {
 public:
-	/*
-	Entity();
+
+	iPoint position;
+	SDL_Texture* texture = nullptr;
+	int EntityHP;
+	bool EntityKillable = false;
+public:
+	
+	Entity(iPoint StartingPosition);
 	virtual ~Entity();
 
-	EntityType type;
-	iPoint position;
 	
-	*/
+	
+	
 	//logic of the entity
 	virtual bool Update(float dt);
 
 	//Drawing methodology
 	virtual void Draw();
 
-	//For entities that will be handed by inputs (such as the player)
-	virtual void HandleInput();
 };
 
 #endif 
