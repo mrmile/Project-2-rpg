@@ -61,7 +61,7 @@ public:
 	//void DestroyEntity(Entity* entity);
 
 
-
+	
 	
 
 private:
@@ -73,7 +73,10 @@ private:
 	// A queue with all spawn points information
 	EntitySpawnPoint spawnQueue[MAX_ENTITIES];
 
-	SDL_Texture* texture=nullptr;
+	SDL_Texture* texture_player = nullptr;
+	SDL_Texture* texture_npc = nullptr;
+	SDL_Texture* texture_objects = nullptr;
+	SDL_Texture* texture_enemies = nullptr;
 
 };
 

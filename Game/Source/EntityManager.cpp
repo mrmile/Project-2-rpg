@@ -102,17 +102,21 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 			switch (info.type)
 			{
 			case EntityType::PLAYER:
+				entities[i]->texture = texture_player;
 				break;
 			case EntityType::NPC:
+				entities[i]->texture = texture_npc;
 				break;
 			case EntityType::OBJECTS:
+				entities[i]->texture = texture_objects;
 				break;
 			case EntityType::ZOMBIE_STANDART:
+				entities[i]->texture = texture_enemies;
 				break;
 			default:
 				break;
 			}
-			entities[i]->texture = texture;
+			
 			
 			break;
 		}
