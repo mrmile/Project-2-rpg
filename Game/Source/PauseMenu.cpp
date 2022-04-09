@@ -90,6 +90,7 @@ bool PauseMenu::Start()
 
 	VSyncCheck = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 21, "Vsync", { 245,179,17,17 }, this, fullScreenCheckOff, NULL, {});
 	VSyncCheck_tag_ = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 22, "Vsync", { 80,170,213,35 }, this, VSyncOff, NULL, {});
+
 	app->SaveGameAudio();
 	pauseTimer = 0;
 	noPauseTimer = 0;
