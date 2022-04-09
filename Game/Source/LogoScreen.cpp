@@ -37,7 +37,11 @@ bool LogoScreen::Awake()
 
 bool LogoScreen::Start()
 {
-	logoScreen = app->tex->Load("Assets/textures/Scenes/logoScreen.png");
+	logoScreen1 = app->tex->Load("Assets/textures/Scenes/logoScreen1.png");
+	logoScreen11 = app->tex->Load("Assets/textures/Scenes/logoScreen11.png");
+	logoScreen12 = app->tex->Load("Assets/textures/Scenes/logoScreen12.png");
+	logoScreen2 = app->tex->Load("Assets/textures/Scenes/logoScreen2.png");
+	logoScreen3 = app->tex->Load("Assets/textures/Scenes/logoScreen3.png");
 
 	app->audio->PlayMusic("Assets/audio/music/logoMusic.ogg");
 
@@ -70,7 +74,43 @@ bool LogoScreen::PostUpdate()
 {
 	bool ret = true;
 
-	app->render->DrawTexture2(logoScreen, 0, 0, NULL);
+	if (delay < 160)
+	{
+		app->render->DrawTexture2(logoScreen11, 0, 0, NULL);
+	}
+
+	if (delay >= 160 && delay < 210)
+	{
+		app->render->DrawTexture2(logoScreen12, 0, 0, NULL);
+	}
+
+	if (delay >= 210 && delay < 260)
+	{
+		app->render->DrawTexture2(logoScreen1, 0, 0, NULL);
+	}
+
+	if (delay >= 260 && delay < 280)
+	{
+		app->render->DrawTexture2(logoScreen3, 0, 0, NULL);
+	}
+	if (delay >= 280 && delay < 300)
+	{
+		app->render->DrawTexture2(logoScreen2, 0, 0, NULL);
+	}
+	if (delay >= 300 && delay < 320)
+	{
+		app->render->DrawTexture2(logoScreen3, 0, 0, NULL);
+	}
+
+	if (delay >= 320 && delay < 340)
+	{
+		app->render->DrawTexture2(logoScreen2, 0, 0, NULL);
+	}
+
+	if (delay >= 340 && delay <= 360)
+	{
+		app->render->DrawTexture2(logoScreen3, 0, 0, NULL);
+	}
 
 	return ret;
 	
@@ -79,7 +119,12 @@ bool LogoScreen::PostUpdate()
 
 bool LogoScreen::CleanUp()
 {
-	
+	app->tex->UnLoad(logoScreen1);
+	app->tex->UnLoad(logoScreen11);
+	app->tex->UnLoad(logoScreen12);
+	app->tex->UnLoad(logoScreen2);
+	app->tex->UnLoad(logoScreen3);
+
 	return true;
 }
 

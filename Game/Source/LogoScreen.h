@@ -39,7 +39,11 @@ public:
 
 	int delay;
 
-	SDL_Texture* logoScreen;
+	SDL_Texture* logoScreen1;
+	SDL_Texture* logoScreen11;
+	SDL_Texture* logoScreen12;
+	SDL_Texture* logoScreen2;
+	SDL_Texture* logoScreen3;
 };
 
 #endif // __TITLE_SCREEN_H__
