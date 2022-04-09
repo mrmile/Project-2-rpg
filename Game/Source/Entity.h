@@ -18,6 +18,9 @@ public:
 	int EntityHP;
 	bool EntityKillable = false;
 
+	// A flag for the enemy removal. Important! We do not delete objects instantly
+	bool pendingToDelete = false;
+
 public:
 	
 	Entity(iPoint position);
@@ -30,6 +33,9 @@ public:
 
 	//Drawing methodology
 	virtual void Draw();
+
+	// Sets flag for deletion and for the collider aswell
+	virtual void SetToDelete();
 
 protected:
 	Animation* currentAnim = nullptr;

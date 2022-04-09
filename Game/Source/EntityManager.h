@@ -54,6 +54,13 @@ public:
 	// Called before quitting
 	bool CleanUp() override;
 
+	// Iterates the queue and checks for camera position
+	void HandleEntitiesSpawn();
+
+	// Destroys any enemies that have moved outside the camera limits
+	void HandleEntitiesDespawn();
+
+
 	//Function to create entites depending on the type
 	bool AddEntity(EntityType type,iPoint position);
 

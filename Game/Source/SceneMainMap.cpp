@@ -11,8 +11,8 @@
 #include "ModulePlayer.h"
 #include "ModuleCollisions.h"
 #include "TitleScreen.h"
-#include "Enemies.h"
-#include "Enemy.h"
+#include "EntityManager.h"
+#include "Entity.h"
 #include "ModuleParticles.h"
 #include "ModuleFonts.h"
 #include "PauseMenu.h"
@@ -51,7 +51,7 @@ bool SceneMainMap::Start()
 	app->audio->PlayMusic("Assets/audio/music/jungle.ogg");
 	app->tex->Load("Assets/textures/GUI/PauseMenuFrame.png");
 	sceneTimer = 0;
-
+	
 	//b2Filter filter;
 
 	//filter.categoryBits = 1;
@@ -79,7 +79,8 @@ bool SceneMainMap::Start()
 
 	// app->titleScreen->transition = false;
 	// app->titleScreen->continueTransition = false;
-	
+
+	 app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, { 0,0 });
 
 	return true;
 }
@@ -165,7 +166,7 @@ bool SceneMainMap::PostUpdate()
 {
 	bool ret = true;
 
-
+	
 	//if (app->player->horizontalCB == false && app->player->bidimensionalCB == false && sceneTimer > 1) app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 150) + 630);
 	app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 100) + 630);
 	app->render->camera.y = (-(app->player->Player->body->GetPosition().y * 100) + 360);
@@ -202,7 +203,7 @@ bool SceneMainMap::PostUpdate()
 		app->sceneMainMap->Disable();
 		app->collisions->Disable();
 		app->map->Disable();
-		app->enemies->Disable();
+		//app->enemies->Disable();
 		app->particles->Disable();
 		app->fonts->Disable();
 		//app->physics->Disable();

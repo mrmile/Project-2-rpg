@@ -41,3 +41,14 @@ void Entity::Draw()
 		app->render->DrawTexture2(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
 	}
 }
+
+void Entity::SetToDelete()
+{
+	
+	if (collider != nullptr)
+	{
+
+		collider->pendingToDelete = true;
+	}
+
+}
