@@ -273,10 +273,10 @@ bool TitleScreen::PostUpdate()
 	
 
 	app->render->DrawTexture2(titleScreen, 0, 0, NULL);
-	app->render->DrawTexture2(titleScreenLetters, -120, 60, NULL);
 	
 	if (MainMenu == true) 
 	{
+		app->render->DrawTexture2(titleScreenLetters, -120, 60, NULL);
 
 		if (newGameButton_->state == GuiControlState::NORMAL && newGameButton_->canClick == true) newGameButton_->SetTexture(newGameButton);
 		if (newGameButton_->state == GuiControlState::FOCUSED && newGameButton_->canClick == true) newGameButton_->SetTexture(newGameButtonOnIdle);
