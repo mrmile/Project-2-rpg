@@ -1,11 +1,13 @@
 #include "App.h"
-#include "Entity.h"
 #include "EntityManager.h"
+#include "Render.h"
+#include "Textures.h"
+#include "Audio.h"
+#include "Window.h"
+#include "ModuleCollisions.h"
+#include "Collider.h"
 
-
-#include "Defs.h"
-#include "Log.h"
-
+#include "Entity.h"
 
 EntityManager::EntityManager(bool start_enabled) : Module(start_enabled)
 {

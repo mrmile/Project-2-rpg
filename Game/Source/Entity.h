@@ -4,8 +4,10 @@
 #include "Module.h"
 #include "EntityManager.h"
 #include "Point.h"
+#include "Animation.h"
 
-
+struct SDL_Texture;
+struct Collider;
 
 class Entity
 {
@@ -15,20 +17,23 @@ public:
 	SDL_Texture* texture = nullptr;
 	int EntityHP;
 	bool EntityKillable = false;
+
 public:
 	
-	Entity(iPoint StartingPosition);
+	Entity(iPoint position);
+
 	virtual ~Entity();
 
-	
-	
-	
+	const Collider* GetColldier() const;
 	//logic of the entity
 	virtual bool Update(float dt);
 
 	//Drawing methodology
 	virtual void Draw();
+protected:
+	Animation* currentAnim = nullptr;
 
+	Collider* collider = nullptr;
 };
 
 #endif 

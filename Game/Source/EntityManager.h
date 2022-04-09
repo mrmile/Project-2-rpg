@@ -58,7 +58,7 @@ public:
 	bool AddEntity(EntityType type,iPoint position);
 
 	//Function to destroy an entity
-	void DestroyEntity(Entity* entity);
+	//void DestroyEntity(Entity* entity);
 
 
 
