@@ -44,6 +44,7 @@ bool PauseMenu::Start()
 {
 	PauseFrame = app->tex->Load("Assets/textures/GUI/PauseScreenEffects.png");
 	PauseTitle = app->tex->Load("Assets/textures/Scenes/mainTitleLettersPauseMenu.png");
+	settingsLetters = app->tex->Load("Assets/textures/Scenes/settingsLetters.png");
 
 	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/buttonClickedFX.wav");
 	resumeButton = app->tex->Load("Assets/textures/GUI/resumeButton.png");
@@ -78,18 +79,18 @@ bool PauseMenu::Start()
 	optionsButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 13, "Settings Button", { 25,190,108,35 }, this,optionsButton, NULL, {});
 	backToTitleButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 14, "Title Button", { 25,220,108,35 }, this,backToTitleButton, NULL, {});
 	exitButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 15, "Exit Button", { 25, 250, 108, 35 }, this,exitButton, NULL, {});
-	returnButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 16, "Return Button", { 290, 10, 71, 35 }, this, returnButton, NULL, {});
+	returnButton_ = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 16, "Return Button", { 20, 10, 71, 35 }, this, returnButton, NULL, {});
 	
 	//SLIDERS
-	fxVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 17, "Fx slider", { 80,50,195,35 }, this, baseSlider_fx, sliderSelector, { 274,60,100,16 });
-	musicVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 18, "Music slider", { 80,90,195,35 }, this, baseSlider_music, sliderSelector, { 274,100,100,16 });
+	fxVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 17, "Fx slider", { 20,140,350,35 }, this, baseSlider_fx, sliderSelector, { 250,157,14,16 });
+	musicVolumeSlider = (GuiSlider*)app->guiManager->CreateGuiControl(GuiControlType::SLIDER, 18, "Music slider", { 20,190,350,35 }, this, baseSlider_music, sliderSelector, { 50,207,150,16 });
 
 	//CHECKBOXES
-	fullScreenCheck_ = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 19, "Full Screen Check Box", { 245, 139, 17, 17 }, this, fullScreenCheckOff, NULL, {});
-	fullScreenCheck_tag_ = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 20, "Full Screen Tag", { 80, 130, 161, 9 }, this, fullScreenTag, NULL, {});
+	fullScreenCheck_ = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 19, "Full Screen Check Box", { 300, 249, 35, 35 }, this, fullScreenCheckOff, NULL, {});
+	fullScreenCheck_tag_ = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 20, "Full Screen Tag", { 20, 240, 161, 9 }, this, fullScreenTag, NULL, {});
 
-	VSyncCheck = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 21, "Vsync", { 245,179,17,17 }, this, fullScreenCheckOff, NULL, {});
-	VSyncCheck_tag_ = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 22, "Vsync", { 80,170,213,35 }, this, VSyncOff, NULL, {});
+	VSyncCheck = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 21, "Vsync", { 300,299,35,35 }, this, fullScreenCheckOff, NULL, {});
+	VSyncCheck_tag_ = (GuiCheckbox*)app->guiManager->CreateGuiControl(GuiControlType::CHECKBOX, 22, "Vsync", { 20,290,213,35 }, this, VSyncOff, NULL, {});
 
 	app->SaveGameAudio();
 	pauseTimer = 0;
@@ -234,6 +235,8 @@ bool PauseMenu::PostUpdate()
 		}
 		else if (options == true)
 		{
+			app->render->DrawTexture2(settingsLetters, -130, 30, NULL);
+
 			if (returnButton_->state == GuiControlState::NORMAL && returnButton_->canClick == true) returnButton_->SetTexture(returnButton);
 			if (returnButton_->state == GuiControlState::FOCUSED && returnButton_->canClick == true) returnButton_->SetTexture(returnButtonOnIdle);
 			if (returnButton_->state == GuiControlState::SELECTED && returnButton_->canClick == true) returnButton_->SetTexture(returnButtonPressed);
@@ -274,6 +277,7 @@ bool PauseMenu::CleanUp()
 {
 	app->tex->UnLoad(PauseFrame);
 	app->tex->UnLoad(PauseTitle);
+	app->tex->UnLoad(settingsLetters);
 
 	app->tex->UnLoad(exitButton);
 	app->tex->UnLoad(resumeButton);
@@ -349,86 +353,86 @@ bool PauseMenu::OnGuiMouseClickEvent(GuiControl* control){
 	{
 		if (control->id == 17 && fxVolumeSlider->canClick == true)
 		{
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.9f) && control->extraBounds.x < control->bounds.x + control->bounds.w)
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.9f) + 160 && control->extraBounds.x < control->bounds.x + control->bounds.w + 160)
 			{
 				app->audio->SliderLevelFX = 90;
 			}
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.8f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.9f))
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.8f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.9f) + 160)
 			{
 				app->audio->SliderLevelFX = 80;
 			}
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.7f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.8f))
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.7f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.8f) + 160)
 			{
 				app->audio->SliderLevelFX = 70;
 			}
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.6f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.7f))
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.6f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.7f) + 160)
 			{
 				app->audio->SliderLevelFX = 60;
 			}
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.5f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.6f))
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.5f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.6f) + 160)
 			{
 				app->audio->SliderLevelFX = 50;
 			}
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.4f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.5f))
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.4f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.5f) + 160)
 			{
 				app->audio->SliderLevelFX = 40;
 			}
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.3f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.4f))
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.3f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.4f) + 160)
 			{
 				app->audio->SliderLevelFX = 30;
 			}
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.2f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.3f))
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.2f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.3f) + 160)
 			{
 				app->audio->SliderLevelFX = 20;
 			}
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.1f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.2f))
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.1f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.2f) + 160)
 			{
 				app->audio->SliderLevelFX = 10;
 			}
-			if (control->extraBounds.x > control->bounds.x && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.1f))
+			if (control->extraBounds.x > control->bounds.x + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.1f) + 160)
 			{
 				app->audio->SliderLevelFX = 0;
 			}
 		}
 		if (control->id == 18 && musicVolumeSlider->canClick == true)
 		{
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.9f) && control->extraBounds.x < control->bounds.x + control->bounds.w)
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.9f) + 160 && control->extraBounds.x < control->bounds.x + control->bounds.w + 160)
 			{
 				app->audio->SliderLevelMusic = 90;
 			}
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.8f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.9f))
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.8f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.9f) + 160)
 			{
 				app->audio->SliderLevelMusic = 80;
 			}
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.7f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.8f))
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.7f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.8f) + 160)
 			{
 				app->audio->SliderLevelMusic = 70;
 			}
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.6f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.7f))
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.6f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.7f) + 160)
 			{
 				app->audio->SliderLevelMusic = 60;
 			}
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.5f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.6f))
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.5f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.6f) + 160)
 			{
 				app->audio->SliderLevelMusic = 50;
 			}
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.4f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.5f))
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.4f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.5f) + 160)
 			{
 				app->audio->SliderLevelMusic = 40;
 			}
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.3f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.4f))
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.3f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.4f) + 160)
 			{
 				app->audio->SliderLevelMusic = 30;
 			}
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.2f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.3f))
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.2f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.3f) + 160)
 			{
 				app->audio->SliderLevelMusic = 20;
 			}
-			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.1f) && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.2f))
+			if (control->extraBounds.x > control->bounds.x + (control->bounds.w * 0.1f) + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.2f) + 160)
 			{
 				app->audio->SliderLevelMusic = 10;
 			}
-			if (control->extraBounds.x > control->bounds.x && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.1f))
+			if (control->extraBounds.x > control->bounds.x + 160 && control->extraBounds.x < control->bounds.x + (control->bounds.w * 0.1f) + 160)
 			{
 				app->audio->SliderLevelMusic = 0;
 			}

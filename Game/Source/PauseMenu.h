@@ -51,6 +51,7 @@ private:
 
 	SDL_Texture* PauseFrame;
 	SDL_Texture* PauseTitle;
+	SDL_Texture* settingsLetters;
 
 
 	SDL_Texture* resumeButton;

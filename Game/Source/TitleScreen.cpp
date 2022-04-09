@@ -53,7 +53,7 @@ bool TitleScreen::Start()
 	settingsLetters = app->tex->Load("Assets/textures/Scenes/settingsLetters.png");
 
 	titleScreen2 = app->tex->Load("Assets/textures/island.png");
-	loading = app->tex->Load("Assets/textures/loadingScreen3.png");
+	loading = app->tex->Load("Assets/textures/loadingScreen.png");
 	creditsScene = app->tex->Load("Assets/textures/creditsScreen3.png");
 
 	baseSlider_fx = app->tex->Load("Assets/textures/GUI/BaseSlider_fx.png");
@@ -365,6 +365,7 @@ bool TitleScreen::CleanUp()
 	app->tex->UnLoad(titleScreen);
 	app->tex->UnLoad(newGameButton);
 	app->tex->UnLoad(titleScreenLetters);
+	app->tex->UnLoad(settingsLetters);
 	app->tex->UnLoad(creditsScene);
 	app->tex->UnLoad(titleScreen2);
 	app->tex->UnLoad(loading);
