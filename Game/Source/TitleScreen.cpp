@@ -92,7 +92,7 @@ bool TitleScreen::Start()
 	sliderSelectorPressed = app->tex->Load("Assets/textures/GUI/sliderInput_pressed.png");
 
 	// Load music
-	app->audio->PlayMusic("Assets/audio/music/mainTitleMusic.ogg");
+	app->audio->ChangeMusic(TITLE_THEME, 2, 2);
 	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/buttonClickedFX.wav");
 	buttonNotClickedFx = app->audio->LoadFx("Assets/audio/fx/No.wav");
 

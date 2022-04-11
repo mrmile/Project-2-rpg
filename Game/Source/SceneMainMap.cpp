@@ -46,10 +46,9 @@ bool SceneMainMap::Start()
 	// L03: DONE: Load map
 	//app->map->Load("hello.tmx");
 	app->map->Load("test_map.tmx");
-	Mix_ResumeMusic();
-	Mix_SetMusicPosition(0);
+	
 	// Load music
-	//app->audio->PlayMusic("Assets/audio/music/jungle.ogg");
+	app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);
 	app->tex->Load("Assets/textures/GUI/PauseMenuFrame.png");
 	sceneTimer = 0;
 	
@@ -71,27 +70,27 @@ bool SceneMainMap::Start()
 	app->render->camera.x = app->map->MapToWorld(-0, -0).x;
 	app->render->camera.y = app->map->MapToWorld(-0, -0).y;
 
-	 godMode = false;
-	 playerRestart = false;
-	 destroyScene = false;
-	 sceneMainMap = true;
+	godMode = false;
+	playerRestart = false;
+	destroyScene = false;
+	sceneMainMap = true;
 	
-	 app->sceneCastle->sceneCastle = false;
+	app->sceneCastle->sceneCastle = false;
 
 	// app->titleScreen->transition = false;
 	// app->titleScreen->continueTransition = false;
 
-	 app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, 0, 0);
+	app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, 0, 0);
 
-	 if (app->map->Load("test_map.tmx") == true)
-	 {
-		 int w, h;
-		 uchar* data = NULL;
+	if (app->map->Load("test_map.tmx") == true)
+	{
+		int w, h;
+		uchar* data = NULL;
 
-		 if (app->map->CreateWalkabilityMap(w, h, &data)) app->pathfinding->SetMap(w, h, data);
+		if (app->map->CreateWalkabilityMap(w, h, &data)) app->pathfinding->SetMap(w, h, data);
 
-		 RELEASE_ARRAY(data);
-	 }
+		RELEASE_ARRAY(data);
+	}
 
 	return true;
 }

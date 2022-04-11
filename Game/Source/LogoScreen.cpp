@@ -44,7 +44,7 @@ bool LogoScreen::Start()
 	logoScreen2 = app->tex->Load("Assets/textures/Scenes/logoScreen2.png");
 	logoScreen3 = app->tex->Load("Assets/textures/Scenes/logoScreen3.png");
 
-	app->audio->PlayMusic("Assets/audio/music/logoMusic.ogg");
+	app->audio->ChangeMusic(LOGO_INTRO, 0, 0);
 
 	delay = 0;
 
