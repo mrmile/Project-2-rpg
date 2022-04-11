@@ -151,7 +151,7 @@ bool TitleScreen::Update(float dt)
 	//cout << "Fx: " << app->audio->SliderLevelFX << endl;
 	//cout << "Music: " << app->audio->SliderLevelMusic << endl;
 
-	if (app->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN)
+	if (app->input->keys[SDL_SCANCODE_F1] == KEY_DOWN)
 	{
 		transition = true;
 	}

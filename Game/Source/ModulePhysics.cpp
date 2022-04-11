@@ -391,7 +391,7 @@ PhysBody* ModulePhysics::CreateChainLava(int x, int y, int* points, int size)
 // 
 bool ModulePhysics::PostUpdate()
 {
-	if(app->input->GetKey(SDL_SCANCODE_F9) == KEY_DOWN)
+	if(app->input->keys[SDL_SCANCODE_F9] == KEY_DOWN)
 		debug = !debug;
 
 	if(!debug)

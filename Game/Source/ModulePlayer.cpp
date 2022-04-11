@@ -3,6 +3,7 @@
 #include "app.h"
 #include "Textures.h"
 #include "Input.h"
+#include "GamepadInput.h"
 #include "Render.h"
 #include "EntityManager.h"
 #include "Entity.h"
@@ -191,73 +192,73 @@ bool ModulePlayer::Update(float dt)
 				}
 				*/
 
-				if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT
-					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE)
+				if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT
+					&& app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_IDLE)
 				{
 					if (run == false)Player->body->SetLinearVelocity({ -2.0f,0.0f });
 					if (run == true)Player->body->SetLinearVelocity({ -4.0f,0.0f });
 				}
-				else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT
-					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE)
+				else if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT
+					&& app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_IDLE)
 				{
 					if (run == false)Player->body->SetLinearVelocity({ 2.0f,0.0f });
 					if (run == true)Player->body->SetLinearVelocity({ 4.0f,0.0f });
 				}
-				else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT
-					&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE)
+				else if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT
+					&& app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_IDLE)
 				{
 					if (run == false)Player->body->SetLinearVelocity({ 0.0f,-2.0f });
 					if (run == true)Player->body->SetLinearVelocity({ 0.0f,-4.0f });
 				}
-				else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
+				else if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT)
 				{
 					if (run == false)Player->body->SetLinearVelocity({ 0.0f,2.0f });
 					if (run == true)Player->body->SetLinearVelocity({ 0.0f,4.0f });
 				}
-				else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT
-					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT
-					&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE)
+				else if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT
+					&& app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT
+					&& app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_IDLE)
 				{
 					if (run == false)Player->body->SetLinearVelocity({ -2.0f,-2.0f });
 					if (run == true)Player->body->SetLinearVelocity({ -4.0f,-4.0f });
 				}
-				else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT
-					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
+				else if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT
+					&& app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT)
 				{
 					if (run == false)Player->body->SetLinearVelocity({ -2.0f,2.0f });
 					if (run == true)Player->body->SetLinearVelocity({ -4.0f,4.0f });
 				}
-				else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT
-					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT
-					&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE)
+				else if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT
+					&& app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT
+					&& app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_IDLE)
 				{
 					if (run == false)Player->body->SetLinearVelocity({ 2.0f,-2.0f });
 					if (run == true)Player->body->SetLinearVelocity({ 4.0f,-4.0f });
 				}
-				else if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT
-					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
+				else if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT
+					&& app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT)
 				{
 					if (run == false)Player->body->SetLinearVelocity({ 2.0f,2.0f });
 					if (run == true)Player->body->SetLinearVelocity({ 4.0f,4.0f });
 				}
 
 
-				if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT)
+				if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT)
 				{
 					if (run == false)
 					{
@@ -280,7 +281,7 @@ bool ModulePlayer::Update(float dt)
 
 				}
 
-				if (app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT)
+				if (app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT)
 				{
 					if (run == false)
 					{
@@ -303,7 +304,7 @@ bool ModulePlayer::Update(float dt)
 
 				}
 
-				if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT)
+				if (app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT)
 				{
 
 					if (run == false)
@@ -326,7 +327,7 @@ bool ModulePlayer::Update(float dt)
 
 				}
 
-				if (app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
+				if (app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT)
 				{
 					if (run == false)
 					{
@@ -351,7 +352,7 @@ bool ModulePlayer::Update(float dt)
 
 				}
 
-				if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
+				if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT && app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT)
 				{
 					if (run == false)
 					{
@@ -374,7 +375,7 @@ bool ModulePlayer::Update(float dt)
 
 				}
 
-				if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_REPEAT)
+				if (app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT && app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT)
 				{
 					if (run == false)
 					{
@@ -396,7 +397,7 @@ bool ModulePlayer::Update(float dt)
 					}
 				}
 
-				if (app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT)
+				if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT && app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT)
 				{
 					if (run == false)
 					{
@@ -418,7 +419,7 @@ bool ModulePlayer::Update(float dt)
 					}
 				}
 
-				if (app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_REPEAT && app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_REPEAT)
+				if (app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT && app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT)
 				{
 					if (run == false)
 					{
@@ -440,22 +441,22 @@ bool ModulePlayer::Update(float dt)
 					}
 				}
 
-				if (app->input->GetKey(SDL_SCANCODE_Z) == KeyState::KEY_DOWN)
+				if (app->input->keys[SDL_SCANCODE_Z] == KeyState::KEY_DOWN)
 				{
 					// To implement: interact with the environment (examples: grab an object, press a switch…)/select item/select options
 				}
 
-				if (app->input->GetKey(SDL_SCANCODE_X) == KeyState::KEY_DOWN)
+				if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_DOWN)
 				{
 					// To implement: use item
 				}
 
-				if (app->input->GetKey(SDL_SCANCODE_C) == KeyState::KEY_DOWN)
+				if (app->input->keys[SDL_SCANCODE_C] == KeyState::KEY_DOWN)
 				{
 					// To implement: throw things away
 				}
 
-				if ((app->input->GetKey(SDL_SCANCODE_LSHIFT) == KeyState::KEY_REPEAT))
+				if ((app->input->keys[SDL_SCANCODE_LSHIFT] == KeyState::KEY_REPEAT))
 				{
 					run = true;
 				}
@@ -467,10 +468,10 @@ bool ModulePlayer::Update(float dt)
 
 
 				// If no up/down movement detected, set the current animation back to idle
-				if (app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_RIGHT) == KeyState::KEY_IDLE
-					&& app->input->GetKey(SDL_SCANCODE_LEFT) == KeyState::KEY_IDLE)
+				if (app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_IDLE)
 				{
 					Player->body->SetLinearVelocity({ 0.0f,0.0f });
 
@@ -563,11 +564,11 @@ bool ModulePlayer::Update(float dt)
 		{
 			//Cosas comentadas ya que aún no han sido implementadas --> To implement: Dialog manager <-- Es un handout de una presentación de clase
 			
-			if (app->input->GetKey(SDL_SCANCODE_DOWN) == KeyState::KEY_DOWN)
+			if (app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_DOWN)
 			{
 				//selection--;
 			}
-			if (app->input->GetKey(SDL_SCANCODE_UP) == KeyState::KEY_DOWN)
+			if (app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_DOWN)
 			{
 				//selection++;
 			}
@@ -577,7 +578,7 @@ bool ModulePlayer::Update(float dt)
 			if(selection < 0) selection = totalSelectionsAvailable;
 			*/
 
-			if (app->input->GetKey(SDL_SCANCODE_Z) == KeyState::KEY_DOWN)
+			if (app->input->keys[SDL_SCANCODE_Z] == KeyState::KEY_DOWN)
 			{
 				//select answer/continue reading
 			}
@@ -658,7 +659,7 @@ bool ModulePlayer::Update(float dt)
 	}
 	
 	
-	if ((app->input->GetKey(SDL_SCANCODE_P) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN) && app->player->destroyed == false && app->player->playerWin == false)
+	if ((app->input->keys[SDL_SCANCODE_P] == KEY_DOWN || app->input->keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN) && app->player->destroyed == false && app->player->playerWin == false)
 	{
 		app->audio->PlayFx(paused);
 		pauseMenu = !pauseMenu;

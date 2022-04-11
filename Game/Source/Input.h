@@ -3,9 +3,10 @@
 
 #include "Module.h"
 
-//#define NUM_KEYS 352
+#define NUM_KEYS 352
+#define MAX_KEYS 300
 #define NUM_MOUSE_BUTTONS 5
-//#define LAST_KEYS_PRESSED_BUFFER 50
+#define LAST_KEYS_PRESSED_BUFFER 50
 
 struct SDL_Rect;
 
@@ -73,10 +74,12 @@ public:
 	bool CleanUp();
 
 	// Check key states (includes mouse and joy buttons)
+	/*
 	KeyState GetKey(int id) const
 	{
 		return keyboard[id];
 	}
+	*/
 
 	KeyState GetMouseButtonDown(int id) const
 	{
@@ -103,9 +106,10 @@ public:
 	bool ShakeController(int id, int duration, float strength = 0.5f);
 	const char* GetControllerName(int id) const;
 
-private:
+public:
 	bool windowEvents[WE_COUNT];
-	KeyState*	keyboard;
+	//KeyState*	keyboard;
+	KeyState keys[MAX_KEYS] = { KEY_IDLE };
 	KeyState mouseButtons[NUM_MOUSE_BUTTONS];
 	int	mouseMotionX;
 	int mouseMotionY;

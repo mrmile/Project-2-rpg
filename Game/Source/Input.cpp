@@ -7,14 +7,12 @@
 
 #include "SDL/include/SDL.h"
 
-#define MAX_KEYS 300
-
 Input::Input(bool start_enabled) : Module(start_enabled)
 {
 	name.Create("input");
-
-	keyboard = new KeyState[MAX_KEYS];
-	memset(keyboard, KEY_IDLE, sizeof(KeyState) * MAX_KEYS);
+	for (uint i = 0; i < MAX_KEYS; ++i) keys[i] = KEY_IDLE;
+	//keyboard = new KeyState[MAX_KEYS];
+	//memset(keyboard, KEY_IDLE, sizeof(KeyState) * MAX_KEYS);
 	memset(mouseButtons, KEY_IDLE, sizeof(KeyState) * NUM_MOUSE_BUTTONS);
 	memset(&pads[0], 0, sizeof(GamePad) * MAX_PADS);
 }
@@ -22,7 +20,7 @@ Input::Input(bool start_enabled) : Module(start_enabled)
 // Destructor
 Input::~Input()
 {
-	delete[] keyboard;
+	//delete[] keyboard;
 }
 
 // Called before render is available
@@ -65,8 +63,9 @@ bool Input::PreUpdate()
 {
 	static SDL_Event event;
 
-	const Uint8* keys = SDL_GetKeyboardState(NULL);
+	const Uint8* keyboard = SDL_GetKeyboardState(NULL);
 
+	/*
 	for(int i = 0; i < MAX_KEYS; ++i)
 	{
 		if(keys[i] == 1)
@@ -83,6 +82,15 @@ bool Input::PreUpdate()
 			else
 				keyboard[i] = KEY_IDLE;
 		}
+	}
+	*/
+
+	for (int i = 0; i < MAX_KEYS; ++i)
+	{
+		if (keyboard[i])
+			keys[i] = (keys[i] == KeyState::KEY_IDLE) ? KeyState::KEY_DOWN : KeyState::KEY_REPEAT;
+		else
+			keys[i] = (keys[i] == KeyState::KEY_REPEAT || keys[i] == KeyState::KEY_DOWN) ? KeyState::KEY_UP : KeyState::KEY_IDLE;
 	}
 
 	for(int i = 0; i < NUM_MOUSE_BUTTONS; ++i)
@@ -132,6 +140,14 @@ bool Input::PreUpdate()
 				//LOG("Mouse button %d up", event.button.button-1);
 			break;
 
+			case SDL_CONTROLLERDEVICEADDED:
+				HandleDeviceConnection(event.cdevice.which);
+			break;
+
+			case SDL_CONTROLLERDEVICEREMOVED:
+				HandleDeviceRemoval(event.cdevice.which);
+			break;
+
 			case SDL_MOUSEMOTION:
 				int scale = app->win->GetScale();
 				mouseMotionX = event.motion.xrel / scale;
@@ -143,6 +159,8 @@ bool Input::PreUpdate()
 		}
 	}
 
+	UpdateGamepadsInput();
+
 	return true;
 }
 
@@ -150,6 +168,18 @@ bool Input::PreUpdate()
 bool Input::CleanUp()
 {
 	LOG("Quitting SDL event subsystem");
+
+	// Stop rumble from all gamepads and deactivate SDL functionallity
+	for (uint i = 0; i < MAX_PADS; ++i)
+	{
+		if (pads[i].haptic != nullptr)
+		{
+			SDL_HapticStopAll(pads[i].haptic);
+			SDL_HapticClose(pads[i].haptic);
+		}
+		if (pads[i].controller != nullptr) SDL_GameControllerClose(pads[i].controller); // This line produces exception
+	}
+
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
 	SDL_QuitSubSystem(SDL_INIT_HAPTIC);
 	SDL_QuitSubSystem(SDL_INIT_GAMECONTROLLER);
