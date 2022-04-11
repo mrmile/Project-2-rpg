@@ -65,8 +65,9 @@ public:
 	//Function to create entites depending on the type
 	bool AddEntity(EntityType type,int x, int y);
 
-	//Function to destroy an entity
-	//void DestroyEntity(Entity* entity);
+	//Check which entites are in combat
+	void EntitiesInCombat();
+	
 
 
 private:

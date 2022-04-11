@@ -5,6 +5,7 @@
 #include "EntityManager.h"
 #include "Point.h"
 #include "Animation.h"
+#include "GameManager.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -17,9 +18,11 @@ public:
 	SDL_Texture* texture = nullptr;
 	int EntityHP;
 	bool EntityKillable = false;
-
+	EntityType type;
 	// A flag for the enemy removal. Important! We do not delete objects instantly
 	bool pendingToDelete = false;
+	GameState entityState;
+	TurnState entityTurn;
 
 public:
 	

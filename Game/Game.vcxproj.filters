@@ -97,9 +97,14 @@
     <ClCompile Include="Source\LogoScreen.cpp">
       <Filter>General</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GamepadInput.cpp" />
     <ClCompile Include="Source\Zombie_Standart.cpp">
       <Filter>General\Entities</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GamepadInput.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GameManager.cpp">
+      <Filter>General</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -229,9 +234,14 @@
     <ClInclude Include="Source\LogoScreen.h">
       <Filter>General</Filter>
     </ClInclude>
-    <ClInclude Include="Source\GamepadInput.h" />
     <ClInclude Include="Source\Zombie_Standart.h">
       <Filter>General\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GamepadInput.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameManager.h">
+      <Filter>General</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

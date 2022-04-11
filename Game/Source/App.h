@@ -35,6 +35,7 @@ class PathFinding;
 class ModuleFonts;
 class GuiManager;
 class PauseMenu;
+class GameManager;
 
 class App
 {
@@ -120,12 +121,12 @@ public:
 	ModulePlayer* player;
 	ModuleCollisions* collisions;
 	ModuleParticles* particles;
-	//Enemy* enemy;
 	PathFinding* pathfinding;
 	ModuleFonts* fonts;
 	GuiManager* guiManager;
 	PauseMenu* pause_menu;
 	EntityManager* entity_manager;
+	GameManager* game_manager;
 
 	bool AppTitleScreenFull = false;
 
