@@ -16,7 +16,12 @@ public:
 
 	iPoint position;
 	SDL_Texture* texture = nullptr;
+	//ENTITY LIFE POINTS
 	int EntityHP;
+	//ENTITY ACTION POINTS
+	int EntityAP;
+	//ENTITY MOVEMENT POINTS
+	int EntityMP;
 	bool EntityKillable = false;
 	EntityType type;
 	// A flag for the enemy removal. Important! We do not delete objects instantly
@@ -39,6 +44,8 @@ public:
 
 	// Sets flag for deletion and for the collider aswell
 	virtual void SetToDelete();
+
+	virtual void ReduceAP(int AP_used);
 
 protected:
 	Animation* currentAnim = nullptr;

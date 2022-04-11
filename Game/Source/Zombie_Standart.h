@@ -17,9 +17,7 @@ public:
 	
 
 private:
-	
-	
-	
+
 	Animation Idle_Enemy;
 	
 

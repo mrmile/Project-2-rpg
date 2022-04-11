@@ -16,6 +16,7 @@
 #include "ModuleParticles.h"
 #include "ModuleFonts.h"
 #include "PauseMenu.h"
+#include "Pathfinding.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -81,6 +82,16 @@ bool SceneMainMap::Start()
 	// app->titleScreen->continueTransition = false;
 
 	 app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, 0, 0);
+
+	 if (app->map->Load("test_map.tmx") == true)
+	 {
+		 int w, h;
+		 uchar* data = NULL;
+
+		 if (app->map->CreateWalkabilityMap(w, h, &data)) app->pathfinding->SetMap(w, h, data);
+
+		 RELEASE_ARRAY(data);
+	 }
 
 	return true;
 }

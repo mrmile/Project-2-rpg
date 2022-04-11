@@ -39,7 +39,7 @@ void Entity::Draw()
 {
 	if (currentAnim != nullptr)
 	{
-		app->render->DrawTexture2(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
+		app->render->DrawTexture(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
 	}
 }
 
@@ -52,4 +52,9 @@ void Entity::SetToDelete()
 		collider->pendingToDelete = true;
 	}
 
+}
+
+void Entity::ReduceAP(int AP_used)
+{
+	EntityAP = EntityAP - AP_used;
 }

@@ -1063,3 +1063,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 	}
 }
+
+iPoint ModulePlayer::GetLastPosition()
+{
+	iPoint NewPosition = position;
+
+	return NewPosition;
+}
