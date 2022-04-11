@@ -52,7 +52,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	player = new ModulePlayer(false);
 	collisions = new ModuleCollisions(true);
 	pause_menu = new PauseMenu(false);
-	enemies = new Enemies(true);
+	entity_manager = new EntityManager(false);
 	particles = new ModuleParticles(true);
 	pathfinding = new PathFinding(false);
 	fonts = new ModuleFonts(false);
@@ -73,7 +73,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(sceneCastle);
 	AddModule(fonts);
 	AddModule(player);
-	AddModule(enemies); 
+	AddModule(entity_manager); 
 	AddModule(particles);
 	AddModule(collisions);
 	AddModule(fade);

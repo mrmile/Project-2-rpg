@@ -48,7 +48,7 @@ bool SceneMainMap::Start()
 	Mix_ResumeMusic();
 	Mix_SetMusicPosition(0);
 	// Load music
-	app->audio->PlayMusic("Assets/audio/music/jungle.ogg");
+	//app->audio->PlayMusic("Assets/audio/music/jungle.ogg");
 	app->tex->Load("Assets/textures/GUI/PauseMenuFrame.png");
 	sceneTimer = 0;
 	
@@ -80,7 +80,7 @@ bool SceneMainMap::Start()
 	// app->titleScreen->transition = false;
 	// app->titleScreen->continueTransition = false;
 
-	 app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, { 0,0 });
+	 app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, 0, 0);
 
 	return true;
 }
@@ -102,6 +102,7 @@ bool SceneMainMap::Update(float dt)
 {
 	sceneTimer++;
 	//F9 --> See colliders
+	
 	
 
 	if ((app->input->GetKey(SDL_SCANCODE_F3) == KEY_DOWN || app->input->GetKey(SDL_SCANCODE_F1) == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false))
@@ -203,7 +204,7 @@ bool SceneMainMap::PostUpdate()
 		app->sceneMainMap->Disable();
 		app->collisions->Disable();
 		app->map->Disable();
-		//app->enemies->Disable();
+		app->entity_manager->Disable();
 		app->particles->Disable();
 		app->fonts->Disable();
 		//app->physics->Disable();

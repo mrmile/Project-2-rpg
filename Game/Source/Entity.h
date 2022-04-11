@@ -23,7 +23,7 @@ public:
 
 public:
 	
-	Entity(iPoint position);
+	Entity(int x,int y);
 
 	virtual ~Entity();
 
@@ -41,6 +41,8 @@ protected:
 	Animation* currentAnim = nullptr;
 
 	Collider* collider = nullptr;
+
+	iPoint spawnPos;
 };
 
 #endif 

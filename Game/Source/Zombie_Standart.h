@@ -9,7 +9,7 @@ class Zombie_Standart : public Entity
 {
 public:
 	
-	Zombie_Standart(iPoint position);
+	Zombie_Standart(int x,int y);
 
 	
 	bool Update(float dt) override;

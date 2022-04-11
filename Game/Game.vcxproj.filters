@@ -112,6 +112,10 @@
     <ClCompile Include="Source\LogoScreen.cpp">
       <Filter>General</Filter>
     </ClCompile>
+    <ClCompile Include="Source\GamepadInput.cpp" />
+    <ClCompile Include="Source\Zombie_Standart.cpp">
+      <Filter>General\Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -254,6 +258,10 @@
     </ClInclude>
     <ClInclude Include="Source\LogoScreen.h">
       <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GamepadInput.h" />
+    <ClInclude Include="Source\Zombie_Standart.h">
+      <Filter>General\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

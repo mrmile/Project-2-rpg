@@ -11,8 +11,10 @@
 #include "Map.h"
 #include "Pathfinding.h"
 #include "SceneMainMap.h"
+#include "Log.h"
 
-Zombie_Standart::Zombie_Standart(iPoint position) : Entity(position)
+
+Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 {	
 	EntityHP = 1;
 	//HERE WE ADD THE ANIMATIONS WITH GIMP
@@ -24,6 +26,9 @@ Zombie_Standart::Zombie_Standart(iPoint position) : Entity(position)
 	Idle_Enemy.speed = 0.3f;
 
 	
+
+	spawnPos.x = position.x;
+	spawnPos.y = position.y;
 
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ENEMY, (Module*)app->enemies);
 
@@ -40,12 +45,13 @@ bool Zombie_Standart::Update(float dt)
 		collider->SetPos(NewPosition.x, NewPosition.y);
 		currentAnim = &Idle_Enemy;
 		currentAnim->loop = false;
+		LOG("ESTA FUNCIONANDO");
 		return true;
 	}
 	if (app->player->pauseMenu == false)
 	{
 		collider->SetPos(position.x, position.y);
-
+		LOG("ESTA FUNCIONANDO");
 		currentAnim = &Idle_Enemy;
 		currentAnim->loop = true;
 		

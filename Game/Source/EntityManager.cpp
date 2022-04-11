@@ -35,6 +35,7 @@ bool EntityManager::Start()
 
 bool EntityManager::PreUpdate()
 {
+	
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
 		if (entities[i] != nullptr && entities[i]->pendingToDelete)
@@ -43,7 +44,7 @@ bool EntityManager::PreUpdate()
 			entities[i] = nullptr;
 		}
 	}
-
+	
 	return true;
 }
 bool EntityManager::Update(float dt)
@@ -83,7 +84,7 @@ bool EntityManager::CleanUp()
 
 	return true;
 }
-bool EntityManager::AddEntity(EntityType type,iPoint position)
+bool EntityManager::AddEntity(EntityType type,int x,int y)
 {
 	bool ret = false;
 
@@ -92,7 +93,8 @@ bool EntityManager::AddEntity(EntityType type,iPoint position)
 		if (spawnQueue[i].type == EntityType::NONE)
 		{
 			spawnQueue[i].type = type;
-			spawnQueue[i].startingPosition = position;
+			spawnQueue[i].x = x;
+			spawnQueue[i].y = y;
 			ret = true;
 			break;
 		}
@@ -109,7 +111,7 @@ void EntityManager::HandleEntitiesSpawn()
 		if (spawnQueue[i].type != EntityType::NONE)
 		{
 			// Spawn a new enemy if the screen has reached a spawn position
-			if ((spawnQueue[i].startingPosition.x * 1 < app->render->camera.x + (app->render->camera.w * 1) + SPAWN_MARGIN) || (spawnQueue[i].startingPosition.x * 1 > app->render->camera.x - (app->render->camera.w * 1) - SPAWN_MARGIN) || (spawnQueue[i].startingPosition.y * 1 < app->render->camera.y - (app->render->camera.h * 1) - SPAWN_MARGIN))
+			if ((spawnQueue[i].x * 1 < app->render->camera.x + (app->render->camera.w * 1) + SPAWN_MARGIN) || (spawnQueue[i].x * 1 > app->render->camera.x - (app->render->camera.w * 1) - SPAWN_MARGIN) || (spawnQueue[i].y * 1 < app->render->camera.y - (app->render->camera.h * 1) - SPAWN_MARGIN))
 			{
 				SpawnEntity(spawnQueue[i]);
 				spawnQueue[i].type = EntityType::NONE; // Removing the newly spawned enemy from the queue
@@ -146,19 +148,18 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 			switch (info.type)
 			{
 			case EntityType::PLAYER:
-				entities[i]->texture = texture_player;
+				//entities[i]->texture = texture_player;
 				break;
 			case EntityType::NPC:
-				entities[i]->texture = texture_npc;
+				//entities[i]->texture = texture_npc;
 				break;
 			case EntityType::OBJECTS:
-				entities[i]->texture = texture_objects;
+				//entities[i]->texture = texture_objects;
 				break;
 			case EntityType::ZOMBIE_STANDART:
-				entities[i] = new Zombie_Standart(info.startingPosition);
+				entities[i] = new Zombie_Standart(info.x,info.y);
 				entities[i]->texture = texture_enemies;
-				break;
-			default:
+				
 				break;
 			}
 			

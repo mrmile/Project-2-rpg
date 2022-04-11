@@ -6,7 +6,7 @@
 #include "Render.h"
 #include "Textures.h"
 
-Entity::Entity(iPoint position) : position()
+Entity::Entity(int x,int y) : position(x,y)
 {
 
 }

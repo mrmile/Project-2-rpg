@@ -12,13 +12,13 @@
 #include "ModulePlayer.h"
 #include "ModuleCollisions.h"
 #include "ModuleFadeToBlack.h"
-#include "Enemies.h"
-#include "Enemy.h"
 #include "ModuleParticles.h"
 #include "ModuleFonts.h"
 #include "GuiManager.h"
 #include "GuiButton.h"
 #include "PauseMenu.h"
+#include "EntityManager.h"
+#include "Entity.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -234,7 +234,7 @@ bool TitleScreen::Update(float dt)
 			app->particles->Enable();
 			app->sceneMainMap->Enable();
 			app->player->Enable();
-			app->enemies->Enable();
+			app->entity_manager->Enable();
 			app->fonts->Enable();
 			app->tex->Enable();
 			app->pause_menu->Enable();
@@ -256,7 +256,7 @@ bool TitleScreen::Update(float dt)
 			app->particles->Enable();
 			app->sceneMainMap->Enable();
 			app->player->Enable();
-			app->enemies->Enable();
+			app->entity_manager->Enable();
 			app->fonts->Enable();
 			app->tex->Enable();
 			app->pause_menu->Enable();
