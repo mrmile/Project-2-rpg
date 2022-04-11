@@ -73,18 +73,6 @@
     <ClCompile Include="Source\Collider.cpp">
       <Filter>General</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Enemies.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Enemy.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Flying_Enemy.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Flying_Enemy_2.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
     <ClCompile Include="Source\ModuleCollisions.cpp">
       <Filter>General</Filter>
     </ClCompile>
@@ -104,9 +92,6 @@
       <Filter>General</Filter>
     </ClCompile>
     <ClCompile Include="Source\Pathfinding.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Walking_Enemy.cpp">
       <Filter>General</Filter>
     </ClCompile>
     <ClCompile Include="Source\LogoScreen.cpp">
@@ -220,18 +205,6 @@
     <ClInclude Include="Source\Collider.h">
       <Filter>General</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Enemies.h">
-      <Filter>General</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Enemy.h">
-      <Filter>General</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Flying_Enemy.h">
-      <Filter>General</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Flying_Enemy_2.h">
-      <Filter>General</Filter>
-    </ClInclude>
     <ClInclude Include="Source\ModuleCollisions.h">
       <Filter>General</Filter>
     </ClInclude>
@@ -251,9 +224,6 @@
       <Filter>General</Filter>
     </ClInclude>
     <ClInclude Include="Source\Pathfinding.h">
-      <Filter>General</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Walking_Enemy.h">
       <Filter>General</Filter>
     </ClInclude>
     <ClInclude Include="Source\LogoScreen.h">

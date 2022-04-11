@@ -11,8 +11,8 @@
 #include "ModulePlayer.h"
 #include "ModuleCollisions.h"
 #include "TitleScreen.h"
-#include "Enemies.h"
-#include "Enemy.h"
+#include "EntityManager.h"
+#include "Entity.h"
 #include "ModuleParticles.h"
 
 #include "Defs.h"
@@ -211,7 +211,7 @@ bool SceneCastle::PostUpdate()
 		app->sceneMainMap->Disable();
 		app->collisions->Disable();
 		app->map->Disable();
-		app->enemies->Disable();
+		app->entity_manager->Disable();
 		app->particles->Disable();
 		//app->physics->Disable();
 

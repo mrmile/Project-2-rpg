@@ -6,7 +6,7 @@
 #include "ModulePhysics.h"
 #include "ModuleCollisions.h"
 #include "ModuleParticles.h"
-#include "Enemies.h"
+#include "EntityManager.h"
 #include "ModulePlayer.h"
 #include "Window.h"
 
@@ -694,30 +694,57 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		}
 	}
 
-	if (object->name == "goombas")
+	if (object->name == "player")
 	{
 		pugi::xml_node NewObject;
 		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
 		{
-			app->enemies->AddEnemy(Enemy_Type::GOOMBA, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			app->entity_manager->AddEntity(EntityType::PLAYER, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
 		}
 	}
 
-	if (object->name == "flying_koopas")
+	if (object->name == "npc")
 	{
 		pugi::xml_node NewObject;
 		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
 		{
-			app->enemies->AddEnemy(Enemy_Type::FLYING_KOOPA, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			app->entity_manager->AddEntity(EntityType::NPC, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
 		}
 	}
 
-	if (object->name == "Shy_guys")
+	if (object->name == "object")
 	{
 		pugi::xml_node NewObject;
 		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
 		{
-			app->enemies->AddEnemy(Enemy_Type::SHYGUY, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			app->entity_manager->AddEntity(EntityType::OBJECTS, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+		}
+	}
+
+	if (object->name == "zombie_standart")
+	{
+		pugi::xml_node NewObject;
+		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		{
+			app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+		}
+	}
+
+	if (object->name == "zombie_spitter")
+	{
+		pugi::xml_node NewObject;
+		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		{
+			app->entity_manager->AddEntity(EntityType::ZOMBIE_SPITTER, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+		}
+	}
+
+	if (object->name == "zombie_runner")
+	{
+		pugi::xml_node NewObject;
+		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		{
+			app->entity_manager->AddEntity(EntityType::ZOMBIE_RUNNER, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
 		}
 	}
 
@@ -1023,68 +1050,3 @@ void Map::setTilePos(int x, int y, int width, int height)
 	position4 = (x, y + height);
 }
 
-/*
-void Map::LoadLavaColliders() // Los lava colliders se tienen que hazer con los sensores del año pasado
-{
-	int	LavaChains1[8] = { 0,0 ,0.5,6.5, 111,7.5 ,110.5,-2 };
-	int	LavaChains2[8] = { 0,0 ,-0.5,7.5 ,478.5,7.5 ,478.5,1.5 };
-	int	LavaChains3[8] = { 0,0 ,0,7 ,63.5,7, 64.5,1 };
-	int	LavaChains4[8] = { 0,0 ,0,8.5, 49,8.5 ,49,1 };
-	int	LavaChains5[8] = { 0,0 ,- 0.5,8 ,48,7.5 ,48,-0.5 };
-
-	app->physics->CreateChainLava(512.5, 424.5, LavaChains1, 8);
-	app->physics->CreateChainLava(897.5, 423, LavaChains2, 8);
-	app->physics->CreateChainLava(1633, 423.5, LavaChains3, 8);
-	app->physics->CreateChainLava(1744, 407.5, LavaChains4, 8);
-	app->physics->CreateChainLava(1840, 392, LavaChains5, 8);
-
-}
-*/
-
-/*
-void Map::DrawColliders()
-{
-
-	// L04: DONE 5: Prepare the loop to draw all tilesets + DrawTexture()
-	ListItem<MapLayer*>* mapLayerItem;
-	mapLayerItem = mapData.layers.start;
-
-	while (mapLayerItem != NULL)
-	{
-	
-		//if (mapLayerItem->data->properties.GetProperty("Draw") == 0) return;
-		if (mapLayerItem->data->id != 2)
-		{
-			mapLayerItem=mapLayerItem->next;
-		}
-		else if(mapLayerItem->data->id == 2)
-		{
-			for (int x = 0; x < mapLayerItem->data->width; x++)
-			{
-				for (int y = 0; y < mapLayerItem->data->height; y++)
-				{
-					// L04: DONE 9: Complete the draw function
-					int gid = mapLayerItem->data->Get(x, y);
-
-					if (gid > 0)
-					{
-
-						//L06: TODO 4: Obtain the tile set using GetTilesetFromTileId
-						//now we always use the firt tileset in the list
-						TileSet* tileset = mapData.tilesets.start->data;
-
-						SDL_Rect r = tileset->GetTileRect(gid);
-						iPoint pos = MapToWorld(x, y);
-						PhysBody* NewCollision;
-						NewCollision=app->physics->CreateColliderRectangle(pos.x, pos.y, r.w, r.h);
-						Collisions.add(NewCollision);
-						Collisions.start->next;
-					}
-
-				}
-			}
-		}
-		
-	}
-}
-*/

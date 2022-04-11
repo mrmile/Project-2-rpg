@@ -13,7 +13,7 @@
 #include "ModuleCollisions.h"
 #include "ModuleParticles.h"
 #include "Map.h"
-#include "Enemies.h"
+#include "EntityManager.h"
 #include "Defs.h"
 #include "Log.h"
 #include <SDL_mixer/include/SDL_mixer.h>
@@ -133,7 +133,7 @@ bool PauseMenu::Update(float dt)
 			app->particles->Disable();
 			app->sceneMainMap->Disable();
 			app->player->Disable();
-			app->enemies->Disable();
+			app->entity_manager->Disable();
 			app->fonts->Disable();
 			app->pause_menu->Disable();
 			TitleTransition = false;

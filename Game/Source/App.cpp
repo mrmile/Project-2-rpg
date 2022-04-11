@@ -17,13 +17,12 @@
 #include "TitleScreen.h"
 #include "Defs.h"
 #include "Log.h"
-#include "Enemy.h"
-#include "Enemies.h"
+#include "Entity.h"
+#include "EntityManager.h"
 #include "Pathfinding.h"
 #include "GuiManager.h"
 #include "LogoScreen.h"
 #include "PauseMenu.h"
-#include "EntityManager.h"
 #include <iostream>
 #include <sstream>
 #include <Optick/include/optick.h>

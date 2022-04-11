@@ -4,8 +4,8 @@
 #include "Textures.h"
 #include "Input.h"
 #include "Render.h"
-#include "Enemies.h"
-#include "Enemy.h"
+#include "EntityManager.h"
+#include "Entity.h"
 //#include "ModuleParticles.h"
 #include "Audio.h"
 #include "ModuleFadeToBlack.h"
@@ -752,7 +752,7 @@ bool ModulePlayer::PostUpdate()
 			app->sceneCastle->Disable();
 			app->collisions->Disable();
 			app->map->Disable();
-			app->enemies->Disable();
+			app->entity_manager->Disable();
 			app->particles->Disable();
 			app->fonts->Disable();
 
@@ -763,7 +763,7 @@ bool ModulePlayer::PostUpdate()
 			app->sceneCastle->Enable();
 			app->collisions->Enable();
 			app->map->Enable();
-			app->enemies->Enable();
+			app->entity_manager->Enable();
 			app->particles->Enable();
 			app->fonts->Enable();
 
@@ -781,7 +781,7 @@ bool ModulePlayer::PostUpdate()
 			app->sceneMainMap->Disable();
 			app->collisions->Disable();
 			app->map->Disable();
-			app->enemies->Disable();
+			app->entity_manager->Disable();
 			app->particles->Disable();
 			app->fonts->Disable();
 
@@ -792,7 +792,7 @@ bool ModulePlayer::PostUpdate()
 			app->sceneMainMap->Enable();
 			app->collisions->Enable();
 			app->map->Enable();
-			app->enemies->Enable();
+			app->entity_manager->Enable();
 			app->particles->Enable();
 			app->fonts->Enable();
 
@@ -818,7 +818,7 @@ bool ModulePlayer::PostUpdate()
 				app->particles->Disable();
 				app->sceneMainMap->Disable();
 				app->player->Disable();
-				app->enemies->Disable();
+				app->entity_manager->Disable();
 				app->fonts->Disable();
 
 				app->titleScreen->toTitleScreen = false;

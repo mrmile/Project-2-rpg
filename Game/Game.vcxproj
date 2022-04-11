@@ -129,12 +129,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Collider.cpp" />
-    <ClCompile Include="Source\Enemies.cpp" />
-    <ClCompile Include="Source\Enemy.cpp" />
     <ClCompile Include="Source\Entity.cpp" />
     <ClCompile Include="Source\EntityManager.cpp" />
-    <ClCompile Include="Source\Flying_Enemy.cpp" />
-    <ClCompile Include="Source\Flying_Enemy_2.cpp" />
     <ClCompile Include="Source\GuiButton.cpp" />
     <ClCompile Include="Source\GuiCheckbox.cpp" />
     <ClCompile Include="Source\GuiManager.cpp" />
@@ -162,17 +158,12 @@
     <ClCompile Include="Source\Textures.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\TitleScreen.cpp" />
-    <ClCompile Include="Source\Walking_Enemy.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\Zombie_Standart.cpp" />
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\Collider.h" />
-    <ClInclude Include="Source\Enemies.h" />
-    <ClInclude Include="Source\Enemy.h" />
     <ClInclude Include="Source\Entity.h" />
     <ClInclude Include="Source\EntityManager.h" />
-    <ClInclude Include="Source\Flying_Enemy.h" />
-    <ClInclude Include="Source\Flying_Enemy_2.h" />
     <ClInclude Include="Source\GuiButton.h" />
     <ClInclude Include="Source\GuiCheckbox.h" />
     <ClInclude Include="Source\GuiControl.h" />
@@ -203,7 +194,6 @@
     <ClInclude Include="Source\Textures.h" />
     <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\TitleScreen.h" />
-    <ClInclude Include="Source\Walking_Enemy.h" />
     <ClInclude Include="Source\Window.h" />
     <ClInclude Include="Source\Defs.h" />
     <ClInclude Include="Source\List.h" />
