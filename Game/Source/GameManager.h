@@ -13,8 +13,9 @@ enum class GameState
 
 enum class TurnState
 {
-	EnemyTurn,
-	PlayerTurn,
+	StartOfTurn,  // Create path from enemies to player
+	MidOfTurn,   // Move enemies towards player x tiles
+	FinishTurn,  // if the distance is correct from enemy to player attack if not end turn
 };
 class GameManager : public Module
 {

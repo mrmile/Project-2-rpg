@@ -195,3 +195,16 @@ void EntityManager::EntitiesInCombat()
 		}
 	}
 }
+
+void EntityManager::OnCollision(Collider* c1, Collider* c2)
+{
+	for (uint i = 0; i < MAX_ENTITIES; ++i)
+	{
+		if (entities[i] != nullptr && entities[i]->GetColldier() == c1)
+		{
+			entities[i]->OnCollision(c2); //Notify the entity of a collision
+			break;
+		}
+	}
+
+}

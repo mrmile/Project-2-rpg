@@ -5,6 +5,7 @@
 #include "Collider.h"
 #include "Render.h"
 #include "Textures.h"
+#include "ModulePlayer.h"
 
 Entity::Entity(int x,int y) : position(x,y)
 {
@@ -48,7 +49,6 @@ void Entity::SetToDelete()
 	
 	if (collider != nullptr)
 	{
-
 		collider->pendingToDelete = true;
 	}
 
@@ -57,4 +57,17 @@ void Entity::SetToDelete()
 void Entity::ReduceAP(int AP_used)
 {
 	EntityAP = EntityAP - AP_used;
+}
+
+
+void Entity::OnCollision(Collider* c2)
+{
+	if (c2->type == Collider::Type::PLAYER)
+	{
+		
+		entityState = GameState::InCombat;
+		
+	}
+	
+	
 }

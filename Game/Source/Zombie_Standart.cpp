@@ -15,13 +15,18 @@
 #include "Render.h"
 #include "Textures.h"
 #include "Log.h"
+#include "ModulePhysics.h"
 
+#include <iostream>
+
+using namespace std;
 
 Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 {	
 	EntityHP = 1;
 	EntityAP = 5;
 	EntityMP = 3;
+	entityState = GameState::InCombat;
 	//HERE WE ADD THE ANIMATIONS WITH GIMP
 	
 	//Have the Soldiers describe a path in the screen taking into account the collisions
@@ -36,7 +41,7 @@ Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 	spawnPos.y = position.y;
 
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ENEMY, (Module*)app->enemies);
-
+	entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
 	
 }
 
@@ -54,75 +59,85 @@ bool Zombie_Standart::Update(float dt)
 	}
 	if (app->player->pauseMenu == false)
 	{
-		collider->SetPos(position.x, position.y);
-		currentAnim = &Idle_Enemy;
-		currentAnim->loop = true;
-		//code the actual system for enemy turn implementation
-		app->pathfinding->CreatePath(position, app->player->GetLastPosition());
-		
-		const DynArray<iPoint>* path = app->pathfinding->GetLastPath();
-		for (uint i = 0; i < path->Count(); ++i)
-		{
-			iPoint pos = { path->At(i)->x, path->At(i)->y };
-			//app->render->DrawRectangle({ pos.x,pos.y,10,10 }, 255, 0, 0, 255);
-		}
-		/*
-		for (uint i = 0; i < EntityMP;)
-		{
-			iPoint NextPos = { path->At(i)->x,path->At(i)->y };
+		const DynArray<iPoint>* path;
 
-			if (position.x > NextPos.x) position.x++;
-			if (position.x < NextPos.x) position.x--;
-			if (position.y > NextPos.x) position.y--;
-			if (position.y < NextPos.x) position.y++;
-
-			if (NextPos == position) i++;
-
-		}
-		*/
-		/*
 		if (entityState == GameState::OutOfCombat)
 		{
 			//move normally
 			collider->SetPos(position.x, position.y);
+			entityBody->GetPosition(position.x, position.y);
 			currentAnim = &Idle_Enemy;
 			currentAnim->loop = true;
+
+			if (position.x > app->player->position.x) entityBody->body->SetLinearVelocity({ -0.5f, 0.0f });
+			if (position.x < app->player->position.x) entityBody->body->SetLinearVelocity({ 0.5f, 0.0f });
+			if (position.y > app->player->position.y) entityBody->body->SetLinearVelocity({ 0.0f, -0.5f });
+			if (position.y < app->player->position.y) entityBody->body->SetLinearVelocity({ 0.0f, 0.5f });
+
 		}
+		
 		if (entityState == GameState::InCombat)
 		{
-			if (entityTurn == TurnState::PlayerTurn)
+			
+			if (EntityHP > 0)
 			{
-				iPoint NewPosition = position;
-				collider->SetPos(NewPosition.x, NewPosition.y);
-				currentAnim = &Idle_Enemy;
-				currentAnim->loop = false;
-				return true;
-			}
-			if (entityTurn == TurnState::EnemyTurn)
-			{
-				
-				
-				//code the actual system for enemy turn implementation
-				app->pathfinding->CreatePath(position, app->player->position);
-				const DynArray<iPoint>* path = app->pathfinding->GetLastPath();
-
-				for (uint i = 0; i < EntityMP;)
+				if (entityTurn == TurnState::StartOfTurn)
 				{
-					iPoint NextPos = { path->At(i)->x,path->At(i)->y };
-					
-					if (position.x > NextPos.x) position.x++;
-					if (position.x < NextPos.x) position.x--;
-					if (position.y > NextPos.x) position.y--;
-					if (position.y < NextPos.x) position.y++;
-
-					if (NextPos == position) i++;
+					iPoint NewPosition = position;
+					collider->SetPos(NewPosition.x, NewPosition.y);
+					currentAnim = &Idle_Enemy;
+					currentAnim->loop = false;
+					app->pathfinding->CreatePath(app->map->WorldToMap(position.x,position.y),app->map->WorldToMap(app->player->position.x,app->player->position.y));
+					entityTurn = TurnState::MidOfTurn;
 
 				}
+				if (entityTurn == TurnState::MidOfTurn)
+				{
+					path = app->pathfinding->GetLastPath();
+					
+					for (int i = 0; i < path->Count(); i++)
+					{
+						collider->SetPos(position.x, position.y);
+						entityBody->GetPosition(position.x, position.y);
+						currentAnim = &Idle_Enemy;
+						currentAnim->loop = true;
+
+						iPoint NextPos = app->map->MapToWorld(path->At(i)->x, path->At(i)->y);
+						app->render->DrawRectangle({ NextPos.x,NextPos.y,10,10 }, 255, 0, 0, 255);
+
+						if (NextPos.x > position.x) entityBody->body->SetLinearVelocity({ -0.5f, 0.0f });
+						if (NextPos.x < position.x) entityBody->body->SetLinearVelocity({ 0.5f, 0.0f });
+						if (NextPos.y > position.y) entityBody->body->SetLinearVelocity({ 0.0f, -0.5f });
+						if (NextPos.y < position.y) entityBody->body->SetLinearVelocity({ 0.0f, 0.5f });
+
+						if (NextPos == position) counter++;
+
+						if (counter == EntityMP) entityTurn = TurnState::FinishTurn;
+
+					}
+
+				}
+				if (entityTurn == TurnState::FinishTurn)
+				{
+					//Change turn from enemy to player turn still have to develop a way to do it correctly
+					collider->SetPos(position.x, position.y);
+					entityBody->GetPosition(position.x, position.y);
+					currentAnim = &Idle_Enemy;
+					currentAnim->loop = true;
+
+				}
+
+				
+			}
 				
 
+			if (EntityHP == 0)
+			{
+				SetToDelete();
 			}
+			
 		}
-		*/
+		
 		
 		
 		return true;

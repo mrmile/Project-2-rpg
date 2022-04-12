@@ -6,6 +6,7 @@
 #include "Point.h"
 #include "Animation.h"
 #include "GameManager.h"
+#include "ModulePhysics.h"
 
 struct SDL_Texture;
 struct Collider;
@@ -29,6 +30,8 @@ public:
 	GameState entityState;
 	TurnState entityTurn;
 
+	PhysBody* entityBody;
+
 public:
 	
 	Entity(int x,int y);
@@ -46,6 +49,8 @@ public:
 	virtual void SetToDelete();
 
 	virtual void ReduceAP(int AP_used);
+
+	virtual void OnCollision(Collider* c2);
 
 protected:
 	Animation* currentAnim = nullptr;

@@ -3,6 +3,7 @@
 
 #include "Entity.h"
 #include "Point.h"
+#include "DynArray.h"
 
 
 class Zombie_Standart : public Entity
@@ -20,7 +21,7 @@ private:
 
 	Animation Idle_Enemy;
 	
-
+	
 	int counter;
 };
 

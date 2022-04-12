@@ -68,6 +68,8 @@ public:
 	//Check which entites are in combat
 	void EntitiesInCombat();
 	
+	//Collision management
+	void OnCollision(Collider* c1, Collider* c2);
 
 
 private:

@@ -184,18 +184,18 @@ PhysBody* ModulePhysics::CreateWalkingEnemyBox(int x, int y, int width, int heig
 	b2BodyDef body;
 	body.type = b2_dynamicBody;
 	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
-	body.gravityScale = 6.0f;
-
+	body.gravityScale = 0.0f;
 	b2Body* b = world->CreateBody(&body);
 	b2PolygonShape box;
 
 
-	box.SetAsBox(PIXEL_TO_METERS(width) * 0.2f, PIXEL_TO_METERS(height) * 0.4f);
+
+	box.SetAsBox(PIXEL_TO_METERS(width) * 0.5f, PIXEL_TO_METERS(height) * 0.5f);
 
 	b2FixtureDef fixture;
 	fixture.shape = &box;
 	fixture.density = 50.0f;
-	
+
 	//fixture.friction = 0.5f;
 
 	b->CreateFixture(&fixture);
@@ -210,13 +210,14 @@ PhysBody* ModulePhysics::CreateWalkingEnemyBox(int x, int y, int width, int heig
 	pbody->width = width * 0.5f;
 	pbody->height = height * 0.5f;
 	pbody->body->SetFixedRotation(true);
-	
+
 	b2Filter filter;
 
 	filter.categoryBits = 0x0001;
 	filter.maskBits = 0x0001;
 
 	pbody->body->GetFixtureList()->SetFilterData(filter);
+
 
 	return pbody;
 }
