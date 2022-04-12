@@ -16,6 +16,7 @@
 #include "Textures.h"
 #include "Log.h"
 #include "ModulePhysics.h"
+#include "ModuleParticles.h"
 
 #include "Defs.h"
 
@@ -24,7 +25,7 @@ Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 	EntityHP = 1;
 	EntityAP = 5;
 	EntityMP = 3;
-	entityState = GameState::InCombat;
+	entityState = GameState::OutOfCombat;
 
 	counter = 0;
 	//HERE WE ADD THE ANIMATIONS WITH GIMP
@@ -40,7 +41,7 @@ Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 	spawnPos.x = position.x;
 	spawnPos.y = position.y;
 
-	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ENEMY, (Module*)app->enemies);
+	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
 	entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
 	
 }
@@ -56,8 +57,6 @@ bool Zombie_Standart::Update(float dt)
 		currentAnim = &Idle_Enemy;
 		currentAnim->loop = false;
 
-		
-
 		return true;
 	}
 	if (app->player->pauseMenu == false)
@@ -72,11 +71,33 @@ bool Zombie_Standart::Update(float dt)
 			currentAnim = &Idle_Enemy;
 			currentAnim->loop = true;
 			
-			if (position.x > app->player->position.x) entityBody->body->SetLinearVelocity({ -0.5f, 0.0f });
-			if (position.x < app->player->position.x) entityBody->body->SetLinearVelocity({ 0.5f, 0.0f });
-			if (position.y > app->player->position.y) entityBody->body->SetLinearVelocity({ 0.0f, -0.5f });
-			if (position.y < app->player->position.y) entityBody->body->SetLinearVelocity({ 0.0f, 0.5f });
-	
+			if (position.DistanceTo(app->player->position) < 150)
+			{
+				if (position.x > app->player->position.x) entityBody->body->SetLinearVelocity({ -0.5f, 0.0f });
+				if (position.x < app->player->position.x) entityBody->body->SetLinearVelocity({ 0.5f, 0.0f });
+				if (position.y > app->player->position.y) entityBody->body->SetLinearVelocity({ 0.0f, -0.5f });
+				if (position.y < app->player->position.y) entityBody->body->SetLinearVelocity({ 0.0f, 0.5f });
+
+				if ((app->player->position.y > position.y) && (app->player->position.x > position.x))
+				{
+					entityBody->body->SetLinearVelocity({ 0.5f, 0.5f });
+				}
+				if ((app->player->position.x < position.x) && (app->player->position.y > position.y))
+				{
+					entityBody->body->SetLinearVelocity({ -0.5f, 0.5f });
+				}
+				if ((app->player->position.y < position.y) && (app->player->position.x < position.x))
+				{
+					entityBody->body->SetLinearVelocity({ -0.5f, -0.5f });
+				}
+				if ((app->player->position.x > position.x) && (app->player->position.y < position.y))
+				{
+					entityBody->body->SetLinearVelocity({ 0.5f, -0.5f });
+				}
+			}
+
+			return true;
+
 		}
 		
 		if (entityState == GameState::InCombat)
@@ -86,14 +107,15 @@ bool Zombie_Standart::Update(float dt)
 			{
 				if (entityTurn == TurnState::StartOfTurn)
 				{
+	
 					iPoint NewPosition = position;
 					collider->SetPos(NewPosition.x, NewPosition.y);
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = false;
-					const DynArray<iPoint>* path;
-					app->pathfinding->CreatePath(app->map->WorldToMap(position.x, position.y), {100,100});
+					counter++;
+					entityBody->body->SetLinearVelocity({ 0.0f, 0.0f }); //movimiento contrario a la direccion del jugador cuando nos chocamos con el
 
-					entityTurn = TurnState::MidOfTurn;
+					if(counter == 50) entityTurn = TurnState::MidOfTurn;
 
 				}
 				if (entityTurn == TurnState::MidOfTurn)
@@ -103,29 +125,115 @@ bool Zombie_Standart::Update(float dt)
 					entityBody->GetPosition(position.x, position.y);
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;
-					path = app->pathfinding->GetLastPath();
+					counter++;
 					
-					for (uint i = 0; i < path->Count(); ++i)
+					if (position.x > app->player->position.x) entityBody->body->SetLinearVelocity({ -0.5f, 0.0f });
+					if (position.x < app->player->position.x) entityBody->body->SetLinearVelocity({ 0.5f, 0.0f });
+					if (position.y > app->player->position.y) entityBody->body->SetLinearVelocity({ 0.0f, -0.5f });
+					if (position.y < app->player->position.y) entityBody->body->SetLinearVelocity({ 0.0f, 0.5f });
 					
-						iPoint NextPosition = app->map->MapToWorld(path->At(i)->x, path->At(i)->y);
-
-						app->render->DrawRectangle({NextPosition.x,NextPosition.y,10,10 }, 255, 0, 0, 255);
-
-						if (NextPosition.x > position.x) entityBody->body->SetLinearVelocity({ -0.5f, 0.0f });
-						if (NextPosition.x < position.x) entityBody->body->SetLinearVelocity({ 0.5f, 0.0f });
-						if (NextPosition.y > position.y) entityBody->body->SetLinearVelocity({ 0.0f, -0.5f });
-						if (NextPosition.y < position.y) entityBody->body->SetLinearVelocity({ 0.0f, 0.5f });
-
-
-						
+					if ((app->player->position.y > position.y) && (app->player->position.x > position.x))
+					{
+						entityBody->body->SetLinearVelocity({ 0.5f, 0.5f });
 					}
-					//iPoint NextPos = app->map->MapToWorld(path->At(counter)->x, path->At(counter)->y);
-				
-					//PathfindingTo(app->player->position);
+					if ((app->player->position.x < position.x) && (app->player->position.y > position.y))
+					{
+						entityBody->body->SetLinearVelocity({- 0.5f, 0.5f });
+					}
+					if ((app->player->position.y < position.y) && (app->player->position.x < position.x))
+					{
+						entityBody->body->SetLinearVelocity({ -0.5f, -0.5f });
+					}
+					if ((app->player->position.x > position.x) && (app->player->position.y < position.y))
+					{
+						entityBody->body->SetLinearVelocity({ 0.5f, -0.5f });
+					}
 
+					if (counter == 150) entityTurn = TurnState::FinishTurn;
 
 				}
 				if (entityTurn == TurnState::FinishTurn)
+				{
+					//Change turn from enemy to player turn still have to develop a way to do it correctly
+					entityBody->body->SetLinearVelocity({ 0.0f, 0.0f });
+					collider->SetPos(position.x, position.y);
+					entityBody->GetPosition(position.x, position.y);
+					
+					currentAnim = &Idle_Enemy;
+					currentAnim->loop = true;
+
+					if (position.DistanceTo(app->player->position) < 200)
+					{
+
+						if ((position.x == app->player->position.x) && (position.y < app->player->position.y))
+						{
+						
+							app->particles->AddParticle(app->particles->enemyAttack, position.x, position.y - 112, Collider::Type::ENEMY_ATTACK);
+
+						}
+						if ((position.x == app->player->position.x) && (position.y > app->player->position.y))
+						{
+						
+							app->particles->AddParticle(app->particles->enemyAttack, position.x , position.y+112, Collider::Type::ENEMY_ATTACK);
+
+						}
+						if ((position.x < app->player->position.x) && (position.y == app->player->position.y))
+						{
+
+						
+							app->particles->AddParticle(app->particles->enemyAttack, position.x + 60, position.y , Collider::Type::ENEMY_ATTACK);
+
+
+						}
+						if ((position.x > app->player->position.x) && (position.y == app->player->position.y))
+						{
+							
+							app->particles->AddParticle(app->particles->enemyAttack, position.x - 60, position.y , Collider::Type::ENEMY_ATTACK);
+
+
+						}
+
+						if ((position.x > app->player->position.x) && (position.y > app->player->position.y))
+						{
+
+							
+							app->particles->AddParticle(app->particles->enemyAttack, position.x - 3, position.y + 8, Collider::Type::ENEMY_ATTACK);
+
+
+						}
+						if ((position.x > app->player->position.x) && (position.y < app->player->position.y))
+						{
+							
+							app->particles->AddParticle(app->particles->enemyAttack, position.x - 3, position.y + 20, Collider::Type::ENEMY_ATTACK);
+
+
+						}
+						if ((position.x < app->player->position.x) && (position.y > app->player->position.y))
+						{
+							
+							app->particles->AddParticle(app->particles->enemyAttack, position.x + 20, position.y + 8, Collider::Type::ENEMY_ATTACK);
+
+
+						}
+						if ((position.x < app->player->position.x) && (position.y < app->player->position.y))
+						{
+							
+							app->particles->AddParticle(app->particles->enemyAttack, position.x + 8, position.y + 15, Collider::Type::ENEMY_ATTACK);
+
+
+						}
+
+
+						//entityTurn = TurnState::WaitTurn;
+					}
+					else
+					{
+						//entityTurn = TurnState::WaitTurn;
+					}
+					
+
+				}
+				if (entityTurn == TurnState::WaitTurn)
 				{
 					//Change turn from enemy to player turn still have to develop a way to do it correctly
 					collider->SetPos(position.x, position.y);
@@ -133,9 +241,10 @@ bool Zombie_Standart::Update(float dt)
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;
 
+					// if(app->player->entityTurn == TurnState::WaitTurn) entityTurn = StartOfTurn;
+
 				}
 
-				
 			}
 				
 
@@ -143,6 +252,7 @@ bool Zombie_Standart::Update(float dt)
 			{
 				SetToDelete();
 			}
+			return true;
 			
 		}
 		
@@ -153,29 +263,30 @@ bool Zombie_Standart::Update(float dt)
 	
 }
 
-void Zombie_Standart::PathfindingTo(iPoint destination)
+
+
+/*
+iPoint Origin = app->render->ScreenToWorld(position.x, position.y);
+iPoint Destination = app->render->ScreenToWorld(app->player->position.x, app->player->position.y);
+
+
+const DynArray<iPoint>* path = { nullptr };
+app->pathfinding->CreatePath(Origin, Destination);
+
+path = app->pathfinding->GetLastPath();
+
+for (uint i = 0; i < path->Count(); ++i)
 {
-	/*
-	const DynArray<iPoint>* path;
-	app->pathfinding->CreatePath(app->map->WorldToMap(position.x, position.y), app->map->WorldToMap(destination.x, destination.y));
-	path = app->pathfinding->GetLastPath();
+	iPoint NextPos = app->map->MapToWorld(path->At(i)->x, path->At(i)->y);
 
-	for (int i = 0; i < path->Count(); ++i)
-	{
+	app->render->DrawRectangle({ NextPos.x,NextPos.y,10,10 }, 255, 0, 0, 255);
 
-		//iPoint NextPos = app->map->MapToWorld(path->At(counter)->x, path->At(counter)->y);
-		iPoint NextPos = { path->At(i)->x, path->At(i)->y };
-		app->render->DrawRectangle({ NextPos.x,NextPos.y,10,10 }, 255, 0, 0, 255);
+	if (NextPos.x > position.x) entityBody->body->SetLinearVelocity({ -0.5f, 0.0f });
+	if (NextPos.x < position.x) entityBody->body->SetLinearVelocity({ 0.5f, 0.0f });
+	if (NextPos.y > position.y) entityBody->body->SetLinearVelocity({ 0.0f, -0.5f });
+	if (NextPos.y < position.y) entityBody->body->SetLinearVelocity({ 0.0f, 0.5f });
 
-        if (NextPos.x > position.x) entityBody->body->SetLinearVelocity({ -0.5f, 0.0f });
-		if (NextPos.x < position.x) entityBody->body->SetLinearVelocity({ 0.5f, 0.0f });
-		if (NextPos.y > position.y) entityBody->body->SetLinearVelocity({ 0.0f, -0.5f });
-		if (NextPos.y < position.y) entityBody->body->SetLinearVelocity({ 0.0f, 0.5f });
 
-		
-		if (counter == EntityMP) entityTurn = TurnState::FinishTurn;
 
-	}
-	*/
-	
 }
+*/

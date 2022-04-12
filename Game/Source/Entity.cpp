@@ -68,6 +68,12 @@ void Entity::OnCollision(Collider* c2)
 		entityState = GameState::InCombat;
 		
 	}
+	/*
+	if ((c2->type == Collider::Type::PLAYER_ATTACK) && (EntityKillable == true))
+	{
+		EntityHP -= app->player->GetAttackValue();
+	}
+	*/
 	
 	
 }

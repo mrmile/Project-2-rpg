@@ -66,6 +66,9 @@ public:
 	Particle firework2;
 	Particle firework3;
 
+
+	Particle enemyAttack;
+
 private:
 	// Particles spritesheet loaded into an SDL Texture
 	SDL_Texture* texture = nullptr;

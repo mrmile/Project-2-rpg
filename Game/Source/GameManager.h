@@ -16,6 +16,7 @@ enum class TurnState
 	StartOfTurn,  // Create path from enemies to player
 	MidOfTurn,   // Move enemies towards player x tiles
 	FinishTurn,  // if the distance is correct from enemy to player attack if not end turn
+	WaitTurn, //Wait for the player to do it's turn
 };
 class GameManager : public Module
 {

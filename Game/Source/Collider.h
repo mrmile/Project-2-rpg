@@ -26,6 +26,7 @@ struct Collider
 		RECOVER_LIFE_POWER_UP,
 		CHECKPOINT,
 		GOAL_POINT,
+		ENEMY_ATTACK,
 
 		MAX
 	};
