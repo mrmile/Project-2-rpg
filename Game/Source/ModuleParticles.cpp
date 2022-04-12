@@ -103,6 +103,18 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	firework3.anim.loop = false;
 	firework3.anim.speed = 0.15f;
 
+	enemyAttack.anim.PushBack({ 350, 17, 40, 35 });
+	enemyAttack.anim.PushBack({ 351, 48, 39, 30 });
+	enemyAttack.anim.PushBack({ 354, 138, 32, 35 });
+	enemyAttack.anim.PushBack({ 380, 138, 40, 35 });
+	enemyAttack.anim.PushBack({ 420, 138, 40, 35 });
+	enemyAttack.anim.PushBack({ 460, 138, 40, 35 });
+	enemyAttack.speed.x = 0;
+	enemyAttack.speed.y = 0;
+	enemyAttack.anim.loop = true;
+	enemyAttack.anim.speed = 0.15f;
+	enemyAttack.lifetime = 15;
+
 }
 
 ModuleParticles::~ModuleParticles()

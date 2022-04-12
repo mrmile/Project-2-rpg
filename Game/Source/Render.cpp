@@ -312,3 +312,14 @@ bool Render::DrawCircle(int x, int y, int radius, Uint8 r, Uint8 g, Uint8 b, Uin
 
 	return ret;
 }
+
+iPoint Render::ScreenToWorld(int x, int y) const
+{
+	iPoint ret;
+	int scale = app->win->GetScale();
+
+	ret.x = (x - camera.x / scale);
+	ret.y = (y - camera.y / scale);
+
+	return ret;
+}
