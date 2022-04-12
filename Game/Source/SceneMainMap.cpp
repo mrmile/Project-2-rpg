@@ -184,18 +184,25 @@ bool SceneMainMap::PostUpdate()
 	app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 100) + 630);
 	app->render->camera.y = (-(app->player->Player->body->GetPosition().y * 100) + 360);
 
-	/*
-	if (-app->player->position.y > app->render->camera.y / 2 + -52) app->render->camera.y += 10;
-	if (-app->player->position.y < app->render->camera.y / 2 + -92) app->render->camera.y -= 10;
+	if (app->render->camera.y < -app->map->levelAreaLowerBound * 2 + 720) app->render->camera.y = -app->map->levelAreaLowerBound * 2 + 720; //720 * 3
+	if (app->render->camera.y > -app->map->levelAreaUpperBound * 2) app->render->camera.y = -app->map->levelAreaUpperBound * 2;
+
+	if (app->render->camera.x < -app->map->levelAreaRightBound * 2 + 1280) app->render->camera.x = -app->map->levelAreaRightBound * 2 + 1280;
+	if (app->render->camera.x > -app->map->levelAreaLeftBound * 2) app->render->camera.x = -app->map->levelAreaLeftBound * 2;
+	
+	//if (-app->player->position.y > app->render->camera.y / 2 + -52) app->render->camera.y += 10;
+	//if (-app->player->position.y < app->render->camera.y / 2 + -92) app->render->camera.y -= 10;
 
 	
 
+	/*
 	if (app->render->camera.y < -app->map->levelAreaLowerBound * 3 + 720) app->render->camera.y = -app->map->levelAreaLowerBound * 3 + 720; //720 * 3
 	if (app->render->camera.y > -app->map->levelAreaUpperBound * 3) app->render->camera.y = -app->map->levelAreaUpperBound * 3;
 
 	if (app->render->camera.x < -app->map->levelAreaRightBound * 3 + 1280) app->render->camera.x = -app->map->levelAreaRightBound * 3 + 1280;
 	if (app->render->camera.x > -app->map->levelAreaLeftBound * 3) app->render->camera.x = -app->map->levelAreaLeftBound * 3;
 	*/
+	
 
 	if (app->player->destroyedDelay > 210 && app->player->destroyedDelay <= 211)
 	{

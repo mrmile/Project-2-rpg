@@ -2,28 +2,31 @@
 <save_state>
 	<window />
 	<input />
+	<:anonymous />
 	<textures />
 	<audio />
 	<:anonymous />
 	<map />
+	<LogoScreen />
 	<TitleScreen>
-		<saved_game bool="true" Fx="90" Music="90" FullScreen="false" />
+		<saved_game bool="true" Fx="90" Music="0" FullScreen="false" />
 	</TitleScreen>
 	<SceneMainMap />
 	<SceneCastle />
 	<:anonymous />
 	<player>
-		<position x="132" y="58" />
+		<position x="3310" y="3044" />
 		<atributes score="0" hp="100" lives="3" timer="450" />
 	</player>
-	<enemies />
+	<entities />
 	<:anonymous />
 	<:anonymous />
 	<:anonymous />
 	<pathfinding />
 	<guiManager />
 	<PauseMenu />
+	<GameManager />
 	<renderer>
-		<camera x="2" y="1" />
+		<camera x="-6010" y="-5732" />
 	</renderer>
 </save_state>
