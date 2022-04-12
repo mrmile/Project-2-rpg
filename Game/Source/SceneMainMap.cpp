@@ -45,7 +45,7 @@ bool SceneMainMap::Start()
 {
 	// L03: DONE: Load map
 	//app->map->Load("hello.tmx");
-	app->map->Load("test_map.tmx");
+	app->map->Load("main.tmx");
 	
 	// Load music
 	app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);
@@ -82,7 +82,8 @@ bool SceneMainMap::Start()
 
 	app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, 0, 0);
 
-	if (app->map->Load("test_map.tmx") == true)
+	/*
+	if (app->map->Load("main.tmx") == true)
 	{
 		int w, h;
 		uchar* data = NULL;
@@ -91,6 +92,7 @@ bool SceneMainMap::Start()
 
 		RELEASE_ARRAY(data);
 	}
+	*/
 
 	return true;
 }

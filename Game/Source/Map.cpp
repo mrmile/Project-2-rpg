@@ -166,24 +166,24 @@ iPoint Map::MapToWorld(int x, int y) const
 		if (y % 2 == 0)
 		{
 			offset = 0;
-			ret.x = x * mapData.tileWidth;
+			ret.x = x * mapData.tileWidth * 0.9866f;
 		}
 		else
 		{
 			offset = 1;
-			ret.x = x * mapData.tileWidth + mapData.tileWidth * 0.5f;
+			ret.x = x * mapData.tileWidth * 0.9866f + mapData.tileWidth * 0.5f;
 		}
 
 
 		if (y % 2 == 0)
 		{
-			if (offset == 0)ret.y = y * mapData.tileHeight * 0.5f;
-			if (offset == 1)ret.y = y * mapData.tileHeight + mapData.tileHeight;
+			if (offset == 0)ret.y = y * mapData.tileHeight * 0.97444f * 0.5f;
+			if (offset == 1)ret.y = y * mapData.tileHeight * 0.97444f + mapData.tileHeight;
 		}
 		else
 		{
-			if (offset == 0)ret.y = y * mapData.tileHeight + mapData.tileHeight;
-			if (offset == 1)ret.y = y * mapData.tileHeight * 0.5f;
+			if (offset == 0)ret.y = y * mapData.tileHeight * 0.97444f + mapData.tileHeight;
+			if (offset == 1)ret.y = y * mapData.tileHeight * 0.97444f * 0.5f;
 
 		}
 	}

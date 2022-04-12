@@ -110,7 +110,7 @@ bool ModulePlayer::Start()
 	collider = app->collisions->AddCollider({ position.x + 5, position.y + 3, 28, 23 }, Collider::Type::PLAYER, this); //{ position.x + 5, position.y + 3, 28, 33 
 	colliderFeet = app->collisions->AddCollider({ position.x + 5, position.y + 23, 18, 10 }, Collider::Type::PLAYER_FEET, this);
 
-	Player = app->physics->CreatePlayerBox(position.x, position.y, 28, 33);
+	Player = app->physics->CreatePlayerBox(position.x, position.y, 20, 5);
 	//app->physics->CreateRectangleSensor(position.x, position.y + 16, 28, 1);
 	//Player = app->physics->CreatePlayerCircle(position.x, position.y, 20);
 	
