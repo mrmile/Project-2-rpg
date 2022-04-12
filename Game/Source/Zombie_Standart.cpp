@@ -17,9 +17,7 @@
 #include "Log.h"
 #include "ModulePhysics.h"
 
-#include <iostream>
-
-using namespace std;
+#include "Defs.h"
 
 Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 {	
@@ -27,6 +25,8 @@ Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 	EntityAP = 5;
 	EntityMP = 3;
 	entityState = GameState::InCombat;
+
+	counter = 0;
 	//HERE WE ADD THE ANIMATIONS WITH GIMP
 	
 	//Have the Soldiers describe a path in the screen taking into account the collisions
@@ -55,6 +55,9 @@ bool Zombie_Standart::Update(float dt)
 		collider->SetPos(NewPosition.x, NewPosition.y);
 		currentAnim = &Idle_Enemy;
 		currentAnim->loop = false;
+
+		
+
 		return true;
 	}
 	if (app->player->pauseMenu == false)
@@ -68,12 +71,12 @@ bool Zombie_Standart::Update(float dt)
 			entityBody->GetPosition(position.x, position.y);
 			currentAnim = &Idle_Enemy;
 			currentAnim->loop = true;
-
+			
 			if (position.x > app->player->position.x) entityBody->body->SetLinearVelocity({ -0.5f, 0.0f });
 			if (position.x < app->player->position.x) entityBody->body->SetLinearVelocity({ 0.5f, 0.0f });
 			if (position.y > app->player->position.y) entityBody->body->SetLinearVelocity({ 0.0f, -0.5f });
 			if (position.y < app->player->position.y) entityBody->body->SetLinearVelocity({ 0.0f, 0.5f });
-
+	
 		}
 		
 		if (entityState == GameState::InCombat)
@@ -87,34 +90,39 @@ bool Zombie_Standart::Update(float dt)
 					collider->SetPos(NewPosition.x, NewPosition.y);
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = false;
-					app->pathfinding->CreatePath(app->map->WorldToMap(position.x,position.y),app->map->WorldToMap(app->player->position.x,app->player->position.y));
+					const DynArray<iPoint>* path;
+					app->pathfinding->CreatePath(app->map->WorldToMap(position.x, position.y), {100,100});
+
 					entityTurn = TurnState::MidOfTurn;
 
 				}
 				if (entityTurn == TurnState::MidOfTurn)
 				{
+
+					collider->SetPos(position.x, position.y);
+					entityBody->GetPosition(position.x, position.y);
+					currentAnim = &Idle_Enemy;
+					currentAnim->loop = true;
 					path = app->pathfinding->GetLastPath();
 					
-					for (int i = 0; i < path->Count(); i++)
-					{
-						collider->SetPos(position.x, position.y);
-						entityBody->GetPosition(position.x, position.y);
-						currentAnim = &Idle_Enemy;
-						currentAnim->loop = true;
+					for (uint i = 0; i < path->Count(); ++i)
+					
+						iPoint NextPosition = app->map->MapToWorld(path->At(i)->x, path->At(i)->y);
 
-						iPoint NextPos = app->map->MapToWorld(path->At(i)->x, path->At(i)->y);
-						app->render->DrawRectangle({ NextPos.x,NextPos.y,10,10 }, 255, 0, 0, 255);
+						app->render->DrawRectangle({NextPosition.x,NextPosition.y,10,10 }, 255, 0, 0, 255);
 
-						if (NextPos.x > position.x) entityBody->body->SetLinearVelocity({ -0.5f, 0.0f });
-						if (NextPos.x < position.x) entityBody->body->SetLinearVelocity({ 0.5f, 0.0f });
-						if (NextPos.y > position.y) entityBody->body->SetLinearVelocity({ 0.0f, -0.5f });
-						if (NextPos.y < position.y) entityBody->body->SetLinearVelocity({ 0.0f, 0.5f });
+						if (NextPosition.x > position.x) entityBody->body->SetLinearVelocity({ -0.5f, 0.0f });
+						if (NextPosition.x < position.x) entityBody->body->SetLinearVelocity({ 0.5f, 0.0f });
+						if (NextPosition.y > position.y) entityBody->body->SetLinearVelocity({ 0.0f, -0.5f });
+						if (NextPosition.y < position.y) entityBody->body->SetLinearVelocity({ 0.0f, 0.5f });
 
-						if (NextPos == position) counter++;
 
-						if (counter == EntityMP) entityTurn = TurnState::FinishTurn;
-
+						
 					}
+					//iPoint NextPos = app->map->MapToWorld(path->At(counter)->x, path->At(counter)->y);
+				
+					//PathfindingTo(app->player->position);
+
 
 				}
 				if (entityTurn == TurnState::FinishTurn)
@@ -142,5 +150,32 @@ bool Zombie_Standart::Update(float dt)
 		
 		return true;
 	}
+	
+}
+
+void Zombie_Standart::PathfindingTo(iPoint destination)
+{
+	/*
+	const DynArray<iPoint>* path;
+	app->pathfinding->CreatePath(app->map->WorldToMap(position.x, position.y), app->map->WorldToMap(destination.x, destination.y));
+	path = app->pathfinding->GetLastPath();
+
+	for (int i = 0; i < path->Count(); ++i)
+	{
+
+		//iPoint NextPos = app->map->MapToWorld(path->At(counter)->x, path->At(counter)->y);
+		iPoint NextPos = { path->At(i)->x, path->At(i)->y };
+		app->render->DrawRectangle({ NextPos.x,NextPos.y,10,10 }, 255, 0, 0, 255);
+
+        if (NextPos.x > position.x) entityBody->body->SetLinearVelocity({ -0.5f, 0.0f });
+		if (NextPos.x < position.x) entityBody->body->SetLinearVelocity({ 0.5f, 0.0f });
+		if (NextPos.y > position.y) entityBody->body->SetLinearVelocity({ 0.0f, -0.5f });
+		if (NextPos.y < position.y) entityBody->body->SetLinearVelocity({ 0.0f, 0.5f });
+
+		
+		if (counter == EntityMP) entityTurn = TurnState::FinishTurn;
+
+	}
+	*/
 	
 }

@@ -15,6 +15,7 @@ public:
 	
 	bool Update(float dt) override;
 
+	void PathfindingTo(iPoint destination);
 	
 
 private:
