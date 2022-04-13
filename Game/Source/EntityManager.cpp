@@ -124,19 +124,7 @@ void EntityManager::HandleEntitiesSpawn()
 
 void EntityManager::HandleEntitiesDespawn()
 {
-	// Iterate existing enemies
-	for (uint i = 0; i < MAX_ENTITIES; ++i)
-	{
-		if (entities[i] != nullptr)
-		{
-			// Delete the enemy when it has reached the end of the screen
-			if (entities[i]->position.y * 1 > (app->render->camera.y + app->win->screenSurface->h * 1) + SPAWN_MARGIN)
-			{
-				entities[i]->SetToDelete();
-			}
-
-		}
-	}
+	
 }
 
 void EntityManager::SpawnEntity(const EntitySpawnPoint& info)

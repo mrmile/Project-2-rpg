@@ -264,7 +264,7 @@ bool Zombie_Standart::Update(float dt)
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;
 
-					if (app->entity_manager->CallNextRound() == true) entityTurn = TurnState::StartOfTurn;
+					//if (app->entity_manager->CallNextRound() == true) entityTurn = TurnState::StartOfTurn;
 
 				}
 
