@@ -106,6 +106,9 @@
     <ClCompile Include="Source\GameManager.cpp">
       <Filter>General</Filter>
     </ClCompile>
+    <ClCompile Include="Source\DrawInOrder.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -241,6 +244,9 @@
       <Filter>General</Filter>
     </ClInclude>
     <ClInclude Include="Source\GameManager.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DrawInOrder.h">
       <Filter>General</Filter>
     </ClInclude>
   </ItemGroup>

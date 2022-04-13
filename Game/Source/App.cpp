@@ -7,6 +7,7 @@
 #include "Audio.h"
 #include "SceneMainMap.h"
 #include "SceneCastle.h"
+#include "DrawInOrder.h"
 #include "Map.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
@@ -47,6 +48,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	sceneMainMap = new SceneMainMap(false);
 	sceneCastle = new SceneCastle(false);
 	map = new Map(true);
+	drawInOrder = new DrawInOrder(true);
 	physics = new ModulePhysics(true);
 	fade = new ModuleFadeToBlack(true);
 	player = new ModulePlayer(false);
@@ -68,6 +70,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(audio);
 	AddModule(physics);
 	AddModule(map);
+	AddModule(drawInOrder);
 	AddModule(logoScreen);
 	AddModule(titleScreen);
 	AddModule(sceneMainMap);

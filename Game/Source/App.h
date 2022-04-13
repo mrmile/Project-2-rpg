@@ -23,6 +23,7 @@ class TitleScreen;
 class SceneMainMap;
 class SceneCastle;
 class Map;
+class DrawInOrder;
 class Enemies;
 class ModuleFadeToBlack;
 class ModulePhysics;
@@ -115,6 +116,7 @@ public:
 	SceneMainMap* sceneMainMap;
 	SceneCastle* sceneCastle;
 	Map* map;
+	DrawInOrder* drawInOrder;
 	Enemies* enemies;
 	ModuleFadeToBlack* fade;
 	ModulePhysics* physics;

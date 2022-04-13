@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Collider.cpp" />
+    <ClCompile Include="Source\DrawInOrder.cpp" />
     <ClCompile Include="Source\Entity.cpp" />
     <ClCompile Include="Source\EntityManager.cpp" />
     <ClCompile Include="Source\GameManager.cpp" />
@@ -163,6 +164,7 @@
     <ClCompile Include="Source\Zombie_Standart.cpp" />
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\Collider.h" />
+    <ClInclude Include="Source\DrawInOrder.h" />
     <ClInclude Include="Source\Entity.h" />
     <ClInclude Include="Source\EntityManager.h" />
     <ClInclude Include="Source\GameManager.h" />
