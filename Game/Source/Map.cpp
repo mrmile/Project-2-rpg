@@ -86,9 +86,9 @@ void Map::Draw()
 		if (mapLayerItem->data->properties.GetProperty("Draw") == 1)
 		{
 
-			for (int x = 0; x < mapLayerItem->data->width; x++)
+			for (int y = 0; y < mapLayerItem->data->height; y++)
 			{
-				for (int y = 0; y < mapLayerItem->data->height; y++)
+				for (int x = 0; x < mapLayerItem->data->width; x++)
 				{
 					// L04: DONE 9: Complete the draw function
 					int gid = mapLayerItem->data->Get(x, y);

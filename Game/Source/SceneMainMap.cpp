@@ -45,7 +45,7 @@ bool SceneMainMap::Start()
 {
 	// L03: DONE: Load map
 	//app->map->Load("hello.tmx");
-	app->map->Load("test_map.tmx");
+	app->map->Load("main.tmx");
 	
 	// Load music
 	app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);
@@ -188,7 +188,11 @@ bool SceneMainMap::PostUpdate()
 	app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 100) + 630);
 	app->render->camera.y = (-(app->player->Player->body->GetPosition().y * 100) + 360);
 
-	
+	if (app->render->camera.y < -app->map->levelAreaLowerBound * 2 + 720) app->render->camera.y = -app->map->levelAreaLowerBound * 2 + 720; //720 * 3
+	if (app->render->camera.y > -app->map->levelAreaUpperBound * 2) app->render->camera.y = -app->map->levelAreaUpperBound * 2;
+
+	if (app->render->camera.x < -app->map->levelAreaRightBound * 2 + 1280) app->render->camera.x = -app->map->levelAreaRightBound * 2 + 1280;
+	if (app->render->camera.x > -app->map->levelAreaLeftBound * 2) app->render->camera.x = -app->map->levelAreaLeftBound * 2;
 	
 	//if (-app->player->position.y > app->render->camera.y / 2 + -52) app->render->camera.y += 10;
 	//if (-app->player->position.y < app->render->camera.y / 2 + -92) app->render->camera.y -= 10;
