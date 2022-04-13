@@ -7,6 +7,7 @@
 #include "Animation.h"
 #include "GameManager.h"
 #include "ModulePhysics.h"
+#include "Log.h"
 
 struct SDL_Texture;
 struct Collider;
