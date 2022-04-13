@@ -38,13 +38,18 @@ public:
 public:
 
 	int delay;
+	int animationPositionY;
+	int logoPart;
 
-	SDL_Texture* logoScreen1;
-	SDL_Texture* logoScreen10;
-	SDL_Texture* logoScreen11;
-	SDL_Texture* logoScreen12;
-	SDL_Texture* logoScreen2;
-	SDL_Texture* logoScreen3;
+	SDL_Texture* logoAnimationP1;
+	SDL_Texture* logoAnimationP2;
+	SDL_Texture* logoAnimationP3;
+	SDL_Texture* logoAnimationP4;
+	SDL_Texture* logoAnimationP5;
+	SDL_Texture* logoAnimationP6;
+	SDL_Texture* logoAnimationP7;
+	SDL_Texture* logoAnimationP8;
+
 };
 
 #endif // __TITLE_SCREEN_H__

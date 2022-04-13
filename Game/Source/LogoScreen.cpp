@@ -37,16 +37,21 @@ bool LogoScreen::Awake()
 
 bool LogoScreen::Start()
 {
-	logoScreen1 = app->tex->Load("Assets/textures/Scenes/logoScreen1.png");
-	logoScreen10 = app->tex->Load("Assets/textures/Scenes/logoScreen10.png");
-	logoScreen11 = app->tex->Load("Assets/textures/Scenes/logoScreen11.png");
-	logoScreen12 = app->tex->Load("Assets/textures/Scenes/logoScreen12.png");
-	logoScreen2 = app->tex->Load("Assets/textures/Scenes/logoScreen2.png");
-	logoScreen3 = app->tex->Load("Assets/textures/Scenes/logoScreen3.png");
+	logoAnimationP1 = app->tex->Load("Assets/textures/Scenes/LogoAnimationFrames/logo_animation_p1.png");
+	logoAnimationP2 = app->tex->Load("Assets/textures/Scenes/LogoAnimationFrames/logo_animation_p2.png");
+	logoAnimationP3 = app->tex->Load("Assets/textures/Scenes/LogoAnimationFrames/logo_animation_p3.png");
+	logoAnimationP4 = app->tex->Load("Assets/textures/Scenes/LogoAnimationFrames/logo_animation_p4.png");
+	logoAnimationP5 = app->tex->Load("Assets/textures/Scenes/LogoAnimationFrames/logo_animation_p5.png");
+	logoAnimationP6 = app->tex->Load("Assets/textures/Scenes/LogoAnimationFrames/logo_animation_p6.png");
+	logoAnimationP7 = app->tex->Load("Assets/textures/Scenes/LogoAnimationFrames/logo_animation_p7.png");
+	logoAnimationP8 = app->tex->Load("Assets/textures/Scenes/LogoAnimationFrames/logo_animation_p8.png");
+
 
 	app->audio->ChangeMusic(LOGO_INTRO, 0, 0);
 
 	delay = 0;
+	animationPositionY = 0;
+	logoPart = 1;
 
 	return true;
 }
@@ -61,11 +66,21 @@ bool LogoScreen::Update(float dt)
 {
 	delay++;
 
-	if (delay > 360 || app->input->keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN)
+	if (delay > 360 || app->input->keys[SDL_SCANCODE_SPACE] == KEY_DOWN)
 	{
 		app->titleScreen->Enable();
 
 		app->logoScreen->Disable();
+	}
+
+	if (logoPart < 9)
+	{
+		if (delay % 2 == 0)animationPositionY = animationPositionY - 360;
+		if (animationPositionY <= -3240)
+		{
+			if (logoPart < 9)animationPositionY = 0;
+			logoPart++;
+		}
 	}
 
 	return true;
@@ -75,48 +90,17 @@ bool LogoScreen::PostUpdate()
 {
 	bool ret = true;
 
-	if (delay < 80)
-	{
-		app->render->DrawTexture2(logoScreen10, 0, 0, NULL);
-	}
+		
+	if (logoPart == 1) app->render->DrawTexture2(logoAnimationP1, 0, animationPositionY, NULL);
+	if (logoPart == 2) app->render->DrawTexture2(logoAnimationP2, 0, animationPositionY, NULL);
+	if (logoPart == 3) app->render->DrawTexture2(logoAnimationP3, 0, animationPositionY, NULL);
+	if (logoPart == 4) app->render->DrawTexture2(logoAnimationP4, 0, animationPositionY, NULL);
+	if (logoPart == 5) app->render->DrawTexture2(logoAnimationP5, 0, animationPositionY, NULL);
+	if (logoPart == 6) app->render->DrawTexture2(logoAnimationP6, 0, animationPositionY, NULL);
+	if (logoPart == 7) app->render->DrawTexture2(logoAnimationP7, 0, animationPositionY, NULL);
+	if (logoPart == 8) app->render->DrawTexture2(logoAnimationP8, 0, animationPositionY, NULL);
+	if (logoPart == 9) app->render->DrawTexture2(logoAnimationP8, 0, -2880, NULL);
 
-	if (delay >= 80 && delay < 190)
-	{
-		app->render->DrawTexture2(logoScreen11, 0, 0, NULL);
-	}
-
-	if (delay >= 190 && delay < 230)
-	{
-		app->render->DrawTexture2(logoScreen12, 0, 0, NULL);
-	}
-
-	if (delay >= 230 && delay < 260)
-	{
-		app->render->DrawTexture2(logoScreen1, 0, 0, NULL);
-	}
-
-	if (delay >= 260 && delay < 280)
-	{
-		app->render->DrawTexture2(logoScreen3, 0, 0, NULL);
-	}
-	if (delay >= 280 && delay < 300)
-	{
-		app->render->DrawTexture2(logoScreen2, 0, 0, NULL);
-	}
-	if (delay >= 300 && delay < 320)
-	{
-		app->render->DrawTexture2(logoScreen3, 0, 0, NULL);
-	}
-
-	if (delay >= 320 && delay < 340)
-	{
-		app->render->DrawTexture2(logoScreen2, 0, 0, NULL);
-	}
-
-	if (delay >= 340 && delay <= 360)
-	{
-		app->render->DrawTexture2(logoScreen3, 0, 0, NULL);
-	}
 
 	return ret;
 	
@@ -125,12 +109,14 @@ bool LogoScreen::PostUpdate()
 
 bool LogoScreen::CleanUp()
 {
-	app->tex->UnLoad(logoScreen1);
-	app->tex->UnLoad(logoScreen10);
-	app->tex->UnLoad(logoScreen11);
-	app->tex->UnLoad(logoScreen12);
-	app->tex->UnLoad(logoScreen2);
-	app->tex->UnLoad(logoScreen3);
+	app->tex->UnLoad(logoAnimationP1);
+	app->tex->UnLoad(logoAnimationP2);
+	app->tex->UnLoad(logoAnimationP3);
+	app->tex->UnLoad(logoAnimationP4);
+	app->tex->UnLoad(logoAnimationP5);
+	app->tex->UnLoad(logoAnimationP6);
+	app->tex->UnLoad(logoAnimationP7);
+	app->tex->UnLoad(logoAnimationP8);
 
 	return true;
 }
