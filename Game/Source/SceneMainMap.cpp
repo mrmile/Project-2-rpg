@@ -80,7 +80,11 @@ bool SceneMainMap::Start()
 	// app->titleScreen->transition = false;
 	// app->titleScreen->continueTransition = false;
 
-	app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, 0, 0);
+	app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, app->player->position.x-100, app->player->position.y);
+
+	//app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, app->player->position.x + 100, app->player->position.y);
+
+	//app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, app->player->position.x - 200, app->player->position.y);
 
 	/*
 	if (app->map->Load("main.tmx") == true)

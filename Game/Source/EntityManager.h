@@ -66,7 +66,10 @@ public:
 	bool AddEntity(EntityType type,int x, int y);
 
 	//Check which entites are in combat
-	void EntitiesInCombat();
+	void RegisterEntitesInCombat();
+
+	//Manager for turns so turns are in order
+	void TurnManagement();
 	
 	//Collision management
 	void OnCollision(Collider* c1, Collider* c2);
@@ -80,6 +83,9 @@ private:
 	EntitySpawnPoint spawnQueue[MAX_ENTITIES];
 	Entity* entities[MAX_ENTITIES] = { nullptr };
 	SDL_Texture* texture_enemies = nullptr;
+
+	List<Entity*> ListInCombat;
+
 	//SDL_Texture* texture_player = nullptr;
 	//SDL_Texture* texture_npc = nullptr;
 	//SDL_Texture* texture_objects = nullptr;

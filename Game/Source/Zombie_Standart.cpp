@@ -40,9 +40,9 @@ Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 
 	spawnPos.x = position.x;
 	spawnPos.y = position.y;
-
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
 	entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
+	
 	
 }
 
@@ -61,7 +61,6 @@ bool Zombie_Standart::Update(float dt)
 	}
 	if (app->player->pauseMenu == false)
 	{
-		const DynArray<iPoint>* path;
 
 		if (entityState == GameState::OutOfCombat)
 		{
@@ -105,6 +104,17 @@ bool Zombie_Standart::Update(float dt)
 			
 			if (EntityHP > 0)
 			{
+				if (entityTurn == TurnState::NONE)
+				{
+					//Assigning order of turns
+					collider->SetPos(position.x, position.y);
+					entityBody->GetPosition(position.x, position.y);
+					currentAnim = &Idle_Enemy;
+					currentAnim->loop = true;
+
+
+
+				}
 				if (entityTurn == TurnState::StartOfTurn)
 				{
 	
@@ -224,11 +234,11 @@ bool Zombie_Standart::Update(float dt)
 						}
 
 
-						//entityTurn = TurnState::WaitTurn;
+						entityTurn = TurnState::WaitTurn;
 					}
 					else
 					{
-						//entityTurn = TurnState::WaitTurn;
+						entityTurn = TurnState::WaitTurn;
 					}
 					
 
@@ -241,7 +251,7 @@ bool Zombie_Standart::Update(float dt)
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;
 
-					// if(app->player->entityTurn == TurnState::WaitTurn) entityTurn = StartOfTurn;
+					
 
 				}
 

@@ -171,7 +171,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 	}
 }
 
-void EntityManager::EntitiesInCombat()
+void EntityManager::RegisterEntitesInCombat()
 {
 	for (uint i = 0; i < MAX_ENTITIES; i++)
 	{
@@ -180,19 +180,38 @@ void EntityManager::EntitiesInCombat()
 			// Check how to select which entites are in combat (distance may cause issues depending on the position of the player and it's movements)
 			// with new entity sistem we can even add into combat objects of the environment
 
-			if (entities[i]->type != EntityType::NPC)
+			if (entities[i]->type != EntityType::NPC && entities[i]->type != EntityType::OBJECTS)
 			{
-				if (entities[i]->position.DistanceTo(app->player->position) < 100)
+				if (entities[i]->entityState == GameState::OutOfCombat)
 				{
-					entities[i]->entityState = GameState::InCombat;
+					ListInCombat.add(entities[i]);
+					ListInCombat.At(i)->data->entityState = GameState::InCombat;
+					ListInCombat.At(i)->data->entityTurn = TurnState::NONE;
 				}
-				else
-				{
-					entities[i]->entityState = GameState::OutOfCombat;
-				}
+
 			}
 
 		}
+	}
+	TurnManagement();
+}
+
+void EntityManager::TurnManagement()
+{
+	
+	for (uint i = 0; i < ListInCombat.count();)
+	{
+		if (ListInCombat.At(i)->data->EntityHP > 0)
+		{
+			ListInCombat.At(i)->data->entityTurn = TurnState::StartOfTurn;
+			if (ListInCombat.At(i)->data->entityTurn == TurnState::WaitTurn) i++;
+			if (ListInCombat.At(i)->next == nullptr) TurnManagement();
+		}
+		else if(ListInCombat.At(i)->data->EntityHP <= 0)
+		{
+			i++;
+		}
+		
 	}
 }
 
