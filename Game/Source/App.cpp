@@ -48,7 +48,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	sceneMainMap = new SceneMainMap(false);
 	sceneCastle = new SceneCastle(false);
 	map = new Map(true);
-	drawInOrder = new DrawInOrder(true);
 	physics = new ModulePhysics(true);
 	fade = new ModuleFadeToBlack(true);
 	player = new ModulePlayer(false);
@@ -56,6 +55,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	pause_menu = new PauseMenu(false);
 	entity_manager = new EntityManager(false);
 	particles = new ModuleParticles(true);
+	drawInOrder = new DrawInOrder(false);
 	pathfinding = new PathFinding(false);
 	fonts = new ModuleFonts(false);
 	guiManager = new GuiManager(true);
@@ -70,7 +70,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(audio);
 	AddModule(physics);
 	AddModule(map);
-	AddModule(drawInOrder);
 	AddModule(logoScreen);
 	AddModule(titleScreen);
 	AddModule(sceneMainMap);
@@ -79,6 +78,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(player);
 	AddModule(entity_manager); 
 	AddModule(particles);
+	AddModule(drawInOrder);
 	AddModule(collisions);
 	AddModule(fade);
 	AddModule(pathfinding);

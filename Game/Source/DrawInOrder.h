@@ -2,8 +2,17 @@
 #define __DRAW_IN_ORDER_H__
 
 #include "Module.h"
+#include "Point.h"
 
 struct SDL_Texture;
+
+struct TextureProperties
+{
+	SDL_Rect section;
+	float parallax;
+	SDL_Texture* texture;
+	iPoint position;
+};
 
 class DrawInOrder : public Module
 {
@@ -32,28 +41,20 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	//void b2dOnCollision(PhysBody* bodyA, PhysBody* bodyB);
+	void AddTextureToList_L1(SDL_Texture* texture, iPoint position, SDL_Rect section, float parallax); //Only layer 1 is sorted
+	void AddTextureToList_L0(SDL_Texture* texture, iPoint position, SDL_Rect section, float parallax);
+	void AddTextureToList_L2(SDL_Texture* texture, iPoint position, SDL_Rect section, float parallax);
 
-	int sceneTimer;
+	bool compare(TextureProperties a, TextureProperties b);
 
-	PhysBody* h_CB1;
-	PhysBody* h_CB2;
+public:
+	//SDL_Texture* img;
+	//SDL_Texture* PauseFrame;
 
-	bool godMode = false;
+	List<TextureProperties*> texturesList_L1;
+	List<TextureProperties*> texturesList_L0;
+	List<TextureProperties*> texturesList_L2;
 
-	bool playerRestart;
-
-	bool destroyScene;
-
-	bool sceneMainMap;
-
-	int PauseDelay=0;
-
-	SDL_Rect* rectangle = {};
-
-private:
-	SDL_Texture* img;
-	SDL_Texture* PauseFrame;
 };
 
 #endif // __DRAW_IN_ORDER_H__

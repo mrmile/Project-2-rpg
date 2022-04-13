@@ -24,6 +24,8 @@
 #include "Log.h"
 #include <SDL_mixer/include/SDL_mixer.h>
 
+#include <algorithm>
+
 DrawInOrder::DrawInOrder(bool start_enabled) : Module(start_enabled)
 {
 	name.Create("SceneMainMap");
@@ -61,8 +63,12 @@ bool DrawInOrder::PreUpdate()
 // Called each loop iteration
 bool DrawInOrder::Update(float dt)
 {
-
+	// Sort everything (only L1)
 	
+	//texturesList_L1->BubbleSort();
+	
+	//texturesList_L1->At(1)->data->position.y;
+	//std::sort(texturesList_L1->start, texturesList_L1->end, compare);
 
 	return true;
 }
@@ -70,7 +76,26 @@ bool DrawInOrder::Update(float dt)
 // Called each loop iteration
 bool DrawInOrder::PostUpdate()
 {
+	// First draw everything and then clear
 
+	for (int i = 0; texturesList_L2.At(i) != NULL; i++)
+	{
+		app->render->DrawTexture(texturesList_L2.At(i)->data->texture, texturesList_L2.At(i)->data->position.x, texturesList_L2.At(i)->data->position.y, &texturesList_L2.At(i)->data->section, texturesList_L2.At(i)->data->parallax);
+	}
+
+	for (int i = 0; texturesList_L1.At(i) != NULL; i++)
+	{
+		app->render->DrawTexture(texturesList_L1.At(i)->data->texture, texturesList_L1.At(i)->data->position.x, texturesList_L1.At(i)->data->position.y, &texturesList_L1.At(i)->data->section, texturesList_L1.At(i)->data->parallax);
+	}
+
+	for (int i = 0; texturesList_L0.At(i) != NULL; i++)
+	{
+		app->render->DrawTexture(texturesList_L0.At(i)->data->texture, texturesList_L0.At(i)->data->position.x, texturesList_L0.At(i)->data->position.y, &texturesList_L0.At(i)->data->section, texturesList_L0.At(i)->data->parallax);
+	}
+
+	texturesList_L1.clear();
+	texturesList_L0.clear();
+	texturesList_L2.clear();
 	
 	return true;
 }
@@ -79,7 +104,54 @@ bool DrawInOrder::PostUpdate()
 bool DrawInOrder::CleanUp()
 {
 	LOG("Freeing DrawInOrder memory (don't really know)");
-
+	texturesList_L1.clear();
+	texturesList_L0.clear();
+	texturesList_L2.clear();
 
 	return true;
+}
+
+
+void DrawInOrder::AddTextureToList_L1(SDL_Texture* texture, iPoint position, SDL_Rect section, float parallax)
+{
+	TextureProperties textureProperties;
+	textureProperties.texture = texture;
+	textureProperties.position = position;
+	textureProperties.section = section;
+	textureProperties.parallax = parallax;
+
+	texturesList_L1.add(&textureProperties);
+	
+}
+
+void DrawInOrder::AddTextureToList_L0(SDL_Texture* texture, iPoint position, SDL_Rect section, float parallax)
+{
+	TextureProperties textureProperties;
+	textureProperties.texture = texture;
+	textureProperties.position = position;
+	textureProperties.section = section;
+	textureProperties.parallax = parallax;
+
+	texturesList_L0.add(&textureProperties);
+
+}
+
+void DrawInOrder::AddTextureToList_L2(SDL_Texture* texture, iPoint position, SDL_Rect section, float parallax)
+{
+	TextureProperties textureProperties;
+	textureProperties.texture = texture;
+	textureProperties.position = position;
+	textureProperties.section = section;
+	textureProperties.parallax = parallax;
+
+	texturesList_L2.add(&textureProperties);
+
+}
+
+bool DrawInOrder::compare(TextureProperties a, TextureProperties b)
+{
+	if (a.position.y < b.position.y)
+		return 1;
+	else
+		return 0;
 }

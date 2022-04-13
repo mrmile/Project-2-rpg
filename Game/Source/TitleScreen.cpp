@@ -19,6 +19,7 @@
 #include "PauseMenu.h"
 #include "EntityManager.h"
 #include "Entity.h"
+#include "DrawInOrder.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -238,6 +239,7 @@ bool TitleScreen::Update(float dt)
 			app->fonts->Enable();
 			app->tex->Enable();
 			app->pause_menu->Enable();
+			app->drawInOrder->Enable();
 		
 			GameHasContinued = true;
 
@@ -260,6 +262,8 @@ bool TitleScreen::Update(float dt)
 			app->fonts->Enable();
 			app->tex->Enable();
 			app->pause_menu->Enable();
+			app->drawInOrder->Enable();
+
 			app->player->score = 0;
 			app->player->lives = 3;
 			SavedGame = false;

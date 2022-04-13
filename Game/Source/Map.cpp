@@ -2,6 +2,7 @@
 #include "App.h"
 #include "Render.h"
 #include "Textures.h"
+#include "DrawInOrder.h"
 #include "Map.h"
 #include "ModulePhysics.h"
 #include "ModuleCollisions.h"
@@ -82,7 +83,7 @@ void Map::Draw()
 	// L06: TODO 4: Make sure we draw all the layers and not just the first one
 	while (mapLayerItem != NULL)
 	{
-
+		
 		if (mapLayerItem->data->properties.GetProperty("Draw") == 1)
 		{
 
@@ -109,27 +110,60 @@ void Map::Draw()
 						{
 							if (mapLayerItem->data->properties.GetProperty("Reveal") == 1)
 							{
-								if(app->player->layerZeroReveal == false) app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + ( MAP_TILEHEIGHT - tileset->tileHeight), &r, 1);
+								if (app->player->layerZeroReveal == false)
+								{
+									//app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + ( MAP_TILEHEIGHT - tileset->tileHeight), &r, 1);
+									if (mapLayerItem->data->properties.GetProperty("LayerID") == 1)
+										app->drawInOrder->AddTextureToList_L1(tileset->texture, { pos.x + (MAP_TILEWIDTH - tileset->tileWidth) ,pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) }, r, 1);
+									if (mapLayerItem->data->properties.GetProperty("LayerID") == 0)
+										app->drawInOrder->AddTextureToList_L0(tileset->texture, { pos.x + (MAP_TILEWIDTH - tileset->tileWidth) ,pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) }, r, 1);
+									if (mapLayerItem->data->properties.GetProperty("LayerID") == 2)
+										app->drawInOrder->AddTextureToList_L2(tileset->texture, { pos.x + (MAP_TILEWIDTH - tileset->tileWidth) ,pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) }, r, 1);
+								}
 							}
 							if (mapLayerItem->data->properties.GetProperty("Reveal") == 0)
 							{
-								app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight), &r, 1);
+								//app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight), &r, 1);
+								if (mapLayerItem->data->properties.GetProperty("LayerID") == 1)
+									app->drawInOrder->AddTextureToList_L1(tileset->texture, { pos.x + (MAP_TILEWIDTH - tileset->tileWidth) ,pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) }, r, 1);
+								if (mapLayerItem->data->properties.GetProperty("LayerID") == 0)
+									app->drawInOrder->AddTextureToList_L0(tileset->texture, { pos.x + (MAP_TILEWIDTH - tileset->tileWidth) ,pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) }, r, 1);
+								if (mapLayerItem->data->properties.GetProperty("LayerID") == 2)
+									app->drawInOrder->AddTextureToList_L2(tileset->texture, { pos.x + (MAP_TILEWIDTH - tileset->tileWidth) ,pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) }, r, 1);
 							}
 						}
 						
 						if (mapLayerItem->data->properties.GetProperty("Parallax") == 2)
 						{
-							app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(4)*/, &r, 0.5f);
+							//app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(4)*/, &r, 0.5f);
+							if (mapLayerItem->data->properties.GetProperty("LayerID") == 1)
+								app->drawInOrder->AddTextureToList_L1(tileset->texture, { pos.x + (MAP_TILEWIDTH - tileset->tileWidth) ,pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) }, r, 0.5f);
+							if (mapLayerItem->data->properties.GetProperty("LayerID") == 0)
+								app->drawInOrder->AddTextureToList_L0(tileset->texture, { pos.x + (MAP_TILEWIDTH - tileset->tileWidth) ,pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) }, r, 0.5f);
+							if (mapLayerItem->data->properties.GetProperty("LayerID") == 2)
+								app->drawInOrder->AddTextureToList_L2(tileset->texture, { pos.x + (MAP_TILEWIDTH - tileset->tileWidth) ,pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) }, r, 0.5f);
 						}
 						
 						if (mapLayerItem->data->properties.GetProperty("Parallax") == 3)
 						{
-							app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(5)*/, &r, 0.4f);
+							//app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(5)*/, &r, 0.4f);
+							if (mapLayerItem->data->properties.GetProperty("LayerID") == 1)
+								app->drawInOrder->AddTextureToList_L1(tileset->texture, { pos.x + (MAP_TILEWIDTH - tileset->tileWidth) ,pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) }, r, 0.4f);
+							if (mapLayerItem->data->properties.GetProperty("LayerID") == 0)
+								app->drawInOrder->AddTextureToList_L0(tileset->texture, { pos.x + (MAP_TILEWIDTH - tileset->tileWidth) ,pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) }, r, 0.4f);
+							if (mapLayerItem->data->properties.GetProperty("LayerID") == 2)
+								app->drawInOrder->AddTextureToList_L2(tileset->texture, { pos.x + (MAP_TILEWIDTH - tileset->tileWidth) ,pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) }, r, 0.4f);
 						}
 
 						if (mapLayerItem->data->properties.GetProperty("Parallax") == 4)
 						{
-							app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(5)*/, &r, 0.3f);
+							//app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(5)*/, &r, 0.3f);
+							if (mapLayerItem->data->properties.GetProperty("LayerID") == 1)
+								app->drawInOrder->AddTextureToList_L1(tileset->texture, { pos.x + (MAP_TILEWIDTH - tileset->tileWidth) ,pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) }, r, 0.3f);
+							if (mapLayerItem->data->properties.GetProperty("LayerID") == 0)
+								app->drawInOrder->AddTextureToList_L0(tileset->texture, { pos.x + (MAP_TILEWIDTH - tileset->tileWidth) ,pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) }, r, 0.3f);
+							if (mapLayerItem->data->properties.GetProperty("LayerID") == 2)
+								app->drawInOrder->AddTextureToList_L2(tileset->texture, { pos.x + (MAP_TILEWIDTH - tileset->tileWidth) ,pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) }, r, 0.3f);
 						}
 					}
 
