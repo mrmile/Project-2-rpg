@@ -45,7 +45,7 @@ bool SceneMainMap::Start()
 {
 	// L03: DONE: Load map
 	//app->map->Load("hello.tmx");
-	app->map->Load("main.tmx");
+	app->map->Load("test_map.tmx");
 	
 	// Load music
 	app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);

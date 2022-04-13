@@ -30,7 +30,8 @@ EntityManager::~EntityManager()
 
 bool EntityManager::Start()
 {
-	texture_enemies = app->tex->Load("Assets/textures/Enemies/zombie_farmer.png");
+	texture_enemies = app->tex->Load("Assets/textures/Enemies/zombie_farmer.png"); 
+	
 	return true;
 }
 
@@ -173,6 +174,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 
 void EntityManager::RegisterEntitesInCombat()
 {
+	int x = 0;
 	for (uint i = 0; i < MAX_ENTITIES; i++)
 	{
 		if (entities[i] != nullptr)
@@ -182,11 +184,14 @@ void EntityManager::RegisterEntitesInCombat()
 
 			if (entities[i]->type != EntityType::NPC && entities[i]->type != EntityType::OBJECTS)
 			{
-				if (entities[i]->entityState == GameState::OutOfCombat)
+				if (entities[i]->entityState == GameState::InCombat || entities[i]->entityTurn == TurnState::WaitTurn)
 				{
-					ListInCombat.add(entities[i]);
-					ListInCombat.At(i)->data->entityState = GameState::InCombat;
-					ListInCombat.At(i)->data->entityTurn = TurnState::NONE;
+					//if (ListInCombat.find(entities[i]) == -1)
+					//{
+						ListInCombat.add(entities[i]);
+						ListInCombat.At(x)->data->entityTurn = TurnState::NONE; x++;
+					//}
+					
 				}
 
 			}
@@ -198,22 +203,12 @@ void EntityManager::RegisterEntitesInCombat()
 
 void EntityManager::TurnManagement()
 {
+
+		ListInCombat.start->data->entityTurn = TurnState::StartOfTurn;
+
 	
-	for (uint i = 0; i < ListInCombat.count();)
-	{
-		if (ListInCombat.At(i)->data->EntityHP > 0)
-		{
-			ListInCombat.At(i)->data->entityTurn = TurnState::StartOfTurn;
-			if (ListInCombat.At(i)->data->entityTurn == TurnState::WaitTurn) i++;
-			if (ListInCombat.At(i)->next == nullptr) TurnManagement();
-		}
-		else if(ListInCombat.At(i)->data->EntityHP <= 0)
-		{
-			i++;
-		}
-		
-	}
 }
+
 
 void EntityManager::OnCollision(Collider* c1, Collider* c2)
 {

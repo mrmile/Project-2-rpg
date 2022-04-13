@@ -65,6 +65,7 @@ void Entity::OnCollision(Collider* c2)
 {
 	if (c2->type == Collider::Type::PLAYER)
 	{
+		entityState = GameState::InCombat;
 		app->entity_manager->RegisterEntitesInCombat();
 		
 	}

@@ -41,7 +41,7 @@ Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 	position.x = x;
 	position.y = y;
 
-	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::LAYER_ZERO, (Module*)app->entity_manager);
+	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
 	entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
 	
 	
@@ -125,7 +125,7 @@ bool Zombie_Standart::Update(float dt)
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;
 
-
+					entityBody->body->SetLinearVelocity({ 0.0f,0.0f });
 
 				}
 				if (entityTurn == TurnState::StartOfTurn)
@@ -264,7 +264,7 @@ bool Zombie_Standart::Update(float dt)
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;
 
-					
+					if (app->entity_manager->CallNextRound() == true) entityTurn = TurnState::StartOfTurn;
 
 				}
 

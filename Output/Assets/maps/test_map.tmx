@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="8" nextobjectid="9">
+<map version="1.5" tiledversion="1.7.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="9" nextobjectid="13">
  <tileset firstgid="1" name="city_walls" tilewidth="75" tileheight="117" tilecount="128" columns="16">
   <image source="city_walls.png" width="1250" height="936"/>
  </tileset>
@@ -60045,6 +60045,12 @@
  </layer>
  <objectgroup id="6" name="startPos">
   <object id="8" x="147.5" y="74.5"/>
+ </objectgroup>
+ <objectgroup id="8" name="zombie_standart">
+  <object id="9" x="81" y="164"/>
+  <object id="10" x="155" y="225"/>
+  <object id="11" x="400" y="112"/>
+  <object id="12" x="257" y="219"/>
  </objectgroup>
  <objectgroup id="3" name="collisionChains">
   <object id="5" x="185" y="114">

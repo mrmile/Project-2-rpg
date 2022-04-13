@@ -71,6 +71,8 @@ public:
 	//Manager for turns so turns are in order
 	void TurnManagement();
 	
+
+
 	//Collision management
 	void OnCollision(Collider* c1, Collider* c2);
 
@@ -79,12 +81,13 @@ private:
 
 	void SpawnEntity(const EntitySpawnPoint& info);
 
+
 	// A queue with all spawn points information
 	EntitySpawnPoint spawnQueue[MAX_ENTITIES];
 	Entity* entities[MAX_ENTITIES] = { nullptr };
 	SDL_Texture* texture_enemies = nullptr;
 
-	List<Entity*> ListInCombat;
+	List<Entity*> ListInCombat; //[MAX_ENTITIES];
 
 	//SDL_Texture* texture_player = nullptr;
 	//SDL_Texture* texture_npc = nullptr;
