@@ -38,9 +38,10 @@ Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 
 	
 
-	spawnPos.x = position.x;
-	spawnPos.y = position.y;
-	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
+	position.x = x;
+	position.y = y;
+
+	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::LAYER_ZERO, (Module*)app->entity_manager);
 	entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
 	
 	
@@ -65,13 +66,15 @@ bool Zombie_Standart::Update(float dt)
 		if (entityState == GameState::OutOfCombat)
 		{
 			//move normally
-			collider->SetPos(position.x, position.y);
-			entityBody->GetPosition(position.x, position.y);
-			currentAnim = &Idle_Enemy;
-			currentAnim->loop = true;
+			
 			
 			if (position.DistanceTo(app->player->position) < 150)
 			{
+				collider->SetPos(position.x, position.y);
+				entityBody->GetPosition(position.x, position.y);
+				currentAnim = &Idle_Enemy;
+				currentAnim->loop = true;
+
 				if (position.x > app->player->position.x) entityBody->body->SetLinearVelocity({ -0.5f, 0.0f });
 				if (position.x < app->player->position.x) entityBody->body->SetLinearVelocity({ 0.5f, 0.0f });
 				if (position.y > app->player->position.y) entityBody->body->SetLinearVelocity({ 0.0f, -0.5f });
@@ -93,6 +96,16 @@ bool Zombie_Standart::Update(float dt)
 				{
 					entityBody->body->SetLinearVelocity({ 0.5f, -0.5f });
 				}
+			}
+			else
+			{
+				collider->SetPos(position.x, position.y);
+				entityBody->GetPosition(position.x, position.y);
+				currentAnim = &Idle_Enemy;
+				currentAnim->loop = true;
+
+				entityBody->body->SetLinearVelocity({ 0.0f,0.0f });
+
 			}
 
 			return true;
