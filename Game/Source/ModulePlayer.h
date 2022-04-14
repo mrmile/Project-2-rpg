@@ -178,6 +178,8 @@ public:
 
 	bool pauseMenu = false;
 
+	bool hasBeenDrawed = false;
+
 	//Action things
 	bool run = false;
 	bool talking = false;

@@ -8,6 +8,7 @@
 #include "ModuleParticles.h"
 #include "EntityManager.h"
 #include "ModulePlayer.h"
+#include "Entity.h"
 #include "Window.h"
 
 #include "Defs.h"
@@ -83,7 +84,7 @@ void Map::Draw()
 	while (mapLayerItem != NULL)
 	{
 
-		if (mapLayerItem->data->properties.GetProperty("Draw") == 1)
+		if (mapLayerItem->data->properties.GetProperty("Draw") == 1 && mapLayerItem->data->properties.GetProperty("LayerID") == 2)
 		{
 
 			for (int y = 0; y < mapLayerItem->data->height; y++)
@@ -122,6 +123,152 @@ void Map::Draw()
 							app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(4)*/, &r, 0.5f);
 						}
 						
+						if (mapLayerItem->data->properties.GetProperty("Parallax") == 3)
+						{
+							app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(5)*/, &r, 0.4f);
+						}
+
+						if (mapLayerItem->data->properties.GetProperty("Parallax") == 4)
+						{
+							app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(5)*/, &r, 0.3f);
+						}
+					}
+
+				}
+			}
+		}
+
+		mapLayerItem = mapLayerItem->next;
+	}
+
+
+	mapLayerItem = mapData.layers.start;
+	app->player->hasBeenDrawed = false;
+
+	while (mapLayerItem != NULL)
+	{
+
+		if (mapLayerItem->data->properties.GetProperty("Draw") == 1 && mapLayerItem->data->properties.GetProperty("LayerID") == 1)
+		{
+
+			for (int y = 0; y < mapLayerItem->data->height; y++)
+			{
+				for (int x = 0; x < mapLayerItem->data->width; x++)
+				{
+					// L04: DONE 9: Complete the draw function
+					int gid = mapLayerItem->data->Get(x, y);
+
+					if (gid > 0)
+					{
+
+						//L06: TODO 4: Obtain the tile set using GetTilesetFromTileId
+						//now we always use the firt tileset in the list
+						//TileSet* tileset = mapData.tilesets.start->data;
+						TileSet* tileset = GetTilesetFromTileId(gid);
+
+						SDL_Rect r = tileset->GetTileRect(gid);
+						iPoint pos = MapToWorld(x, y);
+
+						if (pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) + 98/*98 VARÍA SEGÚN LA ALTURA REAL DEL JUGADOR*/ > app->player->position.y && app->player->hasBeenDrawed == false)
+						{
+							if (app->player->invincibleDelay <= 120)
+							{
+								if ((app->player->playerFPS / 5) % 2 == 0)
+								{
+									SDL_Rect playerRect = app->player->currentAnimation->GetCurrentFrame();
+									app->render->DrawTexture(app->player->texture, app->player->position.x, app->player->position.y - 50, &playerRect);
+								}
+							}
+							else
+							{
+								SDL_Rect playerRect = app->player->currentAnimation->GetCurrentFrame();
+								app->render->DrawTexture(app->player->texture, app->player->position.x, app->player->position.y - 50, &playerRect);
+							}
+
+							app->player->hasBeenDrawed = true;
+						}
+
+						//app->render->DrawTexture(tileset->texture, pos.x, pos.y, &r);
+						if (mapLayerItem->data->properties.GetProperty("Parallax") == 1)
+						{
+							if (mapLayerItem->data->properties.GetProperty("Reveal") == 1)
+							{
+								if (app->player->layerZeroReveal == false) app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight), &r, 1);
+							}
+							if (mapLayerItem->data->properties.GetProperty("Reveal") == 0)
+							{
+								app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight), &r, 1);
+							}
+						}
+
+						if (mapLayerItem->data->properties.GetProperty("Parallax") == 2)
+						{
+							app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(4)*/, &r, 0.5f);
+						}
+
+						if (mapLayerItem->data->properties.GetProperty("Parallax") == 3)
+						{
+							app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(5)*/, &r, 0.4f);
+						}
+
+						if (mapLayerItem->data->properties.GetProperty("Parallax") == 4)
+						{
+							app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(5)*/, &r, 0.3f);
+						}
+					}
+
+				}
+			}
+		}
+
+		mapLayerItem = mapLayerItem->next;
+	}
+
+
+	mapLayerItem = mapData.layers.start;
+
+	while (mapLayerItem != NULL)
+	{
+
+		if (mapLayerItem->data->properties.GetProperty("Draw") == 1 && mapLayerItem->data->properties.GetProperty("LayerID") == 0)
+		{
+
+			for (int y = 0; y < mapLayerItem->data->height; y++)
+			{
+				for (int x = 0; x < mapLayerItem->data->width; x++)
+				{
+					// L04: DONE 9: Complete the draw function
+					int gid = mapLayerItem->data->Get(x, y);
+
+					if (gid > 0)
+					{
+
+						//L06: TODO 4: Obtain the tile set using GetTilesetFromTileId
+						//now we always use the firt tileset in the list
+						//TileSet* tileset = mapData.tilesets.start->data;
+						TileSet* tileset = GetTilesetFromTileId(gid);
+
+						SDL_Rect r = tileset->GetTileRect(gid);
+						iPoint pos = MapToWorld(x, y);
+
+						//app->render->DrawTexture(tileset->texture, pos.x, pos.y, &r);
+						if (mapLayerItem->data->properties.GetProperty("Parallax") == 1)
+						{
+							if (mapLayerItem->data->properties.GetProperty("Reveal") == 1)
+							{
+								if (app->player->layerZeroReveal == false) app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight), &r, 1);
+							}
+							if (mapLayerItem->data->properties.GetProperty("Reveal") == 0)
+							{
+								app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight), &r, 1);
+							}
+						}
+
+						if (mapLayerItem->data->properties.GetProperty("Parallax") == 2)
+						{
+							app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(4)*/, &r, 0.5f);
+						}
+
 						if (mapLayerItem->data->properties.GetProperty("Parallax") == 3)
 						{
 							app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(5)*/, &r, 0.4f);

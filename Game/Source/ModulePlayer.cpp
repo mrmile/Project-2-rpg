@@ -35,14 +35,22 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 {
 	name.Create("player");
 
-	/*
-	// hover right
-	hoverRightAnim.PushBack({ 158, 132, 24, 34 });
-	hoverRightAnim.PushBack({ 135, 132, 24, 34 });
-	hoverRightAnim.PushBack({ 109, 132, 26, 34 });
-	hoverRightAnim.loop = true;
-	hoverRightAnim.speed = 0.3f;
-	*/
+	idleRightAnim.PushBack({ 0, 0, 40, 56 });
+	idleRightAnim.loop = true;
+	idleRightAnim.speed = 0.3f;
+
+	idleLeftAnim.PushBack({ 0, 0, 40, 56 });
+	idleLeftAnim.loop = true;
+	idleLeftAnim.speed = 0.3f;
+	
+	idleDownAnim.PushBack({ 0, 0, 40, 56 });
+	idleDownAnim.loop = true;
+	idleDownAnim.speed = 0.3f;
+
+	idleUpAnim.PushBack({ 0, 0, 40, 56 });
+	idleUpAnim.loop = true;
+	idleUpAnim.speed = 0.3f;
+	
 }
 
 ModulePlayer::~ModulePlayer()
@@ -61,7 +69,7 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 	
-	texture = app->tex->Load("Assets/textures/player.png");
+	texture = app->tex->Load("Assets/textures/debugRect.png");
 	ptsScore = app->tex->Load("Assets/textures/pts_score.png");
 	livesForScore = app->tex->Load("Assets/textures/lives_score.png");
 	gameOverScreen = app->tex->Load("Assets/textures/game_over.png");
@@ -686,6 +694,7 @@ bool ModulePlayer::PostUpdate()
 			winDelay++;
 		}
 
+		/* Desplazado a Map.cpp para que se dibuje en orden
 		if (invincibleDelay <= 120)
 		{
 			if ((playerFPS / 5) % 2 == 0)
@@ -699,6 +708,7 @@ bool ModulePlayer::PostUpdate()
 			SDL_Rect rect = currentAnimation->GetCurrentFrame();
 			app->render->DrawTexture(texture, position.x, position.y, &rect);
 		}
+		*/
 
 		// Draw UI (score) --------------------------------------
 		sprintf_s(scoreText, 10, "%5d", score);
