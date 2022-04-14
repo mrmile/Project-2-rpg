@@ -33,6 +33,9 @@ public:
 
 	PhysBody* entityBody;
 
+	//Test
+	int id;
+
 public:
 	
 	Entity(int x,int y);

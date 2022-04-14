@@ -66,12 +66,11 @@ public:
 	bool AddEntity(EntityType type,int x, int y);
 
 	//Check which entites are in combat
-	void RegisterEntitesInCombat();
+	void RegisterEntitesInCombat(int id);
 
-	//Manager for turns so turns are in order
-	void TurnManagement();
 	
-
+	//List that will be used for turn system
+	List<Entity*> ListInCombat; 
 
 	//Collision management
 	void OnCollision(Collider* c1, Collider* c2);
@@ -81,13 +80,14 @@ private:
 
 	void SpawnEntity(const EntitySpawnPoint& info);
 
+	int x = 0;
 
 	// A queue with all spawn points information
 	EntitySpawnPoint spawnQueue[MAX_ENTITIES];
 	Entity* entities[MAX_ENTITIES] = { nullptr };
 	SDL_Texture* texture_enemies = nullptr;
 
-	List<Entity*> ListInCombat; //[MAX_ENTITIES];
+	
 
 	//SDL_Texture* texture_player = nullptr;
 	//SDL_Texture* texture_npc = nullptr;

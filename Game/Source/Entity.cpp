@@ -6,6 +6,7 @@
 #include "Render.h"
 #include "Textures.h"
 #include "ModulePlayer.h"
+#include "GameManager.h"
 
 Entity::Entity(int x,int y) : position(x,y)
 {
@@ -65,9 +66,9 @@ void Entity::OnCollision(Collider* c2)
 {
 	if (c2->type == Collider::Type::PLAYER)
 	{
+		app->entity_manager->RegisterEntitesInCombat(id);
 		entityState = GameState::InCombat;
-		app->entity_manager->RegisterEntitesInCombat();
-		
+		app->game_manager->StartTurnManagement = true;
 	}
 	/*
 	if ((c2->type == Collider::Type::PLAYER_ATTACK) && (EntityKillable == true))

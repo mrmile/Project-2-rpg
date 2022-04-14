@@ -97,14 +97,17 @@
     <ClCompile Include="Source\LogoScreen.cpp">
       <Filter>General</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Zombie_Standart.cpp">
-      <Filter>General\Entities</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GamepadInput.cpp">
       <Filter>General</Filter>
     </ClCompile>
     <ClCompile Include="Source\GameManager.cpp">
       <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Zombie_Standart.cpp">
+      <Filter>General\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\NPCs.cpp">
+      <Filter>General\Entities\NPCS</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -234,14 +237,17 @@
     <ClInclude Include="Source\LogoScreen.h">
       <Filter>General</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Zombie_Standart.h">
-      <Filter>General\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="Source\GamepadInput.h">
       <Filter>General</Filter>
     </ClInclude>
     <ClInclude Include="Source\GameManager.h">
       <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Zombie_Standart.h">
+      <Filter>General\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\NPCs.h">
+      <Filter>General\Entities\NPCS</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +265,12 @@
     </Filter>
     <Filter Include="General\Entities">
       <UniqueIdentifier>{97e41b52-858c-4ca0-b9cd-4e56a8881753}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General\Entities\Enemies">
+      <UniqueIdentifier>{8503e113-6157-448e-9fe7-5fb1a4582d98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General\Entities\NPCS">
+      <UniqueIdentifier>{f2fa24a6-6710-4049-8200-0367cf4f6382}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

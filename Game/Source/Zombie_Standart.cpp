@@ -130,9 +130,7 @@ bool Zombie_Standart::Update(float dt)
 				}
 				if (entityTurn == TurnState::StartOfTurn)
 				{
-	
-					iPoint NewPosition = position;
-					collider->SetPos(NewPosition.x, NewPosition.y);
+					collider->SetPos(position.x, position.y);
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = false;
 					counter++;
@@ -191,27 +189,27 @@ bool Zombie_Standart::Update(float dt)
 						if ((position.x == app->player->position.x) && (position.y < app->player->position.y))
 						{
 						
-							app->particles->AddParticle(app->particles->enemyAttack, position.x, position.y - 112, Collider::Type::ENEMY_ATTACK);
+							app->particles->AddParticle(app->particles->enemyAttack, position.x, position.y + 60, Collider::Type::ENEMY_ATTACK);
 
 						}
 						if ((position.x == app->player->position.x) && (position.y > app->player->position.y))
 						{
 						
-							app->particles->AddParticle(app->particles->enemyAttack, position.x , position.y+112, Collider::Type::ENEMY_ATTACK);
+							app->particles->AddParticle(app->particles->enemyAttack, position.x , position.y - 60, Collider::Type::ENEMY_ATTACK);
 
 						}
 						if ((position.x < app->player->position.x) && (position.y == app->player->position.y))
 						{
 
 						
-							app->particles->AddParticle(app->particles->enemyAttack, position.x + 60, position.y , Collider::Type::ENEMY_ATTACK);
+							app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y , Collider::Type::ENEMY_ATTACK);
 
 
 						}
 						if ((position.x > app->player->position.x) && (position.y == app->player->position.y))
 						{
 							
-							app->particles->AddParticle(app->particles->enemyAttack, position.x - 60, position.y , Collider::Type::ENEMY_ATTACK);
+							app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y , Collider::Type::ENEMY_ATTACK);
 
 
 						}
@@ -220,28 +218,28 @@ bool Zombie_Standart::Update(float dt)
 						{
 
 							
-							app->particles->AddParticle(app->particles->enemyAttack, position.x - 3, position.y + 8, Collider::Type::ENEMY_ATTACK);
+							app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y - 30, Collider::Type::ENEMY_ATTACK);
 
 
 						}
 						if ((position.x > app->player->position.x) && (position.y < app->player->position.y))
 						{
 							
-							app->particles->AddParticle(app->particles->enemyAttack, position.x - 3, position.y + 20, Collider::Type::ENEMY_ATTACK);
+							app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y + 30, Collider::Type::ENEMY_ATTACK);
 
 
 						}
 						if ((position.x < app->player->position.x) && (position.y > app->player->position.y))
 						{
 							
-							app->particles->AddParticle(app->particles->enemyAttack, position.x + 20, position.y + 8, Collider::Type::ENEMY_ATTACK);
+							app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y - 30, Collider::Type::ENEMY_ATTACK);
 
 
 						}
 						if ((position.x < app->player->position.x) && (position.y < app->player->position.y))
 						{
 							
-							app->particles->AddParticle(app->particles->enemyAttack, position.x + 8, position.y + 15, Collider::Type::ENEMY_ATTACK);
+							app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y + 30, Collider::Type::ENEMY_ATTACK);
 
 
 						}
@@ -263,8 +261,6 @@ bool Zombie_Standart::Update(float dt)
 					entityBody->GetPosition(position.x, position.y);
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;
-
-					//if (app->entity_manager->CallNextRound() == true) entityTurn = TurnState::StartOfTurn;
 
 				}
 

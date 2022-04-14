@@ -8,9 +8,11 @@
 #include "Collider.h"
 #include "GameManager.h"
 #include "Entity.h"
-#include "Zombie_Standart.h"
 #include "ModulePlayer.h"
 
+
+#include "Zombie_Standart.h"
+#include "NPCs.h"
 
 #define SPAWN_MARGIN 500
 
@@ -141,6 +143,9 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				//entities[i]->texture = texture_player;
 				break;
 			case EntityType::NPC:
+				entities[i] = new Npcs(info.x, info.y);
+				entities[i]->id = i;
+				entities[i]->type = info.type;
 				//entities[i]->texture = texture_npc;
 				break;
 			case EntityType::OBJECTS:
@@ -148,6 +153,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				break;
 			case EntityType::ZOMBIE_STANDART:
 				entities[i] = new Zombie_Standart(info.x,info.y);
+				entities[i]->id = i;
 				entities[i]->type = info.type;
 				entities[i]->texture = texture_enemies;
 				
@@ -160,43 +166,18 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 	}
 }
 
-void EntityManager::RegisterEntitesInCombat()
+void EntityManager::RegisterEntitesInCombat(int id)
 {
-	int x = 0;
-	for (uint i = 0; i < MAX_ENTITIES; i++)
+
+	if (entities[id]->entityState == GameState::OutOfCombat)
 	{
-		if (entities[i] != nullptr)
-		{
-			// Check how to select which entites are in combat (distance may cause issues depending on the position of the player and it's movements)
-			// with new entity sistem we can even add into combat objects of the environment
 
-			if (entities[i]->type != EntityType::NPC && entities[i]->type != EntityType::OBJECTS)
-			{
-				if (entities[i]->entityState == GameState::InCombat || entities[i]->entityTurn == TurnState::WaitTurn)
-				{
-					//if (ListInCombat.find(entities[i]) == -1)
-					//{
-						ListInCombat.add(entities[i]);
-						ListInCombat.At(x)->data->entityTurn = TurnState::NONE; x++;
-					//}
-					
-				}
-
-			}
-
-		}
-	}
-	TurnManagement();
-}
-
-void EntityManager::TurnManagement()
-{
-
-		ListInCombat.start->data->entityTurn = TurnState::StartOfTurn;
-
+		ListInCombat.add(entities[id]);
+		ListInCombat.At(x)->data->entityTurn = TurnState::NONE; x++;
 	
-}
+	}
 
+}
 
 void EntityManager::OnCollision(Collider* c1, Collider* c2)
 {

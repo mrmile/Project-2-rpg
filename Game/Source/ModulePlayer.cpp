@@ -465,10 +465,6 @@ bool ModulePlayer::Update(float dt)
 					run = false;
 				}
 
-				if ((app->input->keys[SDL_SCANCODE_M] == KeyState::KEY_REPEAT))
-				{
-					app->entity_manager->RegisterEntitesInCombat();
-				}
 
 				// If no up/down movement detected, set the current animation back to idle
 				if (app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_IDLE

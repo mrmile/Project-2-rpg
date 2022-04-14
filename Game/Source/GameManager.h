@@ -34,8 +34,11 @@ public:
 	// Called each loop iteration
 	bool Update(float dt);
 
-	// Called before quitting
 	
+	int counter = 0;
+
+	bool StartTurnManagement;
+
 };
 
 #endif // __AUDIO_H__
