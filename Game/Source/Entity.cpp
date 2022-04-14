@@ -49,6 +49,7 @@ void Entity::Draw()
 void Entity::SetToDelete()
 {
 	LOG("DELETING COLLIDER");
+
 	if (collider != nullptr)
 	{
 		collider->pendingToDelete = true;

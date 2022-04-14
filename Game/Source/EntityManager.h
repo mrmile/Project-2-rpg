@@ -75,6 +75,9 @@ public:
 	//Collision management
 	void OnCollision(Collider* c1, Collider* c2);
 
+	bool LoadState(pugi::xml_node&);
+	bool SaveState(pugi::xml_node&) const;
+
 
 private:
 
@@ -87,7 +90,7 @@ private:
 	Entity* entities[MAX_ENTITIES] = { nullptr };
 	SDL_Texture* texture_enemies = nullptr;
 
-	
+	EntityType HelperQueue[MAX_ENTITIES];
 
 	//SDL_Texture* texture_player = nullptr;
 	//SDL_Texture* texture_npc = nullptr;

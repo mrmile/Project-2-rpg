@@ -109,6 +109,18 @@
     <ClCompile Include="Source\NPCs.cpp">
       <Filter>General\Entities\NPCS</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Dialog.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\DialogNode.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Zombie_Runner.cpp">
+      <Filter>General\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Zombie_Spitter.cpp">
+      <Filter>General\Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -248,6 +260,18 @@
     </ClInclude>
     <ClInclude Include="Source\NPCs.h">
       <Filter>General\Entities\NPCS</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Dialog.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DialogNode.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Zombie_Runner.h">
+      <Filter>General\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Zombie_Spitter.h">
+      <Filter>General\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

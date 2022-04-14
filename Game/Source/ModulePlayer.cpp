@@ -466,6 +466,11 @@ bool ModulePlayer::Update(float dt)
 				}
 
 
+				if(app->input->keys[SDL_SCANCODE_9] == KeyState::KEY_DOWN)
+				{
+					app->game_manager->NextTurn();
+				}
+
 				// If no up/down movement detected, set the current animation back to idle
 				if (app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_IDLE
 					&& app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_IDLE
@@ -907,7 +912,27 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (app->sceneCastle->godMode == false && app->sceneMainMap->godMode == false && destroyed == false && playerWin == false)
 	{
-		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_ATTACK) && destroyed == false && invincibleDelay >= 120)
+		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_ATTACK ) && destroyed == false && invincibleDelay >= 120)
+		{
+
+			playerHP -= 10;
+			if (playerHP < 0) playerHP = 0;
+			invincibleDelay = 0;
+			if (playerHP != 0) app->audio->PlayFx(damaged);
+
+			if (playerHP <= 0)
+			{
+				invincibleDelay = 121;
+				playerHP = 0;
+				//app->audio->PlayFx(dead);
+				destroyed = true;
+
+			}
+
+
+		}
+
+		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_RANGED_ATTACK) && destroyed == false && invincibleDelay >= 120)
 		{
 
 			playerHP -= 10;

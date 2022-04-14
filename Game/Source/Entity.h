@@ -31,9 +31,11 @@ public:
 	GameState entityState;
 	TurnState entityTurn;
 
-	PhysBody* entityBody;
+	List<PhysBody*> Standart_Zombie_List;
+	List<PhysBody*> Runner_Zombie_List;
+	List<PhysBody*> Spitter_Zombie_List;
 
-	//Test
+	//id used to register enemies into combat
 	int id;
 
 public:
@@ -62,6 +64,10 @@ protected:
 	Collider* collider = nullptr;
 
 	iPoint spawnPos;
+
+	
+	//List<PhysBody*> Flying_Enemy_2_List;
+	//List<PhysBody*> Walking_Enemy_List;
 };
 
 #endif 

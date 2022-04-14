@@ -44,3 +44,13 @@ bool GameManager::Update(float dt)
 	
 	
 }
+
+void GameManager::NextTurn()
+{
+	counter = 0;
+
+	for (uint i = 0; i < app->entity_manager->ListInCombat.count(); i++)
+	{
+		app->entity_manager->ListInCombat.At(i)->data->entityTurn = TurnState::StartOfTurn;
+	}
+}

@@ -67,8 +67,8 @@ bool SceneMainMap::Start()
 	//h_CB2->listener = this;
 	//h_CB2->body->GetFixtureList()->SetFilterData(filter);
 
-	app->render->camera.x = app->map->MapToWorld(-0, -0).x;
-	app->render->camera.y = app->map->MapToWorld(-0, -0).y;
+	app->render->camera.x = app->map->MapToWorld(0, 0).x;
+	app->render->camera.y = app->map->MapToWorld(0, 0).y;
 
 	godMode = false;
 	playerRestart = false;

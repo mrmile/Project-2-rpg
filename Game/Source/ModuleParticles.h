@@ -68,6 +68,7 @@ public:
 
 
 	Particle enemyAttack;
+	Particle RangedAttack;
 
 private:
 	// Particles spritesheet loaded into an SDL Texture

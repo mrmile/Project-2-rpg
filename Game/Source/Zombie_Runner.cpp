@@ -1,4 +1,4 @@
-#include "Zombie_Standart.h"
+#include "Zombie_Runner.h"
 
 #include "App.h"
 #include "ModuleCollisions.h"
@@ -20,9 +20,9 @@
 
 #include "Defs.h"
 
-Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
+Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 {	
-	EntityHP = 5;
+	EntityHP = 1;
 	EntityAP = 5;
 	EntityMP = 3;
 	entityState = GameState::OutOfCombat;
@@ -42,13 +42,13 @@ Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
 
-	Standart_Zombie_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10));
+	Runner_Zombie_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10));
 	
 	
 	
 }
 
-bool Zombie_Standart::Update(float dt)
+bool Zombie_Runner::Update(float dt)
 {
 	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
 	
@@ -56,7 +56,7 @@ bool Zombie_Standart::Update(float dt)
 	{
 		iPoint NewPosition = position;
 		collider->SetPos(NewPosition.x, NewPosition.y);
-		Standart_Zombie_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
+		Runner_Zombie_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
 		currentAnim = &Idle_Enemy;
 		currentAnim->loop = false;
 
@@ -64,7 +64,7 @@ bool Zombie_Standart::Update(float dt)
 	}
 	if (app->player->pauseMenu == false)
 	{
-		Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
+		Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
 
 		if (entityState == GameState::OutOfCombat)
 		{
@@ -74,40 +74,40 @@ bool Zombie_Standart::Update(float dt)
 			if (position.DistanceTo(app->player->position) < 150)
 			{
 				collider->SetPos(position.x, position.y);
-				Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
+				Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
 				currentAnim = &Idle_Enemy;
 				currentAnim->loop = true;
 
-				if (position.x > app->player->position.x) Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
-				if (position.x < app->player->position.x) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
-				if (position.y > app->player->position.y) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
-				if (position.y < app->player->position.y) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
+				if (position.x > app->player->position.x) Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.25f, 0.0f });
+				if (position.x < app->player->position.x) Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.25f, 0.0f });
+				if (position.y > app->player->position.y) Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -1.25f });
+				if (position.y < app->player->position.y) Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 1.25f });
 
 				if ((app->player->position.y > position.y) && (app->player->position.x > position.x))
 				{
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
+					Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.25f, 1.25f });
 				}
 				if ((app->player->position.x < position.x) && (app->player->position.y > position.y))
 				{
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
+					Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.25f, 1.25f });
 				}
 				if ((app->player->position.y < position.y) && (app->player->position.x < position.x))
 				{
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
+					Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.25f, -1.25f });
 				}
 				if ((app->player->position.x > position.x) && (app->player->position.y < position.y))
 				{
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
+					Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.25f, -1.25f });
 				}
 			}
 			else
 			{
 				collider->SetPos(position.x, position.y);
-				Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
+				Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
 				currentAnim = &Idle_Enemy;
 				currentAnim->loop = true;
 
-				Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
+				Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
 
 			}
 
@@ -124,11 +124,11 @@ bool Zombie_Standart::Update(float dt)
 				{
 					//Assigning order of turns
 					collider->SetPos(position.x, position.y);
-					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
+					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;
 
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
+					Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
 
 				}
 				if (entityTurn == TurnState::StartOfTurn)
@@ -137,7 +137,7 @@ bool Zombie_Standart::Update(float dt)
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = false;
 					counter++;
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f }); //movimiento contrario a la direccion del jugador cuando nos chocamos con el
+					Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f }); //movimiento contrario a la direccion del jugador cuando nos chocamos con el
 
 					if(counter == 50) entityTurn = TurnState::MidOfTurn;
 
@@ -146,31 +146,31 @@ bool Zombie_Standart::Update(float dt)
 				{
 
 					collider->SetPos(position.x, position.y);
-					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
+					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;
 					counter++;
 					
-					if (position.x > app->player->position.x) Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
-					if (position.x < app->player->position.x) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
-					if (position.y > app->player->position.y) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
-					if (position.y < app->player->position.y) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
+					if (position.x > app->player->position.x) Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.25f, 0.0f });
+					if (position.x < app->player->position.x) Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.25f, 0.0f });
+					if (position.y > app->player->position.y) Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -1.25f });
+					if (position.y < app->player->position.y) Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 1.25f });
 					
 					if ((app->player->position.y > position.y) && (app->player->position.x > position.x))
 					{
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.25f, 1.25f });
 					}
 					if ((app->player->position.x < position.x) && (app->player->position.y > position.y))
 					{
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({- 0.5f, 0.5f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({- 1.25f, 1.25f });
 					}
 					if ((app->player->position.y < position.y) && (app->player->position.x < position.x))
 					{
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.25f, -1.25f });
 					}
 					if ((app->player->position.x > position.x) && (app->player->position.y < position.y))
 					{
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.25f, -1.25f });
 					}
 
 					if (counter == 150) entityTurn = TurnState::FinishTurn;
@@ -179,9 +179,9 @@ bool Zombie_Standart::Update(float dt)
 				if (entityTurn == TurnState::FinishTurn)
 				{
 					//Change turn from enemy to player turn still have to develop a way to do it correctly
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f });
+					Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f });
 					collider->SetPos(position.x, position.y);
-					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
+					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
 					
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;
@@ -261,7 +261,7 @@ bool Zombie_Standart::Update(float dt)
 				{
 					//Change turn from enemy to player turn still have to develop a way to do it correctly
 					collider->SetPos(position.x, position.y);
-					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
+					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;
 
@@ -305,10 +305,10 @@ for (uint i = 0; i < path->Count(); ++i)
 
 	app->render->DrawRectangle({ NextPos.x,NextPos.y,10,10 }, 255, 0, 0, 255);
 
-	if (NextPos.x > position.x) entityBody->body->SetLinearVelocity({ -0.5f, 0.0f });
-	if (NextPos.x < position.x) entityBody->body->SetLinearVelocity({ 0.5f, 0.0f });
-	if (NextPos.y > position.y) entityBody->body->SetLinearVelocity({ 0.0f, -0.5f });
-	if (NextPos.y < position.y) entityBody->body->SetLinearVelocity({ 0.0f, 0.5f });
+	if (NextPos.x > position.x) entityBody->body->SetLinearVelocity({ -1.25f, 0.0f });
+	if (NextPos.x < position.x) entityBody->body->SetLinearVelocity({ 1.25f, 0.0f });
+	if (NextPos.y > position.y) entityBody->body->SetLinearVelocity({ 0.0f, -1.25f });
+	if (NextPos.y < position.y) entityBody->body->SetLinearVelocity({ 0.0f, 1.25f });
 
 
 

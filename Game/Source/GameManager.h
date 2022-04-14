@@ -34,6 +34,7 @@ public:
 	// Called each loop iteration
 	bool Update(float dt);
 
+	void NextTurn();
 	
 	int counter = 0;
 

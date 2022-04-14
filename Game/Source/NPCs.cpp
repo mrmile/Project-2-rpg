@@ -42,7 +42,7 @@ Npcs::Npcs(int x,int y) : Entity(x,y)
 	position.y = y;
 
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
-	entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
+	//entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
 	
 	
 }
@@ -50,7 +50,7 @@ Npcs::Npcs(int x,int y) : Entity(x,y)
 bool Npcs::Update(float dt)
 {
 	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
-	
+	/*
 	if (app->player->pauseMenu == true)
 	{
 		iPoint NewPosition = position;
@@ -69,6 +69,8 @@ bool Npcs::Update(float dt)
 		currentAnim->loop = false;
 
 	}
+	*/
+	return true;
 	
 }
 

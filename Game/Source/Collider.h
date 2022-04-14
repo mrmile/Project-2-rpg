@@ -17,6 +17,7 @@ struct Collider
 		PLAYER,
 		PLAYER_FEET,
 		ENEMY,
+		RANGED_ENEMY,
 		INSTANT_DEATH,
 		B_CB,
 		H_CB,
@@ -27,6 +28,7 @@ struct Collider
 		CHECKPOINT,
 		GOAL_POINT,
 		ENEMY_ATTACK,
+		ENEMY_RANGED_ATTACK,
 
 		MAX
 	};
@@ -48,5 +50,5 @@ struct Collider
 };
 
 
-#endif // !__COLLIDER_H__
+#endif //__COLLIDER_H__
 

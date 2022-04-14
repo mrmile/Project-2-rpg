@@ -9,16 +9,23 @@
 	<map />
 	<LogoScreen />
 	<TitleScreen>
-		<saved_game bool="true" Fx="90" Music="0" FullScreen="false" />
+		<saved_game bool="true" Fx="90" Music="90" FullScreen="false" />
 	</TitleScreen>
 	<SceneMainMap />
 	<SceneCastle />
 	<:anonymous />
 	<player>
-		<position x="3310" y="3044" />
+		<position x="3431" y="3044" />
 		<atributes score="0" hp="100" lives="3" timer="450" />
 	</player>
-	<entities />
+	<entities>
+		<position x="3105" y="2979" />
+		<atributes entityHp="5" />
+		<position x="3385" y="3044" />
+		<atributes entityHp="1" />
+		<position x="3295" y="3044" />
+		<atributes entityHp="1" />
+	</entities>
 	<:anonymous />
 	<:anonymous />
 	<:anonymous />
@@ -27,6 +34,6 @@
 	<PauseMenu />
 	<GameManager />
 	<renderer>
-		<camera x="-6010" y="-5732" />
+		<camera x="-6253" y="-5732" />
 	</renderer>
 </save_state>

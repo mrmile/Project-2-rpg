@@ -129,6 +129,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Source\Collider.cpp" />
+    <ClCompile Include="Source\Dialog.cpp" />
+    <ClCompile Include="Source\DialogNode.cpp" />
     <ClCompile Include="Source\Entity.cpp" />
     <ClCompile Include="Source\EntityManager.cpp" />
     <ClCompile Include="Source\GameManager.cpp" />
@@ -161,9 +163,13 @@
     <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\TitleScreen.cpp" />
     <ClCompile Include="Source\Window.cpp" />
+    <ClCompile Include="Source\Zombie_Runner.cpp" />
+    <ClCompile Include="Source\Zombie_Spitter.cpp" />
     <ClCompile Include="Source\Zombie_Standart.cpp" />
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\Collider.h" />
+    <ClInclude Include="Source\Dialog.h" />
+    <ClInclude Include="Source\DialogNode.h" />
     <ClInclude Include="Source\Entity.h" />
     <ClInclude Include="Source\EntityManager.h" />
     <ClInclude Include="Source\GameManager.h" />
@@ -209,6 +215,8 @@
     <ClInclude Include="Source\External\PugiXml\src\pugiconfig.hpp" />
     <ClInclude Include="Source\External\PugiXml\src\pugixml.hpp" />
     <ClCompile Include="Source\External\PugiXml\src\pugixml.cpp" />
+    <ClInclude Include="Source\Zombie_Runner.h" />
+    <ClInclude Include="Source\Zombie_Spitter.h" />
     <ClInclude Include="Source\Zombie_Standart.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

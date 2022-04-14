@@ -47,6 +47,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::COIN] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::CHECKPOINT] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_ATTACK] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_RANGED_ATTACK] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::RANGED_ENEMY] = true;
 
 	matrix[Collider::Type::ENEMY][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = true;
@@ -64,6 +66,22 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ENEMY][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY_ATTACK] = false;
 
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::LAYER_ZERO] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::INSTANT_DEATH] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::B_CB] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::H_CB] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::V_CB] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::LAVA] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::NULL_COLLIDER] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::PLAYER_FEET] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::COIN] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::CHECKPOINT] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::ENEMY_ATTACK] = false;
+
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::PLAYER] = true;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::ENEMY] = false;
@@ -79,6 +97,22 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::CHECKPOINT] = false;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::ENEMY_ATTACK] = false;
+
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::LAYER_ZERO] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::INSTANT_DEATH] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::B_CB] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::H_CB] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::V_CB] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::LAVA] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::NULL_COLLIDER] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::PLAYER_FEET] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::COIN] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::CHECKPOINT] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::ENEMY_ATTACK] = false;
 
 	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::LAYER_ZERO] = true;
 	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::PLAYER] = true;
@@ -359,6 +393,12 @@ void ModuleCollisions::DebugDraw()
 				app->render->DrawRectangle(colliders[i]->rect, 255, 255, 0, alpha);
 				break;
 			case Collider::Type::ENEMY_ATTACK: // red
+				app->render->DrawRectangle(colliders[i]->rect, 170, 255, 0, alpha);
+				break;
+			case Collider::Type::RANGED_ENEMY: // orange
+				app->render->DrawRectangle(colliders[i]->rect, 255, 155, 0, alpha);
+				break;
+			case Collider::Type::ENEMY_RANGED_ATTACK: // red
 				app->render->DrawRectangle(colliders[i]->rect, 170, 255, 0, alpha);
 				break;
 			case Collider::Type::INSTANT_DEATH: // red
