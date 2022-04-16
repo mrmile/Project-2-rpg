@@ -89,6 +89,7 @@ private:
 	EntitySpawnPoint spawnQueue[MAX_ENTITIES];
 	Entity* entities[MAX_ENTITIES] = { nullptr };
 	SDL_Texture* texture_enemies = nullptr;
+	SDL_Texture* texture_npcs = nullptr;
 
 	EntityType HelperQueue[MAX_ENTITIES];
 

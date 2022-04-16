@@ -24,6 +24,7 @@ enum Music
 	LOGO_INTRO,
 	TITLE_THEME,
 	MENU,
+	PAUSE_MENU,
 };
 
 struct _Mix_Music;

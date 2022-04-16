@@ -36,7 +36,8 @@ EntityManager::~EntityManager()
 
 bool EntityManager::Start()
 {
-	texture_enemies = app->tex->Load("Assets/textures/Enemies/zombie_farmer.png"); 
+	texture_enemies = app->tex->Load("Assets/textures/Enemies/zombie_farmer.png");
+	texture_npcs = app->tex->Load("Assets/textures/NPCs/Worker/Worker/stand.png");
 	
 	return true;
 }
@@ -96,6 +97,10 @@ bool EntityManager::CleanUp()
 			else if (HelperQueue[i] == EntityType::ZOMBIE_SPITTER)
 			{
 				entities[i]->Spitter_Zombie_List.end->data->body->DestroyFixture(entities[i]->Spitter_Zombie_List.end->data->body->GetFixtureList());
+			}
+			else if (HelperQueue[i] == EntityType::NPC)
+			{
+				entities[i]->NPC_List.end->data->body->DestroyFixture(entities[i]->NPC_List.end->data->body->GetFixtureList());
 			}
 			entities[i] = nullptr;
 			delete entities[i];
@@ -164,7 +169,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i] = EntityType::NPC;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				//entities[i]->texture = texture_npc;
+				//entities[i]->texture = texture_npcs;
 				break;
 			case EntityType::OBJECTS:
 				//entities[i]->texture = texture_objects;
@@ -264,6 +269,11 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 					entities[i]->Spitter_Zombie_List.end->data->body->DestroyFixture(entities[i]->Spitter_Zombie_List.end->data->body->GetFixtureList());
 					entities[i]->SetToDelete();
 				}
+				else if (HelperQueue[i] == EntityType::NPC)
+				{
+					entities[i]->NPC_List.end->data->body->DestroyFixture(entities[i]->NPC_List.end->data->body->GetFixtureList());
+					entities[i]->SetToDelete();
+				}
 			
 				entityPos = entityPos.next_sibling();
 				entityAtributes = entityAtributes.next_sibling();
@@ -285,6 +295,10 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				else if (HelperQueue[i] == EntityType::ZOMBIE_SPITTER)
 				{
 					AddEntity(EntityType::ZOMBIE_SPITTER, entities[i]->position.x, entities[i]->position.y);
+				}
+				else if (HelperQueue[i] == EntityType::NPC)
+				{
+					AddEntity(EntityType::NPC, entities[i]->position.x, entities[i]->position.y);
 				}
 				
 				

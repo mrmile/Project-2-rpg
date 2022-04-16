@@ -29,6 +29,7 @@ struct Collider
 		GOAL_POINT,
 		ENEMY_ATTACK,
 		ENEMY_RANGED_ATTACK,
+		NPC,
 
 		MAX
 	};

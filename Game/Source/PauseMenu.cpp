@@ -139,7 +139,7 @@ bool PauseMenu::Update(float dt)
 			TitleTransition = false;
 		}
 		
-		if(pauseTimer <= 1) Mix_PauseMusic();
+		if(pauseTimer <= 1) app->audio->ChangeMusic(PAUSE_MENU, 2, 2);
 		if (options == false)
 		{
 			resumeButton_->canClick = true;
@@ -174,7 +174,7 @@ bool PauseMenu::Update(float dt)
 		pauseTimer = 0;
 		noPauseTimer++;
 
-		if (noPauseTimer <= 1) Mix_ResumeMusic();
+		if (noPauseTimer <= 1) app->audio->ChangeMusic(MAIN_MAP, 2, 2);
 	}
 	if (app->player->pauseMenu == false)
 	{

@@ -337,6 +337,14 @@ bool Audio::ChangeMusic(int Id, float fadeInTime, float fadeOutTime)
 
 		break;
 	}
+	case PAUSE_MENU:
+	{
+		Mix_ResumeMusic();
+
+		app->audio->PlayMusic("Assets/Audio/Music/pauseMenuMusic.ogg", fadeInTime, fadeOutTime);
+
+		break;
+	}
 	}
 
 	return true;

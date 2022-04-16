@@ -41,14 +41,41 @@ Npcs::Npcs(int x,int y) : Entity(x,y)
 	position.x = x;
 	position.y = y;
 
-	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
+	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::NPC, (Module*)app->entity_manager);
 	//entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
-	
+	NPC_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10));
 	
 }
 
 bool Npcs::Update(float dt)
 {
+	if (app->player->pauseMenu == true)
+	{
+		iPoint NewPosition = position;
+		collider->SetPos(NewPosition.x, NewPosition.y);
+		NPC_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
+		currentAnim = &Idle_Enemy;
+		currentAnim->loop = false;
+
+		return true;
+	}
+
+	SDL_Rect quad;
+	quad = { 105, 10, 40, 10 };
+
+	if (app->player->pauseMenu == false)
+	{
+		NPC_List.end->data->GetPosition(position.x, position.y);
+		if (position.DistanceTo(app->player->position) < 10)
+		{
+			app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
+		}
+	}
+
+
+
+
+
 	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
 	/*
 	if (app->player->pauseMenu == true)
