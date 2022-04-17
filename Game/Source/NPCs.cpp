@@ -60,15 +60,17 @@ bool Npcs::Update(float dt)
 		return true;
 	}
 
-	SDL_Rect quad;
-	quad = { 105, 10, 40, 10 };
-
 	if (app->player->pauseMenu == false)
 	{
 		NPC_List.end->data->GetPosition(position.x, position.y);
 		if (position.DistanceTo(app->player->position) < 10)
 		{
-			app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
+			/*app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);*/
+			app->player->npcClose = true;
+		}
+		else
+		{
+			app->player->npcClose = false;
 		}
 	}
 
