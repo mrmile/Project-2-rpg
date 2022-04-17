@@ -23,6 +23,7 @@
 #include "GuiManager.h"
 #include "LogoScreen.h"
 #include "PauseMenu.h"
+#include "DialogManager.h"
 #include "GameManager.h"
 
 #include <iostream>
@@ -58,6 +59,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	pathfinding = new PathFinding(false);
 	fonts = new ModuleFonts(false);
 	guiManager = new GuiManager(true);
+	dialogManager = new DialogManager(true);
 	game_manager = new GameManager(true);
 
 	// Ordered for awake / Start / Update
@@ -82,6 +84,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(pathfinding);
 	AddModule(guiManager);
 	AddModule(pause_menu);
+	AddModule(dialogManager);
 	AddModule(game_manager);
 	// Render last to swap buffer
 	AddModule(render);

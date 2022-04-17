@@ -194,6 +194,9 @@ public:
 	bool saved_game = false;
 
 	int entranceID = 0;
+
+	//test for the dialog system
+	bool npcClose = false;
 };
 
 #endif //!__MODULE_PLAYER_H__

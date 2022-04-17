@@ -121,6 +121,9 @@
     <ClCompile Include="Source\Zombie_Spitter.cpp">
       <Filter>General\Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Source\DialogManager.cpp">
+      <Filter>General\Dialog</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -273,6 +276,9 @@
     <ClInclude Include="Source\Zombie_Spitter.h">
       <Filter>General\Entities\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Source\DialogManager.h">
+      <Filter>General\Dialog</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -295,6 +301,9 @@
     </Filter>
     <Filter Include="General\Entities\NPCS">
       <UniqueIdentifier>{f2fa24a6-6710-4049-8200-0367cf4f6382}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General\Dialog">
+      <UniqueIdentifier>{bded6ef0-721b-48ca-95eb-a3a3691cfb38}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

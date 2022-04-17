@@ -35,6 +35,7 @@ class PathFinding;
 class ModuleFonts;
 class GuiManager;
 class PauseMenu;
+class DialogManager;
 class GameManager;
 
 class App
@@ -126,6 +127,7 @@ public:
 	GuiManager* guiManager;
 	PauseMenu* pause_menu;
 	EntityManager* entity_manager;
+	DialogManager* dialogManager;
 	GameManager* game_manager;
 
 	bool AppTitleScreenFull = false;
