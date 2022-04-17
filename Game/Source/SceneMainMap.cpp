@@ -4,7 +4,7 @@
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
-#include "SceneCastle.h"
+#include "SceneCave.h"
 #include "SceneMainMap.h"
 #include "Map.h"
 #include "ModulePhysics.h"
@@ -75,7 +75,7 @@ bool SceneMainMap::Start()
 	destroyScene = false;
 	sceneMainMap = true;
 	
-	app->sceneCastle->sceneCastle = false;
+	app->sceneCave->sceneCave = false;
 
 	// app->titleScreen->transition = false;
 	// app->titleScreen->continueTransition = false;

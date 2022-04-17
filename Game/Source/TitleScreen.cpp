@@ -6,7 +6,7 @@
 #include "Render.h"
 #include "Window.h"
 #include "SceneMainMap.h"
-#include "SceneCastle.h"
+#include "SceneCave.h"
 #include "Map.h"
 #include "ModulePhysics.h"
 #include "ModulePlayer.h"
@@ -242,7 +242,7 @@ bool TitleScreen::Update(float dt)
 			GameHasContinued = true;
 
 			app->titleScreen->Disable();
-			//app->fade->FadeToBlack(app->titleScreen, app->sceneCastle, 60);
+			//app->fade->FadeToBlack(app->titleScreen, app->sceneCave, 60);
 		}
 
 		//FOR START BUTTON
@@ -266,7 +266,7 @@ bool TitleScreen::Update(float dt)
 			
 
 			app->titleScreen->Disable();
-			//app->fade->FadeToBlack(app->titleScreen, app->sceneCastle, 60);
+			//app->fade->FadeToBlack(app->titleScreen, app->sceneCave, 60);
 		}
 	}
 

@@ -21,7 +21,7 @@ class Audio;
 class LogoScreen;
 class TitleScreen;
 class SceneMainMap;
-class SceneCastle;
+class SceneCave;
 class Map;
 class Enemies;
 class ModuleFadeToBlack;
@@ -113,7 +113,7 @@ public:
 	LogoScreen* logoScreen;
 	TitleScreen* titleScreen;
 	SceneMainMap* sceneMainMap;
-	SceneCastle* sceneCastle;
+	SceneCave* sceneCave;
 	Map* map;
 	Enemies* enemies;
 	ModuleFadeToBlack* fade;

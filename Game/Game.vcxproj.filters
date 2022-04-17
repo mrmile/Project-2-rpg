@@ -40,7 +40,7 @@
     <ClCompile Include="Source\App.cpp">
       <Filter>General</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SceneCastle.cpp">
+    <ClCompile Include="Source\SceneCave.cpp">
       <Filter>General</Filter>
     </ClCompile>
     <ClCompile Include="Source\SceneMainMap.cpp">
@@ -186,7 +186,7 @@
     <ClInclude Include="Source\App.h">
       <Filter>General</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SceneCastle.h">
+    <ClInclude Include="Source\SceneCave.h">
       <Filter>General</Filter>
     </ClInclude>
     <ClInclude Include="Source\SceneMainMap.h">
