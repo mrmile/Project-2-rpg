@@ -5,7 +5,7 @@
 #include "Render.h"
 #include "Window.h"
 #include "SceneMainMap.h"
-#include "SceneCastle.h"
+#include "SceneCave.h"
 #include "Map.h"
 #include "ModulePhysics.h"
 #include "ModulePlayer.h"
@@ -19,17 +19,17 @@
 #include "Log.h"
 #include <SDL_mixer/include/SDL_mixer.h>
 
-SceneCastle::SceneCastle(bool start_enabled) : Module(start_enabled)
+SceneCave::SceneCave(bool start_enabled) : Module(start_enabled)
 {
-	name.Create("SceneCastle");
+	name.Create("SceneCave");
 }
 
 // Destructor
-SceneCastle::~SceneCastle()
+SceneCave::~SceneCave()
 {}
 
 // Called before render is available
-bool SceneCastle::Awake()
+bool SceneCave::Awake()
 {
 	LOG("Loading Scene");
 	bool ret = true;
@@ -38,7 +38,7 @@ bool SceneCastle::Awake()
 }
 
 // Called before the first frame
-bool SceneCastle::Start()
+bool SceneCave::Start()
 {
 	// L03: DONE: Load map
 	//app->map->Load("hello.tmx");
@@ -72,8 +72,8 @@ bool SceneCastle::Start()
 	//NULL COLLIDER --> (experimental test for camera functions and other mechanical stuff related with old type colliders
 	//app->collisions->AddCollider({ app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(1200), app->map->MapToWorldSingle(100) }, Collider::Type::NULL_COLLIDER);
 
-	//app->collisions->AddCollider({ app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(16), app->map->MapToWorldSingle(19), app->map->MapToWorldSingle(7) }, Collider::Type::H_CB);
-	//app->collisions->AddCollider({ app->map->MapToWorldSingle(118), app->map->MapToWorldSingle(13), app->map->MapToWorldSingle(10), app->map->MapToWorldSingle(10) }, Collider::Type::H_CB);
+	//app->collisions->AddCollider({ app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(16), app->map->MapToWorldSingle(19), app->map->MapToWorldSingle(7) }, Collider::Type::EXIT_2);
+	//app->collisions->AddCollider({ app->map->MapToWorldSingle(118), app->map->MapToWorldSingle(13), app->map->MapToWorldSingle(10), app->map->MapToWorldSingle(10) }, Collider::Type::EXIT_2);
 
 	//app->map->LoadColliders(); Old version makes the game laggy but with TMX 
 	//app->map->LoadCollidersNewer(); //New version creating the colliders by hand (not needed any more)
@@ -84,20 +84,20 @@ bool SceneCastle::Start()
 	 godMode = false;
 	 playerRestart = false;
 	 destroyScene = false;
-	 sceneCastle = true;
+	 sceneCave = true;
 	 app->sceneMainMap->sceneMainMap = false;
 
 	return true;
 }
 
 // Called each loop iteration
-bool SceneCastle::PreUpdate()
+bool SceneCave::PreUpdate()
 {
 	return true;
 }
 
 // Called each loop iteration
-bool SceneCastle::Update(float dt)
+bool SceneCave::Update(float dt)
 {
 	sceneTimer++;
 	//app->render->camera.x = -(app->player->Player->body->GetPosition().x * 100) + 640;
@@ -167,7 +167,7 @@ bool SceneCastle::Update(float dt)
 }
 
 // Called each loop iteration
-bool SceneCastle::PostUpdate()
+bool SceneCave::PostUpdate()
 {
 	bool ret = true;
 
@@ -222,20 +222,20 @@ bool SceneCastle::PostUpdate()
 }
 
 // Called before quitting
-bool SceneCastle::CleanUp()
+bool SceneCave::CleanUp()
 {
 	LOG("Freeing scene");
 
-	//app->sceneCastle_game->holeSensor3->body->DestroyFixture(app->sceneCastle_game->holeSensor3->body->GetFixtureList());
+	//app->sceneCave_game->holeSensor3->body->DestroyFixture(app->sceneCave_game->holeSensor3->body->GetFixtureList());
 	//app->collisions->RemoveCollider(app->collisions->AddCollider({ app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(1200), app->map->MapToWorldSingle(100) }, Collider::Type::NULL_COLLIDER));
-	//app->collisions->RemoveCollider(app->collisions->AddCollider({ app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(16), app->map->MapToWorldSingle(19), app->map->MapToWorldSingle(7) }, Collider::Type::H_CB));
-	//app->collisions->RemoveCollider(app->collisions->AddCollider({ app->map->MapToWorldSingle(118), app->map->MapToWorldSingle(13), app->map->MapToWorldSingle(10), app->map->MapToWorldSingle(10) }, Collider::Type::H_CB));
+	//app->collisions->RemoveCollider(app->collisions->AddCollider({ app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(16), app->map->MapToWorldSingle(19), app->map->MapToWorldSingle(7) }, Collider::Type::EXIT_2));
+	//app->collisions->RemoveCollider(app->collisions->AddCollider({ app->map->MapToWorldSingle(118), app->map->MapToWorldSingle(13), app->map->MapToWorldSingle(10), app->map->MapToWorldSingle(10) }, Collider::Type::EXIT_2));
 
 	//app->collisions->RemoveCollider(app->collisions->AddCollider({ app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(1200), app->map->MapToWorldSingle(100) }, Collider::Type::NULL_COLLIDER));
 
 	//app->map->DeleteCollidersSensors();
 	destroyScene = true;
-	sceneCastle = false;
+	sceneCave = false;
 
 	return true;
 }
@@ -249,7 +249,7 @@ void Scene::b2dOnCollision(PhysBody* bodyA, PhysBody* bodyB)
 		filter.categoryBits = 0x0001;
 		filter.maskBits = 0x0001;
 
-		if (bodyB->body == app->player->Player->body && bodyA->body == app->sceneCastle->h_CB1->body)
+		if (bodyB->body == app->player->Player->body && bodyA->body == app->sceneCave->h_CB1->body)
 		{
 
 			filter.categoryBits = 0x0002;
@@ -269,7 +269,7 @@ void Scene::b2dOnCollision(PhysBody* bodyA, PhysBody* bodyB)
 			}
 			
 		}
-		else if (bodyB->body == app->player->Player->body && bodyA->body != app->sceneCastle->h_CB1->body)
+		else if (bodyB->body == app->player->Player->body && bodyA->body != app->sceneCave->h_CB1->body)
 		{
 			if (app->player->horizontalCB == true)
 			{

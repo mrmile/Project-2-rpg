@@ -15,15 +15,17 @@
 	<SceneCastle />
 	<:anonymous />
 	<player>
-		<position x="3431" y="3044" />
+		<position x="3588" y="2817" />
 		<atributes score="0" hp="100" lives="3" timer="450" />
 	</player>
 	<entities>
-		<position x="3105" y="2979" />
-		<atributes entityHp="5" />
-		<position x="3385" y="3044" />
+		<position x="3126" y="2683" />
 		<atributes entityHp="1" />
-		<position x="3295" y="3044" />
+		<position x="3062" y="2988" />
+		<atributes entityHp="5" />
+		<position x="3374" y="3026" />
+		<atributes entityHp="1" />
+		<position x="3257" y="3044" />
 		<atributes entityHp="1" />
 	</entities>
 	<:anonymous />
@@ -34,6 +36,6 @@
 	<PauseMenu />
 	<GameManager />
 	<renderer>
-		<camera x="-6253" y="-5732" />
+		<camera x="-6566" y="-5278" />
 	</renderer>
 </save_state>

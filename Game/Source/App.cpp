@@ -6,7 +6,7 @@
 #include "Textures.h"
 #include "Audio.h"
 #include "SceneMainMap.h"
-#include "SceneCastle.h"
+#include "SceneCave.h"
 #include "Map.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
@@ -46,7 +46,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	logoScreen = new LogoScreen(true);
 	titleScreen = new TitleScreen(false);
 	sceneMainMap = new SceneMainMap(false);
-	sceneCastle = new SceneCastle(false);
+	sceneCave = new SceneCave(false);
 	map = new Map(true);
 	physics = new ModulePhysics(true);
 	fade = new ModuleFadeToBlack(true);
@@ -72,7 +72,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(logoScreen);
 	AddModule(titleScreen);
 	AddModule(sceneMainMap);
-	AddModule(sceneCastle);
+	AddModule(sceneCave);
 	AddModule(fonts);
 	AddModule(player);
 	AddModule(entity_manager); 
@@ -249,12 +249,12 @@ void App::FinishUpdate()
 	{
 		app->player->Player->body->DestroyFixture(app->player->Player->body->GetFixtureList());
 
-		//if(app->sceneCastle->playerRestart == true || app->sceneMainMap->playerRestart == true) app->player->Player = app->physics->CreatePlayerBox(app->player->position.x, app->player->position.y, 28, 33);
+		//if(app->sceneCave->playerRestart == true || app->sceneMainMap->playerRestart == true) app->player->Player = app->physics->CreatePlayerBox(app->player->position.x, app->player->position.y, 28, 33);
 
 		app->player->deletePlayer = false;
 	}
 
-	if (app->sceneCastle->destroyScene == true) // Tiene que borrar todos los chains del box2D y los sensores de colisiones del método antiguo que están en el nivel
+	if (app->sceneCave->destroyScene == true) // Tiene que borrar todos los chains del box2D y los sensores de colisiones del método antiguo que están en el nivel
 	{
 		// Borra los chains
 		for (int i = 0; i < app->map->mapChainsCounter; i++)
@@ -265,7 +265,7 @@ void App::FinishUpdate()
 		// Borra los sensores
 		app->map->DeleteCollidersSensors();
 
-		app->sceneCastle->destroyScene = false;
+		app->sceneCave->destroyScene = false;
 	}
 
 

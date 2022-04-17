@@ -1,18 +1,18 @@
-#ifndef __SCENE_CASTLE_H__
-#define __SCENE_CASTLE_H__
+#ifndef __SCENE_CAVE_H__
+#define __SCENE_CAVE_H__
 
 #include "Module.h"
 
 struct SDL_Texture;
 
-class SceneCastle : public Module
+class SceneCave : public Module
 {
 public:
 
-	SceneCastle(bool start_enabled = false);
+	SceneCave(bool start_enabled = false);
 
 	// Destructor
-	virtual ~SceneCastle();
+	virtual ~SceneCave();
 
 	// Called before render is available
 	bool Awake();
@@ -45,10 +45,10 @@ public:
 
 	bool destroyScene;
 
-	bool sceneCastle;
+	bool sceneCave;
 
 private:
 	SDL_Texture* img;
 };
 
-#endif // __SCENE_CASTLE_H__
+#endif // __SCENE_CAVE_H__
