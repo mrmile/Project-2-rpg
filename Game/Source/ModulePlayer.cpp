@@ -885,7 +885,7 @@ bool ModulePlayer::LoadState(pugi::xml_node& data)
 	{
 		app->player->Player->body->DestroyFixture(app->player->Player->body->GetFixtureList());
 
-		Player = app->physics->CreatePlayerBox(position.x + 28 / 2, position.y + 33 / 2, 28, 33);
+		Player = app->physics->CreatePlayerBox(position.x, position.y, 20, 5);
 	}
 	
 	
@@ -962,59 +962,32 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		}
 
-		if ((c1->type == Collider::Type::PLAYER || c1->type == Collider::Type::PLAYER_FEET) && c2->type == Collider::Type::H_CB) // HORIZONTAL_CAMERA_BOUND = H_CB
+		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::EXIT_2)
 		{
-			if (horizontalCB == false)
-			{
-				horizontalCB = true;
-			}
+			entranceID = 2;
 		}
-		else if ((c1->type == Collider::Type::PLAYER || c1->type == Collider::Type::PLAYER_FEET) && c2->type != Collider::Type::H_CB)
-		{
-			if (horizontalCB == true)
-			{
-				horizontalCB = false;
-			}
-		}
+		else entranceID = 0;
 
-		if ((c1->type == Collider::Type::PLAYER || c1->type == Collider::Type::PLAYER_FEET) && c2->type == Collider::Type::V_CB) // VERTICAL_CAMERA_BOUND = V_CB
+		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::EXIT_3)
 		{
-			if (verticalCB == false)
-			{
-				verticalCB = true;
-			}
+			entranceID = 3;
 		}
-		else if ((c1->type == Collider::Type::PLAYER || c1->type == Collider::Type::PLAYER_FEET) && c2->type != Collider::Type::V_CB)
-		{
-			if (verticalCB == true)
-			{
-				verticalCB = false;
-			}
-		}
+		else entranceID = 0;
 
-		if ((c1->type == Collider::Type::PLAYER || c1->type == Collider::Type::PLAYER_FEET) && c2->type == Collider::Type::B_CB) // BIDIMENSIONAL_CAMERA_BOUND = B_CB
+		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::EXIT_1)
 		{
-			if (bidimensionalCB == false)
-			{
-				bidimensionalCB = true;
-			}
+			entranceID = 1;
 		}
-		else if ((c1->type == Collider::Type::PLAYER || c1->type == Collider::Type::PLAYER_FEET) && c2->type != Collider::Type::B_CB)
-		{
-			if (bidimensionalCB == true)
-			{
-				bidimensionalCB = false;
-			}
-		}
+		else entranceID = 0;
 
-		if ((c1->type == Collider::Type::PLAYER || c1->type == Collider::Type::PLAYER_FEET) && c2->type == Collider::Type::LAYER_ZERO)
+		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::LAYER_ZERO)
 		{
 			if (layerZeroReveal == false)
 			{
 				layerZeroReveal = true;
 			}
 		}
-		else if ((c1->type == Collider::Type::PLAYER || c1->type == Collider::Type::PLAYER_FEET) && c2->type != Collider::Type::LAYER_ZERO)
+		else if ((c1->type == Collider::Type::PLAYER) && c2->type != Collider::Type::LAYER_ZERO)
 		{
 			if (layerZeroReveal == true)
 			{
@@ -1022,24 +995,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			}
 		}
 
-		if ((c1->type == Collider::Type::PLAYER || c1->type == Collider::Type::PLAYER_FEET) && c2->type == Collider::Type::LAVA)
+		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::SWITCH)
 		{
-			playerHP -= 100;
-			if (playerHP < 0) playerHP = 0;
-			invincibleDelay = 0;
-			if (playerHP != 0) app->audio->PlayFx(damaged);
-
-			if (playerHP <= 0)
-			{
-				invincibleDelay = 121;
-				playerHP = 0;
-				//app->audio->PlayFx(dead);
-				destroyed = true;
-
-			}
+			
 		}
 		
-		if ((c1->type == Collider::Type::PLAYER || c1->type == Collider::Type::PLAYER_FEET) && c2->type == Collider::Type::INSTANT_DEATH)
+		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::INSTANT_DEATH)
 		{
 			playerHP -= 100;
 			if (playerHP < 0) playerHP = 0;
@@ -1056,21 +1017,21 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			}
 		}
 
-		if ((c1->type == Collider::Type::PLAYER || c1->type == Collider::Type::PLAYER_FEET) && c2->type == Collider::Type::RECOVER_LIFE_POWER_UP)
+		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::RECOVER_LIFE_POWER_UP)
 		{
 			playerHP += 10;
 			if (playerHP > 100) playerHP = 100;
 			app->audio->PlayFx(recoverLifePowerUp);
 		}
 
-		if ((c1->type == Collider::Type::PLAYER || c1->type == Collider::Type::PLAYER_FEET) && c2->type == Collider::Type::COIN)
+		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::COIN)
 		{
 			score += 5;
 			//if (playerScore > 1000) playerScore = 1000;
 			app->audio->PlayFx(coin);
 		}
 
-		if ((c1->type == Collider::Type::PLAYER || c1->type == Collider::Type::PLAYER_FEET) && c2->type == Collider::Type::CHECKPOINT)
+		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::CHECKPOINT)
 		{
 			score += 10;
 			//if (playerScore > 1000) playerScore = 1000;
@@ -1081,7 +1042,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			checkPointReached = true;
 		}
 
-		if ((c1->type == Collider::Type::PLAYER || c1->type == Collider::Type::PLAYER_FEET) && c2->type == Collider::Type::GOAL_POINT)
+		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::GOAL_POINT)
 		{
 			//playerScore += 10;
 			//if (playerScore > 1000) playerScore = 1000;

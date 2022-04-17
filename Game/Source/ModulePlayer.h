@@ -192,6 +192,8 @@ public:
 	
 	//test for continue mechanic
 	bool saved_game = false;
+
+	int entranceID = 0;
 };
 
 #endif //!__MODULE_PLAYER_H__
