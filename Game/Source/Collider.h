@@ -30,6 +30,8 @@ struct Collider
 		ENEMY_ATTACK,
 		ENEMY_RANGED_ATTACK,
 		NPC,
+		NPC2,
+		NPC3,
 
 		MAX
 	};

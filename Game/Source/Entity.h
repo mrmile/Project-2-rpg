@@ -35,6 +35,8 @@ public:
 	List<PhysBody*> Runner_Zombie_List;
 	List<PhysBody*> Spitter_Zombie_List;
 	List<PhysBody*> NPC_List;
+	List<PhysBody*> NPC2_List;
+	List<PhysBody*> NPC3_List;
 
 	//id used to register enemies into combat
 	int id;

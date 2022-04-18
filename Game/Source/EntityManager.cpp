@@ -12,6 +12,8 @@
 
 
 #include "NPCs.h"
+#include "NPCs2.h"
+#include "NPCs3.h"
 #include "Zombie_Standart.h"
 #include "Zombie_Runner.h"
 #include "Zombie_Spitter.h"
@@ -102,6 +104,14 @@ bool EntityManager::CleanUp()
 			{
 				entities[i]->NPC_List.end->data->body->DestroyFixture(entities[i]->NPC_List.end->data->body->GetFixtureList());
 			}
+			else if (HelperQueue[i] == EntityType::NPC2)
+			{
+				entities[i]->NPC2_List.end->data->body->DestroyFixture(entities[i]->NPC2_List.end->data->body->GetFixtureList());
+			}
+			else if (HelperQueue[i] == EntityType::NPC3)
+			{
+				entities[i]->NPC3_List.end->data->body->DestroyFixture(entities[i]->NPC3_List.end->data->body->GetFixtureList());
+			}
 			entities[i] = nullptr;
 			delete entities[i];
 		}
@@ -167,6 +177,20 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 			case EntityType::NPC:
 				entities[i] = new Npcs(info.x, info.y);
 				HelperQueue[i] = EntityType::NPC;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				//entities[i]->texture = texture_npcs;
+				break;
+			case EntityType::NPC2:
+				entities[i] = new Npcs2(info.x, info.y);
+				HelperQueue[i] = EntityType::NPC2;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				//entities[i]->texture = texture_npcs;
+				break;
+			case EntityType::NPC3:
+				entities[i] = new Npcs3(info.x, info.y);
+				HelperQueue[i] = EntityType::NPC3;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
 				//entities[i]->texture = texture_npcs;
@@ -274,6 +298,16 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 					entities[i]->NPC_List.end->data->body->DestroyFixture(entities[i]->NPC_List.end->data->body->GetFixtureList());
 					entities[i]->SetToDelete();
 				}
+				else if (HelperQueue[i] == EntityType::NPC2)
+				{
+					entities[i]->NPC2_List.end->data->body->DestroyFixture(entities[i]->NPC2_List.end->data->body->GetFixtureList());
+					entities[i]->SetToDelete();
+				}
+				else if (HelperQueue[i] == EntityType::NPC3)
+				{
+					entities[i]->NPC3_List.end->data->body->DestroyFixture(entities[i]->NPC3_List.end->data->body->GetFixtureList());
+					entities[i]->SetToDelete();
+				}
 			
 				entityPos = entityPos.next_sibling();
 				entityAtributes = entityAtributes.next_sibling();
@@ -299,6 +333,14 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				else if (HelperQueue[i] == EntityType::NPC)
 				{
 					AddEntity(EntityType::NPC, entities[i]->position.x, entities[i]->position.y);
+				}
+				else if (HelperQueue[i] == EntityType::NPC2)
+				{
+					AddEntity(EntityType::NPC2, entities[i]->position.x, entities[i]->position.y);
+				}
+				else if (HelperQueue[i] == EntityType::NPC3)
+				{
+					AddEntity(EntityType::NPC3, entities[i]->position.x, entities[i]->position.y);
 				}
 				
 				

@@ -32,6 +32,8 @@ bool DialogManager::Start()
 {
 	textRectanlgeNPC = app->tex->Load("Assets/textures/GUI/textButtonNPC.png");
 	textRectanlgePlayer = app->tex->Load("Assets/textures/GUI/textButtonPlayer.png");
+	textNameNPC = app->tex->Load("Assets/textures/GUI/textNameNPC.png");
+	textNamePlayer = app->tex->Load("Assets/textures/GUI/textNamePlayer.png");
 	textOptionUnselected = app->tex->Load("Assets/textures/GUI/optionUnselected.png");
 	textOption1 = app->tex->Load("Assets/textures/GUI/option1.png");
 	textOption2 = app->tex->Load("Assets/textures/GUI/option1.png");
@@ -64,6 +66,34 @@ bool DialogManager::Update(float dt)
 		GUItextOption2->canClick = true;
 	}
 
+	if (app->player->npc2Close == true && dialoguePhase == 0)
+	{
+		GUItextRectanlgeNPC->canClick = true;
+		GUItextOption1->canClick = true;
+		GUItextOption2->canClick = true;
+	}
+
+	if (app->player->npc2Close == false && dialoguePhase == 0)
+	{
+		GUItextRectanlgeNPC->canClick = false;
+		GUItextOption1->canClick = true;
+		GUItextOption2->canClick = true;
+	}
+
+	if (app->player->npc3Close == true && dialoguePhase == 0)
+	{
+		GUItextRectanlgeNPC->canClick = true;
+		GUItextOption1->canClick = true;
+		GUItextOption2->canClick = true;
+	}
+
+	if (app->player->npc3Close == false && dialoguePhase == 0)
+	{
+		GUItextRectanlgeNPC->canClick = false;
+		GUItextOption1->canClick = true;
+		GUItextOption2->canClick = true;
+	}
+
 
 	return true;
 }
@@ -88,6 +118,7 @@ bool DialogManager::PostUpdate()
 		if (dialoguePhase == 0)
 		{
 			app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
+			app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
 
 			app->fonts->BlitText(100, 300, scoreFont, "this is just a test");
 			app->fonts->BlitText(490, 250, scoreFont, "select 1");
@@ -104,11 +135,105 @@ bool DialogManager::PostUpdate()
 
 		if (dialoguePhase == 1 && option1Selected == true)
 		{
+			app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
 			app->fonts->BlitText(100, 300, scoreFont, "option 1 is selected");
 		}
 
 		if (dialoguePhase == 1 && option2Selected == true)
 		{
+			app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
+			app->fonts->BlitText(100, 300, scoreFont, "option 2 is selected");
+		}
+	}
+
+	if (app->player->npc2Close == true)
+	{
+		/*app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);*/
+		/*app->fonts->BlitText(app->player->position.x, app->player->position.y, scoreFont, "this is just a font test");*/
+		if (GUItextRectanlgeNPC->state == GuiControlState::NORMAL && GUItextRectanlgeNPC->canClick == true) GUItextRectanlgeNPC->SetTexture(textRectanlgeNPC);
+		GUItextRectanlgeNPC->Draw(app->render);
+
+		//if (GUItextOption1->state == GuiControlState::NORMAL && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOptionUnselected);
+		//if (GUItextOption1->state == GuiControlState::FOCUSED && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOption1);
+		//GUItextOption1->Draw(app->render);
+
+		//if (GUItextOption2->state == GuiControlState::NORMAL && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOptionUnselected);
+		//if (GUItextOption2->state == GuiControlState::FOCUSED && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOption2);
+		//GUItextOption2->Draw(app->render);
+
+		if (dialoguePhase == 0)
+		{
+			app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
+			app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
+
+			app->fonts->BlitText(100, 300, scoreFont, "this is just a test");
+			app->fonts->BlitText(490, 250, scoreFont, "select 1");
+			app->fonts->BlitText(490, 300, scoreFont, "select 2");
+
+			if (GUItextOption1->state == GuiControlState::NORMAL && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOptionUnselected);
+			if (GUItextOption1->state == GuiControlState::FOCUSED && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOption1);
+			GUItextOption1->Draw(app->render);
+
+			if (GUItextOption2->state == GuiControlState::NORMAL && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOptionUnselected);
+			if (GUItextOption2->state == GuiControlState::FOCUSED && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOption2);
+			GUItextOption2->Draw(app->render);
+		}
+
+		if (dialoguePhase == 1 && option1Selected == true)
+		{
+			app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
+			app->fonts->BlitText(100, 300, scoreFont, "option 1 is selected");
+		}
+
+		if (dialoguePhase == 1 && option2Selected == true)
+		{
+			app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
+			app->fonts->BlitText(100, 300, scoreFont, "option 2 is selected");
+		}
+	}
+
+	if (app->player->npc3Close == true)
+	{
+		/*app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);*/
+		/*app->fonts->BlitText(app->player->position.x, app->player->position.y, scoreFont, "this is just a font test");*/
+		if (GUItextRectanlgeNPC->state == GuiControlState::NORMAL && GUItextRectanlgeNPC->canClick == true) GUItextRectanlgeNPC->SetTexture(textRectanlgeNPC);
+		GUItextRectanlgeNPC->Draw(app->render);
+
+		//if (GUItextOption1->state == GuiControlState::NORMAL && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOptionUnselected);
+		//if (GUItextOption1->state == GuiControlState::FOCUSED && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOption1);
+		//GUItextOption1->Draw(app->render);
+
+		//if (GUItextOption2->state == GuiControlState::NORMAL && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOptionUnselected);
+		//if (GUItextOption2->state == GuiControlState::FOCUSED && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOption2);
+		//GUItextOption2->Draw(app->render);
+
+		if (dialoguePhase == 0)
+		{
+			app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
+			app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
+
+			app->fonts->BlitText(100, 300, scoreFont, "this is just a test");
+			app->fonts->BlitText(490, 250, scoreFont, "select 1");
+			app->fonts->BlitText(490, 300, scoreFont, "select 2");
+
+			if (GUItextOption1->state == GuiControlState::NORMAL && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOptionUnselected);
+			if (GUItextOption1->state == GuiControlState::FOCUSED && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOption1);
+			GUItextOption1->Draw(app->render);
+
+			if (GUItextOption2->state == GuiControlState::NORMAL && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOptionUnselected);
+			if (GUItextOption2->state == GuiControlState::FOCUSED && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOption2);
+			GUItextOption2->Draw(app->render);
+		}
+
+		if (dialoguePhase == 1 && option1Selected == true)
+		{
+			app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
+			app->fonts->BlitText(100, 300, scoreFont, "option 1 is selected");
+		}
+
+		if (dialoguePhase == 1 && option2Selected == true)
+		{
+			app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
 			app->fonts->BlitText(100, 300, scoreFont, "option 2 is selected");
 		}
 	}
@@ -125,6 +250,8 @@ bool DialogManager::CleanUp()
 	app->tex->UnLoad(textRectanlgeNPC);
 	app->tex->UnLoad(textRectanlgePlayer);
 	app->tex->UnLoad(textOptionUnselected);
+	app->tex->UnLoad(textNameNPC);
+	app->tex->UnLoad(textNamePlayer);
 	app->tex->UnLoad(textOption1);
 	app->tex->UnLoad(textOption2);
 

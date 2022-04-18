@@ -197,6 +197,8 @@ public:
 
 	//test for the dialog system
 	bool npcClose = false;
+	bool npc2Close = false;
+	bool npc3Close = false;
 };
 
 #endif //!__MODULE_PLAYER_H__
