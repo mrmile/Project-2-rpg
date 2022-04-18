@@ -140,7 +140,7 @@ bool DialogManager::PostUpdate()
 				GUItextOption2->Draw(app->render);
 			}
 
-			if (dialoguePhase == 1 && option1Selected == true && nodeCounter == 1)
+			if (dialoguePhase == 1 && option1Selected == true)
 			{
 				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
 				app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
@@ -159,7 +159,7 @@ bool DialogManager::PostUpdate()
 				GUItextOption2->Draw(app->render);
 			}
 
-			if (dialoguePhase == 1 && option2Selected == true && nodeCounter == 1)
+			if (dialoguePhase == 1 && option2Selected == true)
 			{
 				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
 				app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
@@ -178,14 +178,14 @@ bool DialogManager::PostUpdate()
 				GUItextOption2->Draw(app->render);
 			}
 
-			if (dialoguePhase == 2 && option1Selected == true && nodeCounter == 2)
+			if (dialoguePhase == 2 && option1SelectedSecondDialog == true)
 			{
 				app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
 				app->fonts->BlitText(80, 260, scoreFont, "option 1 is selected, first test");
 				app->fonts->BlitText(80, 280, scoreFont, "chosen in the second try");
 			}
 
-			if (dialoguePhase == 2 && option2Selected == true && nodeCounter == 2)
+			if (dialoguePhase == 2 && option2SelectedSecondDialog == true)
 			{
 				app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
 				app->fonts->BlitText(80, 260, scoreFont, "option 2 is selected, first test");
@@ -294,7 +294,6 @@ bool DialogManager::PostUpdate()
 			dialoguePhase = 0;
 			option1Selected = false;
 			option2Selected = false;
-			nodeCounter = 0;
 		}
 		/*if (nodeCounter == 2 && option1Selected == true)
 		{
@@ -359,7 +358,11 @@ bool DialogManager::OnGuiMouseClickEvent(GuiControl* control) {
 				app->audio->PlayFx(buttonClickedFx, 0);
 				dialoguePhase++;
 				option1Selected = true;
-				nodeCounter++;
+
+				if (dialoguePhase == 2)
+				{
+					option1SelectedSecondDialog = true;
+				}
 			}
 			if (app->player->npc2Close == true)
 			{
@@ -374,14 +377,18 @@ bool DialogManager::OnGuiMouseClickEvent(GuiControl* control) {
 				option1Selected = true;
 			}
 		}
-		if (control->id == 24 && GUItextOption1->canClick == true)
+		if (control->id == 24 && GUItextOption2->canClick == true)
 		{
 			if (app->player->npcClose == true)
 			{
 				app->audio->PlayFx(buttonClickedFx, 0);
 				dialoguePhase++;
 				option2Selected = true;
-				nodeCounter++;
+
+				if (dialoguePhase == 2)
+				{
+					option1SelectedSecondDialog = true;
+				}
 			}
 			if (app->player->npc2Close == true)
 			{

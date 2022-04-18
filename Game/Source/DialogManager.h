@@ -46,9 +46,10 @@ public:
 	int dialoguePhase = 0;
 	bool option1Selected = false;
 	bool option2Selected= false;
+	bool option1SelectedSecondDialog = false;
+	bool option2SelectedSecondDialog = false;
 	int scoreFont = -1;
 	int nodeCounter = 0;
-	bool secondChose = false;
 };
 
 #endif // !__DIALOG_MANAGER_H__
