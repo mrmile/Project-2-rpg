@@ -47,6 +47,8 @@ public:
 	bool option1Selected = false;
 	bool option2Selected= false;
 	int scoreFont = -1;
+	int nodeCounter = 0;
+	bool secondChose = false;
 };
 
 #endif // !__DIALOG_MANAGER_H__
