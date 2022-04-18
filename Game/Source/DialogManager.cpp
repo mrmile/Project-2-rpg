@@ -120,7 +120,9 @@ bool DialogManager::PostUpdate()
 			app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
 			app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
 
-			app->fonts->BlitText(100, 300, scoreFont, "this is just a test");
+			app->fonts->BlitText(80, 250, scoreFont, "first dialog test, you have two options");
+			app->fonts->BlitText(80, 270, scoreFont, "first dialog test, you have two options");
+			app->fonts->BlitText(80, 290, scoreFont, "first dialog test, you have two options");
 			app->fonts->BlitText(490, 250, scoreFont, "select 1");
 			app->fonts->BlitText(490, 300, scoreFont, "select 2");
 
@@ -136,13 +138,13 @@ bool DialogManager::PostUpdate()
 		if (dialoguePhase == 1 && option1Selected == true)
 		{
 			app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
-			app->fonts->BlitText(100, 300, scoreFont, "option 1 is selected");
+			app->fonts->BlitText(80, 260, scoreFont, "option 1 is selected, first test");
 		}
 
 		if (dialoguePhase == 1 && option2Selected == true)
 		{
 			app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
-			app->fonts->BlitText(100, 300, scoreFont, "option 2 is selected");
+			app->fonts->BlitText(80, 260, scoreFont, "option 2 is selected, first test");
 		}
 	}
 
@@ -166,7 +168,9 @@ bool DialogManager::PostUpdate()
 			app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
 			app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
 
-			app->fonts->BlitText(100, 300, scoreFont, "this is just a test");
+			app->fonts->BlitText(80, 250, scoreFont, "second dialog test, you have two options");
+			app->fonts->BlitText(80, 270, scoreFont, "second dialog test, you have two options");
+			app->fonts->BlitText(80, 290, scoreFont, "second dialog test, you have two options");
 			app->fonts->BlitText(490, 250, scoreFont, "select 1");
 			app->fonts->BlitText(490, 300, scoreFont, "select 2");
 
@@ -179,16 +183,16 @@ bool DialogManager::PostUpdate()
 			GUItextOption2->Draw(app->render);
 		}
 
-		if (dialoguePhase == 1 && option1Selected == true)
+		if (dialoguePhase == 2 && option1Selected == true)
 		{
 			app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
-			app->fonts->BlitText(100, 300, scoreFont, "option 1 is selected");
+			app->fonts->BlitText(80, 260, scoreFont, "option 1 is selected, second test");	
 		}
 
-		if (dialoguePhase == 1 && option2Selected == true)
+		if (dialoguePhase == 2 && option2Selected == true)
 		{
 			app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
-			app->fonts->BlitText(100, 300, scoreFont, "option 2 is selected");
+			app->fonts->BlitText(80, 260, scoreFont, "option 2 is selected, second test");
 		}
 	}
 
@@ -212,7 +216,9 @@ bool DialogManager::PostUpdate()
 			app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
 			app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
 
-			app->fonts->BlitText(100, 300, scoreFont, "this is just a test");
+			app->fonts->BlitText(80, 250, scoreFont, "third dialog test, you have two options");
+			app->fonts->BlitText(80, 270, scoreFont, "third dialog test, you have two options");
+			app->fonts->BlitText(80, 290, scoreFont, "third dialog test, you have two options");
 			app->fonts->BlitText(490, 250, scoreFont, "select 1");
 			app->fonts->BlitText(490, 300, scoreFont, "select 2");
 
@@ -225,18 +231,33 @@ bool DialogManager::PostUpdate()
 			GUItextOption2->Draw(app->render);
 		}
 
-		if (dialoguePhase == 1 && option1Selected == true)
+		if (dialoguePhase == 3 && option1Selected == true)
 		{
 			app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
-			app->fonts->BlitText(100, 300, scoreFont, "option 1 is selected");
+			app->fonts->BlitText(80, 260, scoreFont, "option 1 is selected, third test");
 		}
 
-		if (dialoguePhase == 1 && option2Selected == true)
+		if (dialoguePhase == 3 && option2Selected == true)
 		{
 			app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
-			app->fonts->BlitText(100, 300, scoreFont, "option 2 is selected");
+			app->fonts->BlitText(80, 260, scoreFont, "option 2 is selected, third test");
 		}
 	}
+
+	if (app->player->npcClose == false && app->player->npc2Close == false && app->player->npc3Close == false)
+	{
+		dialoguePhase = 0;
+		option1Selected = false;
+		option2Selected = false;
+	}
+	/*if (app->player->npc2Close == false)
+	{
+		dialoguePhase = 0;
+	}
+	if (app->player->npc3Close == false)
+	{
+		dialoguePhase = 0;
+	}*/
 	
 
 	
@@ -273,16 +294,45 @@ bool DialogManager::OnGuiMouseClickEvent(GuiControl* control) {
 		}
 		if (control->id == 23 && GUItextOption1->canClick == true)
 		{
-			app->audio->PlayFx(buttonClickedFx, 0);
-
-			dialoguePhase = 1;
-			option1Selected = true;
+			if (app->player->npcClose == true)
+			{
+				app->audio->PlayFx(buttonClickedFx, 0);
+				dialoguePhase = 1;
+				option1Selected = true;
+			}
+			if (app->player->npc2Close == true)
+			{
+				app->audio->PlayFx(buttonClickedFx, 0);
+				dialoguePhase = 2;
+				option1Selected = true;
+			}
+			if (app->player->npc3Close == true)
+			{
+				app->audio->PlayFx(buttonClickedFx, 0);
+				dialoguePhase = 3;
+				option1Selected = true;
+			}
 		}
 		if (control->id == 24 && GUItextOption1->canClick == true)
 		{
-			app->audio->PlayFx(buttonClickedFx, 0);
-			dialoguePhase = 1;
-			option2Selected = true;
+			if (app->player->npcClose == true)
+			{
+				app->audio->PlayFx(buttonClickedFx, 0);
+				dialoguePhase = 1;
+				option2Selected = true;
+			}
+			if (app->player->npc2Close == true)
+			{
+				app->audio->PlayFx(buttonClickedFx, 0);
+				dialoguePhase = 2;
+				option2Selected = true;
+			}
+			if (app->player->npc3Close == true)
+			{
+				app->audio->PlayFx(buttonClickedFx, 0);
+				dialoguePhase = 3;
+				option2Selected = true;
+			}
 		}
 
 

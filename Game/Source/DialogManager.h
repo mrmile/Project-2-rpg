@@ -45,7 +45,7 @@ public:
 
 	int dialoguePhase = 0;
 	bool option1Selected = false;
-	bool option2Selected = false;
+	bool option2Selected= false;
 	int scoreFont = -1;
 };
 
