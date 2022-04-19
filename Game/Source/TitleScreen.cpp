@@ -263,6 +263,7 @@ bool TitleScreen::Update(float dt)
 			app->player->score = 0;
 			app->player->lives = 3;
 			SavedGame = false;
+			app->player->entranceID = 0;
 			
 
 			app->titleScreen->Disable();

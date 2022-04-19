@@ -235,6 +235,19 @@ bool SceneMainMap::PostUpdate()
 		//playerRestart = true;
 	}
 
+	if (app->player->exitActivated = true)
+	{
+		app->player->exitActivated = false;
+		if(app->player->entranceID == 1) app->sceneCave->Enable();
+
+		app->player->Disable();
+		app->collisions->Disable();
+		app->map->Disable();
+		app->entity_manager->Disable();
+		app->particles->Disable();
+		app->fonts->Disable();
+		app->sceneMainMap->Disable();
+	}
 	
 	return ret;
 }

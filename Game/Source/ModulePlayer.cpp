@@ -162,6 +162,9 @@ bool ModulePlayer::Start()
 	sceneTimer = 450;
 
 	pauseMenu = false;
+
+	exitActivated = false;
+	talking = false;
 	
 	return ret;
 }
@@ -962,23 +965,23 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		}
 
+		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::EXIT_1)
+		{
+			exitActivated = true;
+			entranceID = 1;
+		}
+
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::EXIT_2)
 		{
+			exitActivated = true;
 			entranceID = 2;
 		}
-		else entranceID = 0;
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::EXIT_3)
 		{
+			exitActivated = true;
 			entranceID = 3;
 		}
-		else entranceID = 0;
-
-		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::EXIT_1)
-		{
-			entranceID = 1;
-		}
-		else entranceID = 0;
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::LAYER_ZERO)
 		{
