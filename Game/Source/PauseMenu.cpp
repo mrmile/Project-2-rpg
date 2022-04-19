@@ -6,6 +6,7 @@
 #include "Render.h"
 #include "Window.h"
 #include "SceneMainMap.h"
+#include "SceneCave.h"
 #include "TitleScreen.h"
 #include "ModulePlayer.h"
 #include "GuiManager.h"
@@ -131,7 +132,8 @@ bool PauseMenu::Update(float dt)
 			app->map->Disable();
 			app->collisions->Disable();
 			app->particles->Disable();
-			app->sceneMainMap->Disable();
+			if(app->sceneMainMap->sceneMainMap == true) app->sceneMainMap->Disable();
+			if(app->sceneCave->sceneCave == true) app->sceneCave->Disable();
 			app->player->Disable();
 			app->entity_manager->Disable();
 			app->fonts->Disable();
@@ -174,7 +176,11 @@ bool PauseMenu::Update(float dt)
 		pauseTimer = 0;
 		noPauseTimer++;
 
-		if (noPauseTimer <= 1) app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);
+		if (noPauseTimer <= 1)
+		{
+			if(app->sceneMainMap->sceneMainMap == true) app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);
+			if(app->sceneCave->sceneCave == true) app->audio->ChangeMusic(CAVE, 0.5f, 0.5f);
+		}
 	}
 	if (app->player->pauseMenu == false)
 	{

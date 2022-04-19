@@ -246,7 +246,7 @@ bool SceneMainMap::PostUpdate()
 		app->pause_menu->Disable();
 		app->sceneMainMap->Disable();
 
-		enableSceneCave = true;
+		if(app->player->entranceID == 1) enableSceneCave = true;
 		
 
 		//app->fade->FadeToBlack(app->sceneMainMap, app->sceneCave, 60.0f);

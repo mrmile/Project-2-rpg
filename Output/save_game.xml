@@ -15,7 +15,7 @@
 	<SceneCave />
 	<:anonymous />
 	<player>
-		<position x="3441" y="3044" />
+		<position x="3320" y="3044" />
 		<atributes score="0" hp="100" lives="3" timer="450" />
 	</player>
 	<entities>
@@ -27,12 +27,12 @@
 		<atributes entityHp="1" />
 		<position x="3126" y="2683" />
 		<atributes entityHp="1" />
-		<position x="3062" y="2988" />
+		<position x="3413" y="3511" />
 		<atributes entityHp="5" />
-		<position x="3231" y="3101" />
-		<atributes entityHp="1" />
-		<position x="3232" y="3044" />
-		<atributes entityHp="1" />
+		<position x="4198" y="3443" />
+		<atributes entityHp="5" />
+		<position x="4418" y="2838" />
+		<atributes entityHp="5" />
 	</entities>
 	<:anonymous />
 	<:anonymous />
@@ -43,6 +43,6 @@
 	<DialogManager />
 	<GameManager />
 	<renderer>
-		<camera x="-6273" y="-5732" />
+		<camera x="-6030" y="-5732" />
 	</renderer>
 </save_state>

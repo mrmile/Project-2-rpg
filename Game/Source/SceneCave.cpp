@@ -189,6 +189,26 @@ bool SceneCave::PostUpdate()
 		//playerRestart = true;
 	}
 
+	if (app->player->exitActivated == true)
+	{
+		app->player->exitActivated = false;
+
+		app->player->Disable();
+		//app->sceneMainMap->Disable();
+		app->collisions->Disable();
+		app->map->Disable();
+		app->entity_manager->Disable();
+		app->particles->Disable();
+		app->fonts->Disable();
+		app->pause_menu->Disable();
+		app->sceneCave->Disable();
+
+		if (app->player->entranceID == 1) enableSceneMainMap = true;
+
+
+		//app->fade->FadeToBlack(app->sceneMainMap, app->sceneCave, 60.0f);
+	}
+
 	return ret;
 }
 
