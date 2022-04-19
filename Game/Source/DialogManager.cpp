@@ -351,7 +351,7 @@ bool DialogManager::PostUpdate()
 				app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
 				app->fonts->BlitText(80, 250, scoreFont, "i have come from chicago and im going to");
 
-				app->fonts->BlitText(493, 253, scoreFont, "new orleans");
+				app->fonts->BlitText(493, 253, scoreFont, "miami");
 				app->fonts->BlitText(493, 300, scoreFont, "boston");
 
 				if (GUItextOption1->state == GuiControlState::NORMAL && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOptionUnselected);
@@ -407,28 +407,6 @@ bool DialogManager::PostUpdate()
 			option1SelectedSecondDialog = false;
 			option2SelectedSecondDialog = false;
 		}
-		/*if (nodeCounter == 2 && option1Selected == true)
-		{
-			option1Selected = false;
-
-			nodeCounter = 3;
-			option1Selected = true;
-		}
-		if (nodeCounter == 2 && option2Selected == true)
-		{
-			option2Selected = false;
-
-			nodeCounter = 3;
-			option2Selected = true;
-		}*/
-		/*if (app->player->npc2Close == false)
-		{
-			dialoguePhase = 0;
-		}
-		if (app->player->npc3Close == false)
-		{
-			dialoguePhase = 0;
-		}*/
 	}
 	
 	//button->Draw(app->render);
