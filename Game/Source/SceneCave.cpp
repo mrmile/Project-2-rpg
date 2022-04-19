@@ -11,6 +11,8 @@
 #include "ModulePlayer.h"
 #include "ModuleCollisions.h"
 #include "TitleScreen.h"
+#include "ModuleFonts.h"
+#include "PauseMenu.h"
 #include "EntityManager.h"
 #include "Entity.h"
 #include "ModuleParticles.h"
@@ -40,14 +42,15 @@ bool SceneCave::Awake()
 // Called before the first frame
 bool SceneCave::Start()
 {
+	
 	// L03: DONE: Load map
 	//app->map->Load("hello.tmx");
-	app->map->Load("fortress.tmx");
-	
+	app->map->Load("cave.tmx");
+
 	Mix_ResumeMusic();
-	Mix_SetMusicPosition(0);
+	//Mix_SetMusicPosition(0);
 	// Load music
-	app->audio->PlayMusic("Assets/audio/music/fortress.ogg");
+	app->audio->ChangeMusic(CAVE, 0.5f, 0.5f);
 
 	sceneTimer = 0;
 
@@ -66,8 +69,8 @@ bool SceneCave::Start()
 	//h_CB2->listener = this;
 	//h_CB2->body->GetFixtureList()->SetFilterData(filter);
 
-	app->render->camera.x = app->map->MapToWorld(0, -42).x;
-	app->render->camera.y = app->map->MapToWorld(0, -42).y;
+	app->render->camera.x = app->map->MapToWorld(0, -0).x;
+	app->render->camera.y = app->map->MapToWorld(0, -0).y;
 
 	//NULL COLLIDER --> (experimental test for camera functions and other mechanical stuff related with old type colliders
 	//app->collisions->AddCollider({ app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(1200), app->map->MapToWorldSingle(100) }, Collider::Type::NULL_COLLIDER);

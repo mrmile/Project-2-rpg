@@ -236,7 +236,7 @@ bool TitleScreen::Update(float dt)
 			app->player->Enable();
 			app->entity_manager->Enable();
 			app->fonts->Enable();
-			//app->tex->Enable();
+			app->tex->Enable();
 			app->pause_menu->Enable();
 		
 			GameHasContinued = true;
@@ -258,7 +258,7 @@ bool TitleScreen::Update(float dt)
 			app->player->Enable();
 			app->entity_manager->Enable();
 			app->fonts->Enable();
-			//app->tex->Enable();
+			app->tex->Enable();
 			app->pause_menu->Enable();
 			app->player->score = 0;
 			app->player->lives = 3;

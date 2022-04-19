@@ -257,6 +257,20 @@ void App::FinishUpdate()
 		app->player->deletePlayer = false;
 	}
 
+	if (app->sceneMainMap->destroyScene == true) // Tiene que borrar todos los chains del box2D y los sensores de colisiones del método antiguo que están en el nivel
+	{
+		// Borra los chains
+		for (int i = 0; i < app->map->mapChainsCounter; i++)
+		{
+			app->map->mapChains[i]->body->DestroyFixture(app->map->mapChains[i]->body->GetFixtureList());
+		}
+
+		// Borra los sensores
+		app->map->DeleteCollidersSensors();
+
+		app->sceneMainMap->destroyScene = false;
+	}
+
 	if (app->sceneCave->destroyScene == true) // Tiene que borrar todos los chains del box2D y los sensores de colisiones del método antiguo que están en el nivel
 	{
 		// Borra los chains
@@ -271,8 +285,33 @@ void App::FinishUpdate()
 		app->sceneCave->destroyScene = false;
 	}
 
+	if (app->sceneMainMap->enableSceneCave == true)
+	{
+		app->collisions->Enable();
+		app->map->Enable();
+		app->sceneCave->Enable();
+		app->particles->Enable();
+		app->player->Enable();
+		app->entity_manager->Enable();
+		app->fonts->Enable();
+		app->pause_menu->Enable();
 
+		app->sceneMainMap->enableSceneCave = false;
+	}
 
+	if (app->sceneCave->enableSceneMainMap == true)
+	{
+		app->collisions->Enable();
+		app->map->Enable();
+		app->particles->Enable();
+		app->sceneMainMap->Enable();
+		app->player->Enable();
+		app->entity_manager->Enable();
+		app->fonts->Enable();
+		app->pause_menu->Enable();
+
+		app->sceneCave->enableSceneMainMap = false;
+	}
 
 	// L07: DONE 4: Now calculate:
    // Amount of frames since startup

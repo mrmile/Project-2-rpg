@@ -1140,7 +1140,7 @@ void Map::LoadCollidersSensors() // Old version
 
 void Map::DeleteCollidersSensors() // En realidad no haze falta. Esto se hace automaticamente cuando le das a disable
 {
-	if (mapLoaded == false) return;
+	//if (mapLoaded == false) return;
 
 	// L04: DONE 5: Prepare the loop to draw all tilesets + DrawTexture()
 	ListItem<MapLayer*>* mapLayerItem;

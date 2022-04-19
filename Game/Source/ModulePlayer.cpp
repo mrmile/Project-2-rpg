@@ -788,6 +788,7 @@ bool ModulePlayer::PostUpdate()
 			app->sceneCave->playerRestart = false;
 		}
 
+		/*
 		if (app->sceneMainMap->playerRestart == true)
 		{
 			//horizontalCB = true;
@@ -816,6 +817,7 @@ bool ModulePlayer::PostUpdate()
 
 			app->sceneMainMap->playerRestart = false;
 		}
+		*/
 
 		if (app->titleScreen->toTitleScreen == true)
 		{

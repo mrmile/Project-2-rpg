@@ -47,6 +47,8 @@ public:
 
 	bool sceneCave;
 
+	bool enableSceneMainMap = false;
+
 private:
 	SDL_Texture* img;
 };

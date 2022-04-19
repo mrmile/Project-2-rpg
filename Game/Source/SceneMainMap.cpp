@@ -241,7 +241,7 @@ bool SceneMainMap::PostUpdate()
 		app->player->exitActivated = false;
 
 		app->player->Disable();
-		//app->sceneMainMap->Disable();
+		app->sceneMainMap->Disable();
 		app->collisions->Disable();
 		app->map->Disable();
 		app->entity_manager->Disable();
@@ -250,15 +250,10 @@ bool SceneMainMap::PostUpdate()
 		app->pause_menu->Disable();
 		//app->sceneMainMap->Disable();
 
-		app->collisions->Enable();
-		app->map->Enable();
-		app->particles->Enable();
-		app->player->Enable();
-		app->entity_manager->Enable();
-		app->fonts->Enable();
-		app->pause_menu->Enable();
+		enableSceneCave = true;
+		
 
-		app->fade->FadeToBlack(app->sceneMainMap, app->sceneCave, 60.0f);
+		//app->fade->FadeToBlack(app->sceneMainMap, app->sceneCave, 60.0f);
 	}
 	
 	return ret;
