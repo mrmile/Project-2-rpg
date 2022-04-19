@@ -26,7 +26,7 @@ Zombie_Spitter::Zombie_Spitter(int x,int y) : Entity(x,y)
 	EntityAP = 5;
 	EntityMP = 3;
 	entityState = GameState::OutOfCombat;
-
+	entityTurn = TurnState::NONE;
 	counter = 0;
 	//HERE WE ADD THE ANIMATIONS WITH GIMP
 	

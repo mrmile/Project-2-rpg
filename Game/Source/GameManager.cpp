@@ -2,6 +2,7 @@
 #include "GameManager.h"
 #include "EntityManager.h"
 #include "Entity.h"
+#include "ModulePlayer.h"
 #include "Defs.h"
 #include "Log.h"
 

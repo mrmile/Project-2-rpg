@@ -31,7 +31,12 @@ struct EntitySpawnPoint
 	int x, y;
 
 };
-
+struct EntityHelper //ADD ANYTHING NEEDED FOR THE ENTITIES TO WORK used in the Load function as we want to cleanup the entities list any time we use it
+{
+	EntityType type;
+	iPoint position;
+	int hp;
+};
 class EntityManager : public Module
 {
 public:
@@ -93,7 +98,7 @@ private:
 	SDL_Texture* texture_enemies = nullptr;
 	SDL_Texture* texture_npcs = nullptr;
 
-	EntityType HelperQueue[MAX_ENTITIES];
+	EntityHelper HelperQueue[MAX_ENTITIES];
 
 	//SDL_Texture* texture_player = nullptr;
 	//SDL_Texture* texture_npc = nullptr;
