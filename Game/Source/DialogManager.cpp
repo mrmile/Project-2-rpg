@@ -38,7 +38,7 @@ bool DialogManager::Start()
 	textOption1 = app->tex->Load("Assets/textures/GUI/option1.png");
 	textOption2 = app->tex->Load("Assets/textures/GUI/option1.png");
 
-	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/buttonClickedFX.wav");
+	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/UISounds/buttonClickedFX.wav");
 
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
 	scoreFont = app->fonts->Load("Assets/textures/Fonts/rtype_font3.png", lookupTable, 2);
@@ -491,7 +491,7 @@ bool DialogManager::OnGuiMouseClickEvent(GuiControl* control) {
 
 				if (dialoguePhase == 2)
 				{
-					option1SelectedSecondDialog = true;
+					option2SelectedSecondDialog = true;
 				}
 			}
 			if (app->player->npc2Close == true)

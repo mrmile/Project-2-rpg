@@ -46,7 +46,7 @@ bool PauseMenu::Start()
 	PauseTitle = app->tex->Load("Assets/textures/Scenes/mainTitleLettersPauseMenu.png");
 	settingsLetters = app->tex->Load("Assets/textures/Scenes/settingsLetters.png");
 
-	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/buttonClickedFX.wav");
+	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/UISounds/buttonClickedFX.wav");
 	resumeButton = app->tex->Load("Assets/textures/GUI/resumeButton.png");
 	optionsButton = app->tex->Load("Assets/textures/GUI/optionsButton.png");
 	backToTitleButton = app->tex->Load("Assets/textures/GUI/titlescreenButton.png");

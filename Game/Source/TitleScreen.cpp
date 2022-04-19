@@ -93,7 +93,7 @@ bool TitleScreen::Start()
 
 	// Load music
 	app->audio->ChangeMusic(TITLE_THEME, 2, 2);
-	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/buttonClickedFX.wav");
+	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/UISounds/buttonClickedFX.wav");
 	buttonNotClickedFx = app->audio->LoadFx("Assets/audio/fx/No.wav");
 
 	// L14: TODO 2_D: Declare a GUI Button and create it using the GuiManager
