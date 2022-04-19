@@ -110,6 +110,14 @@ bool Zombie_Runner::Update(float dt)
 				Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
 
 			}
+		
+			if (position.DistanceTo(app->player->position) < 100)
+			{
+				app->entity_manager->RegisterEntitesInCombat(id);
+				entityState = GameState::InCombat;
+				app->game_manager->StartTurnManagement = true;
+			}
+
 
 			return true;
 

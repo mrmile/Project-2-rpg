@@ -111,6 +111,13 @@ bool Zombie_Standart::Update(float dt)
 
 			}
 
+			if (position.DistanceTo(app->player->position) < 100)
+			{
+				app->entity_manager->RegisterEntitesInCombat(id);
+				entityState = GameState::InCombat;
+				app->game_manager->StartTurnManagement = true;
+			}
+
 			return true;
 
 		}
