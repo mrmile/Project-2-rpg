@@ -30,7 +30,10 @@ private:
 	SDL_Texture* textButton;
 	SDL_Texture* textRectanlgeNPC;
 	SDL_Texture* textRectanlgePlayer;
-	SDL_Texture* textNameNPC;
+	SDL_Texture* textNameNPC1;
+	SDL_Texture* textNameNPC2;
+	SDL_Texture* textNameNPC3;
+	SDL_Texture* textNameNPC4;
 	SDL_Texture* textNamePlayer;
 	SDL_Texture* textOption1;
 	SDL_Texture* textOption2;
