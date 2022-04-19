@@ -5,6 +5,7 @@
 #include "Animation.h"
 #include "Point.h"
 #include "ModulePhysics.h"
+#include "GameManager.h"
 
 // sound fx web: https://themushroomkingdom.net/media/smw2/wav
 

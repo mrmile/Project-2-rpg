@@ -133,6 +133,9 @@
     <ClCompile Include="Source\NPCs4.cpp">
       <Filter>General\Entities\NPCS</Filter>
     </ClCompile>
+    <ClCompile Include="Source\CombatMenu.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -296,6 +299,9 @@
     </ClInclude>
     <ClInclude Include="Source\NPCs4.h">
       <Filter>General\Entities\NPCS</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CombatMenu.h">
+      <Filter>General</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
