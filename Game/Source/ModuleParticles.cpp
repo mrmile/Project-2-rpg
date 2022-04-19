@@ -8,6 +8,8 @@
 #include "SceneMainMap.h"
 #include "ModulePlayer.h"
 #include "TitleScreen.h"
+#include "SceneCave.h"
+#include "SceneMainMap.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -213,6 +215,7 @@ bool ModuleParticles::Update(float dt)
 	{
 		return true;
 	}
+
 }
 
 bool ModuleParticles::PostUpdate()
@@ -232,6 +235,8 @@ bool ModuleParticles::PostUpdate()
 	{
 		app->render->DrawTexture2(app->player->gameOverScreen, 0, 0, NULL, 0.0f);
 	}
+
+	app->render->DrawTexture(app->sceneCave->spotLight, app->player->position.x - 960, app->player->position.y - 540, NULL);
 
 	return true;
 }
