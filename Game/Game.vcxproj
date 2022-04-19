@@ -155,6 +155,7 @@
     <ClCompile Include="Source\NPCs.cpp" />
     <ClCompile Include="Source\NPCs2.cpp" />
     <ClCompile Include="Source\NPCs3.cpp" />
+    <ClCompile Include="Source\NPCs4.cpp" />
     <ClCompile Include="Source\Particle.cpp" />
     <ClCompile Include="Source\Pathfinding.cpp" />
     <ClCompile Include="Source\PauseMenu.cpp" />
@@ -194,6 +195,7 @@
     <ClInclude Include="Source\NPCs.h" />
     <ClInclude Include="Source\NPCs2.h" />
     <ClInclude Include="Source\NPCs3.h" />
+    <ClInclude Include="Source\NPCs4.h" />
     <ClInclude Include="Source\Particle.h" />
     <ClInclude Include="Source\Pathfinding.h" />
     <ClInclude Include="Source\PauseMenu.h" />

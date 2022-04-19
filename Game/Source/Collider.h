@@ -32,6 +32,7 @@ struct Collider
 		NPC,
 		NPC2,
 		NPC3,
+		NPC4,
 
 		MAX
 	};

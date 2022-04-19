@@ -37,6 +37,7 @@ public:
 	List<PhysBody*> NPC_List;
 	List<PhysBody*> NPC2_List;
 	List<PhysBody*> NPC3_List;
+	List<PhysBody*> NPC4_List;
 
 	//id used to register enemies into combat
 	int id;

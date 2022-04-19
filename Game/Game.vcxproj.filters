@@ -130,6 +130,9 @@
     <ClCompile Include="Source\NPCs3.cpp">
       <Filter>General\Entities\NPCS</Filter>
     </ClCompile>
+    <ClCompile Include="Source\NPCs4.cpp">
+      <Filter>General\Entities\NPCS</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -289,6 +292,9 @@
       <Filter>General\Entities\NPCS</Filter>
     </ClInclude>
     <ClInclude Include="Source\NPCs3.h">
+      <Filter>General\Entities\NPCS</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\NPCs4.h">
       <Filter>General\Entities\NPCS</Filter>
     </ClInclude>
   </ItemGroup>

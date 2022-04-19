@@ -94,6 +94,20 @@ bool DialogManager::Update(float dt)
 		GUItextOption2->canClick = true;
 	}
 
+	if (app->player->npc4Close == true && dialoguePhase == 0)
+	{
+		GUItextRectanlgeNPC->canClick = true;
+		GUItextOption1->canClick = true;
+		GUItextOption2->canClick = true;
+	}
+
+	if (app->player->npc4Close == false && dialoguePhase == 0)
+	{
+		GUItextRectanlgeNPC->canClick = false;
+		GUItextOption1->canClick = true;
+		GUItextOption2->canClick = true;
+	}
+
 
 	return true;
 }
@@ -289,7 +303,97 @@ bool DialogManager::PostUpdate()
 			}
 		}
 
-		if (app->player->npcClose == false && app->player->npc2Close == false && app->player->npc3Close == false)
+		if (app->player->npc4Close == true)
+		{
+			/*app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);*/
+			/*app->fonts->BlitText(app->player->position.x, app->player->position.y, scoreFont, "this is just a font test");*/
+			if (GUItextRectanlgeNPC->state == GuiControlState::NORMAL && GUItextRectanlgeNPC->canClick == true) GUItextRectanlgeNPC->SetTexture(textRectanlgeNPC);
+			GUItextRectanlgeNPC->Draw(app->render);
+
+			//if (GUItextOption1->state == GuiControlState::NORMAL && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOptionUnselected);
+			//if (GUItextOption1->state == GuiControlState::FOCUSED && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOption1);
+			//GUItextOption1->Draw(app->render);
+
+			//if (GUItextOption2->state == GuiControlState::NORMAL && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOptionUnselected);
+			//if (GUItextOption2->state == GuiControlState::FOCUSED && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOption2);
+			//GUItextOption2->Draw(app->render);
+
+			if (dialoguePhase == 0)
+			{
+				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
+				app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
+
+				app->fonts->BlitText(80, 250, scoreFont, "first dialog test, you have two options");
+				app->fonts->BlitText(80, 270, scoreFont, "and you can do it two times");
+				/*app->fonts->BlitText(80, 290, scoreFont, "first dialog test, you have two options");*/
+
+				app->fonts->BlitText(493, 253, scoreFont, "select 1");
+				app->fonts->BlitText(493, 300, scoreFont, "select 2");
+
+				if (GUItextOption1->state == GuiControlState::NORMAL && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOptionUnselected);
+				if (GUItextOption1->state == GuiControlState::FOCUSED && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOption1);
+				GUItextOption1->Draw(app->render);
+
+				if (GUItextOption2->state == GuiControlState::NORMAL && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOptionUnselected);
+				if (GUItextOption2->state == GuiControlState::FOCUSED && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOption2);
+				GUItextOption2->Draw(app->render);
+			}
+
+			if (dialoguePhase == 1 && option1Selected == true)
+			{
+				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
+				app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
+				app->fonts->BlitText(80, 260, scoreFont, "option 1 is selected, first test");
+				app->fonts->BlitText(80, 280, scoreFont, "but i can chose again");
+
+				app->fonts->BlitText(493, 253, scoreFont, "select 1");
+				app->fonts->BlitText(493, 300, scoreFont, "select 2");
+
+				if (GUItextOption1->state == GuiControlState::NORMAL && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOptionUnselected);
+				if (GUItextOption1->state == GuiControlState::FOCUSED && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOption1);
+				GUItextOption1->Draw(app->render);
+
+				if (GUItextOption2->state == GuiControlState::NORMAL && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOptionUnselected);
+				if (GUItextOption2->state == GuiControlState::FOCUSED && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOption2);
+				GUItextOption2->Draw(app->render);
+			}
+
+			if (dialoguePhase == 1 && option2Selected == true)
+			{
+				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
+				app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
+				app->fonts->BlitText(80, 260, scoreFont, "option 2 is selected, first test");
+				app->fonts->BlitText(80, 280, scoreFont, "but i can chose again");
+
+				app->fonts->BlitText(493, 253, scoreFont, "select 1");
+				app->fonts->BlitText(493, 300, scoreFont, "select 2");
+
+				if (GUItextOption1->state == GuiControlState::NORMAL && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOptionUnselected);
+				if (GUItextOption1->state == GuiControlState::FOCUSED && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOption1);
+				GUItextOption1->Draw(app->render);
+
+				if (GUItextOption2->state == GuiControlState::NORMAL && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOptionUnselected);
+				if (GUItextOption2->state == GuiControlState::FOCUSED && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOption2);
+				GUItextOption2->Draw(app->render);
+			}
+
+			if (dialoguePhase == 2 && option1SelectedSecondDialog == true)
+			{
+				app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
+				app->fonts->BlitText(80, 260, scoreFont, "option 1 is selected, first test");
+				app->fonts->BlitText(80, 280, scoreFont, "chosen in the second try");
+			}
+
+			if (dialoguePhase == 2 && option2SelectedSecondDialog == true)
+			{
+				app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
+				app->fonts->BlitText(80, 260, scoreFont, "option 2 is selected, first test");
+				app->fonts->BlitText(80, 280, scoreFont, "chosen in the second try");
+			}
+		}
+
+
+		if (app->player->npcClose == false && app->player->npc2Close == false && app->player->npc3Close == false && app->player->npc4Close == false)
 		{
 			dialoguePhase = 0;
 			option1Selected = false;

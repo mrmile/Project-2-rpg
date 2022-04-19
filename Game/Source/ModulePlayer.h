@@ -199,6 +199,7 @@ public:
 	bool npcClose = false;
 	bool npc2Close = false;
 	bool npc3Close = false;
+	bool npc4Close = false;
 };
 
 #endif //!__MODULE_PLAYER_H__

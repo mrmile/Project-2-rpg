@@ -14,6 +14,7 @@
 #include "NPCs.h"
 #include "NPCs2.h"
 #include "NPCs3.h"
+#include "NPCs4.h"
 #include "Zombie_Standart.h"
 #include "Zombie_Runner.h"
 #include "Zombie_Spitter.h"
@@ -114,6 +115,10 @@ bool EntityManager::CleanUp()
 			{
 				entities[i]->NPC3_List.end->data->body->DestroyFixture(entities[i]->NPC3_List.end->data->body->GetFixtureList());
 			}
+			if (HelperQueue[i].type == EntityType::NPC4)
+			{
+				entities[i]->NPC4_List.end->data->body->DestroyFixture(entities[i]->NPC4_List.end->data->body->GetFixtureList());
+			}
 
 			entities[i] = nullptr;
 			delete entities[i];
@@ -204,6 +209,13 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 			case EntityType::NPC3:
 				entities[i] = new Npcs3(info.x, info.y);
 				HelperQueue[i].type = EntityType::NPC3;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				//entities[i]->texture = texture_npcs;
+				break;
+			case EntityType::NPC4:
+				entities[i] = new Npcs4(info.x, info.y);
+				HelperQueue[i].type = EntityType::NPC4;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
 				//entities[i]->texture = texture_npcs;
@@ -323,7 +335,12 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 					entities[i]->SetToDelete();
 					entities[i]->NPC3_List.end->data->body->DestroyFixture(entities[i]->NPC3_List.end->data->body->GetFixtureList());
 					entities[i] = nullptr;
-
+				}
+				if (HelperQueue[i].type == EntityType::NPC4)
+				{
+					entities[i]->SetToDelete();
+					entities[i]->NPC4_List.end->data->body->DestroyFixture(entities[i]->NPC4_List.end->data->body->GetFixtureList());
+					entities[i] = nullptr;
 				}
 
 				entityPos = entityPos.next_sibling();
@@ -357,6 +374,10 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				if (HelperQueue[i].type == EntityType::NPC3)
 				{
 					AddEntity(EntityType::NPC3, HelperQueue[i].position.x+10, HelperQueue[i].position.y+5);
+				}
+				if (HelperQueue[i].type == EntityType::NPC4)
+				{
+					AddEntity(EntityType::NPC4, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
 
 				entityPos = entityPos.next_sibling();

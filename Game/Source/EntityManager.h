@@ -19,6 +19,7 @@ enum class EntityType
 	NPC,
 	NPC2,
 	NPC3,
+	NPC4,
 	ZOMBIE_RUNNER,
 	ZOMBIE_SPITTER,
 	ZOMBIE_STANDART,
