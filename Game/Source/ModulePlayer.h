@@ -194,7 +194,7 @@ public:
 	bool saved_game = false;
 
 	int entranceID;
-	bool exitActivated = false;
+	bool exitActivated;
 
 	//test for the dialog system
 	bool npcClose = false;

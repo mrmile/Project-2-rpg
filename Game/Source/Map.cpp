@@ -843,6 +843,15 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		}
 	}
 	
+	if (object->name == "sensors_EXIT_1")
+	{
+		pugi::xml_node NewObject;
+		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		{
+			app->collisions->AddCollider({ NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int(), NewObject.attribute("width").as_int(), NewObject.attribute("height").as_int() }, Collider::Type::EXIT_1);
+		}
+	}
+
 	if (object->name == "sensors_EXIT_2")
 	{
 		pugi::xml_node NewObject;
@@ -858,15 +867,6 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
 		{
 			app->collisions->AddCollider({ NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int(), NewObject.attribute("width").as_int(), NewObject.attribute("height").as_int() }, Collider::Type::EXIT_3);
-		}
-	}
-
-	if (object->name == "sensors_EXIT_1")
-	{
-		pugi::xml_node NewObject;
-		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
-		{
-			app->collisions->AddCollider({ NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int(), NewObject.attribute("width").as_int(), NewObject.attribute("height").as_int() }, Collider::Type::EXIT_1);
 		}
 	}
 

@@ -17,6 +17,7 @@
 #include "ModuleFonts.h"
 #include "PauseMenu.h"
 #include "Pathfinding.h"
+#include "ModuleFadeToBlack.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -235,18 +236,29 @@ bool SceneMainMap::PostUpdate()
 		//playerRestart = true;
 	}
 
-	if (app->player->exitActivated = true)
+	if (app->player->exitActivated == true)
 	{
 		app->player->exitActivated = false;
-		if(app->player->entranceID == 1) app->sceneCave->Enable();
 
 		app->player->Disable();
+		//app->sceneMainMap->Disable();
 		app->collisions->Disable();
 		app->map->Disable();
 		app->entity_manager->Disable();
 		app->particles->Disable();
 		app->fonts->Disable();
-		app->sceneMainMap->Disable();
+		app->pause_menu->Disable();
+		//app->sceneMainMap->Disable();
+
+		app->collisions->Enable();
+		app->map->Enable();
+		app->particles->Enable();
+		app->player->Enable();
+		app->entity_manager->Enable();
+		app->fonts->Enable();
+		app->pause_menu->Enable();
+
+		app->fade->FadeToBlack(app->sceneMainMap, app->sceneCave, 60.0f);
 	}
 	
 	return ret;

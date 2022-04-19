@@ -171,7 +171,6 @@ bool SceneCave::PostUpdate()
 {
 	bool ret = true;
 
-	
 
 	// L08: TODO 6: Make the camera movement independent of framerate
 
