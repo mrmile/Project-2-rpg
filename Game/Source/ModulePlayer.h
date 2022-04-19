@@ -193,7 +193,8 @@ public:
 	//test for continue mechanic
 	bool saved_game = false;
 
-	int entranceID = 0;
+	int entranceID;
+	bool exitActivated = false;
 
 	//test for the dialog system
 	bool npcClose = false;
