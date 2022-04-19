@@ -40,7 +40,7 @@ Zombie_Spitter::Zombie_Spitter(int x,int y) : Entity(x,y)
 	position.x = x;
 	position.y = y;
 
-	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
+	collider = app->collisions->AddCollider({ position.x, position.y - 46, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
 
 	Spitter_Zombie_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10));
 	
@@ -55,7 +55,7 @@ bool Zombie_Spitter::Update(float dt)
 	if (app->player->pauseMenu == true)
 	{
 		iPoint NewPosition = position;
-		collider->SetPos(NewPosition.x, NewPosition.y);
+		collider->SetPos(NewPosition.x, NewPosition.y - 46);
 		Spitter_Zombie_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
 		currentAnim = &Idle_Enemy;
 		currentAnim->loop = false;
@@ -73,7 +73,7 @@ bool Zombie_Spitter::Update(float dt)
 
 			if (position.DistanceTo(app->player->position) < 150)
 			{
-				collider->SetPos(position.x, position.y);
+				collider->SetPos(position.x, position.y - 46);
 				Spitter_Zombie_List.end->data->GetPosition(position.x, position.y);
 				currentAnim = &Idle_Enemy;
 				currentAnim->loop = true;
@@ -102,7 +102,7 @@ bool Zombie_Spitter::Update(float dt)
 			}
 			else
 			{
-				collider->SetPos(position.x, position.y);
+				collider->SetPos(position.x, position.y - 46);
 				Spitter_Zombie_List.end->data->GetPosition(position.x, position.y);
 				currentAnim = &Idle_Enemy;
 				currentAnim->loop = true;
@@ -123,7 +123,7 @@ bool Zombie_Spitter::Update(float dt)
 				if (entityTurn == TurnState::NONE)
 				{
 					//Assigning order of turns
-					collider->SetPos(position.x, position.y);
+					collider->SetPos(position.x, position.y - 46);
 					Spitter_Zombie_List.end->data->GetPosition(position.x, position.y);
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;
@@ -133,7 +133,7 @@ bool Zombie_Spitter::Update(float dt)
 				}
 				if (entityTurn == TurnState::StartOfTurn)
 				{
-					collider->SetPos(position.x, position.y);
+					collider->SetPos(position.x, position.y - 46);
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = false;
 					counter++;
@@ -145,7 +145,7 @@ bool Zombie_Spitter::Update(float dt)
 				if (entityTurn == TurnState::MidOfTurn)
 				{
 
-					collider->SetPos(position.x, position.y);
+					collider->SetPos(position.x, position.y - 46);
 					Spitter_Zombie_List.end->data->GetPosition(position.x, position.y);
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;
@@ -180,7 +180,7 @@ bool Zombie_Spitter::Update(float dt)
 				{
 					//Change turn from enemy to player turn still have to develop a way to do it correctly
 					Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f });
-					collider->SetPos(position.x, position.y);
+					collider->SetPos(position.x, position.y - 46);
 					Spitter_Zombie_List.end->data->GetPosition(position.x, position.y);
 
 					currentAnim = &Idle_Enemy;
@@ -259,7 +259,7 @@ bool Zombie_Spitter::Update(float dt)
 				if (entityTurn == TurnState::WaitTurn)
 				{
 					//Change turn from enemy to player turn still have to develop a way to do it correctly
-					collider->SetPos(position.x, position.y);
+					collider->SetPos(position.x, position.y - 46);
 					Spitter_Zombie_List.end->data->GetPosition(position.x, position.y);
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;

@@ -336,27 +336,27 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 
 				if (HelperQueue[i].type == EntityType::ZOMBIE_STANDART)
 				{
-					AddEntity(EntityType::ZOMBIE_STANDART, HelperQueue[i].position.x, HelperQueue[i].position.y);
+					AddEntity(EntityType::ZOMBIE_STANDART, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
 				if (HelperQueue[i].type == EntityType::ZOMBIE_RUNNER)
 				{
-					AddEntity(EntityType::ZOMBIE_RUNNER, HelperQueue[i].position.x, HelperQueue[i].position.y);
+					AddEntity(EntityType::ZOMBIE_RUNNER, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
 				if (HelperQueue[i].type == EntityType::ZOMBIE_SPITTER)
 				{
-					AddEntity(EntityType::ZOMBIE_SPITTER, HelperQueue[i].position.x, HelperQueue[i].position.y);
+					AddEntity(EntityType::ZOMBIE_SPITTER, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
 				if (HelperQueue[i].type == EntityType::NPC)
 				{
-					AddEntity(EntityType::NPC, HelperQueue[i].position.x, HelperQueue[i].position.y);
+					AddEntity(EntityType::NPC, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
 				if (HelperQueue[i].type == EntityType::NPC2)
 				{
-					AddEntity(EntityType::NPC2, HelperQueue[i].position.x, HelperQueue[i].position.y);
+					AddEntity(EntityType::NPC2, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
 				if (HelperQueue[i].type == EntityType::NPC3)
 				{
-					AddEntity(EntityType::NPC3, HelperQueue[i].position.x, HelperQueue[i].position.y);
+					AddEntity(EntityType::NPC3, HelperQueue[i].position.x+10, HelperQueue[i].position.y+5);
 				}
 
 				entityPos = entityPos.next_sibling();
