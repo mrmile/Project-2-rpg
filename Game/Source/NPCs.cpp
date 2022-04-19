@@ -43,7 +43,7 @@ Npcs::Npcs(int x,int y) : Entity(x,y)
 
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::NPC, (Module*)app->entity_manager);
 	//entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
-	NPC_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10));
+	NPC_List.add(app->physics->CreateNPCbox(position.x, position.y, 25, 10));
 	
 }
 

@@ -69,6 +69,8 @@ bool EntityManager::Update(float dt)
 	}
 
 	//HandleEntitiesDespawn();
+
+
 	return true;
 }
 
@@ -86,32 +88,33 @@ bool EntityManager::CleanUp()
 {
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
-		if (entities[i] != NULL)
+		if (entities[i] != nullptr)
 		{
 			if (HelperQueue[i] == EntityType::ZOMBIE_STANDART)
 			{
 				entities[i]->Standart_Zombie_List.end->data->body->DestroyFixture(entities[i]->Standart_Zombie_List.end->data->body->GetFixtureList());
 			}
-			else if (HelperQueue[i] == EntityType::ZOMBIE_RUNNER)
+			if (HelperQueue[i] == EntityType::ZOMBIE_RUNNER)
 			{
 				entities[i]->Runner_Zombie_List.end->data->body->DestroyFixture(entities[i]->Runner_Zombie_List.end->data->body->GetFixtureList());
 			}
-			else if (HelperQueue[i] == EntityType::ZOMBIE_SPITTER)
+			if (HelperQueue[i] == EntityType::ZOMBIE_SPITTER)
 			{
 				entities[i]->Spitter_Zombie_List.end->data->body->DestroyFixture(entities[i]->Spitter_Zombie_List.end->data->body->GetFixtureList());
 			}
-			else if (HelperQueue[i] == EntityType::NPC)
+			if (HelperQueue[i] == EntityType::NPC)
 			{
 				entities[i]->NPC_List.end->data->body->DestroyFixture(entities[i]->NPC_List.end->data->body->GetFixtureList());
 			}
-			else if (HelperQueue[i] == EntityType::NPC2)
+			if (HelperQueue[i] == EntityType::NPC2)
 			{
 				entities[i]->NPC2_List.end->data->body->DestroyFixture(entities[i]->NPC2_List.end->data->body->GetFixtureList());
 			}
-			else if (HelperQueue[i] == EntityType::NPC3)
+			if (HelperQueue[i] == EntityType::NPC3)
 			{
 				entities[i]->NPC3_List.end->data->body->DestroyFixture(entities[i]->NPC3_List.end->data->body->GetFixtureList());
 			}
+
 			entities[i] = nullptr;
 			delete entities[i];
 		}
@@ -145,7 +148,6 @@ void EntityManager::HandleEntitiesSpawn()
 	{
 		if (spawnQueue[i].type != EntityType::NONE)
 		{
-			// Spawn a new enemy if the screen has reached a spawn position
 			if ((spawnQueue[i].x * 1 < app->render->camera.x + (app->render->camera.w * 1) + SPAWN_MARGIN) || (spawnQueue[i].x * 1 > app->render->camera.x - (app->render->camera.w * 1) - SPAWN_MARGIN) || (spawnQueue[i].y * 1 < app->render->camera.y - (app->render->camera.h * 1) - SPAWN_MARGIN))
 			{
 				SpawnEntity(spawnQueue[i]);
@@ -158,7 +160,18 @@ void EntityManager::HandleEntitiesSpawn()
 
 void EntityManager::HandleEntitiesDespawn()
 {
-	
+	/*
+	for (uint i = 0; i < MAX_ENTITIES; ++i)
+	{
+		if (entities[i] != nullptr)
+		{
+			if (entities[i]->EntityHP == 0)
+			{
+				entities[i]->SetToDelete();
+			}
+		}
+	}
+	*/
 }
 
 void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
@@ -272,83 +285,77 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 			entities[i]->position.y = entityPos.attribute("y").as_int();
 			//entities[i]->FlyingTimer = enemyAtributes.attribute("timer").as_int();
 			entities[i]->EntityHP = entityAtributes.attribute("entityHp").as_int();
-			
 
-			if (entities[i] != nullptr && !entityPos.next_sibling().empty())
+			if (entities[i] != nullptr)
 			{
-				
-
 				if (HelperQueue[i] == EntityType::ZOMBIE_STANDART)
 				{
+					entities[i]->SetToDelete();
 					entities[i]->Standart_Zombie_List.end->data->body->DestroyFixture(entities[i]->Standart_Zombie_List.end->data->body->GetFixtureList());
-					entities[i]->SetToDelete();
 				}
-				else if (HelperQueue[i] == EntityType::ZOMBIE_RUNNER)
+				if (HelperQueue[i] == EntityType::ZOMBIE_RUNNER)
 				{
+					entities[i]->SetToDelete();
 					entities[i]->Runner_Zombie_List.end->data->body->DestroyFixture(entities[i]->Runner_Zombie_List.end->data->body->GetFixtureList());
-					entities[i]->SetToDelete();
 				}
-				else if (HelperQueue[i] == EntityType::ZOMBIE_SPITTER)
+				if (HelperQueue[i] == EntityType::ZOMBIE_SPITTER)
 				{
+					entities[i]->SetToDelete();
 					entities[i]->Spitter_Zombie_List.end->data->body->DestroyFixture(entities[i]->Spitter_Zombie_List.end->data->body->GetFixtureList());
-					entities[i]->SetToDelete();
 				}
-				else if (HelperQueue[i] == EntityType::NPC)
+				if (HelperQueue[i] == EntityType::NPC)
 				{
+					entities[i]->SetToDelete();
 					entities[i]->NPC_List.end->data->body->DestroyFixture(entities[i]->NPC_List.end->data->body->GetFixtureList());
-					entities[i]->SetToDelete();
 				}
-				else if (HelperQueue[i] == EntityType::NPC2)
+				if (HelperQueue[i] == EntityType::NPC2)
 				{
+					entities[i]->SetToDelete();
 					entities[i]->NPC2_List.end->data->body->DestroyFixture(entities[i]->NPC2_List.end->data->body->GetFixtureList());
-					entities[i]->SetToDelete();
 				}
-				else if (HelperQueue[i] == EntityType::NPC3)
+				if (HelperQueue[i] == EntityType::NPC3)
 				{
-					entities[i]->NPC3_List.end->data->body->DestroyFixture(entities[i]->NPC3_List.end->data->body->GetFixtureList());
 					entities[i]->SetToDelete();
+					entities[i]->NPC3_List.end->data->body->DestroyFixture(entities[i]->NPC3_List.end->data->body->GetFixtureList());
+
 				}
-			
+
 				entityPos = entityPos.next_sibling();
 				entityAtributes = entityAtributes.next_sibling();
-
 			}
-			if (entities[i] != nullptr && !entityPos.next_sibling().empty())
+					
+			if (entities[i] != nullptr)
 			{
-
 				entities[i]->GetColldier();
 
 				if (HelperQueue[i] == EntityType::ZOMBIE_STANDART)
 				{
 					AddEntity(EntityType::ZOMBIE_STANDART, entities[i]->position.x, entities[i]->position.y);
 				}
-				else if (HelperQueue[i] == EntityType::ZOMBIE_RUNNER)
+				if (HelperQueue[i] == EntityType::ZOMBIE_RUNNER)
 				{
 					AddEntity(EntityType::ZOMBIE_RUNNER, entities[i]->position.x, entities[i]->position.y);
 				}
-				else if (HelperQueue[i] == EntityType::ZOMBIE_SPITTER)
+				if (HelperQueue[i] == EntityType::ZOMBIE_SPITTER)
 				{
 					AddEntity(EntityType::ZOMBIE_SPITTER, entities[i]->position.x, entities[i]->position.y);
 				}
-				else if (HelperQueue[i] == EntityType::NPC)
+				if (HelperQueue[i] == EntityType::NPC)
 				{
 					AddEntity(EntityType::NPC, entities[i]->position.x, entities[i]->position.y);
 				}
-				else if (HelperQueue[i] == EntityType::NPC2)
+				if (HelperQueue[i] == EntityType::NPC2)
 				{
 					AddEntity(EntityType::NPC2, entities[i]->position.x, entities[i]->position.y);
 				}
-				else if (HelperQueue[i] == EntityType::NPC3)
+				if (HelperQueue[i] == EntityType::NPC3)
 				{
 					AddEntity(EntityType::NPC3, entities[i]->position.x, entities[i]->position.y);
 				}
-				
-				
 
 				entityPos = entityPos.next_sibling();
 				entityAtributes = entityAtributes.next_sibling();
 			}
-
 		}
 	}
 

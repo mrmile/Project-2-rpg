@@ -98,7 +98,6 @@ private:
 	//SDL_Texture* texture_player = nullptr;
 	//SDL_Texture* texture_npc = nullptr;
 	//SDL_Texture* texture_objects = nullptr;
-	
 
 };
 
