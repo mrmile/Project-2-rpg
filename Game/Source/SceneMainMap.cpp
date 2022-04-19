@@ -96,6 +96,8 @@ bool SceneMainMap::Start()
 	}
 	*/
 
+	app->SaveGameRequest();
+
 	return true;
 }
 

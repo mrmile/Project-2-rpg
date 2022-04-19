@@ -68,7 +68,7 @@ bool SceneCave::Start()
 
 	sceneSoundRandomizerNumber = 0;
 
-	
+	app->SaveGameRequest();
 
 	return true;
 }
