@@ -44,12 +44,8 @@ bool SceneMainMap::Awake()
 // Called before the first frame
 bool SceneMainMap::Start()
 {
-	// L03: DONE: Load map
-	//app->map->Load("hello.tmx");
 	app->map->Load("main.tmx");
-	
-	// Load music
-	app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);
+
 	app->tex->Load("Assets/textures/GUI/PauseMenuFrame.png");
 	sceneTimer = 0;
 	
@@ -77,6 +73,7 @@ bool SceneMainMap::Start()
 	sceneMainMap = true;
 	
 	app->sceneCave->sceneCave = false;
+	enableSceneCave = false;
 
 	// app->titleScreen->transition = false;
 	// app->titleScreen->continueTransition = false;
@@ -105,6 +102,16 @@ bool SceneMainMap::Start()
 // Called each loop iteration
 bool SceneMainMap::PreUpdate()
 {
+	/*
+	if (sceneTimer <= 2)
+	{
+		app->map->Load("main.tmx");
+
+		// Load music
+		app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);
+	}
+	*/
+
 	if (app->titleScreen->GameHasContinued == true)
 	{
 		app->LoadGameRequest();
@@ -119,8 +126,7 @@ bool SceneMainMap::Update(float dt)
 {
 	sceneTimer++;
 	//F9 --> See colliders
-	
-	
+
 
 	if ((app->input->keys[SDL_SCANCODE_F3] == KEY_DOWN || app->input->keys[SDL_SCANCODE_F1] == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false))
 	{
@@ -183,7 +189,10 @@ bool SceneMainMap::Update(float dt)
 bool SceneMainMap::PostUpdate()
 {
 	bool ret = true;
-
+	if (sceneTimer <= 2)
+	{
+		app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);
+	}
 	
 	//if (app->player->horizontalCB == false && app->player->bidimensionalCB == false && sceneTimer > 1) app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 150) + 630);
 	app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 100) + 630);
@@ -194,19 +203,6 @@ bool SceneMainMap::PostUpdate()
 
 	if (app->render->camera.x < -app->map->levelAreaRightBound * 2 + 1280) app->render->camera.x = -app->map->levelAreaRightBound * 2 + 1280;
 	if (app->render->camera.x > -app->map->levelAreaLeftBound * 2) app->render->camera.x = -app->map->levelAreaLeftBound * 2;
-	
-	//if (-app->player->position.y > app->render->camera.y / 2 + -52) app->render->camera.y += 10;
-	//if (-app->player->position.y < app->render->camera.y / 2 + -92) app->render->camera.y -= 10;
-
-	
-
-	/*
-	if (app->render->camera.y < -app->map->levelAreaLowerBound * 3 + 720) app->render->camera.y = -app->map->levelAreaLowerBound * 3 + 720; //720 * 3
-	if (app->render->camera.y > -app->map->levelAreaUpperBound * 3) app->render->camera.y = -app->map->levelAreaUpperBound * 3;
-
-	if (app->render->camera.x < -app->map->levelAreaRightBound * 3 + 1280) app->render->camera.x = -app->map->levelAreaRightBound * 3 + 1280;
-	if (app->render->camera.x > -app->map->levelAreaLeftBound * 3) app->render->camera.x = -app->map->levelAreaLeftBound * 3;
-	*/
 	
 
 	if (app->player->destroyedDelay > 210 && app->player->destroyedDelay <= 211)
@@ -241,14 +237,14 @@ bool SceneMainMap::PostUpdate()
 		app->player->exitActivated = false;
 
 		app->player->Disable();
-		app->sceneMainMap->Disable();
+		//app->sceneMainMap->Disable();
 		app->collisions->Disable();
 		app->map->Disable();
 		app->entity_manager->Disable();
 		app->particles->Disable();
 		app->fonts->Disable();
 		app->pause_menu->Disable();
-		//app->sceneMainMap->Disable();
+		app->sceneMainMap->Disable();
 
 		enableSceneCave = true;
 		

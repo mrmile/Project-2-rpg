@@ -9,27 +9,29 @@
 	<map />
 	<LogoScreen />
 	<TitleScreen>
-		<saved_game bool="true" Fx="0" Music="90" FullScreen="false" />
+		<saved_game bool="true" Fx="90" Music="90" FullScreen="false" />
 	</TitleScreen>
 	<SceneMainMap />
 	<SceneCave />
 	<:anonymous />
 	<player>
-		<position x="3055" y="2778" />
-		<atributes score="0" hp="80" lives="3" timer="450" />
+		<position x="3441" y="3044" />
+		<atributes score="0" hp="100" lives="3" timer="450" />
 	</player>
 	<entities>
-		<position x="3245" y="2623" />
+		<position x="3413" y="2650" />
 		<atributes entityHp="1" />
-		<position x="2903" y="2685" />
+		<position x="3252" y="2623" />
 		<atributes entityHp="1" />
-		<position x="3119" y="2683" />
+		<position x="2910" y="2685" />
 		<atributes entityHp="1" />
-		<position x="3022" y="3003" />
+		<position x="3126" y="2683" />
+		<atributes entityHp="1" />
+		<position x="3062" y="2988" />
 		<atributes entityHp="5" />
-		<position x="3327" y="3133" />
+		<position x="3231" y="3101" />
 		<atributes entityHp="1" />
-		<position x="3241" y="3095" />
+		<position x="3232" y="3044" />
 		<atributes entityHp="1" />
 	</entities>
 	<:anonymous />
@@ -41,6 +43,6 @@
 	<DialogManager />
 	<GameManager />
 	<renderer>
-		<camera x="-5500" y="-5200" />
+		<camera x="-6273" y="-5732" />
 	</renderer>
 </save_state>

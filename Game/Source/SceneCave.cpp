@@ -42,53 +42,23 @@ bool SceneCave::Awake()
 // Called before the first frame
 bool SceneCave::Start()
 {
-	
-	// L03: DONE: Load map
-	//app->map->Load("hello.tmx");
 	app->map->Load("cave.tmx");
 
-	Mix_ResumeMusic();
-	//Mix_SetMusicPosition(0);
-	// Load music
-	app->audio->ChangeMusic(CAVE, 0.5f, 0.5f);
+	godMode = false;
+	playerRestart = false;
+	destroyScene = false;
+	sceneCave = true;
+	app->sceneMainMap->sceneMainMap = false;
+	enableSceneMainMap = false;
+
+	app->render->camera.x = app->map->MapToWorld(0, 0).x;
+	app->render->camera.y = app->map->MapToWorld(0, 0).y;
 
 	sceneTimer = 0;
 
-	//b2Filter filter;
+	
 
-	//filter.categoryBits = 1;
-
-	//filter.categoryBits = 0x0001;
-	//filter.maskBits = 0x0001;
-
-	//h_CB1 = app->physics->CreateRectangleSensor(app->map->MapToWorldSingle(0) + app->map->MapToWorldSingle(15) / 2, app->map->MapToWorldSingle(16) + app->map->MapToWorldSingle(7) / 2, app->map->MapToWorldSingle(15), app->map->MapToWorldSingle(7));
-	//h_CB1->listener = this;
-	//h_CB1->body->GetFixtureList()->SetFilterData(filter);
-
-	//h_CB2 = app->physics->CreateRectangleSensor(app->map->MapToWorldSingle(118) + app->map->MapToWorldSingle(10) / 2, app->map->MapToWorldSingle(13) + app->map->MapToWorldSingle(10) / 2, app->map->MapToWorldSingle(10), app->map->MapToWorldSingle(10));
-	//h_CB2->listener = this;
-	//h_CB2->body->GetFixtureList()->SetFilterData(filter);
-
-	app->render->camera.x = app->map->MapToWorld(0, -0).x;
-	app->render->camera.y = app->map->MapToWorld(0, -0).y;
-
-	//NULL COLLIDER --> (experimental test for camera functions and other mechanical stuff related with old type colliders
-	//app->collisions->AddCollider({ app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(1200), app->map->MapToWorldSingle(100) }, Collider::Type::NULL_COLLIDER);
-
-	//app->collisions->AddCollider({ app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(16), app->map->MapToWorldSingle(19), app->map->MapToWorldSingle(7) }, Collider::Type::EXIT_2);
-	//app->collisions->AddCollider({ app->map->MapToWorldSingle(118), app->map->MapToWorldSingle(13), app->map->MapToWorldSingle(10), app->map->MapToWorldSingle(10) }, Collider::Type::EXIT_2);
-
-	//app->map->LoadColliders(); Old version makes the game laggy but with TMX 
-	//app->map->LoadCollidersNewer(); //New version creating the colliders by hand (not needed any more)
-	//app->map->LoadCollidersSensors();
-	 
-	 //app->map->LoadLavaColliders();
-
-	 godMode = false;
-	 playerRestart = false;
-	 destroyScene = false;
-	 sceneCave = true;
-	 app->sceneMainMap->sceneMainMap = false;
+	
 
 	return true;
 }
@@ -103,6 +73,7 @@ bool SceneCave::PreUpdate()
 bool SceneCave::Update(float dt)
 {
 	sceneTimer++;
+	
 	//app->render->camera.x = -(app->player->Player->body->GetPosition().x * 100) + 640;
 	//app->render->camera.x = -(app->player->Player->body->GetPosition().x * 100) + 160; //<-- Este es el que se aplica al final
 
@@ -174,25 +145,23 @@ bool SceneCave::PostUpdate()
 {
 	bool ret = true;
 
+	if (sceneTimer <= 2)
+	{
+		app->audio->ChangeMusic(CAVE, 0.5f, 0.5f);
+	}
 
 	// L08: TODO 6: Make the camera movement independent of framerate
 
 	//if (app->player->horizontalCB == false && sceneTimer > 1) app->render->camera.x = -(app->player->Player->body->GetPosition().x * 100) + 630;
 
-	if (app->player->horizontalCB == false && app->player->bidimensionalCB == false && sceneTimer > 1) app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 150) + 630);
-	//if (app->player->verticalCB == false && app->player->bidimensionalCB == false && sceneTimer > 1) app->render->camera.y = -(app->player->Player->body->GetPosition().y * 150) + 380; //450
-	//if (app->player->verticalCB == false && app->player->bidimensionalCB == false && sceneTimer > 1) app->render->camera.y -= app->player->Player->body->GetLinearVelocity().y * 3;
-	if (-app->player->position.y > app->render->camera.y / 2 + 15) app->render->camera.y += 10;
-	if (-app->player->position.y < app->render->camera.y / 2 + -40) app->render->camera.y -= 10;
+	app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 100) + 630);
+	app->render->camera.y = (-(app->player->Player->body->GetPosition().y * 100) + 360);
 
-	//if (app->render->camera.y < app->map->MapToWorldSingle(-45)) app->render->camera.y = app->map->MapToWorldSingle(-45);
-	//if (app->render->camera.y > app->map->MapToWorldSingle(0)) app->render->camera.y = app->map->MapToWorldSingle(0);
+	if (app->render->camera.y < -app->map->levelAreaLowerBound * 2 + 720) app->render->camera.y = -app->map->levelAreaLowerBound * 2 + 720; //720 * 3
+	if (app->render->camera.y > -app->map->levelAreaUpperBound * 2) app->render->camera.y = -app->map->levelAreaUpperBound * 2;
 
-	if (app->render->camera.y < -app->map->levelAreaLowerBound * 3 + 720) app->render->camera.y = -app->map->levelAreaLowerBound * 3 + 720; //720 * 3
-	if (app->render->camera.y > -app->map->levelAreaUpperBound * 3) app->render->camera.y = -app->map->levelAreaUpperBound * 3;
-
-	if (app->render->camera.x < -app->map->levelAreaRightBound * 3 + 1280) app->render->camera.x = -app->map->levelAreaRightBound * 3 + 1280;
-	if (app->render->camera.x > -app->map->levelAreaLeftBound * 3) app->render->camera.x = -app->map->levelAreaLeftBound * 3;
+	if (app->render->camera.x < -app->map->levelAreaRightBound * 2 + 1280) app->render->camera.x = -app->map->levelAreaRightBound * 2 + 1280;
+	if (app->render->camera.x > -app->map->levelAreaLeftBound * 2) app->render->camera.x = -app->map->levelAreaLeftBound * 2;
 
 	if (app->player->destroyedDelay > 210 && app->player->destroyedDelay <= 211)
 	{
