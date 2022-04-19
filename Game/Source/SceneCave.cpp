@@ -21,6 +21,8 @@
 #include "Log.h"
 #include <SDL_mixer/include/SDL_mixer.h>
 
+#include <Time.h>
+
 SceneCave::SceneCave(bool start_enabled) : Module(start_enabled)
 {
 	name.Create("SceneCave");
@@ -44,6 +46,14 @@ bool SceneCave::Start()
 {
 	app->map->Load("cave.tmx");
 
+	spotLight = app->tex->Load("Assets/textures/Particles/spotlight.png");
+
+	cave_bg_noise1 = app->audio->LoadFx("Assets/audio/fx/TerrorSurroundingSounds/cave/cave_bg_noise1.wav");
+	cave_bg_noise2 = app->audio->LoadFx("Assets/audio/fx/TerrorSurroundingSounds/cave/cave_bg_noise2.wav");
+	cave_bg_noise3 = app->audio->LoadFx("Assets/audio/fx/TerrorSurroundingSounds/cave/cave_bg_noise3.wav");
+	cave_bg_noise4 = app->audio->LoadFx("Assets/audio/fx/TerrorSurroundingSounds/cave/cave_bg_noise4.wav");
+	cave_bg_noise5 = app->audio->LoadFx("Assets/audio/fx/TerrorSurroundingSounds/cave/cave_bg_noise5.wav");
+
 	godMode = false;
 	playerRestart = false;
 	destroyScene = false;
@@ -56,9 +66,9 @@ bool SceneCave::Start()
 
 	sceneTimer = 0;
 
-	
+	sceneSoundRandomizerNumber = 0;
 
-	
+	app->SaveGameRequest();
 
 	return true;
 }
@@ -66,6 +76,14 @@ bool SceneCave::Start()
 // Called each loop iteration
 bool SceneCave::PreUpdate()
 {
+	if (app->titleScreen->GameHasContinued == true)
+	{
+		app->LoadGameRequest();
+		app->titleScreen->GameHasContinued = false;
+	}
+
+	srand(time(NULL));
+
 	return true;
 }
 
@@ -96,21 +114,6 @@ bool SceneCave::Update(float dt)
 	if (app->input->keys[SDL_SCANCODE_F5] == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false)
 		app->SaveGameRequest();
 
-	//if(app->input->keys[SDL_SCANCODE_S) == KEY_REPEAT)
-		//app->render->camera.y -= 5;
-
-	//if(app->input->keys[SDL_SCANCODE_W) == KEY_REPEAT)
-		//app->render->camera.y += 5;
-
-	//if(app->input->keys[SDL_SCANCODE_D) == KEY_REPEAT)
-		//app->render->camera.x -= 5;
-
-	//if(app->input->keys[SDL_SCANCODE_A) == KEY_REPEAT)
-		//app->render->camera.x += 5;
-
-	//if(sceneTimer <= 1) app->map->LoadCollidersSensors();
-
-	//app->render->DrawTexture(img, 380, 100); // Placeholder not needed any more
 
 	// Draw map
 	app->map->Draw();
@@ -127,15 +130,7 @@ bool SceneCave::Update(float dt)
 		//app->audio->PlayFx(levelClear, 0);
 	}
 
-	// L03: DONE 7: Set the window title with map/tileset info
-	/*
-	SString title("Map:%dx%d Tiles:%dx%d Tilesets:%d",
-				   app->map->mapData.width, app->map->mapData.height,
-				   app->map->mapData.tileWidth, app->map->mapData.tileHeight,
-				   app->map->mapData.tilesets.count());
-	*/
-
-	//app->win->SetTitle(title.GetString());
+	sceneSoundRandomizerNumber = rand() % 5;
 
 	return true;
 }
@@ -148,6 +143,16 @@ bool SceneCave::PostUpdate()
 	if (sceneTimer <= 2)
 	{
 		app->audio->ChangeMusic(CAVE, 0.5f, 0.5f);
+	}
+
+	if (sceneTimer % 720 == 0 && sceneTimer > 5)
+	{
+		if (sceneSoundRandomizerNumber == 0) app->audio->PlayFx(cave_bg_noise1);
+		if (sceneSoundRandomizerNumber == 1) app->audio->PlayFx(cave_bg_noise2);
+		if (sceneSoundRandomizerNumber == 2) app->audio->PlayFx(cave_bg_noise3);
+		if (sceneSoundRandomizerNumber == 3) app->audio->PlayFx(cave_bg_noise4);
+		if (sceneSoundRandomizerNumber == 4) app->audio->PlayFx(cave_bg_noise5);
+
 	}
 
 	// L08: TODO 6: Make the camera movement independent of framerate
@@ -217,14 +222,8 @@ bool SceneCave::CleanUp()
 {
 	LOG("Freeing scene");
 
-	//app->sceneCave_game->holeSensor3->body->DestroyFixture(app->sceneCave_game->holeSensor3->body->GetFixtureList());
-	//app->collisions->RemoveCollider(app->collisions->AddCollider({ app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(1200), app->map->MapToWorldSingle(100) }, Collider::Type::NULL_COLLIDER));
-	//app->collisions->RemoveCollider(app->collisions->AddCollider({ app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(16), app->map->MapToWorldSingle(19), app->map->MapToWorldSingle(7) }, Collider::Type::EXIT_2));
-	//app->collisions->RemoveCollider(app->collisions->AddCollider({ app->map->MapToWorldSingle(118), app->map->MapToWorldSingle(13), app->map->MapToWorldSingle(10), app->map->MapToWorldSingle(10) }, Collider::Type::EXIT_2));
+	app->tex->UnLoad(spotLight);
 
-	//app->collisions->RemoveCollider(app->collisions->AddCollider({ app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(0), app->map->MapToWorldSingle(1200), app->map->MapToWorldSingle(100) }, Collider::Type::NULL_COLLIDER));
-
-	//app->map->DeleteCollidersSensors();
 	destroyScene = true;
 	sceneCave = false;
 

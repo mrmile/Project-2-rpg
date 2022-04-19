@@ -70,26 +70,11 @@ bool ModulePlayer::Start()
 	bool ret = true;
 	
 	texture = app->tex->Load("Assets/textures/debugRect.png");
-	ptsScore = app->tex->Load("Assets/textures/pts_score.png");
-	livesForScore = app->tex->Load("Assets/textures/lives_score.png");
-	gameOverScreen = app->tex->Load("Assets/textures/game_over.png");
-	yoshiIcon = app->tex->Load("Assets/textures/lives_score_e.png");
-	clockIcon = app->tex->Load("Assets/textures/clock.png");
+
 
 	currentAnimation = &idleRightAnim;
 
-	jumpSound = app->audio->LoadFx("Assets/audio/fx/Jump.wav");
-	hoverSound = app->audio->LoadFx("Assets/audio/fx/Flutter_s.wav");
-	hoverSoundL = app->audio->LoadFx("Assets/audio/fx/Flutter_l.wav");
-	dead = app->audio->LoadFx("Assets/audio/fx/dead.wav");
-	damaged = app->audio->LoadFx("Assets/audio/fx/Whsiup.wav");
-	halfWayPoint = app->audio->LoadFx("Assets/audio/fx/Advice.wav");
-	coin = app->audio->LoadFx("Assets/audio/fx/Coin.wav");
-	recoverLifePowerUp = app->audio->LoadFx("Assets/audio/fx/itemGet.wav");
-	levelClear = app->audio->LoadFx("Assets/audio/fx/levelClear.wav");
-	firework = app->audio->LoadFx("Assets/audio/fx/fireworks.wav");
-	paused = app->audio->LoadFx("Assets/audio/fx/pause.wav");
-	gameOverfx = app->audio->LoadFx("Assets/audio/fx/GameOver.wav");
+
 
 	//laserFx = app->audio->LoadFx("Assets/Fx/laser.wav");
 	//explosionFx = app->audio->LoadFx("Assets/Fx/explosion.wav");
@@ -861,11 +846,6 @@ bool ModulePlayer::PostUpdate()
 bool ModulePlayer::CleanUp()
 {
 	app->tex->UnLoad(texture);
-	app->tex->UnLoad(ptsScore);
-	app->tex->UnLoad(livesForScore);
-	app->tex->UnLoad(gameOverScreen);
-	app->tex->UnLoad(yoshiIcon);
-	app->tex->UnLoad(clockIcon);
 
 	//deletePlayer = true;
 	app->player->Player->body->DestroyFixture(app->player->Player->body->GetFixtureList());

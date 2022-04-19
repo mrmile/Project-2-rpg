@@ -51,6 +51,18 @@ public:
 
 private:
 	SDL_Texture* img;
+
+	int sceneSoundRandomizerNumber;
+	
+public:
+	SDL_Texture* spotLight;
+
+	uint cave_bg_noise1 = 0;
+	uint cave_bg_noise2 = 0;
+	uint cave_bg_noise3 = 0;
+	uint cave_bg_noise4 = 0;
+	uint cave_bg_noise5 = 0;
+
 };
 
 #endif // __SCENE_CAVE_H__

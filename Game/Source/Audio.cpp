@@ -261,7 +261,7 @@ bool Audio::ChangeMusic(int Id, float fadeInTime, float fadeOutTime)
 	{
 		Mix_ResumeMusic();
 
-		app->audio->PlayMusic("Assets/Audio/Music/cave_zone_passthrough.ogg", fadeInTime, fadeOutTime);
+		app->audio->PlayMusic("Assets/Audio/Music/cave_zone_passthrough_V2.ogg", fadeInTime, fadeOutTime);
 
 		break;
 	}
