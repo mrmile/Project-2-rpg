@@ -32,7 +32,10 @@ bool DialogManager::Start()
 {
 	textRectanlgeNPC = app->tex->Load("Assets/textures/GUI/textButtonNPC.png");
 	textRectanlgePlayer = app->tex->Load("Assets/textures/GUI/textButtonPlayer.png");
-	textNameNPC = app->tex->Load("Assets/textures/GUI/textNameNPC.png");
+	textNameNPC1 = app->tex->Load("Assets/textures/GUI/textNameNPC1.png");
+	textNameNPC2 = app->tex->Load("Assets/textures/GUI/textNameNPC2.png");
+	textNameNPC3 = app->tex->Load("Assets/textures/GUI/textNameNPC3.png");
+	textNameNPC4 = app->tex->Load("Assets/textures/GUI/textNameNPC4.png");
 	textNamePlayer = app->tex->Load("Assets/textures/GUI/textNamePlayer.png");
 	textOptionUnselected = app->tex->Load("Assets/textures/GUI/optionUnselected.png");
 	textOption1 = app->tex->Load("Assets/textures/GUI/option1.png");
@@ -136,10 +139,11 @@ bool DialogManager::PostUpdate()
 			if (dialoguePhase == 0)
 			{
 				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
-				app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
+				app->render->DrawTexture2(textNameNPC1, 0, 0, NULL);
 
-				app->fonts->BlitText(80, 250, scoreFont, "first dialog test, you have two options");
-				app->fonts->BlitText(80, 270, scoreFont, "and you can do it two times");
+				app->fonts->BlitText(80, 250, scoreFont, "hello im the npc number one, and i have");
+				app->fonts->BlitText(80, 270, scoreFont, "two options for you to select and you");
+				app->fonts->BlitText(80, 290, scoreFont, "can choose two times");
 				/*app->fonts->BlitText(80, 290, scoreFont, "first dialog test, you have two options");*/
 
 				app->fonts->BlitText(493, 253, scoreFont, "select 1");
@@ -158,8 +162,8 @@ bool DialogManager::PostUpdate()
 			{
 				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
 				app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
-				app->fonts->BlitText(80, 260, scoreFont, "option 1 is selected, first test");
-				app->fonts->BlitText(80, 280, scoreFont, "but i can chose again");
+				app->fonts->BlitText(80, 250, scoreFont, "i have selected option 1 for the first");
+				app->fonts->BlitText(80, 270, scoreFont, "try but i can choose again");
 
 				app->fonts->BlitText(493, 253, scoreFont, "select 1");
 				app->fonts->BlitText(493, 300, scoreFont, "select 2");
@@ -177,8 +181,9 @@ bool DialogManager::PostUpdate()
 			{
 				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
 				app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
-				app->fonts->BlitText(80, 260, scoreFont, "option 2 is selected, first test");
-				app->fonts->BlitText(80, 280, scoreFont, "but i can chose again");
+
+				app->fonts->BlitText(80, 250, scoreFont, "i have selected option 2 for the first");
+				app->fonts->BlitText(80, 270, scoreFont, "try but i can choose again");
 
 				app->fonts->BlitText(493, 253, scoreFont, "select 1");
 				app->fonts->BlitText(493, 300, scoreFont, "select 2");
@@ -194,16 +199,16 @@ bool DialogManager::PostUpdate()
 
 			if (dialoguePhase == 2 && option1SelectedSecondDialog == true)
 			{
-				app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
-				app->fonts->BlitText(80, 260, scoreFont, "option 1 is selected, first test");
-				app->fonts->BlitText(80, 280, scoreFont, "chosen in the second try");
+				app->render->DrawTexture2(textNameNPC1, 0, 0, NULL);
+				app->fonts->BlitText(80, 250, scoreFont, "you have selected the option number one");
+				app->fonts->BlitText(80, 270, scoreFont, "for the second try");
 			}
 
 			if (dialoguePhase == 2 && option2SelectedSecondDialog == true)
 			{
-				app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
-				app->fonts->BlitText(80, 260, scoreFont, "option 2 is selected, first test");
-				app->fonts->BlitText(80, 280, scoreFont, "chosen in the second try");
+				app->render->DrawTexture2(textNameNPC1, 0, 0, NULL);
+				app->fonts->BlitText(80, 250, scoreFont, "you have selected the option number two");
+				app->fonts->BlitText(80, 270, scoreFont, "for the second try");
 			}
 		}
 
@@ -225,13 +230,13 @@ bool DialogManager::PostUpdate()
 			if (dialoguePhase == 0)
 			{
 				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
-				app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
+				app->render->DrawTexture2(textNameNPC2, 0, 0, NULL);
 
-				app->fonts->BlitText(80, 250, scoreFont, "second dialog test, you have two options");
-				app->fonts->BlitText(80, 270, scoreFont, "second dialog test, you have two options");
-				app->fonts->BlitText(80, 290, scoreFont, "second dialog test, you have two options");
-				app->fonts->BlitText(493, 253, scoreFont, "select 1");
-				app->fonts->BlitText(493, 300, scoreFont, "select 2");
+				app->fonts->BlitText(80, 250, scoreFont, "hello im the npc number two, and i have");
+				app->fonts->BlitText(80, 270, scoreFont, "two options for you to select, you can");
+				app->fonts->BlitText(80, 290, scoreFont, "choose what do you want a gun or an axe");
+				app->fonts->BlitText(493, 253, scoreFont, "gun");
+				app->fonts->BlitText(493, 300, scoreFont, "axe");
 
 				if (GUItextOption1->state == GuiControlState::NORMAL && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOptionUnselected);
 				if (GUItextOption1->state == GuiControlState::FOCUSED && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOption1);
@@ -245,13 +250,13 @@ bool DialogManager::PostUpdate()
 			if (dialoguePhase == 2 && option1Selected == true)
 			{
 				app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
-				app->fonts->BlitText(80, 260, scoreFont, "option 1 is selected, second test");
+				app->fonts->BlitText(80, 250, scoreFont, "i prefer to have a gun with me");
 			}
 
 			if (dialoguePhase == 2 && option2Selected == true)
 			{
 				app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
-				app->fonts->BlitText(80, 260, scoreFont, "option 2 is selected, second test");
+				app->fonts->BlitText(80, 250, scoreFont, "i prefer to have an axe with me");
 			}
 		}
 
@@ -273,13 +278,13 @@ bool DialogManager::PostUpdate()
 			if (dialoguePhase == 0)
 			{
 				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
-				app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
+				app->render->DrawTexture2(textNameNPC3, 0, 0, NULL);
 
-				app->fonts->BlitText(80, 250, scoreFont, "third dialog test, you have two options");
-				app->fonts->BlitText(80, 270, scoreFont, "third dialog test, you have two options");
-				app->fonts->BlitText(80, 290, scoreFont, "third dialog test, you have two options");
-				app->fonts->BlitText(493, 253, scoreFont, "select 1");
-				app->fonts->BlitText(493, 300, scoreFont, "select 2");
+				app->fonts->BlitText(80, 250, scoreFont, "hello im the npc number three, and i will");
+				app->fonts->BlitText(80, 270, scoreFont, "need your help to return to my base in");
+				app->fonts->BlitText(80, 290, scoreFont, "the other part of the city");
+				app->fonts->BlitText(493, 253, scoreFont, "i accept");
+				app->fonts->BlitText(493, 300, scoreFont, "not now");
 
 				if (GUItextOption1->state == GuiControlState::NORMAL && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOptionUnselected);
 				if (GUItextOption1->state == GuiControlState::FOCUSED && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOption1);
@@ -293,13 +298,13 @@ bool DialogManager::PostUpdate()
 			if (dialoguePhase == 3 && option1Selected == true)
 			{
 				app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
-				app->fonts->BlitText(80, 260, scoreFont, "option 1 is selected, third test");
+				app->fonts->BlitText(80, 250, scoreFont, "im willing to help you");
 			}
 
 			if (dialoguePhase == 3 && option2Selected == true)
 			{
 				app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
-				app->fonts->BlitText(80, 260, scoreFont, "option 2 is selected, third test");
+				app->fonts->BlitText(80, 250, scoreFont, "i cannot help you right now");
 			}
 		}
 
@@ -321,14 +326,15 @@ bool DialogManager::PostUpdate()
 			if (dialoguePhase == 0)
 			{
 				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
-				app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
+				app->render->DrawTexture2(textNameNPC4, 0, 0, NULL);
 
-				app->fonts->BlitText(80, 250, scoreFont, "first dialog test, you have two options");
-				app->fonts->BlitText(80, 270, scoreFont, "and you can do it two times");
+				app->fonts->BlitText(80, 250, scoreFont, "hello im the npc number four, and i have");
+				app->fonts->BlitText(80, 270, scoreFont, "a couple of questions for you, where did");
+				app->fonts->BlitText(80, 290, scoreFont, "you come from? and where are you going?");
 				/*app->fonts->BlitText(80, 290, scoreFont, "first dialog test, you have two options");*/
 
-				app->fonts->BlitText(493, 253, scoreFont, "select 1");
-				app->fonts->BlitText(493, 300, scoreFont, "select 2");
+				app->fonts->BlitText(493, 253, scoreFont, "chicago");
+				app->fonts->BlitText(493, 300, scoreFont, "new york");
 
 				if (GUItextOption1->state == GuiControlState::NORMAL && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOptionUnselected);
 				if (GUItextOption1->state == GuiControlState::FOCUSED && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOption1);
@@ -343,11 +349,10 @@ bool DialogManager::PostUpdate()
 			{
 				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
 				app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
-				app->fonts->BlitText(80, 260, scoreFont, "option 1 is selected, first test");
-				app->fonts->BlitText(80, 280, scoreFont, "but i can chose again");
+				app->fonts->BlitText(80, 250, scoreFont, "i have come from chicago and im going to");
 
-				app->fonts->BlitText(493, 253, scoreFont, "select 1");
-				app->fonts->BlitText(493, 300, scoreFont, "select 2");
+				app->fonts->BlitText(493, 253, scoreFont, "new orleans");
+				app->fonts->BlitText(493, 300, scoreFont, "boston");
 
 				if (GUItextOption1->state == GuiControlState::NORMAL && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOptionUnselected);
 				if (GUItextOption1->state == GuiControlState::FOCUSED && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOption1);
@@ -362,11 +367,11 @@ bool DialogManager::PostUpdate()
 			{
 				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
 				app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
-				app->fonts->BlitText(80, 260, scoreFont, "option 2 is selected, first test");
-				app->fonts->BlitText(80, 280, scoreFont, "but i can chose again");
 
-				app->fonts->BlitText(493, 253, scoreFont, "select 1");
-				app->fonts->BlitText(493, 300, scoreFont, "select 2");
+				app->fonts->BlitText(80, 250, scoreFont, "i have come from ny and im going to");
+
+				app->fonts->BlitText(493, 253, scoreFont, "miami");
+				app->fonts->BlitText(493, 300, scoreFont, "boston");
 
 				if (GUItextOption1->state == GuiControlState::NORMAL && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOptionUnselected);
 				if (GUItextOption1->state == GuiControlState::FOCUSED && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOption1);
@@ -379,16 +384,17 @@ bool DialogManager::PostUpdate()
 
 			if (dialoguePhase == 2 && option1SelectedSecondDialog == true)
 			{
-				app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
-				app->fonts->BlitText(80, 260, scoreFont, "option 1 is selected, first test");
-				app->fonts->BlitText(80, 280, scoreFont, "chosen in the second try");
+				app->render->DrawTexture2(textNameNPC4, 0, 0, NULL);
+				app->fonts->BlitText(80, 250, scoreFont, "its a long and dangerous road the one");
+				app->fonts->BlitText(80, 270, scoreFont, "to miami, you wont survive alone");
 			}
 
 			if (dialoguePhase == 2 && option2SelectedSecondDialog == true)
 			{
-				app->render->DrawTexture2(textNameNPC, 0, 0, NULL);
-				app->fonts->BlitText(80, 260, scoreFont, "option 2 is selected, first test");
-				app->fonts->BlitText(80, 280, scoreFont, "chosen in the second try");
+				app->render->DrawTexture2(textNameNPC4, 0, 0, NULL);
+				app->fonts->BlitText(80, 250, scoreFont, "i hope you are lying to me, boston");
+				app->fonts->BlitText(80, 270, scoreFont, "is full of zombies its imposible to");
+				app->fonts->BlitText(80, 290, scoreFont, "reach the city");
 			}
 		}
 
@@ -398,6 +404,8 @@ bool DialogManager::PostUpdate()
 			dialoguePhase = 0;
 			option1Selected = false;
 			option2Selected = false;
+			option1SelectedSecondDialog = false;
+			option2SelectedSecondDialog = false;
 		}
 		/*if (nodeCounter == 2 && option1Selected == true)
 		{
@@ -433,7 +441,10 @@ bool DialogManager::CleanUp()
 	app->tex->UnLoad(textRectanlgeNPC);
 	app->tex->UnLoad(textRectanlgePlayer);
 	app->tex->UnLoad(textOptionUnselected);
-	app->tex->UnLoad(textNameNPC);
+	app->tex->UnLoad(textNameNPC1);
+	app->tex->UnLoad(textNameNPC2);
+	app->tex->UnLoad(textNameNPC3);
+	app->tex->UnLoad(textNameNPC4);
 	app->tex->UnLoad(textNamePlayer);
 	app->tex->UnLoad(textOption1);
 	app->tex->UnLoad(textOption2);
@@ -480,6 +491,18 @@ bool DialogManager::OnGuiMouseClickEvent(GuiControl* control) {
 				dialoguePhase = 3;
 				option1Selected = true;
 			}
+			if (app->player->npc4Close == true)
+			{
+				app->audio->PlayFx(buttonClickedFx, 0);
+				dialoguePhase++;
+				option1Selected = true;
+
+				if (dialoguePhase == 2)
+				{
+					option1SelectedSecondDialog = true;
+				}
+			}
+
 		}
 		if (control->id == 24 && GUItextOption2->canClick == true)
 		{
@@ -506,7 +529,19 @@ bool DialogManager::OnGuiMouseClickEvent(GuiControl* control) {
 				dialoguePhase = 3;
 				option2Selected = true;
 			}
+			if (app->player->npc4Close == true)
+			{
+				app->audio->PlayFx(buttonClickedFx, 0);
+				dialoguePhase++;
+				option2Selected = true;
+
+				if (dialoguePhase == 2)
+				{
+					option2SelectedSecondDialog = true;
+				}
+			}
 		}
+		
 
 
 	default: break;
