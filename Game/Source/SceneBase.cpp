@@ -141,7 +141,7 @@ bool SceneBase::PostUpdate()
 		app->audio->ChangeMusic(CAVE, 0.5f, 0.5f);
 	}
 
-	if (sceneTimer % 720 == 0 && sceneTimer > 5)
+	if (sceneTimer % 720 == 0 && sceneTimer > 5 && app->player->pauseMenu == false)
 	{
 		
 

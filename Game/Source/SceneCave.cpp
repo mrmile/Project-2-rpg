@@ -145,7 +145,7 @@ bool SceneCave::PostUpdate()
 		app->audio->ChangeMusic(CAVE, 0.5f, 0.5f);
 	}
 
-	if (sceneTimer % 720 == 0 && sceneTimer > 5)
+	if (sceneTimer % 720 == 0 && sceneTimer > 5 && app->player->pauseMenu == false)
 	{
 		if (sceneSoundRandomizerNumber == 0) app->audio->PlayFx(cave_bg_noise1);
 		if (sceneSoundRandomizerNumber == 1) app->audio->PlayFx(cave_bg_noise2);
