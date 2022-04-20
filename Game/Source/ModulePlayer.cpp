@@ -12,6 +12,7 @@
 #include "ModuleFadeToBlack.h"
 #include "Window.h"
 //#include "ModuleFonts.h"
+#include "GameManager.h"
 #include "Log.h"
 
 #include "SceneMainMap.h"
@@ -175,8 +176,10 @@ bool ModulePlayer::Update(float dt)
 		//Player->body->SetTransform({ positionToB2D.x, positionToB2D.y }, 0);
 		playerTimer++;
 		//------------------------------------------------------------------------------------------------------------------------------------------
-		if (talking == false)
+		if (talking == false && entityStatePlayer == GameState::OutOfCombat)
 		{
+			showCombatHUD = false;
+
 			if (destroyed == false && playerWin == false && app->sceneCave->godMode == false && app->sceneMainMap->godMode == false)
 			{
 				/* Mejor no usarlo para este juego
@@ -559,30 +562,43 @@ bool ModulePlayer::Update(float dt)
 			{
 				//Aquí no hace falta
 			}
+			//if (position.DistanceTo(app->entity_manager.) < 100)
+			//{
+			//	/*app->entity_manager->RegisterEntitesInCombat(id);*/
+			//	entityStatePlayer = GameState::InCombat;
+			//	/*app->game_manager->StartTurnManagement = true;*/
+			//}
 		}
-		else if (talking == true)
+
+		if (entityStatePlayer == GameState::InCombat)
 		{
-			//Cosas comentadas ya que aún no han sido implementadas --> To implement: Dialog manager <-- Es un handout de una presentación de clase
-			
-			if (app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_DOWN)
-			{
-				//selection--;
-			}
-			if (app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_DOWN)
-			{
-				//selection++;
-			}
-
-			/*
-			if(selection > totalSelectionsAvailable) selection = 0;
-			if(selection < 0) selection = totalSelectionsAvailable;
-			*/
-
-			if (app->input->keys[SDL_SCANCODE_Z] == KeyState::KEY_DOWN)
-			{
-				//select answer/continue reading
-			}
+			showCombatHUD = true;
 		}
+		//  //TODO: Para la alpha mejorar el dialog system
+		// 
+		//else if (talking == true)
+		//{
+		//	//Cosas comentadas ya que aún no han sido implementadas --> To implement: Dialog manager <-- Es un handout de una presentación de clase
+		//	
+		//	if (app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_DOWN)
+		//	{
+		//		//selection--;
+		//	}
+		//	if (app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_DOWN)
+		//	{
+		//		//selection++;
+		//	}
+
+		//	/*
+		//	if(selection > totalSelectionsAvailable) selection = 0;
+		//	if(selection < 0) selection = totalSelectionsAvailable;
+		//	*/
+
+		//	if (app->input->keys[SDL_SCANCODE_Z] == KeyState::KEY_DOWN)
+		//	{
+		//		//select answer/continue reading
+		//	}
+		//}
 		//------------------------------------------------------------------------------------------------------------------------------------------
 		if (destroyed == true)
 		{

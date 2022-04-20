@@ -202,6 +202,12 @@ public:
 	bool npc2Close = false;
 	bool npc3Close = false;
 	bool npc4Close = false;
+
+	//turnos de combate para el player
+	GameState entityStatePlayer;
+	TurnState entityTurnPlayer;
+
+	bool showCombatHUD = false;
 };
 
 #endif //!__MODULE_PLAYER_H__
