@@ -52,6 +52,12 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	idleUpAnim.loop = true;
 	idleUpAnim.speed = 0.3f;
 	
+
+	entityTurnPlayer = TurnState::NONE;
+	entityStatePlayer = GameState::OutOfCombat;
+
+
+
 }
 
 ModulePlayer::~ModulePlayer()
@@ -562,17 +568,100 @@ bool ModulePlayer::Update(float dt)
 			{
 				//Aquí no hace falta
 			}
-			//if (position.DistanceTo(app->entity_manager.) < 100)
-			//{
-			//	/*app->entity_manager->RegisterEntitesInCombat(id);*/
-			//	entityStatePlayer = GameState::InCombat;
-			//	/*app->game_manager->StartTurnManagement = true;*/
-			//}
 		}
-
 		if (entityStatePlayer == GameState::InCombat)
 		{
 			showCombatHUD = true;
+
+
+			if (entityTurnPlayer == TurnState::NONE)
+			{
+
+				iPoint NewPosition = position;
+				collider->SetPos(NewPosition.x, NewPosition.y);
+				colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
+				Player->body->SetLinearVelocity({ 0.0f,0.0f });
+			}
+			if (entityTurnPlayer == TurnState::StartOfTurn)
+			{
+				
+				iPoint NewPosition = position;
+				collider->SetPos(NewPosition.x, NewPosition.y);
+				colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
+				Player->body->SetLinearVelocity({ 0.0f,0.0f });
+				entityTurnPlayer = TurnState::MidOfTurn;
+			}
+			if (entityTurnPlayer == TurnState::MidOfTurn)
+			{
+				
+				
+				if(app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT)
+				{
+					counter++;
+					Player->body->SetLinearVelocity({ 0.0f,2.0f });
+				}
+				if (app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT)
+				{
+					counter++;
+					Player->body->SetLinearVelocity({ 0.0f,-2.0f });
+				}
+				if (app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT)
+				{
+					counter++;
+					Player->body->SetLinearVelocity({ 2.0f,0.0f });
+				}
+				if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT)
+				{
+					counter++;
+					Player->body->SetLinearVelocity({ -2.0f,0.0f });
+				}
+
+				if (counter > 200)
+				{
+					entityTurnPlayer = TurnState::FinishTurn;
+				}
+			}
+			if (entityTurnPlayer == TurnState::FinishTurn)
+			{
+				//Attack methodology, after attacking the player goes to wait turn
+				entityTurnPlayer = TurnState::WaitTurn;
+			}
+			if (entityTurnPlayer == TurnState::WaitTurn)
+			{
+				iPoint NewPosition = position;
+				Player->body->SetLinearVelocity({ 0.0f,0.0f });
+				collider->SetPos(NewPosition.x, NewPosition.y);
+				colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
+
+				if (playerHP <= 0)
+				{
+					invincibleDelay = 121;
+					playerHP = 0;
+					//app->audio->PlayFx(dead);
+					destroyed = true;
+
+				}
+				if (destroyed == true)
+				{
+					if (destroyedDelay < 1)
+					{
+						//Mix_PauseMusic();
+						
+						app->audio->PlayFx(dead);
+						//lives--;
+						app->sceneMainMap->playerRestart = true;
+						
+					}
+					if (destroyedDelay < 60) Player->body->SetLinearVelocity({ 0, 0 });
+
+					if (currentAnimation != &die)
+					{
+						die.Reset();
+						currentAnimation = &die;
+					}
+				}
+
+			}
 		}
 		//  //TODO: Para la alpha mejorar el dialog system
 		// 
@@ -600,39 +689,8 @@ bool ModulePlayer::Update(float dt)
 		//	}
 		//}
 		//------------------------------------------------------------------------------------------------------------------------------------------
-		if (destroyed == true)
-		{
-			if (destroyedDelay < 1)
-			{
-				//Mix_PauseMusic();
-				app->audio->PlayFx(dead);
-				lives--;
-			}
-			if (destroyedDelay < 60) Player->body->SetLinearVelocity({ 0, 0 });
-
-			if (currentAnimation != &die)
-			{
-				die.Reset();
-				currentAnimation = &die;
-			}
-		}
+		
 		//------------------------------------------------------------------------------------------------------------------------------------------
-		if (playerWin == true)
-		{
-			if (winDelay < 1)
-			{
-				//Mix_PauseMusic();
-				app->audio->PlayFx(firework);
-			}
-			if (PlayerLookingPosition == 1)
-			{
-
-			}
-			if (PlayerLookingPosition == 2)
-			{
-
-			}
-		}
 		/*
 		if ((PlayerLookingPosition == 1) && (position.x < app->render->camera.x / app->win->GetScale() + 190))
 		{
@@ -647,7 +705,7 @@ bool ModulePlayer::Update(float dt)
 		/*
 		if (lives == 0)
 		{
-			//SDL_Delay(600); <-- Esto pausa el juego completo no hace que se espere algo.
+		
 			
 			app->titleScreen->SavedGame = false;
 			app->titleScreen->Enable();
@@ -669,7 +727,6 @@ bool ModulePlayer::Update(float dt)
 
 		Player->GetPosition(position.x, position.y);
 
-		//cout << "PosX: " << position.x << " PosY: " << position.y << endl;
 
 		
 	}
@@ -789,7 +846,7 @@ bool ModulePlayer::PostUpdate()
 			app->sceneCave->playerRestart = false;
 		}
 
-		/*
+		
 		if (app->sceneMainMap->playerRestart == true)
 		{
 			//horizontalCB = true;
@@ -817,8 +874,10 @@ bool ModulePlayer::PostUpdate()
 			app->fonts->Enable();
 
 			app->sceneMainMap->playerRestart = false;
+			entityStatePlayer = GameState::OutOfCombat;
+			entityTurnPlayer = TurnState::NONE;
 		}
-		*/
+		
 
 		if (app->titleScreen->toTitleScreen == true)
 		{

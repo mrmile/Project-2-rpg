@@ -51,7 +51,8 @@ public:
 public:
 	// Position of the player in the map
 	iPoint position;
-	//b2Vec2 positionToB2D;
+	
+	int counter;
 
 	//Player body for physics implementation
 	PhysBody* Player;

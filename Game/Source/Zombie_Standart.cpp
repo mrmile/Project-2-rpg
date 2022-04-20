@@ -271,9 +271,18 @@ bool Zombie_Standart::Update(float dt)
 					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;
-
+					if (app->player->entityTurnPlayer == TurnState::WaitTurn)
+					{
+						counter = 0;
+						entityTurn = TurnState::StartOfTurn;
+					}
 					
 
+				}
+				if (app->sceneMainMap->playerRestart == true)
+				{
+					entityState = GameState::OutOfCombat;
+					entityTurn = TurnState::NONE;
 				}
 
 			}

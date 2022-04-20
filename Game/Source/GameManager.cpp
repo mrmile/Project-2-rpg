@@ -30,16 +30,31 @@ bool GameManager::Update(float dt)
 		if (app->entity_manager->ListInCombat.At(counter)->data->entityTurn == TurnState::NONE)
 		{
 			app->entity_manager->ListInCombat.At(counter)->data->entityTurn = TurnState::StartOfTurn;
+			app->player->entityStatePlayer = GameState::InCombat;
 		}
 		if (app->entity_manager->ListInCombat.At(counter)->data->entityTurn == TurnState::WaitTurn)
 		{
+			app->player->entityTurnPlayer = TurnState::StartOfTurn;
+
 			if (counter < app->entity_manager->ListInCombat.count() - 1)
 			{
 				counter++;
 			}
 		}
+		/*
+		if (app->entity_manager->ListInCombat.At(counter)->data->entityTurn != TurnState::NONE)
+		{
+			if (app->player->entityTurnPlayer == TurnState::WaitTurn)
+			{
+				counter = 0;
+				app->entity_manager->ListInCombat.At(counter)->data->entityTurn = TurnState::StartOfTurn;
+			}
 
+		}
+		*/
 		return true;
+
+		
 	}
 	if (StartTurnManagement == false) return true;
 	
