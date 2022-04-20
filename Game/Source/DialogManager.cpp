@@ -118,7 +118,7 @@ bool DialogManager::Update(float dt)
 bool DialogManager::PostUpdate()
 {
 
-	if (app->player->pauseMenu == false)
+	if (app->player->pauseMenu == false && app->player->showCombatHUD == false)
 	{
 
 		if (app->player->npcClose == true)

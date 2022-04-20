@@ -31,6 +31,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::LAYER_ZERO][Collider::Type::CHECKPOINT] = false;
 	matrix[Collider::Type::LAYER_ZERO][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::LAYER_ZERO][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::LAYER_ZERO][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::LAYER_ZERO][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
 	matrix[Collider::Type::PLAYER][Collider::Type::LAYER_ZERO] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
@@ -49,6 +51,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_ATTACK] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_RANGED_ATTACK] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::RANGED_ENEMY] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
 	matrix[Collider::Type::ENEMY][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = true;
@@ -65,6 +69,9 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ENEMY][Collider::Type::CHECKPOINT] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER_ATTACK] = true;
+	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER_RANGED_ATTACK] = true;
+
 
 	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::PLAYER] = true;
@@ -81,6 +88,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::CHECKPOINT] = false;
 	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::PLAYER_ATTACK] = true;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::PLAYER_RANGED_ATTACK] = true;
 
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::PLAYER] = true;
@@ -97,6 +106,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::CHECKPOINT] = false;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
 	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::PLAYER] = true;
@@ -113,6 +124,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::CHECKPOINT] = false;
 	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
 	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::LAYER_ZERO] = true;
 	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::PLAYER] = true;
@@ -129,6 +142,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::CHECKPOINT] = false;
 	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
 	matrix[Collider::Type::EXIT_1][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::EXIT_1][Collider::Type::PLAYER] = true;
@@ -145,6 +160,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::EXIT_1][Collider::Type::CHECKPOINT] = false;
 	matrix[Collider::Type::EXIT_1][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::EXIT_1][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::EXIT_1][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::EXIT_1][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
 	matrix[Collider::Type::EXIT_2][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::EXIT_2][Collider::Type::PLAYER] = true;
@@ -161,6 +178,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::EXIT_2][Collider::Type::CHECKPOINT] = false;
 	matrix[Collider::Type::EXIT_2][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::EXIT_2][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::EXIT_2][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::EXIT_2][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
 	matrix[Collider::Type::EXIT_3][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::EXIT_3][Collider::Type::PLAYER] = true;
@@ -177,6 +196,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::EXIT_3][Collider::Type::CHECKPOINT] = false;
 	matrix[Collider::Type::EXIT_3][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::EXIT_3][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::EXIT_3][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::EXIT_3][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
 	matrix[Collider::Type::SWITCH][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::SWITCH][Collider::Type::PLAYER] = true;
@@ -193,6 +214,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::SWITCH][Collider::Type::CHECKPOINT] = false;
 	matrix[Collider::Type::SWITCH][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::SWITCH][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::SWITCH][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::SWITCH][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
 	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::PLAYER] = true;
@@ -209,6 +232,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::CHECKPOINT] = false;
 	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
 	matrix[Collider::Type::PLAYER_FEET][Collider::Type::LAYER_ZERO] = true;
 	matrix[Collider::Type::PLAYER_FEET][Collider::Type::PLAYER] = false;
@@ -225,6 +250,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER_FEET][Collider::Type::CHECKPOINT] = true;
 	matrix[Collider::Type::PLAYER_FEET][Collider::Type::GOAL_POINT] = true;
 	matrix[Collider::Type::PLAYER_FEET][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::PLAYER_FEET][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::PLAYER_FEET][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
 	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::PLAYER] = true;
@@ -241,6 +268,9 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::CHECKPOINT] = false;
 	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::PLAYER_RANGED_ATTACK] = false;
+
 
 	matrix[Collider::Type::COIN][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::COIN][Collider::Type::PLAYER] = true;
@@ -257,6 +287,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::COIN][Collider::Type::CHECKPOINT] = false;
 	matrix[Collider::Type::COIN][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::COIN][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::COIN][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::COIN][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
 	matrix[Collider::Type::CHECKPOINT][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::CHECKPOINT][Collider::Type::PLAYER] = true;
@@ -273,6 +305,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::CHECKPOINT][Collider::Type::CHECKPOINT] = false;
 	matrix[Collider::Type::CHECKPOINT][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::CHECKPOINT][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::CHECKPOINT][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::CHECKPOINT][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
 	matrix[Collider::Type::GOAL_POINT][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::GOAL_POINT][Collider::Type::PLAYER] = true;
@@ -289,6 +323,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::GOAL_POINT][Collider::Type::CHECKPOINT] = false;
 	matrix[Collider::Type::GOAL_POINT][Collider::Type::GOAL_POINT] = false;
 	matrix[Collider::Type::GOAL_POINT][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::GOAL_POINT][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::GOAL_POINT][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
 }
 

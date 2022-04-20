@@ -280,6 +280,13 @@ bool Zombie_Spitter::Update(float dt)
 					entityState = GameState::OutOfCombat;
 					entityTurn = TurnState::NONE;
 				}
+				//Escape Combat
+				/*if (app->player->escapeCombat == true)
+				{
+					app->game_manager->counter = 0;
+					entityState = GameState::OutOfCombat;
+					entityTurn = TurnState::NONE;
+				}*/
 			}
 
 

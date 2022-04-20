@@ -59,9 +59,9 @@ bool CombatMenu::Start()
 	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/UISounds/buttonClickedFX.wav");
 	
 	combatShootGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 25, "Shoot Button", { 30,332,108,35 }, this, combatShoot, NULL, {});
-	combatMeleeGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 26, "Melee Button", { 170,332,108,35 }, this, combatMelee, NULL, {});
-	combatItemsGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 27, "Items Button", { 310,332,108,35 }, this, combatItems, NULL, {});
-	combatEscapeGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 28,"Escape Button",{ 450,332,108,35 }, this, combatEscape, NULL, {});
+	combatMeleeGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 26, "Melee Button", { 175,332,108,35 }, this, combatMelee, NULL, {});
+	combatItemsGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 27, "Items Button", { 320,332,108,35 }, this, combatItems, NULL, {});
+	combatEscapeGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 28,"Escape Button",{ 465,331,108,35 }, this, combatEscape, NULL, {});
 
 	return true;
 }
@@ -175,6 +175,7 @@ bool CombatMenu::OnGuiMouseClickEvent(GuiControl* control)
 		{
 			//RESUME BUTTON
 			app->audio->PlayFx(buttonClickedFx, 0);
+			app->player->meleeAttack = true;
 		}
 		if (control->id == 27 && combatItemsGUI->canClick == true)
 		{
@@ -185,6 +186,8 @@ bool CombatMenu::OnGuiMouseClickEvent(GuiControl* control)
 		{
 			//RESUME BUTTON
 			app->audio->PlayFx(buttonClickedFx, 0);
+			//Escape Combat
+			/*app->player->escapeCombat = true;*/
 		}
 	}
 	}

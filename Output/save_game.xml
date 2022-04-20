@@ -9,7 +9,7 @@
 	<map />
 	<LogoScreen />
 	<TitleScreen>
-		<saved_game bool="false" Fx="90" Music="90" FullScreen="false" />
+		<saved_game bool="false" Fx="0" Music="90" FullScreen="false" />
 	</TitleScreen>
 	<SceneMainMap />
 	<SceneCave />
