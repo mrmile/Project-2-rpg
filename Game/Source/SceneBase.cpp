@@ -47,7 +47,7 @@ bool SceneBase::Start()
 {
 	app->map->Load("base.tmx");
 
-	spotLight = app->tex->Load("Assets/textures/Particles/spotlight.png");
+	spotLight = app->tex->Load("Assets/textures/Particles/spotlight_M.png");
 
 	godMode = false;
 	playerRestart = false;
@@ -200,7 +200,7 @@ bool SceneBase::PostUpdate()
 		app->pause_menu->Disable();
 		app->sceneBase->Disable();
 
-		if (app->player->entranceID == 1) enableSceneMainMap = true;
+		if (app->player->entranceID == 2) enableSceneMainMap = true;
 
 
 		//app->fade->FadeToBlack(app->sceneMainMap, app->sceneBase, 60.0f);

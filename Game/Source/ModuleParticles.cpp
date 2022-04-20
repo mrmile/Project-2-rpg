@@ -10,6 +10,7 @@
 #include "TitleScreen.h"
 #include "SceneCave.h"
 #include "SceneMainMap.h"
+#include "SceneBase.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -260,7 +261,9 @@ bool ModuleParticles::PostUpdate()
 		app->render->DrawTexture2(app->player->gameOverScreen, 0, 0, NULL, 0.0f);
 	}
 
-	app->render->DrawTexture(app->sceneCave->spotLight, app->player->position.x - 960, app->player->position.y - 540, NULL);
+	if(app->sceneCave->sceneCave == true) app->render->DrawTexture(app->sceneCave->spotLight, app->player->position.x - 960, app->player->position.y - 540, NULL);
+
+	if (app->sceneBase->sceneBase == true) app->render->DrawTexture(app->sceneBase->spotLight, app->player->position.x - 960, app->player->position.y - 540, NULL);
 
 	return true;
 }
