@@ -136,6 +136,9 @@
     <ClCompile Include="Source\CombatMenu.cpp">
       <Filter>General</Filter>
     </ClCompile>
+    <ClCompile Include="Source\SceneBase.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -301,6 +304,9 @@
       <Filter>General\Entities\NPCS</Filter>
     </ClInclude>
     <ClInclude Include="Source\CombatMenu.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneBase.h">
       <Filter>General</Filter>
     </ClInclude>
   </ItemGroup>

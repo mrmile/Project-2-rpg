@@ -22,6 +22,7 @@ class LogoScreen;
 class TitleScreen;
 class SceneMainMap;
 class SceneCave;
+class SceneBase;
 class Map;
 class Enemies;
 class ModuleFadeToBlack;
@@ -116,6 +117,7 @@ public:
 	TitleScreen* titleScreen;
 	SceneMainMap* sceneMainMap;
 	SceneCave* sceneCave;
+	SceneBase* sceneBase;
 	Map* map;
 	Enemies* enemies;
 	ModuleFadeToBlack* fade;

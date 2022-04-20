@@ -4,36 +4,37 @@
 #include "Audio.h"
 #include "Render.h"
 #include "Window.h"
-#include "SceneCave.h"
 #include "SceneMainMap.h"
+#include "SceneCave.h"
+#include "SceneBase.h"
 #include "Map.h"
 #include "ModulePhysics.h"
 #include "ModulePlayer.h"
 #include "ModuleCollisions.h"
 #include "TitleScreen.h"
+#include "ModuleFonts.h"
+#include "PauseMenu.h"
 #include "EntityManager.h"
 #include "Entity.h"
 #include "ModuleParticles.h"
-#include "ModuleFonts.h"
-#include "PauseMenu.h"
-#include "Pathfinding.h"
-#include "ModuleFadeToBlack.h"
 
 #include "Defs.h"
 #include "Log.h"
 #include <SDL_mixer/include/SDL_mixer.h>
 
-SceneMainMap::SceneMainMap(bool start_enabled) : Module(start_enabled)
+#include <Time.h>
+
+SceneBase::SceneBase(bool start_enabled) : Module(start_enabled)
 {
-	name.Create("SceneMainMap");
+	name.Create("SceneBase");
 }
 
 // Destructor
-SceneMainMap::~SceneMainMap()
+SceneBase::~SceneBase()
 {}
 
 // Called before render is available
-bool SceneMainMap::Awake()
+bool SceneBase::Awake()
 {
 	LOG("Loading Scene");
 	bool ret = true;
@@ -42,60 +43,26 @@ bool SceneMainMap::Awake()
 }
 
 // Called before the first frame
-bool SceneMainMap::Start()
+bool SceneBase::Start()
 {
-	app->map->Load("main.tmx");
+	app->map->Load("base.tmx");
 
-	app->tex->Load("Assets/textures/GUI/PauseMenuFrame.png");
-	sceneTimer = 0;
-	
-	//b2Filter filter;
-
-	//filter.categoryBits = 1;
-
-	//filter.categoryBits = 0x0001;
-	//filter.maskBits = 0x0001;
-
-	//h_CB1 = app->physics->CreateRectangleSensor(app->map->MapToWorldSingle(0) + app->map->MapToWorldSingle(15) / 2, app->map->MapToWorldSingle(16) + app->map->MapToWorldSingle(7) / 2, app->map->MapToWorldSingle(15), app->map->MapToWorldSingle(7));
-	//h_CB1->listener = this;
-	//h_CB1->body->GetFixtureList()->SetFilterData(filter);
-
-	//h_CB2 = app->physics->CreateRectangleSensor(app->map->MapToWorldSingle(118) + app->map->MapToWorldSingle(10) / 2, app->map->MapToWorldSingle(13) + app->map->MapToWorldSingle(10) / 2, app->map->MapToWorldSingle(10), app->map->MapToWorldSingle(10));
-	//h_CB2->listener = this;
-	//h_CB2->body->GetFixtureList()->SetFilterData(filter);
-
-	app->render->camera.x = app->map->MapToWorld(0, 0).x;
-	app->render->camera.y = app->map->MapToWorld(0, 0).y;
+	spotLight = app->tex->Load("Assets/textures/Particles/spotlight.png");
 
 	godMode = false;
 	playerRestart = false;
 	destroyScene = false;
-	sceneMainMap = true;
-	
+	sceneBase = true;
+	app->sceneMainMap->sceneMainMap = false;
 	app->sceneCave->sceneCave = false;
-	enableSceneCave = false;
-	enableSceneCave = false;
+	enableSceneMainMap = false;
 
-	// app->titleScreen->transition = false;
-	// app->titleScreen->continueTransition = false;
+	app->render->camera.x = app->map->MapToWorld(0, 0).x;
+	app->render->camera.y = app->map->MapToWorld(0, 0).y;
 
-	
+	sceneTimer = 0;
 
-	//app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, app->player->position.x + 100, app->player->position.y);
-
-	//app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, app->player->position.x - 200, app->player->position.y);
-
-	/*
-	if (app->map->Load("main.tmx") == true)
-	{
-		int w, h;
-		uchar* data = NULL;
-
-		if (app->map->CreateWalkabilityMap(w, h, &data)) app->pathfinding->SetMap(w, h, data);
-
-		RELEASE_ARRAY(data);
-	}
-	*/
+	sceneSoundRandomizerNumber = 0;
 
 	app->SaveGameRequest();
 
@@ -103,71 +70,47 @@ bool SceneMainMap::Start()
 }
 
 // Called each loop iteration
-bool SceneMainMap::PreUpdate()
+bool SceneBase::PreUpdate()
 {
-	/*
-	if (sceneTimer <= 2)
-	{
-		app->map->Load("main.tmx");
-
-		// Load music
-		app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);
-	}
-	*/
-
 	if (app->titleScreen->GameHasContinued == true)
 	{
 		app->LoadGameRequest();
 		app->titleScreen->GameHasContinued = false;
 	}
 
+	srand(time(NULL));
+
 	return true;
 }
 
 // Called each loop iteration
-bool SceneMainMap::Update(float dt)
+bool SceneBase::Update(float dt)
 {
 	sceneTimer++;
-	//F9 --> See colliders
+	
+	//app->render->camera.x = -(app->player->Player->body->GetPosition().x * 100) + 640;
+	//app->render->camera.x = -(app->player->Player->body->GetPosition().x * 100) + 160; //<-- Este es el que se aplica al final
 
+	//F9 --> See colliders
 
 	if ((app->input->keys[SDL_SCANCODE_F3] == KEY_DOWN || app->input->keys[SDL_SCANCODE_F1] == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false))
 	{
 		app->player->checkPointReached = false;
 		playerRestart = true;
 	}
-	
+
 
 	if (app->input->keys[SDL_SCANCODE_F10] == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false)
 		godMode = !godMode;
 
-    // L02: DONE 3: Request Load / Save when pressing L/S
+	// L02: DONE 3: Request Load / Save when pressing L/S
 	if (app->input->keys[SDL_SCANCODE_F6] == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false)
-	{
 		app->LoadGameRequest();
-	}
-		
 
 	if (app->input->keys[SDL_SCANCODE_F5] == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false)
-	{
-		app->titleScreen->SavedGame = true;
 		app->SaveGameRequest();
-	}
-		
 
-	//if(app->input->keys[SDL_SCANCODE_S) == KEY_REPEAT)
-		//app->render->camera.y -= 5;
 
-	//if(app->input->keys[SDL_SCANCODE_W) == KEY_REPEAT)
-		//app->render->camera.y += 5;
-
-	//if(app->input->keys[SDL_SCANCODE_D) == KEY_REPEAT)
-		//app->render->camera.x -= 5;
-
-	//if(app->input->keys[SDL_SCANCODE_A) == KEY_REPEAT)
-		//app->render->camera.x += 5;
-
-	//app->render->DrawTexture2(img, 380, 100); // Placeholder not needed any more
 	// Draw map
 	app->map->Draw();
 
@@ -183,21 +126,31 @@ bool SceneMainMap::Update(float dt)
 		//app->audio->PlayFx(levelClear, 0);
 	}
 
-	
+	sceneSoundRandomizerNumber = rand() % 5;
 
 	return true;
 }
 
 // Called each loop iteration
-bool SceneMainMap::PostUpdate()
+bool SceneBase::PostUpdate()
 {
 	bool ret = true;
+
 	if (sceneTimer <= 2)
 	{
-		app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);
+		app->audio->ChangeMusic(CAVE, 0.5f, 0.5f);
 	}
-	
-	//if (app->player->horizontalCB == false && app->player->bidimensionalCB == false && sceneTimer > 1) app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 150) + 630);
+
+	if (sceneTimer % 720 == 0 && sceneTimer > 5)
+	{
+		
+
+	}
+
+	// L08: TODO 6: Make the camera movement independent of framerate
+
+	//if (app->player->horizontalCB == false && sceneTimer > 1) app->render->camera.x = -(app->player->Player->body->GetPosition().x * 100) + 630;
+
 	app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 100) + 630);
 	app->render->camera.y = (-(app->player->Player->body->GetPosition().y * 100) + 360);
 
@@ -206,7 +159,6 @@ bool SceneMainMap::PostUpdate()
 
 	if (app->render->camera.x < -app->map->levelAreaRightBound * 2 + 1280) app->render->camera.x = -app->map->levelAreaRightBound * 2 + 1280;
 	if (app->render->camera.x > -app->map->levelAreaLeftBound * 2) app->render->camera.x = -app->map->levelAreaLeftBound * 2;
-	
 
 	if (app->player->destroyedDelay > 210 && app->player->destroyedDelay <= 211)
 	{
@@ -215,7 +167,7 @@ bool SceneMainMap::PostUpdate()
 		// Load music
 		//app->audio->PlayMusic("Assets/audio/music/jungle.ogg");
 
-		if(app->player->lives != 0) playerRestart = true;
+		if (app->player->lives != 0) playerRestart = true;
 		if (app->player->lives == 0) app->titleScreen->toTitleScreen = true;
 	}
 
@@ -229,7 +181,6 @@ bool SceneMainMap::PostUpdate()
 		app->map->Disable();
 		app->entity_manager->Disable();
 		app->particles->Disable();
-		app->fonts->Disable();
 		//app->physics->Disable();
 
 		//playerRestart = true;
@@ -247,24 +198,66 @@ bool SceneMainMap::PostUpdate()
 		app->particles->Disable();
 		app->fonts->Disable();
 		app->pause_menu->Disable();
-		app->sceneMainMap->Disable();
+		app->sceneBase->Disable();
 
-		if(app->player->entranceID == 1) enableSceneCave = true;
-		if (app->player->entranceID == 2) enableSceneBase = true;
+		if (app->player->entranceID == 1) enableSceneMainMap = true;
 
 
-		//app->fade->FadeToBlack(app->sceneMainMap, app->sceneCave, 60.0f);
+		//app->fade->FadeToBlack(app->sceneMainMap, app->sceneBase, 60.0f);
 	}
-	
+
 	return ret;
 }
 
 // Called before quitting
-bool SceneMainMap::CleanUp()
+bool SceneBase::CleanUp()
 {
 	LOG("Freeing scene");
+
+	app->tex->UnLoad(spotLight);
+
 	destroyScene = true;
-	sceneMainMap = false;
+	sceneBase = false;
 
 	return true;
 }
+
+/*
+void Scene::b2dOnCollision(PhysBody* bodyA, PhysBody* bodyB)
+{
+	if (bodyA != nullptr && bodyB != nullptr)
+	{
+		b2Filter filter;
+		filter.categoryBits = 0x0001;
+		filter.maskBits = 0x0001;
+
+		if (bodyB->body == app->player->Player->body && bodyA->body == app->sceneCave->h_CB1->body)
+		{
+
+			filter.categoryBits = 0x0002;
+			filter.maskBits = 0x0002 | 0x0001;
+
+			//b2Vec2 position;
+			//position.x = 688;
+			//position.y = 820;
+
+			LOG("Player Collision");
+			//app->player->Player->body->GetFixtureList()->SetFilterData(filter);
+			//app->player->player->body->DestroyFixture();
+
+			if (app->player->horizontalCB == false)
+			{
+				app->player->horizontalCB = true;
+			}
+			
+		}
+		else if (bodyB->body == app->player->Player->body && bodyA->body != app->sceneCave->h_CB1->body)
+		{
+			if (app->player->horizontalCB == true)
+			{
+				app->player->horizontalCB = false;
+			}
+		}
+	}
+}
+*/
