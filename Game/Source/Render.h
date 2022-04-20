@@ -11,7 +11,7 @@ class Render : public Module
 {
 public:
 
-	Render(bool start_enabled = false);
+	Render(bool start_enabled = true);
 
 	// Destructor
 	virtual ~Render();

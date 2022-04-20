@@ -56,7 +56,7 @@ class Input : public Module
 
 public:
 
-	Input(bool start_enabled = false);
+	Input(bool start_enabled = true);
 
 	// Destructor
 	virtual ~Input();

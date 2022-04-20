@@ -12,7 +12,7 @@ class PauseMenu : public Module
 {
 public:
 
-	PauseMenu(bool start_enabled);
+	PauseMenu(bool start_enabled = false);
 
 	// Destructor
 	virtual ~PauseMenu();

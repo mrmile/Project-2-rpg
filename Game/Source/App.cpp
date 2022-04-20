@@ -51,11 +51,11 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	sceneMainMap = new SceneMainMap(false);
 	sceneCave = new SceneCave(false);
 	sceneBase = new SceneBase(false);
-	map = new Map(true);
+	map = new Map(false);
 	physics = new ModulePhysics(true);
 	fade = new ModuleFadeToBlack(true);
 	player = new ModulePlayer(false);
-	collisions = new ModuleCollisions(true);
+	collisions = new ModuleCollisions(false);
 	pause_menu = new PauseMenu(false);
 	combatMenu = new CombatMenu(true);
 	entity_manager = new EntityManager(false);

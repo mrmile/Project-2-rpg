@@ -12,7 +12,7 @@ class CombatMenu : public Module
 {
 public:
 
-	CombatMenu(bool start_enabled);
+	CombatMenu(bool start_enabled = false);
 
 	// Destructor
 	virtual ~CombatMenu();

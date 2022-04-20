@@ -9,7 +9,7 @@ class LogoScreen : public Module
 {
 public:
 
-	LogoScreen(bool start_enabled = false);
+	LogoScreen(bool start_enabled = true);
 
 	// Destructor
 	virtual ~LogoScreen();

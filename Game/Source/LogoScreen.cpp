@@ -88,7 +88,7 @@ bool LogoScreen::Update(float dt)
 
 bool LogoScreen::PostUpdate()
 {
-	bool ret = true;
+	//bool ret = true;
 
 		
 	if (logoPart == 1) app->render->DrawTexture2(logoAnimationP1, 0, animationPositionY, NULL);
@@ -102,9 +102,9 @@ bool LogoScreen::PostUpdate()
 	if (logoPart == 9) app->render->DrawTexture2(logoAnimationP8, 0, -2880, NULL);
 
 
-	return ret;
+	//return ret;
 	
-	//return true;
+	return true;
 }
 
 bool LogoScreen::CleanUp()

@@ -9,7 +9,7 @@
 class DialogManager : public Module
 {
 public:
-	DialogManager(bool startEnabled);
+	DialogManager(bool startEnabled = true);
 	~DialogManager();
 
 	bool Awake(pugi::xml_node&);
