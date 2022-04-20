@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="27" nextobjectid="198">
+<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="28" nextobjectid="203">
  <tileset firstgid="1" name="city_walls" tilewidth="75" tileheight="117" tilecount="128" columns="16">
   <image source="city_walls.png" width="1250" height="936"/>
  </tileset>
@@ -140139,12 +140139,13 @@
   <object id="193" gid="1084" x="3410.67" y="3540.67" width="32" height="48"/>
   <object id="194" gid="1085" x="4194" y="3476.67" width="33" height="55"/>
   <object id="195" gid="1086" x="4414.67" y="2870.67" width="33" height="55"/>
+  <object id="200" gid="1084" x="2905.33" y="3041.33" width="32" height="48"/>
  </objectgroup>
  <objectgroup id="17" name="zombie_runner">
-  <object id="197" gid="1085" x="3666" y="2968" width="33" height="55"/>
+  <object id="201" gid="1085" x="4030.67" y="2628" width="33" height="55"/>
  </objectgroup>
  <objectgroup id="18" name="zombie_spitter">
-  <object id="196" gid="1086" x="3008" y="3102" width="33" height="55"/>
+  <object id="202" gid="1086" x="3289.33" y="2189.33" width="33" height="55"/>
  </objectgroup>
  <objectgroup id="6" name="startPos">
   <object id="32" x="3320" y="3046" width="22.6667" height="22"/>
@@ -140390,6 +140391,10 @@
  <objectgroup color="#ff0000" id="23" name="sensors_EXIT_1">
   <object id="177" x="3697.5" y="1948" width="60" height="19.5"/>
   <object id="178" x="3759.5" y="1937" width="24.5" height="58.5"/>
+ </objectgroup>
+ <objectgroup color="#ff0000" id="27" name="sensors_EXIT_2">
+  <object id="198" x="1861.33" y="3233.33" width="100" height="61.3333"/>
+  <object id="199" x="1925.33" y="3298.67" width="29.3333" height="30.6667"/>
  </objectgroup>
  <objectgroup color="#000000" id="15" name="LEVEL_AREA" visible="0">
   <object id="160" x="868" y="1768" width="4936" height="2024"/>
