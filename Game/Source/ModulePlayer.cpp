@@ -616,7 +616,7 @@ bool ModulePlayer::Update(float dt)
 					Player->body->SetLinearVelocity({ -2.0f,0.0f });
 				}
 
-				if (counter > 200)
+				if (counter > 100)
 				{
 					entityTurnPlayer = TurnState::FinishTurn;
 				}
@@ -632,7 +632,8 @@ bool ModulePlayer::Update(float dt)
 				Player->body->SetLinearVelocity({ 0.0f,0.0f });
 				collider->SetPos(NewPosition.x, NewPosition.y);
 				colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
-
+				counter = 0;
+				
 				if (playerHP <= 0)
 				{
 					invincibleDelay = 121;
@@ -776,8 +777,6 @@ bool ModulePlayer::PostUpdate()
 		sprintf_s(lifeText, 10, "%1d", lives);
 		sprintf_s(timerText, 10, "%3d", sceneTimer);
 
-		app->render->DrawTexture2(yoshiIcon, 5, 28, NULL, 0.0f);
-		app->render->DrawTexture2(clockIcon, 400, 30, NULL, 0.0f);
 
 		SDL_Rect quad;
 		quad = { 5, 10, playerHP, 10 };
