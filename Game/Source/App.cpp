@@ -425,6 +425,8 @@ bool App::PostUpdate()
 	ListItem<Module*>* item;
 	Module* pModule = NULL;
 
+	int test = 0;
+	LOG("POST UPDATING GENERAL");
 	for(item = modules.start; item != NULL && ret == true; item = item->next)
 	{
 		pModule = item->data;
@@ -433,7 +435,11 @@ bool App::PostUpdate()
 			continue;
 		}
 
+		LOG("POST UPDATING MODULE NUMBER: %i", test);
+
 		ret = item->data->PostUpdate();
+
+		test++;
 	}
 
 	return ret;

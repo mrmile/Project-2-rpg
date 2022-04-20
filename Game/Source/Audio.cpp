@@ -66,7 +66,7 @@ bool Audio::Update(float dt)
 {
 
 	if (playMusicSpatially == false) Mix_VolumeMusic(SliderLevelMusic);
-
+	Mix_Volume(-1, SliderLevelFX);
 
 	return true;
 }

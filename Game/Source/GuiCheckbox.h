@@ -14,6 +14,7 @@ public:
 	virtual ~GuiCheckbox();
 
 	bool Update(float dt);
+	bool PostUpdate();
 	bool Draw(Render* render);
 
 	int mouseX, mouseY;

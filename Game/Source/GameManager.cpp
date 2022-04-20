@@ -56,12 +56,12 @@ bool GameManager::Update(float dt)
 
 		}
 		
-		return true;
+		
 
 		
 	}
-	if (StartTurnManagement == false) return true;
 	
+	return true;
 	
 }
 

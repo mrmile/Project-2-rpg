@@ -51,7 +51,12 @@ bool GuiCheckbox::Update(float dt)
 
 	}
 
-	return false;
+	return true;
+}
+
+bool GuiCheckbox::PostUpdate()
+{
+	return true;
 }
 
 bool GuiCheckbox::Draw(Render* render)
