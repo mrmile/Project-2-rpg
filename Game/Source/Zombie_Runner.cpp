@@ -111,10 +111,12 @@ bool Zombie_Runner::Update(float dt)
 
 			}
 		
-			if (position.DistanceTo(app->player->position) < 100)
+			if (position.DistanceTo(app->player->position) < 100 /* && escapingFromCombat == false*/)
 			{
 				app->entity_manager->RegisterEntitesInCombat(this);
 				entityState = GameState::InCombat;
+				//app->player->entityStatePlayer = GameState::InCombat;
+				//app->player->entityTurnPlayer = TurnState::NONE;
 				app->game_manager->StartTurnManagement = true;
 			}
 

@@ -265,7 +265,11 @@ void EntityManager::RegisterEntitesInCombat(Entity* entity)
 	{
 
 		ListInCombat.add(entity);
-		ListInCombat.At(x)->data->entityTurn = TurnState::StartOfTurn; x++;
+		ListInCombat.At(x)->data->entityTurn = TurnState::StartOfTurn; 
+		x++;
+
+		app->player->entityStatePlayer = GameState::InCombat;
+		app->player->entityTurnPlayer = TurnState::NONE;
 	
 	}
 

@@ -27,18 +27,23 @@ bool GameManager::Update(float dt)
 {
 	if (StartTurnManagement == true)
 	{
-		if(app->entity_manager->ListInCombat.At(counter)->data->EntityHP <= 0)
+		
+		if (app->entity_manager->ListInCombat.end->data->EntityHP <= 0)
 		{
 			StartTurnManagement = false;
-
 		}
 		if (app->entity_manager->ListInCombat.At(counter)->data->entityTurn == TurnState::StartOfTurn)
 		{
 			app->player->entityStatePlayer = GameState::InCombat;
 		}
+
 		if (app->entity_manager->ListInCombat.At(counter)->data->entityTurn == TurnState::WaitTurn)
 		{
 			app->player->entityTurnPlayer = TurnState::StartOfTurn;
+		}
+
+		if (app->entity_manager->ListInCombat.At(counter)->data->entityTurn == TurnState::WaitTurn)
+		{
 
 			if (counter < app->entity_manager->ListInCombat.count() - 1)
 			{
@@ -48,10 +53,10 @@ bool GameManager::Update(float dt)
 			if (counter >= app->entity_manager->ListInCombat.count() - 1)
 			{
 				app->entity_manager->ListInCombat.At(counter)->data->entityTurn = TurnState::NONE;
+				
 			}
 	
 		}
-
 		if (app->player->entityTurnPlayer == TurnState::WaitTurn)
 		{
 			counter = 0;
@@ -68,6 +73,7 @@ bool GameManager::Update(float dt)
 	{
 		app->player->entityStatePlayer = GameState::OutOfCombat;
 		app->player->entityTurnPlayer = TurnState::NONE;
+		//app->entity_manager->ListInCombat.clear();
 	}
 	
 	return true;

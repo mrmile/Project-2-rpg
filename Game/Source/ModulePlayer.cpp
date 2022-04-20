@@ -630,7 +630,7 @@ bool ModulePlayer::Update(float dt)
 
 				if (app->input->keys[SDL_SCANCODE_SPACE] == KeyState::KEY_DOWN)
 				{
-					/*
+					
 					int mousePosx, mousePosy;
 					app->input->GetMousePosition(mousePosx, mousePosy);
 
@@ -667,8 +667,8 @@ bool ModulePlayer::Update(float dt)
 					{
 						app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
 					}
-					*/
-					app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 30, Collider::Type::PLAYER_ATTACK);
+					
+					
 					
 					entityTurnPlayer = TurnState::WaitTurn;
 				}

@@ -115,6 +115,8 @@ bool Zombie_Spitter::Update(float dt)
 			{
 				app->entity_manager->RegisterEntitesInCombat(this);
 				entityState = GameState::InCombat;
+				app->player->entityStatePlayer = GameState::InCombat;
+				app->player->entityTurnPlayer = TurnState::NONE;
 				app->game_manager->StartTurnManagement = true;
 			}
 

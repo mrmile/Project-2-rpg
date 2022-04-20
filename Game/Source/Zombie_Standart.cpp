@@ -116,6 +116,7 @@ bool Zombie_Standart::Update(float dt)
 			{
 				app->entity_manager->RegisterEntitesInCombat(this);
 				entityState = GameState::InCombat;
+				//app->player->entityStatePlayer = GameState::InCombat;
 				app->game_manager->StartTurnManagement = true;
 			}
 

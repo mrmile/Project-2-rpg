@@ -183,6 +183,8 @@ bool CombatMenu::OnGuiMouseClickEvent(GuiControl* control)
 			app->audio->PlayFx(buttonClickedFx, 0);
 		}
 		if (control->id == 28 && combatEscapeGUI->canClick == true)
+			//escape from combat = true
+			//startturnmanagement =false
 		{
 			//RESUME BUTTON
 			app->audio->PlayFx(buttonClickedFx, 0);

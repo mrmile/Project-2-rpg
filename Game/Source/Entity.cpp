@@ -50,6 +50,7 @@ void Entity::SetToDelete()
 
 	if (collider != nullptr)
 	{
+
 		collider->pendingToDelete = true;
 	}
 
