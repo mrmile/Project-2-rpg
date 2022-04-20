@@ -64,12 +64,9 @@ void Entity::ReduceAP(int AP_used)
 void Entity::OnCollision(Collider* c2)
 {
 
-	/*
 	if ((c2->type == Collider::Type::PLAYER_ATTACK) && (EntityKillable == true))
 	{
-		EntityHP -= app->player->GetAttackValue();
+		EntityHP -= 1;
 	}
-	*/
-	
-	
+
 }

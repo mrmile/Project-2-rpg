@@ -47,9 +47,9 @@ public:
 	iPoint GetLastPosition();
 
 
-	void RangedAttack();
+	bool RangedAttack();
 
-	void MeleeAttack();
+	bool MeleeAttack();
 	
 
 public:

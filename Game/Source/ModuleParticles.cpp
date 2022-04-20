@@ -129,6 +129,30 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	RangedAttack.anim.speed = 0.15f;
 	RangedAttack.lifetime = 100;
 
+	playerAttack.anim.PushBack({ 350, 17, 40, 35 });
+	playerAttack.anim.PushBack({ 351, 48, 39, 30 });
+	playerAttack.anim.PushBack({ 354, 138, 32, 35 });
+	playerAttack.anim.PushBack({ 380, 138, 40, 35 });
+	playerAttack.anim.PushBack({ 420, 138, 40, 35 });
+	playerAttack.anim.PushBack({ 460, 138, 40, 35 });
+	playerAttack.speed.x = 0;
+	playerAttack.speed.y = 0;
+	playerAttack.anim.loop = true;
+	playerAttack.anim.speed = 0.15f;
+	playerAttack.lifetime = 15;
+
+	playerRangedAttack.anim.PushBack({ 350, 17, 40, 35 });
+	playerRangedAttack.anim.PushBack({ 351, 48, 39, 30 });
+	playerRangedAttack.anim.PushBack({ 354, 138, 32, 35 });
+	playerRangedAttack.anim.PushBack({ 380, 138, 40, 35 });
+	playerRangedAttack.anim.PushBack({ 420, 138, 40, 35 });
+	playerRangedAttack.anim.PushBack({ 460, 138, 40, 35 });
+	playerRangedAttack.speed.x = 2;
+	playerRangedAttack.speed.y = 0;
+	playerRangedAttack.anim.loop = true;
+	playerRangedAttack.anim.speed = 0.15f;
+	playerRangedAttack.lifetime = 100;
+
 }
 
 ModuleParticles::~ModuleParticles()

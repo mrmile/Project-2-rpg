@@ -19,7 +19,7 @@ GameManager::~GameManager()
 // Called before render is available
 bool GameManager::Awake(pugi::xml_node& config)
 {
-	
+
 	return true;
 }
 
@@ -27,7 +27,11 @@ bool GameManager::Update(float dt)
 {
 	if (StartTurnManagement == true)
 	{
-		
+		if(app->entity_manager->ListInCombat.At(counter)->data->EntityHP <= 0)
+		{
+			StartTurnManagement = false;
+
+		}
 		if (app->entity_manager->ListInCombat.At(counter)->data->entityTurn == TurnState::StartOfTurn)
 		{
 			app->player->entityStatePlayer = GameState::InCombat;
@@ -59,6 +63,11 @@ bool GameManager::Update(float dt)
 		
 
 		
+	}
+	if (StartTurnManagement == false)
+	{
+		app->player->entityStatePlayer = GameState::OutOfCombat;
+		app->player->entityTurnPlayer = TurnState::NONE;
 	}
 	
 	return true;

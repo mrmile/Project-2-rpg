@@ -22,12 +22,13 @@
 
 Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 {	
-	EntityHP = 5;
+	EntityHP = 1;
 	EntityAP = 5;
 	EntityMP = 3;
 	entityState = GameState::OutOfCombat;
 	entityTurn = TurnState::NONE;
 	counter = 0;
+	EntityKillable = true;
 	//HERE WE ADD THE ANIMATIONS WITH GIMP
 	
 	

@@ -431,7 +431,7 @@ bool App::PostUpdate()
 	{
 		pModule = item->data;
 
-		LOG("POST UPDATING MODULE NUMBER: %i", test);
+	//		LOG("POST UPDATING MODULE NUMBER: %i", test);
 		test++;
 
 		if(pModule->active == false) {

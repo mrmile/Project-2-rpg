@@ -431,10 +431,13 @@ void ModuleCollisions::DebugDraw()
 			case Collider::Type::ENEMY_ATTACK: // red
 				app->render->DrawRectangle(colliders[i]->rect, 170, 255, 0, alpha);
 				break;
-			case Collider::Type::RANGED_ENEMY: // orange
-				app->render->DrawRectangle(colliders[i]->rect, 255, 155, 0, alpha);
-				break;
 			case Collider::Type::ENEMY_RANGED_ATTACK: // red
+				app->render->DrawRectangle(colliders[i]->rect, 170, 255, 0, alpha);
+				break;
+			case Collider::Type::PLAYER_ATTACK: // red
+				app->render->DrawRectangle(colliders[i]->rect, 170, 255, 0, alpha);
+				break;
+			case Collider::Type::PLAYER_RANGED_ATTACK: // red
 				app->render->DrawRectangle(colliders[i]->rect, 170, 255, 0, alpha);
 				break;
 			case Collider::Type::INSTANT_DEATH: // red

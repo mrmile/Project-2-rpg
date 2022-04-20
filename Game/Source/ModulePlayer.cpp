@@ -624,8 +624,54 @@ bool ModulePlayer::Update(float dt)
 			}
 			if (entityTurnPlayer == TurnState::FinishTurn)
 			{
+				Player->body->SetLinearVelocity({ 0.0f,0.0f });
+
 				//Attack methodology, after attacking the player goes to wait turn
-				entityTurnPlayer = TurnState::WaitTurn;
+
+				if (app->input->keys[SDL_SCANCODE_SPACE] == KeyState::KEY_DOWN)
+				{
+					/*
+					int mousePosx, mousePosy;
+					app->input->GetMousePosition(mousePosx, mousePosy);
+
+					if (mousePosx > position.x && mousePosy == position.y)
+					{
+						app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+					}
+					if (mousePosx < position.x && mousePosy == position.y)
+					{
+						app->particles->AddParticle(app->particles->playerAttack, position.x - 15, position.y + 12, Collider::Type::PLAYER_ATTACK);
+					}
+					if (mousePosy > position.y && mousePosx == position.x)
+					{
+						app->particles->AddParticle(app->particles->playerAttack, position.x - 15, position.y + 12, Collider::Type::PLAYER_ATTACK);
+					}
+					if (mousePosy < position.y && mousePosx == position.x)
+					{
+						app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+					}
+					// DIAGONAL 
+					if (mousePosx > position.x && mousePosy > position.y)
+					{
+						app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+					}
+					if (mousePosx > position.x && mousePosy < position.y)
+					{
+						app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+					}
+					if (mousePosy < position.x && mousePosy > position.y)
+					{
+						app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+					}
+					if (mousePosy < position.x && mousePosy < position.y)
+					{
+						app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+					}
+					*/
+					app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 30, Collider::Type::PLAYER_ATTACK);
+					
+					entityTurnPlayer = TurnState::WaitTurn;
+				}
 			}
 			if (entityTurnPlayer == TurnState::WaitTurn)
 			{
@@ -1171,13 +1217,66 @@ iPoint ModulePlayer::GetLastPosition()
 }
 
 
-void ModulePlayer::RangedAttack()
+bool ModulePlayer::RangedAttack()
 {
 	//animation + add particle type ranged attack
+	iPoint mousePos;
+	SDL_GetMouseState(&mousePos.x, &mousePos.y);
 
+	return true;
 	//
 }
-void ModulePlayer::MeleeAttack()
+bool ModulePlayer::MeleeAttack()
 {
 	//animation + add particle type melee attack directly in the direction needed
+
+	/*
+
+	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP)
+	{
+		app->input->GetMousePosition(mousePosx, mousePosy);
+	}
+	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_DOWN)
+	{
+		// NON DIAGONAL
+		if (mousePosx > position.x && mousePosy == position.y)
+		{
+			app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+		}
+		if (mousePosx < position.x && mousePosy == position.y)
+		{
+			app->particles->AddParticle(app->particles->playerAttack, position.x - 15, position.y + 12, Collider::Type::PLAYER_ATTACK);
+		}
+		if (mousePosy > position.y && mousePosx == position.x)
+		{
+			app->particles->AddParticle(app->particles->playerAttack, position.x - 15, position.y + 12, Collider::Type::PLAYER_ATTACK);
+		}
+		if (mousePosy < position.y && mousePosx == position.x)
+		{
+			app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+		}
+		// DIAGONAL 
+		if (mousePosx > position.x && mousePosy > position.y)
+		{
+			app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+		}
+		if (mousePosx > position.x && mousePosy < position.y)
+		{
+			app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+		}
+		if (mousePosy < position.x && mousePosy > position.y)
+		{
+			app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+		}
+		if (mousePosy < position.x && mousePosy < position.y)
+		{
+			app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+		}
+
+		return true;
+	}
+	*/
+
+	return true;
+	
 }

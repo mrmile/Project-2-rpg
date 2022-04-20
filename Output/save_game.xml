@@ -9,7 +9,7 @@
 	<map />
 	<LogoScreen />
 	<TitleScreen>
-		<saved_game bool="false" Fx="0" Music="90" FullScreen="false" />
+		<saved_game bool="false" Fx="90" Music="90" FullScreen="false" />
 	</TitleScreen>
 	<SceneMainMap />
 	<SceneCave />
@@ -29,13 +29,13 @@
 		<position x="3126" y="2683" />
 		<atributes entityHp="1" />
 		<position x="3413" y="3511" />
-		<atributes entityHp="5" />
+		<atributes entityHp="1" />
 		<position x="4198" y="3443" />
-		<atributes entityHp="5" />
+		<atributes entityHp="1" />
 		<position x="4418" y="2838" />
-		<atributes entityHp="5" />
+		<atributes entityHp="1" />
 		<position x="2909" y="3012" />
-		<atributes entityHp="5" />
+		<atributes entityHp="1" />
 		<position x="4034" y="2596" />
 		<atributes entityHp="1" />
 		<position x="3293" y="2157" />

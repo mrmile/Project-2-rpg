@@ -175,7 +175,7 @@ bool CombatMenu::OnGuiMouseClickEvent(GuiControl* control)
 		{
 			//RESUME BUTTON
 			app->audio->PlayFx(buttonClickedFx, 0);
-			app->player->meleeAttack = true;
+			app->player->MeleeAttack();
 		}
 		if (control->id == 27 && combatItemsGUI->canClick == true)
 		{
