@@ -57,6 +57,7 @@ bool CombatMenu::Start()
 	combatEscape = app->tex->Load("Assets/textures/GUI/CombatUI/combatEscape.png");
 
 	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/UISounds/buttonClickedFX.wav");
+	buttonClickedMelee = app->audio->LoadFx("Assets/audio/fx/ZPlayer/PlayerActions/Neck.wav");
 	
 	combatShootGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 25, "Shoot Button", { 30,332,108,35 }, this, combatShoot, NULL, {});
 	combatMeleeGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 26, "Melee Button", { 175,332,108,35 }, this, combatMelee, NULL, {});
@@ -174,7 +175,7 @@ bool CombatMenu::OnGuiMouseClickEvent(GuiControl* control)
 		if (control->id == 26 && combatMeleeGUI->canClick == true)
 		{
 			//RESUME BUTTON
-			app->audio->PlayFx(buttonClickedFx, 0);
+			app->audio->PlayFx(buttonClickedMelee, 0);
 			app->player->MeleeAttack();
 			app->particles->AddParticle(app->particles->playerAttack, app->player->position.x + 30, app->player->position.y + 12, Collider::Type::PLAYER_ATTACK);
 			app->player->entityTurnPlayer = TurnState::WaitTurn;

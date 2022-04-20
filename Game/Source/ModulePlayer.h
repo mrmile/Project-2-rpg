@@ -212,6 +212,9 @@ public:
 	//Escape Combat
 	bool escapeCombat = false;
 	int escapeCombatCounterToReset = 0;
+
+	//FX
+	int playerHurtSound = 0;
 };
 
 #endif //!__MODULE_PLAYER_H__

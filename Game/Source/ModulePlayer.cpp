@@ -79,6 +79,8 @@ bool ModulePlayer::Start()
 	
 	texture = app->tex->Load("Assets/textures/debugRect.png");
 
+	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
+
 
 	currentAnimation = &idleRightAnim;
 
@@ -1047,7 +1049,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 	{
 		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_ATTACK ) && destroyed == false)/* && invincibleDelay >= 120*/
 		{
-
+			app->audio->PlayFx(playerHurtSound, 0);
 			playerHP -= 10;
 			//if (playerHP < 0) playerHP = 0;
 			///*invincibleDelay = 0;*/
@@ -1067,7 +1069,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_RANGED_ATTACK) && destroyed == false) /*&& invincibleDelay >= 120)*/
 		{
-
+			app->audio->PlayFx(playerHurtSound, 0);
 			playerHP -= 10;
 			//if (playerHP < 0) playerHP = 0;
 			///*invincibleDelay = 0;*/
@@ -1086,7 +1088,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		}
 		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_RANGED_ATTACK) && destroyed == false) /*&& invincibleDelay >= 120)*/
 		{
-
+			app->audio->PlayFx(playerHurtSound, 0);
 			playerHP -= 10;
 			//if (playerHP < 0) playerHP = 0;
 			///*invincibleDelay = 0;*/

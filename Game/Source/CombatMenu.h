@@ -61,6 +61,7 @@ private:
 	int delay3 = 0;
 
 	int buttonClickedFx = 0;
+	int buttonClickedMelee = 0;
 };
 
 #endif // __SCENE_FOREST_H__
