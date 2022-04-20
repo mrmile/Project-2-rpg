@@ -17,6 +17,7 @@
 
 #include "SceneMainMap.h"
 #include "SceneCave.h"
+#include "SceneBase.h"
 #include "Map.h"
 #include "ModulePhysics.h"
 #include "ModuleCollisions.h"
@@ -941,7 +942,7 @@ bool ModulePlayer::LoadState(pugi::xml_node& data)
 	entranceID = data.child("atributes").attribute("entranceID").as_int();
 	app->sceneMainMap->sceneMainMap = data.child("atributes").attribute("sceneMainMap").as_bool();
 	app->sceneCave->sceneCave = data.child("atributes").attribute("sceneCave").as_bool();
-	//app->sceneBase->sceneBase = data.child("atributes").attribute("sceneBase").as_bool();
+	app->sceneBase->sceneBase = data.child("atributes").attribute("sceneBase").as_bool();
 
 	if (app->player->IsEnabled() == true)
 	{
@@ -978,7 +979,7 @@ bool ModulePlayer::SaveState(pugi::xml_node& data) const
 	playerAtributes.append_attribute("entranceID") = entranceID;
 	playerAtributes.append_attribute("sceneMainMap") = app->sceneMainMap->sceneMainMap;
 	playerAtributes.append_attribute("sceneCave") = app->sceneCave->sceneCave;
-	//playerAtributes.append_attribute("sceneBase") = app->sceneBase->sceneBase;
+	playerAtributes.append_attribute("sceneBase") = app->sceneBase->sceneBase;
 
 	return true;
 }

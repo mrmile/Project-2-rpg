@@ -13,31 +13,13 @@
 	</TitleScreen>
 	<SceneMainMap />
 	<SceneCave />
+	<SceneBase />
 	<:anonymous />
 	<player>
-		<position x="3310" y="3044" />
-		<atributes score="0" hp="100" lives="3" timer="450" />
+		<position x="1880" y="3287" />
+		<atributes score="0" hp="100" lives="3" timer="450" entranceID="2" sceneMainMap="false" sceneCave="false" sceneBase="true" />
 	</player>
-	<entities>
-		<position x="3413" y="2650" />
-		<atributes entityHp="1" />
-		<position x="3252" y="2623" />
-		<atributes entityHp="1" />
-		<position x="2910" y="2685" />
-		<atributes entityHp="1" />
-		<position x="3126" y="2683" />
-		<atributes entityHp="1" />
-		<position x="3413" y="3511" />
-		<atributes entityHp="5" />
-		<position x="4198" y="3443" />
-		<atributes entityHp="5" />
-		<position x="4418" y="2838" />
-		<atributes entityHp="5" />
-		<position x="3670" y="2936" />
-		<atributes entityHp="1" />
-		<position x="3012" y="3070" />
-		<atributes entityHp="1" />
-	</entities>
+	<entities />
 	<:anonymous />
 	<:anonymous />
 	<:anonymous />
@@ -48,6 +30,6 @@
 	<DialogManager />
 	<GameManager />
 	<renderer>
-		<camera x="-6010" y="-5732" />
+		<camera x="-3150" y="-6219" />
 	</renderer>
 </save_state>
