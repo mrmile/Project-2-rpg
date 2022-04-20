@@ -176,6 +176,8 @@ bool CombatMenu::OnGuiMouseClickEvent(GuiControl* control)
 			//RESUME BUTTON
 			app->audio->PlayFx(buttonClickedFx, 0);
 			app->player->MeleeAttack();
+			app->particles->AddParticle(app->particles->playerAttack, app->player->position.x + 30, app->player->position.y + 12, Collider::Type::PLAYER_ATTACK);
+			app->player->entityTurnPlayer = TurnState::WaitTurn;
 		}
 		if (control->id == 27 && combatItemsGUI->canClick == true)
 		{
@@ -189,7 +191,8 @@ bool CombatMenu::OnGuiMouseClickEvent(GuiControl* control)
 			//RESUME BUTTON
 			app->audio->PlayFx(buttonClickedFx, 0);
 			//Escape Combat
-			/*app->player->escapeCombat = true;*/
+			app->player->escapeCombat = true;
+			app->game_manager->StartTurnManagement = false;
 		}
 	}
 	}

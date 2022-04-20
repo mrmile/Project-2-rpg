@@ -622,57 +622,57 @@ bool ModulePlayer::Update(float dt)
 					entityTurnPlayer = TurnState::FinishTurn;
 				}
 			}
-			if (entityTurnPlayer == TurnState::FinishTurn)
-			{
-				Player->body->SetLinearVelocity({ 0.0f,0.0f });
+			//if (entityTurnPlayer == TurnState::FinishTurn)
+			//{
+			//	Player->body->SetLinearVelocity({ 0.0f,0.0f });
 
-				//Attack methodology, after attacking the player goes to wait turn
+			//	//Attack methodology, after attacking the player goes to wait turn
 
-				if (app->input->keys[SDL_SCANCODE_SPACE] == KeyState::KEY_DOWN)
-				{
-					
-					int mousePosx, mousePosy;
-					app->input->GetMousePosition(mousePosx, mousePosy);
+			//	//if (app->input->keys[SDL_SCANCODE_SPACE] == KeyState::KEY_DOWN)
+			//	//{
+			//	//	
+			//	//	int mousePosx, mousePosy;
+			//	//	app->input->GetMousePosition(mousePosx, mousePosy);
 
-					if (mousePosx > position.x && mousePosy == position.y)
-					{
-						app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-					}
-					if (mousePosx < position.x && mousePosy == position.y)
-					{
-						app->particles->AddParticle(app->particles->playerAttack, position.x - 15, position.y + 12, Collider::Type::PLAYER_ATTACK);
-					}
-					if (mousePosy > position.y && mousePosx == position.x)
-					{
-						app->particles->AddParticle(app->particles->playerAttack, position.x - 15, position.y + 12, Collider::Type::PLAYER_ATTACK);
-					}
-					if (mousePosy < position.y && mousePosx == position.x)
-					{
-						app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-					}
-					// DIAGONAL 
-					if (mousePosx > position.x && mousePosy > position.y)
-					{
-						app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-					}
-					if (mousePosx > position.x && mousePosy < position.y)
-					{
-						app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-					}
-					if (mousePosy < position.x && mousePosy > position.y)
-					{
-						app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-					}
-					if (mousePosy < position.x && mousePosy < position.y)
-					{
-						app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-					}
-					
-					
-					
-					entityTurnPlayer = TurnState::WaitTurn;
-				}
-			}
+			//	//	if (mousePosx > position.x && mousePosy == position.y)
+			//	//	{
+			//	//		app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+			//	//	}
+			//	//	if (mousePosx < position.x && mousePosy == position.y)
+			//	//	{
+			//	//		app->particles->AddParticle(app->particles->playerAttack, position.x - 15, position.y + 12, Collider::Type::PLAYER_ATTACK);
+			//	//	}
+			//	//	if (mousePosy > position.y && mousePosx == position.x)
+			//	//	{
+			//	//		app->particles->AddParticle(app->particles->playerAttack, position.x - 15, position.y + 12, Collider::Type::PLAYER_ATTACK);
+			//	//	}
+			//	//	if (mousePosy < position.y && mousePosx == position.x)
+			//	//	{
+			//	//		app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+			//	//	}
+			//	//	// DIAGONAL 
+			//	//	if (mousePosx > position.x && mousePosy > position.y)
+			//	//	{
+			//	//		app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+			//	//	}
+			//	//	if (mousePosx > position.x && mousePosy < position.y)
+			//	//	{
+			//	//		app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+			//	//	}
+			//	//	if (mousePosy < position.x && mousePosy > position.y)
+			//	//	{
+			//	//		app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+			//	//	}
+			//	//	if (mousePosy < position.x && mousePosy < position.y)
+			//	//	{
+			//	//		app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
+			//	//	}
+			//	//	
+			//	//	
+			//	//	
+			//	//	entityTurnPlayer = TurnState::WaitTurn;
+			//	//}
+			//}
 			if (entityTurnPlayer == TurnState::WaitTurn)
 			{
 				iPoint NewPosition = position;
@@ -712,7 +712,7 @@ bool ModulePlayer::Update(float dt)
 			}
 		}
 		//Escape Combat
-		/*if (escapeCombat == true)
+		if (escapeCombat == true)
 		{
 			escapeCombatCounterToReset++;
 
@@ -720,7 +720,7 @@ bool ModulePlayer::Update(float dt)
 			{
 				escapeCombat = false;
 			}
-		}*/
+		}
 
 		//  //TODO: Para la alpha mejorar el dialog system
 		// 
