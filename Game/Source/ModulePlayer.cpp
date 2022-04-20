@@ -1126,3 +1126,15 @@ iPoint ModulePlayer::GetLastPosition()
 
 	return NewPosition;
 }
+
+
+void ModulePlayer::RangedAttack()
+{
+	//animation + add particle type ranged attack
+
+	//
+}
+void ModulePlayer::MeleeAttack()
+{
+	//animation + add particle type melee attack directly in the direction needed
+}

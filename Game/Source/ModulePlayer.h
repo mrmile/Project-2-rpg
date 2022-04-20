@@ -45,6 +45,11 @@ public:
 	void OnCollision(Collider* c1, Collider* c2) override;
 
 	iPoint GetLastPosition();
+
+
+	void RangedAttack();
+
+	void MeleeAttack();
 	
 
 public:
