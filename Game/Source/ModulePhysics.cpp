@@ -212,7 +212,7 @@ PhysBody* ModulePhysics::CreateWalkingEnemyBox(int x, int y, int width, int heig
 	b2Filter filter;
 
 	filter.categoryBits = 0x0001;
-	filter.maskBits = 0x0003;
+	filter.maskBits = 0x0001;
 
 	pbody->body->GetFixtureList()->SetFilterData(filter);
 
