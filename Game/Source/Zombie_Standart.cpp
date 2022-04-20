@@ -253,6 +253,65 @@ bool Zombie_Standart::Update(float dt)
 
 						}
 
+						/*if (app->player->meleeAttack == true)
+						{
+							if ((position.x == app->player->position.x) && (position.y < app->player->position.y))
+							{
+
+								app->particles->AddParticle(app->particles->playerAttack, position.x, position.y + 60, Collider::Type::PLAYER_ATTACK);
+
+							}
+							if ((position.x == app->player->position.x) && (position.y > app->player->position.y))
+							{
+
+								app->particles->AddParticle(app->particles->playerAttack, position.x, position.y - 60, Collider::Type::PLAYER_ATTACK);
+
+							}
+							if ((position.x < app->player->position.x) && (position.y == app->player->position.y))
+							{
+
+
+								app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y, Collider::Type::PLAYER_ATTACK);
+
+
+							}
+							if ((position.x > app->player->position.x) && (position.y == app->player->position.y))
+							{
+
+								app->particles->AddParticle(app->particles->playerAttack, position.x - 30, position.y, Collider::Type::PLAYER_ATTACK);
+
+
+							}
+
+							if ((position.x > app->player->position.x) && (position.y > app->player->position.y))
+							{
+
+
+								app->particles->AddParticle(app->particles->playerAttack, position.x - 30, position.y - 30, Collider::Type::PLAYER_ATTACK);
+
+
+							}
+							if ((position.x > app->player->position.x) && (position.y < app->player->position.y))
+							{
+
+								app->particles->AddParticle(app->particles->playerAttack, position.x - 30, position.y + 30, Collider::Type::PLAYER_ATTACK);
+
+
+							}
+							if ((position.x < app->player->position.x) && (position.y > app->player->position.y))
+							{
+
+								app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y - 30, Collider::Type::PLAYER_ATTACK);
+
+
+							}
+							if ((position.x < app->player->position.x) && (position.y < app->player->position.y))
+							{
+
+								app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 30, Collider::Type::PLAYER_ATTACK);
+							}
+						}*/
+
 
 						entityTurn = TurnState::WaitTurn;
 					}
@@ -280,6 +339,14 @@ bool Zombie_Standart::Update(float dt)
 					entityState = GameState::OutOfCombat;
 					entityTurn = TurnState::NONE;
 				}
+				//Escape Combat
+				/*if (app->player->escapeCombat == true)
+				{
+					app->game_manager->counter = 0;
+					entityState = GameState::OutOfCombat;
+					entityTurn = TurnState::NONE;
+				}*/
+
 
 			}
 				

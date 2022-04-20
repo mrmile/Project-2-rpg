@@ -208,6 +208,10 @@ public:
 	TurnState entityTurnPlayer;
 
 	bool showCombatHUD = false;
+	bool meleeAttack = false;
+	//Escape Combat
+	/*bool escapeCombat = false;
+	int escapeCombatCounterToReset = 0;*/
 };
 
 #endif //!__MODULE_PLAYER_H__

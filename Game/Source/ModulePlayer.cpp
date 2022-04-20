@@ -149,7 +149,7 @@ bool ModulePlayer::Start()
 	app->win->GetWindowSize(winWidth, winHeight);
 
 	playerHP = 100;
-	invincibleDelay = 120;
+	/*invincibleDelay = 120;*/
 	playerFPS = 0;
 
 	sceneTimer = 450;
@@ -175,7 +175,7 @@ bool ModulePlayer::Update(float dt)
 	if (pauseMenu == false)
 	{
 		playerFPS++;
-		invincibleDelay++;
+		/*invincibleDelay++;*/
 
 		//OPTICK_EVENT();
 		collider->SetPos(position.x, position.y);
@@ -637,7 +637,7 @@ bool ModulePlayer::Update(float dt)
 				
 				if (playerHP <= 0)
 				{
-					invincibleDelay = 121;
+					/*invincibleDelay = 121;*/
 					playerHP = 0;
 					//app->audio->PlayFx(dead);
 					destroyed = true;
@@ -665,6 +665,17 @@ bool ModulePlayer::Update(float dt)
 
 			}
 		}
+		//Escape Combat
+		/*if (escapeCombat == true)
+		{
+			escapeCombatCounterToReset++;
+
+			if ((escapeCombatCounterToReset / 300) % 2 == 0)
+			{
+				escapeCombat = false;
+			}
+		}*/
+
 		//  //TODO: Para la alpha mejorar el dialog system
 		// 
 		//else if (talking == true)
@@ -988,45 +999,70 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (app->sceneCave->godMode == false && app->sceneMainMap->godMode == false && destroyed == false && playerWin == false)
 	{
-		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_ATTACK ) && destroyed == false && invincibleDelay >= 120)
+		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_ATTACK ) && destroyed == false)/* && invincibleDelay >= 120*/
 		{
 
 			playerHP -= 10;
-			if (playerHP < 0) playerHP = 0;
-			invincibleDelay = 0;
-			if (playerHP != 0) app->audio->PlayFx(damaged);
+			//if (playerHP < 0) playerHP = 0;
+			///*invincibleDelay = 0;*/
+			//if (playerHP != 0) app->audio->PlayFx(damaged);
 
-			if (playerHP <= 0)
-			{
-				invincibleDelay = 121;
-				playerHP = 0;
-				//app->audio->PlayFx(dead);
-				destroyed = true;
+			//if (playerHP <= 0)
+			//{
+			//	/*invincibleDelay = 121;*/
+			//	playerHP = 0;
+			//	//app->audio->PlayFx(dead);
+			//	destroyed = true;
 
-			}
+			//}
 
 
 		}
 
-		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_RANGED_ATTACK) && destroyed == false && invincibleDelay >= 120)
+		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_RANGED_ATTACK) && destroyed == false) /*&& invincibleDelay >= 120)*/
 		{
 
 			playerHP -= 10;
-			if (playerHP < 0) playerHP = 0;
-			invincibleDelay = 0;
-			if (playerHP != 0) app->audio->PlayFx(damaged);
+			//if (playerHP < 0) playerHP = 0;
+			///*invincibleDelay = 0;*/
+			//if (playerHP != 0) app->audio->PlayFx(damaged);
 
-			if (playerHP <= 0)
-			{
-				invincibleDelay = 121;
-				playerHP = 0;
-				//app->audio->PlayFx(dead);
-				destroyed = true;
+			//if (playerHP <= 0)
+			//{
+			//	/*invincibleDelay = 121;*/
+			//	playerHP = 0;
+			//	//app->audio->PlayFx(dead);
+			//	destroyed = true;
 
-			}
+			//}
 
 
 		}
+		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_RANGED_ATTACK) && destroyed == false) /*&& invincibleDelay >= 120)*/
+		{
+
+			playerHP -= 10;
+			//if (playerHP < 0) playerHP = 0;
+			///*invincibleDelay = 0;*/
+			//if (playerHP != 0) app->audio->PlayFx(damaged);
+
+			//if (playerHP <= 0)
+			//{
+			//	/*invincibleDelay = 121;*/
+			//	playerHP = 0;
+			//	//app->audio->PlayFx(dead);
+			//	destroyed = true;
+
+			//}
+
+
+		}
+		/*if ((c1->type == Collider::Type::PLAYER_ATTACK && c2->type == Collider::Type::ENEMY))
+		{
+
+			playerHP -= 10;
+			
+		}*/
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::EXIT_1)
 		{
