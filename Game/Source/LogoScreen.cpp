@@ -70,6 +70,7 @@ bool LogoScreen::Update(float dt)
 	{
 		app->titleScreen->Enable();
 
+		app->entity_manager->Disable();
 		app->logoScreen->Disable();
 	}
 

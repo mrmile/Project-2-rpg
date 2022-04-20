@@ -43,7 +43,7 @@ class EntityManager : public Module
 public:
 
 
-	EntityManager(bool start_enabled = false);
+	EntityManager(bool start_enabled = true);
 
 	// Destructor
 	~EntityManager();

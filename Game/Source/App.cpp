@@ -58,7 +58,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	collisions = new ModuleCollisions(false);
 	pause_menu = new PauseMenu(false);
 	combatMenu = new CombatMenu(true);
-	entity_manager = new EntityManager(false);
+	entity_manager = new EntityManager(true);
 	particles = new ModuleParticles(true);
 	pathfinding = new PathFinding(false);
 	fonts = new ModuleFonts(false);
@@ -431,15 +431,16 @@ bool App::PostUpdate()
 	{
 		pModule = item->data;
 
+		LOG("POST UPDATING MODULE NUMBER: %i", test);
+		test++;
+
 		if(pModule->active == false) {
 			continue;
 		}
 
-		LOG("POST UPDATING MODULE NUMBER: %i", test);
-
 		ret = item->data->PostUpdate();
 
-		test++;
+		
 	}
 
 	return ret;
