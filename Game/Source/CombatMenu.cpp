@@ -102,7 +102,7 @@ bool CombatMenu::PostUpdate()
 
 	if (app->player->showCombatHUD == true && app->player->pauseMenu == false && app->titleScreen->active == false)
 	{
-		if (app->entity_manager->ListInCombat.At(app->game_manager->counter)->data->entityTurn != TurnState::WaitTurn)
+		if (app->player->entityTurnPlayer == TurnState::WaitTurn)
 		{
 			delay++;
 
