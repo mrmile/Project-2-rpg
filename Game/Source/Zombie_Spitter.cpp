@@ -197,13 +197,13 @@ bool Zombie_Spitter::Update(float dt)
 						if ((position.x == app->player->position.x) && (position.y < app->player->position.y))
 						{
 							app->particles->RangedAttack.speed.y = 5;
-							app->particles->AddParticle(app->particles->RangedAttack, position.x, position.y + 60, Collider::Type::ENEMY_RANGED_ATTACK);
+							app->particles->AddParticle(app->particles->RangedAttack, position.x, position.y + 30, Collider::Type::ENEMY_RANGED_ATTACK);
 
 						}
 						if ((position.x == app->player->position.x) && (position.y > app->player->position.y))
 						{
 							app->particles->RangedAttack.speed.y = -5;
-							app->particles->AddParticle(app->particles->RangedAttack, position.x, position.y - 60, Collider::Type::ENEMY_RANGED_ATTACK);
+							app->particles->AddParticle(app->particles->RangedAttack, position.x, position.y - 30, Collider::Type::ENEMY_RANGED_ATTACK);
 
 						}
 						if ((position.x < app->player->position.x) && (position.y == app->player->position.y))
