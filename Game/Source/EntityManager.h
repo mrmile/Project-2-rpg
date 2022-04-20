@@ -74,7 +74,7 @@ public:
 	bool AddEntity(EntityType type,int x, int y);
 
 	//Check which entites are in combat
-	void RegisterEntitesInCombat(int id);
+	void RegisterEntitesInCombat(Entity* entity);
 
 	
 	//List that will be used for turn system
@@ -85,7 +85,9 @@ public:
 
 	bool LoadState(pugi::xml_node&);
 	bool SaveState(pugi::xml_node&) const;
+public:
 
+	int idForCombat;
 
 private:
 

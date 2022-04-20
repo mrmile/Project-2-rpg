@@ -616,7 +616,7 @@ bool ModulePlayer::Update(float dt)
 					Player->body->SetLinearVelocity({ -2.0f,0.0f });
 				}
 
-				if (counter > 200)
+				if (counter > 100)
 				{
 					entityTurnPlayer = TurnState::FinishTurn;
 				}
@@ -632,7 +632,8 @@ bool ModulePlayer::Update(float dt)
 				Player->body->SetLinearVelocity({ 0.0f,0.0f });
 				collider->SetPos(NewPosition.x, NewPosition.y);
 				colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
-
+				counter = 0;
+				
 				if (playerHP <= 0)
 				{
 					invincibleDelay = 121;
@@ -776,8 +777,6 @@ bool ModulePlayer::PostUpdate()
 		sprintf_s(lifeText, 10, "%1d", lives);
 		sprintf_s(timerText, 10, "%3d", sceneTimer);
 
-		app->render->DrawTexture2(yoshiIcon, 5, 28, NULL, 0.0f);
-		app->render->DrawTexture2(clockIcon, 400, 30, NULL, 0.0f);
 
 		SDL_Rect quad;
 		quad = { 5, 10, playerHP, 10 };
@@ -939,7 +938,10 @@ bool ModulePlayer::LoadState(pugi::xml_node& data)
 	playerHP = data.child("atributes").attribute("hp").as_int();
 	lives = data.child("atributes").attribute("lives").as_int();
 	sceneTimer = data.child("atributes").attribute("timer").as_int();
-
+	entranceID = data.child("atributes").attribute("entranceID").as_int();
+	app->sceneMainMap->sceneMainMap = data.child("atributes").attribute("sceneMainMap").as_bool();
+	app->sceneCave->sceneCave = data.child("atributes").attribute("sceneCave").as_bool();
+	//app->sceneBase->sceneBase = data.child("atributes").attribute("sceneBase").as_bool();
 
 	if (app->player->IsEnabled() == true)
 	{
@@ -973,7 +975,10 @@ bool ModulePlayer::SaveState(pugi::xml_node& data) const
 	playerAtributes.append_attribute("hp") = playerHP;
 	playerAtributes.append_attribute("lives") = lives;
 	playerAtributes.append_attribute("timer") = sceneTimer;
-
+	playerAtributes.append_attribute("entranceID") = entranceID;
+	playerAtributes.append_attribute("sceneMainMap") = app->sceneMainMap->sceneMainMap;
+	playerAtributes.append_attribute("sceneCave") = app->sceneCave->sceneCave;
+	//playerAtributes.append_attribute("sceneBase") = app->sceneBase->sceneBase;
 
 	return true;
 }
@@ -1126,4 +1131,16 @@ iPoint ModulePlayer::GetLastPosition()
 	iPoint NewPosition = position;
 
 	return NewPosition;
+}
+
+
+void ModulePlayer::RangedAttack()
+{
+	//animation + add particle type ranged attack
+
+	//
+}
+void ModulePlayer::MeleeAttack()
+{
+	//animation + add particle type melee attack directly in the direction needed
 }

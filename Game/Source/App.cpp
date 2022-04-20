@@ -7,6 +7,7 @@
 #include "Audio.h"
 #include "SceneMainMap.h"
 #include "SceneCave.h"
+#include "SceneBase.h"
 #include "Map.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
@@ -49,6 +50,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	titleScreen = new TitleScreen(false);
 	sceneMainMap = new SceneMainMap(false);
 	sceneCave = new SceneCave(false);
+	sceneBase = new SceneBase(false);
 	map = new Map(true);
 	physics = new ModulePhysics(true);
 	fade = new ModuleFadeToBlack(true);
@@ -77,6 +79,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(titleScreen);
 	AddModule(sceneMainMap);
 	AddModule(sceneCave);
+	AddModule(sceneBase);
 	AddModule(fonts);
 	AddModule(player);
 	AddModule(entity_manager); 
@@ -288,6 +291,20 @@ void App::FinishUpdate()
 		app->sceneCave->destroyScene = false;
 	}
 
+	if (app->sceneBase->destroyScene == true) // Tiene que borrar todos los chains del box2D y los sensores de colisiones del método antiguo que están en el nivel
+	{
+		// Borra los chains
+		for (int i = 0; i < app->map->mapChainsCounter; i++)
+		{
+			app->map->mapChains[i]->body->DestroyFixture(app->map->mapChains[i]->body->GetFixtureList());
+		}
+
+		// Borra los sensores
+		app->map->DeleteCollidersSensors();
+
+		app->sceneBase->destroyScene = false;
+	}
+
 	if (app->sceneMainMap->enableSceneCave == true)
 	{
 		app->collisions->Enable();
@@ -302,7 +319,21 @@ void App::FinishUpdate()
 		app->sceneMainMap->enableSceneCave = false;
 	}
 
-	if (app->sceneCave->enableSceneMainMap == true)
+	if (app->sceneMainMap->enableSceneBase == true)
+	{
+		app->collisions->Enable();
+		app->map->Enable();
+		app->sceneBase->Enable();
+		app->particles->Enable();
+		app->player->Enable();
+		app->entity_manager->Enable();
+		app->fonts->Enable();
+		app->pause_menu->Enable();
+
+		app->sceneMainMap->enableSceneBase = false;
+	}
+
+	if (app->sceneCave->enableSceneMainMap == true || app->sceneBase->enableSceneMainMap == true)
 	{
 		app->collisions->Enable();
 		app->map->Enable();
