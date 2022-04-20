@@ -23,6 +23,7 @@
 #include "GuiManager.h"
 #include "LogoScreen.h"
 #include "PauseMenu.h"
+#include "CombatMenu.h"
 #include "DialogManager.h"
 #include "GameManager.h"
 
@@ -54,6 +55,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	player = new ModulePlayer(false);
 	collisions = new ModuleCollisions(true);
 	pause_menu = new PauseMenu(false);
+	combatMenu = new CombatMenu(false);
 	entity_manager = new EntityManager(false);
 	particles = new ModuleParticles(true);
 	pathfinding = new PathFinding(false);
@@ -84,6 +86,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(pathfinding);
 	AddModule(guiManager);
 	AddModule(pause_menu);
+	AddModule(combatMenu);
 	AddModule(dialogManager);
 	AddModule(game_manager);
 	// Render last to swap buffer
