@@ -15,6 +15,7 @@
 #include "ModuleParticles.h"
 #include "Map.h"
 #include "EntityManager.h"
+#include "SceneBase.h"
 #include "Defs.h"
 #include "Log.h"
 #include <SDL_mixer/include/SDL_mixer.h>
@@ -180,6 +181,7 @@ bool PauseMenu::Update(float dt)
 		{
 			if(app->sceneMainMap->sceneMainMap == true) app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);
 			if(app->sceneCave->sceneCave == true) app->audio->ChangeMusic(CAVE, 0.5f, 0.5f);
+			if (app->sceneBase->sceneBase == true) app->audio->ChangeMusic(BASE, 0.5f, 0.5f);
 		}
 	}
 	if (app->player->pauseMenu == false)
