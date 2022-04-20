@@ -77,6 +77,9 @@ bool Render::PostUpdate()
 {
 	SDL_SetRenderDrawColor(renderer, background.r, background.g, background.g, background.a);
 	SDL_RenderPresent(renderer);
+
+	//LOG("POST UPDATING GENERAL");
+
 	return true;
 }
 

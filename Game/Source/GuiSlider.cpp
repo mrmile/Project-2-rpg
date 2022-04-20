@@ -57,7 +57,12 @@ bool GuiSlider::Update(float dt)
 		}
 	}
 
-	return false;
+	return true;
+}
+
+bool GuiSlider::PostUpdate()
+{
+	return true;
 }
 
 bool GuiSlider::Draw(Render* render)

@@ -54,7 +54,12 @@ bool GuiButton::Update(float dt)
 
 	}
 
-	return false;
+	return true;
+}
+
+bool GuiButton::PostUpdate()
+{
+	return true;
 }
 
 bool GuiButton::Draw(Render* render)
