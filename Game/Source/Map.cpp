@@ -171,19 +171,8 @@ void Map::Draw()
 
 						if (pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) + 98/*98 VARÍA SEGÚN LA ALTURA REAL DEL JUGADOR*/ > app->player->position.y && app->player->hasBeenDrawed == false)
 						{
-							if (app->player->invincibleDelay <= 120)
-							{
-								if ((app->player->playerFPS / 5) % 2 == 0)
-								{
-									SDL_Rect playerRect = app->player->currentAnimation->GetCurrentFrame();
-									app->render->DrawTexture(app->player->texture, app->player->position.x, app->player->position.y - 50, &playerRect);
-								}
-							}
-							else
-							{
-								SDL_Rect playerRect = app->player->currentAnimation->GetCurrentFrame();
-								app->render->DrawTexture(app->player->texture, app->player->position.x, app->player->position.y - 50, &playerRect);
-							}
+							SDL_Rect playerRect = app->player->currentAnimation->GetCurrentFrame();
+							app->render->DrawTexture(app->player->texture, app->player->position.x, app->player->position.y - 50, &playerRect);
 
 							app->player->hasBeenDrawed = true;
 						}
