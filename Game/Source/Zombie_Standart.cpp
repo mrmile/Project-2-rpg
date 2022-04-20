@@ -113,7 +113,7 @@ bool Zombie_Standart::Update(float dt)
 
 			if (position.DistanceTo(app->player->position) < 100)
 			{
-				app->entity_manager->RegisterEntitesInCombat(id);
+				app->entity_manager->RegisterEntitesInCombat(this);
 				entityState = GameState::InCombat;
 				app->game_manager->StartTurnManagement = true;
 			}
@@ -143,10 +143,9 @@ bool Zombie_Standart::Update(float dt)
 					collider->SetPos(position.x, position.y - 46);
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = false;
-					counter++;
 					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f }); //movimiento contrario a la direccion del jugador cuando nos chocamos con el
 
-					if(counter == 50) entityTurn = TurnState::MidOfTurn;
+					entityTurn = TurnState::MidOfTurn;
 
 				}
 				if (entityTurn == TurnState::MidOfTurn)
@@ -267,20 +266,17 @@ bool Zombie_Standart::Update(float dt)
 				if (entityTurn == TurnState::WaitTurn)
 				{
 					//Change turn from enemy to player turn still have to develop a way to do it correctly
+					counter = 0;
 					collider->SetPos(position.x, position.y - 46);
 					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;
-					if (app->player->entityTurnPlayer == TurnState::WaitTurn)
-					{
-						counter = 0;
-						entityTurn = TurnState::StartOfTurn;
-					}
-					
+
 
 				}
 				if (app->sceneMainMap->playerRestart == true)
 				{
+					app->game_manager->counter = 0;
 					entityState = GameState::OutOfCombat;
 					entityTurn = TurnState::NONE;
 				}

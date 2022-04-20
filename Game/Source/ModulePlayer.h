@@ -7,7 +7,6 @@
 #include "ModulePhysics.h"
 #include "GameManager.h"
 
-// sound fx web: https://themushroomkingdom.net/media/smw2/wav
 
 struct SDL_Texture;
 struct Collider;
@@ -56,9 +55,7 @@ public:
 
 	//Player body for physics implementation
 	PhysBody* Player;
-	
-	//TEST OF IMPLEMENTATION
-	PhysBody* TestingGround;
+
 
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
@@ -74,9 +71,6 @@ public:
 
 	SDL_Texture* gameOverScreen;
 
-	SDL_Texture* yoshiIcon;
-
-	SDL_Texture* clockIcon;
 
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction

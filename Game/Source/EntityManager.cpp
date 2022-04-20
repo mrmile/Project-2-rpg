@@ -258,14 +258,14 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 	}
 }
 
-void EntityManager::RegisterEntitesInCombat(int id)
+void EntityManager::RegisterEntitesInCombat(Entity* entity)
 {
 
-	if (entities[id]->entityState == GameState::OutOfCombat)
+	if (entity->entityState == GameState::OutOfCombat)
 	{
 
-		ListInCombat.add(entities[id]);
-		ListInCombat.At(x)->data->entityTurn = TurnState::NONE; x++;
+		ListInCombat.add(entity);
+		ListInCombat.At(x)->data->entityTurn = TurnState::StartOfTurn; x++;
 	
 	}
 
