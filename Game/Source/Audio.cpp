@@ -329,6 +329,14 @@ bool Audio::ChangeMusic(int Id, float fadeInTime, float fadeOutTime)
 
 		break;
 	}
+	case CREDITS_THEME:
+	{
+		Mix_ResumeMusic();
+
+		app->audio->PlayMusic("Assets/Audio/Music/creditsSong.ogg", fadeInTime, fadeOutTime);
+
+		break;
+	}
 	case MENU:
 	{
 		Mix_ResumeMusic();

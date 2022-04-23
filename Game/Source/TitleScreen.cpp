@@ -17,6 +17,7 @@
 #include "GuiManager.h"
 #include "GuiButton.h"
 #include "PauseMenu.h"
+#include "CreditsScreen.h"
 #include "EntityManager.h"
 #include "Entity.h"
 #include "SceneBase.h"
@@ -460,8 +461,10 @@ bool TitleScreen::OnGuiMouseClickEvent(GuiControl* control)
 			{
 				app->audio->PlayFx(buttonClickedFx, 0);
 
-				MainMenu = false;
-				credits = true;
+				app->creditsScreen->creditsScene = true;
+
+				app->creditsScreen->Enable();
+				app->titleScreen->Disable();
 			}
 			if (control->id == 5 && exitButton_->canClick == true)
 			{

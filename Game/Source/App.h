@@ -20,6 +20,7 @@ class Textures;
 class Audio;
 class LogoScreen;
 class TitleScreen;
+class CreditsScreen;
 class SceneMainMap;
 class SceneCave;
 class SceneBase;
@@ -115,6 +116,7 @@ public:
 	Audio* audio;
 	LogoScreen* logoScreen;
 	TitleScreen* titleScreen;
+	CreditsScreen* creditsScreen;
 	SceneMainMap* sceneMainMap;
 	SceneCave* sceneCave;
 	SceneBase* sceneBase;

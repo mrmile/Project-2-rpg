@@ -139,6 +139,9 @@
     <ClCompile Include="Source\SceneBase.cpp">
       <Filter>General</Filter>
     </ClCompile>
+    <ClCompile Include="Source\CreditsScreen.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -307,6 +310,9 @@
       <Filter>General</Filter>
     </ClInclude>
     <ClInclude Include="Source\SceneBase.h">
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CreditsScreen.h">
       <Filter>General</Filter>
     </ClInclude>
   </ItemGroup>
