@@ -18,6 +18,7 @@
 #include "PauseMenu.h"
 #include "Pathfinding.h"
 #include "ModuleFadeToBlack.h"
+#include "SceneBase.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -97,7 +98,7 @@ bool SceneMainMap::Start()
 	}
 	*/
 
-	app->SaveGameRequest();
+	//app->SaveGameRequest();
 
 	return true;
 }
@@ -130,18 +131,13 @@ bool SceneMainMap::Update(float dt)
 	sceneTimer++;
 	//F9 --> See colliders
 
-
-	if ((app->input->keys[SDL_SCANCODE_F3] == KEY_DOWN || app->input->keys[SDL_SCANCODE_F1] == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false))
-	{
-		app->player->checkPointReached = false;
-		playerRestart = true;
-	}
 	
 
 	if (app->input->keys[SDL_SCANCODE_F10] == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false)
 		godMode = !godMode;
 
-    // L02: DONE 3: Request Load / Save when pressing L/S
+    
+	// L02: DONE 3: Request Load / Save when pressing L/S
 	if (app->input->keys[SDL_SCANCODE_F6] == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false)
 	{
 		app->LoadGameRequest();
@@ -153,6 +149,7 @@ bool SceneMainMap::Update(float dt)
 		app->titleScreen->SavedGame = true;
 		app->SaveGameRequest();
 	}
+	
 		
 
 	//if(app->input->keys[SDL_SCANCODE_S) == KEY_REPEAT)
@@ -249,8 +246,22 @@ bool SceneMainMap::PostUpdate()
 		app->pause_menu->Disable();
 		app->sceneMainMap->Disable();
 
-		if(app->player->entranceID == 1) enableSceneCave = true;
-		if (app->player->entranceID == 2) enableSceneBase = true;
+		if (app->player->entranceID == 1)
+		{
+			enableSceneBase = false;
+			app->sceneBase->enableSceneMainMap = false;
+			app->sceneCave->enableSceneMainMap = false;
+
+			enableSceneCave = true;
+		}
+		if (app->player->entranceID == 2)
+		{
+			app->sceneBase->enableSceneMainMap = false;
+			app->sceneCave->enableSceneMainMap = false;
+			enableSceneCave = false;
+
+			enableSceneBase = true;
+		}
 
 
 		//app->fade->FadeToBlack(app->sceneMainMap, app->sceneCave, 60.0f);

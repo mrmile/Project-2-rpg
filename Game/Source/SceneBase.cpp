@@ -64,7 +64,7 @@ bool SceneBase::Start()
 
 	sceneSoundRandomizerNumber = 0;
 
-	app->SaveGameRequest();
+	//app->SaveGameRequest();
 
 	return true;
 }
@@ -72,11 +72,11 @@ bool SceneBase::Start()
 // Called each loop iteration
 bool SceneBase::PreUpdate()
 {
-	if (app->titleScreen->GameHasContinued == true)
+	/*if (app->titleScreen->GameHasContinued == true)
 	{
 		app->LoadGameRequest();
 		app->titleScreen->GameHasContinued = false;
-	}
+	}*/
 
 	srand(time(NULL));
 
@@ -93,23 +93,26 @@ bool SceneBase::Update(float dt)
 
 	//F9 --> See colliders
 
-	if ((app->input->keys[SDL_SCANCODE_F3] == KEY_DOWN || app->input->keys[SDL_SCANCODE_F1] == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false))
-	{
-		app->player->checkPointReached = false;
-		playerRestart = true;
-	}
+
 
 
 	if (app->input->keys[SDL_SCANCODE_F10] == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false)
 		godMode = !godMode;
 
-	// L02: DONE 3: Request Load / Save when pressing L/S
-	if (app->input->keys[SDL_SCANCODE_F6] == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false)
-		app->LoadGameRequest();
+	/*
+   // L02: DONE 3: Request Load / Save when pressing L/S
+   if (app->input->keys[SDL_SCANCODE_F6] == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false)
+   {
+	   app->LoadGameRequest();
+   }
 
-	if (app->input->keys[SDL_SCANCODE_F5] == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false)
-		app->SaveGameRequest();
 
+   if (app->input->keys[SDL_SCANCODE_F5] == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false)
+   {
+	   app->titleScreen->SavedGame = true;
+	   app->SaveGameRequest();
+   }
+   */
 
 	// Draw map
 	app->map->Draw();
@@ -200,7 +203,14 @@ bool SceneBase::PostUpdate()
 		app->pause_menu->Disable();
 		app->sceneBase->Disable();
 
-		if (app->player->entranceID == 2) enableSceneMainMap = true;
+		if (app->player->entranceID == 2)
+		{
+			app->sceneCave->enableSceneMainMap = false;
+			app->sceneMainMap->enableSceneBase = false;
+			app->sceneMainMap->enableSceneCave = false;
+
+			enableSceneMainMap = true;
+		}
 
 
 		//app->fade->FadeToBlack(app->sceneMainMap, app->sceneBase, 60.0f);

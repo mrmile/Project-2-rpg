@@ -19,6 +19,7 @@
 #include "PauseMenu.h"
 #include "EntityManager.h"
 #include "Entity.h"
+#include "SceneBase.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -134,6 +135,15 @@ bool TitleScreen::Start()
 	fxVolumeSlider->extraBounds.x = 33 + fxVolumeSlider->bounds.x * (app->audio->SliderLevelFX / 10);
 	musicVolumeSlider->extraBounds.x = 33 + musicVolumeSlider->bounds.x * (app->audio->SliderLevelMusic / 10);
 
+	app->sceneBase->sceneBase = false;
+	app->sceneCave->sceneCave = false;
+	app->sceneMainMap->sceneMainMap = false;
+
+	app->sceneBase->enableSceneMainMap = false;
+	app->sceneCave->enableSceneMainMap = false;
+	app->sceneMainMap->enableSceneBase = false;
+	app->sceneMainMap->enableSceneCave = false;
+
 	return true;
 }
 
@@ -209,26 +219,7 @@ bool TitleScreen::Update(float dt)
 
 		if (delayToContinue > 90 && delayToContinue <= 91)
 		{
-			//app->physics->Enable();
-			//app->collisions->Enable();
-			//app->map->Enable();
-			//app->map->Start();
-			//app->particles->Enable();
-			//app->sceneMainMap->Enable();
-			//app->player->Enable();
-			//app->enemies->Enable();
-			//app->fonts->Enable();
-			//app->collisions->Enable();
-			//app->map->Enable();
-			//app->particles->Enable();
-			//app->sceneMainMap->Enable();
-			//app->player->Enable();
-			//app->enemies->Enable();
-			//app->fonts->Enable();
-			//app->tex->Enable();
-			//app->pause_menu->Enable();
-
-			//app->physics->Enable();
+			
 			app->collisions->Enable();
 			app->map->Enable();
 			app->particles->Enable();
@@ -238,6 +229,8 @@ bool TitleScreen::Update(float dt)
 			app->fonts->Enable();
 			app->tex->Enable();
 			app->pause_menu->Enable();
+
+			
 		
 			GameHasContinued = true;
 

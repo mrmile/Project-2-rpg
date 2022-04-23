@@ -140151,7 +140151,7 @@
   <object id="32" x="3320" y="3046" width="22.6667" height="22"/>
  </objectgroup>
  <objectgroup color="#00ff00" id="21" name="entrance_1">
-  <object id="175" x="3651.5" y="2021.5" width="23.5" height="21"/>
+  <object id="175" x="3652.83" y="2061.5" width="23.5" height="21"/>
  </objectgroup>
  <objectgroup color="#00ff00" id="22" name="entrance_2">
   <object id="176" x="1746.33" y="3362.33" width="21.3333" height="20.6667"/>

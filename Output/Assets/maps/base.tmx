@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="28" nextobjectid="207">
+<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="28" nextobjectid="213">
  <tileset firstgid="1" name="base_ground_2" tilewidth="75" tileheight="39" spacing="1" tilecount="48" columns="8">
   <image source="base_ground_2.png" width="607" height="239"/>
  </tileset>
@@ -60075,22 +60075,24 @@
    <property name="Draw" value="0"/>
    <property name="Parallax" value="1"/>
   </properties>
-  <object id="201" x="1887" y="2812">
-   <polygon points="0,0 -11.6667,-6 621,-327.333 65.6667,-611.333 225.667,-692 267.667,-668 148,-608 405.667,-486 800.333,-688 555,-817 370,-722 323.667,-744.667 774.333,-978 859,-938 671.667,-840.667 1219.67,-562.667 1729.67,-822.667 1466.33,-957.333 1579,-1014 1332,-1140 1036,-988 777.667,-1119.33 222,-836 135.667,-880 356.333,-994.667 37,-1159 -505.667,-880 -259,-754.667 -147.667,-812.667 -38.3333,-754 73.6667,-810.667 123.667,-784.667 -207.667,-613.333 342.333,-330 -147,-76 -9.66667,3.33333"/>
+  <object id="207" x="1881.33" y="2805.33">
+   <polygon points="0,0 632,-325.333 73.3333,-605.333 230.667,-684 275.333,-664.667 166,-608.667 412,-482 808.667,-684.667 560.667,-810.333 379.333,-715.333 331.333,-738 784,-970 868,-928.667 680,-834.667 1225.33,-561.333 21.3333,24"/>
   </object>
-  <object id="202" x="3108" y="2109">
-   <polygon points="0,0 14.6667,-7.66667 -0.666667,-14.3333 -15.3333,-7"/>
+  <object id="208" x="3113" y="2242">
+   <polygon points="0,0 501,-254 241,-388 353,-445 106,-570 -190,-418 -449,-551 -1004,-266 -1090,-311 -865,-424 -1189,-589 -1735,-309 -1486,-187 -1376,-244 -1267,-187 -1154,-246 -1103,-218 -1436,-46 -886,237 -1374,494 -1965,-357 -763,-942 341,-763 676,-304 83,92"/>
   </object>
-  <object id="203" x="3330" y="1995">
-   <polygon points="0,0 16,-7.66667 -0.666667,-16.3333 -15.3333,-9"/>
+  <object id="209" x="3108" y="2109">
+   <polygon points="0,0 14,-9 -1.33333,-17.6667 -15.3333,-9"/>
   </object>
-  <object id="204" x="2923" y="2014">
-   <polygon points="0,0 13,-7.33333 0.333333,-14 -12.3333,-8"/>
+  <object id="210" x="3330" y="1995">
+   <polygon points="0,0 14,-8.33333 -0.666667,-19 -14.6667,-7.66667"/>
   </object>
-  <object id="205" x="3219" y="1786">
-   <polygon points="0,0 14.3333,-7.33333 -1.66667,-16.6667 -15.6667,-7.33333"/>
+  <object id="211" x="3219" y="1786">
+   <polygon points="0,0 15,-7.33333 1,-16 -13.6667,-9.33333"/>
   </object>
-  <object id="206" x="2828" y="1626.67" width="0.666667"/>
+  <object id="212" x="2923" y="2014">
+   <polygon points="0,0 15,-8 -0.333333,-16.6667 -14.3333,-9.33333"/>
+  </object>
  </objectgroup>
  <objectgroup id="25" name="yellow_light_source"/>
  <objectgroup id="26" name="Capa de Objetos 12"/>

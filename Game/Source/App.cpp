@@ -305,8 +305,26 @@ void App::FinishUpdate()
 		app->sceneBase->destroyScene = false;
 	}
 
+	if (app->sceneCave->enableSceneMainMap == true || app->sceneBase->enableSceneMainMap == true)
+	{
+		app->sceneBase->Disable();
+		app->sceneCave->Disable();
+		app->collisions->Enable();
+		app->map->Enable();
+		app->particles->Enable();
+		app->sceneMainMap->Enable();
+		app->player->Enable();
+		app->entity_manager->Enable();
+		app->fonts->Enable();
+		app->pause_menu->Enable();
+
+		app->sceneCave->enableSceneMainMap = false;
+	}
+
 	if (app->sceneMainMap->enableSceneCave == true)
 	{
+		app->sceneBase->Disable();
+		app->sceneMainMap->Disable();
 		app->collisions->Enable();
 		app->map->Enable();
 		app->sceneCave->Enable();
@@ -321,6 +339,8 @@ void App::FinishUpdate()
 
 	if (app->sceneMainMap->enableSceneBase == true)
 	{
+		app->sceneMainMap->Disable();
+		app->sceneCave->Disable();
 		app->collisions->Enable();
 		app->map->Enable();
 		app->sceneBase->Enable();
@@ -331,20 +351,6 @@ void App::FinishUpdate()
 		app->pause_menu->Enable();
 
 		app->sceneMainMap->enableSceneBase = false;
-	}
-
-	if (app->sceneCave->enableSceneMainMap == true || app->sceneBase->enableSceneMainMap == true)
-	{
-		app->collisions->Enable();
-		app->map->Enable();
-		app->particles->Enable();
-		app->sceneMainMap->Enable();
-		app->player->Enable();
-		app->entity_manager->Enable();
-		app->fonts->Enable();
-		app->pause_menu->Enable();
-
-		app->sceneCave->enableSceneMainMap = false;
 	}
 
 	// L07: DONE 4: Now calculate:
@@ -500,6 +506,7 @@ void App::SaveGameRequest() const
 {
 	// NOTE: We should check if SAVE_STATE_FILENAME actually exist and... should we overwriten
 	saveGameRequested = true;
+	app->titleScreen->SavedGame = true;
 }
 
 

@@ -26,6 +26,8 @@ public:
 	// Called before the first frame
 	bool Start();
 
+	bool PreUpdate();
+
 	// Called each loop iteration
 	bool Update(float dt);
 
@@ -214,7 +216,10 @@ public:
 	int escapeCombatCounterToReset = 0;
 
 	//FX
-	int playerHurtSound = 0;
+	int walkSoundID = 0;
+	uint playerHurtSound = 0;
+	uint playerWalkSound[6] = { 0 };
+
 };
 
 #endif //!__MODULE_PLAYER_H__

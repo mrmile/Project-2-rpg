@@ -133,8 +133,9 @@ bool PauseMenu::Update(float dt)
 			app->map->Disable();
 			app->collisions->Disable();
 			app->particles->Disable();
-			if(app->sceneMainMap->sceneMainMap == true) app->sceneMainMap->Disable();
-			if(app->sceneCave->sceneCave == true) app->sceneCave->Disable();
+			app->sceneMainMap->Disable();
+			app->sceneCave->Disable();
+			app->sceneBase->Disable();
 			app->player->Disable();
 			app->entity_manager->Disable();
 			app->fonts->Disable();

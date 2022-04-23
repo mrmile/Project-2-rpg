@@ -37,22 +37,101 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 {
 	name.Create("player");
 
-	idleRightAnim.PushBack({ 0, 0, 40, 56 });
+	idleRightAnim.PushBack({ 1, 539, 60, 67 });
 	idleRightAnim.loop = true;
 	idleRightAnim.speed = 0.3f;
 
-	idleLeftAnim.PushBack({ 0, 0, 40, 56 });
+	idleLeftAnim.PushBack({ 1, 539, 60, 67 });
 	idleLeftAnim.loop = true;
 	idleLeftAnim.speed = 0.3f;
 	
-	idleDownAnim.PushBack({ 0, 0, 40, 56 });
+	idleDownAnim.PushBack({ 1, 539, 60, 67 });
 	idleDownAnim.loop = true;
 	idleDownAnim.speed = 0.3f;
 
-	idleUpAnim.PushBack({ 0, 0, 40, 56 });
+	idleUpAnim.PushBack({ 1, 539, 60, 67 });
 	idleUpAnim.loop = true;
 	idleUpAnim.speed = 0.3f;
+
+	idleUpLeftAnim.PushBack({ 1, 539, 60, 67 });
+	idleUpLeftAnim.loop = true;
+	idleUpLeftAnim.speed = 0.3f;
+
+	idleUpRightAnim.PushBack({ 1, 539, 60, 67 });
+	idleUpRightAnim.loop = true;
+	idleUpRightAnim.speed = 0.3f;
+
+	idleDownLeftAnim.PushBack({ 1, 539, 60, 67 });
+	idleDownLeftAnim.loop = true;
+	idleDownLeftAnim.speed = 0.3f;
+
+	idleDownRightAnim.PushBack({ 1, 539, 60, 67 });
+	idleDownRightAnim.loop = true;
+	idleDownRightAnim.speed = 0.3f;
 	
+	rightWalkAnim.PushBack({ 1, 539, 60, 67 });
+	rightWalkAnim.loop = true;
+	rightWalkAnim.speed = 0.3f;
+
+	leftWalkAnim.PushBack({ 1, 539, 60, 67 });
+	leftWalkAnim.loop = true;
+	leftWalkAnim.speed = 0.3f;
+
+	downWalkAnim.PushBack({ 1, 539, 60, 67 });
+	downWalkAnim.loop = true;
+	downWalkAnim.speed = 0.3f;
+
+	upWalkAnim.PushBack({ 1, 539, 60, 67 });
+	upWalkAnim.loop = true;
+	upWalkAnim.speed = 0.3f;
+
+	rightDownWalkAnim.PushBack({ 1, 539, 60, 67 });
+	rightDownWalkAnim.loop = true;
+	rightDownWalkAnim.speed = 0.3f;
+
+	leftDownWalkAnim.PushBack({ 1, 539, 60, 67 });
+	leftDownWalkAnim.loop = true;
+	leftDownWalkAnim.speed = 0.3f;
+
+	rightUpWalkAnim.PushBack({ 1, 539, 60, 67 });
+	rightUpWalkAnim.loop = true;
+	rightUpWalkAnim.speed = 0.3f;
+
+	leftUpWalkAnim.PushBack({ 1, 539, 60, 67 });
+	leftUpWalkAnim.loop = true;
+	leftUpWalkAnim.speed = 0.3f;
+
+	rightRunAnim.PushBack({ 1, 539, 60, 67 });
+	rightRunAnim.loop = true;
+	rightRunAnim.speed = 0.3f;
+
+	leftRunAnim.PushBack({ 1, 539, 60, 67 });
+	leftRunAnim.loop = true;
+	leftRunAnim.speed = 0.3f;
+
+	downRunAnim.PushBack({ 1, 539, 60, 67 });
+	downRunAnim.loop = true;
+	downRunAnim.speed = 0.3f;
+
+	upRunAnim.PushBack({ 1, 539, 60, 67 });
+	upRunAnim.loop = true;
+	upRunAnim.speed = 0.3f;
+
+	rightDownRunAnim.PushBack({ 1, 539, 60, 67 });
+	rightDownRunAnim.loop = true;
+	rightDownRunAnim.speed = 0.3f;
+
+	leftDownRunAnim.PushBack({ 1, 539, 60, 67 });
+	leftDownRunAnim.loop = true;
+	leftDownRunAnim.speed = 0.3f;
+
+	rightUpRunAnim.PushBack({ 1, 539, 60, 67 });
+	rightUpRunAnim.loop = true;
+	rightUpRunAnim.speed = 0.3f;
+
+	leftUpRunAnim.PushBack({ 1, 539, 60, 67 });
+	leftUpRunAnim.loop = true;
+	leftUpRunAnim.speed = 0.3f;
 
 	entityTurnPlayer = TurnState::NONE;
 	entityStatePlayer = GameState::OutOfCombat;
@@ -77,10 +156,42 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 	
-	texture = app->tex->Load("Assets/textures/debugRect.png");
+	texture = app->tex->Load("Assets/textures/Character/SWAT_Character.png");
 
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
 
+	if (app->sceneMainMap->sceneMainMap == true)
+	{
+		playerWalkSound[0] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Tile/FootstepTile01.wav");
+		playerWalkSound[1] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Tile/FootstepTile02.wav");
+		playerWalkSound[2] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Tile/FootstepTile03.wav");
+		playerWalkSound[3] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Tile/FootstepTile04.wav");
+		playerWalkSound[4] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Tile/FootstepTile05.wav");
+		playerWalkSound[5] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Tile/FootstepTile06.wav");
+		playerWalkSound[6] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Tile/FootstepTile07.wav");
+	}
+
+	if (app->sceneCave->sceneCave == true)
+	{
+		playerWalkSound[0] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Dirt/FootstepDirt01.wav");
+		playerWalkSound[1] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Dirt/FootstepDirt02.wav");
+		playerWalkSound[2] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Dirt/FootstepDirt03.wav");
+		playerWalkSound[3] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Dirt/FootstepDirt04.wav");
+		playerWalkSound[4] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Dirt/FootstepDirt05.wav");
+		playerWalkSound[5] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Dirt/FootstepDirt06.wav");
+		playerWalkSound[6] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Dirt/FootstepDirt07.wav");
+	}
+
+	if (app->sceneBase->sceneBase == true)
+	{
+		playerWalkSound[0] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Metal/FootstepMetal01.wav");
+		playerWalkSound[1] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Metal/FootstepMetal02.wav");
+		playerWalkSound[2] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Metal/FootstepMetal03.wav");
+		playerWalkSound[3] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Metal/FootstepMetal04.wav");
+		playerWalkSound[4] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Metal/FootstepMetal05.wav");
+		playerWalkSound[5] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Metal/FootstepMetal06.wav");
+		playerWalkSound[6] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Metal/FootstepMetal07.wav");
+	}
 
 	currentAnimation = &idleRightAnim;
 
@@ -110,8 +221,8 @@ bool ModulePlayer::Start()
 	deletePlayer = false;
 	checkPointReached = false;
 
-	collider = app->collisions->AddCollider({ position.x + 5, position.y + 3, 28, 23 }, Collider::Type::PLAYER, this); //{ position.x + 5, position.y + 3, 28, 33 
-	colliderFeet = app->collisions->AddCollider({ position.x + 5, position.y + 23, 18, 10 }, Collider::Type::PLAYER_FEET, this);
+	collider = app->collisions->AddCollider({ position.x + 5, position.y - 56, 45, 56 }, Collider::Type::PLAYER, this); //{ position.x + 5, position.y + 3, 28, 33 
+	//colliderFeet = app->collisions->AddCollider({ position.x + 5, position.y + 23, 18, 10 }, Collider::Type::PLAYER_FEET, this);
 
 	Player = app->physics->CreatePlayerBox(position.x, position.y, 20, 5);
 	//app->physics->CreateRectangleSensor(position.x, position.y + 16, 28, 1);
@@ -160,8 +271,16 @@ bool ModulePlayer::Start()
 
 	exitActivated = false;
 	talking = false;
+
+	walkSoundID = 0;
 	
 	return ret;
+}
+
+bool ModulePlayer::PreUpdate()
+{
+
+	return true;
 }
 
 bool ModulePlayer::Update(float dt)
@@ -171,7 +290,7 @@ bool ModulePlayer::Update(float dt)
 	{
 		iPoint NewPosition = position;
 		collider->SetPos(NewPosition.x, NewPosition.y);
-		colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
+		//colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
 		return true;
 	}
 	if (pauseMenu == false)
@@ -180,8 +299,8 @@ bool ModulePlayer::Update(float dt)
 		/*invincibleDelay++;*/
 
 		//OPTICK_EVENT();
-		collider->SetPos(position.x, position.y);
-		colliderFeet->SetPos(position.x + 5, position.y + 23);
+		collider->SetPos(position.x + 5, position.y - 56);
+		//colliderFeet->SetPos(position.x + 5, position.y + 23);
 		//Player->body->SetTransform({ positionToB2D.x, positionToB2D.y }, 0);
 		playerTimer++;
 		//------------------------------------------------------------------------------------------------------------------------------------------
@@ -199,6 +318,32 @@ bool ModulePlayer::Update(float dt)
 					app->player->playerHP = 0;
 				}
 				*/
+				if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT
+					|| app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT
+					|| app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT
+					|| app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT)
+				{
+					if (run == false)
+					{
+						if (playerFPS % 40 == 0)
+						{
+							app->audio->PlayFx(playerWalkSound[walkSoundID]);
+							walkSoundID++;
+
+							if (walkSoundID > 6) walkSoundID = 0;
+						}
+					}
+					if (run == true)
+					{
+						if (playerFPS % 20 == 0)
+						{
+							app->audio->PlayFx(playerWalkSound[walkSoundID]);
+							walkSoundID++;
+
+							if (walkSoundID > 6) walkSoundID = 0;
+						}
+					}
+				}
 
 				if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT
 					&& app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_IDLE
@@ -581,16 +726,16 @@ bool ModulePlayer::Update(float dt)
 			{
 
 				iPoint NewPosition = position;
-				collider->SetPos(NewPosition.x, NewPosition.y);
-				colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
+				collider->SetPos(position.x + 5, position.y - 56);
+				//colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
 				Player->body->SetLinearVelocity({ 0.0f,0.0f });
 			}
 			if (entityTurnPlayer == TurnState::StartOfTurn)
 			{
-				
+				counter = 0;
 				iPoint NewPosition = position;
-				collider->SetPos(NewPosition.x, NewPosition.y);
-				colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
+				collider->SetPos(position.x + 5, position.y - 56);
+				//colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
 				Player->body->SetLinearVelocity({ 0.0f,0.0f });
 				entityTurnPlayer = TurnState::MidOfTurn;
 			}
@@ -598,29 +743,39 @@ bool ModulePlayer::Update(float dt)
 			{
 				
 				
-				if(app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_REPEAT)
+				if(app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_DOWN)
 				{
 					counter++;
-					Player->body->SetLinearVelocity({ 0.0f,2.0f });
+					Player->body->SetLinearVelocity({ 0.0f,20.0f });
 				}
-				if (app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT)
+				else Player->body->SetLinearVelocity({ 0.0f,0.0f });
+				if (app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_DOWN)
 				{
 					counter++;
-					Player->body->SetLinearVelocity({ 0.0f,-2.0f });
+					Player->body->SetLinearVelocity({ 0.0f,-20.0f });
 				}
-				if (app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT)
+				if (app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_DOWN)
 				{
 					counter++;
-					Player->body->SetLinearVelocity({ 2.0f,0.0f });
+					Player->body->SetLinearVelocity({ 20.0f,0.0f });
 				}
-				if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT)
+				if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_DOWN)
 				{
 					counter++;
-					Player->body->SetLinearVelocity({ -2.0f,0.0f });
+					Player->body->SetLinearVelocity({ -20.0f,0.0f });
 				}
 
-				if (counter > 100)
+				if (app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_IDLE
+					&& app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_IDLE)
 				{
+					Player->body->SetLinearVelocity({ 0.0f,0.0f });
+				}
+
+				if (counter > 5)
+				{
+					Player->body->SetLinearVelocity({ 0.0f,0.0f });
 					entityTurnPlayer = TurnState::FinishTurn;
 				}
 			}
@@ -679,8 +834,8 @@ bool ModulePlayer::Update(float dt)
 			{
 				iPoint NewPosition = position;
 				Player->body->SetLinearVelocity({ 0.0f,0.0f });
-				collider->SetPos(NewPosition.x, NewPosition.y);
-				colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
+				collider->SetPos(position.x + 5, position.y - 56);
+				//colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
 				counter = 0;
 				
 				if (playerHP <= 0)
@@ -998,10 +1153,10 @@ bool ModulePlayer::LoadState(pugi::xml_node& data)
 	playerHP = data.child("atributes").attribute("hp").as_int();
 	lives = data.child("atributes").attribute("lives").as_int();
 	sceneTimer = data.child("atributes").attribute("timer").as_int();
-	entranceID = data.child("atributes").attribute("entranceID").as_int();
-	app->sceneMainMap->sceneMainMap = data.child("atributes").attribute("sceneMainMap").as_bool();
-	app->sceneCave->sceneCave = data.child("atributes").attribute("sceneCave").as_bool();
-	app->sceneBase->sceneBase = data.child("atributes").attribute("sceneBase").as_bool();
+	//entranceID = data.child("atributes").attribute("entranceID").as_int();
+	//app->sceneMainMap->sceneMainMap = data.child("atributes").attribute("sceneMainMap").as_bool();
+	//app->sceneCave->sceneCave = data.child("atributes").attribute("sceneCave").as_bool();
+	//app->sceneBase->sceneBase = data.child("atributes").attribute("sceneBase").as_bool();
 
 	if (app->player->IsEnabled() == true)
 	{
