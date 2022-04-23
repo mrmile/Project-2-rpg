@@ -19,6 +19,7 @@
 #include "Pathfinding.h"
 #include "ModuleFadeToBlack.h"
 #include "SceneBase.h"
+#include "GameManager.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -195,8 +196,11 @@ bool SceneMainMap::PostUpdate()
 	}
 	
 	//if (app->player->horizontalCB == false && app->player->bidimensionalCB == false && sceneTimer > 1) app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 150) + 630);
-	app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 100) + 630);
-	app->render->camera.y = (-(app->player->Player->body->GetPosition().y * 100) + 360);
+	if (app->player->entityStatePlayer == GameState::OutOfCombat)
+	{
+		app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 100) + 630);
+		app->render->camera.y = (-(app->player->Player->body->GetPosition().y * 100) + 360);
+	}
 
 	if (app->render->camera.y < -app->map->levelAreaLowerBound * 2 + 720) app->render->camera.y = -app->map->levelAreaLowerBound * 2 + 720; //720 * 3
 	if (app->render->camera.y > -app->map->levelAreaUpperBound * 2) app->render->camera.y = -app->map->levelAreaUpperBound * 2;

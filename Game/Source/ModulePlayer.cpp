@@ -724,7 +724,7 @@ bool ModulePlayer::Update(float dt)
 
 			if (entityTurnPlayer == TurnState::NONE)
 			{
-
+				counter = 0;
 				iPoint NewPosition = position;
 				collider->SetPos(position.x + 5, position.y - 56);
 				//colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
@@ -746,23 +746,23 @@ bool ModulePlayer::Update(float dt)
 				if(app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_DOWN)
 				{
 					counter++;
-					Player->body->SetLinearVelocity({ 0.0f,20.0f });
+					Player->body->SetLinearVelocity({ -45.0f,21.0f });
 				}
 				else Player->body->SetLinearVelocity({ 0.0f,0.0f });
 				if (app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_DOWN)
 				{
 					counter++;
-					Player->body->SetLinearVelocity({ 0.0f,-20.0f });
+					Player->body->SetLinearVelocity({ 45.0f,-21.0f });
 				}
 				if (app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_DOWN)
 				{
 					counter++;
-					Player->body->SetLinearVelocity({ 20.0f,0.0f });
+					Player->body->SetLinearVelocity({ 45.0f,21.0f });
 				}
 				if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_DOWN)
 				{
 					counter++;
-					Player->body->SetLinearVelocity({ -20.0f,0.0f });
+					Player->body->SetLinearVelocity({ -45.0f,-21.0f });
 				}
 
 				if (app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_IDLE
@@ -773,7 +773,7 @@ bool ModulePlayer::Update(float dt)
 					Player->body->SetLinearVelocity({ 0.0f,0.0f });
 				}
 
-				if (counter > 5)
+				if (counter > 6)
 				{
 					Player->body->SetLinearVelocity({ 0.0f,0.0f });
 					entityTurnPlayer = TurnState::FinishTurn;
