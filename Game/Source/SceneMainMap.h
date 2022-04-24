@@ -54,6 +54,8 @@ public:
 
 	SDL_Rect* rectangle = {};
 
+	SDL_Texture* spotLight;
+
 private:
 	SDL_Texture* img;
 	SDL_Texture* PauseFrame;

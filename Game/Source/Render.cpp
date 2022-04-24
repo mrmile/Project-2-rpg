@@ -1,6 +1,8 @@
 #include "App.h"
 #include "Window.h"
 #include "Render.h"
+#include "ModulePlayer.h"
+#include "SceneMainMap.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -49,6 +51,8 @@ bool Render::Awake(pugi::xml_node& config)
 		camera.y = 0;
 	}
 
+	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+
 	return ret;
 }
 
@@ -70,6 +74,15 @@ bool Render::PreUpdate()
 
 bool Render::Update(float dt)
 {
+	if (app->sceneMainMap->sceneMainMap == true)
+	{
+		//mFogOfWar = SDL_CreateRGBSurface(0, mFogOfWar->w = 1920, mFogOfWar->h = 1080, 32, 0x00ff0000, 0x0000ff00, 0x000000ff, 0xff000000);
+		//SDL_Rect screenRect = { camera.x, camera.y, mFogOfWar->w, mFogOfWar->h };
+		//SDL_FillRect(mFogOfWar, &screenRect, 0xFF202020);
+
+		//RemoveFogOfWar(app->player->position.x, app->player->position.y);
+	}
+
 	return true;
 }
 
@@ -314,6 +327,71 @@ bool Render::DrawCircle(int x, int y, int radius, Uint8 r, Uint8 g, Uint8 b, Uin
 	}
 
 	return ret;
+}
+
+void Render::RemoveFogOfWar(int in_X, int in_Y)
+{
+	const int halfWidth = mFogOfWarPunch->w / 2;
+	const int halfHeight = mFogOfWarPunch->h / 2;
+
+	SDL_Rect sourceRect = { 0, 0, mFogOfWarPunch->w, mFogOfWarPunch->h };
+	SDL_Rect destRect = { in_X - halfWidth, in_Y - halfHeight, mFogOfWarPunch->w, mFogOfWarPunch->h };
+
+	// Make sure our rects stays within bounds
+	if (destRect.x < 0)
+	{
+		sourceRect.x -= destRect.x; // remove the pixels outside of the surface
+		sourceRect.w -= sourceRect.x; // shrink to the surface, not to offset fog
+		destRect.x = 0;
+		destRect.w -= sourceRect.x; // shrink the width to stay within bounds
+	}
+	if (destRect.y < 0)
+	{
+		sourceRect.y -= destRect.y; // remove the pixels outside
+		sourceRect.h -= sourceRect.y; // shrink to the surface, not to offset fog
+		destRect.y = 0;
+		destRect.h -= sourceRect.y; // shrink the height to stay within bounds
+	}
+
+	int xDistanceFromEdge = (destRect.x + destRect.w) - mFogOfWar->w;
+	if (xDistanceFromEdge > 0) // we're busting
+	{
+		sourceRect.w -= xDistanceFromEdge;
+		destRect.w -= xDistanceFromEdge;
+	}
+	int yDistanceFromEdge = (destRect.y + destRect.h) - mFogOfWar->h;
+	if (yDistanceFromEdge > 0) // we're busting
+	{
+		sourceRect.h -= yDistanceFromEdge;
+		destRect.h -= yDistanceFromEdge;
+	}
+
+	SDL_LockSurface(mFogOfWar);
+
+	Uint32* destPixels = (Uint32*)mFogOfWar->pixels;
+	Uint32* srcPixels = (Uint32*)mFogOfWarPunch->pixels;
+
+	static bool keepFogRemoved = false;
+
+	for (int x = 0; x < destRect.w; ++x)
+	{
+		for (int y = 0; y < destRect.h; ++y)
+		{
+			Uint32* destPixel = destPixels + (y + destRect.y) * mFogOfWar->w + destRect.x + x;
+			Uint32* srcPixel = srcPixels + (y + sourceRect.y) * mFogOfWarPunch->w + sourceRect.x + x;
+
+			unsigned char* destAlpha = (unsigned char*)destPixel + 3; // fetch alpha channel
+			unsigned char* srcAlpha = (unsigned char*)srcPixel + 3; // fetch alpha channel
+			if (keepFogRemoved == true && *srcAlpha > 0)
+			{
+				continue; // skip this pixel
+			}
+
+			*destAlpha = *srcAlpha;
+		}
+	}
+
+	SDL_UnlockSurface(mFogOfWar);
 }
 
 iPoint Render::ScreenToWorld(int x, int y) const

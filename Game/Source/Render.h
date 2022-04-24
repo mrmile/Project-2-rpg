@@ -45,6 +45,8 @@ public:
 	bool DrawLine(int x1, int y1, int x2, int y2, Uint8 r, Uint8 g, Uint8 b, Uint8 a = 255, bool useCamera = true) const;
 	bool DrawCircle(int x1, int y1, int redius, Uint8 r, Uint8 g, Uint8 b, Uint8 a = 255, bool useCamera = true) const;
 
+	void RemoveFogOfWar(int in_X, int in_Y);
+
 	// Set background color
 	void SetBackgroundColor(SDL_Color color);
 
@@ -56,6 +58,10 @@ public:
 	SDL_Rect camera;
 	SDL_Rect viewport;
 	SDL_Color background;
+
+	SDL_Surface* mFogOfWar = { 0 };
+	SDL_Surface* mFogOfWarPunch = { 0 };
+
 };
 
 #endif // __RENDER_H__

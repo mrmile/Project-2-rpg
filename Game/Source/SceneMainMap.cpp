@@ -46,6 +46,7 @@ bool SceneMainMap::Awake()
 // Called before the first frame
 bool SceneMainMap::Start()
 {
+
 	app->map->Load("main.tmx");
 
 	app->tex->Load("Assets/textures/GUI/PauseMenuFrame.png");
