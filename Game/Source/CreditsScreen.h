@@ -10,7 +10,7 @@ class CreditsScreen : public Module
 {
 public:
 
-	CreditsScreen(bool start_enabled = true);
+	CreditsScreen(bool start_enabled = false);
 
 	// Destructor
 	virtual ~CreditsScreen();
@@ -90,4 +90,4 @@ public:
 
 };
 
-#endif // __TITLE_SCREEN_H__
+#endif // __CREDITS_SCREEN_H__
