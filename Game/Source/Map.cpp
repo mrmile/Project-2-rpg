@@ -257,7 +257,7 @@ void Map::Draw()
 						{
 							app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(4)*/, &r, 0.5f);
 						}
-
+						
 						if (mapLayerItem->data->properties.GetProperty("Parallax") == 3)
 						{
 							app->render->DrawTexture(tileset->texture, pos.x + (MAP_TILEWIDTH - tileset->tileWidth), pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) /*- MapToWorldSingle(5)*/, &r, 0.4f);
