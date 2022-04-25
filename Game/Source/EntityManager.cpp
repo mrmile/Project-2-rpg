@@ -281,6 +281,7 @@ void EntityManager::OnCollision(Collider* c1, Collider* c2)
 	{
 		if (entities[i] != nullptr && entities[i]->GetColldier() == c1)
 		{
+			LOG("COLLIDER WORKING");
 			entities[i]->OnCollision(c2); //Notify the entity of a collision
 			break;
 		}

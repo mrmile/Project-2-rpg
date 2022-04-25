@@ -49,9 +49,9 @@ public:
 	iPoint GetLastPosition();
 
 
-	bool RangedAttack();
+	void RangedAttack();
 
-	bool MeleeAttack();
+	void MeleeAttack();
 	
 
 public:
@@ -193,6 +193,7 @@ public:
 	bool deletePlayer;
 	bool layerZeroReveal;
 	
+	bool playerAttacked = false;
 	//test for continue mechanic
 	bool saved_game = false;
 

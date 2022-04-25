@@ -89,11 +89,13 @@ public:
 
 	int idForCombat;
 
+	int x = 0;
+
 private:
 
 	void SpawnEntity(const EntitySpawnPoint& info);
 
-	int x = 0;
+	
 
 	// A queue with all spawn points information
 	EntitySpawnPoint spawnQueue[MAX_ENTITIES];

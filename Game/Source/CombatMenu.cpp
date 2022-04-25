@@ -172,7 +172,7 @@ bool CombatMenu::OnGuiMouseClickEvent(GuiControl* control)
 			//RESUME BUTTON
 			app->audio->PlayFx(buttonClickedFx, 0);
 		}
-		if (control->id == 26 && combatMeleeGUI->canClick == true)
+		if (control->id == 26 && combatMeleeGUI->canClick == true && app->player->entityTurnPlayer == TurnState::FinishTurn)
 		{
 			//RESUME BUTTON
 			app->audio->PlayFx(buttonClickedMelee, 0);

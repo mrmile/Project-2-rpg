@@ -255,66 +255,6 @@ bool Zombie_Standart::Update(float dt)
 
 						}
 
-						/*if (app->player->meleeAttack == true)
-						{
-							if ((position.x == app->player->position.x) && (position.y < app->player->position.y))
-							{
-
-								app->particles->AddParticle(app->particles->playerAttack, position.x, position.y + 60, Collider::Type::PLAYER_ATTACK);
-
-							}
-							if ((position.x == app->player->position.x) && (position.y > app->player->position.y))
-							{
-
-								app->particles->AddParticle(app->particles->playerAttack, position.x, position.y - 60, Collider::Type::PLAYER_ATTACK);
-
-							}
-							if ((position.x < app->player->position.x) && (position.y == app->player->position.y))
-							{
-
-
-								app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y, Collider::Type::PLAYER_ATTACK);
-
-
-							}
-							if ((position.x > app->player->position.x) && (position.y == app->player->position.y))
-							{
-
-								app->particles->AddParticle(app->particles->playerAttack, position.x - 30, position.y, Collider::Type::PLAYER_ATTACK);
-
-
-							}
-
-							if ((position.x > app->player->position.x) && (position.y > app->player->position.y))
-							{
-
-
-								app->particles->AddParticle(app->particles->playerAttack, position.x - 30, position.y - 30, Collider::Type::PLAYER_ATTACK);
-
-
-							}
-							if ((position.x > app->player->position.x) && (position.y < app->player->position.y))
-							{
-
-								app->particles->AddParticle(app->particles->playerAttack, position.x - 30, position.y + 30, Collider::Type::PLAYER_ATTACK);
-
-
-							}
-							if ((position.x < app->player->position.x) && (position.y > app->player->position.y))
-							{
-
-								app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y - 30, Collider::Type::PLAYER_ATTACK);
-
-
-							}
-							if ((position.x < app->player->position.x) && (position.y < app->player->position.y))
-							{
-
-								app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 30, Collider::Type::PLAYER_ATTACK);
-							}
-						}*/
-
-
 						entityTurn = TurnState::WaitTurn;
 					}
 					else
@@ -326,14 +266,12 @@ bool Zombie_Standart::Update(float dt)
 				}
 				if (entityTurn == TurnState::WaitTurn)
 				{
-					//Change turn from enemy to player turn still have to develop a way to do it correctly
 					counter = 0;
 					collider->SetPos(position.x, position.y - 46);
 					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
 					currentAnim = &Idle_Enemy;
 					currentAnim->loop = true;
-
-
+		
 				}
 				if (app->sceneMainMap->playerRestart == true)
 				{
@@ -356,9 +294,11 @@ bool Zombie_Standart::Update(float dt)
 			if (EntityHP == 0)
 			{
 				SetToDelete();
+				//Standart_Zombie_List.end->data->body->DestroyFixture(Standart_Zombie_List.end->data->body->GetFixtureList());
+				// NO FUNCIONA EL DESTRUIR LA FIXTURE
 			}
-			return true;
 			
+			return true;
 		}
 		
 		

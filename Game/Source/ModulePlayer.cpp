@@ -619,10 +619,7 @@ bool ModulePlayer::Update(float dt)
 				}
 
 
-				if(app->input->keys[SDL_SCANCODE_9] == KeyState::KEY_DOWN)
-				{
-					app->game_manager->NextTurn();
-				}
+				
 
 				// If no up/down movement detected, set the current animation back to idle
 				if (app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_IDLE
@@ -729,6 +726,7 @@ bool ModulePlayer::Update(float dt)
 				collider->SetPos(position.x + 5, position.y - 56);
 				//colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
 				Player->body->SetLinearVelocity({ 0.0f,0.0f });
+				
 			}
 			if (entityTurnPlayer == TurnState::StartOfTurn)
 			{
@@ -738,6 +736,7 @@ bool ModulePlayer::Update(float dt)
 				//colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
 				Player->body->SetLinearVelocity({ 0.0f,0.0f });
 				entityTurnPlayer = TurnState::MidOfTurn;
+				playerAttacked = false;
 			}
 			if (entityTurnPlayer == TurnState::MidOfTurn)
 			{
@@ -779,57 +778,18 @@ bool ModulePlayer::Update(float dt)
 					entityTurnPlayer = TurnState::FinishTurn;
 				}
 			}
-			//if (entityTurnPlayer == TurnState::FinishTurn)
-			//{
-			//	Player->body->SetLinearVelocity({ 0.0f,0.0f });
+			if (entityTurnPlayer == TurnState::FinishTurn)
+			{
+				Player->body->SetLinearVelocity({ 0.0f,0.0f });
 
-			//	//Attack methodology, after attacking the player goes to wait turn
+				//Attack methodology, after attacking the player goes to wait turn
 
-			//	//if (app->input->keys[SDL_SCANCODE_SPACE] == KeyState::KEY_DOWN)
-			//	//{
-			//	//	
-			//	//	int mousePosx, mousePosy;
-			//	//	app->input->GetMousePosition(mousePosx, mousePosy);
+				if (playerAttacked == true)
+				{
+					entityTurnPlayer = TurnState::WaitTurn;
+				}
 
-			//	//	if (mousePosx > position.x && mousePosy == position.y)
-			//	//	{
-			//	//		app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-			//	//	}
-			//	//	if (mousePosx < position.x && mousePosy == position.y)
-			//	//	{
-			//	//		app->particles->AddParticle(app->particles->playerAttack, position.x - 15, position.y + 12, Collider::Type::PLAYER_ATTACK);
-			//	//	}
-			//	//	if (mousePosy > position.y && mousePosx == position.x)
-			//	//	{
-			//	//		app->particles->AddParticle(app->particles->playerAttack, position.x - 15, position.y + 12, Collider::Type::PLAYER_ATTACK);
-			//	//	}
-			//	//	if (mousePosy < position.y && mousePosx == position.x)
-			//	//	{
-			//	//		app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-			//	//	}
-			//	//	// DIAGONAL 
-			//	//	if (mousePosx > position.x && mousePosy > position.y)
-			//	//	{
-			//	//		app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-			//	//	}
-			//	//	if (mousePosx > position.x && mousePosy < position.y)
-			//	//	{
-			//	//		app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-			//	//	}
-			//	//	if (mousePosy < position.x && mousePosy > position.y)
-			//	//	{
-			//	//		app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-			//	//	}
-			//	//	if (mousePosy < position.x && mousePosy < position.y)
-			//	//	{
-			//	//		app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-			//	//	}
-			//	//	
-			//	//	
-			//	//	
-			//	//	entityTurnPlayer = TurnState::WaitTurn;
-			//	//}
-			//}
+			}
 			if (entityTurnPlayer == TurnState::WaitTurn)
 			{
 				iPoint NewPosition = position;
@@ -1206,18 +1166,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 			app->audio->PlayFx(playerHurtSound, 0);
 			playerHP -= 10;
-			//if (playerHP < 0) playerHP = 0;
-			///*invincibleDelay = 0;*/
-			//if (playerHP != 0) app->audio->PlayFx(damaged);
-
-			//if (playerHP <= 0)
-			//{
-			//	/*invincibleDelay = 121;*/
-			//	playerHP = 0;
-			//	//app->audio->PlayFx(dead);
-			//	destroyed = true;
-
-			//}
+			
 
 
 		}
@@ -1226,37 +1175,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 			app->audio->PlayFx(playerHurtSound, 0);
 			playerHP -= 10;
-			//if (playerHP < 0) playerHP = 0;
-			///*invincibleDelay = 0;*/
-			//if (playerHP != 0) app->audio->PlayFx(damaged);
-
-			//if (playerHP <= 0)
-			//{
-			//	/*invincibleDelay = 121;*/
-			//	playerHP = 0;
-			//	//app->audio->PlayFx(dead);
-			//	destroyed = true;
-
-			//}
-
-
-		}
-		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_RANGED_ATTACK) && destroyed == false) /*&& invincibleDelay >= 120)*/
-		{
-			app->audio->PlayFx(playerHurtSound, 0);
-			playerHP -= 10;
-			//if (playerHP < 0) playerHP = 0;
-			///*invincibleDelay = 0;*/
-			//if (playerHP != 0) app->audio->PlayFx(damaged);
-
-			//if (playerHP <= 0)
-			//{
-			//	/*invincibleDelay = 121;*/
-			//	playerHP = 0;
-			//	//app->audio->PlayFx(dead);
-			//	destroyed = true;
-
-			//}
+			
 
 
 		}
@@ -1374,66 +1293,11 @@ iPoint ModulePlayer::GetLastPosition()
 }
 
 
-bool ModulePlayer::RangedAttack()
+void ModulePlayer::RangedAttack()
 {
-	//animation + add particle type ranged attack
-	iPoint mousePos;
-	SDL_GetMouseState(&mousePos.x, &mousePos.y);
-
-	return true;
-	//
-}
-bool ModulePlayer::MeleeAttack()
-{
-	//animation + add particle type melee attack directly in the direction needed
-
-	/*
-
-	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP)
-	{
-		app->input->GetMousePosition(mousePosx, mousePosy);
-	}
-	if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_DOWN)
-	{
-		// NON DIAGONAL
-		if (mousePosx > position.x && mousePosy == position.y)
-		{
-			app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-		}
-		if (mousePosx < position.x && mousePosy == position.y)
-		{
-			app->particles->AddParticle(app->particles->playerAttack, position.x - 15, position.y + 12, Collider::Type::PLAYER_ATTACK);
-		}
-		if (mousePosy > position.y && mousePosx == position.x)
-		{
-			app->particles->AddParticle(app->particles->playerAttack, position.x - 15, position.y + 12, Collider::Type::PLAYER_ATTACK);
-		}
-		if (mousePosy < position.y && mousePosx == position.x)
-		{
-			app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-		}
-		// DIAGONAL 
-		if (mousePosx > position.x && mousePosy > position.y)
-		{
-			app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-		}
-		if (mousePosx > position.x && mousePosy < position.y)
-		{
-			app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-		}
-		if (mousePosy < position.x && mousePosy > position.y)
-		{
-			app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-		}
-		if (mousePosy < position.x && mousePosy < position.y)
-		{
-			app->particles->AddParticle(app->particles->playerAttack, position.x + 30, position.y + 12, Collider::Type::PLAYER_ATTACK);
-		}
-
-		return true;
-	}
-	*/
-
-	return true;
 	
+}
+void ModulePlayer::MeleeAttack()
+{
+	playerAttacked = true;
 }
