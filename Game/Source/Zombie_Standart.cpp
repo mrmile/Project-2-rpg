@@ -65,8 +65,12 @@ bool Zombie_Standart::Update(float dt)
 	}
 	if (app->player->pauseMenu == false)
 	{
-		Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
-
+		if (EntityHP == 0)
+		{
+			SetToDelete();
+			//Standart_Zombie_List.end->data->body->DestroyFixture(Standart_Zombie_List.end->data->body->GetFixtureList());
+			// NO FUNCIONA EL DESTRUIR LA FIXTURE
+		}
 		if (entityState == GameState::OutOfCombat)
 		{
 			//move normally
@@ -121,6 +125,8 @@ bool Zombie_Standart::Update(float dt)
 			}
 
 			return true;
+
+			
 
 		}
 		
@@ -291,12 +297,7 @@ bool Zombie_Standart::Update(float dt)
 			}
 				
 
-			if (EntityHP == 0)
-			{
-				SetToDelete();
-				//Standart_Zombie_List.end->data->body->DestroyFixture(Standart_Zombie_List.end->data->body->GetFixtureList());
-				// NO FUNCIONA EL DESTRUIR LA FIXTURE
-			}
+			
 			
 			return true;
 		}

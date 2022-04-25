@@ -1295,9 +1295,16 @@ iPoint ModulePlayer::GetLastPosition()
 
 void ModulePlayer::RangedAttack()
 {
-	
+	//Add logic for ranged attack
+
+	//
 }
 void ModulePlayer::MeleeAttack()
 {
+	//Add logic for attack
+
+	//Example of addition of particles for melee
+	app->particles->AddParticle(app->particles->playerAttack, app->player->position.x + 30, app->player->position.y + 12, Collider::Type::PLAYER_ATTACK);
+
 	playerAttacked = true;
 }
