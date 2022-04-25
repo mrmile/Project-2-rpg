@@ -143,6 +143,8 @@ bool CreditsScreen::Start()
 
 	returnButton_1 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 25, "Return Button", { 10, 10, 71, 35 }, this, returnButton1, NULL, {});
 
+	app->render->camera.x = 0;
+
 	app->audio->ChangeMusic(CREDITS_THEME, 0, 0);
 
 	fPosition.x = 80;
