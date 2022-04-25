@@ -119,7 +119,13 @@ bool CreditsScreen::Start()
 	logoPart = 1;*/
 
 	bgTexture = app->tex->Load("Assets/textures/Scenes/Credits/scrollBackgroundCredits.png");
-
+	creditsLetters = app->tex->Load("Assets/textures/Scenes/Credits/creditsLetters.png");
+	creditsFadeBlack0 = app->tex->Load("Assets/textures/Scenes/Credits/creditsFadeBlack0.png");
+	creditsFadeBlack1 = app->tex->Load("Assets/textures/Scenes/Credits/creditsFadeBlack1.png");
+	creditsFadeBlack2 = app->tex->Load("Assets/textures/Scenes/Credits/creditsFadeBlack2.png");
+	creditsFadeBlack3 = app->tex->Load("Assets/textures/Scenes/Credits/creditsFadeBlack3.png");
+	creditsFadeBlack4 = app->tex->Load("Assets/textures/Scenes/Credits/creditsFadeBlack4.png");
+	
 	texture = app->tex->Load("Assets/textures/Scenes/Credits/finalSoldier.png");
 	playerAnimation = &idleAnimPlayer;
 	texture1 = app->tex->Load("Assets/textures/Scenes/Credits/survivorCredits.png");
@@ -139,6 +145,8 @@ bool CreditsScreen::Start()
 	returnButtonOnIdle1 = app->tex->Load("Assets/textures/GUI/returnButton_onIdle.png");
 	returnButtonPressed1 = app->tex->Load("Assets/textures/GUI/returnButton_pressed.png");
 
+
+
 	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/UISounds/buttonClickedFX.wav");
 
 	returnButton_1 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 25, "Return Button", { 10, 10, 71, 35 }, this, returnButton1, NULL, {});
@@ -147,31 +155,37 @@ bool CreditsScreen::Start()
 
 	app->audio->ChangeMusic(CREDITS_THEME, 0, 0);
 
-	fPosition.x = 80;
-	fPosition.y = 155;
+	if (creditsScene = true)
+	{
+		backwardsImage = 0;
+		backwardsLetters = 200;
 
-	fPosition1.x = -125;
-	fPosition1.y = 196;
-	fPosition2.x = -30;
-	fPosition2.y = 196;
+		fPosition.x = 50;
+		fPosition.y = 155;
 
-	fPosition3.x = -70;
-	fPosition3.y = 203;
-	fPosition7.x = -110;
-	fPosition7.y = 203;
+		fPosition1.x = -155;
+		fPosition1.y = 196;
+		fPosition2.x = -60;
+		fPosition2.y = 196;
 
-	fPosition4.x = -95;
-	fPosition4.y = 200;
-	fPosition8.x = -145;
-	fPosition8.y = 200;
+		fPosition3.x = -100;
+		fPosition3.y = 203;
+		fPosition7.x = -140;
+		fPosition7.y = 203;
 
-	fPosition5.x = -15;
-	fPosition5.y = 203;
-	fPosition9.x = -165;
-	fPosition9.y = 203;
+		fPosition4.x = -125;
+		fPosition4.y = 200;
+		fPosition8.x = -175;
+		fPosition8.y = 200;
 
-	fPosition6.x = -57;
-	fPosition6.y = 203;
+		fPosition5.x = -45;
+		fPosition5.y = 203;
+		fPosition9.x = -195;
+		fPosition9.y = 203;
+
+		fPosition6.x = -85;
+		fPosition6.y = 203;
+	}
 
 	/*app->render->camera.x = 0;
 	app->render->camera.y = 0;*/
@@ -217,6 +231,7 @@ bool CreditsScreen::Update(float dt)
 	if ((delay % 2) == 0)
 	{
 		backwardsImage--;
+		backwardsLetters--;
 	}
 
 	if (creditsScene == true)
@@ -229,16 +244,67 @@ bool CreditsScreen::Update(float dt)
 		returnButton_1->canClick = false;
 	}
 
-	app->creditsScreen->fPosition.x += 0.02;
-	app->creditsScreen->fPosition1.x += 0.0187;
-	app->creditsScreen->fPosition2.x += 0.0187;
-	app->creditsScreen->fPosition3.x += 0.0187;
-	app->creditsScreen->fPosition4.x += 0.0187;
-	app->creditsScreen->fPosition5.x += 0.0187;
-	app->creditsScreen->fPosition6.x += 0.0187;
-	app->creditsScreen->fPosition7.x += 0.0187;
-	app->creditsScreen->fPosition8.x += 0.0187;
-	app->creditsScreen->fPosition9.x += 0.0187;
+	if (delay < 3000)
+	{
+		app->creditsScreen->fPosition.x += 0.04;
+		app->creditsScreen->fPosition1.x += 0.0387;
+		app->creditsScreen->fPosition2.x += 0.0387;
+		app->creditsScreen->fPosition3.x += 0.0387;
+		app->creditsScreen->fPosition4.x += 0.0387;
+		app->creditsScreen->fPosition5.x += 0.0387;
+		app->creditsScreen->fPosition6.x += 0.0387;
+		app->creditsScreen->fPosition7.x += 0.0387;
+		app->creditsScreen->fPosition8.x += 0.0387;
+		app->creditsScreen->fPosition9.x += 0.0387;
+	}
+
+	if (delay > 3000 && delay < 4700)
+	{
+		app->creditsScreen->fPosition.x += 0.16;
+		app->creditsScreen->fPosition1.x += 0.1187;
+		app->creditsScreen->fPosition2.x += 0.1187;
+		app->creditsScreen->fPosition3.x += 0.1187;
+		app->creditsScreen->fPosition4.x += 0.1187;
+		app->creditsScreen->fPosition5.x += 0.1187;
+		app->creditsScreen->fPosition6.x += 0.1187;
+		app->creditsScreen->fPosition7.x += 0.1187;
+		app->creditsScreen->fPosition8.x += 0.1187;
+		app->creditsScreen->fPosition9.x += 0.1187;
+	}
+	if (delay > 4700 && delay < 5600)
+	{
+		app->creditsScreen->fPosition.x += 0.24;
+		app->creditsScreen->fPosition1.x += 0.2187;
+		app->creditsScreen->fPosition2.x += 0.2187;
+		app->creditsScreen->fPosition3.x += 0.2187;
+		app->creditsScreen->fPosition4.x += 0.2187;
+		app->creditsScreen->fPosition5.x += 0.2187;
+		app->creditsScreen->fPosition6.x += 0.2187;
+		app->creditsScreen->fPosition7.x += 0.2187;
+		app->creditsScreen->fPosition8.x += 0.2187;
+		app->creditsScreen->fPosition9.x += 0.2187;
+	}
+
+	if (delay > 5600)
+	{
+		app->creditsScreen->fPosition.x += 0.64;
+		app->creditsScreen->fPosition1.x += 0.6187;
+		app->creditsScreen->fPosition2.x += 0.6187;
+		app->creditsScreen->fPosition3.x += 0.6187;
+		app->creditsScreen->fPosition4.x += 0.6187;
+		app->creditsScreen->fPosition5.x += 0.6187;
+		app->creditsScreen->fPosition6.x += 0.6187;
+		app->creditsScreen->fPosition7.x += 0.6187;
+		app->creditsScreen->fPosition8.x += 0.6187;
+		app->creditsScreen->fPosition9.x += 0.6187;
+	}
+
+	if (delay == 6600)
+	{
+		creditsScene = false;
+		app->titleScreen->Enable();
+		app->creditsScreen->Disable();
+	}
 
 	playerAnimation->Update();
 	currentAnimation->Update();
@@ -254,6 +320,15 @@ bool CreditsScreen::PostUpdate()
 {
 	//bool ret = true;
 	app->render->DrawTexture2(bgTexture, backwardsImage, 0);
+	app->render->DrawTexture2(creditsLetters, backwardsLetters, -10);
+
+	if (delay >= 6100 && delay <= 6149) app->render->DrawTexture2(creditsFadeBlack0, 0, 0);
+	if (delay >= 6200 && delay <= 6249) app->render->DrawTexture2(creditsFadeBlack0, 0, 0);
+	if (delay >= 6300 && delay <= 6349) app->render->DrawTexture2(creditsFadeBlack1, 0, 0);
+	if (delay >= 6350 && delay <= 6399) app->render->DrawTexture2(creditsFadeBlack2, 0, 0);
+	if (delay >= 6400 && delay <= 6449) app->render->DrawTexture2(creditsFadeBlack3, 0, 0);
+	if (delay >= 6450 && delay <= 6499) app->render->DrawTexture2(creditsFadeBlack4, 0, 0);
+	if (delay >= 6500 && delay <= 6600) app->render->DrawTexture2(creditsFadeBlack0, 0, 0);
 
 	if (returnButton_1->state == GuiControlState::NORMAL && returnButton_1->canClick == true) returnButton_1->SetTexture(returnButton1);
 	if (returnButton_1->state == GuiControlState::FOCUSED && returnButton_1->canClick == true) returnButton_1->SetTexture(returnButtonOnIdle1);
@@ -299,11 +374,21 @@ bool CreditsScreen::CleanUp()
 	app->tex->UnLoad(logoAnimationP7);
 	app->tex->UnLoad(logoAnimationP8);*/
 
+	app->tex->UnLoad(returnButton1);
+	app->tex->UnLoad(returnButtonOnIdle1);
+	app->tex->UnLoad(returnButtonPressed1);
+
+	app->tex->UnLoad(bgTexture);
 	app->tex->UnLoad(texture);
 	app->tex->UnLoad(texture1);
 	app->tex->UnLoad(texture2);
 	app->tex->UnLoad(texture3);
 	app->tex->UnLoad(texture4);
+	app->tex->UnLoad(creditsFadeBlack0);
+	app->tex->UnLoad(creditsFadeBlack1);
+	app->tex->UnLoad(creditsFadeBlack2);
+	app->tex->UnLoad(creditsFadeBlack3);
+	app->tex->UnLoad(creditsFadeBlack4);
 
 	app->guiManager->DestroyGuiControl(25);
 
@@ -321,7 +406,7 @@ bool CreditsScreen::OnGuiMouseClickEvent(GuiControl* control) {
 			app->audio->PlayFx(buttonClickedFx, 0);
 
 			creditsScene = false;
-
+			
 			app->titleScreen->Enable();
 			app->creditsScreen->Disable();
 		}

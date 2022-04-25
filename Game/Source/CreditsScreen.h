@@ -47,7 +47,9 @@ public:
 	int buttonClickedFx = 0;
 	bool creditsScene = false;
 	int backwardsImage = 0;
+	int backwardsLetters = 200;
 	int delay = 0;
+	bool restartCredits = false;
 
 	// Position of the player and zombies
 	iPoint position;
@@ -63,6 +65,12 @@ public:
 	fPoint fPosition9;
 
 	SDL_Texture* bgTexture = nullptr;
+	SDL_Texture* creditsLetters = nullptr;
+	SDL_Texture* creditsFadeBlack0 = nullptr;
+	SDL_Texture* creditsFadeBlack1 = nullptr;
+	SDL_Texture* creditsFadeBlack2 = nullptr;
+	SDL_Texture* creditsFadeBlack3 = nullptr;
+	SDL_Texture* creditsFadeBlack4 = nullptr;
 	SDL_Texture* texture = nullptr;
 	SDL_Texture* texture1 = nullptr;
 	SDL_Texture* texture2 = nullptr;

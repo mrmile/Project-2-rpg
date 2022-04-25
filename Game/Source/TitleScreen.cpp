@@ -462,6 +462,7 @@ bool TitleScreen::OnGuiMouseClickEvent(GuiControl* control)
 				app->audio->PlayFx(buttonClickedFx, 0);
 
 				app->creditsScreen->creditsScene = true;
+				app->creditsScreen->delay = 0;
 
 				app->creditsScreen->Enable();
 				app->titleScreen->Disable();

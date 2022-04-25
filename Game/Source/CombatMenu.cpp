@@ -17,6 +17,7 @@
 #include "Map.h"
 #include "EntityManager.h"
 #include "GameManager.h"
+#include "CreditsScreen.h"
 #include "Entity.h"
 #include "Defs.h"
 #include "Log.h"
@@ -77,7 +78,7 @@ bool CombatMenu::PreUpdate()
 // Called each loop iteration
 bool CombatMenu::Update(float dt)
 {
-	if (app->player->showCombatHUD == true)
+	if (app->player->showCombatHUD == true && app->player->pauseMenu == false && app->titleScreen->active == false && app->creditsScreen->active == false)
 	{
 		combatShootGUI->canClick = true;
 		combatMeleeGUI->canClick = true;
@@ -101,7 +102,7 @@ bool CombatMenu::PostUpdate()
 {
 	bool ret = true;
 
-	if (app->player->showCombatHUD == true && app->player->pauseMenu == false && app->titleScreen->active == false)
+	if (app->player->showCombatHUD == true && app->player->pauseMenu == false && app->titleScreen->active == false && app->creditsScreen->active == false)
 	{
 		if (app->player->entityTurnPlayer == TurnState::WaitTurn)
 		{
