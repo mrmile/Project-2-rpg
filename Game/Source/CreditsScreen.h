@@ -46,6 +46,8 @@ public:
 
 	int buttonClickedFx = 0;
 	bool creditsScene = false;
+	int backwardsImage = 0;
+	int delay = 0;
 
 	// Position of the player and zombies
 	iPoint position;

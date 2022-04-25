@@ -143,7 +143,7 @@ bool CreditsScreen::Start()
 
 	returnButton_1 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 25, "Return Button", { 10, 10, 71, 35 }, this, returnButton1, NULL, {});
 
-	/*app->audio->ChangeMusic(CREDITS_THEME, 0, 0);*/
+	app->audio->ChangeMusic(CREDITS_THEME, 0, 0);
 
 	fPosition.x = 80;
 	fPosition.y = 155;
@@ -205,10 +205,17 @@ bool CreditsScreen::Update(float dt)
 		}
 	}*/
 
-	/*app->render->camera.x += 0.5;*/
+	
 	/*app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 100) + 630);*/
 
 	/*app->render->camera.x = (- (app->render->camera.x * 100) + 630);*/
+
+	delay++;
+
+	if ((delay % 2) == 0)
+	{
+		backwardsImage--;
+	}
 
 	if (creditsScene == true)
 	{
@@ -220,16 +227,16 @@ bool CreditsScreen::Update(float dt)
 		returnButton_1->canClick = false;
 	}
 
-	app->creditsScreen->fPosition.x += 0.2;
-	app->creditsScreen->fPosition1.x += 0.187;
-	app->creditsScreen->fPosition2.x += 0.187;
-	app->creditsScreen->fPosition3.x += 0.187;
-	app->creditsScreen->fPosition4.x += 0.187;
-	app->creditsScreen->fPosition5.x += 0.187;
-	app->creditsScreen->fPosition6.x += 0.187;
-	app->creditsScreen->fPosition7.x += 0.187;
-	app->creditsScreen->fPosition8.x += 0.187;
-	app->creditsScreen->fPosition9.x += 0.187;
+	app->creditsScreen->fPosition.x += 0.02;
+	app->creditsScreen->fPosition1.x += 0.0187;
+	app->creditsScreen->fPosition2.x += 0.0187;
+	app->creditsScreen->fPosition3.x += 0.0187;
+	app->creditsScreen->fPosition4.x += 0.0187;
+	app->creditsScreen->fPosition5.x += 0.0187;
+	app->creditsScreen->fPosition6.x += 0.0187;
+	app->creditsScreen->fPosition7.x += 0.0187;
+	app->creditsScreen->fPosition8.x += 0.0187;
+	app->creditsScreen->fPosition9.x += 0.0187;
 
 	playerAnimation->Update();
 	currentAnimation->Update();
@@ -244,8 +251,7 @@ bool CreditsScreen::Update(float dt)
 bool CreditsScreen::PostUpdate()
 {
 	//bool ret = true;
-
-	app->render->DrawTexture2(bgTexture, 0, 0);
+	app->render->DrawTexture2(bgTexture, backwardsImage, 0);
 
 	if (returnButton_1->state == GuiControlState::NORMAL && returnButton_1->canClick == true) returnButton_1->SetTexture(returnButton1);
 	if (returnButton_1->state == GuiControlState::FOCUSED && returnButton_1->canClick == true) returnButton_1->SetTexture(returnButtonOnIdle1);
