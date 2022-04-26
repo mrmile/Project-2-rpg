@@ -130,6 +130,11 @@ bool PauseMenu::Update(float dt)
 			app->titleScreen->Enable();
 			app->titleScreen->MainMenu = true;
 			app->player->pauseMenu = false;
+			if (app->player->entityStatePlayer == GameState::InCombat)
+			{
+				app->game_manager->StartTurnManagement = false;  
+				app->game_manager->ClearList();
+			}
 			app->map->Disable();
 			app->collisions->Disable();
 			app->particles->Disable();
