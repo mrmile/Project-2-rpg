@@ -322,8 +322,8 @@ bool CreditsScreen::PostUpdate()
 	app->render->DrawTexture2(bgTexture, backwardsImage, 0);
 	app->render->DrawTexture2(creditsLetters, backwardsLetters, -10);
 
-	if (delay >= 6100 && delay <= 6149) app->render->DrawTexture2(creditsFadeBlack0, 0, 0);
-	if (delay >= 6200 && delay <= 6249) app->render->DrawTexture2(creditsFadeBlack0, 0, 0);
+	/*if (delay >= 6100 && delay <= 6149) app->render->DrawTexture2(creditsFadeBlack0, 0, 0);
+	if (delay >= 6200 && delay <= 6249) app->render->DrawTexture2(creditsFadeBlack0, 0, 0);*/
 	if (delay >= 6300 && delay <= 6349) app->render->DrawTexture2(creditsFadeBlack1, 0, 0);
 	if (delay >= 6350 && delay <= 6399) app->render->DrawTexture2(creditsFadeBlack2, 0, 0);
 	if (delay >= 6400 && delay <= 6449) app->render->DrawTexture2(creditsFadeBlack3, 0, 0);
