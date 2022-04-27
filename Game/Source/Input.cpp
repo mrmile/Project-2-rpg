@@ -54,6 +54,9 @@ bool Input::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool Input::Start()
 {
+	arrowPointerPosition.x = 0;
+	arrowPointerPosition.y = 0;
+
 	SDL_StopTextInput();
 	return true;
 }
@@ -142,10 +145,23 @@ bool Input::PreUpdate()
 
 			case SDL_CONTROLLERDEVICEADDED:
 				HandleDeviceConnection(event.cdevice.which);
+				if(usingGamepadID[0] == false) usingGamepadID[0] = true;
+				else if (usingGamepadID[1] == false
+					&& usingGamepadID[0] == true) usingGamepadID[1] = true;
+				else if (usingGamepadID[2] == false
+					&& usingGamepadID[1] == true) usingGamepadID[2] = true;
+				else if (usingGamepadID[3] == false
+					&& usingGamepadID[2] == true) usingGamepadID[3] = true;
 			break;
 
 			case SDL_CONTROLLERDEVICEREMOVED:
 				HandleDeviceRemoval(event.cdevice.which);
+				// No es la forma correcta de hacerlo ya que dará problemas y bugs (en el caso de conectar 2 o mas mandos) pero no creo que en ningún momento se lleguen a conectar mas de uno
+				// (No se como hacer que se guarde la ID de un mando en concreto) Al menos en la parte de arriba se puede hacer "fuim"
+				usingGamepadID[0] = false;
+				usingGamepadID[1] = false;
+				usingGamepadID[2] = false;
+				usingGamepadID[3] = false;
 			break;
 
 			case SDL_MOUSEMOTION:

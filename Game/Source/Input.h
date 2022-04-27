@@ -2,6 +2,7 @@
 #define __INPUT_H__
 
 #include "Module.h"
+#include "Point.h"
 
 #define NUM_KEYS 352
 #define MAX_KEYS 300
@@ -119,6 +120,10 @@ public:
 public:
 	// An array to fill in all detected gamepads
 	GamePad pads[MAX_PADS];
+
+	bool usingGamepadID[4] = { false };
+
+	iPoint arrowPointerPosition;
 };
 
 #endif // __INPUT_H__

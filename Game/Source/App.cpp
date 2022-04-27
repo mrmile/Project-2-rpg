@@ -90,10 +90,10 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(collisions);
 	AddModule(fade);
 	AddModule(pathfinding);
-	AddModule(guiManager);
 	AddModule(pause_menu);
 	AddModule(combatMenu);
 	AddModule(dialogManager);
+	AddModule(guiManager);
 	AddModule(game_manager);
 	// Render last to swap buffer
 	AddModule(render);
@@ -435,12 +435,12 @@ bool App::PostUpdate()
 	Module* pModule = NULL;
 
 	int test = 0;
-	LOG("POST UPDATING GENERAL");
+	//LOG("POST UPDATING GENERAL");
 	for(item = modules.start; item != NULL && ret == true; item = item->next)
 	{
 		pModule = item->data;
 
-	//		LOG("POST UPDATING MODULE NUMBER: %i", test);
+		//LOG("POST UPDATING MODULE NUMBER: %i", test);
 		test++;
 
 		if(pModule->active == false) {

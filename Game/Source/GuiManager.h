@@ -3,6 +3,7 @@
 
 #include "Module.h"
 #include "GuiControl.h"
+#include "Input.h"
 
 #include "List.h"
 
@@ -42,6 +43,8 @@ public:
 	bool doLogic = false;
 
 	SDL_Texture* texture;
+
+	SDL_Texture* arrowPointer;
 
 };
 

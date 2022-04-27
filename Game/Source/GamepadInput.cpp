@@ -67,6 +67,28 @@ bool GamepadInput::Update(float dt)
 		app->input->keys[SDL_SCANCODE_DOWN] = KeyState::KEY_REPEAT;
 	}
 
+
+	if (pad.right_x < 0.0f)
+	{
+		app->input->arrowPointerPosition.x--;
+	}
+
+	if (pad.right_x > 0.0f)
+	{
+		app->input->arrowPointerPosition.x++;
+	}
+
+	if (pad.right_y < 0.0f)
+	{
+		app->input->arrowPointerPosition.y--;
+	}
+
+	if (pad.right_y > 0.0f)
+	{
+		app->input->arrowPointerPosition.y++;
+	}
+
+
 	if (pad.l2 == true)
 	{
 		app->input->keys[SDL_SCANCODE_LSHIFT] = KeyState::KEY_REPEAT;
