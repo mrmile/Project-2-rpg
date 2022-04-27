@@ -70,22 +70,22 @@ bool GamepadInput::Update(float dt)
 
 	if (pad.right_x < 0.0f)
 	{
-		app->input->arrowPointerPosition.x--;
+		app->input->arrowPointerPosition.x -= 3;
 	}
 
 	if (pad.right_x > 0.0f)
 	{
-		app->input->arrowPointerPosition.x++;
+		app->input->arrowPointerPosition.x += 3;
 	}
 
 	if (pad.right_y < 0.0f)
 	{
-		app->input->arrowPointerPosition.y--;
+		app->input->arrowPointerPosition.y -= 3;
 	}
 
 	if (pad.right_y > 0.0f)
 	{
-		app->input->arrowPointerPosition.y++;
+		app->input->arrowPointerPosition.y += 3;
 	}
 
 

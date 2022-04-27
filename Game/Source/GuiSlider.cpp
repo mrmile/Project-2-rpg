@@ -25,33 +25,64 @@ bool GuiSlider::Update(float dt)
 	{
 		if (canClick == true)
 		{
-			int mouseX, mouseY;
-			app->input->GetMousePosition(mouseX, mouseY);
-
-
-			if ((mouseX > bounds.x + 160 && mouseX < (bounds.x + bounds.w)) &&
-				(mouseY > bounds.y && mouseY < bounds.y + bounds.h))
+			if (app->input->usingGamepadID[0] == false)
 			{
-				state = GuiControlState::FOCUSED;
-				//extraBounds.x = mouseX;
-				if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP)
+				int mouseX, mouseY;
+				app->input->GetMousePosition(mouseX, mouseY);
+
+
+				if ((mouseX > bounds.x + 160 && mouseX < (bounds.x + bounds.w)) &&
+					(mouseY > bounds.y && mouseY < bounds.y + bounds.h))
 				{
-					state = GuiControlState::PRESSED;
-					extraBounds.x = extraBounds.x;
-					//cout << "Pressed " << endl;
-					//NotifyObserver();
+					state = GuiControlState::FOCUSED;
+					//extraBounds.x = mouseX;
+					if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP)
+					{
+						state = GuiControlState::PRESSED;
+						extraBounds.x = extraBounds.x;
+						//cout << "Pressed " << endl;
+						//NotifyObserver();
+					}
+					else if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT)
+					{
+						state = GuiControlState::SELECTED;
+						//cout << "Selected " << endl;
+						extraBounds.x = mouseX;
+						NotifyObserver();
+					}
+					else
+					{
+						state = GuiControlState::NORMAL;
+						NotifyObserver();
+					}
 				}
-				else if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT)
+			}
+			else if (app->input->usingGamepadID[0] == true)
+			{
+				if ((app->input->arrowPointerPosition.x > bounds.x && app->input->arrowPointerPosition.x < (bounds.x + bounds.w)) &&
+					(app->input->arrowPointerPosition.y > bounds.y && app->input->arrowPointerPosition.y < bounds.y + bounds.h))
 				{
-					state = GuiControlState::SELECTED;
-					//cout << "Selected " << endl;
-					extraBounds.x = mouseX;
-					NotifyObserver();
-				}
-				else
-				{
-					state = GuiControlState::NORMAL;
-					NotifyObserver();
+					state = GuiControlState::FOCUSED;
+					//extraBounds.x = mouseX;
+					if (app->input->keys[SDL_SCANCODE_Z] == KeyState::KEY_UP)
+					{
+						state = GuiControlState::PRESSED;
+						extraBounds.x = extraBounds.x;
+						//cout << "Pressed " << endl;
+						//NotifyObserver();
+					}
+					else if (app->input->keys[SDL_SCANCODE_Z] == KeyState::KEY_REPEAT)
+					{
+						state = GuiControlState::SELECTED;
+						//cout << "Selected " << endl;
+						extraBounds.x = mouseX;
+						NotifyObserver();
+					}
+					else
+					{
+						state = GuiControlState::NORMAL;
+						NotifyObserver();
+					}
 				}
 			}
 		}

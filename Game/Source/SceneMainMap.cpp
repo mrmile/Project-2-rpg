@@ -82,7 +82,7 @@ bool SceneMainMap::Start()
 	// app->titleScreen->transition = false;
 	// app->titleScreen->continueTransition = false;
 
-	
+	app->input->GetMousePosition(app->input->arrowPointerPosition.x, app->input->arrowPointerPosition.y);
 
 	//app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, app->player->position.x + 100, app->player->position.y);
 

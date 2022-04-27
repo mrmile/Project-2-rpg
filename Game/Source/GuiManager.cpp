@@ -17,7 +17,7 @@ GuiManager::~GuiManager() {}
 bool GuiManager::Start()
 {
 	arrowPointer = app->tex->Load("Assets/textures/GUI/arrow_cursorV2.png");
-	//app->input->GetMousePosition(app->input->arrowPointerPosition.x, app->input->arrowPointerPosition.y);
+	app->input->GetMousePosition(app->input->arrowPointerPosition.x, app->input->arrowPointerPosition.y);
 
 	return true;
 }
@@ -66,16 +66,20 @@ bool GuiManager::Update(float dt)
 		doLogic = false;
 	}
 
+	return true;
+}
+
+bool GuiManager::PostUpdate()
+{
 	if (app->input->usingGamepadID[0] == false)
 	{
 		int mouseX, mouseY;
 		app->input->GetMousePosition(mouseX, mouseY);
 
-		app->render->DrawTexture(arrowPointer, mouseX, mouseY, NULL);
+		app->render->DrawTexture(arrowPointer, mouseX - 10, mouseY - 5, NULL);
 	}
 	else if (app->input->usingGamepadID[0] == true)
 	{
-
 		app->render->DrawTexture(arrowPointer, app->input->arrowPointerPosition.x, app->input->arrowPointerPosition.y, NULL);
 	}
 
@@ -136,8 +140,6 @@ bool GuiManager::CleanUp()
 	}
 
 	return true;
-
-	return false;
 }
 
 

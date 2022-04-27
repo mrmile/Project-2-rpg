@@ -22,33 +22,62 @@ bool GuiCheckbox::Update(float dt)
 {
 	if (state != GuiControlState::DISABLED)
 	{
-		// L14: TODO 3_D: Update the state of the GUiButton according to the mouse position
-		int mouseX, mouseY;
-		app->input->GetMousePosition(mouseX, mouseY);
-
-		if ((mouseX > bounds.x && mouseX < (bounds.x + bounds.w)) &&
-			(mouseY > bounds.y && mouseY < bounds.y + bounds.h))
+		if (app->input->usingGamepadID[0] == false)
 		{
-			state = GuiControlState::FOCUSED;
+			int mouseX, mouseY;
+			app->input->GetMousePosition(mouseX, mouseY);
 
-			if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP)
+			if ((mouseX > bounds.x && mouseX < (bounds.x + bounds.w)) &&
+				(mouseY > bounds.y && mouseY < bounds.y + bounds.h))
 			{
-				state = GuiControlState::PRESSED;
-				//cout << "Pressed " << endl;
-				NotifyObserver();
-			}
-			else if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT)
-			{
-				state = GuiControlState::SELECTED;
-				//cout << "Selected " << endl;
-				//NotifyObserver();
-			}
-			else
-			{
-				state = GuiControlState::NORMAL;
+				state = GuiControlState::FOCUSED;
+
+				if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_UP)
+				{
+					state = GuiControlState::PRESSED;
+					//cout << "Pressed " << endl;
+					NotifyObserver();
+				}
+				else if (app->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KeyState::KEY_REPEAT)
+				{
+					state = GuiControlState::SELECTED;
+					//cout << "Selected " << endl;
+					//NotifyObserver();
+				}
+				else
+				{
+					state = GuiControlState::NORMAL;
+				}
 			}
 		}
+		else if (app->input->usingGamepadID[0] == true)
+		{
 
+			if ((app->input->arrowPointerPosition.x > bounds.x && app->input->arrowPointerPosition.x < (bounds.x + bounds.w)) &&
+				(app->input->arrowPointerPosition.y > bounds.y && app->input->arrowPointerPosition.y < bounds.y + bounds.h))
+			{
+				state = GuiControlState::FOCUSED;
+
+				if (app->input->keys[SDL_SCANCODE_Z] == KeyState::KEY_UP)
+				{
+					state = GuiControlState::PRESSED;
+					//cout << "Pressed " << endl;
+					NotifyObserver();
+				}
+				else if (app->input->keys[SDL_SCANCODE_Z] == KeyState::KEY_REPEAT)
+				{
+					state = GuiControlState::SELECTED;
+					//cout << "Selected " << endl;
+					//NotifyObserver();
+				}
+				else
+				{
+					state = GuiControlState::NORMAL;
+				}
+			}
+
+
+		}
 	}
 
 	return true;

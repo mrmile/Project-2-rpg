@@ -22,6 +22,8 @@ public:
 
 	 bool Update(float dt);
 
+	 bool PostUpdate();
+
 	bool UpdateAll(float dt,bool logic);
 
 	bool Draw();
