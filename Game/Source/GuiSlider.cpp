@@ -59,7 +59,7 @@ bool GuiSlider::Update(float dt)
 			}
 			else if (app->input->usingGamepadID[0] == true)
 			{
-				if ((app->input->arrowPointerPosition.x > bounds.x && app->input->arrowPointerPosition.x < (bounds.x + bounds.w)) &&
+				if ((app->input->arrowPointerPosition.x > bounds.x + 160 && app->input->arrowPointerPosition.x < (bounds.x + bounds.w)) &&
 					(app->input->arrowPointerPosition.y > bounds.y && app->input->arrowPointerPosition.y < bounds.y + bounds.h))
 				{
 					state = GuiControlState::FOCUSED;
@@ -70,12 +70,15 @@ bool GuiSlider::Update(float dt)
 						extraBounds.x = extraBounds.x;
 						//cout << "Pressed " << endl;
 						//NotifyObserver();
+						
 					}
 					else if (app->input->keys[SDL_SCANCODE_Z] == KeyState::KEY_REPEAT)
 					{
 						state = GuiControlState::SELECTED;
 						//cout << "Selected " << endl;
-						extraBounds.x = mouseX;
+						if (extraBounds.x > bounds.x + 160) if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT) extraBounds.x -= 2;
+						if (extraBounds.x < bounds.x + bounds.w) if (app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT) extraBounds.x += 2;
+						//extraBounds.x = mouseX;
 						NotifyObserver();
 					}
 					else

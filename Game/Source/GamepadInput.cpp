@@ -70,22 +70,22 @@ bool GamepadInput::Update(float dt)
 
 	if (pad.right_x < 0.0f)
 	{
-		app->input->arrowPointerPosition.x -= 3;
+		app->input->arrowPointerPosition.x -= 4;
 	}
 
 	if (pad.right_x > 0.0f)
 	{
-		app->input->arrowPointerPosition.x += 3;
+		app->input->arrowPointerPosition.x += 4;
 	}
 
 	if (pad.right_y < 0.0f)
 	{
-		app->input->arrowPointerPosition.y -= 3;
+		app->input->arrowPointerPosition.y -= 4;
 	}
 
 	if (pad.right_y > 0.0f)
 	{
-		app->input->arrowPointerPosition.y += 3;
+		app->input->arrowPointerPosition.y += 4;
 	}
 
 
@@ -97,6 +97,12 @@ bool GamepadInput::Update(float dt)
 	if (pad.x == true && keyDownDelay > 15)
 	{
 		app->input->keys[SDL_SCANCODE_Z] = KeyState::KEY_DOWN;
+
+		keyDownDelay = 0;
+	}
+	if (pad.x == true)
+	{
+		app->input->keys[SDL_SCANCODE_Z] = KeyState::KEY_REPEAT;
 
 		keyDownDelay = 0;
 	}

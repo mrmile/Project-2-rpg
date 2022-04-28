@@ -66,7 +66,7 @@ bool LogoScreen::Update(float dt)
 {
 	delay++;
 
-	if (delay > 360 || app->input->keys[SDL_SCANCODE_SPACE] == KEY_DOWN)
+	if (delay > 360 || app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN)
 	{
 		app->titleScreen->Enable();
 
