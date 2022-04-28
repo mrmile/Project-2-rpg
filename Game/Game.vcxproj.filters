@@ -142,9 +142,6 @@
     <ClCompile Include="Source\CreditsScreen.cpp">
       <Filter>General</Filter>
     </ClCompile>
-    <ClCompile Include="Source\InventoryScreen.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -316,9 +313,6 @@
       <Filter>General</Filter>
     </ClInclude>
     <ClInclude Include="Source\CreditsScreen.h">
-      <Filter>General</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\InventoryScreen.h">
       <Filter>General</Filter>
     </ClInclude>
   </ItemGroup>

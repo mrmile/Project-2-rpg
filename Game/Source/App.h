@@ -37,7 +37,6 @@ class PathFinding;
 class ModuleFonts;
 class GuiManager;
 class PauseMenu;
-class InventoryScreen;
 class CombatMenu;
 class DialogManager;
 class GameManager;
@@ -132,7 +131,6 @@ public:
 	ModuleFonts* fonts;
 	GuiManager* guiManager;
 	PauseMenu* pause_menu;
-	InventoryScreen* inventoryScreen;
 	CombatMenu* combatMenu;
 	EntityManager* entity_manager;
 	DialogManager* dialogManager;

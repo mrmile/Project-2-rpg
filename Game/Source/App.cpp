@@ -25,7 +25,6 @@
 #include "GuiManager.h"
 #include "LogoScreen.h"
 #include "PauseMenu.h"
-#include "InventoryScreen.h"
 #include "CombatMenu.h"
 #include "DialogManager.h"
 #include "GameManager.h"
@@ -60,7 +59,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	player = new ModulePlayer(false);
 	collisions = new ModuleCollisions(false);
 	pause_menu = new PauseMenu(false);
-	inventoryScreen = new InventoryScreen(true);
 	combatMenu = new CombatMenu(true);
 	entity_manager = new EntityManager(true);
 	particles = new ModuleParticles(true);
@@ -93,7 +91,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(fade);
 	AddModule(pathfinding);
 	AddModule(pause_menu);
-	AddModule(inventoryScreen);
 	AddModule(combatMenu);
 	AddModule(dialogManager);
 	AddModule(guiManager);
