@@ -95,7 +95,6 @@ bool SceneBase::Update(float dt)
 
 
 
-
 	if (app->input->keys[SDL_SCANCODE_F10] == KEY_DOWN && app->player->destroyed == false && app->player->playerWin == false)
 		godMode = !godMode;
 

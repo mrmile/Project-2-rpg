@@ -126,7 +126,6 @@ bool SceneCave::Update(float dt)
    }
    */
 
-
 	// Draw map
 	app->map->Draw();
 

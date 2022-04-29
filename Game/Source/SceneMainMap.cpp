@@ -166,7 +166,6 @@ bool SceneMainMap::Update(float dt)
 	//if(app->input->keys[SDL_SCANCODE_A) == KEY_REPEAT)
 		//app->render->camera.x += 5;
 
-	//app->render->DrawTexture2(img, 380, 100); // Placeholder not needed any more
 	// Draw map
 	app->map->Draw();
 
