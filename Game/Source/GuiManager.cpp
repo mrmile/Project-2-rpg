@@ -16,7 +16,7 @@ GuiManager::~GuiManager() {}
 
 bool GuiManager::Start()
 {
-	arrowPointer = app->tex->Load("Assets/textures/GUI/cursor2.png");
+	arrowPointer = app->tex->Load("Assets/textures/GUI/customCursor2.png");
 	app->input->GetMousePosition(app->input->arrowPointerPosition.x, app->input->arrowPointerPosition.y);
 
 	return true;

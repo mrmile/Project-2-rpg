@@ -70,11 +70,11 @@ bool SceneCave::Start()
 	sceneSoundRandomizerNumber = 0;
 
 
-	app->render->mFogOfWar->w = 1920;
+	/*app->render->mFogOfWar->w = 1920;
 	app->render->mFogOfWar->h = 1080;
 
 	app->render->mFogOfWarPunch->w = 300;
-	app->render->mFogOfWarPunch->h = 300;
+	app->render->mFogOfWarPunch->h = 300;*/
 
 	//app->SaveGameRequest();
 
