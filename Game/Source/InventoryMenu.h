@@ -39,29 +39,12 @@ public:
 
 private:
 
-	//SDL_Texture* combatHUD;
-	//SDL_Texture* enemyTurn;
-	//SDL_Texture* enemyTurn1;
-	//SDL_Texture* enemyTurn2;
-	//SDL_Texture* enemyTurn3;
+	SDL_Texture* combatHUD;
 
-	//SDL_Texture* combatShoot;
-	//SDL_Texture* combatMelee;
-	//SDL_Texture* combatItems;
-	//SDL_Texture* combatEscape;
+public:
 
-	////GUI BUTTONS
-	//GuiButton* combatShootGUI;
-	//GuiButton* combatMeleeGUI;
-	//GuiButton* combatItemsGUI;
-	//GuiButton* combatEscapeGUI;
+	bool showInventory = false;
 
-	//int delay = 0;
-	//int delay2 = 0;
-	//int delay3 = 0;
-
-	//int buttonClickedFx = 0;
-	//int buttonClickedMelee = 0;
 };
 
 #endif // __SCENE_FOREST_H__

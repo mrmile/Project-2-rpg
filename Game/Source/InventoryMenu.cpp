@@ -1,5 +1,6 @@
 #include "InventoryMenu.h"
 #include "PauseMenu.h"
+#include "TitleScreen.h"
 #include "App.h"
 #include "Input.h"
 #include "Textures.h"
@@ -45,6 +46,8 @@ bool InventoryMenu::Awake()
 // Called before the first frame
 bool InventoryMenu::Start()
 {
+	combatHUD = app->tex->Load("Assets/textures/GUI/CombatUI/combatHud3.png"); // Just for testing
+
 	return true;
 }
 
@@ -66,12 +69,19 @@ bool InventoryMenu::PostUpdate()
 {
 	bool ret = true;
 
+	if (app->player->pauseMenu == false && app->titleScreen->active == false && app->creditsScreen->active == false && showInventory == true)
+	{
+		app->render->DrawTexture2(combatHUD, 0, 0, NULL); // Just for testing
+	}
+
 	return true;
 }
 
 // Called before quitting
 bool InventoryMenu::CleanUp()
 {
+	app->tex->UnLoad(combatHUD);
+
 	return true;
 }
 

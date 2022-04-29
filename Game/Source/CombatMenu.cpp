@@ -20,6 +20,7 @@
 #include "CreditsScreen.h"
 #include "Entity.h"
 #include "Defs.h"
+#include "Render.h"
 #include "Log.h"
 #include <SDL_mixer/include/SDL_mixer.h>
 
@@ -104,6 +105,8 @@ bool CombatMenu::PostUpdate()
 
 	if (app->player->showCombatHUD == true && app->player->pauseMenu == false && app->titleScreen->active == false && app->creditsScreen->active == false)
 	{
+		/*app->render->DrawTexture(app->guiManager->arrowPointer, app->guiManager->mouseX, app->guiManager->mouseY, NULL);*/
+
 		if (app->player->entityTurnPlayer == TurnState::WaitTurn)
 		{
 			delay++;
@@ -136,6 +139,7 @@ bool CombatMenu::PostUpdate()
 
 		if (combatEscapeGUI->state == GuiControlState::NORMAL && combatEscapeGUI->canClick == true) combatEscapeGUI->SetTexture(combatEscape);
 		combatEscapeGUI->Draw(app->render);
+
 	}
 	
 	return true;

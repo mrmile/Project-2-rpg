@@ -24,6 +24,7 @@
 #include "ModuleParticles.h"
 #include "Audio.h"
 #include "TitleScreen.h"
+#include "InventoryMenu.h"
 #include "ModuleFonts.h"
 
 #include <stdio.h>
@@ -293,7 +294,8 @@ bool ModulePlayer::Update(float dt)
 		//colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
 		return true;
 	}
-	if (pauseMenu == false)
+
+	if (pauseMenu == false && app->inventoryMenu->showInventory == false)
 	{
 		playerFPS++;
 		/*invincibleDelay++;*/
@@ -713,6 +715,7 @@ bool ModulePlayer::Update(float dt)
 			{
 				//Aquí no hace falta
 			}
+
 		}
 		if (entityStatePlayer == GameState::InCombat)
 		{
@@ -912,6 +915,12 @@ bool ModulePlayer::Update(float dt)
 	{
 		app->audio->PlayFx(paused);
 		pauseMenu = !pauseMenu;
+	}
+
+	if ((app->input->keys[SDL_SCANCODE_I] == KEY_DOWN) && app->player->destroyed == false && app->player->playerWin == false)
+	{
+		/*app->audio->PlayFx(paused);*/
+		app->inventoryMenu->showInventory = !app->inventoryMenu->showInventory;
 	}
 
 	
