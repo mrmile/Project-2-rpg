@@ -2,9 +2,6 @@
 #include "App.h"
 #include "Textures.h"
 
-#include "ModulePlayer.h"
-#include "InventoryMenu.h"
-
 #include "GuiButton.h"
 #include "GuiCheckbox.h"
 #include "GuiSlider.h"
@@ -20,7 +17,7 @@ GuiManager::~GuiManager() {}
 
 bool GuiManager::Start()
 {
-	arrowPointer = app->tex->Load("Assets/textures/GUI/customCursor.png");
+	arrowPointer = app->tex->Load("Assets/textures/GUI/customCursor2.png");
 	app->input->GetMousePosition(app->input->arrowPointerPosition.x, app->input->arrowPointerPosition.y);
 
 	return true;
@@ -70,53 +67,26 @@ bool GuiManager::Update(float dt)
 		doLogic = false;
 	}
 
-	if (app->input->usingGamepadID[0] == false)
-	{
-		int mouseX, mouseY;
-		app->input->GetMousePosition(mouseX, mouseY);
-
-		app->render->DrawTexture(arrowPointer, mouseX - 10, mouseY - 5, NULL);
-	}
-	else if (app->input->usingGamepadID[0] == true)
-	{
-		if (app->render->DrawTexture(arrowPointer, app->input->arrowPointerPosition.x, app->input->arrowPointerPosition.y, NULL) == false) LOG("ARROW NOT PRINTED");
-
-	}
 	return true;
 }
 
 bool GuiManager::PostUpdate()
 {
+	if (app->input->arrowPointerPosition.x < -app->render->camera.x / 10000) app->input->arrowPointerPosition.x = -app->render->camera.x / 10000;
+	if (app->input->arrowPointerPosition.y < -app->render->camera.y / 10000) app->input->arrowPointerPosition.y = -app->render->camera.y / 10000;
+	if (app->input->arrowPointerPosition.x > -app->render->camera.x / 10000 + app->render->camera.w/2 - 10) app->input->arrowPointerPosition.x = -app->render->camera.x / 10000 + app->render->camera.w/2 - 10;
+	if (app->input->arrowPointerPosition.y > -app->render->camera.y / 10000 + app->render->camera.h/2 - 10) app->input->arrowPointerPosition.y = -app->render->camera.y / 10000 + app->render->camera.h/2 - 10;
+
 	if (app->input->usingGamepadID[0] == false)
 	{
 		int mouseX, mouseY;
 		app->input->GetMousePosition(mouseX, mouseY);
 
-		if (app->player->showCombatHUD == true)
-		{
-			SDL_ShowCursor(SDL_ENABLE);
-		}
-
-		if (app->player->pauseMenu == true)
-		{
-			SDL_ShowCursor(SDL_ENABLE);
-		}
-
-		if (app->inventoryMenu->showInventory == true)
-		{
-			SDL_ShowCursor(SDL_ENABLE);
-		}
-
-		if(app->player->showCombatHUD == false && app->player->pauseMenu == false && app->inventoryMenu->showInventory == false)
-		{
-			SDL_ShowCursor(SDL_DISABLE);
-		}
-
-		app->render->DrawTexture(arrowPointer, mouseX, mouseY, NULL);
+		app->render->DrawTexture(arrowPointer, mouseX - app->render->camera.x / 2, mouseY - app->render->camera.y / 2, NULL);
 	}
 	else if (app->input->usingGamepadID[0] == true)
 	{
-		app->render->DrawTexture(arrowPointer, app->input->arrowPointerPosition.x, app->input->arrowPointerPosition.y, NULL);
+		app->render->DrawTexture(arrowPointer, app->input->arrowPointerPosition.x - app->render->camera.x / 2, app->input->arrowPointerPosition.y - app->render->camera.y / 2, NULL);
 	}
 
 	return true;
