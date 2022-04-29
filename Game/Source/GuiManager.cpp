@@ -2,6 +2,9 @@
 #include "App.h"
 #include "Textures.h"
 
+#include "ModulePlayer.h"
+#include "InventoryMenu.h"
+
 #include "GuiButton.h"
 #include "GuiCheckbox.h"
 #include "GuiSlider.h"
@@ -17,7 +20,7 @@ GuiManager::~GuiManager() {}
 
 bool GuiManager::Start()
 {
-	arrowPointer = app->tex->Load("Assets/textures/GUI/customCursor2.png");
+	arrowPointer = app->tex->Load("Assets/textures/GUI/customCursor.png");
 	app->input->GetMousePosition(app->input->arrowPointerPosition.x, app->input->arrowPointerPosition.y);
 
 	return true;
@@ -88,6 +91,26 @@ bool GuiManager::PostUpdate()
 	{
 		int mouseX, mouseY;
 		app->input->GetMousePosition(mouseX, mouseY);
+
+		if (app->player->showCombatHUD == true)
+		{
+			SDL_ShowCursor(SDL_ENABLE);
+		}
+
+		if (app->player->pauseMenu == true)
+		{
+			SDL_ShowCursor(SDL_ENABLE);
+		}
+
+		if (app->inventoryMenu->showInventory == true)
+		{
+			SDL_ShowCursor(SDL_ENABLE);
+		}
+
+		if(app->player->showCombatHUD == false && app->player->pauseMenu == false && app->inventoryMenu->showInventory == false)
+		{
+			SDL_ShowCursor(SDL_DISABLE);
+		}
 
 		app->render->DrawTexture(arrowPointer, mouseX, mouseY, NULL);
 	}
