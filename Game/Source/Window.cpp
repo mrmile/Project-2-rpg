@@ -61,6 +61,8 @@ bool Window::Awake(pugi::xml_node& config)
 			// Get window surface
 			screenSurface = SDL_GetWindowSurface(window);
 		}
+
+		SDL_ShowCursor(SDL_DISABLE);
 	}
 
 	return ret;
