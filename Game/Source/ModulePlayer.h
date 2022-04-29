@@ -74,7 +74,6 @@ public:
 	SDL_Texture* texture2 = nullptr;
 
 	SDL_Texture* ptsScore;
-	SDL_Texture* livesForScore;
 
 	SDL_Texture* gameOverScreen;
 
@@ -123,16 +122,8 @@ public:
 	
 
 	// Sound effects indices
-	uint jumpSound = 0;
-	uint hoverSound = 0;
-	uint hoverSoundL = 0;
 	uint dead = 0;
 	uint damaged = 0;
-	uint halfWayPoint = 0;
-	uint coin = 0;
-	uint recoverLifePowerUp = 0;
-	uint levelClear = 0;
-	uint firework = 0;
 	uint paused = 0;
 	uint gameOverfx = 0;
 

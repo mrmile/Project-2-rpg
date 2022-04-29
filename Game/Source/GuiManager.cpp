@@ -6,6 +6,7 @@
 #include "GuiCheckbox.h"
 #include "GuiSlider.h"
 #include "Audio.h"
+#include "Log.h"
 
 GuiManager::GuiManager(bool start_enabled) : Module(start_enabled)
 {
@@ -66,6 +67,18 @@ bool GuiManager::Update(float dt)
 		doLogic = false;
 	}
 
+	if (app->input->usingGamepadID[0] == false)
+	{
+		int mouseX, mouseY;
+		app->input->GetMousePosition(mouseX, mouseY);
+
+		app->render->DrawTexture(arrowPointer, mouseX - 10, mouseY - 5, NULL);
+	}
+	else if (app->input->usingGamepadID[0] == true)
+	{
+		if (app->render->DrawTexture(arrowPointer, app->input->arrowPointerPosition.x, app->input->arrowPointerPosition.y, NULL) == false) LOG("ARROW NOT PRINTED");
+
+	}
 	return true;
 }
 

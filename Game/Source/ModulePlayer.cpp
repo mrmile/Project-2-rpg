@@ -1246,21 +1246,21 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 			playerHP += 10;
 			if (playerHP > 100) playerHP = 100;
-			app->audio->PlayFx(recoverLifePowerUp);
+			
 		}
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::COIN)
 		{
 			score += 5;
 			//if (playerScore > 1000) playerScore = 1000;
-			app->audio->PlayFx(coin);
+			
 		}
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::CHECKPOINT)
 		{
 			score += 10;
 			//if (playerScore > 1000) playerScore = 1000;
-			app->audio->PlayFx(halfWayPoint);
+			
 			app->titleScreen->SavedGame = true;
 			app->SaveGameRequest();
 			saved_game = true;
@@ -1271,7 +1271,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 			//playerScore += 10;
 			//if (playerScore > 1000) playerScore = 1000;
-			app->audio->PlayFx(levelClear);
+			
 			app->titleScreen->SavedGame = false;
 			app->SaveGameRequest();
 			playerWin = true;

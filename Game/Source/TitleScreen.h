@@ -73,7 +73,6 @@ public:
 	SDL_Texture* titleScreen;
 	SDL_Texture* titleScreenLetters;
 	SDL_Texture* settingsLetters;
-	SDL_Texture* titleScreen2;
 	SDL_Texture* creditsScene;
 	SDL_Texture* loading;
 	//BUTTONS TEXTURES

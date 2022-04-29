@@ -54,7 +54,6 @@ bool TitleScreen::Start()
 	titleScreenLetters = app->tex->Load("Assets/textures/Scenes/mainTitleLetters_CA3.png");
 	settingsLetters = app->tex->Load("Assets/textures/Scenes/settingsLetters.png");
 
-	titleScreen2 = app->tex->Load("Assets/textures/island.png");
 	loading = app->tex->Load("Assets/textures/loadingScreen.png");
 	creditsScene = app->tex->Load("Assets/textures/creditsScreen3.png");
 
@@ -349,7 +348,6 @@ bool TitleScreen::PostUpdate()
 	}
 	if (credits == true)
 	{
-		app->render->DrawTexture2(titleScreen2, 0, 0, NULL);
 		app->render->DrawTexture2(creditsScene, 0, 0, NULL);
 
 		if (returnButton_->state == GuiControlState::NORMAL && returnButton_->canClick == true) returnButton_->SetTexture(returnButton);
@@ -372,7 +370,6 @@ bool TitleScreen::CleanUp()
 	app->tex->UnLoad(titleScreenLetters);
 	app->tex->UnLoad(settingsLetters);
 	app->tex->UnLoad(creditsScene);
-	app->tex->UnLoad(titleScreen2);
 	app->tex->UnLoad(loading);
 	app->tex->UnLoad(fullScreenTag);
 

@@ -51,20 +51,44 @@ bool GamepadInput::Update(float dt)
 	{
 		app->input->keys[SDL_SCANCODE_LEFT] = KeyState::KEY_REPEAT;
 	}
+	if (pad.left_x < 0.0f && keyDownDelay > 15)
+	{
+		app->input->keys[SDL_SCANCODE_LEFT] = KeyState::KEY_DOWN;
+
+		keyDownDelay = 0;
+	}
 
 	if (pad.left_x > 0.0f)
 	{
 		app->input->keys[SDL_SCANCODE_RIGHT] = KeyState::KEY_REPEAT;
 	}
-	
+	if (pad.left_x > 0.0f && keyDownDelay > 15)
+	{
+		app->input->keys[SDL_SCANCODE_RIGHT] = KeyState::KEY_DOWN;
+
+		keyDownDelay = 0;
+	}
+
 	if (pad.left_y < 0.0f)
 	{
 		app->input->keys[SDL_SCANCODE_UP] = KeyState::KEY_REPEAT;
+	}
+	if (pad.left_y < 0.0f && keyDownDelay > 15)
+	{
+		app->input->keys[SDL_SCANCODE_UP] = KeyState::KEY_DOWN;
+
+		keyDownDelay = 0;
 	}
 
 	if (pad.left_y > 0.0f)
 	{
 		app->input->keys[SDL_SCANCODE_DOWN] = KeyState::KEY_REPEAT;
+	}
+	if (pad.left_y > 0.0f && keyDownDelay > 15)
+	{
+		app->input->keys[SDL_SCANCODE_DOWN] = KeyState::KEY_DOWN;
+
+		keyDownDelay = 0;
 	}
 
 
@@ -94,15 +118,13 @@ bool GamepadInput::Update(float dt)
 		app->input->keys[SDL_SCANCODE_LSHIFT] = KeyState::KEY_REPEAT;
 	}
 
-	if (pad.x == true && keyDownDelay > 15)
-	{
-		app->input->keys[SDL_SCANCODE_Z] = KeyState::KEY_DOWN;
-
-		keyDownDelay = 0;
-	}
 	if (pad.x == true)
 	{
 		app->input->keys[SDL_SCANCODE_Z] = KeyState::KEY_REPEAT;
+	}
+	if (pad.x == true && keyDownDelay > 15)
+	{
+		app->input->keys[SDL_SCANCODE_Z] = KeyState::KEY_DOWN;
 
 		keyDownDelay = 0;
 	}
@@ -117,6 +139,20 @@ bool GamepadInput::Update(float dt)
 	if (pad.a == true && keyDownDelay > 15)
 	{
 		app->input->keys[SDL_SCANCODE_C] = KeyState::KEY_DOWN;
+
+		keyDownDelay = 0;
+	}
+
+	if (pad.start == true && keyDownDelay > 15)
+	{
+		app->input->keys[SDL_SCANCODE_ESCAPE] = KeyState::KEY_DOWN;
+
+		keyDownDelay = 0;
+	}
+
+	if (pad.back == true && keyDownDelay > 15)
+	{
+		//Open inventory KEY_DOWN
 
 		keyDownDelay = 0;
 	}
