@@ -95,6 +95,8 @@ private:
 
 	void SpawnEntity(const EntitySpawnPoint& info);
 
+	void SpawnEntity(const EntitySpawnPoint& info, ItemType itemType,ObjectType objectType);
+
 	
 
 	// A queue with all spawn points information

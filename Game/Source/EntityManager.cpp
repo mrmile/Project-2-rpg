@@ -19,6 +19,8 @@
 #include "Zombie_Runner.h"
 #include "Zombie_Spitter.h"
 
+#include "Item.h"
+
 #define SPAWN_MARGIN 500
 
 EntityManager::EntityManager(bool start_enabled) : Module(start_enabled)
@@ -222,6 +224,8 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				break;
 			case EntityType::OBJECTS:
 				//entities[i]->texture = texture_objects;
+				//entities[i] = new Item(info.x, info.y);
+				entities[i]->type = info.type;
 				break;
 			case EntityType::ZOMBIE_STANDART:
 				entities[i] = new Zombie_Standart(info.x,info.y);
@@ -253,6 +257,30 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 			}
 			
 			
+			break;
+		}
+	}
+}
+
+void EntityManager::SpawnEntity(const EntitySpawnPoint& info, ItemType itemType, ObjectType objectType)
+{
+	// Find an empty slot in the enemies array
+	for (uint i = 0; i < MAX_ENTITIES; ++i)
+	{
+
+		if (entities[i] == nullptr)
+		{
+			switch (info.type)
+			{
+			case EntityType::OBJECTS:
+				//entities[i]->texture = texture_objects;
+				entities[i] = new Item(info.x, info.y,objectType,itemType);
+				entities[i]->type = info.type;
+				break;
+		
+			}
+
+
 			break;
 		}
 	}

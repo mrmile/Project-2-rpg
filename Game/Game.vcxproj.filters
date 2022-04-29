@@ -145,6 +145,9 @@
     <ClCompile Include="Source\InventoryMenu.cpp">
       <Filter>General</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Item.cpp">
+      <Filter>General\Entities\Items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -321,6 +324,9 @@
     <ClInclude Include="Source\InventoryMenu.h">
       <Filter>General</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Item.h">
+      <Filter>General\Entities\Items</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -346,6 +352,9 @@
     </Filter>
     <Filter Include="General\Dialog">
       <UniqueIdentifier>{bded6ef0-721b-48ca-95eb-a3a3691cfb38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General\Entities\Items">
+      <UniqueIdentifier>{26b5af5a-c6ae-4109-af6b-13d77856623e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
