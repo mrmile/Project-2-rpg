@@ -1,3 +1,4 @@
+/*
 #include "Item.h"
 
 #include "App.h"
@@ -61,3 +62,4 @@ bool Item::Update(float dt)
 		break;
 	}
 }
+*/

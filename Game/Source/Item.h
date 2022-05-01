@@ -1,3 +1,4 @@
+/*
 #ifndef __ITEM_H__
 #define __ITEM_H__
 
@@ -18,17 +19,18 @@ enum class ItemType
 
 };
 
+
 class Item : public Entity
 {
 public:
 	Item(int x, int y,ObjectType object_type,ItemType item_type);
 
-	bool Update(float dt) override;
+	//bool Update(float dt) override;
 
 	ObjectType objectType;
 	ItemType itemType;
 
 };
 
-#endif //__COLLIDER_H__
-
+#endif 
+*/

@@ -261,7 +261,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 		}
 	}
 }
-
+/*
 void EntityManager::SpawnEntity(const EntitySpawnPoint& info, ItemType itemType, ObjectType objectType)
 {
 	// Find an empty slot in the enemies array
@@ -285,7 +285,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info, ItemType itemType,
 		}
 	}
 }
-
+*/
 void EntityManager::RegisterEntitesInCombat(Entity* entity)
 {
 

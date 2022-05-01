@@ -4,13 +4,14 @@
 #include "Module.h"
 #include "List.h"
 #include "Point.h"
+#include "Item.h"
 
 #define MAX_ENTITIES 5000
 
 class Entity;
 struct SDL_Texture;
 
-class Zombie_Standart;
+//class Zombie_Standart;
 
 enum class EntityType
 {
@@ -95,7 +96,7 @@ private:
 
 	void SpawnEntity(const EntitySpawnPoint& info);
 
-	void SpawnEntity(const EntitySpawnPoint& info, ItemType itemType,ObjectType objectType);
+	//void SpawnEntity(const EntitySpawnPoint& info, ItemType itemType,ObjectType objectType);
 
 	
 
