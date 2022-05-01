@@ -4,14 +4,13 @@
 #include "Module.h"
 #include "List.h"
 #include "Point.h"
-#include "Item.h"
 
 #define MAX_ENTITIES 5000
 
 class Entity;
 struct SDL_Texture;
 
-//class Zombie_Standart;
+class Item;
 
 enum class EntityType
 {
@@ -24,14 +23,13 @@ enum class EntityType
 	ZOMBIE_RUNNER,
 	ZOMBIE_SPITTER,
 	ZOMBIE_STANDART,
-	OBJECTS,
+	OBJECT_FOOD,
 };
 
 struct EntitySpawnPoint
 {
 	EntityType type = EntityType::NONE;
 	int x, y;
-
 };
 struct EntityHelper //ADD ANYTHING NEEDED FOR THE ENTITIES TO WORK used in the Load function as we want to cleanup the entities list any time we use it
 {
@@ -74,6 +72,7 @@ public:
 	//Function to create entites depending on the type
 	bool AddEntity(EntityType type,int x, int y);
 
+
 	//Check which entites are in combat
 	void RegisterEntitesInCombat(Entity* entity);
 
@@ -96,9 +95,6 @@ private:
 
 	void SpawnEntity(const EntitySpawnPoint& info);
 
-	//void SpawnEntity(const EntitySpawnPoint& info, ItemType itemType,ObjectType objectType);
-
-	
 
 	// A queue with all spawn points information
 	EntitySpawnPoint spawnQueue[MAX_ENTITIES];

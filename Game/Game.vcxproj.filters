@@ -145,7 +145,7 @@
     <ClCompile Include="Source\InventoryMenu.cpp">
       <Filter>General</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Item.cpp">
+    <ClCompile Include="Source\Object_Food.cpp">
       <Filter>General\Entities\Items</Filter>
     </ClCompile>
   </ItemGroup>
@@ -324,7 +324,7 @@
     <ClInclude Include="Source\InventoryMenu.h">
       <Filter>General</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Item.h">
+    <ClInclude Include="Source\Object_Food.h">
       <Filter>General\Entities\Items</Filter>
     </ClInclude>
   </ItemGroup>
@@ -354,7 +354,7 @@
       <UniqueIdentifier>{bded6ef0-721b-48ca-95eb-a3a3691cfb38}</UniqueIdentifier>
     </Filter>
     <Filter Include="General\Entities\Items">
-      <UniqueIdentifier>{26b5af5a-c6ae-4109-af6b-13d77856623e}</UniqueIdentifier>
+      <UniqueIdentifier>{19a2a573-8641-4501-b688-fe226a809291}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

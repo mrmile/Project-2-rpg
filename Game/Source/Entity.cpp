@@ -70,4 +70,10 @@ void Entity::OnCollision(Collider* c2)
 		EntityHP -= 1;
 	}
 
+	if ((c2->type == Collider::Type::PLAYER) && (type == EntityType::OBJECT_FOOD))
+	{
+		//add item food to the list take into account the amount of items in the list and if it is stackable or not
+		//have to create an item list and iterate through that list in order to add the item (need to create it in the item manager menu) 
+	}
+
 }
