@@ -76,6 +76,8 @@ bool InventoryMenu::PreUpdate()
 // Called each loop iteration
 bool InventoryMenu::Update(float dt)
 {
+	CheckIfItemHasBeenClicked();
+
 	return true;
 }
 
@@ -89,7 +91,14 @@ bool InventoryMenu::PostUpdate()
 		app->render->DrawTexture2(combatHUD, 0, 0, NULL); // Just for testing
 		app->render->DrawTexture2(characterName1, 0, 0, NULL); // Just for testing
 	}
-
+	if (showEquipableOptions == true)
+	{
+		//show Equipable buttons
+	}
+	if (showUsableOptions == true)
+	{
+		//show Usable Options
+	}
 	return true;
 }
 
@@ -123,6 +132,38 @@ void InventoryMenu::AddItemToInventory(EntityType type,bool usable,bool equipabl
 	
 	}
 
+}
+
+void InventoryMenu::CheckIfItemHasBeenClicked()
+{
+	SDL_Point mousePos;
+
+	SDL_GetMouseState(&mousePos.x, &mousePos.y);
+
+	if (app->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KeyState::KEY_REPEAT)
+	{
+		for (int i = 0; i < MAX_ITEMS; i++)
+		{
+			if (SDL_PointInRect(&mousePos, &itemList[i].itemRect) == SDL_TRUE)
+			{
+				if (itemList[i].equipable == true)
+				{
+					//show equipable buttons
+					showUsableOptions = false;
+					showEquipableOptions = true;
+					//Also need to change the buttons positions in order to not create too much buttons
+				}
+				if (itemList[i].usable == true)
+				{
+					//show usable buttons
+					showEquipableOptions = false;
+					showUsableOptions = true;
+					//Also need to change the buttons positions in order to not create too much buttons
+				}
+			}
+		}
+	}
+	
 }
 //bool CombatMenu::OnGuiMouseClickEvent(GuiControl* control)
 //{

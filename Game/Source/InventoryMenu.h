@@ -63,7 +63,11 @@ public:
 	ItemList itemList[MAX_ITEMS];
 
 	void AddItemToInventory(EntityType type,bool usable, bool equipable);
+	void CheckIfItemHasBeenClicked();
 	bool showInventory = false;
+
+	bool showEquipableOptions = false;
+	bool showUsableOptions = false;
 
 };
 
