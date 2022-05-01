@@ -46,7 +46,8 @@ bool InventoryMenu::Awake()
 // Called before the first frame
 bool InventoryMenu::Start()
 {
-	combatHUD = app->tex->Load("Assets/textures/GUI/CombatUI/combatHud3.png"); // Just for testing
+	combatHUD = app->tex->Load("Assets/textures/GUI/Inventory/InventoryHud.png"); // Just for testing
+	characterName1 = app->tex->Load("Assets/textures/GUI/Inventory/chararcterName1.png"); // Just for testing
 
 	return true;
 }
@@ -72,6 +73,7 @@ bool InventoryMenu::PostUpdate()
 	if (app->player->pauseMenu == false && app->titleScreen->active == false && app->creditsScreen->active == false && showInventory == true)
 	{
 		app->render->DrawTexture2(combatHUD, 0, 0, NULL); // Just for testing
+		app->render->DrawTexture2(characterName1, 0, 0, NULL); // Just for testing
 	}
 
 	return true;
@@ -81,6 +83,7 @@ bool InventoryMenu::PostUpdate()
 bool InventoryMenu::CleanUp()
 {
 	app->tex->UnLoad(combatHUD);
+	app->tex->UnLoad(characterName1);
 
 	return true;
 }

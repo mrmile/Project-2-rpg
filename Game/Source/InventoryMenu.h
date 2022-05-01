@@ -40,6 +40,7 @@ public:
 private:
 
 	SDL_Texture* combatHUD;
+	SDL_Texture* characterName1;
 
 public:
 
