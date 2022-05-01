@@ -2,12 +2,24 @@
 #define __INVENTORY_MENU_H__
 
 #include "Module.h"
-//#include "GuiButton.h"
+#include "GuiButton.h"
+#include "Entity.h"
 //#include "GuiCheckbox.h"
 //#include "GuiSlider.h"
 
 struct SDL_Texture;
 
+#define MAX_ITEMS 28
+
+struct ItemList
+{
+	EntityType type = EntityType::NONE;
+	int amount = 0;
+	bool usable = false;
+	bool equipable = false;
+	SDL_Rect itemRect = { 0,0,0,0 };
+
+};
 class InventoryMenu : public Module
 {
 public:
@@ -44,6 +56,13 @@ private:
 
 public:
 
+	GuiButton* UseItem;
+	GuiButton* DeleteItem;
+	GuiButton* EquipItem;
+
+	ItemList itemList[MAX_ITEMS];
+
+	void AddItemToInventory(EntityType type,bool usable, bool equipable);
 	bool showInventory = false;
 
 };

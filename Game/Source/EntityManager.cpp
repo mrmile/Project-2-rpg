@@ -264,17 +264,19 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 
 void EntityManager::RegisterEntitesInCombat(Entity* entity)
 {
-
-	if (entity->entityState == GameState::OutOfCombat)
+	if (entity->type != EntityType::OBJECT_FOOD && entity->type != EntityType::NPC && entity->type != EntityType::NPC2 && entity->type != EntityType::NPC3 && entity->type != EntityType::NPC4)
 	{
+		if (entity->entityState == GameState::OutOfCombat)
+		{
 
-		ListInCombat.add(entity);
-		ListInCombat.At(x)->data->entityTurn = TurnState::StartOfTurn; 
-		x++;
+			ListInCombat.add(entity);
+			ListInCombat.At(x)->data->entityTurn = TurnState::StartOfTurn;
+			x++;
 
-		app->player->entityStatePlayer = GameState::InCombat;
-		app->player->entityTurnPlayer = TurnState::NONE;
-	
+			app->player->entityStatePlayer = GameState::InCombat;
+			app->player->entityTurnPlayer = TurnState::NONE;
+
+		}
 	}
 
 }
@@ -350,6 +352,11 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 					entities[i]->NPC4_List.end->data->body->DestroyFixture(entities[i]->NPC4_List.end->data->body->GetFixtureList());
 					entities[i] = nullptr;
 				}
+				if (HelperQueue[i].type == EntityType::OBJECT_FOOD)
+				{
+					entities[i]->SetToDelete();
+					entities[i] = nullptr;
+				}
 
 				entityPos = entityPos.next_sibling();
 				entityAtributes = entityAtributes.next_sibling();
@@ -387,7 +394,10 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				{
 					AddEntity(EntityType::NPC4, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
-
+				if (HelperQueue[i].type == EntityType::OBJECT_FOOD)
+				{
+					AddEntity(EntityType::OBJECT_FOOD, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
 				entityPos = entityPos.next_sibling();
 				entityAtributes = entityAtributes.next_sibling();
 			}

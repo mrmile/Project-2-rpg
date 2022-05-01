@@ -20,6 +20,8 @@
 #include "Entity.h"
 #include "Defs.h"
 #include "Log.h"
+
+
 #include <SDL_mixer/include/SDL_mixer.h>
 
 #include <iostream>
@@ -48,6 +50,18 @@ bool InventoryMenu::Start()
 {
 	combatHUD = app->tex->Load("Assets/textures/GUI/Inventory/InventoryHud.png"); // Just for testing
 	characterName1 = app->tex->Load("Assets/textures/GUI/Inventory/chararcterName1.png"); // Just for testing
+	int counter = 0;
+
+	for (int j = 0; j < MAX_ITEMS / 4; j++)
+	{
+		for (int i = 0; i < MAX_ITEMS / 7; i++)
+		{
+			itemList[counter].itemRect = { 253 + (i * 46),65 + (j * 36),26,25 };
+			counter++;
+		}
+		
+	}
+	
 
 	return true;
 }
@@ -88,6 +102,28 @@ bool InventoryMenu::CleanUp()
 	return true;
 }
 
+void InventoryMenu::AddItemToInventory(EntityType type,bool usable,bool equipable)
+{
+	for (int i = 0; i < MAX_ITEMS; i++)
+	{
+		if (itemList[i].type != EntityType::NONE)
+		{
+			if (itemList[i].type == type)
+			{
+				itemList[i].amount++;
+			}
+		}
+		if (itemList[i].type == EntityType::NONE)
+		{
+			itemList[i].type = type;
+			itemList[i].amount = 1;
+			itemList[i].usable = usable;
+			itemList[i].equipable = equipable;
+		}
+	
+	}
+
+}
 //bool CombatMenu::OnGuiMouseClickEvent(GuiControl* control)
 //{
 //	switch (control->type)

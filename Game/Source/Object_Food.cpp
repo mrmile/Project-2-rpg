@@ -29,7 +29,7 @@ Object_Food::Object_Food(int x,int y) : Entity(x,y)
 
 	
 	Idle_item.PushBack({24,45,25,56});
-	Idle_item.loop = true;
+	Idle_item.loop = false;
 	Idle_item.speed = 0.3f;
 
 	
@@ -48,8 +48,6 @@ bool Object_Food::Update(float dt)
 		iPoint NewPosition = position;
 		collider->SetPos(NewPosition.x, NewPosition.y);
 		currentAnim = &Idle_item;
-		currentAnim->loop = false;
-
 		return true;
 	}
 
@@ -57,7 +55,6 @@ bool Object_Food::Update(float dt)
 	{
 		collider->SetPos(position.x, position.y);
 		currentAnim = &Idle_item;
-		currentAnim->loop = false;
 	}
 
 	return true;
