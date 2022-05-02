@@ -16,16 +16,11 @@
 #include "Map.h"
 #include "EntityManager.h"
 #include "GameManager.h"
+#include "GuiManager.h"
 #include "CreditsScreen.h"
 #include "Entity.h"
 #include "Defs.h"
 #include "Log.h"
-
-
-#include <SDL_mixer/include/SDL_mixer.h>
-
-#include <iostream>
-using namespace std;
 
 InventoryMenu::InventoryMenu(bool start_enabled) : Module(start_enabled)
 {
@@ -50,6 +45,12 @@ bool InventoryMenu::Start()
 {
 	combatHUD = app->tex->Load("Assets/textures/GUI/Inventory/InventoryHud.png"); // Just for testing
 	characterName1 = app->tex->Load("Assets/textures/GUI/Inventory/chararcterName1.png"); // Just for testing
+	object_food = app->tex->Load("Assets/textures/GUI/Inventory/food_item_test.png");
+	//Still need button textures the position does not matter right now as we are gonna update it 
+	DeleteItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 29, "Delete item Button", { 25,160,108,35 }, this, NULL, NULL, {});
+	EquipItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 30, "Equip item Button", { 25,160,108,35 }, this, NULL, NULL, {});
+	UseItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 31, "Use item Button", { 25,160,108,35 }, this, NULL, NULL, {});
+
 	int counter = 0;
 
 	for (int j = 0; j < MAX_ITEMS / 4; j++)
@@ -76,8 +77,19 @@ bool InventoryMenu::PreUpdate()
 // Called each loop iteration
 bool InventoryMenu::Update(float dt)
 {
-	CheckIfItemHasBeenClicked();
+	SDL_GetMouseState(&mousePos.x, &mousePos.y);
 
+	if (app->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KeyState::KEY_DOWN)
+	{
+		if (SDL_PointInRect(&mousePos, &itemList->itemRect) == SDL_TRUE)
+		{
+			CheckIfItemHasBeenClicked();
+		}
+		
+	}
+	
+
+	
 	return true;
 }
 
@@ -90,6 +102,8 @@ bool InventoryMenu::PostUpdate()
 	{
 		app->render->DrawTexture2(combatHUD, 0, 0, NULL); // Just for testing
 		app->render->DrawTexture2(characterName1, 0, 0, NULL); // Just for testing
+		DrawAllInventoryItems();
+
 	}
 	if (showEquipableOptions == true)
 	{
@@ -111,61 +125,81 @@ bool InventoryMenu::CleanUp()
 	return true;
 }
 
-void InventoryMenu::AddItemToInventory(EntityType type,bool usable,bool equipable)
+bool InventoryMenu::AddItemToInventory(EntityType type,bool usable,bool equipable)
+{
+	bool ret;
+	for (int i = 0; i < MAX_ITEMS; i++)
+	{
+		if (itemList[i].type != EntityType::NONE && itemList[i].type == type)
+		{
+			ret = true;
+			itemList[i].amount++;
+
+			return ret;
+		}
+		if (itemList[i].type == EntityType::NONE)
+		{
+			ret = true;
+
+			itemList[i].amount = 1;
+			itemList[i].usable = usable;
+			itemList[i].equipable = equipable;
+			itemList[i].type = type;
+
+			return ret;
+		}
+	
+	}
+
+}
+
+bool InventoryMenu::CheckIfItemHasBeenClicked()
+{
+	for (int i = 0; i < MAX_ITEMS; i++)
+	{
+		if (itemList[i].equipable == true)
+		{
+			//show equipable buttons
+			showUsableOptions = false;
+			showEquipableOptions = true;
+
+			//Also need to change the buttons positions in order to not create too much buttons
+
+			//Id used for the EquipItem function
+			idForUsability = i;
+			return true;
+		}
+		if (itemList[i].usable == true)
+		{
+			//show usable buttons
+			showEquipableOptions = false;
+			showUsableOptions = true;
+			//Also need to change the buttons positions in order to not create too much buttons
+
+			//Id used for the UseItem function
+			idForUsability = i;
+			return true;
+		}
+	
+	}
+}
+
+void InventoryMenu::DrawAllInventoryItems()
 {
 	for (int i = 0; i < MAX_ITEMS; i++)
 	{
 		if (itemList[i].type != EntityType::NONE)
 		{
-			if (itemList[i].type == type)
+			if (itemList[i].type == EntityType::OBJECT_FOOD)
 			{
-				itemList[i].amount++;
+				//app->render->DrawRectangle2(itemList[i].itemRect, 255, 0, 0, 255);
+				app->render->DrawTexture2(object_food, itemList[i].itemRect.x, itemList[i].itemRect.y); 
 			}
-		}
-		if (itemList[i].type == EntityType::NONE)
-		{
-			itemList[i].type = type;
-			itemList[i].amount = 1;
-			itemList[i].usable = usable;
-			itemList[i].equipable = equipable;
-		}
-	
-	}
-
-}
-
-void InventoryMenu::CheckIfItemHasBeenClicked()
-{
-	SDL_Point mousePos;
-
-	SDL_GetMouseState(&mousePos.x, &mousePos.y);
-
-	if (app->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KeyState::KEY_REPEAT)
-	{
-		for (int i = 0; i < MAX_ITEMS; i++)
-		{
-			if (SDL_PointInRect(&mousePos, &itemList[i].itemRect) == SDL_TRUE)
-			{
-				if (itemList[i].equipable == true)
-				{
-					//show equipable buttons
-					showUsableOptions = false;
-					showEquipableOptions = true;
-					//Also need to change the buttons positions in order to not create too much buttons
-				}
-				if (itemList[i].usable == true)
-				{
-					//show usable buttons
-					showEquipableOptions = false;
-					showUsableOptions = true;
-					//Also need to change the buttons positions in order to not create too much buttons
-				}
-			}
+			//Need to add the rest of the items 
 		}
 	}
-	
 }
-//bool CombatMenu::OnGuiMouseClickEvent(GuiControl* control)
+//bool Inventory::OnGuiMouseClickEvent(GuiControl* control)
 //{
 //	switch (control->type)
 //	{

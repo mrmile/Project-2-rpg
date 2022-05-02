@@ -37,7 +37,7 @@ Object_Food::Object_Food(int x,int y) : Entity(x,y)
 	position.x = x;
 	position.y = y;
 
-	//collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ITEM_FOOD, (Module*)app->entity_manager);
+	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ITEM_FOOD, (Module*)app->entity_manager);
 
 }
 
@@ -48,17 +48,25 @@ bool Object_Food::Update(float dt)
 		iPoint NewPosition = position;
 		collider->SetPos(NewPosition.x, NewPosition.y);
 		currentAnim = &Idle_item;
-		return true;
+
 	}
 
 	if (app->player->pauseMenu == false)
 	{
 		collider->SetPos(position.x, position.y);
 		currentAnim = &Idle_item;
+		
+
+		if (EntityHP == 0)
+		{
+			SetToDelete();
+		}
+
+
 	}
 
 	return true;
-	
+
 }
 
 

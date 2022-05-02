@@ -34,6 +34,24 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::LAYER_ZERO][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::LAYER_ZERO][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::LAYER_ZERO] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::INSTANT_DEATH] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::EXIT_1] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::EXIT_2] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::EXIT_3] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::SWITCH] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::NULL_COLLIDER] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::PLAYER_FEET] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::COIN] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::CHECKPOINT] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::PLAYER_RANGED_ATTACK] = false;
+
 	matrix[Collider::Type::PLAYER][Collider::Type::LAYER_ZERO] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
@@ -53,6 +71,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::RANGED_ENEMY] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_RANGED_ATTACK] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_FOOD] = true;
 
 	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::LAYER_ZERO] = true;
 	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::PLAYER_ATTACK] = false;
@@ -434,6 +453,9 @@ void ModuleCollisions::DebugDraw()
 			{
 			case Collider::Type::NONE: // white
 				app->render->DrawRectangle(colliders[i]->rect, 255, 255, 255, alpha);
+				break;
+			case Collider::Type::ITEM_FOOD:
+				app->render->DrawRectangle(colliders[i]->rect, 0, 38, 90, alpha);
 				break;
 			case Collider::Type::LAYER_ZERO: // blue
 				app->render->DrawRectangle(colliders[i]->rect, 0, 0, 255, alpha);

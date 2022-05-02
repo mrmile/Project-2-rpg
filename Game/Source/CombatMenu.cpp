@@ -197,6 +197,7 @@ bool CombatMenu::OnGuiMouseClickEvent(GuiControl* control)
 			app->audio->PlayFx(buttonClickedFx, 0);
 			//Escape Combat
 			app->player->escapeCombat = true;
+			app->game_manager->ClearList();
 			app->game_manager->StartTurnManagement = false;
 		}
 	}

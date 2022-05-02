@@ -35,6 +35,7 @@ struct Collider
 		NPC2,
 		NPC3,
 		NPC4,
+		ITEM_FOOD,
 
 		MAX
 	};

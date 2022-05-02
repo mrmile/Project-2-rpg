@@ -18,13 +18,12 @@ struct ItemList
 	bool usable = false;
 	bool equipable = false;
 	SDL_Rect itemRect = { 0,0,0,0 };
-
 };
 class InventoryMenu : public Module
 {
 public:
 
-	InventoryMenu(bool start_enabled = false);
+	InventoryMenu(bool start_enabled = true);
 
 	// Destructor
 	virtual ~InventoryMenu();
@@ -47,12 +46,14 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	void DrawAllInventoryItems();
 	/*bool OnGuiMouseClickEvent(GuiControl* control);*/
 
 private:
 
 	SDL_Texture* combatHUD;
 	SDL_Texture* characterName1;
+	SDL_Texture* object_food;
 
 public:
 
@@ -62,12 +63,16 @@ public:
 
 	ItemList itemList[MAX_ITEMS];
 
-	void AddItemToInventory(EntityType type,bool usable, bool equipable);
-	void CheckIfItemHasBeenClicked();
+	int idForUsability;
+
+	bool AddItemToInventory(EntityType type,bool usable, bool equipable);
+	bool CheckIfItemHasBeenClicked();
 	bool showInventory = false;
 
 	bool showEquipableOptions = false;
 	bool showUsableOptions = false;
+
+	SDL_Point mousePos;
 
 };
 

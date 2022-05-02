@@ -65,6 +65,13 @@ bool Zombie_Standart::Update(float dt)
 	}
 	if (app->player->pauseMenu == false)
 	{
+		//Escape Combat
+		if (app->player->escapeCombat == true)
+		{
+			entityState = GameState::OutOfCombat;
+			entityTurn = TurnState::NONE;
+		}
+
 		if (EntityHP == 0)
 		{
 			SetToDelete();
@@ -285,13 +292,7 @@ bool Zombie_Standart::Update(float dt)
 					entityState = GameState::OutOfCombat;
 					entityTurn = TurnState::NONE;
 				}
-				//Escape Combat
-				/*if (app->player->escapeCombat == true)
-				{
-					app->game_manager->counter = 0;
-					entityState = GameState::OutOfCombat;
-					entityTurn = TurnState::NONE;
-				}*/
+				
 
 
 			}

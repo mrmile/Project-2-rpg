@@ -7,6 +7,7 @@
 #include "Textures.h"
 #include "ModulePlayer.h"
 #include "GameManager.h"
+#include "InventoryMenu.h"
 
 Entity::Entity(int x,int y) : position(x,y)
 {
@@ -70,10 +71,8 @@ void Entity::OnCollision(Collider* c2)
 		EntityHP -= 1;
 	}
 
-	if ((c2->type == Collider::Type::PLAYER) && (type == EntityType::OBJECT_FOOD))
+	if ((c2->type == Collider::Type::PLAYER) && (collider->type == Collider::Type::ITEM_FOOD))
 	{
-		//add item food to the list take into account the amount of items in the list and if it is stackable or not
-		//have to create an item list and iterate through that list in order to add the item (need to create it in the item manager menu) 
+		EntityHP = 0;
 	}
-
 }

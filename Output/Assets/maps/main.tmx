@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="28" nextobjectid="206">
+<map version="1.2" tiledversion="1.3.5" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="29" nextobjectid="213">
  <tileset firstgid="1" name="city_walls" tilewidth="75" tileheight="117" tilecount="128" columns="16">
   <image source="city_walls.png" width="1250" height="936"/>
  </tileset>
@@ -140275,6 +140275,14 @@
   </object>
   <object id="174" x="1889" y="3357">
    <polygon points="0,0 26,-9.5 38,-3 56,-13 72,-13 169,-63 168,-86 148,-90 118,-110 108,-127 82,-133 60,-138 1,-171 -54,-150 -77,-147 -113,-130 -135,-108 -134,-73 7,-106.5 106,-55"/>
+  </object>
+ </objectgroup>
+ <objectgroup id="28" name="object_food">
+  <object id="211" x="3566.83" y="2945.17" width="85" height="19">
+   <text wrap="1">Food</text>
+  </object>
+  <object id="212" x="3532.17" y="2798.5" width="85" height="19">
+   <text wrap="1">Food</text>
   </object>
  </objectgroup>
  <objectgroup color="#0000ff" id="10" name="sensors_LAYER_ZERO">
