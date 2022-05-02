@@ -18,6 +18,7 @@ struct ItemList
 	bool usable = false;
 	bool equipable = false;
 	SDL_Rect itemRect = { 0,0,0,0 };
+	int idForUsability;
 };
 class InventoryMenu : public Module
 {
@@ -65,9 +66,10 @@ public:
 
 	ItemList itemList[MAX_ITEMS];
 
-	int idForUsability;
+	
 
 	bool AddItemToInventory(EntityType type,bool usable, bool equipable);
+	int GetItemId();
 	bool showInventory = false;
 
 	bool showEquipableOptions = false;

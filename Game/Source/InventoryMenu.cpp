@@ -49,11 +49,11 @@ bool InventoryMenu::Start()
 	object_health_pack = app->tex->Load("Assets/textures/GUI/Inventory/health_pack_item_test.png");
 	//Still need button textures the position does not matter right now as we are gonna update it 
 
-	/*
+	
 	DeleteItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 29, "Delete item Button", { 25,160,108,35 }, this, NULL, NULL, {});
 	EquipItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 30, "Equip item Button", { 25,160,108,35 }, this, NULL, NULL, {});
 	UseItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 31, "Use item Button", { 25,160,108,35 }, this, NULL, NULL, {});
-	*/
+	
 
 	int counter = 0;
 
@@ -62,6 +62,7 @@ bool InventoryMenu::Start()
 		for (int i = 0; i < MAX_ITEMS / 7; i++)
 		{
 			itemList[counter].itemRect = { 253 + (i * 46),65 + (j * 36),26,25 };
+			itemList[counter].idForUsability = counter;
 			counter++;
 		}
 		
@@ -69,7 +70,10 @@ bool InventoryMenu::Start()
 	
 	for (int z = 0; z < MAX_ITEMS; z++)
 	{
-		ItemButton[z] = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 32, "Access item button", itemList[z].itemRect, this, object_health_pack, NULL, {});
+		ItemButton[z] = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 32, "Access item button", itemList[z].itemRect, this, NULL, NULL, {});
+
+		ItemButton[z]->canClick = true;
+
 	}
 
 	return true;
@@ -86,6 +90,7 @@ bool InventoryMenu::Update(float dt)
 {
 
 	//BUTTON LOGIC
+	//create a function so the id for usability changes in order of the position of the mouse, then return get if it is usable or equipable and return it so we can draw the one we need
 	
 	return true;
 }
@@ -104,10 +109,16 @@ bool InventoryMenu::PostUpdate()
 	}
 	if (showEquipableOptions == true)
 	{
+		DrawAllInventoryItems();
+		EquipItem->Draw(app->render);
+		DeleteItem->Draw(app->render);
 		//show Equipable buttons
 	}
 	if (showUsableOptions == true)
 	{
+		DrawAllInventoryItems();
+		UseItem->Draw(app->render);
+		DeleteItem->Draw(app->render);
 		//show Usable Options
 	}
 	return true;
@@ -120,6 +131,10 @@ bool InventoryMenu::CleanUp()
 	app->tex->UnLoad(characterName1);
 	app->tex->UnLoad(object_food);
 	app->tex->UnLoad(object_health_pack);
+	app->guiManager->DestroyGuiControl(29);
+	app->guiManager->DestroyGuiControl(30);
+	app->guiManager->DestroyGuiControl(31);
+	app->guiManager->DestroyGuiControl(32);
 
 	return true;
 }
@@ -160,18 +175,19 @@ void InventoryMenu::DrawAllInventoryItems()
 		{
 			if (itemList[i].type == EntityType::OBJECT_FOOD)
 			{
-				//app->render->DrawRectangle2(itemList[i].itemRect, 255, 0, 0, 255);
 				app->render->DrawTexture2(object_food, itemList[i].itemRect.x, itemList[i].itemRect.y); 
 			}
 			if (itemList[i].type == EntityType::OBJECT_HEALTH_PACK)
 			{
-				//app->render->DrawRectangle2(itemList[i].itemRect, 255, 0, 0, 255);
 				app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
 			//Need to add the rest of the items 
 		}
 	}
 }
+
+
+
 //bool Inventory::OnGuiMouseClickEvent(GuiControl* control)
 //{
 //	switch (control->type)

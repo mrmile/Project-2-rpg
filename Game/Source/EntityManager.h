@@ -25,6 +25,8 @@ enum class EntityType
 	ZOMBIE_STANDART,
 	OBJECT_FOOD,
 	OBJECT_HEALTH_PACK,
+
+
 };
 
 struct EntitySpawnPoint
