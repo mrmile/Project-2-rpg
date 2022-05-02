@@ -3,6 +3,9 @@
 #include "Textures.h"
 
 #include "GuiButton.h"
+#include "ModulePlayer.h"
+#include "InventoryMenu.h"
+#include "TitleScreen.h"
 #include "GuiCheckbox.h"
 #include "GuiSlider.h"
 #include "Audio.h"
@@ -82,7 +85,15 @@ bool GuiManager::PostUpdate()
 		int mouseX, mouseY;
 		app->input->GetMousePosition(mouseX, mouseY);
 
-		app->render->DrawTexture(arrowPointer, mouseX - app->render->camera.x / 2, mouseY - app->render->camera.y / 2, NULL);
+		if (app->player->showCombatHUD == false && app->player->pauseMenu == false && app->inventoryMenu->showInventory == false && app->player->playerTalking == false && app->titleScreen->active == false && app->player->npcClose == false && app->player->npc2Close == false && app->player->npc3Close == false && app->player->npc4Close == false)
+		{
+			/*app->render->DrawTexture(arrowPointer, mouseX - app->render->camera.x / 2, mouseY - app->render->camera.y / 2, NULL);*/
+		}
+		else
+		{
+			app->render->DrawTexture(arrowPointer, mouseX - app->render->camera.x / 2, mouseY - app->render->camera.y / 2, NULL);
+		}
+		
 	}
 	else if (app->input->usingGamepadID[0] == true)
 	{
