@@ -46,10 +46,14 @@ bool InventoryMenu::Start()
 	combatHUD = app->tex->Load("Assets/textures/GUI/Inventory/InventoryHud.png"); // Just for testing
 	characterName1 = app->tex->Load("Assets/textures/GUI/Inventory/chararcterName1.png"); // Just for testing
 	object_food = app->tex->Load("Assets/textures/GUI/Inventory/food_item_test.png");
+	object_health_pack = app->tex->Load("Assets/textures/GUI/Inventory/health_pack_item_test.png");
 	//Still need button textures the position does not matter right now as we are gonna update it 
+
+	/*
 	DeleteItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 29, "Delete item Button", { 25,160,108,35 }, this, NULL, NULL, {});
 	EquipItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 30, "Equip item Button", { 25,160,108,35 }, this, NULL, NULL, {});
 	UseItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 31, "Use item Button", { 25,160,108,35 }, this, NULL, NULL, {});
+	*/
 
 	int counter = 0;
 
@@ -63,6 +67,10 @@ bool InventoryMenu::Start()
 		
 	}
 	
+	for (int z = 0; z < MAX_ITEMS; z++)
+	{
+		ItemButton[z] = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 32, "Access item button", itemList[z].itemRect, this, object_health_pack, NULL, {});
+	}
 
 	return true;
 }
@@ -70,25 +78,14 @@ bool InventoryMenu::Start()
 // Called each loop iteration
 bool InventoryMenu::PreUpdate()
 {
-
 	return true;
 }
 
 // Called each loop iteration
 bool InventoryMenu::Update(float dt)
 {
-	SDL_GetMouseState(&mousePos.x, &mousePos.y);
 
-	if (app->input->GetMouseButtonDown(SDL_BUTTON_RIGHT) == KeyState::KEY_DOWN)
-	{
-		if (SDL_PointInRect(&mousePos, &itemList->itemRect) == SDL_TRUE)
-		{
-			CheckIfItemHasBeenClicked();
-		}
-		
-	}
-	
-
+	//BUTTON LOGIC
 	
 	return true;
 }
@@ -121,6 +118,8 @@ bool InventoryMenu::CleanUp()
 {
 	app->tex->UnLoad(combatHUD);
 	app->tex->UnLoad(characterName1);
+	app->tex->UnLoad(object_food);
+	app->tex->UnLoad(object_health_pack);
 
 	return true;
 }
@@ -153,37 +152,6 @@ bool InventoryMenu::AddItemToInventory(EntityType type,bool usable,bool equipabl
 
 }
 
-bool InventoryMenu::CheckIfItemHasBeenClicked()
-{
-	for (int i = 0; i < MAX_ITEMS; i++)
-	{
-		if (itemList[i].equipable == true)
-		{
-			//show equipable buttons
-			showUsableOptions = false;
-			showEquipableOptions = true;
-
-			//Also need to change the buttons positions in order to not create too much buttons
-
-			//Id used for the EquipItem function
-			idForUsability = i;
-			return true;
-		}
-		if (itemList[i].usable == true)
-		{
-			//show usable buttons
-			showEquipableOptions = false;
-			showUsableOptions = true;
-			//Also need to change the buttons positions in order to not create too much buttons
-
-			//Id used for the UseItem function
-			idForUsability = i;
-			return true;
-		}
-	
-	}
-}
-
 void InventoryMenu::DrawAllInventoryItems()
 {
 	for (int i = 0; i < MAX_ITEMS; i++)
@@ -194,6 +162,11 @@ void InventoryMenu::DrawAllInventoryItems()
 			{
 				//app->render->DrawRectangle2(itemList[i].itemRect, 255, 0, 0, 255);
 				app->render->DrawTexture2(object_food, itemList[i].itemRect.x, itemList[i].itemRect.y); 
+			}
+			if (itemList[i].type == EntityType::OBJECT_HEALTH_PACK)
+			{
+				//app->render->DrawRectangle2(itemList[i].itemRect, 255, 0, 0, 255);
+				app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
 			//Need to add the rest of the items 
 		}

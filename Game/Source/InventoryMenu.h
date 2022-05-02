@@ -54,26 +54,24 @@ private:
 	SDL_Texture* combatHUD;
 	SDL_Texture* characterName1;
 	SDL_Texture* object_food;
+	SDL_Texture* object_health_pack;
 
 public:
 
 	GuiButton* UseItem;
 	GuiButton* DeleteItem;
 	GuiButton* EquipItem;
+	GuiButton* ItemButton[MAX_ITEMS];
 
 	ItemList itemList[MAX_ITEMS];
 
 	int idForUsability;
 
 	bool AddItemToInventory(EntityType type,bool usable, bool equipable);
-	bool CheckIfItemHasBeenClicked();
 	bool showInventory = false;
 
 	bool showEquipableOptions = false;
 	bool showUsableOptions = false;
-
-	SDL_Point mousePos;
-
 };
 
 #endif // __SCENE_FOREST_H__

@@ -36,6 +36,7 @@ struct Collider
 		NPC3,
 		NPC4,
 		ITEM_FOOD,
+		ITEM_HEALTH_PACK,
 
 		MAX
 	};

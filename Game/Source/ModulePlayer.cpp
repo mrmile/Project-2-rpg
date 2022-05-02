@@ -1184,6 +1184,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_FOOD, true, false);
 		}
+
+		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ITEM_HEALTH_PACK) && destroyed == false)
+		{
+			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_HEALTH_PACK, true, false);
+		}
 		
 		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_RANGED_ATTACK) && destroyed == false) /*&& invincibleDelay >= 120)*/
 		{

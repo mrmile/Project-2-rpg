@@ -19,6 +19,7 @@
 #include "Zombie_Runner.h"
 #include "Zombie_Spitter.h"
 #include "Object_Food.h"
+#include "Object_HealthPack.h"
 
 #define SPAWN_MARGIN 500
 
@@ -226,6 +227,11 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				entities[i] = new Object_Food(info.x, info.y);
 				HelperQueue[i].type = EntityType::OBJECT_FOOD;
 				break;
+			case EntityType::OBJECT_HEALTH_PACK:
+				//entities[i]->texture = texture_objects;
+				entities[i] = new Object_HealthPack(info.x, info.y);
+				HelperQueue[i].type = EntityType::OBJECT_HEALTH_PACK;
+				break;
 			case EntityType::ZOMBIE_STANDART:
 				entities[i] = new Zombie_Standart(info.x,info.y);
 				HelperQueue[i].type = EntityType::ZOMBIE_STANDART;
@@ -357,6 +363,11 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 					entities[i]->SetToDelete();
 					entities[i] = nullptr;
 				}
+				if (HelperQueue[i].type == EntityType::OBJECT_HEALTH_PACK)
+				{
+					entities[i]->SetToDelete();
+					entities[i] = nullptr;
+				}
 
 				entityPos = entityPos.next_sibling();
 				entityAtributes = entityAtributes.next_sibling();
@@ -395,6 +406,10 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 					AddEntity(EntityType::NPC4, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
 				if (HelperQueue[i].type == EntityType::OBJECT_FOOD)
+				{
+					AddEntity(EntityType::OBJECT_FOOD, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::OBJECT_HEALTH_PACK)
 				{
 					AddEntity(EntityType::OBJECT_FOOD, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}

@@ -148,6 +148,9 @@
     <ClCompile Include="Source\Object_Food.cpp">
       <Filter>General\Entities\Items</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Object_HealthPack.cpp">
+      <Filter>General\Entities\Items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -325,6 +328,9 @@
       <Filter>General</Filter>
     </ClInclude>
     <ClInclude Include="Source\Object_Food.h">
+      <Filter>General\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Object_HealthPack.h">
       <Filter>General\Entities\Items</Filter>
     </ClInclude>
   </ItemGroup>

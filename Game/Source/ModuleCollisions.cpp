@@ -52,6 +52,24 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_FOOD][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::ITEM_FOOD][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::LAYER_ZERO] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::INSTANT_DEATH] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::EXIT_1] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::EXIT_2] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::EXIT_3] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::SWITCH] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::NULL_COLLIDER] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::PLAYER_FEET] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::COIN] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::CHECKPOINT] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::PLAYER_RANGED_ATTACK] = false;
+
 	matrix[Collider::Type::PLAYER][Collider::Type::LAYER_ZERO] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
@@ -72,6 +90,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_FOOD] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_HEALTH_PACK] = true;
 
 	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::LAYER_ZERO] = true;
 	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::PLAYER_ATTACK] = false;
@@ -456,6 +475,9 @@ void ModuleCollisions::DebugDraw()
 				break;
 			case Collider::Type::ITEM_FOOD:
 				app->render->DrawRectangle(colliders[i]->rect, 0, 38, 90, alpha);
+				break;
+			case Collider::Type::ITEM_HEALTH_PACK:
+				app->render->DrawRectangle(colliders[i]->rect, 255, 0, 0, alpha);
 				break;
 			case Collider::Type::LAYER_ZERO: // blue
 				app->render->DrawRectangle(colliders[i]->rect, 0, 0, 255, alpha);
