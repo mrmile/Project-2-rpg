@@ -227,11 +227,11 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				entities[i] = new Object_Food(info.x, info.y);
 				HelperQueue[i].type = EntityType::OBJECT_FOOD;
 				break;
-			case EntityType::OBJECT_HEALTH_PACK:
-				//entities[i]->texture = texture_objects;
-				entities[i] = new Object_HealthPack(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_HEALTH_PACK;
-				break;
+			//case EntityType::OBJECT_HEALTH_PACK:
+			//	//entities[i]->texture = texture_objects;
+			//	entities[i] = new Object_HealthPack(info.x, info.y);
+			//	HelperQueue[i].type = EntityType::OBJECT_HEALTH_PACK;
+			//	break;
 			case EntityType::ZOMBIE_STANDART:
 				entities[i] = new Zombie_Standart(info.x,info.y);
 				HelperQueue[i].type = EntityType::ZOMBIE_STANDART;

@@ -44,7 +44,7 @@ bool InventoryMenu::Awake()
 bool InventoryMenu::Start()
 {
 	combatHUD = app->tex->Load("Assets/textures/GUI/Inventory/InventoryHud.png"); // Just for testing
-	characterName1 = app->tex->Load("Assets/textures/GUI/Inventory/chararcterName1.png"); // Just for testing
+	//characterName1 = app->tex->Load("Assets/textures/GUI/Inventory/chararcterName1.png"); // Just for testing
 	object_food = app->tex->Load("Assets/textures/GUI/Inventory/food_item_test.png");
 	object_health_pack = app->tex->Load("Assets/textures/GUI/Inventory/health_pack_item_test.png");
 	//Still need button textures the position does not matter right now as we are gonna update it 
@@ -98,7 +98,7 @@ bool InventoryMenu::PostUpdate()
 	if (app->player->pauseMenu == false && app->titleScreen->active == false && app->creditsScreen->active == false && showInventory == true)
 	{
 		app->render->DrawTexture2(combatHUD, 0, 0, NULL); // Just for testing
-		app->render->DrawTexture2(characterName1, 0, 0, NULL); // Just for testing
+		//app->render->DrawTexture2(characterName1, 0, 0, NULL); // Just for testing
 		DrawAllInventoryItems();
 
 	}
