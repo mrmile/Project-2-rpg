@@ -152,7 +152,7 @@ bool GamepadInput::Update(float dt)
 
 	if (pad.back == true && keyDownDelay > 15)
 	{
-		//Open inventory KEY_DOWN
+		app->input->keys[SDL_SCANCODE_I] = KeyState::KEY_DOWN;
 
 		keyDownDelay = 0;
 	}
