@@ -48,7 +48,16 @@ public:
 	bool CleanUp();
 
 	void DrawAllInventoryItems();
-	/*bool OnGuiMouseClickEvent(GuiControl* control);*/
+
+	bool OnGuiMouseClickEvent(GuiControl* control);
+
+	void ShowOptions(ItemList* item);
+
+	bool UseItemSelected(ItemList* item);
+
+	void UpdateItemList();
+
+	ItemList GetItemFromPosition(int mouseX,int mouseY);
 
 private:
 
@@ -65,11 +74,11 @@ public:
 	GuiButton* ItemButton[MAX_ITEMS];
 
 	ItemList itemList[MAX_ITEMS];
+	ItemList itemUsing;
 
-	
+	int mouseX, mouseY;
 
 	bool AddItemToInventory(EntityType type,bool usable, bool equipable);
-	int GetItemId();
 	bool showInventory = false;
 
 	bool showEquipableOptions = false;

@@ -16,9 +16,6 @@
     <ClCompile Include="Source\Window.cpp">
       <Filter>General</Filter>
     </ClCompile>
-    <ClCompile Include="Source\TitleScreen.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Textures.cpp">
       <Filter>General</Filter>
     </ClCompile>
@@ -40,12 +37,6 @@
     <ClCompile Include="Source\App.cpp">
       <Filter>General</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SceneCave.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\SceneMainMap.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Particle.cpp">
       <Filter>Utils</Filter>
     </ClCompile>
@@ -59,9 +50,6 @@
       <Filter>General</Filter>
     </ClCompile>
     <ClCompile Include="Source\GuiSlider.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\PauseMenu.cpp">
       <Filter>General</Filter>
     </ClCompile>
     <ClCompile Include="Source\EntityManager.cpp">
@@ -88,13 +76,7 @@
     <ClCompile Include="Source\ModulePhysics.cpp">
       <Filter>General</Filter>
     </ClCompile>
-    <ClCompile Include="Source\ModulePlayer.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Pathfinding.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\LogoScreen.cpp">
       <Filter>General</Filter>
     </ClCompile>
     <ClCompile Include="Source\GamepadInput.cpp">
@@ -133,23 +115,41 @@
     <ClCompile Include="Source\NPCs4.cpp">
       <Filter>General\Entities\NPCS</Filter>
     </ClCompile>
-    <ClCompile Include="Source\CombatMenu.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\SceneBase.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\CreditsScreen.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\InventoryMenu.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Object_Food.cpp">
       <Filter>General\Entities\Items</Filter>
     </ClCompile>
     <ClCompile Include="Source\Object_HealthPack.cpp">
       <Filter>General\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CombatMenu.cpp">
+      <Filter>General\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InventoryMenu.cpp">
+      <Filter>General\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PauseMenu.cpp">
+      <Filter>General\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\CreditsScreen.cpp">
+      <Filter>General\Scenes and Maps\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LogoScreen.cpp">
+      <Filter>General\Scenes and Maps\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TitleScreen.cpp">
+      <Filter>General\Scenes and Maps\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneMainMap.cpp">
+      <Filter>General\Scenes and Maps\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneCave.cpp">
+      <Filter>General\Scenes and Maps\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SceneBase.cpp">
+      <Filter>General\Scenes and Maps\Maps</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ModulePlayer.cpp">
+      <Filter>General\Entities\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -192,9 +192,6 @@
     <ClInclude Include="Source\Window.h">
       <Filter>General</Filter>
     </ClInclude>
-    <ClInclude Include="Source\TitleScreen.h">
-      <Filter>General</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Textures.h">
       <Filter>General</Filter>
     </ClInclude>
@@ -216,12 +213,6 @@
     <ClInclude Include="Source\App.h">
       <Filter>General</Filter>
     </ClInclude>
-    <ClInclude Include="Source\SceneCave.h">
-      <Filter>General</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\SceneMainMap.h">
-      <Filter>General</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Particle.h">
       <Filter>Utils</Filter>
     </ClInclude>
@@ -238,9 +229,6 @@
       <Filter>General</Filter>
     </ClInclude>
     <ClInclude Include="Source\GuiSlider.h">
-      <Filter>General</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\PauseMenu.h">
       <Filter>General</Filter>
     </ClInclude>
     <ClInclude Include="Source\EntityManager.h">
@@ -270,13 +258,7 @@
     <ClInclude Include="Source\ModulePhysics.h">
       <Filter>General</Filter>
     </ClInclude>
-    <ClInclude Include="Source\ModulePlayer.h">
-      <Filter>General</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Pathfinding.h">
-      <Filter>General</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\LogoScreen.h">
       <Filter>General</Filter>
     </ClInclude>
     <ClInclude Include="Source\GamepadInput.h">
@@ -315,23 +297,41 @@
     <ClInclude Include="Source\NPCs4.h">
       <Filter>General\Entities\NPCS</Filter>
     </ClInclude>
-    <ClInclude Include="Source\CombatMenu.h">
-      <Filter>General</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\SceneBase.h">
-      <Filter>General</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\CreditsScreen.h">
-      <Filter>General</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\InventoryMenu.h">
-      <Filter>General</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Object_Food.h">
       <Filter>General\Entities\Items</Filter>
     </ClInclude>
     <ClInclude Include="Source\Object_HealthPack.h">
       <Filter>General\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CombatMenu.h">
+      <Filter>General\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InventoryMenu.h">
+      <Filter>General\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PauseMenu.h">
+      <Filter>General\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CreditsScreen.h">
+      <Filter>General\Scenes and Maps\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LogoScreen.h">
+      <Filter>General\Scenes and Maps\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneMainMap.h">
+      <Filter>General\Scenes and Maps\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneCave.h">
+      <Filter>General\Scenes and Maps\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneBase.h">
+      <Filter>General\Scenes and Maps\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TitleScreen.h">
+      <Filter>General\Scenes and Maps\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModulePlayer.h">
+      <Filter>General\Entities\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -361,6 +361,21 @@
     </Filter>
     <Filter Include="General\Entities\Items">
       <UniqueIdentifier>{19a2a573-8641-4501-b688-fe226a809291}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General\Menus">
+      <UniqueIdentifier>{e9e61ef5-be67-4d23-83c8-1f79bb08b720}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General\Scenes and Maps">
+      <UniqueIdentifier>{060736ee-e3e8-4518-abe5-95aab18319e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General\Scenes and Maps\Scenes">
+      <UniqueIdentifier>{e4a8c614-4b42-49c3-bfa8-551b9d30af27}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General\Scenes and Maps\Maps">
+      <UniqueIdentifier>{62a17fc2-4ede-4afa-bf50-89bd7303120a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General\Entities\Player">
+      <UniqueIdentifier>{b2f5a6a6-3471-4e71-ae92-e9538eac4d91}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

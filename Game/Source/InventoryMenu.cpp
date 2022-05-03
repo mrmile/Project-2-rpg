@@ -52,7 +52,7 @@ bool InventoryMenu::Start()
 	
 	DeleteItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 29, "Delete item Button", { 25,160,108,35 }, this, NULL, NULL, {});
 	EquipItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 30, "Equip item Button", { 25,160,108,35 }, this, NULL, NULL, {});
-	UseItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 31, "Use item Button", { 25,160,108,35 }, this, NULL, NULL, {});
+	UseItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 31, "Use item Button", { 25,160,26,25 }, this, object_food, NULL, {});
 	
 
 	int counter = 0;
@@ -88,10 +88,11 @@ bool InventoryMenu::PreUpdate()
 // Called each loop iteration
 bool InventoryMenu::Update(float dt)
 {
-
-	//BUTTON LOGIC
-	//create a function so the id for usability changes in order of the position of the mouse, then return get if it is usable or equipable and return it so we can draw the one we need
+	//Used to get what item we are checking with the mouse in order for the buttons to work
 	
+	app->input->GetMousePosition(mouseX, mouseY);
+	UpdateItemList();
+
 	return true;
 }
 
@@ -106,21 +107,26 @@ bool InventoryMenu::PostUpdate()
 		//app->render->DrawTexture2(characterName1, 0, 0, NULL); // Just for testing
 		DrawAllInventoryItems();
 
+		if (showEquipableOptions == true)
+		{
+			EquipItem->Draw(app->render);
+			DeleteItem->Draw(app->render);
+			//show Equipable buttons
+		}
+		if (showUsableOptions == true)
+		{
+			UseItem->Draw(app->render);
+			DeleteItem->Draw(app->render);
+			//show Usable Options
+		}
 	}
-	if (showEquipableOptions == true)
+	
+	if (showInventory == false)
 	{
-		DrawAllInventoryItems();
-		EquipItem->Draw(app->render);
-		DeleteItem->Draw(app->render);
-		//show Equipable buttons
+		showEquipableOptions = false;
+		showUsableOptions = false;
 	}
-	if (showUsableOptions == true)
-	{
-		DrawAllInventoryItems();
-		UseItem->Draw(app->render);
-		DeleteItem->Draw(app->render);
-		//show Usable Options
-	}
+
 	return true;
 }
 
@@ -142,6 +148,7 @@ bool InventoryMenu::CleanUp()
 bool InventoryMenu::AddItemToInventory(EntityType type,bool usable,bool equipable)
 {
 	bool ret;
+
 	for (int i = 0; i < MAX_ITEMS; i++)
 	{
 		if (itemList[i].type != EntityType::NONE && itemList[i].type == type)
@@ -173,57 +180,126 @@ void InventoryMenu::DrawAllInventoryItems()
 	{
 		if (itemList[i].type != EntityType::NONE)
 		{
-			if (itemList[i].type == EntityType::OBJECT_FOOD)
+			if (itemList[i].type == EntityType::OBJECT_FOOD && itemList[i].amount > 0)
 			{
-				app->render->DrawTexture2(object_food, itemList[i].itemRect.x, itemList[i].itemRect.y); 
+				app->render->DrawTexture2(object_food, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
-			if (itemList[i].type == EntityType::OBJECT_HEALTH_PACK)
+			if (itemList[i].type == EntityType::OBJECT_HEALTH_PACK && itemList[i].amount > 0)
 			{
 				app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
 			//Need to add the rest of the items 
+			
 		}
 	}
 }
 
 
 
-//bool Inventory::OnGuiMouseClickEvent(GuiControl* control)
-//{
-//	switch (control->type)
-//	{
-//	case GuiControlType::BUTTON:
-//	{
-//		//Checks the GUI element ID
-//		if (control->id == 25 && combatShootGUI->canClick == true)
-//		{
-//			//RESUME BUTTON
-//			app->audio->PlayFx(buttonClickedFx, 0);
-//		}
-//		if (control->id == 26 && combatMeleeGUI->canClick == true && app->player->entityTurnPlayer == TurnState::FinishTurn)
-//		{
-//			//RESUME BUTTON
-//			app->audio->PlayFx(buttonClickedMelee, 0);
-//			app->player->MeleeAttack();
-//			app->player->entityTurnPlayer = TurnState::WaitTurn;
-//		}
-//		if (control->id == 27 && combatItemsGUI->canClick == true)
-//		{
-//			//RESUME BUTTON
-//			app->audio->PlayFx(buttonClickedFx, 0);
-//		}
-//		if (control->id == 28 && combatEscapeGUI->canClick == true)
-//			//escape from combat = true
-//			//startturnmanagement =false
-//		{
-//			//RESUME BUTTON
-//			app->audio->PlayFx(buttonClickedFx, 0);
-//			//Escape Combat
-//			app->player->escapeCombat = true;
-//			app->game_manager->StartTurnManagement = false;
-//		}
-//	}
-//	}
-//
-//	return true;
-//}
+bool InventoryMenu::OnGuiMouseClickEvent(GuiControl* control)
+{
+	switch (control->type)
+	{
+	case GuiControlType::BUTTON:
+	{
+		//Checks the GUI element ID
+		if (control->id == 29 && DeleteItem->canClick == true)
+		{
+			//Delete Item Button
+			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
+		}
+		if (control->id == 30 && EquipItem->canClick == true)
+		{
+			//Equip item button
+			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
+		}
+		if (control->id == 31 && UseItem->canClick == true)
+		{
+			//Use item button
+			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
+			UseItemSelected(&itemUsing);
+		}
+		if (control->id == 32)
+		{
+			//Item Button in general
+			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
+
+			ShowOptions(&GetItemFromPosition(mouseX, mouseY));
+		
+		}
+	}
+	}
+
+	return true;
+}
+void InventoryMenu::ShowOptions(ItemList* item)
+{
+
+	if (item->usable == true)
+	{
+		UseItem->bounds.x = item->itemRect.x + item->itemRect.w;
+		UseItem->bounds.y = item->itemRect.y - item->itemRect.h;
+		DeleteItem->bounds.x = item->itemRect.x + item->itemRect.w;
+		DeleteItem->bounds.y = item->itemRect.y;
+
+		showEquipableOptions = false;
+		showUsableOptions = true;
+	}
+	if (item->equipable == true)
+	{
+		EquipItem->bounds.x = item->itemRect.x + item->itemRect.w;
+		EquipItem->bounds.y = item->itemRect.y - item->itemRect.h;
+		DeleteItem->bounds.x = item->itemRect.x + item->itemRect.w;
+		DeleteItem->bounds.y = item->itemRect.y;
+
+		showUsableOptions = false;
+		showEquipableOptions = true;
+	}
+}
+
+ItemList InventoryMenu::GetItemFromPosition(int mouseX, int mouseY)
+{
+	for (int i = 0; i < MAX_ITEMS; i++)
+	{
+		if ((mouseX > itemList[i].itemRect.x && mouseX < (itemList[i].itemRect.x + itemList[i].itemRect.w)) &&
+			(mouseY > itemList[i].itemRect.y && mouseY < itemList[i].itemRect.y + itemList[i].itemRect.h))
+		{
+			itemUsing = itemList[i];
+			return itemList[i];
+		}
+	}
+}
+
+bool InventoryMenu::UseItemSelected(ItemList* item)
+{
+	if (item->amount > 0)
+	{
+		if (item->type == EntityType::OBJECT_FOOD)
+		{
+			item->amount--;
+			app->player->playerHP += 10;
+			return true;
+		}
+		if (item->type == EntityType::OBJECT_HEALTH_PACK)
+		{
+			item->amount--;
+
+			return true;
+		}
+	}
+}
+
+void InventoryMenu::UpdateItemList()
+{
+	for (int i = 0; i < MAX_ITEMS; i++)
+	{
+
+		if (itemUsing.type != EntityType::NONE)
+		{
+			if (itemList[i].type == itemUsing.type)
+			{
+				itemList[i].amount = itemUsing.amount;
+			}
+		}
+	}
+}
