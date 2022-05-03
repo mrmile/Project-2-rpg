@@ -288,7 +288,29 @@ bool InventoryMenu::UseItemSelected(ItemList* item)
 		}
 	}
 }
+bool InventoryMenu::DeleteItemSelected(ItemList* item)
+{
+	item->amount = 0;
+	//Still need to clean the item in the list so another one can be added in it's place (using the UpdateItemList() function)
 
+	return true;
+	
+}
+bool InventoryMenu::EquipItemSelected(ItemList* item)
+{
+	if (Equipment.type == EntityType::NONE)
+	{
+		//Also need to create a function for the player that updates it's damage in function of the item equipped
+		Equipment.type = item->type;
+		return true;
+	}
+	if (Equipment.type != EntityType::NONE)
+	{
+		//Add the item again to the item list and restart the equipment list
+		return true;
+	}
+	
+}
 void InventoryMenu::UpdateItemList()
 {
 	for (int i = 0; i < MAX_ITEMS; i++)

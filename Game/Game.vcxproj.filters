@@ -151,6 +151,18 @@
     <ClCompile Include="Source\ModulePlayer.cpp">
       <Filter>General\Entities\Player</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Object_Radio.cpp">
+      <Filter>General\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Object_DefaultGun.cpp">
+      <Filter>General\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Object_LongScopeGun.cpp">
+      <Filter>General\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Object_ShortScopeGun.cpp">
+      <Filter>General\Entities\Items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -332,6 +344,18 @@
     </ClInclude>
     <ClInclude Include="Source\ModulePlayer.h">
       <Filter>General\Entities\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Object_Radio.h">
+      <Filter>General\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Object_DefaultGun.h">
+      <Filter>General\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Object_LongScopeGun.h">
+      <Filter>General\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Object_ShortScopeGun.h">
+      <Filter>General\Entities\Items</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

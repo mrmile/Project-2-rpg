@@ -55,6 +55,10 @@ public:
 
 	bool UseItemSelected(ItemList* item);
 
+	bool DeleteItemSelected(ItemList* item);
+
+	bool EquipItemSelected(ItemList* item);
+
 	void UpdateItemList();
 
 	ItemList GetItemFromPosition(int mouseX,int mouseY);
@@ -75,6 +79,7 @@ public:
 
 	ItemList itemList[MAX_ITEMS];
 	ItemList itemUsing;
+	ItemList Equipment;
 
 	int mouseX, mouseY;
 
