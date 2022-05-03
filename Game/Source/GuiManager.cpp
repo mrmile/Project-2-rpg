@@ -6,6 +6,7 @@
 #include "ModulePlayer.h"
 #include "InventoryMenu.h"
 #include "TitleScreen.h"
+#include "CreditsScreen.h"
 #include "GuiCheckbox.h"
 #include "GuiSlider.h"
 #include "Audio.h"
@@ -80,24 +81,19 @@ bool GuiManager::PostUpdate()
 	if (app->input->arrowPointerPosition.x > -app->render->camera.x / 10000 + app->render->camera.w/2 - 10) app->input->arrowPointerPosition.x = -app->render->camera.x / 10000 + app->render->camera.w/2 - 10;
 	if (app->input->arrowPointerPosition.y > -app->render->camera.y / 10000 + app->render->camera.h/2 - 10) app->input->arrowPointerPosition.y = -app->render->camera.y / 10000 + app->render->camera.h/2 - 10;
 
-	if (app->input->usingGamepadID[0] == false)
+	if (app->player->showCombatHUD == true || app->player->pauseMenu == true || app->inventoryMenu->showInventory == true || app->titleScreen->active == true || app->player->npcClose == true || app->player->npc2Close == true || app->player->npc3Close == true || app->player->npc4Close == true || app->creditsScreen->creditsScene == true)
 	{
-		int mouseX, mouseY;
-		app->input->GetMousePosition(mouseX, mouseY);
+		if (app->input->usingGamepadID[0] == false)
+		{
+			int mouseX, mouseY;
+			app->input->GetMousePosition(mouseX, mouseY);
 
-		if (app->player->showCombatHUD == false && app->player->pauseMenu == false && app->inventoryMenu->showInventory == false && app->titleScreen->active == false && app->player->npcClose == false && app->player->npc2Close == false && app->player->npc3Close == false && app->player->npc4Close == false)
-		{
-			/*app->render->DrawTexture(arrowPointer, mouseX - app->render->camera.x / 2, mouseY - app->render->camera.y / 2, NULL);*/
-		}
-		else
-		{
 			app->render->DrawTexture(arrowPointer, mouseX - app->render->camera.x / 2, mouseY - app->render->camera.y / 2, NULL);
 		}
-		
-	}
-	else if (app->input->usingGamepadID[0] == true)
-	{
-		app->render->DrawTexture(arrowPointer, app->input->arrowPointerPosition.x - app->render->camera.x / 2, app->input->arrowPointerPosition.y - app->render->camera.y / 2, NULL);
+		else if (app->input->usingGamepadID[0] == true)
+		{
+			app->render->DrawTexture(arrowPointer, app->input->arrowPointerPosition.x - app->render->camera.x / 2, app->input->arrowPointerPosition.y - app->render->camera.y / 2, NULL);
+		}
 	}
 
 	return true;
