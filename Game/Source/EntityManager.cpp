@@ -41,7 +41,9 @@ EntityManager::~EntityManager()
 
 bool EntityManager::Start()
 {
-	texture_enemies = app->tex->Load("Assets/textures/Enemies/zombie_farmer.png");
+	texture_enemies_base_zombie = app->tex->Load("Assets/textures/Enemies/zombie_farmer.png");
+	texture_enemies_runner_zombie;
+	texture_enemies_spitter_zombie;
 	texture_npcs = app->tex->Load("Assets/textures/NPCs/Worker/Worker/stand.png");
 	
 	return true;
@@ -234,7 +236,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i].type = EntityType::ZOMBIE_STANDART;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				entities[i]->texture = texture_enemies;
+				entities[i]->texture = texture_enemies_base_zombie;
 				
 				break;
 
@@ -243,7 +245,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i].type = EntityType::ZOMBIE_SPITTER;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				entities[i]->texture = texture_enemies;
+				entities[i]->texture = texture_enemies_spitter_zombie;
 
 				break;
 
@@ -252,7 +254,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i].type = EntityType::ZOMBIE_RUNNER;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				entities[i]->texture = texture_enemies;
+				entities[i]->texture = texture_enemies_runner_zombie;
 
 				break;
 			
@@ -267,7 +269,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 
 void EntityManager::RegisterEntitesInCombat(Entity* entity)
 {
-	if (entity->type != EntityType::OBJECT_FOOD && entity->type != EntityType::NPC && entity->type != EntityType::NPC2 && entity->type != EntityType::NPC3 && entity->type != EntityType::NPC4)
+	if (entity->type != EntityType::OBJECT_FOOD && entity->type != EntityType::OBJECT_HEALTH_PACK && entity->type != EntityType::NPC && entity->type != EntityType::NPC2 && entity->type != EntityType::NPC3 && entity->type != EntityType::NPC4)
 	{
 		if (entity->entityState == GameState::OutOfCombat)
 		{

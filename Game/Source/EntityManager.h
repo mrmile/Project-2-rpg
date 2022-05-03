@@ -25,6 +25,10 @@ enum class EntityType
 	ZOMBIE_STANDART,
 	OBJECT_FOOD,
 	OBJECT_HEALTH_PACK,
+	OBJECT_RADIO,
+	OBJECT_lONG_SCOPE_GUN,
+	OBJECT_SHORT_SCOPE_GUN,
+	OBJECT_DEFAULT_GUN,
 
 
 };
@@ -102,7 +106,9 @@ private:
 	// A queue with all spawn points information
 	EntitySpawnPoint spawnQueue[MAX_ENTITIES];
 	Entity* entities[MAX_ENTITIES] = { nullptr };
-	SDL_Texture* texture_enemies = nullptr;
+	SDL_Texture* texture_enemies_base_zombie = nullptr;
+	SDL_Texture* texture_enemies_runner_zombie = nullptr;
+	SDL_Texture* texture_enemies_spitter_zombie = nullptr;
 	SDL_Texture* texture_npcs = nullptr;
 
 	EntityHelper HelperQueue[MAX_ENTITIES];
