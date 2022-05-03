@@ -225,27 +225,35 @@ bool Audio::ChangeMusic(int Id, float fadeInTime, float fadeOutTime)
 		Mix_HaltMusic();
 		break;
 	}
-	case FINAL_BATTLE:
+	case BOSS_1:
 	{
 		Mix_ResumeMusic();
 
-		app->audio->PlayMusic("Assets/Audio/Music/final_battle.ogg", fadeInTime, fadeOutTime); //Not final
+		app->audio->PlayMusic("Assets/Audio/Music/boss_1.ogg", fadeInTime, fadeOutTime);
 
 		break;
 	}
-	case TRUE_FINAL_BATTLE:
+	case BOSS_2:
 	{
 		Mix_ResumeMusic();
 
-		app->audio->PlayMusic("Assets/Audio/Music/true_final_battle.ogg", fadeInTime, fadeOutTime); //Not final
+		app->audio->PlayMusic("Assets/Audio/Music/boss_2.ogg", fadeInTime, fadeOutTime);
 
 		break;
 	}
-	case REGULAR_BATTLE:
+	case BOSS_3:
 	{
 		Mix_ResumeMusic();
 
-		app->audio->PlayMusic("Assets/Audio/Music/regular_battle.ogg", fadeInTime, fadeOutTime); //Not final
+		app->audio->PlayMusic("Assets/Audio/Music/boss_3.ogg", fadeInTime, fadeOutTime);
+
+		break;
+	}
+	case FINAL_BOSS:
+	{
+		Mix_ResumeMusic();
+
+		app->audio->PlayMusic("Assets/Audio/Music/final_boss.ogg", fadeInTime, fadeOutTime);
 
 		break;
 	}
@@ -289,6 +297,14 @@ bool Audio::ChangeMusic(int Id, float fadeInTime, float fadeOutTime)
 
 		break;
 	}
+	case TENSION_PUZZLE_1:
+	{
+		Mix_ResumeMusic();
+
+		app->audio->PlayMusic("Assets/Audio/Music/tension_puzzle_1.ogg", fadeInTime, fadeOutTime);
+
+		break;
+	}
 	case RADIO_ITEM_MUSIC:
 	{
 		Mix_ResumeMusic();
@@ -297,19 +313,51 @@ bool Audio::ChangeMusic(int Id, float fadeInTime, float fadeOutTime)
 
 		break;
 	}
-	case RADIO_MESSAGE:
+	case STORY_INTRO:
 	{
 		Mix_ResumeMusic();
 
-		app->audio->PlayMusic("Assets/Audio/Music/radio_message.ogg", fadeInTime, fadeOutTime); //Not added yet
+		app->audio->PlayMusic("Assets/Audio/Music/story_introduction.ogg", fadeInTime, fadeOutTime);
 
 		break;
 	}
-	case COMPUTER_MESSAGE:
+	case STORY_NOTE:
 	{
 		Mix_ResumeMusic();
 
-		app->audio->PlayMusic("Assets/Audio/Music/computer_message.ogg", fadeInTime, fadeOutTime); //Not added yet
+		app->audio->PlayMusic("Assets/Audio/Music/story_note.ogg", fadeInTime, fadeOutTime);
+
+		break;
+	}
+	case STORY_COMPUTER:
+	{
+		Mix_ResumeMusic();
+
+		app->audio->PlayMusic("Assets/Audio/Music/story_computer.ogg", fadeInTime, fadeOutTime);
+
+		break;
+	}
+	case STORY_FINAL_BOSS_APPEARS:
+	{
+		Mix_ResumeMusic();
+
+		app->audio->PlayMusic("Assets/Audio/Music/final_boss_appears.ogg", fadeInTime, fadeOutTime);
+
+		break;
+	}
+	case STORY_BAD_ENDING:
+	{
+		Mix_ResumeMusic();
+
+		app->audio->PlayMusic("Assets/Audio/Music/story_bad_ending.ogg", fadeInTime, fadeOutTime);
+
+		break;
+	}
+	case STORY_GOOD_ENDING:
+	{
+		Mix_ResumeMusic();
+
+		app->audio->PlayMusic("Assets/Audio/Music/story_good_ending.ogg", fadeInTime, fadeOutTime);
 
 		break;
 	}
