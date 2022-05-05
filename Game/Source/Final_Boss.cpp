@@ -84,54 +84,6 @@ bool Final_Boss::Update(float dt)
 			//move normally
 			
 			
-			if (position.DistanceTo(app->player->position) < 150)
-			{
-				collider->SetPos(position.x, position.y - 46);
-				Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
-				currentAnim = &Idle_Enemy;
-				currentAnim->loop = true;
-
-				if (position.x > app->player->position.x) Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
-				if (position.x < app->player->position.x) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
-				if (position.y > app->player->position.y) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
-				if (position.y < app->player->position.y) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
-
-				if ((app->player->position.y > position.y) && (app->player->position.x > position.x))
-				{
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
-				}
-				if ((app->player->position.x < position.x) && (app->player->position.y > position.y))
-				{
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
-				}
-				if ((app->player->position.y < position.y) && (app->player->position.x < position.x))
-				{
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
-				}
-				if ((app->player->position.x > position.x) && (app->player->position.y < position.y))
-				{
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
-				}
-			}
-			else
-			{
-				collider->SetPos(position.x, position.y - 46);
-				Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
-				currentAnim = &Idle_Enemy;
-				currentAnim->loop = true;
-
-				Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
-
-			}
-
-			if (position.DistanceTo(app->player->position) < 100)
-			{
-				app->entity_manager->RegisterEntitesInCombat(this);
-				entityState = GameState::InCombat;
-				//app->player->entityStatePlayer = GameState::InCombat;
-				app->game_manager->StartTurnManagement = true;
-			}
-
 			return true;
 
 			
@@ -146,20 +98,11 @@ bool Final_Boss::Update(float dt)
 				if (entityTurn == TurnState::NONE)
 				{
 					//Assigning order of turns
-					collider->SetPos(position.x, position.y - 46);
-					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
-					currentAnim = &Idle_Enemy;
-					currentAnim->loop = true;
-
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
-
+					
 				}
 				if (entityTurn == TurnState::StartOfTurn)
 				{
-					collider->SetPos(position.x, position.y - 46);
-					currentAnim = &Idle_Enemy;
-					currentAnim->loop = false;
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f }); //movimiento contrario a la direccion del jugador cuando nos chocamos con el
+					
 
 					entityTurn = TurnState::MidOfTurn;
 
@@ -167,131 +110,26 @@ bool Final_Boss::Update(float dt)
 				if (entityTurn == TurnState::MidOfTurn)
 				{
 
-					collider->SetPos(position.x, position.y - 46);
-					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
-					currentAnim = &Idle_Enemy;
-					currentAnim->loop = true;
-					counter++;
 					
-					if (position.x > app->player->position.x) Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
-					if (position.x < app->player->position.x) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
-					if (position.y > app->player->position.y) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
-					if (position.y < app->player->position.y) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
-					
-					if ((app->player->position.y > position.y) && (app->player->position.x > position.x))
-					{
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
-					}
-					if ((app->player->position.x < position.x) && (app->player->position.y > position.y))
-					{
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({- 0.5f, 0.5f });
-					}
-					if ((app->player->position.y < position.y) && (app->player->position.x < position.x))
-					{
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
-					}
-					if ((app->player->position.x > position.x) && (app->player->position.y < position.y))
-					{
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
-					}
-
 					if (counter == 150) entityTurn = TurnState::FinishTurn;
 
 				}
 				if (entityTurn == TurnState::FinishTurn)
 				{
 					//Change turn from enemy to player turn still have to develop a way to do it correctly
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f });
-					collider->SetPos(position.x, position.y - 46);
-					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
-					
-					currentAnim = &Idle_Enemy;
-					currentAnim->loop = true;
-
-					if (position.DistanceTo(app->player->position) < 75)
-					{
-
-						if ((position.x == app->player->position.x) && (position.y < app->player->position.y))
-						{
-						
-							app->particles->AddParticle(app->particles->enemyAttack, position.x, position.y + 60, Collider::Type::ENEMY_ATTACK);
-
-						}
-						if ((position.x == app->player->position.x) && (position.y > app->player->position.y))
-						{
-						
-							app->particles->AddParticle(app->particles->enemyAttack, position.x , position.y - 60, Collider::Type::ENEMY_ATTACK);
-
-						}
-						if ((position.x < app->player->position.x) && (position.y == app->player->position.y))
-						{
-
-						
-							app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y , Collider::Type::ENEMY_ATTACK);
 
 
-						}
-						if ((position.x > app->player->position.x) && (position.y == app->player->position.y))
-						{
-							
-							app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y , Collider::Type::ENEMY_ATTACK);
 
-
-						}
-
-						if ((position.x > app->player->position.x) && (position.y > app->player->position.y))
-						{
-
-							
-							app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y - 30, Collider::Type::ENEMY_ATTACK);
-
-
-						}
-						if ((position.x > app->player->position.x) && (position.y < app->player->position.y))
-						{
-							
-							app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y + 30, Collider::Type::ENEMY_ATTACK);
-
-
-						}
-						if ((position.x < app->player->position.x) && (position.y > app->player->position.y))
-						{
-							
-							app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y - 30, Collider::Type::ENEMY_ATTACK);
-
-
-						}
-						if ((position.x < app->player->position.x) && (position.y < app->player->position.y))
-						{
-							
-							app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y + 30, Collider::Type::ENEMY_ATTACK);
-
-
-						}
-
-						entityTurn = TurnState::WaitTurn;
-					}
-					else
-					{
-						entityTurn = TurnState::WaitTurn;
-					}
+					entityTurn = TurnState::WaitTurn;
 					
 
 				}
 				if (entityTurn == TurnState::WaitTurn)
 				{
 					counter = 0;
-					collider->SetPos(position.x, position.y - 46);
-					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
-					currentAnim = &Idle_Enemy;
+					
 					currentAnim->loop = true;
 		
-				}
-				if (app->sceneMainMap->playerRestart == true)
-				{
-					app->game_manager->counter = 0;
-					entityState = GameState::OutOfCombat;
-					entityTurn = TurnState::NONE;
 				}
 				
 
