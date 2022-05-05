@@ -786,6 +786,9 @@ bool ModulePlayer::Update(float dt)
 				Player->body->SetLinearVelocity({ 0.0f,0.0f });
 
 				//Attack methodology, after attacking the player goes to wait turn
+				int mousePosX, mousePosY;
+				app->input->GetMouseMotion(mousePosX, mousePosY);
+				
 
 				if (playerAttacked == true)
 				{
@@ -1323,7 +1326,9 @@ void ModulePlayer::MeleeAttack()
 	//Add logic for attack
 
 	//Example of addition of particles for melee
-	app->particles->AddParticle(app->particles->playerAttack, app->player->position.x + 30, app->player->position.y + 12, Collider::Type::PLAYER_ATTACK);
+	//app->particles->AddParticle(app->particles->playerAttack, app->player->position.x + 30, app->player->position.y + 12, Collider::Type::PLAYER_ATTACK);
+
+	app->particles->AddParticle(app->particles->playerAttack, enemyPosition.x, enemyPosition.y, Collider::Type::PLAYER_ATTACK);
 
 	playerAttacked = true;
 }

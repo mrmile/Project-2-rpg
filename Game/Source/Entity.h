@@ -73,7 +73,6 @@ public:
 
 	bool hasBeenDrawed = false;
 
-	
 	//List<PhysBody*> Flying_Enemy_2_List;
 	//List<PhysBody*> Walking_Enemy_List;
 };

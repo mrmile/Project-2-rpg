@@ -18,7 +18,6 @@ struct ItemList
 	bool usable = false;
 	bool equipable = false;
 	SDL_Rect itemRect = { 0,0,0,0 };
-	int idForUsability;
 };
 class InventoryMenu : public Module
 {
@@ -57,11 +56,15 @@ public:
 
 	bool DeleteItemSelected(ItemList* item);
 
-	bool EquipItemSelected(ItemList* item);
+	bool AddItemToInventory(EntityType type, bool usable, bool equipable);
 
 	void UpdateItemList();
 
-	ItemList GetItemFromPosition(int mouseX,int mouseY);
+	ItemList GetItemFromPosition(int mouseX, int mouseY);
+
+	//Equipment related functions
+
+	bool EquipItemSelected(ItemList* item);
 
 private:
 
@@ -83,7 +86,7 @@ public:
 
 	int mouseX, mouseY;
 
-	bool AddItemToInventory(EntityType type,bool usable, bool equipable);
+	
 	bool showInventory = false;
 
 	bool showEquipableOptions = false;

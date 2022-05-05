@@ -50,8 +50,8 @@ bool InventoryMenu::Start()
 	//Still need button textures the position does not matter right now as we are gonna update it 
 
 	
-	DeleteItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 29, "Delete item Button", { 25,160,108,35 }, this, NULL, NULL, {});
-	EquipItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 30, "Equip item Button", { 25,160,108,35 }, this, NULL, NULL, {});
+	DeleteItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 29, "Delete item Button", { 25,160,26,25 }, this, object_health_pack, NULL, {});
+	EquipItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 30, "Equip item Button", { 25,160,26,25 }, this, NULL, NULL, {});
 	UseItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 31, "Use item Button", { 25,160,26,25 }, this, object_food, NULL, {});
 	
 
@@ -62,7 +62,6 @@ bool InventoryMenu::Start()
 		for (int i = 0; i < MAX_ITEMS / 7; i++)
 		{
 			itemList[counter].itemRect = { 253 + (i * 46),65 + (j * 36),26,25 };
-			itemList[counter].idForUsability = counter;
 			counter++;
 		}
 		
@@ -75,6 +74,9 @@ bool InventoryMenu::Start()
 		ItemButton[z]->canClick = true;
 
 	}
+
+
+	//Equipment.itemRect = { 70,107,26,25 };
 
 	return true;
 }
@@ -154,8 +156,13 @@ bool InventoryMenu::AddItemToInventory(EntityType type,bool usable,bool equipabl
 		if (itemList[i].type != EntityType::NONE && itemList[i].type == type)
 		{
 			ret = true;
-			itemList[i].amount++;
 
+			if (itemList[i].amount < 10)
+			{
+				itemList[i].amount++;
+				return ret;
+			}
+			
 			return ret;
 		}
 		if (itemList[i].type == EntityType::NONE)
@@ -178,6 +185,7 @@ void InventoryMenu::DrawAllInventoryItems()
 {
 	for (int i = 0; i < MAX_ITEMS; i++)
 	{
+	
 		if (itemList[i].type != EntityType::NONE)
 		{
 			if (itemList[i].type == EntityType::OBJECT_FOOD && itemList[i].amount > 0)
@@ -207,6 +215,7 @@ bool InventoryMenu::OnGuiMouseClickEvent(GuiControl* control)
 		{
 			//Delete Item Button
 			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
+			DeleteItemSelected(&itemUsing);
 		}
 		if (control->id == 30 && EquipItem->canClick == true)
 		{
@@ -290,11 +299,12 @@ bool InventoryMenu::UseItemSelected(ItemList* item)
 }
 bool InventoryMenu::DeleteItemSelected(ItemList* item)
 {
-	item->amount = 0;
-	//Still need to clean the item in the list so another one can be added in it's place (using the UpdateItemList() function)
+	if (item->amount > 0)
+	{
+		item->amount--;
 
-	return true;
-	
+		return true;
+	}
 }
 bool InventoryMenu::EquipItemSelected(ItemList* item)
 {
@@ -302,6 +312,7 @@ bool InventoryMenu::EquipItemSelected(ItemList* item)
 	{
 		//Also need to create a function for the player that updates it's damage in function of the item equipped
 		Equipment.type = item->type;
+		item->type = EntityType::NONE;
 		return true;
 	}
 	if (Equipment.type != EntityType::NONE)
