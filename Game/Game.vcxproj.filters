@@ -163,6 +163,9 @@
     <ClCompile Include="Source\Object_ShortScopeGun.cpp">
       <Filter>General\Entities\Items</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Final_Boss.cpp">
+      <Filter>General\Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -356,6 +359,9 @@
     </ClInclude>
     <ClInclude Include="Source\Object_ShortScopeGun.h">
       <Filter>General\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Final_Boss.h">
+      <Filter>General\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

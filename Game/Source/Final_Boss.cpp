@@ -20,6 +20,7 @@
 
 #include "Defs.h"
 
+
 Final_Boss::Final_Boss(int x,int y) : Entity(x,y)
 {	
 	EntityHP = 1;

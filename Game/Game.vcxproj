@@ -136,6 +136,7 @@
     <ClCompile Include="Source\DialogNode.cpp" />
     <ClCompile Include="Source\Entity.cpp" />
     <ClCompile Include="Source\EntityManager.cpp" />
+    <ClCompile Include="Source\Final_Boss.cpp" />
     <ClCompile Include="Source\GameManager.cpp" />
     <ClCompile Include="Source\GuiButton.cpp" />
     <ClCompile Include="Source\GuiCheckbox.cpp" />
@@ -189,6 +190,7 @@
     <ClInclude Include="Source\DialogNode.h" />
     <ClInclude Include="Source\Entity.h" />
     <ClInclude Include="Source\EntityManager.h" />
+    <ClInclude Include="Source\Final_Boss.h" />
     <ClInclude Include="Source\GameManager.h" />
     <ClInclude Include="Source\GuiButton.h" />
     <ClInclude Include="Source\GuiCheckbox.h" />
