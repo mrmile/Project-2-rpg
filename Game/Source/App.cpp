@@ -347,7 +347,7 @@ void App::FinishUpdate()
 
 	if (app->sceneCave->enableSceneMotel == true)
 	{
-		//app->sceneBase->Disable();
+		app->sceneBase->Disable();
 		app->sceneCave->Disable();
 		app->collisions->Enable();
 		app->map->Enable();
@@ -361,9 +361,9 @@ void App::FinishUpdate()
 		app->sceneCave->enableSceneMotel = false;
 	}
 
-	if (app->sceneMainMap->enableSceneCave == true)
+	if (app->sceneMainMap->enableSceneCave == true || app->sceneMotel->enableSceneCave == true)
 	{
-		//app->sceneBase->Disable();
+		app->sceneMotel->Disable();
 		app->sceneMainMap->Disable();
 		app->collisions->Enable();
 		app->map->Enable();
@@ -375,12 +375,13 @@ void App::FinishUpdate()
 		app->pause_menu->Enable();
 
 		app->sceneMainMap->enableSceneCave = false;
+		app->sceneMotel->enableSceneCave = false;
 	}
 
 	if (app->sceneMainMap->enableSceneBase == true)
 	{
 		app->sceneMainMap->Disable();
-		//app->sceneCave->Disable();
+		app->sceneCave->Disable();
 		app->collisions->Enable();
 		app->map->Enable();
 		app->sceneBase->Enable();

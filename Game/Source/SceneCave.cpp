@@ -63,6 +63,9 @@ bool SceneCave::Start()
 	sceneCave = true;
 
 	app->sceneMainMap->sceneMainMap = false;
+	app->sceneBase->sceneBase = false;
+	app->sceneMotel->sceneMotel = false;
+
 	enableSceneMainMap = false;
 	enableSceneMotel = false;
 
@@ -228,10 +231,19 @@ bool SceneCave::PostUpdate()
 			app->sceneBase->enableSceneMainMap = false;
 			app->sceneMainMap->enableSceneBase = false;
 			app->sceneMainMap->enableSceneCave = false;
+			app->sceneMotel->enableSceneCave = false;
 
 			enableSceneMainMap = true;
 		}
+		if (app->player->entranceID == 2)
+		{
+			app->sceneBase->enableSceneMainMap = false;
+			app->sceneMainMap->enableSceneBase = false;
+			app->sceneMainMap->enableSceneCave = false;
+			app->sceneMotel->enableSceneCave = false;
 
+			enableSceneMotel = true;
+		}
 
 		//app->fade->FadeToBlack(app->sceneMainMap, app->sceneCave, 60.0f);
 	}

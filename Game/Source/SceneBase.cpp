@@ -55,8 +55,11 @@ bool SceneBase::Start()
 	playerRestart = false;
 	destroyScene = false;
 	sceneBase = true;
+
 	app->sceneMainMap->sceneMainMap = false;
 	app->sceneCave->sceneCave = false;
+	app->sceneMotel->sceneMotel = false;
+
 	enableSceneMainMap = false;
 
 	app->render->camera.x = app->map->MapToWorld(0, 0).x;

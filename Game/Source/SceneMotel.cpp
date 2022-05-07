@@ -48,7 +48,7 @@ bool SceneMotel::Awake()
 bool SceneMotel::Start()
 {
 
-	app->map->Load("main.tmx");
+	app->map->Load("motel.tmx");
 
 	app->tex->Load("Assets/textures/GUI/PauseMenuFrame.png");
 	sceneTimer = 0;
@@ -194,7 +194,7 @@ bool SceneMotel::PostUpdate()
 	bool ret = true;
 	if (sceneTimer <= 2)
 	{
-		app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);
+		app->audio->ChangeMusic(MOTEL_ZONE, 0.5f, 0.5f);
 	}
 	
 	//if (app->player->horizontalCB == false && app->player->bidimensionalCB == false && sceneTimer > 1) app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 150) + 630);
@@ -243,16 +243,16 @@ bool SceneMotel::PostUpdate()
 		app->player->exitActivated = false;
 
 		app->player->Disable();
-		//app->sceneMainMap->Disable();
+		//app->sceneMotel->Disable();
 		app->collisions->Disable();
 		app->map->Disable();
 		app->entity_manager->Disable();
 		app->particles->Disable();
 		app->fonts->Disable();
 		app->pause_menu->Disable();
-		app->sceneMainMap->Disable();
+		app->sceneMotel->Disable();
 
-		if (app->player->entranceID == 1)
+		if (app->player->entranceID == 2)
 		{
 			app->sceneCave->enableSceneMotel = false;
 

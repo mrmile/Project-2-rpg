@@ -16,6 +16,7 @@
 #include "Map.h"
 #include "EntityManager.h"
 #include "SceneBase.h"
+#include "SceneMotel.h"
 #include "Defs.h"
 #include "Log.h"
 #include <SDL_mixer/include/SDL_mixer.h>
@@ -135,12 +136,21 @@ bool PauseMenu::Update(float dt)
 				app->game_manager->StartTurnManagement = false;  
 				app->game_manager->ClearList();
 			}
+
+			/*app->sceneBase->enableSceneMainMap = false;
+			app->sceneCave->enableSceneMainMap = false;
+			app->sceneCave->enableSceneMotel = false;
+			app->sceneMainMap->enableSceneBase = false;
+			app->sceneMainMap->enableSceneCave = false;
+			app->sceneMotel->enableSceneCave = false;*/
+
 			app->map->Disable();
 			app->collisions->Disable();
 			app->particles->Disable();
 			app->sceneMainMap->Disable();
 			app->sceneCave->Disable();
 			app->sceneBase->Disable();
+			app->sceneMotel->Disable();
 			app->player->Disable();
 			app->entity_manager->Disable();
 			app->fonts->Disable();
