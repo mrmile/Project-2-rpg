@@ -289,6 +289,22 @@ bool Audio::ChangeMusic(int Id, float fadeInTime, float fadeOutTime)
 
 		break;
 	}
+	case MAIN_MAP_AT_NIGHT:
+	{
+		Mix_ResumeMusic();
+
+		app->audio->PlayMusic("Assets/Audio/Music/road_zone_mainHub_night.ogg", fadeInTime, fadeOutTime);
+
+		break;
+	}
+	case MAIN_MAP_SUNRISE:
+	{
+		Mix_ResumeMusic();
+
+		app->audio->PlayMusic("Assets/Audio/Music/final_zone_C.ogg", fadeInTime, fadeOutTime);
+
+		break;
+	}
 	case MOTEL_ZONE:
 	{
 		Mix_ResumeMusic();

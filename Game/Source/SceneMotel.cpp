@@ -28,7 +28,7 @@
 
 SceneMotel::SceneMotel(bool start_enabled) : Module(start_enabled)
 {
-	name.Create("SceneMainMap");
+	name.Create("SceneMotel");
 }
 
 // Destructor
