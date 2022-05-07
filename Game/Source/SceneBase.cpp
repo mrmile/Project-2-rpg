@@ -17,6 +17,8 @@
 #include "EntityManager.h"
 #include "Entity.h"
 #include "ModuleParticles.h"
+#include "SceneMotel.h"
+#include "GameManager.h"
 
 #include "Defs.h"
 #include "Log.h"

@@ -166,6 +166,9 @@
     <ClCompile Include="Source\Final_Boss.cpp">
       <Filter>General\Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Source\SceneMotel.cpp">
+      <Filter>General\Scenes and Maps\Maps</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -362,6 +365,9 @@
     </ClInclude>
     <ClInclude Include="Source\Final_Boss.h">
       <Filter>General\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SceneMotel.h">
+      <Filter>General\Scenes and Maps\Maps</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

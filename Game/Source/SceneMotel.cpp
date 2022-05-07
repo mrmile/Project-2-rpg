@@ -6,6 +6,7 @@
 #include "Window.h"
 #include "SceneCave.h"
 #include "SceneMainMap.h"
+#include "SceneMotel.h"
 #include "Map.h"
 #include "ModulePhysics.h"
 #include "ModulePlayer.h"
@@ -19,24 +20,23 @@
 #include "Pathfinding.h"
 #include "ModuleFadeToBlack.h"
 #include "SceneBase.h"
-#include "SceneMotel.h"
 #include "GameManager.h"
 
 #include "Defs.h"
 #include "Log.h"
 #include <SDL_mixer/include/SDL_mixer.h>
 
-SceneMainMap::SceneMainMap(bool start_enabled) : Module(start_enabled)
+SceneMotel::SceneMotel(bool start_enabled) : Module(start_enabled)
 {
 	name.Create("SceneMainMap");
 }
 
 // Destructor
-SceneMainMap::~SceneMainMap()
+SceneMotel::~SceneMotel()
 {}
 
 // Called before render is available
-bool SceneMainMap::Awake()
+bool SceneMotel::Awake()
 {
 	LOG("Loading Scene");
 	bool ret = true;
@@ -45,7 +45,7 @@ bool SceneMainMap::Awake()
 }
 
 // Called before the first frame
-bool SceneMainMap::Start()
+bool SceneMotel::Start()
 {
 
 	app->map->Load("main.tmx");
@@ -74,12 +74,11 @@ bool SceneMainMap::Start()
 	godMode = false;
 	playerRestart = false;
 	destroyScene = false;
-	sceneMainMap = true;
+	sceneMotel = true;
 	
 	app->sceneCave->sceneCave = false;
 	app->sceneBase->sceneBase = false;
-	app->sceneMotel->sceneMotel = false;
-	enableSceneBase = false;
+	app->sceneMainMap->sceneMainMap = false;
 	enableSceneCave = false;
 
 	// app->titleScreen->transition = false;
@@ -109,7 +108,7 @@ bool SceneMainMap::Start()
 }
 
 // Called each loop iteration
-bool SceneMainMap::PreUpdate()
+bool SceneMotel::PreUpdate()
 {
 	/*
 	if (sceneTimer <= 2)
@@ -131,7 +130,7 @@ bool SceneMainMap::PreUpdate()
 }
 
 // Called each loop iteration
-bool SceneMainMap::Update(float dt)
+bool SceneMotel::Update(float dt)
 {
 	sceneTimer++;
 	//F9 --> See colliders
@@ -190,7 +189,7 @@ bool SceneMainMap::Update(float dt)
 }
 
 // Called each loop iteration
-bool SceneMainMap::PostUpdate()
+bool SceneMotel::PostUpdate()
 {
 	bool ret = true;
 	if (sceneTimer <= 2)
@@ -255,19 +254,9 @@ bool SceneMainMap::PostUpdate()
 
 		if (app->player->entranceID == 1)
 		{
-			enableSceneBase = false;
-			app->sceneBase->enableSceneMainMap = false;
-			app->sceneCave->enableSceneMainMap = false;
+			app->sceneCave->enableSceneMotel = false;
 
 			enableSceneCave = true;
-		}
-		if (app->player->entranceID == 2)
-		{
-			app->sceneBase->enableSceneMainMap = false;
-			app->sceneCave->enableSceneMainMap = false;
-			enableSceneCave = false;
-
-			enableSceneBase = true;
 		}
 
 
@@ -278,11 +267,11 @@ bool SceneMainMap::PostUpdate()
 }
 
 // Called before quitting
-bool SceneMainMap::CleanUp()
+bool SceneMotel::CleanUp()
 {
 	LOG("Freeing scene");
 	destroyScene = true;
-	sceneMainMap = false;
+	sceneMotel = false;
 
 	return true;
 }

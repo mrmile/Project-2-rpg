@@ -24,6 +24,7 @@ class CreditsScreen;
 class SceneMainMap;
 class SceneCave;
 class SceneBase;
+class SceneMotel;
 class Map;
 class Enemies;
 class ModuleFadeToBlack;
@@ -121,6 +122,7 @@ public:
 	SceneMainMap* sceneMainMap;
 	SceneCave* sceneCave;
 	SceneBase* sceneBase;
+	SceneMotel* sceneMotel;
 	Map* map;
 	Enemies* enemies;
 	ModuleFadeToBlack* fade;

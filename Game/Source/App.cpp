@@ -9,6 +9,7 @@
 #include "SceneCave.h"
 #include "CreditsScreen.h"
 #include "SceneBase.h"
+#include "SceneMotel.h"
 #include "Map.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
@@ -54,6 +55,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	sceneMainMap = new SceneMainMap(false);
 	sceneCave = new SceneCave(false);
 	sceneBase = new SceneBase(false);
+	sceneMotel = new SceneMotel(false);
 	map = new Map(false);
 	physics = new ModulePhysics(true);
 	fade = new ModuleFadeToBlack(true);
@@ -85,6 +87,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(sceneMainMap);
 	AddModule(sceneCave);
 	AddModule(sceneBase);
+	AddModule(sceneMotel);
 	AddModule(fonts);
 	AddModule(player);
 	AddModule(entity_manager); 
@@ -311,6 +314,20 @@ void App::FinishUpdate()
 		app->sceneBase->destroyScene = false;
 	}
 
+	if (app->sceneMotel->destroyScene == true) // Tiene que borrar todos los chains del box2D y los sensores de colisiones del método antiguo que están en el nivel
+	{
+		// Borra los chains
+		for (int i = 0; i < app->map->mapChainsCounter; i++)
+		{
+			app->map->mapChains[i]->body->DestroyFixture(app->map->mapChains[i]->body->GetFixtureList());
+		}
+
+		// Borra los sensores
+		app->map->DeleteCollidersSensors();
+
+		app->sceneMotel->destroyScene = false;
+	}
+
 	if (app->sceneCave->enableSceneMainMap == true || app->sceneBase->enableSceneMainMap == true)
 	{
 		app->sceneBase->Disable();
@@ -325,11 +342,28 @@ void App::FinishUpdate()
 		app->pause_menu->Enable();
 
 		app->sceneCave->enableSceneMainMap = false;
+		app->sceneBase->enableSceneMainMap = false;
+	}
+
+	if (app->sceneCave->enableSceneMotel == true)
+	{
+		//app->sceneBase->Disable();
+		app->sceneCave->Disable();
+		app->collisions->Enable();
+		app->map->Enable();
+		app->particles->Enable();
+		app->sceneMotel->Enable();
+		app->player->Enable();
+		app->entity_manager->Enable();
+		app->fonts->Enable();
+		app->pause_menu->Enable();
+
+		app->sceneCave->enableSceneMotel = false;
 	}
 
 	if (app->sceneMainMap->enableSceneCave == true)
 	{
-		app->sceneBase->Disable();
+		//app->sceneBase->Disable();
 		app->sceneMainMap->Disable();
 		app->collisions->Enable();
 		app->map->Enable();
@@ -346,7 +380,7 @@ void App::FinishUpdate()
 	if (app->sceneMainMap->enableSceneBase == true)
 	{
 		app->sceneMainMap->Disable();
-		app->sceneCave->Disable();
+		//app->sceneCave->Disable();
 		app->collisions->Enable();
 		app->map->Enable();
 		app->sceneBase->Enable();

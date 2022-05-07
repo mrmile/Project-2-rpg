@@ -17,6 +17,8 @@
 #include "Entity.h"
 #include "ModuleParticles.h"
 #include "SceneBase.h"
+#include "SceneMotel.h"
+#include "GameManager.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -59,8 +61,10 @@ bool SceneCave::Start()
 	playerRestart = false;
 	destroyScene = false;
 	sceneCave = true;
+
 	app->sceneMainMap->sceneMainMap = false;
 	enableSceneMainMap = false;
+	enableSceneMotel = false;
 
 	app->render->camera.x = app->map->MapToWorld(0, 0).x;
 	app->render->camera.y = app->map->MapToWorld(0, 0).y;

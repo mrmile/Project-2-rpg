@@ -1,18 +1,18 @@
-#ifndef __SCENE_CAVE_H__
-#define __SCENE_CAVE_H__
+#ifndef __SCENE_MOTEL_H__
+#define __SCENE_MOTEL_H__
 
 #include "Module.h"
 
 struct SDL_Texture;
 
-class SceneCave : public Module
+class SceneMotel : public Module
 {
 public:
 
-	SceneCave(bool start_enabled = false);
+	SceneMotel(bool start_enabled = false);
 
 	// Destructor
-	virtual ~SceneCave();
+	virtual ~SceneMotel();
 
 	// Called before render is available
 	bool Awake();
@@ -45,25 +45,17 @@ public:
 
 	bool destroyScene;
 
-	bool sceneCave;
+	bool sceneMotel;
 
-	bool enableSceneMainMap = false;
-	bool enableSceneMotel = false;
+	bool enableSceneCave = false;
+
+	int PauseDelay=0;
+
+	SDL_Rect* rectangle = {};
 
 private:
 	SDL_Texture* img;
-
-	int sceneSoundRandomizerNumber;
-	
-public:
-	SDL_Texture* spotLight;
-
-	uint cave_bg_noise1 = 0;
-	uint cave_bg_noise2 = 0;
-	uint cave_bg_noise3 = 0;
-	uint cave_bg_noise4 = 0;
-	uint cave_bg_noise5 = 0;
-
+	SDL_Texture* PauseFrame;
 };
 
-#endif // __SCENE_CAVE_H__
+#endif // __SCENE_MOTEL_H__
