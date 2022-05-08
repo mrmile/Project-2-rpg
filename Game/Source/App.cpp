@@ -90,7 +90,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(sceneCave);
 	AddModule(sceneBase);
 	AddModule(sceneMotel);
-	AddModule(fonts);
 	AddModule(player);
 	AddModule(entity_manager); 
 	AddModule(particles);
@@ -102,6 +101,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(combatMenu);
 	AddModule(dialogManager);
 	AddModule(guiManager);
+	AddModule(fonts);
 	AddModule(questManager);
 	AddModule(game_manager);
 	// Render last to swap buffer

@@ -15,6 +15,7 @@
 #include "GameManager.h"
 #include "Log.h"
 
+#include "SceneMotel.h"
 #include "SceneMainMap.h"
 #include "SceneCave.h"
 #include "SceneBase.h"
@@ -162,7 +163,7 @@ bool ModulePlayer::Start()
 
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
 
-	if (app->sceneMainMap->sceneMainMap == true)
+	if (app->sceneMainMap->sceneMainMap == true || app->sceneMotel->sceneMotel == true)
 	{
 		playerWalkSound[0] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Tile/FootstepTile01.wav");
 		playerWalkSound[1] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Tile/FootstepTile02.wav");
