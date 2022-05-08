@@ -38,6 +38,7 @@ bool GamepadInput::Start()
 	scoreFont = app->fonts->Load("Assets/Art/UI/numbers_s.png", lookupTable, 1);
 
 	keyDownDelay = 0;
+	padPressed[25] = { false };
 	
 	return ret;
 }
@@ -91,6 +92,8 @@ bool GamepadInput::Update(float dt)
 		keyDownDelay = 0;
 	}
 
+	if (pad.left_y == 0.0f) padPressed[22] = false;
+
 
 	if (pad.right_x < 0.0f)
 	{
@@ -122,40 +125,45 @@ bool GamepadInput::Update(float dt)
 	{
 		app->input->keys[SDL_SCANCODE_Z] = KeyState::KEY_REPEAT;
 	}
-	if (pad.x == true && keyDownDelay > 15)
+	if (pad.x == true && padPressed[3] == false)
 	{
 		app->input->keys[SDL_SCANCODE_Z] = KeyState::KEY_DOWN;
 
-		keyDownDelay = 0;
+		padPressed[3] = true;
 	}
+	else if (pad.x == false) padPressed[3] = false;
 
-	if (pad.b == true && keyDownDelay > 15)
+	if (pad.b == true && padPressed[2] == false)
 	{
 		app->input->keys[SDL_SCANCODE_X] = KeyState::KEY_DOWN;
 
-		keyDownDelay = 0;
+		padPressed[2] = true;
 	}
+	else if (pad.b == false) padPressed[2] = false;
 
-	if (pad.a == true && keyDownDelay > 15)
+	if (pad.a == true && padPressed[1] == false)
 	{
 		app->input->keys[SDL_SCANCODE_C] = KeyState::KEY_DOWN;
 
-		keyDownDelay = 0;
+		padPressed[1] = true;
 	}
+	else if (pad.a == false) padPressed[1] = false;
 
-	if (pad.start == true && keyDownDelay > 15)
+	if (pad.start == true && padPressed[13] == false)
 	{
 		app->input->keys[SDL_SCANCODE_ESCAPE] = KeyState::KEY_DOWN;
 
-		keyDownDelay = 0;
+		padPressed[13] = true;
 	}
+	else if (pad.start == false) padPressed[13] = false;
 
-	if (pad.back == true && keyDownDelay > 15)
+	if (pad.back == true && padPressed[15] == false)
 	{
 		app->input->keys[SDL_SCANCODE_I] = KeyState::KEY_DOWN;
 
-		keyDownDelay = 0;
+		padPressed[15] = true;
 	}
+	else if (pad.back == false) padPressed[15] = false;
 
 	keyDownDelay++;
 

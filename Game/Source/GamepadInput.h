@@ -41,6 +41,7 @@ public:
 	bool debugGamepadInfo = false;
 
 	uint32 keyDownDelay;
+	bool padPressed[26] = { false };
 
 };
 
