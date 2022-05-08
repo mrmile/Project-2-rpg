@@ -31,19 +31,24 @@ public:
 	// Called before render is available
 	bool Awake(pugi::xml_node&);
 
+	// Called before the first frame
+	bool Start();
+
 	// Called each loop iteration
 	bool Update(float dt);
 
 	bool PostUpdate();
 
-	void ClearList();
+	void SwitchMainQuest(int questID);
+	void SwitchSecondaryQuest(int questID);
 
 	// Called before quitting
 	bool CleanUp();
 	
 	int counter = 0;
 
-	bool StartTurnManagement;
+	int mainQuestID = 0;
+	int secondaryQuestID = 0;
 
 };
 

@@ -11,6 +11,7 @@
 #include "SceneCave.h"
 #include "SceneMainMap.h"
 #include "SceneBase.h"
+#include "QuestManager.h"
 
 #include "SDL/include/SDL_timer.h"
 

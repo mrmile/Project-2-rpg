@@ -21,6 +21,7 @@
 #include "Entity.h"
 #include "Defs.h"
 #include "Log.h"
+#include "QuestManager.h"
 
 InventoryMenu::InventoryMenu(bool start_enabled) : Module(start_enabled)
 {

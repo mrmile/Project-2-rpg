@@ -21,6 +21,7 @@
 #include "EntityManager.h"
 #include "Entity.h"
 #include "SceneBase.h"
+#include "QuestManager.h"
 
 #include "Defs.h"
 #include "Log.h"

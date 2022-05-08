@@ -19,6 +19,7 @@
 #include "SceneBase.h"
 #include "SceneMotel.h"
 #include "GameManager.h"
+#include "QuestManager.h"
 
 #include "Defs.h"
 #include "Log.h"

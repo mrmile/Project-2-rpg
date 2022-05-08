@@ -19,6 +19,8 @@
 #include "SceneMotel.h"
 #include "Defs.h"
 #include "Log.h"
+#include "QuestManager.h"
+
 #include <SDL_mixer/include/SDL_mixer.h>
 
 #include <iostream>

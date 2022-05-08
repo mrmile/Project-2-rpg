@@ -22,6 +22,8 @@
 #include "Defs.h"
 #include "Render.h"
 #include "Log.h"
+#include "QuestManager.h"
+
 #include <SDL_mixer/include/SDL_mixer.h>
 
 #include <iostream>

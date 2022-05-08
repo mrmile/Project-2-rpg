@@ -10,6 +10,7 @@
 #include "ModulePlayer.h"
 #include "Entity.h"
 #include "Window.h"
+#include "QuestManager.h"
 
 #include "Defs.h"
 #include "Log.h"

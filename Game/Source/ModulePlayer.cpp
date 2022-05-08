@@ -26,6 +26,7 @@
 #include "TitleScreen.h"
 #include "InventoryMenu.h"
 #include "ModuleFonts.h"
+#include "QuestManager.h"
 
 #include <stdio.h>
 #include <time.h>
