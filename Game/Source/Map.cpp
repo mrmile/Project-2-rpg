@@ -977,43 +977,43 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		}
 	}
 
-	if (object->name == "coins")
+	if (object->name == "item_bunker_key")
 	{
 		pugi::xml_node NewObject;
 		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
 		{
-			app->particles->AddParticle(app->particles->coin, NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int(), Collider::COIN);
+			app->particles->AddParticle(app->particles->coin, NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int(), Collider::ITEM_BUKER_DOOR_KEY);
 		}
 	}
 
-	if (object->name == "lifeRecoverPowerUps")
+	if (object->name == "doctor_note")
 	{
 		pugi::xml_node NewObject;
 		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
 		{
-			app->particles->AddParticle(app->particles->lifeRecoverPowerUp, NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int(), Collider::RECOVER_LIFE_POWER_UP);
+			app->particles->AddParticle(app->particles->lifeRecoverPowerUp, NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int(), Collider::DOCTOR_NOTE_MESSAGE);
 		}
 	}
 
-	if (object->name == "checkPoint")
+	if (object->name == "TNT_switch")
 	{
 		pugi::xml_node NewObject;
 		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
 		{
 			app->particles->AddParticle(app->particles->checkPointGrabbed, NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int(), Collider::NONE);
-			app->particles->AddParticle(app->particles->checkPoint, NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int(), Collider::CHECKPOINT);
+			app->particles->AddParticle(app->particles->checkPoint, NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int(), Collider::TNT_SWITCH);
 
 			playerCheckPointPos.x = NewObject.attribute("x").as_int();
 			playerCheckPointPos.y = NewObject.attribute("y").as_int();
 		}
 	}
 
-	if (object->name == "flagPool")
+	if (object->name == "final_battle_Sensor")
 	{
 		pugi::xml_node NewObject;
 		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
 		{
-			app->particles->AddParticle(app->particles->goalPool, NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int(), Collider::GOAL_POINT);
+			app->particles->AddParticle(app->particles->goalPool, NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int(), Collider::ENABLE_FINAL_BATTLE);
 
 			goalPoolPos.x = NewObject.attribute("x").as_int();
 			goalPoolPos.y = NewObject.attribute("y").as_int();

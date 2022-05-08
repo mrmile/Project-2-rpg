@@ -26,10 +26,10 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::LAYER_ZERO][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::LAYER_ZERO][Collider::Type::NULL_COLLIDER] = false;
 	matrix[Collider::Type::LAYER_ZERO][Collider::Type::PLAYER_FEET] = true;
-	matrix[Collider::Type::LAYER_ZERO][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::LAYER_ZERO][Collider::Type::COIN] = false;
-	matrix[Collider::Type::LAYER_ZERO][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::LAYER_ZERO][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::LAYER_ZERO][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::LAYER_ZERO][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::LAYER_ZERO][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::LAYER_ZERO][Collider::Type::ENABLE_FINAL_BATTLE] = false;
 	matrix[Collider::Type::LAYER_ZERO][Collider::Type::ENEMY_ATTACK] = false;
 	matrix[Collider::Type::LAYER_ZERO][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::LAYER_ZERO][Collider::Type::PLAYER_RANGED_ATTACK] = false;
@@ -44,10 +44,10 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_FOOD][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::ITEM_FOOD][Collider::Type::NULL_COLLIDER] = false;
 	matrix[Collider::Type::ITEM_FOOD][Collider::Type::PLAYER_FEET] = false;
-	matrix[Collider::Type::ITEM_FOOD][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::ITEM_FOOD][Collider::Type::COIN] = false;
-	matrix[Collider::Type::ITEM_FOOD][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::ITEM_FOOD][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::ENABLE_FINAL_BATTLE] = false;
 	matrix[Collider::Type::ITEM_FOOD][Collider::Type::ENEMY_ATTACK] = false;
 	matrix[Collider::Type::ITEM_FOOD][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::ITEM_FOOD][Collider::Type::PLAYER_RANGED_ATTACK] = false;
@@ -62,10 +62,10 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::NULL_COLLIDER] = false;
 	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::PLAYER_FEET] = false;
-	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::COIN] = false;
-	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::ENABLE_FINAL_BATTLE] = false;
 	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::ENEMY_ATTACK] = false;
 	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::PLAYER_RANGED_ATTACK] = false;
@@ -81,9 +81,9 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::SWITCH] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::NULL_COLLIDER] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_FEET] = false;
-	matrix[Collider::Type::PLAYER][Collider::Type::RECOVER_LIFE_POWER_UP] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::COIN] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::CHECKPOINT] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::DOCTOR_NOTE_MESSAGE] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_BUKER_DOOR_KEY] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::TNT_SWITCH] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_ATTACK] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_RANGED_ATTACK] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::RANGED_ENEMY] = true;
@@ -103,9 +103,9 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::NULL_COLLIDER] = true;
 	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::PLAYER_FEET] = false;
-	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::COIN] = false;
-	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::CHECKPOINT] = false;
+	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::TNT_SWITCH] = false;
 	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::ENEMY_ATTACK] = false;
 	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::ENEMY_RANGED_ATTACK] = false;
 	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::RANGED_ENEMY] = false;
@@ -121,14 +121,13 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ENEMY][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::NULL_COLLIDER] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER_FEET] = false;
-	matrix[Collider::Type::ENEMY][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::ENEMY][Collider::Type::COIN] = false;
-	matrix[Collider::Type::ENEMY][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::ENEMY][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::ENABLE_FINAL_BATTLE] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY_ATTACK] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER_ATTACK] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER_RANGED_ATTACK] = true;
-
 
 	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::PLAYER] = true;
@@ -140,10 +139,10 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::NULL_COLLIDER] = false;
 	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::PLAYER_FEET] = false;
-	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::COIN] = false;
-	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::ENABLE_FINAL_BATTLE] = false;
 	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::ENEMY_ATTACK] = false;
 	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::PLAYER_ATTACK] = true;
 	matrix[Collider::Type::RANGED_ENEMY][Collider::Type::PLAYER_RANGED_ATTACK] = true;
@@ -158,10 +157,10 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::NULL_COLLIDER] = false;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::PLAYER_FEET] = false;
-	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::COIN] = false;
-	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::ENABLE_FINAL_BATTLE] = false;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::ENEMY_ATTACK] = false;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::PLAYER_RANGED_ATTACK] = false;
@@ -176,10 +175,10 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::NULL_COLLIDER] = false;
 	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::PLAYER_FEET] = false;
-	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::COIN] = false;
-	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::ENABLE_FINAL_BATTLE] = false;
 	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::ENEMY_ATTACK] = false;
 	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::ENEMY_RANGED_ATTACK][Collider::Type::PLAYER_RANGED_ATTACK] = false;
@@ -194,10 +193,10 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::NULL_COLLIDER] = false;
 	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::PLAYER_FEET] = true;
-	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::COIN] = false;
-	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::ENABLE_FINAL_BATTLE] = false;
 	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::ENEMY_ATTACK] = false;
 	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::INSTANT_DEATH][Collider::Type::PLAYER_RANGED_ATTACK] = false;
@@ -212,10 +211,10 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::EXIT_1][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::EXIT_1][Collider::Type::NULL_COLLIDER] = false;
 	matrix[Collider::Type::EXIT_1][Collider::Type::PLAYER_FEET] = true;
-	matrix[Collider::Type::EXIT_1][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::EXIT_1][Collider::Type::COIN] = false;
-	matrix[Collider::Type::EXIT_1][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::EXIT_1][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::EXIT_1][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::EXIT_1][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::EXIT_1][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::EXIT_1][Collider::Type::ENABLE_FINAL_BATTLE] = false;
 	matrix[Collider::Type::EXIT_1][Collider::Type::ENEMY_ATTACK] = false;
 	matrix[Collider::Type::EXIT_1][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::EXIT_1][Collider::Type::PLAYER_RANGED_ATTACK] = false;
@@ -230,10 +229,10 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::EXIT_2][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::EXIT_2][Collider::Type::NULL_COLLIDER] = false;
 	matrix[Collider::Type::EXIT_2][Collider::Type::PLAYER_FEET] = true;
-	matrix[Collider::Type::EXIT_2][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::EXIT_2][Collider::Type::COIN] = false;
-	matrix[Collider::Type::EXIT_2][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::EXIT_2][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::EXIT_2][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::EXIT_2][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::EXIT_2][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::EXIT_2][Collider::Type::ENABLE_FINAL_BATTLE] = false;
 	matrix[Collider::Type::EXIT_2][Collider::Type::ENEMY_ATTACK] = false;
 	matrix[Collider::Type::EXIT_2][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::EXIT_2][Collider::Type::PLAYER_RANGED_ATTACK] = false;
@@ -248,10 +247,10 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::EXIT_3][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::EXIT_3][Collider::Type::NULL_COLLIDER] = false;
 	matrix[Collider::Type::EXIT_3][Collider::Type::PLAYER_FEET] = true;
-	matrix[Collider::Type::EXIT_3][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::EXIT_3][Collider::Type::COIN] = false;
-	matrix[Collider::Type::EXIT_3][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::EXIT_3][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::EXIT_3][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::EXIT_3][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::EXIT_3][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::EXIT_3][Collider::Type::ENABLE_FINAL_BATTLE] = false;
 	matrix[Collider::Type::EXIT_3][Collider::Type::ENEMY_ATTACK] = false;
 	matrix[Collider::Type::EXIT_3][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::EXIT_3][Collider::Type::PLAYER_RANGED_ATTACK] = false;
@@ -266,10 +265,10 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::SWITCH][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::SWITCH][Collider::Type::NULL_COLLIDER] = false;
 	matrix[Collider::Type::SWITCH][Collider::Type::PLAYER_FEET] = true;
-	matrix[Collider::Type::SWITCH][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::SWITCH][Collider::Type::COIN] = false;
-	matrix[Collider::Type::SWITCH][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::SWITCH][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::SWITCH][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::SWITCH][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::SWITCH][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::SWITCH][Collider::Type::ENABLE_FINAL_BATTLE] = false;
 	matrix[Collider::Type::SWITCH][Collider::Type::ENEMY_ATTACK] = false;
 	matrix[Collider::Type::SWITCH][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::SWITCH][Collider::Type::PLAYER_RANGED_ATTACK] = false;
@@ -284,10 +283,10 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::NULL_COLLIDER] = false;
 	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::PLAYER_FEET] = true;
-	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::COIN] = false;
-	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::GOAL_POINT] = false;
+	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::ENABLE_FINAL_BATTLE] = false;
 	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::ENEMY_ATTACK] = false;
 	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::NULL_COLLIDER][Collider::Type::PLAYER_RANGED_ATTACK] = false;
@@ -302,86 +301,86 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER_FEET][Collider::Type::SWITCH] = true;
 	matrix[Collider::Type::PLAYER_FEET][Collider::Type::NULL_COLLIDER] = true;
 	matrix[Collider::Type::PLAYER_FEET][Collider::Type::PLAYER_FEET] = false;
-	matrix[Collider::Type::PLAYER_FEET][Collider::Type::RECOVER_LIFE_POWER_UP] = true;
-	matrix[Collider::Type::PLAYER_FEET][Collider::Type::COIN] = true;
-	matrix[Collider::Type::PLAYER_FEET][Collider::Type::CHECKPOINT] = true;
-	matrix[Collider::Type::PLAYER_FEET][Collider::Type::GOAL_POINT] = true;
+	matrix[Collider::Type::PLAYER_FEET][Collider::Type::DOCTOR_NOTE_MESSAGE] = true;
+	matrix[Collider::Type::PLAYER_FEET][Collider::Type::ITEM_BUKER_DOOR_KEY] = true;
+	matrix[Collider::Type::PLAYER_FEET][Collider::Type::TNT_SWITCH] = true;
+	matrix[Collider::Type::PLAYER_FEET][Collider::Type::ENABLE_FINAL_BATTLE] = true;
 	matrix[Collider::Type::PLAYER_FEET][Collider::Type::ENEMY_ATTACK] = false;
 	matrix[Collider::Type::PLAYER_FEET][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::PLAYER_FEET][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::LAYER_ZERO] = false;
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::ENEMY] = false;
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::INSTANT_DEATH] = false;
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::EXIT_1] = false;
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::EXIT_2] = false;
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::EXIT_3] = false;
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::SWITCH] = false;
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::NULL_COLLIDER] = false;
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::PLAYER_FEET] = true;
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::COIN] = false;
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::GOAL_POINT] = false;
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::ENEMY_ATTACK] = false;
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::PLAYER_ATTACK] = false;
-	matrix[Collider::Type::RECOVER_LIFE_POWER_UP][Collider::Type::PLAYER_RANGED_ATTACK] = false;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::LAYER_ZERO] = false;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::INSTANT_DEATH] = false;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::EXIT_1] = false;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::EXIT_2] = false;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::EXIT_3] = false;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::SWITCH] = false;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::NULL_COLLIDER] = false;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::PLAYER_FEET] = true;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::ENABLE_FINAL_BATTLE] = false;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::DOCTOR_NOTE_MESSAGE][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
 
-	matrix[Collider::Type::COIN][Collider::Type::LAYER_ZERO] = false;
-	matrix[Collider::Type::COIN][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::COIN][Collider::Type::ENEMY] = false;
-	matrix[Collider::Type::COIN][Collider::Type::INSTANT_DEATH] = false;
-	matrix[Collider::Type::COIN][Collider::Type::EXIT_1] = false;
-	matrix[Collider::Type::COIN][Collider::Type::EXIT_2] = false;
-	matrix[Collider::Type::COIN][Collider::Type::EXIT_3] = false;
-	matrix[Collider::Type::COIN][Collider::Type::SWITCH] = false;
-	matrix[Collider::Type::COIN][Collider::Type::NULL_COLLIDER] = false;
-	matrix[Collider::Type::COIN][Collider::Type::PLAYER_FEET] = true;
-	matrix[Collider::Type::COIN][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::COIN][Collider::Type::COIN] = false;
-	matrix[Collider::Type::COIN][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::COIN][Collider::Type::GOAL_POINT] = false;
-	matrix[Collider::Type::COIN][Collider::Type::ENEMY_ATTACK] = false;
-	matrix[Collider::Type::COIN][Collider::Type::PLAYER_ATTACK] = false;
-	matrix[Collider::Type::COIN][Collider::Type::PLAYER_RANGED_ATTACK] = false;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::LAYER_ZERO] = false;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::INSTANT_DEATH] = false;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::EXIT_1] = false;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::EXIT_2] = false;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::EXIT_3] = false;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::SWITCH] = false;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::NULL_COLLIDER] = false;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::PLAYER_FEET] = true;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::ENABLE_FINAL_BATTLE] = false;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::LAYER_ZERO] = false;
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::ENEMY] = false;
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::INSTANT_DEATH] = false;
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::EXIT_1] = false;
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::EXIT_2] = false;
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::EXIT_3] = false;
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::SWITCH] = false;
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::NULL_COLLIDER] = false;
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::PLAYER_FEET] = true;
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::COIN] = false;
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::GOAL_POINT] = false;
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::ENEMY_ATTACK] = false;
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::PLAYER_ATTACK] = false;
-	matrix[Collider::Type::CHECKPOINT][Collider::Type::PLAYER_RANGED_ATTACK] = false;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::LAYER_ZERO] = false;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::INSTANT_DEATH] = false;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::EXIT_1] = false;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::EXIT_2] = false;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::EXIT_3] = false;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::SWITCH] = false;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::NULL_COLLIDER] = false;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::PLAYER_FEET] = true;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::ENABLE_FINAL_BATTLE] = false;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::TNT_SWITCH][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::LAYER_ZERO] = false;
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::PLAYER] = true;
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::ENEMY] = false;
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::INSTANT_DEATH] = false;
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::EXIT_1] = false;
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::EXIT_2] = false;
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::EXIT_3] = false;
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::SWITCH] = false;
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::NULL_COLLIDER] = false;
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::PLAYER_FEET] = true;
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::RECOVER_LIFE_POWER_UP] = false;
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::COIN] = false;
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::CHECKPOINT] = false;
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::GOAL_POINT] = false;
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::ENEMY_ATTACK] = false;
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::PLAYER_ATTACK] = false;
-	matrix[Collider::Type::GOAL_POINT][Collider::Type::PLAYER_RANGED_ATTACK] = false;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::LAYER_ZERO] = false;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::INSTANT_DEATH] = false;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::EXIT_1] = false;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::EXIT_2] = false;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::EXIT_3] = false;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::SWITCH] = false;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::NULL_COLLIDER] = false;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::PLAYER_FEET] = true;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::ENABLE_FINAL_BATTLE] = false;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 
 }
 
@@ -521,16 +520,16 @@ void ModuleCollisions::DebugDraw()
 			case Collider::Type::NULL_COLLIDER: // black
 				app->render->DrawRectangle(colliders[i]->rect, 0, 0, 0, alpha);
 				break;
-			case Collider::Type::RECOVER_LIFE_POWER_UP: // purple
+			case Collider::Type::DOCTOR_NOTE_MESSAGE: // purple
 				app->render->DrawRectangle(colliders[i]->rect, 128, 0, 255, alpha);
 				break;
-			case Collider::Type::COIN: // light yellow
+			case Collider::Type::ITEM_BUKER_DOOR_KEY: // light yellow
 				app->render->DrawRectangle(colliders[i]->rect, 255, 255, 172, alpha);
 				break;
-			case Collider::Type::CHECKPOINT: // light green
+			case Collider::Type::TNT_SWITCH: // light green
 				app->render->DrawRectangle(colliders[i]->rect, 172, 255, 200, alpha);
 				break;
-			case Collider::Type::GOAL_POINT: // light green
+			case Collider::Type::ENABLE_FINAL_BATTLE: // light green
 				app->render->DrawRectangle(colliders[i]->rect, 172, 255, 200, alpha);
 				break;
 			}
@@ -572,16 +571,16 @@ void ModuleCollisions::DebugDraw()
 			case Collider::Type::NULL_COLLIDER: // black
 				app->render->DrawRectangle(colliders[i]->rect, 255, 255, 255, alpha);
 				break;
-			case Collider::Type::RECOVER_LIFE_POWER_UP: // purple
+			case Collider::Type::DOCTOR_NOTE_MESSAGE: // purple
 				app->render->DrawRectangle(colliders[i]->rect, 255, 255, 255, alpha);
 				break;
-			case Collider::Type::COIN: // light yellow
+			case Collider::Type::ITEM_BUKER_DOOR_KEY: // light yellow
 				app->render->DrawRectangle(colliders[i]->rect, 255, 255, 255, alpha);
 				break;
-			case Collider::Type::CHECKPOINT: // light green
+			case Collider::Type::TNT_SWITCH: // light green
 				app->render->DrawRectangle(colliders[i]->rect, 255, 255, 255, alpha);
 				break;
-			case Collider::Type::GOAL_POINT: // light green
+			case Collider::Type::ENABLE_FINAL_BATTLE: // light green
 				app->render->DrawRectangle(colliders[i]->rect, 255, 255, 255, alpha);
 				break;
 			}
