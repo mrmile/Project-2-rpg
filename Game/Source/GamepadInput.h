@@ -25,6 +25,8 @@ public:
 	// Processes new input and handles player movement
 	bool Update(float dt) override;
 
+	bool PostUpdate();
+
 	// Draws gamepad debug info in the screen
 	void DebugDrawGamepadInfo();
 

@@ -29,6 +29,7 @@
 #include "InventoryMenu.h"
 #include "CombatMenu.h"
 #include "DialogManager.h"
+#include "QuestManager.h"
 #include "GameManager.h"
 
 #include <iostream>
@@ -70,6 +71,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	fonts = new ModuleFonts(false);
 	guiManager = new GuiManager(true);
 	dialogManager = new DialogManager(true);
+	questManager = new QuestManager(true);
 	game_manager = new GameManager(true);
 
 	// Ordered for awake / Start / Update
@@ -100,6 +102,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(combatMenu);
 	AddModule(dialogManager);
 	AddModule(guiManager);
+	AddModule(questManager);
 	AddModule(game_manager);
 	// Render last to swap buffer
 	AddModule(render);

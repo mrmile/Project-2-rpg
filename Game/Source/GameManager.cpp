@@ -87,6 +87,11 @@ bool GameManager::Update(float dt)
 	
 }
 
+bool GameManager::PostUpdate()
+{
+	return true;
+}
+
 void GameManager::ClearList()
 {
 

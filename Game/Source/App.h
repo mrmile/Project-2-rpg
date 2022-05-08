@@ -41,6 +41,7 @@ class PauseMenu;
 class InventoryMenu;
 class CombatMenu;
 class DialogManager;
+class QuestManager;
 class GameManager;
 
 class App
@@ -138,6 +139,7 @@ public:
 	CombatMenu* combatMenu;
 	EntityManager* entity_manager;
 	DialogManager* dialogManager;
+	QuestManager* questManager;
 	GameManager* game_manager;
 
 	bool AppTitleScreenFull = false;

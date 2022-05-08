@@ -162,6 +162,11 @@ bool GamepadInput::Update(float dt)
 	return true;
 }
 
+bool GamepadInput::PostUpdate()
+{
+	return true;
+}
+
 void GamepadInput::DebugDrawGamepadInfo()
 {
 	GamePad& pad = app->input->pads[0];

@@ -34,6 +34,8 @@ public:
 	// Called each loop iteration
 	bool Update(float dt);
 
+	bool PostUpdate();
+
 	void ClearList();
 	
 	int counter = 0;
@@ -42,4 +44,4 @@ public:
 
 };
 
-#endif // __AUDIO_H__
+#endif // __GAME_MANAGER_H__
