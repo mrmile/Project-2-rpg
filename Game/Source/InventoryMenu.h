@@ -68,8 +68,9 @@ public:
 
 private:
 
-	SDL_Texture* combatHUD;
-	SDL_Texture* characterName1;
+	SDL_Texture* inventoryHUD;
+	SDL_Texture* medicKitDescription;
+	/*SDL_Texture* characterName1;*/
 	SDL_Texture* object_food;
 	SDL_Texture* object_health_pack;
 

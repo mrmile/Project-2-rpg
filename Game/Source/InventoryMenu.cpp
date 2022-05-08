@@ -44,7 +44,8 @@ bool InventoryMenu::Awake()
 // Called before the first frame
 bool InventoryMenu::Start()
 {
-	combatHUD = app->tex->Load("Assets/textures/GUI/Inventory/InventoryHud.png"); // Just for testing
+	inventoryHUD = app->tex->Load("Assets/textures/GUI/Inventory/InventoryHud.png");
+	medicKitDescription = app->tex->Load("Assets/textures/GUI/Inventory/medicKitDescription.png");
 	//characterName1 = app->tex->Load("Assets/textures/GUI/Inventory/chararcterName1.png"); // Just for testing
 	object_food = app->tex->Load("Assets/textures/GUI/Inventory/food_item_test.png");
 	object_health_pack = app->tex->Load("Assets/textures/GUI/Inventory/health_pack_item_test.png");
@@ -106,7 +107,7 @@ bool InventoryMenu::PostUpdate()
 
 	if (app->player->pauseMenu == false && app->titleScreen->active == false && app->creditsScreen->active == false && showInventory == true)
 	{
-		app->render->DrawTexture2(combatHUD, 0, 0, NULL); // Just for testing
+		app->render->DrawTexture2(inventoryHUD, 0, 0, NULL);
 		//app->render->DrawTexture2(characterName1, 0, 0, NULL); // Just for testing
 		DrawAllInventoryItems();
 
@@ -121,6 +122,8 @@ bool InventoryMenu::PostUpdate()
 			UseItem->Draw(app->render);
 			DeleteItem->Draw(app->render);
 			//show Usable Options
+
+			app->render->DrawTexture2(medicKitDescription, -15, 0, NULL);
 		}
 	}
 	
@@ -136,10 +139,10 @@ bool InventoryMenu::PostUpdate()
 // Called before quitting
 bool InventoryMenu::CleanUp()
 {
-	app->tex->UnLoad(combatHUD);
-	app->tex->UnLoad(characterName1);
+	app->tex->UnLoad(inventoryHUD);
 	app->tex->UnLoad(object_food);
 	app->tex->UnLoad(object_health_pack);
+	app->tex->UnLoad(medicKitDescription);
 	app->guiManager->DestroyGuiControl(29);
 	app->guiManager->DestroyGuiControl(30);
 	app->guiManager->DestroyGuiControl(31);
@@ -254,6 +257,7 @@ void InventoryMenu::ShowOptions(ItemList* item)
 
 		showEquipableOptions = false;
 		showUsableOptions = true;
+
 	}
 	if (item->equipable == true)
 	{
@@ -288,11 +292,13 @@ bool InventoryMenu::UseItemSelected(ItemList* item)
 		{
 			item->amount--;
 			app->player->playerHP += 10;
+
 			return true;
 		}
 		if (item->type == EntityType::OBJECT_HEALTH_PACK)
 		{
 			item->amount--;
+			app->player->playerHP += 40;
 
 			return true;
 		}
