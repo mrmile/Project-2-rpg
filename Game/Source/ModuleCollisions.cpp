@@ -719,6 +719,9 @@ void ModuleCollisions::DebugDraw()
 			case Collider::Type::ITEM_RADIO:
 				app->render->DrawRectangle(colliders[i]->rect, 255, 0, 0, alpha);
 				break;
+			case Collider::Type::ACTIVE_RADIO:
+				app->render->DrawRectangle(colliders[i]->rect, 255, 0, 0, alpha);
+				break;
 			case Collider::Type::ITEM_DEFAULT_GUN:
 				app->render->DrawRectangle(colliders[i]->rect, 225, 29, 130, alpha);
 				break;

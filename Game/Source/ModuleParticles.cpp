@@ -155,6 +155,18 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	playerRangedAttack.anim.speed = 0.15f;
 	playerRangedAttack.lifetime = 100;
 
+	RadioActive.anim.PushBack({ 350, 17, 40, 35 });
+	RadioActive.anim.PushBack({ 351, 48, 39, 30 });
+	RadioActive.anim.PushBack({ 354, 138, 32, 35 });
+	RadioActive.anim.PushBack({ 380, 138, 40, 35 });
+	RadioActive.anim.PushBack({ 420, 138, 40, 35 });
+	RadioActive.anim.PushBack({ 460, 138, 40, 35 });
+	RadioActive.speed.x = 0;
+	RadioActive.speed.y = 0;
+	RadioActive.anim.loop = true;
+	RadioActive.anim.speed = 0.15f;
+	RadioActive.lifetime = 240;
+
 }
 
 ModuleParticles::~ModuleParticles()

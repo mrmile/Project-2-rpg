@@ -43,6 +43,7 @@ struct Collider
 		ITEM_DEFAULT_GUN,
 		DOCTOR_NOTE_MESSAGE,
 		BASE_COMPUTER,
+		ACTIVE_RADIO,
 
 		MAX
 	};

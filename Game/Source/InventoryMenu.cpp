@@ -400,7 +400,8 @@ bool InventoryMenu::UseItemSelected(ItemList* item)
 		if (item->type == EntityType::OBJECT_RADIO)
 		{
 			item->amount--;
-			//Add particle type radio and with that will be the logic of the zombies following that particle for x period of time
+			//Add radio particle so zombies follow it instead of following the player
+			app->particles->AddParticle(app->particles->RadioActive, app->player->position.x, app->player->position.y+25, Collider::Type::ACTIVE_RADIO);
 
 			return true;
 		}

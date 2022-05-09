@@ -72,6 +72,8 @@ public:
 	Particle playerAttack;
 	Particle playerRangedAttack;
 
+	Particle RadioActive;
+
 private:
 	// Particles spritesheet loaded into an SDL Texture
 	SDL_Texture* texture = nullptr;

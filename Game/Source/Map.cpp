@@ -950,12 +950,39 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		}
 	}
 
+	if (object->name == "object_radio")
+	{
+		pugi::xml_node NewObject;
+		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		{
+			app->entity_manager->AddEntity(EntityType::OBJECT_RADIO, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+		}
+	}
+
 	if (object->name == "object_default_gun")
 	{
 		pugi::xml_node NewObject;
 		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
 		{
 			app->entity_manager->AddEntity(EntityType::OBJECT_DEFAULT_GUN, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+		}
+	}
+
+	if (object->name == "object_short_scope_gun")
+	{
+		pugi::xml_node NewObject;
+		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		{
+			app->entity_manager->AddEntity(EntityType::OBJECT_SHORT_SCOPE_GUN, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+		}
+	}
+
+	if (object->name == "object_long_scope_gun")
+	{
+		pugi::xml_node NewObject;
+		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		{
+			app->entity_manager->AddEntity(EntityType::OBJECT_lONG_SCOPE_GUN, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
 		}
 	}
 
