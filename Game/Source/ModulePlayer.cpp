@@ -40,99 +40,99 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 {
 	name.Create("player");
 
-	idleRightAnim.PushBack({ 1, 539, 60, 67 });
+	idleRightAnim.PushBack({ 0, 472, 54, 60 });
 	idleRightAnim.loop = true;
 	idleRightAnim.speed = 0.3f;
 
-	idleLeftAnim.PushBack({ 1, 539, 60, 67 });
+	idleLeftAnim.PushBack({ 0, 472, 54, 60 });
 	idleLeftAnim.loop = true;
 	idleLeftAnim.speed = 0.3f;
 	
-	idleDownAnim.PushBack({ 1, 539, 60, 67 });
+	idleDownAnim.PushBack({ 0, 472, 54, 60 });
 	idleDownAnim.loop = true;
 	idleDownAnim.speed = 0.3f;
 
-	idleUpAnim.PushBack({ 1, 539, 60, 67 });
+	idleUpAnim.PushBack({ 0, 472, 54, 60 });
 	idleUpAnim.loop = true;
 	idleUpAnim.speed = 0.3f;
 
-	idleUpLeftAnim.PushBack({ 1, 539, 60, 67 });
+	idleUpLeftAnim.PushBack({ 0, 472, 54, 60 });
 	idleUpLeftAnim.loop = true;
 	idleUpLeftAnim.speed = 0.3f;
 
-	idleUpRightAnim.PushBack({ 1, 539, 60, 67 });
+	idleUpRightAnim.PushBack({ 0, 472, 54, 60 });
 	idleUpRightAnim.loop = true;
 	idleUpRightAnim.speed = 0.3f;
 
-	idleDownLeftAnim.PushBack({ 1, 539, 60, 67 });
+	idleDownLeftAnim.PushBack({ 0, 472, 54, 60 });
 	idleDownLeftAnim.loop = true;
 	idleDownLeftAnim.speed = 0.3f;
 
-	idleDownRightAnim.PushBack({ 1, 539, 60, 67 });
+	idleDownRightAnim.PushBack({ 0, 472, 54, 60 });
 	idleDownRightAnim.loop = true;
 	idleDownRightAnim.speed = 0.3f;
 	
-	rightWalkAnim.PushBack({ 1, 539, 60, 67 });
+	rightWalkAnim.PushBack({ 0, 472, 54, 60 });
 	rightWalkAnim.loop = true;
 	rightWalkAnim.speed = 0.3f;
 
-	leftWalkAnim.PushBack({ 1, 539, 60, 67 });
+	leftWalkAnim.PushBack({ 0, 472, 54, 60 });
 	leftWalkAnim.loop = true;
 	leftWalkAnim.speed = 0.3f;
 
-	downWalkAnim.PushBack({ 1, 539, 60, 67 });
+	downWalkAnim.PushBack({ 0, 472, 54, 60 });
 	downWalkAnim.loop = true;
 	downWalkAnim.speed = 0.3f;
 
-	upWalkAnim.PushBack({ 1, 539, 60, 67 });
+	upWalkAnim.PushBack({ 0, 472, 54, 60 });
 	upWalkAnim.loop = true;
 	upWalkAnim.speed = 0.3f;
 
-	rightDownWalkAnim.PushBack({ 1, 539, 60, 67 });
+	rightDownWalkAnim.PushBack({ 0, 472, 54, 60 });
 	rightDownWalkAnim.loop = true;
 	rightDownWalkAnim.speed = 0.3f;
 
-	leftDownWalkAnim.PushBack({ 1, 539, 60, 67 });
+	leftDownWalkAnim.PushBack({ 0, 472, 54, 60 });
 	leftDownWalkAnim.loop = true;
 	leftDownWalkAnim.speed = 0.3f;
 
-	rightUpWalkAnim.PushBack({ 1, 539, 60, 67 });
+	rightUpWalkAnim.PushBack({ 0, 472, 54, 60 });
 	rightUpWalkAnim.loop = true;
 	rightUpWalkAnim.speed = 0.3f;
 
-	leftUpWalkAnim.PushBack({ 1, 539, 60, 67 });
+	leftUpWalkAnim.PushBack({ 0, 472, 54, 60 });
 	leftUpWalkAnim.loop = true;
 	leftUpWalkAnim.speed = 0.3f;
 
-	rightRunAnim.PushBack({ 1, 539, 60, 67 });
+	rightRunAnim.PushBack({ 0, 472, 54, 60 });
 	rightRunAnim.loop = true;
 	rightRunAnim.speed = 0.3f;
 
-	leftRunAnim.PushBack({ 1, 539, 60, 67 });
+	leftRunAnim.PushBack({ 0, 472, 54, 60 });
 	leftRunAnim.loop = true;
 	leftRunAnim.speed = 0.3f;
 
-	downRunAnim.PushBack({ 1, 539, 60, 67 });
+	downRunAnim.PushBack({ 0, 472, 54, 60 });
 	downRunAnim.loop = true;
 	downRunAnim.speed = 0.3f;
 
-	upRunAnim.PushBack({ 1, 539, 60, 67 });
+	upRunAnim.PushBack({ 0, 472, 54, 60 });
 	upRunAnim.loop = true;
 	upRunAnim.speed = 0.3f;
 
-	rightDownRunAnim.PushBack({ 1, 539, 60, 67 });
+	rightDownRunAnim.PushBack({ 0, 472, 54, 60 });
 	rightDownRunAnim.loop = true;
 	rightDownRunAnim.speed = 0.3f;
 
-	leftDownRunAnim.PushBack({ 1, 539, 60, 67 });
+	leftDownRunAnim.PushBack({ 0, 472, 54, 60 });
 	leftDownRunAnim.loop = true;
 	leftDownRunAnim.speed = 0.3f;
 
-	rightUpRunAnim.PushBack({ 1, 539, 60, 67 });
+	rightUpRunAnim.PushBack({ 0, 472, 54, 60 });
 	rightUpRunAnim.loop = true;
 	rightUpRunAnim.speed = 0.3f;
 
-	leftUpRunAnim.PushBack({ 1, 539, 60, 67 });
+	leftUpRunAnim.PushBack({ 0, 472, 54, 60 });
 	leftUpRunAnim.loop = true;
 	leftUpRunAnim.speed = 0.3f;
 
@@ -159,7 +159,7 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 	
-	texture = app->tex->Load("Assets/textures/Character/SWAT_Character.png");
+	texture = app->tex->Load("Assets/textures/Character/SWAT_Character_Size_Test.png");
 
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
 
