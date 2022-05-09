@@ -31,8 +31,9 @@ Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 	EntityKillable = true;
 	//HERE WE ADD THE ANIMATIONS WITH GIMP
 	
+
 	
-	Idle_Enemy.PushBack({24,45,25,56});
+	Idle_Enemy.PushBack({1130,69,71,80});
 	Idle_Enemy.loop = true;
 	Idle_Enemy.speed = 0.3f;
 
@@ -300,14 +301,15 @@ bool Zombie_Standart::Update(float dt)
 
 			
 			
-			return true;
+
 		}
 		
 		
 		
-		return true;
+		
 	}
-	
+	currentAnim = &Idle_Enemy;
+	return true;
 }
 
 
