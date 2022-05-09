@@ -726,10 +726,10 @@ void ModuleCollisions::DebugDraw()
 				app->render->DrawRectangle(colliders[i]->rect, 225, 29, 130, alpha);
 				break;
 			case Collider::Type::ITEM_SHORT_RANGE_GUN:
-				app->render->DrawRectangle(colliders[i]->rect, 255, 0, 0, alpha);
+				app->render->DrawRectangle(colliders[i]->rect, 42, 170, 186, alpha);
 				break;
 			case Collider::Type::ITEM_LONG_RANGE_GUN:
-				app->render->DrawRectangle(colliders[i]->rect, 255, 0, 0, alpha);
+				app->render->DrawRectangle(colliders[i]->rect, 255, 114, 0, alpha);
 				break;
 			case Collider::Type::LAYER_ZERO: // blue
 				app->render->DrawRectangle(colliders[i]->rect, 0, 0, 255, alpha);

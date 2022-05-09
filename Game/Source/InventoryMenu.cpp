@@ -414,7 +414,7 @@ bool InventoryMenu::DeEquipItemSelected(ItemList* item)
 	{
 		if (item->type == EntityType::OBJECT_DEFAULT_GUN)
 		{
-			AddItemToInventory(item->type, false, true);
+			AddItemToInventory(EntityType::OBJECT_DEFAULT_GUN, false, true);
 
 			Equipment.amount = 0;
 			Equipment.alreadyEquipped = false;
@@ -423,19 +423,19 @@ bool InventoryMenu::DeEquipItemSelected(ItemList* item)
 		}
 		if (item->type == EntityType::OBJECT_lONG_SCOPE_GUN)
 		{
-			AddItemToInventory(item->type, false, true);
+			AddItemToInventory(EntityType::OBJECT_lONG_SCOPE_GUN, false, true);
 
-			item->amount = 0;
-			item->alreadyEquipped = false;
+			Equipment.amount = 0;
+			Equipment.alreadyEquipped = false;
 
 			return true;
 		}
 		if (item->type == EntityType::OBJECT_SHORT_SCOPE_GUN)
 		{
-			AddItemToInventory(item->type, false, true);
+			AddItemToInventory(EntityType::OBJECT_SHORT_SCOPE_GUN, false, true);
 
-			item->amount = 0;
-			item->alreadyEquipped = false;
+			Equipment.amount = 0;
+			Equipment.alreadyEquipped = false;
 		
 			return true;
 		}
@@ -462,24 +462,24 @@ bool InventoryMenu::EquipItemSelected(ItemList* item)
 		if (Equipment.type == EntityType::OBJECT_DEFAULT_GUN)
 		{
 			app->player->EquipmentDamage = 2;
-			app->player->EquipmentRange = 100;
+			app->player->EquipmentRange = 150;
 		}
 		if (Equipment.type == EntityType::OBJECT_SHORT_SCOPE_GUN)
 		{
-			app->player->EquipmentDamage = 2;
-			app->player->EquipmentRange = 100;
+			app->player->EquipmentDamage = 6;
+			app->player->EquipmentRange = 75;
 		}
 		if (Equipment.type == EntityType::OBJECT_lONG_SCOPE_GUN)
 		{
-			app->player->EquipmentDamage = 2;
-			app->player->EquipmentRange = 100;
+			app->player->EquipmentDamage = 3;
+			app->player->EquipmentRange = 300;
 		}
 		
 		return true;
 	}
 	if (Equipment.type != EntityType::NONE)
 	{
-		//Add the item again to the item list and restart the equipment list
+		//do not allow the equipment change unless you unequip the item first
 		return true;
 	}
 	

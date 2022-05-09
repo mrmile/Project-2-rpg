@@ -313,14 +313,6 @@ bool ModulePlayer::Update(float dt)
 
 			if (destroyed == false && playerWin == false && app->sceneCave->godMode == false && app->sceneMainMap->godMode == false)
 			{
-				/* Mejor no usarlo para este juego
-				if ((playerFPS % 60) == 0) sceneTimer--;
-				if (sceneTimer <= 0)
-				{
-					sceneTimer = 0;
-					app->player->playerHP = 0;
-				}
-				*/
 				if (app->input->keys[SDL_SCANCODE_LEFT] == KeyState::KEY_REPEAT
 					|| app->input->keys[SDL_SCANCODE_RIGHT] == KeyState::KEY_REPEAT
 					|| app->input->keys[SDL_SCANCODE_UP] == KeyState::KEY_REPEAT
