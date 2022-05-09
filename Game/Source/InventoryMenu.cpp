@@ -200,9 +200,30 @@ void InventoryMenu::DrawAllInventoryItems()
 			{
 				app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
-			//Need to add the rest of the items 
+			if (itemList[i].type == EntityType::OBJECT_RADIO && itemList[i].amount > 0)
+			{
+				//app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
+			}
+			if (itemList[i].type == EntityType::OBJECT_DEFAULT_GUN && itemList[i].amount > 0)
+			{
+				//app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
+			}
+			if (itemList[i].type == EntityType::OBJECT_lONG_SCOPE_GUN && itemList[i].amount > 0)
+			{
+				//app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
+			}
+			if (itemList[i].type == EntityType::OBJECT_SHORT_SCOPE_GUN && itemList[i].amount > 0)
+			{
+				//app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
+			}
 			
 		}
+		/*
+		if (Equipment.type != EntityType::NONE)
+		{
+			app->render->DrawTexture2(object_food, Equipment.itemRect.x, Equipment.itemRect.y);
+		}
+		*/
 	}
 }
 
@@ -320,6 +341,13 @@ bool InventoryMenu::UseItemSelected(ItemList* item)
 
 			return true;
 		}
+		if (item->type == EntityType::OBJECT_RADIO)
+		{
+			item->amount--;
+			// Add particle type radio and with that will be the logic of the zombies following that particle for x period of time
+
+			return true;
+		}
 	}
 }
 bool InventoryMenu::DeleteItemSelected(ItemList* item)
@@ -359,5 +387,12 @@ void InventoryMenu::UpdateItemList()
 				itemList[i].amount = itemUsing.amount;
 			}
 		}
+		/*
+		else if(itemUsing.type == EntityType::NONE)
+		{
+			itemList[i].type = itemUsing.type;
+			itemList[i].amount = 0;
+		}
+		*/
 	}
 }

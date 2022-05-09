@@ -79,4 +79,24 @@ void Entity::OnCollision(Collider* c2)
 	{
 		EntityHP = 0;
 	}
+
+	if ((c2->type == Collider::Type::PLAYER) && (collider->type == Collider::Type::ITEM_RADIO))
+	{
+		EntityHP = 0;
+	}
+
+	if ((c2->type == Collider::Type::PLAYER) && (collider->type == Collider::Type::ITEM_DEFAULT_GUN))
+	{
+		EntityHP = 0;
+	}
+
+	if ((c2->type == Collider::Type::PLAYER) && (collider->type == Collider::Type::ITEM_LONG_RANGE_GUN))
+	{
+		EntityHP = 0;
+	}
+
+	if ((c2->type == Collider::Type::PLAYER) && (collider->type == Collider::Type::ITEM_SHORT_RANGE_GUN))
+	{
+		EntityHP = 0;
+	}
 }
