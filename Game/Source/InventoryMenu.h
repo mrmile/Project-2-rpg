@@ -82,6 +82,8 @@ private:
 	/*SDL_Texture* characterName1;*/
 	SDL_Texture* object_food;
 	SDL_Texture* object_health_pack;
+	SDL_Texture* object_radio;
+	SDL_Texture* default_gun;
 
 public:
 

@@ -49,6 +49,8 @@ bool InventoryMenu::Start()
 	//characterName1 = app->tex->Load("Assets/textures/GUI/Inventory/chararcterName1.png"); // Just for testing
 	object_food = app->tex->Load("Assets/textures/GUI/Inventory/food_item_test.png");
 	object_health_pack = app->tex->Load("Assets/textures/GUI/Inventory/health_pack_item_test.png");
+	object_radio = app->tex->Load("Assets/textures/GUI/Inventory/radio_item.png");
+	default_gun = app->tex->Load("Assets/textures/GUI/Inventory/default_gun.png");
 	//Still need button textures the position does not matter right now as we are gonna update it 
 
 	Equipment.itemRect = { 70,107,26,25 };
@@ -158,6 +160,8 @@ bool InventoryMenu::CleanUp()
 	app->tex->UnLoad(object_food);
 	app->tex->UnLoad(object_health_pack);
 	app->tex->UnLoad(medicKitDescription);
+	app->tex->UnLoad(object_radio);
+	app->tex->UnLoad(default_gun);
 	app->guiManager->DestroyGuiControl(29);
 	app->guiManager->DestroyGuiControl(30);
 	app->guiManager->DestroyGuiControl(31);
@@ -217,11 +221,11 @@ void InventoryMenu::DrawAllInventoryItems()
 			}
 			if (itemList[i].type == EntityType::OBJECT_RADIO && itemList[i].amount > 0)
 			{
-				//app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
+				app->render->DrawTexture2(object_radio, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
 			if (itemList[i].type == EntityType::OBJECT_DEFAULT_GUN && itemList[i].amount > 0)
 			{
-				//app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
+				app->render->DrawTexture2(default_gun, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
 			if (itemList[i].type == EntityType::OBJECT_lONG_SCOPE_GUN && itemList[i].amount > 0)
 			{
