@@ -225,7 +225,7 @@ bool ModulePlayer::Start()
 	checkPointReached = false;
 
 	collider = app->collisions->AddCollider({ position.x + 5, position.y - 56, 45, 56 }, Collider::Type::PLAYER, this); //{ position.x + 5, position.y + 3, 28, 33 
-	//colliderFeet = app->collisions->AddCollider({ position.x + 5, position.y + 23, 18, 10 }, Collider::Type::PLAYER_FEET, this);
+	
 
 	Player = app->physics->CreatePlayerBox(position.x, position.y, 20, 5);
 	//app->physics->CreateRectangleSensor(position.x, position.y + 16, 28, 1);
@@ -300,12 +300,11 @@ bool ModulePlayer::Update(float dt)
 	if (pauseMenu == false && app->inventoryMenu->showInventory == false)
 	{
 		playerFPS++;
-		/*invincibleDelay++;*/
+		
 
 		//OPTICK_EVENT();
 		collider->SetPos(position.x + 5, position.y - 56);
-		//colliderFeet->SetPos(position.x + 5, position.y + 23);
-		//Player->body->SetTransform({ positionToB2D.x, positionToB2D.y }, 0);
+		
 		playerTimer++;
 		//------------------------------------------------------------------------------------------------------------------------------------------
 		if (talking == false && entityStatePlayer == GameState::OutOfCombat)

@@ -68,7 +68,7 @@ void Entity::OnCollision(Collider* c2)
 
 	if ((c2->type == Collider::Type::PLAYER_ATTACK) && (EntityKillable == true))
 	{
-		EntityHP -= 1;
+		EntityHP -= app->player->EquipmentDamage;
 	}
 
 	if ((c2->type == Collider::Type::PLAYER) && (collider->type == Collider::Type::ITEM_FOOD))

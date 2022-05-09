@@ -51,11 +51,13 @@ bool InventoryMenu::Start()
 	object_health_pack = app->tex->Load("Assets/textures/GUI/Inventory/health_pack_item_test.png");
 	//Still need button textures the position does not matter right now as we are gonna update it 
 
-	
+	Equipment.itemRect = { 70,107,26,25 };
+
 	DeleteItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 29, "Delete item Button", { 25,160,26,25 }, this, object_health_pack, NULL, {});
-	EquipItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 30, "Equip item Button", { 25,160,26,25 }, this, NULL, NULL, {});
+	EquipItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 30, "Equip item Button", { 25,160,26,25 }, this, object_food, NULL, {});
 	UseItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 31, "Use item Button", { 25,160,26,25 }, this, object_food, NULL, {});
-	
+	DeEquipButton = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 33, "DeEquip item button", { 25,160,26,25 }, this, object_food, NULL, {});
+	EquipmentButton = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 34, "EquipmentButton", Equipment.itemRect, this, NULL, NULL, {});
 
 	int counter = 0;
 
@@ -78,7 +80,7 @@ bool InventoryMenu::Start()
 	}
 
 
-	//Equipment.itemRect = { 70,107,26,25 };
+	
 
 	return true;
 }
@@ -96,6 +98,13 @@ bool InventoryMenu::Update(float dt)
 	
 	app->input->GetMousePosition(mouseX, mouseY);
 	UpdateItemList();
+	UpdateEquipment();
+
+	if (Equipment.type == EntityType::NONE)
+	{
+		app->player->EquipmentDamage = 0;
+		app->player->EquipmentRange = 0;
+	}
 
 	return true;
 }
@@ -110,6 +119,7 @@ bool InventoryMenu::PostUpdate()
 		app->render->DrawTexture2(inventoryHUD, 0, 0, NULL);
 		//app->render->DrawTexture2(characterName1, 0, 0, NULL); // Just for testing
 		DrawAllInventoryItems();
+		DrawEquipment();
 
 		if (showEquipableOptions == true)
 		{
@@ -125,12 +135,17 @@ bool InventoryMenu::PostUpdate()
 
 			DrawItemDescription(&itemUsing);
 		}
+		if (showOptionsForEquipment == true)
+		{
+			DeEquipButton->Draw(app->render);
+		}
 	}
 	
 	if (showInventory == false)
 	{
 		showEquipableOptions = false;
 		showUsableOptions = false;
+		showOptionsForEquipment = false;
 	}
 
 	return true;
@@ -218,16 +233,27 @@ void InventoryMenu::DrawAllInventoryItems()
 			}
 			
 		}
-		/*
-		if (Equipment.type != EntityType::NONE)
-		{
-			app->render->DrawTexture2(object_food, Equipment.itemRect.x, Equipment.itemRect.y);
-		}
-		*/
 	}
 }
 
-
+void InventoryMenu::DrawEquipment()
+{
+	if (Equipment.type != EntityType::NONE)
+	{
+		if (Equipment.type == EntityType::OBJECT_DEFAULT_GUN && Equipment.amount > 0)
+		{
+			app->render->DrawTexture2(object_health_pack, Equipment.itemRect.x, Equipment.itemRect.y);
+		}
+		if (Equipment.type == EntityType::OBJECT_lONG_SCOPE_GUN && Equipment.amount > 0)
+		{
+			//app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
+		}
+		if (Equipment.type == EntityType::OBJECT_SHORT_SCOPE_GUN && Equipment.amount > 0)
+		{
+			//app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
+		}
+	}
+}
 
 bool InventoryMenu::OnGuiMouseClickEvent(GuiControl* control)
 {
@@ -246,6 +272,7 @@ bool InventoryMenu::OnGuiMouseClickEvent(GuiControl* control)
 		{
 			//Equip item button
 			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
+			EquipItemSelected(&itemUsing);
 		}
 		if (control->id == 31 && UseItem->canClick == true)
 		{
@@ -257,9 +284,20 @@ bool InventoryMenu::OnGuiMouseClickEvent(GuiControl* control)
 		{
 			//Item Button in general
 			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
-
 			ShowOptions(&GetItemFromPosition(mouseX, mouseY));
 		
+		}
+		if (control->id == 33)
+		{
+			//DeEquip button
+			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
+			DeEquipItemSelected(&itemUsing);
+		}
+		if (control->id == 34)
+		{
+			//Equipment Button
+			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
+			ShowOptions(&GetItemFromPosition(mouseX, mouseY));
 		}
 	}
 	}
@@ -278,6 +316,7 @@ void InventoryMenu::ShowOptions(ItemList* item)
 
 		showEquipableOptions = false;
 		showUsableOptions = true;
+		showOptionsForEquipment = false;
 
 	}
 	if (item->equipable == true)
@@ -289,6 +328,16 @@ void InventoryMenu::ShowOptions(ItemList* item)
 
 		showUsableOptions = false;
 		showEquipableOptions = true;
+		showOptionsForEquipment = false;
+	}
+	if (item->alreadyEquipped == true)
+	{
+		DeEquipButton->bounds.x = item->itemRect.x + item->itemRect.w;
+		DeEquipButton->bounds.y = item->itemRect.y;
+
+		showOptionsForEquipment = true;
+		showUsableOptions = false;
+		showEquipableOptions = false;
 	}
 }
 
@@ -301,6 +350,13 @@ ItemList InventoryMenu::GetItemFromPosition(int mouseX, int mouseY)
 		{
 			itemUsing = itemList[i];
 			return itemList[i];
+		}
+
+		if ((mouseX > Equipment.itemRect.x && mouseX < (Equipment.itemRect.x + Equipment.itemRect.w)) &&
+			(mouseY > Equipment.itemRect.y && mouseY < Equipment.itemRect.y + Equipment.itemRect.h))
+		{
+			itemUsing = Equipment;
+			return Equipment;
 		}
 	}
 }
@@ -344,8 +400,42 @@ bool InventoryMenu::UseItemSelected(ItemList* item)
 		if (item->type == EntityType::OBJECT_RADIO)
 		{
 			item->amount--;
-			// Add particle type radio and with that will be the logic of the zombies following that particle for x period of time
+			//Add particle type radio and with that will be the logic of the zombies following that particle for x period of time
 
+			return true;
+		}
+	}
+}
+
+bool InventoryMenu::DeEquipItemSelected(ItemList* item)
+{
+	if (item->type != EntityType::NONE)
+	{
+		if (item->type == EntityType::OBJECT_DEFAULT_GUN)
+		{
+			AddItemToInventory(item->type, false, true);
+
+			Equipment.amount = 0;
+			Equipment.alreadyEquipped = false;
+			
+			return true;
+		}
+		if (item->type == EntityType::OBJECT_lONG_SCOPE_GUN)
+		{
+			AddItemToInventory(item->type, false, true);
+
+			item->amount = 0;
+			item->alreadyEquipped = false;
+
+			return true;
+		}
+		if (item->type == EntityType::OBJECT_SHORT_SCOPE_GUN)
+		{
+			AddItemToInventory(item->type, false, true);
+
+			item->amount = 0;
+			item->alreadyEquipped = false;
+		
 			return true;
 		}
 	}
@@ -365,7 +455,25 @@ bool InventoryMenu::EquipItemSelected(ItemList* item)
 	{
 		//Also need to create a function for the player that updates it's damage in function of the item equipped
 		Equipment.type = item->type;
-		item->type = EntityType::NONE;
+		Equipment.alreadyEquipped = true;
+		Equipment.amount = 1;
+		item->amount--;
+		if (Equipment.type == EntityType::OBJECT_DEFAULT_GUN)
+		{
+			app->player->EquipmentDamage = 2;
+			app->player->EquipmentRange = 100;
+		}
+		if (Equipment.type == EntityType::OBJECT_SHORT_SCOPE_GUN)
+		{
+			app->player->EquipmentDamage = 2;
+			app->player->EquipmentRange = 100;
+		}
+		if (Equipment.type == EntityType::OBJECT_lONG_SCOPE_GUN)
+		{
+			app->player->EquipmentDamage = 2;
+			app->player->EquipmentRange = 100;
+		}
+		
 		return true;
 	}
 	if (Equipment.type != EntityType::NONE)
@@ -385,14 +493,32 @@ void InventoryMenu::UpdateItemList()
 			if (itemList[i].type == itemUsing.type)
 			{
 				itemList[i].amount = itemUsing.amount;
+
+				if (itemList[i].amount == 0)
+				{
+					itemList[i].usable = false;
+					itemList[i].equipable = false;
+					itemList[i].type = EntityType::NONE;
+				}
 			}
 		}
-		/*
-		else if(itemUsing.type == EntityType::NONE)
+		
+	}
+}
+
+void InventoryMenu::UpdateEquipment()
+{
+	if (itemUsing.type != EntityType::NONE)
+	{
+		if (Equipment.type == itemUsing.type)
 		{
-			itemList[i].type = itemUsing.type;
-			itemList[i].amount = 0;
+
+			if (Equipment.amount == 0)
+			{
+				Equipment.usable = false;
+				Equipment.equipable = false;
+				Equipment.type = EntityType::NONE;
+			}
 		}
-		*/
 	}
 }

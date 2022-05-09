@@ -109,6 +109,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_GRENADE] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_LONG_RANGE_GUN] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_SHORT_RANGE_GUN] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_DEFAULT_GUN] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::BASE_COMPUTER] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_RADIO] = true;
 

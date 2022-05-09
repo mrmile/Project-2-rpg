@@ -18,6 +18,7 @@ struct ItemList
 	bool usable = false;
 	bool equipable = false;
 	SDL_Rect itemRect = { 0,0,0,0 };
+	bool alreadyEquipped = false;
 };
 class InventoryMenu : public Module
 {
@@ -47,10 +48,12 @@ public:
 	bool CleanUp();
 
 	void DrawAllInventoryItems();
+	void DrawEquipment();
 
 	bool OnGuiMouseClickEvent(GuiControl* control);
 
 	void ShowOptions(ItemList* item);
+
 
 	bool DrawItemDescription(ItemList* item);
 
@@ -58,9 +61,13 @@ public:
 
 	bool DeleteItemSelected(ItemList* item);
 
+	bool DeEquipItemSelected(ItemList* item);
+
 	bool AddItemToInventory(EntityType type, bool usable, bool equipable);
 
 	void UpdateItemList();
+
+	void UpdateEquipment();
 
 	ItemList GetItemFromPosition(int mouseX, int mouseY);
 
@@ -81,6 +88,8 @@ public:
 	GuiButton* UseItem;
 	GuiButton* DeleteItem;
 	GuiButton* EquipItem;
+	GuiButton* EquipmentButton;
+	GuiButton* DeEquipButton;
 	GuiButton* ItemButton[MAX_ITEMS];
 
 	ItemList itemList[MAX_ITEMS];
@@ -94,6 +103,8 @@ public:
 
 	bool showEquipableOptions = false;
 	bool showUsableOptions = false;
+
+	bool showOptionsForEquipment = false;
 };
 
 #endif // __SCENE_FOREST_H__

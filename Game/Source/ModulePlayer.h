@@ -65,6 +65,11 @@ public:
 	//Player body for physics implementation
 	PhysBody* Player;
 
+	//Related to Equipment (this will be later used in combat)
+	
+	int EquipmentRange;
+	int EquipmentDamage;
+
 
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
@@ -131,7 +136,6 @@ public:
 
 	// The player's colliders
 	Collider* collider = nullptr;
-	Collider* colliderFeet = nullptr;
 
 	// A flag to detect when the player has been destroyed
 	bool destroyed = false;
