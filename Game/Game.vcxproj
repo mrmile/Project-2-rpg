@@ -162,10 +162,12 @@
     <ClCompile Include="Source\NPCs4.cpp" />
     <ClCompile Include="Source\Object_DefaultGun.cpp" />
     <ClCompile Include="Source\Object_Food.cpp" />
+    <ClCompile Include="Source\Object_Grenade.cpp" />
     <ClCompile Include="Source\Object_HealthPack.cpp" />
     <ClCompile Include="Source\Object_LongScopeGun.cpp" />
     <ClCompile Include="Source\Object_Radio.cpp" />
     <ClCompile Include="Source\Object_ShortScopeGun.cpp" />
+    <ClCompile Include="Source\Object_Card.cpp" />
     <ClCompile Include="Source\Particle.cpp" />
     <ClCompile Include="Source\Pathfinding.cpp" />
     <ClCompile Include="Source\PauseMenu.cpp" />
@@ -215,10 +217,12 @@
     <ClInclude Include="Source\NPCs4.h" />
     <ClInclude Include="Source\Object_DefaultGun.h" />
     <ClInclude Include="Source\Object_Food.h" />
+    <ClInclude Include="Source\Object_Grenade.h" />
     <ClInclude Include="Source\Object_HealthPack.h" />
     <ClInclude Include="Source\Object_LongScopeGun.h" />
     <ClInclude Include="Source\Object_Radio.h" />
     <ClInclude Include="Source\Object_ShortScopeGun.h" />
+    <ClInclude Include="Source\Object_Card.h" />
     <ClInclude Include="Source\Particle.h" />
     <ClInclude Include="Source\Pathfinding.h" />
     <ClInclude Include="Source\PauseMenu.h" />

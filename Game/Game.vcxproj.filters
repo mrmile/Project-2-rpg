@@ -172,6 +172,12 @@
     <ClCompile Include="Source\Map.cpp">
       <Filter>General\Scenes and Maps\Maps</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Object_Card.cpp">
+      <Filter>General\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Object_Grenade.cpp">
+      <Filter>General\Entities\Items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -374,6 +380,12 @@
     </ClInclude>
     <ClInclude Include="Source\Map.h">
       <Filter>General\Scenes and Maps\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Object_Card.h">
+      <Filter>General\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Object_Grenade.h">
+      <Filter>General\Entities\Items</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
