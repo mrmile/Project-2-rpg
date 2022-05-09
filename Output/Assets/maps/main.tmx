@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="31" nextobjectid="217">
+<map version="1.5" tiledversion="1.7.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="34" nextobjectid="220">
  <tileset firstgid="1" name="city_walls" tilewidth="75" tileheight="117" tilecount="128" columns="16">
   <image source="city_walls.png" width="1250" height="936"/>
  </tileset>
@@ -140296,6 +140296,21 @@
  <objectgroup id="30" name="object_default_gun">
   <object id="216" x="3207.5" y="3117.5" width="85" height="19">
    <text wrap="1">DefaultGun</text>
+  </object>
+ </objectgroup>
+ <objectgroup id="31" name="object_radio">
+  <object id="217" x="3317.5" y="2926.5" width="85" height="19">
+   <text wrap="1">Radio</text>
+  </object>
+ </objectgroup>
+ <objectgroup id="32" name="object_short_scope_gun">
+  <object id="218" x="3461.5" y="3028.5" width="85" height="19">
+   <text wrap="1">ShortScope</text>
+  </object>
+ </objectgroup>
+ <objectgroup id="33" name="object_long_scope_gun">
+  <object id="219" x="3362.5" y="3112.5" width="85" height="19">
+   <text wrap="1">LongScope</text>
   </object>
  </objectgroup>
  <objectgroup color="#0000ff" id="10" name="sensors_LAYER_ZERO">
