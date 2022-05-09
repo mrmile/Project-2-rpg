@@ -123,7 +123,7 @@ bool InventoryMenu::PostUpdate()
 			DeleteItem->Draw(app->render);
 			//show Usable Options
 
-			app->render->DrawTexture2(medicKitDescription, -15, 0, NULL);
+			DrawItemDescription(&itemUsing);
 		}
 	}
 	
@@ -284,6 +284,24 @@ ItemList InventoryMenu::GetItemFromPosition(int mouseX, int mouseY)
 	}
 }
 
+bool InventoryMenu::DrawItemDescription(ItemList* item)
+{
+	if (item->amount > 0)
+	{
+		/*if (item->type == EntityType::OBJECT_FOOD)
+		{
+		
+			return true;
+		}*/
+		if (item->type == EntityType::OBJECT_HEALTH_PACK)
+		{
+			app->render->DrawTexture2(medicKitDescription, -15, 0, NULL);
+
+			return true;
+		}
+	}
+}
+
 bool InventoryMenu::UseItemSelected(ItemList* item)
 {
 	if (item->amount > 0)
@@ -291,14 +309,14 @@ bool InventoryMenu::UseItemSelected(ItemList* item)
 		if (item->type == EntityType::OBJECT_FOOD)
 		{
 			item->amount--;
-			app->player->playerHP += 10;
+			app->player->playerHP += 15;
 
 			return true;
 		}
 		if (item->type == EntityType::OBJECT_HEALTH_PACK)
 		{
 			item->amount--;
-			app->player->playerHP += 40;
+			app->player->playerHP += 100;
 
 			return true;
 		}

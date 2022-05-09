@@ -52,6 +52,8 @@ public:
 
 	void ShowOptions(ItemList* item);
 
+	bool DrawItemDescription(ItemList* item);
+
 	bool UseItemSelected(ItemList* item);
 
 	bool DeleteItemSelected(ItemList* item);
