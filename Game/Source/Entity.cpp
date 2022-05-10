@@ -90,6 +90,11 @@ void Entity::OnCollision(Collider* c2)
 		EntityHP = 0;
 	}
 
+	if ((c2->type == Collider::Type::PLAYER) && (collider->type == Collider::Type::ITEM_GRENADE))
+	{
+		EntityHP = 0;
+	}
+
 	if ((c2->type == Collider::Type::PLAYER) && (collider->type == Collider::Type::ITEM_DEFAULT_GUN))
 	{
 		EntityHP = 0;

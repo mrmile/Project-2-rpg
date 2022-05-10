@@ -26,6 +26,7 @@
 #include "Object_ShortScopeGun.h"
 #include "Object_Radio.h"
 #include "Object_Card.h"
+#include "Object_Grenade.h"
 
 #define SPAWN_MARGIN 500
 
@@ -283,6 +284,15 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 
 				break;
 
+			case EntityType::OBJECT_GRENADE:
+				entities[i] = new Object_Grenade(info.x, info.y);
+				HelperQueue[i].type = EntityType::OBJECT_GRENADE;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				//entities[i]->texture =;
+
+				break;
+
 			case EntityType::ZOMBIE_STANDART:
 				entities[i] = new Zombie_Standart(info.x,info.y);
 				HelperQueue[i].type = EntityType::ZOMBIE_STANDART;
@@ -428,6 +438,11 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 					entities[i]->SetToDelete();
 					entities[i] = nullptr;
 				}
+				if (HelperQueue[i].type == EntityType::OBJECT_GRENADE)
+				{
+					entities[i]->SetToDelete();
+					entities[i] = nullptr;
+				}
 				if (HelperQueue[i].type == EntityType::OBJECT_DEFAULT_GUN)
 				{
 					entities[i]->SetToDelete();
@@ -495,6 +510,10 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				if (HelperQueue[i].type == EntityType::OBJECT_CARD)
 				{
 					AddEntity(EntityType::OBJECT_CARD, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::OBJECT_GRENADE)
+				{
+					AddEntity(EntityType::OBJECT_GRENADE, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
 				if (HelperQueue[i].type == EntityType::OBJECT_DEFAULT_GUN)
 				{

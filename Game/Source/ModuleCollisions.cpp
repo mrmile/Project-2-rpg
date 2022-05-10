@@ -764,6 +764,9 @@ void ModuleCollisions::DebugDraw()
 			case Collider::Type::ITEM_CARD:
 				app->render->DrawRectangle(colliders[i]->rect, 255, 114, 90, alpha);
 				break;
+			case Collider::Type::ITEM_GRENADE:
+				app->render->DrawRectangle(colliders[i]->rect, 255, 114, 90, alpha);
+				break;
 			case Collider::Type::LAYER_ZERO: // blue
 				app->render->DrawRectangle(colliders[i]->rect, 0, 0, 255, alpha);
 				break;

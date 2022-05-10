@@ -87,6 +87,7 @@ private:
 	SDL_Texture* default_gun;
 	SDL_Texture* long_gun;
 	SDL_Texture* short_gun;
+	SDL_Texture* object_grenade;
 
 public:
 

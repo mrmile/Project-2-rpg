@@ -51,6 +51,7 @@ bool InventoryMenu::Start()
 	object_health_pack = app->tex->Load("Assets/textures/GUI/Inventory/health_pack_item_test.png");
 	object_radio = app->tex->Load("Assets/textures/GUI/Inventory/radio_item.png");
 	object_card = app->tex->Load("Assets/textures/GUI/Inventory/card_item.png");
+	object_grenade = app->tex->Load("Assets/textures/GUI/Inventory/grenade_item.png");
 	default_gun = app->tex->Load("Assets/textures/GUI/Inventory/default_gun.png");
 	short_gun = app->tex->Load("Assets/textures/GUI/Inventory/short_scope_gun.png");
 	long_gun = app->tex->Load("Assets/textures/GUI/Inventory/long_scope_gun.png");
@@ -168,6 +169,7 @@ bool InventoryMenu::CleanUp()
 	app->tex->UnLoad(default_gun);
 	app->tex->UnLoad(short_gun);
 	app->tex->UnLoad(long_gun);
+	app->tex->UnLoad(object_grenade);
 	app->guiManager->DestroyGuiControl(29);
 	app->guiManager->DestroyGuiControl(30);
 	app->guiManager->DestroyGuiControl(31);
@@ -232,6 +234,10 @@ void InventoryMenu::DrawAllInventoryItems()
 			if (itemList[i].type == EntityType::OBJECT_CARD && itemList[i].amount > 0)
 			{
 				app->render->DrawTexture2(object_card, itemList[i].itemRect.x, itemList[i].itemRect.y);
+			}
+			if (itemList[i].type == EntityType::OBJECT_GRENADE && itemList[i].amount > 0)
+			{
+				app->render->DrawTexture2(object_grenade, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
 			if (itemList[i].type == EntityType::OBJECT_DEFAULT_GUN && itemList[i].amount > 0)
 			{
