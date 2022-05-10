@@ -8,7 +8,6 @@
 #include "ModuleParticles.h"
 #include "EntityManager.h"
 #include "ModulePlayer.h"
-#include "Entity.h"
 #include "Window.h"
 #include "QuestManager.h"
 
