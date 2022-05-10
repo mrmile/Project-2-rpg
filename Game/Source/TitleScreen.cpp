@@ -254,11 +254,12 @@ bool TitleScreen::Update(float dt)
 			app->fonts->Enable();
 			app->tex->Enable();
 			app->pause_menu->Enable();
+
 			app->player->score = 0;
 			app->player->lives = 3;
 			SavedGame = false;
 			app->player->entranceID = 0;
-			
+			app->questManager->mainQuestID = FIND_THE_DOCTOR_1;
 
 			app->titleScreen->Disable();
 			//app->fade->FadeToBlack(app->titleScreen, app->sceneCave, 60);

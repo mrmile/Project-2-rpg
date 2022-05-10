@@ -197,9 +197,16 @@ bool PauseMenu::Update(float dt)
 
 		if (noPauseTimer <= 1)
 		{
-			if(app->sceneMainMap->sceneMainMap == true) app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);
+			if (app->sceneMainMap->sceneMainMap == true)
+			{
+				if (app->questManager->mainQuestID == FIND_THE_DOCTOR_1)app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);
+				else if (app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2)app->audio->ChangeMusic(MAIN_MAP_AT_NIGHT, 0.5f, 0.5f);
+				else if (app->questManager->mainQuestID == KILL_THE_PATIENT_ZERO_3)app->audio->ChangeMusic(MAIN_MAP_SUNRISE, 0.5f, 0.5f);
+			}
 			if(app->sceneCave->sceneCave == true) app->audio->ChangeMusic(CAVE, 0.5f, 0.5f);
 			if (app->sceneBase->sceneBase == true) app->audio->ChangeMusic(BASE, 0.5f, 0.5f);
+			if (app->sceneMotel->sceneMotel == true) app->audio->ChangeMusic(MOTEL_ZONE, 0.5f, 0.5f);
+
 		}
 	}
 	if (app->player->pauseMenu == false)

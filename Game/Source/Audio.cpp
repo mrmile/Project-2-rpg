@@ -293,7 +293,7 @@ bool Audio::ChangeMusic(int Id, float fadeInTime, float fadeOutTime)
 	{
 		Mix_ResumeMusic();
 
-		app->audio->PlayMusic("Assets/Audio/Music/road_zone_mainHub_night.ogg", fadeInTime, fadeOutTime);
+		app->audio->PlayMusic("Assets/Audio/Music/road_zone_mainHub_night.wav", fadeInTime, fadeOutTime);
 
 		break;
 	}

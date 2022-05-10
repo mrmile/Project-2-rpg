@@ -55,6 +55,7 @@ public:
 	SDL_Rect* rectangle = {};
 
 	SDL_Texture* spotLight;
+	SDL_Texture* sunrise_effect;
 
 private:
 	SDL_Texture* img;

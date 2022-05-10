@@ -51,7 +51,10 @@ bool SceneMainMap::Start()
 
 	app->map->Load("main.tmx");
 
-	app->tex->Load("Assets/textures/GUI/PauseMenuFrame.png");
+	spotLight = app->tex->Load("Assets/textures/Particles/spotlight_night.png");
+	sunrise_effect = app->tex->Load("Assets/textures/Particles/sunrise_lighting.png");
+
+	//app->tex->Load("Assets/textures/GUI/PauseMenuFrame.png");
 	sceneTimer = 0;
 	
 	//b2Filter filter;
@@ -196,7 +199,9 @@ bool SceneMainMap::PostUpdate()
 	bool ret = true;
 	if (sceneTimer <= 2)
 	{
-		app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);
+		if (app->questManager->mainQuestID == FIND_THE_DOCTOR_1)app->audio->ChangeMusic(MAIN_MAP, 0.5f, 0.5f);
+		else if (app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2)app->audio->ChangeMusic(MAIN_MAP_AT_NIGHT, 0.5f, 0.5f);
+		else if (app->questManager->mainQuestID == KILL_THE_PATIENT_ZERO_3)app->audio->ChangeMusic(MAIN_MAP_SUNRISE, 0.5f, 0.5f);
 	}
 	
 	//if (app->player->horizontalCB == false && app->player->bidimensionalCB == false && sceneTimer > 1) app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 150) + 630);
@@ -282,6 +287,10 @@ bool SceneMainMap::PostUpdate()
 bool SceneMainMap::CleanUp()
 {
 	LOG("Freeing scene");
+
+	app->tex->UnLoad(spotLight);
+	app->tex->UnLoad(sunrise_effect);
+
 	destroyScene = true;
 	sceneMainMap = false;
 
