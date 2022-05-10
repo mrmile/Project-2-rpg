@@ -33,7 +33,7 @@ Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 	
 
 	
-	Idle_Enemy.PushBack({1130,69,71,80});
+	Idle_Enemy.PushBack({186,956,36,61});
 	Idle_Enemy.loop = true;
 	Idle_Enemy.speed = 0.3f;
 
