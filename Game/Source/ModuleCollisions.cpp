@@ -112,6 +112,36 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_DEFAULT_GUN] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::BASE_COMPUTER] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_RADIO] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_CARD] = true;
+
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::LAYER_ZERO] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::INSTANT_DEATH] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::EXIT_1] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::EXIT_2] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::EXIT_3] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::SWITCH] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::NULL_COLLIDER] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::PLAYER_FEET] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::ITEM_BUKER_DOOR_KEY] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::ENEMY_RANGED_ATTACK] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::RANGED_ENEMY] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::ENEMY_RANGED_ATTACK] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::ITEM_FOOD] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::ITEM_HEALTH_PACK] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::ITEM_GRENADE] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::ITEM_LONG_RANGE_GUN] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::ITEM_SHORT_RANGE_GUN] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::ITEM_DEFAULT_GUN] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::BASE_COMPUTER] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::ITEM_RADIO] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::ITEM_CARD] = false;
 
 	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::LAYER_ZERO] = true;
 	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::PLAYER_ATTACK] = false;
@@ -730,6 +760,9 @@ void ModuleCollisions::DebugDraw()
 				break;
 			case Collider::Type::ITEM_LONG_RANGE_GUN:
 				app->render->DrawRectangle(colliders[i]->rect, 255, 114, 0, alpha);
+				break;
+			case Collider::Type::ITEM_CARD:
+				app->render->DrawRectangle(colliders[i]->rect, 255, 114, 90, alpha);
 				break;
 			case Collider::Type::LAYER_ZERO: // blue
 				app->render->DrawRectangle(colliders[i]->rect, 0, 0, 255, alpha);
