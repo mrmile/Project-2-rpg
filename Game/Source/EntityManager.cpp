@@ -19,13 +19,13 @@
 #include "Zombie_Runner.h"
 #include "Zombie_Spitter.h"
 
-#include "Object_Food.h"
-#include "Object_HealthPack.h"
-#include "Object_DefaultGun.h"
-#include "Object_LongScopeGun.h"
-#include "Object_ShortScopeGun.h"
-#include "Object_Radio.h"
-#include "Object_Card.h"
+//#include "Object_Food.h"
+//#include "Object_HealthPack.h"
+//#include "Object_DefaultGun.h"
+//#include "Object_LongScopeGun.h"
+//#include "Object_ShortScopeGun.h"
+//#include "Object_Radio.h"
+//#include "Object_Card.h"
 
 #define SPAWN_MARGIN 500
 
@@ -227,61 +227,61 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				entities[i]->type = info.type;
 				//entities[i]->texture = texture_npcs;
 				break;
-			case EntityType::OBJECT_FOOD:
-				//entities[i]->texture = texture_objects;
-				entities[i] = new Object_Food(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_FOOD;
-				break;
-			case EntityType::OBJECT_HEALTH_PACK:
-				//entities[i]->texture = texture_objects;
-				entities[i] = new Object_HealthPack(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_HEALTH_PACK;
-				break;
+			//case EntityType::OBJECT_FOOD:
+			//	//entities[i]->texture = texture_objects;
+			//	entities[i] = new Object_Food(info.x, info.y);
+			//	HelperQueue[i].type = EntityType::OBJECT_FOOD;
+			//	break;
+			//case EntityType::OBJECT_HEALTH_PACK:
+			//	//entities[i]->texture = texture_objects;
+			//	entities[i] = new Object_HealthPack(info.x, info.y);
+			//	HelperQueue[i].type = EntityType::OBJECT_HEALTH_PACK;
+			//	break;
 
-			case EntityType::OBJECT_DEFAULT_GUN:
-				entities[i] = new Object_DefaultGun(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_DEFAULT_GUN;
-				entities[i]->id = i;
-				entities[i]->type = info.type;
-				//entities[i]->texture =;
+			//case EntityType::OBJECT_DEFAULT_GUN:
+			//	entities[i] = new Object_DefaultGun(info.x, info.y);
+			//	HelperQueue[i].type = EntityType::OBJECT_DEFAULT_GUN;
+			//	entities[i]->id = i;
+			//	entities[i]->type = info.type;
+			//	//entities[i]->texture =;
 
-				break;
+			//	break;
 
-			case EntityType::OBJECT_lONG_SCOPE_GUN:
-				entities[i] = new Object_LongScopeGun(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_lONG_SCOPE_GUN;
-				entities[i]->id = i;
-				entities[i]->type = info.type;
-				//entities[i]->texture =;
+			//case EntityType::OBJECT_lONG_SCOPE_GUN:
+			//	entities[i] = new Object_LongScopeGun(info.x, info.y);
+			//	HelperQueue[i].type = EntityType::OBJECT_lONG_SCOPE_GUN;
+			//	entities[i]->id = i;
+			//	entities[i]->type = info.type;
+			//	//entities[i]->texture =;
 
-				break;
+			//	break;
 
-			case EntityType::OBJECT_SHORT_SCOPE_GUN:
-				entities[i] = new Object_ShortScopeGun(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_SHORT_SCOPE_GUN;
-				entities[i]->id = i;
-				entities[i]->type = info.type;
-				//entities[i]->texture =;
+			//case EntityType::OBJECT_SHORT_SCOPE_GUN:
+			//	entities[i] = new Object_ShortScopeGun(info.x, info.y);
+			//	HelperQueue[i].type = EntityType::OBJECT_SHORT_SCOPE_GUN;
+			//	entities[i]->id = i;
+			//	entities[i]->type = info.type;
+			//	//entities[i]->texture =;
 
-				break;
+			//	break;
 
-			case EntityType::OBJECT_RADIO:
-				entities[i] = new Object_Radio(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_RADIO;
-				entities[i]->id = i;
-				entities[i]->type = info.type;
-				//entities[i]->texture =;
+			//case EntityType::OBJECT_RADIO:
+			//	entities[i] = new Object_Radio(info.x, info.y);
+			//	HelperQueue[i].type = EntityType::OBJECT_RADIO;
+			//	entities[i]->id = i;
+			//	entities[i]->type = info.type;
+			//	//entities[i]->texture =;
 
-				break;
+			//	break;
 
-			case EntityType::OBJECT_CARD:
-				entities[i] = new Object_Card(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_CARD;
-				entities[i]->id = i;
-				entities[i]->type = info.type;
-				//entities[i]->texture =;
+			//case EntityType::OBJECT_CARD:
+			//	entities[i] = new Object_Card(info.x, info.y);
+			//	HelperQueue[i].type = EntityType::OBJECT_CARD;
+			//	entities[i]->id = i;
+			//	entities[i]->type = info.type;
+			//	//entities[i]->texture =;
 
-				break;
+			//	break;
 
 			case EntityType::ZOMBIE_STANDART:
 				entities[i] = new Zombie_Standart(info.x,info.y);

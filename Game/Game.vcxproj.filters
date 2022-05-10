@@ -112,12 +112,6 @@
     <ClCompile Include="Source\NPCs4.cpp">
       <Filter>General\Entities\NPCS</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Object_Food.cpp">
-      <Filter>General\Entities\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Object_HealthPack.cpp">
-      <Filter>General\Entities\Items</Filter>
-    </ClCompile>
     <ClCompile Include="Source\CombatMenu.cpp">
       <Filter>General\Menus</Filter>
     </ClCompile>
@@ -148,18 +142,6 @@
     <ClCompile Include="Source\ModulePlayer.cpp">
       <Filter>General\Entities\Player</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Object_Radio.cpp">
-      <Filter>General\Entities\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Object_DefaultGun.cpp">
-      <Filter>General\Entities\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Object_LongScopeGun.cpp">
-      <Filter>General\Entities\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Object_ShortScopeGun.cpp">
-      <Filter>General\Entities\Items</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Final_Boss.cpp">
       <Filter>General\Entities\Enemies</Filter>
     </ClCompile>
@@ -171,12 +153,6 @@
     </ClCompile>
     <ClCompile Include="Source\Map.cpp">
       <Filter>General\Scenes and Maps\Maps</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Object_Card.cpp">
-      <Filter>General\Entities\Items</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Object_Grenade.cpp">
-      <Filter>General\Entities\Items</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -321,12 +297,6 @@
     <ClInclude Include="Source\NPCs4.h">
       <Filter>General\Entities\NPCS</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Object_Food.h">
-      <Filter>General\Entities\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Object_HealthPack.h">
-      <Filter>General\Entities\Items</Filter>
-    </ClInclude>
     <ClInclude Include="Source\CombatMenu.h">
       <Filter>General\Menus</Filter>
     </ClInclude>
@@ -357,18 +327,6 @@
     <ClInclude Include="Source\ModulePlayer.h">
       <Filter>General\Entities\Player</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Object_Radio.h">
-      <Filter>General\Entities\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Object_DefaultGun.h">
-      <Filter>General\Entities\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Object_LongScopeGun.h">
-      <Filter>General\Entities\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Object_ShortScopeGun.h">
-      <Filter>General\Entities\Items</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Final_Boss.h">
       <Filter>General\Entities\Enemies</Filter>
     </ClInclude>
@@ -380,12 +338,6 @@
     </ClInclude>
     <ClInclude Include="Source\Map.h">
       <Filter>General\Scenes and Maps\Maps</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Object_Card.h">
-      <Filter>General\Entities\Items</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Object_Grenade.h">
-      <Filter>General\Entities\Items</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -412,9 +364,6 @@
     </Filter>
     <Filter Include="General\Dialog">
       <UniqueIdentifier>{bded6ef0-721b-48ca-95eb-a3a3691cfb38}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="General\Entities\Items">
-      <UniqueIdentifier>{19a2a573-8641-4501-b688-fe226a809291}</UniqueIdentifier>
     </Filter>
     <Filter Include="General\Menus">
       <UniqueIdentifier>{e9e61ef5-be67-4d23-83c8-1f79bb08b720}</UniqueIdentifier>
