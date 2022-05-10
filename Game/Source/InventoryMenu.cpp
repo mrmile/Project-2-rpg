@@ -50,7 +50,10 @@ bool InventoryMenu::Start()
 	object_food = app->tex->Load("Assets/textures/GUI/Inventory/food_item_test.png");
 	object_health_pack = app->tex->Load("Assets/textures/GUI/Inventory/health_pack_item_test.png");
 	object_radio = app->tex->Load("Assets/textures/GUI/Inventory/radio_item.png");
+	object_card = app->tex->Load("Assets/textures/GUI/Inventory/card_item.png");
 	default_gun = app->tex->Load("Assets/textures/GUI/Inventory/default_gun.png");
+	short_gun = app->tex->Load("Assets/textures/GUI/Inventory/short_scope_gun.png");
+	long_gun = app->tex->Load("Assets/textures/GUI/Inventory/long_scope_gun.png");
 	//Still need button textures the position does not matter right now as we are gonna update it 
 
 	Equipment.itemRect = { 70,107,26,25 };
@@ -161,7 +164,10 @@ bool InventoryMenu::CleanUp()
 	app->tex->UnLoad(object_health_pack);
 	app->tex->UnLoad(medicKitDescription);
 	app->tex->UnLoad(object_radio);
+	app->tex->UnLoad(object_card);
 	app->tex->UnLoad(default_gun);
+	app->tex->UnLoad(short_gun);
+	app->tex->UnLoad(long_gun);
 	app->guiManager->DestroyGuiControl(29);
 	app->guiManager->DestroyGuiControl(30);
 	app->guiManager->DestroyGuiControl(31);
@@ -223,17 +229,21 @@ void InventoryMenu::DrawAllInventoryItems()
 			{
 				app->render->DrawTexture2(object_radio, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
+			if (itemList[i].type == EntityType::OBJECT_CARD && itemList[i].amount > 0)
+			{
+				app->render->DrawTexture2(object_card, itemList[i].itemRect.x, itemList[i].itemRect.y);
+			}
 			if (itemList[i].type == EntityType::OBJECT_DEFAULT_GUN && itemList[i].amount > 0)
 			{
 				app->render->DrawTexture2(default_gun, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
 			if (itemList[i].type == EntityType::OBJECT_lONG_SCOPE_GUN && itemList[i].amount > 0)
 			{
-				//app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
+				app->render->DrawTexture2(long_gun, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
 			if (itemList[i].type == EntityType::OBJECT_SHORT_SCOPE_GUN && itemList[i].amount > 0)
 			{
-				//app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
+				app->render->DrawTexture2(short_gun, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
 			
 		}
@@ -246,15 +256,15 @@ void InventoryMenu::DrawEquipment()
 	{
 		if (Equipment.type == EntityType::OBJECT_DEFAULT_GUN && Equipment.amount > 0)
 		{
-			app->render->DrawTexture2(object_health_pack, Equipment.itemRect.x, Equipment.itemRect.y);
+			app->render->DrawTexture2(default_gun, Equipment.itemRect.x, Equipment.itemRect.y);
 		}
 		if (Equipment.type == EntityType::OBJECT_lONG_SCOPE_GUN && Equipment.amount > 0)
 		{
-			//app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
+			app->render->DrawTexture2(long_gun, Equipment.itemRect.x, Equipment.itemRect.y);
 		}
 		if (Equipment.type == EntityType::OBJECT_SHORT_SCOPE_GUN && Equipment.amount > 0)
 		{
-			//app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
+			app->render->DrawTexture2(short_gun, Equipment.itemRect.x, Equipment.itemRect.y);
 		}
 	}
 }
