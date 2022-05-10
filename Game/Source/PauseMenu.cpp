@@ -309,18 +309,14 @@ bool PauseMenu::CleanUp()
 	app->tex->UnLoad(resumeButton);
 	app->tex->UnLoad(optionsButton);
 	app->tex->UnLoad(backToTitleButton);
-	app->tex->UnLoad(exitButton);
-
 	app->tex->UnLoad(exitButtonOnIdle);
 	app->tex->UnLoad(optionsButtonOnIdle);
 	app->tex->UnLoad(backToTitleButtonOnIdle);
-	app->tex->UnLoad(exitButtonOnIdle);
 
 	app->tex->UnLoad(exitButtonPressed);
 	app->tex->UnLoad(resumeButtonPressed);
 	app->tex->UnLoad(optionsButtonPressed);
 	app->tex->UnLoad(backToTitleButtonPressed);
-	app->tex->UnLoad(exitButtonPressed);
 	app->guiManager->DestroyGuiControl(12);
 	app->guiManager->DestroyGuiControl(13);
 	app->guiManager->DestroyGuiControl(14);

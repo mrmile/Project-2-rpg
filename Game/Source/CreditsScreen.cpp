@@ -149,7 +149,7 @@ bool CreditsScreen::Start()
 
 	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/UISounds/buttonClickedFX.wav");
 
-	returnButton_1 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 25, "Return Button", { 10, 10, 71, 35 }, this, returnButton1, NULL, {});
+	returnButton_1 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 40, "Return Button", { 10, 10, 71, 35 }, this, returnButton1, NULL, {});
 
 	app->render->camera.x = 0;
 
@@ -390,7 +390,7 @@ bool CreditsScreen::CleanUp()
 	app->tex->UnLoad(creditsFadeBlack3);
 	app->tex->UnLoad(creditsFadeBlack4);
 
-	app->guiManager->DestroyGuiControl(25);
+	app->guiManager->DestroyGuiControl(40);
 
 	return true;
 }
@@ -401,7 +401,7 @@ bool CreditsScreen::OnGuiMouseClickEvent(GuiControl* control) {
 	case GuiControlType::BUTTON:
 	{
 		//Checks the GUI element ID
-		if (control->id == 25 && returnButton_1->canClick == true)
+		if (control->id == 40 && returnButton_1->canClick == true)
 		{
 			app->audio->PlayFx(buttonClickedFx, 0);
 

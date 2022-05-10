@@ -399,7 +399,6 @@ bool TitleScreen::CleanUp()
 	app->tex->UnLoad(exitButtonPressed);
 	app->tex->UnLoad(returnButtonPressed);
 	app->tex->UnLoad(sliderSelectorPressed);
-	app->tex->UnLoad(fullScreenTag);
 	app->tex->UnLoad(fullScreenCheckOff);
 	app->tex->UnLoad(fullScreenCheckOn);
 	app->tex->UnLoad(VSyncOff);
