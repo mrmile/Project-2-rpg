@@ -50,6 +50,10 @@ public:
 	int mainQuestID = 0;
 	int secondaryQuestID = 0;
 
+	SDL_Texture* mainQuestDescription_1;
+	SDL_Texture* mainQuestDescription_2;
+	SDL_Texture* mainQuestDescription_3;
+
 };
 
 #endif // __QUEST_MANAGER_H__
