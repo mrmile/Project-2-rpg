@@ -88,6 +88,13 @@ private:
 	SDL_Texture* long_gun;
 	SDL_Texture* short_gun;
 	SDL_Texture* object_grenade;
+	SDL_Texture* grenadeDescription;
+	SDL_Texture* foodDescription;
+	SDL_Texture* radioDescription;
+	SDL_Texture* defaultGunDescription;
+	SDL_Texture* shortGunDescription;
+	SDL_Texture* longGunDescription;
+	SDL_Texture* cardDescription;
 
 public:
 
