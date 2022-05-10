@@ -25,6 +25,7 @@
 #include "Object_LongScopeGun.h"
 #include "Object_ShortScopeGun.h"
 #include "Object_Radio.h"
+#include "Object_Card.h"
 
 #define SPAWN_MARGIN 500
 
@@ -273,6 +274,15 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 
 				break;
 
+			case EntityType::OBJECT_CARD:
+				entities[i] = new Object_Card(info.x, info.y);
+				HelperQueue[i].type = EntityType::OBJECT_CARD;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				//entities[i]->texture =;
+
+				break;
+
 			case EntityType::ZOMBIE_STANDART:
 				entities[i] = new Zombie_Standart(info.x,info.y);
 				HelperQueue[i].type = EntityType::ZOMBIE_STANDART;
@@ -408,6 +418,31 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 					entities[i]->SetToDelete();
 					entities[i] = nullptr;
 				}
+				if (HelperQueue[i].type == EntityType::OBJECT_RADIO)
+				{
+					entities[i]->SetToDelete();
+					entities[i] = nullptr;
+				}
+				if (HelperQueue[i].type == EntityType::OBJECT_CARD)
+				{
+					entities[i]->SetToDelete();
+					entities[i] = nullptr;
+				}
+				if (HelperQueue[i].type == EntityType::OBJECT_DEFAULT_GUN)
+				{
+					entities[i]->SetToDelete();
+					entities[i] = nullptr;
+				}
+				if (HelperQueue[i].type == EntityType::OBJECT_lONG_SCOPE_GUN)
+				{
+					entities[i]->SetToDelete();
+					entities[i] = nullptr;
+				}
+				if (HelperQueue[i].type == EntityType::OBJECT_SHORT_SCOPE_GUN)
+				{
+					entities[i]->SetToDelete();
+					entities[i] = nullptr;
+				}
 
 				entityPos = entityPos.next_sibling();
 				entityAtributes = entityAtributes.next_sibling();
@@ -451,8 +486,29 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				}
 				if (HelperQueue[i].type == EntityType::OBJECT_HEALTH_PACK)
 				{
-					AddEntity(EntityType::OBJECT_FOOD, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+					AddEntity(EntityType::OBJECT_HEALTH_PACK, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
+				if (HelperQueue[i].type == EntityType::OBJECT_RADIO)
+				{
+					AddEntity(EntityType::OBJECT_RADIO, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::OBJECT_CARD)
+				{
+					AddEntity(EntityType::OBJECT_CARD, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::OBJECT_DEFAULT_GUN)
+				{
+					AddEntity(EntityType::OBJECT_DEFAULT_GUN, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::OBJECT_lONG_SCOPE_GUN)
+				{
+					AddEntity(EntityType::OBJECT_lONG_SCOPE_GUN, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::OBJECT_SHORT_SCOPE_GUN)
+				{
+					AddEntity(EntityType::OBJECT_SHORT_SCOPE_GUN, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+			
 				entityPos = entityPos.next_sibling();
 				entityAtributes = entityAtributes.next_sibling();
 			}

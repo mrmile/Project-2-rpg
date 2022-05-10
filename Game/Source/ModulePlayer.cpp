@@ -1206,6 +1206,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_SHORT_SCOPE_GUN, false, true);
 		}
 
+		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ITEM_CARD) && destroyed == false)
+		{
+			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_CARD, true, false);
+		}
+
 		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_RANGED_ATTACK) && destroyed == false) /*&& invincibleDelay >= 120)*/
 		{
 			app->audio->PlayFx(playerHurtSound, 0);
