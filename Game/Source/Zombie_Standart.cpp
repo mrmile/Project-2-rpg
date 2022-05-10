@@ -91,25 +91,78 @@ bool Zombie_Standart::Update(float dt)
 				currentAnim = &Idle_Enemy;
 				currentAnim->loop = true;
 
-				if (position.x > app->player->position.x) Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
-				if (position.x < app->player->position.x) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
-				if (position.y > app->player->position.y) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
-				if (position.y < app->player->position.y) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
+				if (position.x > app->player->position.x)
+				{
+					if (currentAnim != &leftWalkAnim_Enemy)
+					{
+						leftWalkAnim_Enemy.Reset();
+						currentAnim = &leftWalkAnim_Enemy;
+					}
+					Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
+				}
+				if (position.x < app->player->position.x)
+				{
+					if (currentAnim != &rightWalkAnim_Enemy)
+					{
+						rightWalkAnim_Enemy.Reset();
+						currentAnim = &rightWalkAnim_Enemy;
+					}
+					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
+				}
+				if (position.y > app->player->position.y)
+				{
+					if (currentAnim != &upWalkAnim_Enemy)
+					{
+						upWalkAnim_Enemy.Reset();
+						currentAnim = &upWalkAnim_Enemy;
+					}
+					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
+				}
+				if (position.y < app->player->position.y)
+				{
+					if (currentAnim != &downWalkAnim_Enemy)
+					{
+						downWalkAnim_Enemy.Reset();
+						currentAnim = &downWalkAnim_Enemy;
+					}
+					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
+				}
+
 
 				if ((app->player->position.y > position.y) && (app->player->position.x > position.x))
 				{
+					if (currentAnim != &rightDownWalkAnim_Enemy)
+					{
+						rightDownWalkAnim_Enemy.Reset();
+						currentAnim = &rightDownWalkAnim_Enemy;
+					}
 					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
 				}
 				if ((app->player->position.x < position.x) && (app->player->position.y > position.y))
 				{
+					if (currentAnim != &leftDownWalkAnim_Enemy)
+					{
+						rightDownWalkAnim_Enemy.Reset();
+						currentAnim = &rightDownWalkAnim_Enemy;
+					}
 					Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
 				}
 				if ((app->player->position.y < position.y) && (app->player->position.x < position.x))
 				{
+					if (currentAnim != &leftUpWalkAnim_Enemy)
+					{
+						leftUpWalkAnim_Enemy.Reset();
+						currentAnim = &leftUpWalkAnim_Enemy;
+					}
 					Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
 				}
 				if ((app->player->position.x > position.x) && (app->player->position.y < position.y))
 				{
+					if (currentAnim != &rightUpWalkAnim_Enemy)
+					{
+						leftUpWalkAnim_Enemy.Reset();
+						currentAnim = &leftUpWalkAnim_Enemy;
+					}
 					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
 				}
 			}
@@ -173,25 +226,78 @@ bool Zombie_Standart::Update(float dt)
 					currentAnim->loop = true;
 					counter++;
 					
-					if (position.x > app->player->position.x) Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
-					if (position.x < app->player->position.x) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
-					if (position.y > app->player->position.y) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
-					if (position.y < app->player->position.y) Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
-					
+					if (position.x > app->player->position.x)
+					{
+						if (currentAnim != &leftWalkAnim_Enemy)
+						{
+							leftWalkAnim_Enemy.Reset();
+							currentAnim = &leftWalkAnim_Enemy;
+						}
+						Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
+					}
+					if (position.x < app->player->position.x)
+					{
+						if (currentAnim != &rightWalkAnim_Enemy)
+						{
+							rightWalkAnim_Enemy.Reset();
+							currentAnim = &rightWalkAnim_Enemy;
+						}
+						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
+					}
+					if (position.y > app->player->position.y)
+					{
+						if (currentAnim != &upWalkAnim_Enemy)
+						{
+							upWalkAnim_Enemy.Reset();
+							currentAnim = &upWalkAnim_Enemy;
+						}
+						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
+					}
+					if (position.y < app->player->position.y)
+					{
+						if (currentAnim != &downWalkAnim_Enemy)
+						{
+							downWalkAnim_Enemy.Reset();
+							currentAnim = &downWalkAnim_Enemy;
+						}
+						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
+					}
+
+
 					if ((app->player->position.y > position.y) && (app->player->position.x > position.x))
 					{
+						if (currentAnim != &rightDownWalkAnim_Enemy)
+						{
+							rightDownWalkAnim_Enemy.Reset();
+							currentAnim = &rightDownWalkAnim_Enemy;
+						}
 						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
 					}
 					if ((app->player->position.x < position.x) && (app->player->position.y > position.y))
 					{
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({- 0.5f, 0.5f });
+						if (currentAnim != &leftDownWalkAnim_Enemy)
+						{
+							rightDownWalkAnim_Enemy.Reset();
+							currentAnim = &rightDownWalkAnim_Enemy;
+						}
+						Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
 					}
 					if ((app->player->position.y < position.y) && (app->player->position.x < position.x))
 					{
+						if (currentAnim != &leftUpWalkAnim_Enemy)
+						{
+							leftUpWalkAnim_Enemy.Reset();
+							currentAnim = &leftUpWalkAnim_Enemy;
+						}
 						Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
 					}
 					if ((app->player->position.x > position.x) && (app->player->position.y < position.y))
 					{
+						if (currentAnim != &rightUpWalkAnim_Enemy)
+						{
+							leftUpWalkAnim_Enemy.Reset();
+							currentAnim = &leftUpWalkAnim_Enemy;
+						}
 						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
 					}
 
@@ -305,10 +411,7 @@ bool Zombie_Standart::Update(float dt)
 		}
 		
 		
-		
-		
 	}
-	currentAnim = &Idle_Enemy;
 	return true;
 }
 

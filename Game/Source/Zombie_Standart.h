@@ -21,6 +21,16 @@ public:
 private:
 
 	Animation Idle_Enemy;
+
+	Animation rightWalkAnim_Enemy;
+	Animation leftWalkAnim_Enemy;
+	Animation downWalkAnim_Enemy;
+	Animation upWalkAnim_Enemy;
+
+	Animation rightDownWalkAnim_Enemy;
+	Animation leftDownWalkAnim_Enemy;
+	Animation rightUpWalkAnim_Enemy;
+	Animation leftUpWalkAnim_Enemy;
 	
 	
 	int counter;
