@@ -1301,27 +1301,22 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::DOCTOR_NOTE_MESSAGE)
 		{
-			playerHP += 10;
-			if (playerHP > 100) playerHP = 100;
 			
+		}
+
+		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::BASE_COMPUTER)
+		{
+
 		}
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::ITEM_BUKER_DOOR_KEY)
 		{
-			score += 5;
-			//if (playerScore > 1000) playerScore = 1000;
 			
 		}
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::TNT_SWITCH)
 		{
-			score += 10;
-			//if (playerScore > 1000) playerScore = 1000;
 			
-			app->titleScreen->SavedGame = true;
-			app->SaveGameRequest();
-			saved_game = true;
-			checkPointReached = true;
 		}
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::ENABLE_FINAL_BATTLE)
