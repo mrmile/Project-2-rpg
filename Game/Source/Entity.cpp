@@ -8,6 +8,8 @@
 #include "ModulePlayer.h"
 #include "GameManager.h"
 #include "InventoryMenu.h"
+#include "Audio.h"
+#include "QuestManager.h"
 
 Entity::Entity(int x,int y) : position(x,y)
 {
@@ -75,50 +77,61 @@ void Entity::OnCollision(Collider* c2)
 		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_FOOD))
 		{
 			EntityHP = 0;
+			app->audio->PlayFx(app->player->itemGrab);
 		}
 		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_HEALTH_PACK))
 		{
 			EntityHP = 0;
+			app->audio->PlayFx(app->player->itemGrab);
 		}
 
 		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_RADIO))
 		{
 			EntityHP = 0;
+			app->audio->PlayFx(app->player->itemGrab);
 		}
 
 		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_CARD))
 		{
 			EntityHP = 0;
+			app->audio->PlayFx(app->player->itemGrab);
+			app->questManager->SwitchMainQuest(LOOK_FOR_THE_COMPUTER_2);
 		}
 
 		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_GRENADE))
 		{
 			EntityHP = 0;
+			app->audio->PlayFx(app->player->itemGrab);
 		}
 
 		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_DEFAULT_GUN))
 		{
 			EntityHP = 0;
+			app->audio->PlayFx(app->player->itemGrab);
 		}
 
 		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_KNIFE))
 		{
 			EntityHP = 0;
+			app->audio->PlayFx(app->player->itemGrab);
 		}
 
 		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_SUIT))
 		{
 			EntityHP = 0;
+			app->audio->PlayFx(app->player->itemGrab);
 		}
 
 		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_LONG_RANGE_GUN))
 		{
 			EntityHP = 0;
+			app->audio->PlayFx(app->player->itemGrab);
 		}
 
 		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_SHORT_RANGE_GUN))
 		{
 			EntityHP = 0;
+			app->audio->PlayFx(app->player->itemGrab);
 		}
 	}
 }

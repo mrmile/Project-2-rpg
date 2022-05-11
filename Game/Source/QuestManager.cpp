@@ -33,7 +33,7 @@ bool QuestManager::Start()
 	mainQuestDescription_2 = app->tex->Load("Assets/textures/GUI/Inventory/mainQuest_2.png");
 	mainQuestDescription_3 = app->tex->Load("Assets/textures/GUI/Inventory/mainQuest_3.png");
 
-	questCompleted = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_grab_finish_back_fast_begin_0.wav");
+	questCompleted = app->audio->LoadFx("Assets/audio/fx/UISounds/achievement_01.wav");
 
 	return true;
 }

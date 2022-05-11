@@ -1053,7 +1053,7 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		pugi::xml_node NewObject;
 		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
 		{
-			app->particles->AddParticle(app->particles->coin, NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int(), Collider::ITEM_BUKER_DOOR_KEY);
+			app->particles->AddParticle(app->particles->coin, NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int(), Collider::ITEM_CARD);
 		}
 	}
 

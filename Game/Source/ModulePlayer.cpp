@@ -1170,7 +1170,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (app->sceneCave->godMode == false && app->sceneMainMap->godMode == false && destroyed == false && playerWin == false)
 	{
-		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_ATTACK ) && destroyed == false)/* && invincibleDelay >= 120*/
+		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_ATTACK ))/* && invincibleDelay >= 120*/
 		{
 			app->audio->PlayFx(playerHurtSound, 0);
 			playerHP -= 10;
@@ -1179,68 +1179,70 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		}
 		
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_FOOD) && destroyed == false)
+		//				--Esto no sirve para nada aquí. Lo he movido al entity.cpp--
+
+		/*if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_FOOD))
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_FOOD, true, false);
 			app->audio->PlayFx(itemGrab);
 		}
 
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_HEALTH_PACK) && destroyed == false)
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_HEALTH_PACK))
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_HEALTH_PACK, true, false);
 			app->audio->PlayFx(itemGrab);
 		}
 
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_RADIO) && destroyed == false)
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_RADIO))
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_RADIO, true, false);
 			app->audio->PlayFx(itemGrab);
 		}
 		
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_DEFAULT_GUN) && destroyed == false)
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_DEFAULT_GUN))
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_DEFAULT_GUN, false, true);
 			app->audio->PlayFx(itemGrab);
 		}
 
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_KNIFE) && destroyed == false)
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_KNIFE))
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_KNIFE, false, true);
 			app->audio->PlayFx(itemGrab);
 		}
 
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_SUIT) && destroyed == false)
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_SUIT))
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_SUIT, false, true);
 			app->audio->PlayFx(itemGrab);
 		}
 
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_LONG_RANGE_GUN) && destroyed == false)
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_LONG_RANGE_GUN))
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_lONG_SCOPE_GUN, false, true);
 			app->audio->PlayFx(itemGrab);
 		}
 
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_SHORT_RANGE_GUN) && destroyed == false)
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_SHORT_RANGE_GUN))
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_SHORT_SCOPE_GUN, false, true);
 			app->audio->PlayFx(itemGrab);
 		}
 
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_CARD) && destroyed == false)
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_CARD))
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_CARD, true, false);
 			app->audio->PlayFx(itemGrab);
 			app->questManager->SwitchMainQuest(LOOK_FOR_THE_COMPUTER_2);
 		}
 
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_GRENADE) && destroyed == false)
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_GRENADE))
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_GRENADE, true, false);
 			app->audio->PlayFx(itemGrab);
-		}
+		}*/
 
-		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_RANGED_ATTACK) && destroyed == false) /*&& invincibleDelay >= 120)*/
+		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_RANGED_ATTACK)) /*&& invincibleDelay >= 120)*/
 		{
 			app->audio->PlayFx(playerHurtSound, 0);
 			playerHP -= 10;
@@ -1321,11 +1323,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		}
 
-		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::ITEM_BUKER_DOOR_KEY)
-		{
-			
-		}
-
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::TNT_SWITCH)
 		{
 			
@@ -1333,17 +1330,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::ENABLE_FINAL_BATTLE)
 		{
-			//playerScore += 10;
-			//if (playerScore > 1000) playerScore = 1000;
-			
-			app->titleScreen->SavedGame = false;
-			app->SaveGameRequest();
-			playerWin = true;
-
-			app->particles->AddParticle(app->particles->enemyDefeat, app->map->goalPoolPos.x, app->map->goalPoolPos.y - 5, Collider::NONE);
-			app->particles->AddParticle(app->particles->firework1, app->map->goalPoolPos.x + 6, app->map->goalPoolPos.y - 8, Collider::NONE, 6);
-			app->particles->AddParticle(app->particles->firework2, app->map->goalPoolPos.x - 10, app->map->goalPoolPos.y + 4, Collider::NONE, 12);
-			app->particles->AddParticle(app->particles->firework3, app->map->goalPoolPos.x + 2, app->map->goalPoolPos.y - 6, Collider::NONE, 18);
 
 		}
 	}
