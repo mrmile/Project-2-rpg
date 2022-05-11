@@ -27,6 +27,8 @@
 #include "Object_Radio.h"
 #include "Object_Card.h"
 #include "Object_Grenade.h"
+#include "ObjectSuit.h"
+#include "ObjectKnife.h"
 
 #define SPAWN_MARGIN 500
 
@@ -275,6 +277,24 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 
 				break;
 
+			case EntityType::OBJECT_KNIFE:
+				entities[i] = new Object_Knife(info.x, info.y);
+				HelperQueue[i].type = EntityType::OBJECT_KNIFE;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				//entities[i]->texture =;
+
+				break;
+
+			case EntityType::OBJECT_SUIT:
+				entities[i] = new Object_Suit(info.x, info.y);
+				HelperQueue[i].type = EntityType::OBJECT_SUIT;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				//entities[i]->texture =;
+
+				break;
+
 			case EntityType::OBJECT_CARD:
 				entities[i] = new Object_Card(info.x, info.y);
 				HelperQueue[i].type = EntityType::OBJECT_CARD;
@@ -433,6 +453,16 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 					entities[i]->SetToDelete();
 					entities[i] = nullptr;
 				}
+				if (HelperQueue[i].type == EntityType::OBJECT_KNIFE)
+				{
+					entities[i]->SetToDelete();
+					entities[i] = nullptr;
+				}
+				if (HelperQueue[i].type == EntityType::OBJECT_SUIT)
+				{
+					entities[i]->SetToDelete();
+					entities[i] = nullptr;
+				}
 				if (HelperQueue[i].type == EntityType::OBJECT_CARD)
 				{
 					entities[i]->SetToDelete();
@@ -506,6 +536,14 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				if (HelperQueue[i].type == EntityType::OBJECT_RADIO)
 				{
 					AddEntity(EntityType::OBJECT_RADIO, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::OBJECT_KNIFE)
+				{
+					AddEntity(EntityType::OBJECT_KNIFE, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::OBJECT_SUIT)
+				{
+					AddEntity(EntityType::OBJECT_SUIT, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
 				if (HelperQueue[i].type == EntityType::OBJECT_CARD)
 				{

@@ -101,6 +101,16 @@ void Entity::OnCollision(Collider* c2)
 			EntityHP = 0;
 		}
 
+		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_KNIFE))
+		{
+			EntityHP = 0;
+		}
+
+		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_SUIT))
+		{
+			EntityHP = 0;
+		}
+
 		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_LONG_RANGE_GUN))
 		{
 			EntityHP = 0;

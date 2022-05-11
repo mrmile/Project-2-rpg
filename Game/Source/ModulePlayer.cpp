@@ -1198,6 +1198,16 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_DEFAULT_GUN, false, true);
 		}
 
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_KNIFE) && destroyed == false)
+		{
+			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_KNIFE, false, true);
+		}
+
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_SUIT) && destroyed == false)
+		{
+			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_SUIT, false, true);
+		}
+
 		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_LONG_RANGE_GUN) && destroyed == false)
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_lONG_SCOPE_GUN, false, true);

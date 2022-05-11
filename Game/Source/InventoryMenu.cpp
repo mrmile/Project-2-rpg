@@ -54,6 +54,8 @@ bool InventoryMenu::Start()
 	default_gun = app->tex->Load("Assets/textures/GUI/Inventory/default_gun.png");
 	short_gun = app->tex->Load("Assets/textures/GUI/Inventory/short_scope_gun.png");
 	long_gun = app->tex->Load("Assets/textures/GUI/Inventory/long_scope_gun.png");
+	object_suit = app->tex->Load("Assets/textures/GUI/Inventory/combat_suit.png");
+	object_knife = app->tex->Load("Assets/textures/GUI/Inventory/combat_knife.png");
 
 	medicKitDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/medicKitDescription.png");
 	cardDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/InventoryItemCard.png");
@@ -178,6 +180,8 @@ bool InventoryMenu::CleanUp()
 	app->tex->UnLoad(short_gun);
 	app->tex->UnLoad(long_gun);
 	app->tex->UnLoad(object_grenade);
+	app->tex->UnLoad(object_suit);
+	app->tex->UnLoad(object_knife);
 
 	app->tex->UnLoad(cardDescription);
 	app->tex->UnLoad(foodDescription);
@@ -247,6 +251,14 @@ void InventoryMenu::DrawAllInventoryItems()
 			{
 				app->render->DrawTexture2(object_radio, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
+			if (itemList[i].type == EntityType::OBJECT_KNIFE && itemList[i].amount > 0)
+			{
+				app->render->DrawTexture2(object_knife, itemList[i].itemRect.x, itemList[i].itemRect.y);
+			}
+			if (itemList[i].type == EntityType::OBJECT_SUIT && itemList[i].amount > 0)
+			{
+				app->render->DrawTexture2(object_suit, itemList[i].itemRect.x, itemList[i].itemRect.y);
+			}
 			if (itemList[i].type == EntityType::OBJECT_CARD && itemList[i].amount > 0)
 			{
 				app->render->DrawTexture2(object_card, itemList[i].itemRect.x, itemList[i].itemRect.y);
@@ -287,6 +299,14 @@ void InventoryMenu::DrawEquipment()
 		if (Equipment.type == EntityType::OBJECT_SHORT_SCOPE_GUN && Equipment.amount > 0)
 		{
 			app->render->DrawTexture2(short_gun, Equipment.itemRect.x, Equipment.itemRect.y);
+		}
+		if (Equipment.type == EntityType::OBJECT_KNIFE && Equipment.amount > 0)
+		{
+			app->render->DrawTexture2(object_knife, Equipment.itemRect.x, Equipment.itemRect.y);
+		}
+		if (Equipment.type == EntityType::OBJECT_SUIT && Equipment.amount > 0)
+		{
+			app->render->DrawTexture2(object_suit, Equipment.itemRect.x, Equipment.itemRect.y);
 		}
 	}
 }
@@ -512,6 +532,24 @@ bool InventoryMenu::DeEquipItemSelected(ItemList* item)
 		
 			return true;
 		}
+		if (item->type == EntityType::OBJECT_KNIFE)
+		{
+			AddItemToInventory(EntityType::OBJECT_KNIFE, false, true);
+
+			Equipment.amount = 0;
+			Equipment.alreadyEquipped = false;
+
+			return true;
+		}
+		if (item->type == EntityType::OBJECT_SUIT)
+		{
+			AddItemToInventory(EntityType::OBJECT_SUIT, false, true);
+
+			Equipment.amount = 0;
+			Equipment.alreadyEquipped = false;
+
+			return true;
+		}
 	}
 }
 bool InventoryMenu::DeleteItemSelected(ItemList* item)
@@ -543,6 +581,16 @@ bool InventoryMenu::EquipItemSelected(ItemList* item)
 			app->player->EquipmentRange = 75;
 		}
 		if (Equipment.type == EntityType::OBJECT_lONG_SCOPE_GUN)
+		{
+			app->player->EquipmentDamage = 3;
+			app->player->EquipmentRange = 300;
+		}
+		if (Equipment.type == EntityType::OBJECT_KNIFE)
+		{
+			app->player->EquipmentDamage = 3;
+			app->player->EquipmentRange = 300;
+		}
+		if (Equipment.type == EntityType::OBJECT_SUIT)
 		{
 			app->player->EquipmentDamage = 3;
 			app->player->EquipmentRange = 300;

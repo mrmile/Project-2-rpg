@@ -160,6 +160,8 @@
     <ClCompile Include="Source\NPCs2.cpp" />
     <ClCompile Include="Source\NPCs3.cpp" />
     <ClCompile Include="Source\NPCs4.cpp" />
+    <ClCompile Include="Source\ObjectKnife.cpp" />
+    <ClCompile Include="Source\ObjectSuit.cpp" />
     <ClCompile Include="Source\Object_DefaultGun.cpp" />
     <ClCompile Include="Source\Object_Food.cpp" />
     <ClCompile Include="Source\Object_Grenade.cpp" />
@@ -215,6 +217,8 @@
     <ClInclude Include="Source\NPCs2.h" />
     <ClInclude Include="Source\NPCs3.h" />
     <ClInclude Include="Source\NPCs4.h" />
+    <ClInclude Include="Source\ObjectKnife.h" />
+    <ClInclude Include="Source\ObjectSuit.h" />
     <ClInclude Include="Source\Object_DefaultGun.h" />
     <ClInclude Include="Source\Object_Food.h" />
     <ClInclude Include="Source\Object_Grenade.h" />

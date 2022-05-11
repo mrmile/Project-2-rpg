@@ -178,6 +178,12 @@
     <ClCompile Include="Source\Object_Grenade.cpp">
       <Filter>General\Entities\Items</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ObjectKnife.cpp">
+      <Filter>General\Entities\Items</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ObjectSuit.cpp">
+      <Filter>General\Entities\Items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -385,6 +391,12 @@
       <Filter>General\Entities\Items</Filter>
     </ClInclude>
     <ClInclude Include="Source\Object_Grenade.h">
+      <Filter>General\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ObjectKnife.h">
+      <Filter>General\Entities\Items</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ObjectSuit.h">
       <Filter>General\Entities\Items</Filter>
     </ClInclude>
   </ItemGroup>
