@@ -160,7 +160,7 @@ bool ModulePlayer::Start()
 
 	bool ret = true;
 	
-	texture = app->tex->Load("Assets/textures/Character/SWAT_Character_Size_Test.png");
+	texture = app->tex->Load("Assets/textures/Character/SWAT_Character.png");
 
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
 	itemGrab = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_grab_finish_back_fast_begin_0.wav");
