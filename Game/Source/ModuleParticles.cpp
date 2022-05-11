@@ -12,6 +12,7 @@
 #include "SceneMainMap.h"
 #include "SceneBase.h"
 #include "QuestManager.h"
+#include "InventoryMenu.h"
 
 #include "SDL/include/SDL_timer.h"
 
@@ -257,7 +258,17 @@ bool ModuleParticles::Update(float dt)
 			// Call particle Update. If it has reached its lifetime, destroy it
 			if (particle->Update() == false)
 			{
+				if (particles[i]->collider->type == Collider::Type::ACTIVE_RADIO)
+				{
+					app->inventoryMenu->ActiveRadioAlive = false;
+				}
 				particles[i]->SetToDelete();
+			}
+			//For the radio usage
+			if (particles[i]->collider->type == Collider::Type::ACTIVE_RADIO && particles[i]->collider->pendingToDelete == false)
+			{
+					app->inventoryMenu->ActiveRadioPosition = particle->position;
+					app->inventoryMenu->ActiveRadioAlive = true;
 			}
 		}
 		return true;
@@ -266,7 +277,7 @@ bool ModuleParticles::Update(float dt)
 	{
 		return true;
 	}
-
+	
 }
 
 bool ModuleParticles::PostUpdate()

@@ -1,5 +1,5 @@
 #include "Particle.h"
-
+#include "InventoryMenu.h"
 #include "Collider.h"
 
 Particle::Particle()

@@ -118,6 +118,10 @@ public:
 	bool showUsableOptions = false;
 
 	bool showOptionsForEquipment = false;
+
+
+	iPoint ActiveRadioPosition;
+	bool ActiveRadioAlive;
 };
 
 #endif // __SCENE_FOREST_H__

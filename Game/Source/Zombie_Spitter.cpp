@@ -17,7 +17,7 @@
 #include "Log.h"
 #include "ModulePhysics.h"
 #include "ModuleParticles.h"
-
+#include "InventoryMenu.h"
 #include "Defs.h"
 
 Zombie_Spitter::Zombie_Spitter(int x,int y) : Entity(x,y)
@@ -70,108 +70,207 @@ bool Zombie_Spitter::Update(float dt)
 		{
 			//move normally
 
-
-			if (position.DistanceTo(app->player->position) < 150)
+			if (app->inventoryMenu->ActiveRadioAlive == true)
 			{
-				collider->SetPos(position.x, position.y - 46);
-				Spitter_Zombie_List.end->data->GetPosition(position.x, position.y);
-				currentAnim = &Idle_Enemy;
-				currentAnim->loop = true;
+				if (position.DistanceTo(app->inventoryMenu->ActiveRadioPosition) < 300)
+				{
+					collider->SetPos(position.x, position.y - 46);
+					Spitter_Zombie_List.end->data->GetPosition(position.x, position.y);
+					currentAnim = &Idle_Enemy;
+					currentAnim->loop = true;
 
-				if (position.x > app->player->position.x)
-				{
-					if (currentAnim != &leftWalkAnim_Enemy)
+					if (position.x > app->inventoryMenu->ActiveRadioPosition.x)
 					{
-						leftWalkAnim_Enemy.Reset();
-						currentAnim = &leftWalkAnim_Enemy;
+						if (currentAnim != &leftWalkAnim_Enemy)
+						{
+							leftWalkAnim_Enemy.Reset();
+							currentAnim = &leftWalkAnim_Enemy;
+						}
+						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
 					}
-					Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
-				}
-				if (position.x < app->player->position.x)
-				{
-					if (currentAnim != &rightWalkAnim_Enemy)
+					if (position.x < app->inventoryMenu->ActiveRadioPosition.x)
 					{
-						rightWalkAnim_Enemy.Reset();
-						currentAnim = &rightWalkAnim_Enemy;
+						if (currentAnim != &rightWalkAnim_Enemy)
+						{
+							rightWalkAnim_Enemy.Reset();
+							currentAnim = &rightWalkAnim_Enemy;
+						}
+						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
 					}
-					Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
-				}
-				if (position.y > app->player->position.y)
-				{
-					if (currentAnim != &upWalkAnim_Enemy)
+					if (position.y > app->inventoryMenu->ActiveRadioPosition.y)
 					{
-						upWalkAnim_Enemy.Reset();
-						currentAnim = &upWalkAnim_Enemy;
+						if (currentAnim != &upWalkAnim_Enemy)
+						{
+							upWalkAnim_Enemy.Reset();
+							currentAnim = &upWalkAnim_Enemy;
+						}
+						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
 					}
-					Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
-				}
-				if (position.y < app->player->position.y)
-				{
-					if (currentAnim != &downWalkAnim_Enemy)
+					if (position.y < app->inventoryMenu->ActiveRadioPosition.y)
 					{
-						downWalkAnim_Enemy.Reset();
-						currentAnim = &downWalkAnim_Enemy;
+						if (currentAnim != &downWalkAnim_Enemy)
+						{
+							downWalkAnim_Enemy.Reset();
+							currentAnim = &downWalkAnim_Enemy;
+						}
+						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
 					}
-					Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
-				}
 
 
-				if ((app->player->position.y > position.y) && (app->player->position.x > position.x))
-				{
-					if (currentAnim != &rightDownWalkAnim_Enemy)
+					if ((app->inventoryMenu->ActiveRadioPosition.y > position.y) && (app->inventoryMenu->ActiveRadioPosition.x > position.x))
 					{
-						rightDownWalkAnim_Enemy.Reset();
-						currentAnim = &rightDownWalkAnim_Enemy;
+						if (currentAnim != &rightDownWalkAnim_Enemy)
+						{
+							rightDownWalkAnim_Enemy.Reset();
+							currentAnim = &rightDownWalkAnim_Enemy;
+						}
+						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
 					}
-					Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
+					if ((app->inventoryMenu->ActiveRadioPosition.x < position.x) && (app->inventoryMenu->ActiveRadioPosition.y > position.y))
+					{
+						if (currentAnim != &leftDownWalkAnim_Enemy)
+						{
+							rightDownWalkAnim_Enemy.Reset();
+							currentAnim = &rightDownWalkAnim_Enemy;
+						}
+						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
+					}
+					if ((app->inventoryMenu->ActiveRadioPosition.y < position.y) && (app->inventoryMenu->ActiveRadioPosition.x < position.x))
+					{
+						if (currentAnim != &leftUpWalkAnim_Enemy)
+						{
+							leftUpWalkAnim_Enemy.Reset();
+							currentAnim = &leftUpWalkAnim_Enemy;
+						}
+						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
+					}
+					if ((app->inventoryMenu->ActiveRadioPosition.x > position.x) && (app->inventoryMenu->ActiveRadioPosition.y < position.y))
+					{
+						if (currentAnim != &rightUpWalkAnim_Enemy)
+						{
+							leftUpWalkAnim_Enemy.Reset();
+							currentAnim = &leftUpWalkAnim_Enemy;
+						}
+						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
+					}
 				}
-				if ((app->player->position.x < position.x) && (app->player->position.y > position.y))
+				else
 				{
-					if (currentAnim != &leftDownWalkAnim_Enemy)
-					{
-						rightDownWalkAnim_Enemy.Reset();
-						currentAnim = &rightDownWalkAnim_Enemy;
-					}
-					Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
-				}
-				if ((app->player->position.y < position.y) && (app->player->position.x < position.x))
-				{
-					if (currentAnim != &leftUpWalkAnim_Enemy)
-					{
-						leftUpWalkAnim_Enemy.Reset();
-						currentAnim = &leftUpWalkAnim_Enemy;
-					}
-					Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
-				}
-				if ((app->player->position.x > position.x) && (app->player->position.y < position.y))
-				{
-					if (currentAnim != &rightUpWalkAnim_Enemy)
-					{
-						leftUpWalkAnim_Enemy.Reset();
-						currentAnim = &leftUpWalkAnim_Enemy;
-					}
-					Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
+					collider->SetPos(position.x, position.y - 46);
+					Spitter_Zombie_List.end->data->GetPosition(position.x, position.y);
+					currentAnim = &Idle_Enemy;
+					currentAnim->loop = true;
+
+					Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
+
 				}
 			}
-			else
+			if (app->inventoryMenu->ActiveRadioAlive == false)
 			{
-				collider->SetPos(position.x, position.y - 46);
-				Spitter_Zombie_List.end->data->GetPosition(position.x, position.y);
-				currentAnim = &Idle_Enemy;
-				currentAnim->loop = true;
+				if (position.DistanceTo(app->player->position) < 300)
+				{
+					collider->SetPos(position.x, position.y - 46);
+					Spitter_Zombie_List.end->data->GetPosition(position.x, position.y);
+					currentAnim = &Idle_Enemy;
+					currentAnim->loop = true;
 
-				Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
+					if (position.x > app->player->position.x)
+					{
+						if (currentAnim != &leftWalkAnim_Enemy)
+						{
+							leftWalkAnim_Enemy.Reset();
+							currentAnim = &leftWalkAnim_Enemy;
+						}
+						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
+					}
+					if (position.x < app->player->position.x)
+					{
+						if (currentAnim != &rightWalkAnim_Enemy)
+						{
+							rightWalkAnim_Enemy.Reset();
+							currentAnim = &rightWalkAnim_Enemy;
+						}
+						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
+					}
+					if (position.y > app->player->position.y)
+					{
+						if (currentAnim != &upWalkAnim_Enemy)
+						{
+							upWalkAnim_Enemy.Reset();
+							currentAnim = &upWalkAnim_Enemy;
+						}
+						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
+					}
+					if (position.y < app->player->position.y)
+					{
+						if (currentAnim != &downWalkAnim_Enemy)
+						{
+							downWalkAnim_Enemy.Reset();
+							currentAnim = &downWalkAnim_Enemy;
+						}
+						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
+					}
 
+
+					if ((app->player->position.y > position.y) && (app->player->position.x > position.x))
+					{
+						if (currentAnim != &rightDownWalkAnim_Enemy)
+						{
+							rightDownWalkAnim_Enemy.Reset();
+							currentAnim = &rightDownWalkAnim_Enemy;
+						}
+						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
+					}
+					if ((app->player->position.x < position.x) && (app->player->position.y > position.y))
+					{
+						if (currentAnim != &leftDownWalkAnim_Enemy)
+						{
+							rightDownWalkAnim_Enemy.Reset();
+							currentAnim = &rightDownWalkAnim_Enemy;
+						}
+						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
+					}
+					if ((app->player->position.y < position.y) && (app->player->position.x < position.x))
+					{
+						if (currentAnim != &leftUpWalkAnim_Enemy)
+						{
+							leftUpWalkAnim_Enemy.Reset();
+							currentAnim = &leftUpWalkAnim_Enemy;
+						}
+						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
+					}
+					if ((app->player->position.x > position.x) && (app->player->position.y < position.y))
+					{
+						if (currentAnim != &rightUpWalkAnim_Enemy)
+						{
+							leftUpWalkAnim_Enemy.Reset();
+							currentAnim = &leftUpWalkAnim_Enemy;
+						}
+						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
+					}
+				}
+				else
+				{
+					collider->SetPos(position.x, position.y - 46);
+					Spitter_Zombie_List.end->data->GetPosition(position.x, position.y);
+					currentAnim = &Idle_Enemy;
+					currentAnim->loop = true;
+
+					Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
+
+				}
+
+				if (position.DistanceTo(app->player->position) < 100)
+				{
+					app->entity_manager->RegisterEntitesInCombat(this);
+					entityState = GameState::InCombat;
+					app->player->entityStatePlayer = GameState::InCombat;
+					app->player->entityTurnPlayer = TurnState::NONE;
+					app->game_manager->StartTurnManagement = true;
+				}
 			}
 
-			if (position.DistanceTo(app->player->position) < 100)
-			{
-				app->entity_manager->RegisterEntitesInCombat(this);
-				entityState = GameState::InCombat;
-				app->player->entityStatePlayer = GameState::InCombat;
-				app->player->entityTurnPlayer = TurnState::NONE;
-				app->game_manager->StartTurnManagement = true;
-			}
+			
 
 			return true;
 
