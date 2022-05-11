@@ -1231,6 +1231,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_CARD, true, false);
 			app->audio->PlayFx(itemGrab);
+			app->questManager->SwitchMainQuest(LOOK_FOR_THE_COMPUTER_2);
 		}
 
 		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_GRENADE) && destroyed == false)

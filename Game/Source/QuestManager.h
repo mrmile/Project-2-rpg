@@ -54,6 +54,8 @@ public:
 	SDL_Texture* mainQuestDescription_2;
 	SDL_Texture* mainQuestDescription_3;
 
+	uint questCompleted = 0;
+
 };
 
 #endif // __QUEST_MANAGER_H__
