@@ -63,7 +63,7 @@ bool Object_LongScopeGun::Update(float dt)
 			if (itemObtained == false)
 			{
 				SetToDelete();
-				app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_lONG_SCOPE_GUN, true, false);
+				app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_lONG_SCOPE_GUN, false, true);
 				itemObtained = true;
 			}
 		}

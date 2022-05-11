@@ -63,7 +63,7 @@ bool Object_Knife::Update(float dt)
 			if (itemObtained == false)
 			{
 				SetToDelete();
-				app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_KNIFE, true, false);
+				app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_KNIFE, false, true);
 				itemObtained = true;
 			}
 		}

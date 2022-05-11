@@ -144,6 +144,8 @@ bool InventoryMenu::PostUpdate()
 			EquipItem->Draw(app->render);
 			DeleteItem->Draw(app->render);
 			//show Equipable buttons
+
+			DrawItemDescription(&itemUsing);
 		}
 		if (showUsableOptions == true)
 		{

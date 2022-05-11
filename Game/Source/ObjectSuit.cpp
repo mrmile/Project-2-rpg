@@ -63,7 +63,7 @@ bool Object_Suit::Update(float dt)
 			if (itemObtained == false)
 			{
 				SetToDelete();
-				app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_SUIT, true, false);
+				app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_SUIT, false, true);
 				itemObtained = true;
 			}
 		}
