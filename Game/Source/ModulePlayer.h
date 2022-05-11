@@ -133,6 +133,7 @@ public:
 	uint damaged = 0;
 	uint paused = 0;
 	uint gameOverfx = 0;
+	uint itemGrab = 0;
 
 	// The player's colliders
 	Collider* collider = nullptr;

@@ -163,6 +163,7 @@ bool ModulePlayer::Start()
 	texture = app->tex->Load("Assets/textures/Character/SWAT_Character_Size_Test.png");
 
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
+	itemGrab = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_grab_finish_back_fast_begin_0.wav");
 
 	if (app->sceneMainMap->sceneMainMap == true || app->sceneMotel->sceneMotel == true)
 	{
@@ -1181,51 +1182,61 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_FOOD) && destroyed == false)
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_FOOD, true, false);
+			app->audio->PlayFx(itemGrab);
 		}
 
 		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_HEALTH_PACK) && destroyed == false)
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_HEALTH_PACK, true, false);
+			app->audio->PlayFx(itemGrab);
 		}
 
 		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_RADIO) && destroyed == false)
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_RADIO, true, false);
+			app->audio->PlayFx(itemGrab);
 		}
 		
 		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_DEFAULT_GUN) && destroyed == false)
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_DEFAULT_GUN, false, true);
+			app->audio->PlayFx(itemGrab);
 		}
 
 		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_KNIFE) && destroyed == false)
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_KNIFE, false, true);
+			app->audio->PlayFx(itemGrab);
 		}
 
 		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_SUIT) && destroyed == false)
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_SUIT, false, true);
+			app->audio->PlayFx(itemGrab);
 		}
 
 		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_LONG_RANGE_GUN) && destroyed == false)
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_lONG_SCOPE_GUN, false, true);
+			app->audio->PlayFx(itemGrab);
 		}
 
 		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_SHORT_RANGE_GUN) && destroyed == false)
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_SHORT_SCOPE_GUN, false, true);
+			app->audio->PlayFx(itemGrab);
 		}
 
 		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_CARD) && destroyed == false)
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_CARD, true, false);
+			app->audio->PlayFx(itemGrab);
 		}
 
 		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_GRENADE) && destroyed == false)
 		{
 			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_GRENADE, true, false);
+			app->audio->PlayFx(itemGrab);
 		}
 
 		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_RANGED_ATTACK) && destroyed == false) /*&& invincibleDelay >= 120)*/
