@@ -77,7 +77,7 @@ public:
 	// The player spritesheet loaded into an SDL_Texture
 	SDL_Texture* texture = nullptr;
 	
-	//TEXTURE FOR UI LIFES AND ITEM_BUKER_DOOR_KEYS
+	//TEXTURE FOR UI LIFES AND -?-
 	SDL_Texture* texture2 = nullptr;
 
 	SDL_Texture* ptsScore;
