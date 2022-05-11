@@ -40,35 +40,35 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 {
 	name.Create("player");
 
-	idleRightAnim.PushBack({ 150, 438, 57, 60 });
+	idleRightAnim.PushBack({ 136, 691, 84, 108 });
 	idleRightAnim.loop = true;
 	idleRightAnim.speed = 0.3f;
 
-	idleLeftAnim.PushBack({ 150, 144, 57, 60 });
+	idleLeftAnim.PushBack({ 136, 214, 84, 108 });
 	idleLeftAnim.loop = true;
 	idleLeftAnim.speed = 0.3f;
 
-	idleDownAnim.PushBack({ 150, 574, 57, 60 });
+	idleDownAnim.PushBack({ 136, 925, 84, 108 });
 	idleDownAnim.loop = true;
 	idleDownAnim.speed = 0.3f;
 
-	idleUpAnim.PushBack({ 150, 290, 57, 60 });
+	idleUpAnim.PushBack({ 141, 458, 84, 108 });
 	idleUpAnim.loop = true;
 	idleUpAnim.speed = 0.3f;
 
-	idleUpLeftAnim.PushBack({ 150, 219, 57, 60 });
+	idleUpLeftAnim.PushBack({ 136, 339, 84, 108 });
 	idleUpLeftAnim.loop = true;
 	idleUpLeftAnim.speed = 0.3f;
 
-	idleUpRightAnim.PushBack({ 150, 365, 57, 60 });
+	idleUpRightAnim.PushBack({ 141, 573, 84, 108 });
 	idleUpRightAnim.loop = true;
 	idleUpRightAnim.speed = 0.3f;
 
-	idleDownLeftAnim.PushBack({ 150, 72, 57, 60 });
+	idleDownLeftAnim.PushBack({ 136, 95,84, 108 });
 	idleDownLeftAnim.loop = true;
 	idleDownLeftAnim.speed = 0.3f;
 
-	idleDownRightAnim.PushBack({ 150, 508, 57, 60 });
+	idleDownRightAnim.PushBack({ 141, 808, 84, 108 });
 	idleDownRightAnim.loop = true;
 	idleDownRightAnim.speed = 0.3f;
 
