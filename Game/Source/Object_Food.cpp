@@ -60,9 +60,13 @@ bool Object_Food::Update(float dt)
 
 		if (EntityHP == 0)
 		{
-			SetToDelete();
-			if(itemObtained == false)app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_FOOD, true, false);
-			itemObtained = true;
+			if (itemObtained == false)
+			{
+				SetToDelete();
+				app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_FOOD, true, false);
+				itemObtained = true;
+			}
+			
 		}
 
 

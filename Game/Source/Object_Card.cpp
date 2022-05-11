@@ -60,9 +60,13 @@ bool Object_Card::Update(float dt)
 
 		if (EntityHP == 0)
 		{
-			SetToDelete();
-			if (itemObtained == false)app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_CARD, true, false);
-			itemObtained = true;
+			if (itemObtained == false)
+			{
+				SetToDelete();
+				app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_CARD, true, false);
+				itemObtained = true;
+
+			}
 		}
 
 

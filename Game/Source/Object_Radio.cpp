@@ -60,9 +60,12 @@ bool Object_Radio::Update(float dt)
 
 		if (EntityHP == 0)
 		{
-			SetToDelete();
-			if (itemObtained == false)app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_RADIO, true, false);
-			itemObtained = true;
+			if (itemObtained == false) 
+			{
+				SetToDelete();
+				app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_RADIO, true, false);
+				itemObtained = true;
+			}
 		}
 
 
