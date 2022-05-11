@@ -73,6 +73,7 @@ public:
 	Particle playerRangedAttack;
 
 	Particle RadioActive;
+	Particle PlayerPickUpRadius;
 
 private:
 	// Particles spritesheet loaded into an SDL Texture

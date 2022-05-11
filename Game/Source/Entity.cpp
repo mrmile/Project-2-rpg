@@ -70,43 +70,45 @@ void Entity::OnCollision(Collider* c2)
 	{
 		EntityHP -= app->player->EquipmentDamage;
 	}
+	if (itemObtained == false)
+	{
+		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_FOOD))
+		{
+			EntityHP = 0;
+		}
+		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_HEALTH_PACK))
+		{
+			EntityHP = 0;
+		}
 
-	if ((c2->type == Collider::Type::PLAYER) && (collider->type == Collider::Type::ITEM_FOOD))
-	{
-		EntityHP = 0;
-	}
-	if ((c2->type == Collider::Type::PLAYER) && (collider->type == Collider::Type::ITEM_HEALTH_PACK))
-	{
-		EntityHP = 0;
-	}
+		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_RADIO))
+		{
+			EntityHP = 0;
+		}
 
-	if ((c2->type == Collider::Type::PLAYER) && (collider->type == Collider::Type::ITEM_RADIO))
-	{
-		EntityHP = 0;
-	}
+		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_CARD))
+		{
+			EntityHP = 0;
+		}
 
-	if ((c2->type == Collider::Type::PLAYER) && (collider->type == Collider::Type::ITEM_CARD))
-	{
-		EntityHP = 0;
-	}
+		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_GRENADE))
+		{
+			EntityHP = 0;
+		}
 
-	if ((c2->type == Collider::Type::PLAYER) && (collider->type == Collider::Type::ITEM_GRENADE))
-	{
-		EntityHP = 0;
-	}
+		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_DEFAULT_GUN))
+		{
+			EntityHP = 0;
+		}
 
-	if ((c2->type == Collider::Type::PLAYER) && (collider->type == Collider::Type::ITEM_DEFAULT_GUN))
-	{
-		EntityHP = 0;
-	}
+		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_LONG_RANGE_GUN))
+		{
+			EntityHP = 0;
+		}
 
-	if ((c2->type == Collider::Type::PLAYER) && (collider->type == Collider::Type::ITEM_LONG_RANGE_GUN))
-	{
-		EntityHP = 0;
-	}
-
-	if ((c2->type == Collider::Type::PLAYER) && (collider->type == Collider::Type::ITEM_SHORT_RANGE_GUN))
-	{
-		EntityHP = 0;
+		if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (collider->type == Collider::Type::ITEM_SHORT_RANGE_GUN))
+		{
+			EntityHP = 0;
+		}
 	}
 }

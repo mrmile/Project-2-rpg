@@ -167,6 +167,19 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	RadioActive.anim.speed = 0.15f;
 	RadioActive.lifetime = 240;
 
+
+	PlayerPickUpRadius.anim.PushBack({ 350, 17, 40, 35 });
+	PlayerPickUpRadius.anim.PushBack({ 351, 48, 39, 30 });
+	PlayerPickUpRadius.anim.PushBack({ 354, 138, 32, 35 });
+	PlayerPickUpRadius.anim.PushBack({ 380, 138, 40, 35 });
+	PlayerPickUpRadius.anim.PushBack({ 420, 138, 40, 35 });
+	PlayerPickUpRadius.anim.PushBack({ 460, 138, 40, 35 });
+	PlayerPickUpRadius.speed.x = 0;
+	PlayerPickUpRadius.speed.y = 0;
+	PlayerPickUpRadius.anim.loop = true;
+	PlayerPickUpRadius.anim.speed = 0.15f;
+	PlayerPickUpRadius.lifetime = 5;
+
 }
 
 ModuleParticles::~ModuleParticles()

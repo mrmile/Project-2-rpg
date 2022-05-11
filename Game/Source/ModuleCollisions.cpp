@@ -61,6 +61,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_FOOD][Collider::Type::ITEM_SHORT_RANGE_GUN] = false;
 	matrix[Collider::Type::ITEM_FOOD][Collider::Type::BASE_COMPUTER] = false;
 	matrix[Collider::Type::ITEM_FOOD][Collider::Type::ITEM_RADIO] = false;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::PLAYER_PICKUP_RADIUS] = true;
 
 	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::PLAYER] = true;
@@ -84,6 +85,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::ITEM_SHORT_RANGE_GUN] = false;
 	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::BASE_COMPUTER] = false;
 	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::ITEM_RADIO] = false;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::PLAYER_PICKUP_RADIUS] = true;
 
 	matrix[Collider::Type::PLAYER][Collider::Type::LAYER_ZERO] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
@@ -142,6 +144,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_CARD][Collider::Type::BASE_COMPUTER] = false;
 	matrix[Collider::Type::ITEM_CARD][Collider::Type::ITEM_RADIO] = false;
 	matrix[Collider::Type::ITEM_CARD][Collider::Type::ITEM_CARD] = false;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::PLAYER_PICKUP_RADIUS] = true;
 
 	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::LAYER_ZERO] = true;
 	matrix[Collider::Type::PLAYER_ATTACK][Collider::Type::PLAYER_ATTACK] = false;
@@ -465,6 +468,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::ITEM_SHORT_RANGE_GUN] = false;
 	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::BASE_COMPUTER] = false;
 	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::ITEM_RADIO] = false;
+	matrix[Collider::Type::ITEM_BUKER_DOOR_KEY][Collider::Type::PLAYER_PICKUP_RADIUS] = true;
 
 	matrix[Collider::Type::TNT_SWITCH][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::TNT_SWITCH][Collider::Type::PLAYER] = true;
@@ -534,6 +538,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::ITEM_SHORT_RANGE_GUN] = false;
 	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::BASE_COMPUTER] = false;
 	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::ITEM_RADIO] = false;
+	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::PLAYER_PICKUP_RADIUS] = true;
 
 	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::PLAYER] = true;
@@ -557,6 +562,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::ITEM_SHORT_RANGE_GUN] = false;
 	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::BASE_COMPUTER] = false;
 	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::ITEM_RADIO] = false;
+	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::PLAYER_PICKUP_RADIUS] = true;
 
 	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::PLAYER] = true;
@@ -580,6 +586,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::ITEM_SHORT_RANGE_GUN] = false;
 	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::BASE_COMPUTER] = false;
 	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::ITEM_RADIO] = false;
+	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::PLAYER_PICKUP_RADIUS] = true;
 
 	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::PLAYER] = true;
@@ -603,6 +610,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::ITEM_SHORT_RANGE_GUN] = false;
 	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::BASE_COMPUTER] = false;
 	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::ITEM_RADIO] = false;
+	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::PLAYER_PICKUP_RADIUS] = true;
 
 	matrix[Collider::Type::ITEM_RADIO][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::ITEM_RADIO][Collider::Type::PLAYER] = true;
@@ -626,6 +634,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_RADIO][Collider::Type::ITEM_SHORT_RANGE_GUN] = false;
 	matrix[Collider::Type::ITEM_RADIO][Collider::Type::BASE_COMPUTER] = false;
 	matrix[Collider::Type::ITEM_RADIO][Collider::Type::ITEM_RADIO] = false;
+	matrix[Collider::Type::ITEM_RADIO][Collider::Type::PLAYER_PICKUP_RADIUS] = true;
 
 	matrix[Collider::Type::BASE_COMPUTER][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::BASE_COMPUTER][Collider::Type::PLAYER] = true;
@@ -649,6 +658,33 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::BASE_COMPUTER][Collider::Type::ITEM_SHORT_RANGE_GUN] = false;
 	matrix[Collider::Type::BASE_COMPUTER][Collider::Type::BASE_COMPUTER] = false;
 	matrix[Collider::Type::BASE_COMPUTER][Collider::Type::ITEM_RADIO] = false;
+
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::LAYER_ZERO] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::INSTANT_DEATH] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::EXIT_1] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::EXIT_2] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::EXIT_3] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::SWITCH] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::NULL_COLLIDER] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::PLAYER_FEET] = true;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ITEM_BUKER_DOOR_KEY] = true;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ENABLE_FINAL_BATTLE] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::PLAYER_RANGED_ATTACK] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ITEM_GRENADE] = true;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ITEM_LONG_RANGE_GUN] = true;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ITEM_SHORT_RANGE_GUN] = true;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::PLAYER_PICKUP_RADIUS] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ITEM_RADIO] = true;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ITEM_CARD] = true;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ITEM_HEALTH_PACK] = true;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ITEM_FOOD] = true;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ITEM_DEFAULT_GUN] = true;
 
 }
 
@@ -820,6 +856,9 @@ void ModuleCollisions::DebugDraw()
 				break;
 			case Collider::Type::ENABLE_FINAL_BATTLE: // light green
 				app->render->DrawRectangle(colliders[i]->rect, 172, 255, 200, alpha);
+				break;
+			case Collider::Type::PLAYER_PICKUP_RADIUS: 
+				app->render->DrawRectangle(colliders[i]->rect, 172, 200, 200, alpha);
 				break;
 			}
 		}

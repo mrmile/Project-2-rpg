@@ -17,7 +17,7 @@
 #include "Log.h"
 #include "ModulePhysics.h"
 #include "ModuleParticles.h"
-
+#include "InventoryMenu.h"
 #include "Defs.h"
 
 Object_ShortScopeGun::Object_ShortScopeGun(int x,int y) : Entity(x,y)
@@ -60,6 +60,8 @@ bool Object_ShortScopeGun::Update(float dt)
 		if (EntityHP == 0)
 		{
 			SetToDelete();
+			if (itemObtained == false)app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_SHORT_SCOPE_GUN, false, true);
+			itemObtained = true;
 		}
 
 
