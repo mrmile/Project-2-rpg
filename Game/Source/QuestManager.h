@@ -4,6 +4,8 @@
 #include "Module.h"
 #include "List.h"
 #include "EntityManager.h"
+#include "Animation.h"
+#include "Point.h"
 
 enum MainQuests
 {
@@ -45,7 +47,7 @@ public:
 	// Called before quitting
 	bool CleanUp();
 	
-	int counter = 0;
+	int questCounter = 0;
 
 	int mainQuestID = 0;
 	int secondaryQuestID = 0;
@@ -53,8 +55,15 @@ public:
 	SDL_Texture* mainQuestDescription_1;
 	SDL_Texture* mainQuestDescription_2;
 	SDL_Texture* mainQuestDescription_3;
+	SDL_Texture* questCompletionMessage;
 
 	uint questCompleted = 0;
+
+
+	Animation* currentAnimation = nullptr;
+
+	Animation questCompletionAnim;
+	Animation none;
 
 };
 

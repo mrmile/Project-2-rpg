@@ -14,6 +14,38 @@
 QuestManager::QuestManager(bool start_enabled) : Module(start_enabled)
 {
 	name.Create("QuestManager");
+
+	questCompletionAnim.PushBack({ 2, 7, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 7, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 7, 149, 49 });
+	questCompletionAnim.PushBack({ 162, 7, 149, 49 });
+	questCompletionAnim.PushBack({ 322, 7, 149, 49 });
+	questCompletionAnim.PushBack({ 482, 7, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 62, 149, 49 });
+	questCompletionAnim.PushBack({ 162, 62, 149, 49 });
+	questCompletionAnim.PushBack({ 322, 62, 149, 49 });
+	questCompletionAnim.PushBack({ 482, 62, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 122, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 122, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 122, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 122, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 122, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 122, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 122, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 122, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 122, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 122, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 122, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 122, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 122, 149, 49 });
+	questCompletionAnim.PushBack({ 2, 122, 149, 49 });
+	questCompletionAnim.loop = false;
+	questCompletionAnim.speed = 0.4f;
+
+	none.PushBack({ 460, 160, 1, 1 });
+	none.loop = false;
+	none.speed = 0.3f;
+
 }
 
 // Destructor
@@ -33,13 +65,21 @@ bool QuestManager::Start()
 	mainQuestDescription_2 = app->tex->Load("Assets/textures/GUI/Inventory/mainQuest_2.png");
 	mainQuestDescription_3 = app->tex->Load("Assets/textures/GUI/Inventory/mainQuest_3.png");
 
+	questCompletionMessage = app->tex->Load("Assets/textures/GUI/questCompletedMessage.png");
+
+
 	questCompleted = app->audio->LoadFx("Assets/audio/fx/UISounds/achievement_01.wav");
+
+	questCounter = 241;
+	currentAnimation = &none;
 
 	return true;
 }
 
 bool QuestManager::Update(float dt)
 {
+	questCounter++;
+
 	switch(mainQuestID)
 	{
 		case M_NONE:
@@ -72,6 +112,26 @@ bool QuestManager::Update(float dt)
 			break;
 		}
 	}
+
+
+	if (questCounter <= 240)
+	{
+		if (currentAnimation != &questCompletionAnim)
+		{
+			questCompletionAnim.Reset();
+			currentAnimation = &questCompletionAnim;
+		}
+	}
+	else
+	{
+		if (currentAnimation != &none)
+		{
+			none.Reset();
+			currentAnimation = &none;
+		}
+	}
+
+	currentAnimation->Update();
 	
 	return true;
 	
@@ -112,6 +172,10 @@ bool QuestManager::PostUpdate()
 		}
 	}
 
+
+	SDL_Rect questAnimRect = app->questManager->currentAnimation->GetCurrentFrame();
+	app->render->DrawTexture2(questCompletionMessage, 480, 10, &questAnimRect);
+
 	return true;
 }
 
@@ -119,12 +183,14 @@ void QuestManager::SwitchMainQuest(int questID)
 {
 	mainQuestID = questID;
 	app->audio->PlayFx(questCompleted);
+	questCounter = 0;
 }
 
 void QuestManager::SwitchSecondaryQuest(int questID)
 {
 	secondaryQuestID = questID;
 	app->audio->PlayFx(questCompleted);
+	questCounter = 0;
 }
 
 bool QuestManager::CleanUp()
