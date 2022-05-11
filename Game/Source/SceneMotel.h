@@ -54,8 +54,8 @@ public:
 	SDL_Rect* rectangle = {};
 
 private:
-	SDL_Texture* img;
-	SDL_Texture* PauseFrame;
+	SDL_Texture* img = nullptr;
+	SDL_Texture* PauseFrame = nullptr;
 };
 
 #endif // __SCENE_MOTEL_H__

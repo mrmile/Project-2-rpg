@@ -54,12 +54,12 @@ public:
 
 	SDL_Rect* rectangle = {};
 
-	SDL_Texture* spotLight;
-	SDL_Texture* sunrise_effect;
+	SDL_Texture* spotLight = nullptr;
+	SDL_Texture* sunrise_effect = nullptr;
 
 private:
-	SDL_Texture* img;
-	SDL_Texture* PauseFrame;
+	SDL_Texture* img = nullptr;
+	SDL_Texture* PauseFrame = nullptr;
 };
 
 #endif // __SCENE_MAIN_MAP_H__

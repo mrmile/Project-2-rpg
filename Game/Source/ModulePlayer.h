@@ -80,9 +80,9 @@ public:
 	//TEXTURE FOR UI LIFES AND -?-
 	SDL_Texture* texture2 = nullptr;
 
-	SDL_Texture* ptsScore;
+	SDL_Texture* ptsScore = nullptr;
 
-	SDL_Texture* gameOverScreen;
+	SDL_Texture* gameOverScreen = nullptr;
 
 
 	// The pointer to the current player animation
@@ -213,6 +213,9 @@ public:
 	//Escape Combat
 	bool escapeCombat = false;
 	int escapeCombatCounterToReset = 0;
+
+	// Reading/watching notes or videos
+	bool readingNote = false;
 
 	//FX
 	int walkSoundID = 0;

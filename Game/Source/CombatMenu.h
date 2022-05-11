@@ -39,22 +39,22 @@ public:
 
 private:
 
-	SDL_Texture* combatHUD;
-	SDL_Texture* enemyTurn;
-	SDL_Texture* enemyTurn1;
-	SDL_Texture* enemyTurn2;
-	SDL_Texture* enemyTurn3;
+	SDL_Texture* combatHUD = nullptr;
+	SDL_Texture* enemyTurn = nullptr;
+	SDL_Texture* enemyTurn1 = nullptr;
+	SDL_Texture* enemyTurn2 = nullptr;
+	SDL_Texture* enemyTurn3 = nullptr;
 
-	SDL_Texture* combatShoot;
-	SDL_Texture* combatMelee;
-	SDL_Texture* combatItems;
-	SDL_Texture* combatEscape;
+	SDL_Texture* combatShoot = nullptr;
+	SDL_Texture* combatMelee = nullptr;
+	SDL_Texture* combatItems = nullptr;
+	SDL_Texture* combatEscape = nullptr;
 
 	//GUI BUTTONS
-	GuiButton* combatShootGUI;
-	GuiButton* combatMeleeGUI;
-	GuiButton* combatItemsGUI;
-	GuiButton* combatEscapeGUI;
+	GuiButton* combatShootGUI = nullptr;
+	GuiButton* combatMeleeGUI = nullptr;
+	GuiButton* combatItemsGUI = nullptr;
+	GuiButton* combatEscapeGUI = nullptr;
 
 	int delay = 0;
 	int delay2 = 0;

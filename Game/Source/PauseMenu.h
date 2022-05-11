@@ -49,49 +49,49 @@ public:
 private:
 
 
-	SDL_Texture* PauseFrame;
-	SDL_Texture* PauseTitle;
-	SDL_Texture* settingsLetters;
+	SDL_Texture* PauseFrame = nullptr;
+	SDL_Texture* PauseTitle = nullptr;
+	SDL_Texture* settingsLetters = nullptr;
 
 
-	SDL_Texture* resumeButton;
-	SDL_Texture* optionsButton;
-	SDL_Texture* backToTitleButton;
-	SDL_Texture* exitButton;
-	SDL_Texture* returnButton;
+	SDL_Texture* resumeButton = nullptr;
+	SDL_Texture* optionsButton = nullptr;
+	SDL_Texture* backToTitleButton = nullptr;
+	SDL_Texture* exitButton = nullptr;
+	SDL_Texture* returnButton = nullptr;
 
-	SDL_Texture* resumeButtonOnIdle;
-	SDL_Texture* optionsButtonOnIdle;
-	SDL_Texture* backToTitleButtonOnIdle;
-	SDL_Texture* exitButtonOnIdle;
-	SDL_Texture* returnButtonOnIdle;
+	SDL_Texture* resumeButtonOnIdle = nullptr;
+	SDL_Texture* optionsButtonOnIdle = nullptr;
+	SDL_Texture* backToTitleButtonOnIdle = nullptr;
+	SDL_Texture* exitButtonOnIdle = nullptr;
+	SDL_Texture* returnButtonOnIdle = nullptr;
 
-	SDL_Texture* resumeButtonPressed;
-	SDL_Texture* optionsButtonPressed;
-	SDL_Texture* backToTitleButtonPressed;
-	SDL_Texture* exitButtonPressed;
-	SDL_Texture* returnButtonPressed;
+	SDL_Texture* resumeButtonPressed = nullptr;
+	SDL_Texture* optionsButtonPressed = nullptr;
+	SDL_Texture* backToTitleButtonPressed = nullptr;
+	SDL_Texture* exitButtonPressed = nullptr;
+	SDL_Texture* returnButtonPressed = nullptr;
 	
 	//CHECBOX TEXTURES
-	SDL_Texture* fullScreenCheckOn;
-	SDL_Texture* fullScreenCheckOff;
-	SDL_Texture* fullScreenTag;
-	SDL_Texture* VSyncOn;
-	SDL_Texture* VSyncOff;
+	SDL_Texture* fullScreenCheckOn = nullptr;
+	SDL_Texture* fullScreenCheckOff = nullptr;
+	SDL_Texture* fullScreenTag = nullptr;
+	SDL_Texture* VSyncOn = nullptr;
+	SDL_Texture* VSyncOff = nullptr;
 
-	SDL_Texture* fullScreenCheckOnOnIdle;
-	SDL_Texture* fullScreenCheckOffOnIdle;
-	SDL_Texture* VSyncOnOnIdle;
-	SDL_Texture* VSyncOffOnIdle;
+	SDL_Texture* fullScreenCheckOnOnIdle = nullptr;
+	SDL_Texture* fullScreenCheckOffOnIdle = nullptr;
+	SDL_Texture* VSyncOnOnIdle = nullptr;
+	SDL_Texture* VSyncOffOnIdle = nullptr;
 
-	SDL_Texture* fullScreenCheckOnPressed;
-	SDL_Texture* fullScreenCheckOffPressed;
-	SDL_Texture* VSyncOnPressed;
-	SDL_Texture* VSyncOffPressed;
+	SDL_Texture* fullScreenCheckOnPressed = nullptr;
+	SDL_Texture* fullScreenCheckOffPressed = nullptr;
+	SDL_Texture* VSyncOnPressed = nullptr;
+	SDL_Texture* VSyncOffPressed = nullptr;
 	//SLIDER TEXTURES
-	SDL_Texture* baseSlider_fx;
-	SDL_Texture* baseSlider_music;
-	SDL_Texture* sliderSelector;
+	SDL_Texture* baseSlider_fx = nullptr;
+	SDL_Texture* baseSlider_music = nullptr;
+	SDL_Texture* sliderSelector = nullptr;
 
 	//GUI BUTTONS
 	GuiButton* resumeButton_;

@@ -77,32 +77,32 @@ public:
 
 private:
 
-	SDL_Texture* inventoryHUD;
-	SDL_Texture* medicKitDescription;
-	/*SDL_Texture* characterName1;*/
-	SDL_Texture* object_food;
-	SDL_Texture* object_health_pack;
-	SDL_Texture* object_radio;
-	SDL_Texture* object_card;
-	SDL_Texture* object_suit;
-	SDL_Texture* object_knife;
-	SDL_Texture* default_gun;
-	SDL_Texture* long_gun;
-	SDL_Texture* short_gun;
-	SDL_Texture* object_grenade;
-	SDL_Texture* grenadeDescription;
-	SDL_Texture* foodDescription;
-	SDL_Texture* radioDescription;
-	SDL_Texture* defaultGunDescription;
-	SDL_Texture* shortGunDescription;
-	SDL_Texture* longGunDescription;
-	SDL_Texture* cardDescription;
-	SDL_Texture* combatSuitDescription;
-	SDL_Texture* knifeDescription;
-	SDL_Texture* equipButton;
-	SDL_Texture* unequipButton;
-	SDL_Texture* useButton;
-	SDL_Texture* deleteButton;
+	SDL_Texture* inventoryHUD = nullptr;
+	SDL_Texture* medicKitDescription = nullptr;
+	/*SDL_Texture* characterName1 = nullptr;*/
+	SDL_Texture* object_food = nullptr;
+	SDL_Texture* object_health_pack = nullptr;
+	SDL_Texture* object_radio = nullptr;
+	SDL_Texture* object_card = nullptr;
+	SDL_Texture* object_suit = nullptr;
+	SDL_Texture* object_knife = nullptr;
+	SDL_Texture* default_gun = nullptr;
+	SDL_Texture* long_gun = nullptr;
+	SDL_Texture* short_gun = nullptr;
+	SDL_Texture* object_grenade = nullptr;
+	SDL_Texture* grenadeDescription = nullptr;
+	SDL_Texture* foodDescription = nullptr;
+	SDL_Texture* radioDescription = nullptr;
+	SDL_Texture* defaultGunDescription = nullptr;
+	SDL_Texture* shortGunDescription = nullptr;
+	SDL_Texture* longGunDescription = nullptr;
+	SDL_Texture* cardDescription = nullptr;
+	SDL_Texture* combatSuitDescription = nullptr;
+	SDL_Texture* knifeDescription = nullptr;
+	SDL_Texture* equipButton = nullptr;
+	SDL_Texture* unequipButton = nullptr;
+	SDL_Texture* useButton = nullptr;
+	SDL_Texture* deleteButton = nullptr;
 
 public:
 

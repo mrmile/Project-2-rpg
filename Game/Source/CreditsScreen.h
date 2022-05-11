@@ -77,9 +77,9 @@ public:
 	SDL_Texture* texture3 = nullptr;
 	SDL_Texture* texture4 = nullptr;
 
-	SDL_Texture* returnButton1;
-	SDL_Texture* returnButtonOnIdle1;
-	SDL_Texture* returnButtonPressed1;
+	SDL_Texture* returnButton1 = nullptr;
+	SDL_Texture* returnButtonOnIdle1 = nullptr;
+	SDL_Texture* returnButtonPressed1 = nullptr;
 
 	GuiButton* returnButton_1;
 

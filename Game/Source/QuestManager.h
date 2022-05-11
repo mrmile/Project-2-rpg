@@ -52,10 +52,10 @@ public:
 	int mainQuestID = 0;
 	int secondaryQuestID = 0;
 
-	SDL_Texture* mainQuestDescription_1;
-	SDL_Texture* mainQuestDescription_2;
-	SDL_Texture* mainQuestDescription_3;
-	SDL_Texture* questCompletionMessage;
+	SDL_Texture* mainQuestDescription_1 = nullptr;
+	SDL_Texture* mainQuestDescription_2 = nullptr;
+	SDL_Texture* mainQuestDescription_3 = nullptr;
+	SDL_Texture* questCompletionMessage = nullptr;
 
 	uint questCompleted = 0;
 

@@ -41,14 +41,14 @@ public:
 	int animationPositionY;
 	int logoPart;
 
-	SDL_Texture* logoAnimationP1;
-	SDL_Texture* logoAnimationP2;
-	SDL_Texture* logoAnimationP3;
-	SDL_Texture* logoAnimationP4;
-	SDL_Texture* logoAnimationP5;
-	SDL_Texture* logoAnimationP6;
-	SDL_Texture* logoAnimationP7;
-	SDL_Texture* logoAnimationP8;
+	SDL_Texture* logoAnimationP1 = nullptr;
+	SDL_Texture* logoAnimationP2 = nullptr;
+	SDL_Texture* logoAnimationP3 = nullptr;
+	SDL_Texture* logoAnimationP4 = nullptr;
+	SDL_Texture* logoAnimationP5 = nullptr;
+	SDL_Texture* logoAnimationP6 = nullptr;
+	SDL_Texture* logoAnimationP7 = nullptr;
+	SDL_Texture* logoAnimationP8 = nullptr;
 
 };
 

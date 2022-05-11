@@ -96,8 +96,8 @@ public:
 	SDL_Rect extraBounds;
 	SDL_Color color;        // Tint color
 
-	SDL_Texture* texture;
-	SDL_Texture* textureForSlider;	// Texture atlas reference
+	SDL_Texture* texture = nullptr;
+	SDL_Texture* textureForSlider = nullptr;	// Texture atlas reference
 	SDL_Rect section;       // Texture atlas base section
 
 	//Font font;              // Text font

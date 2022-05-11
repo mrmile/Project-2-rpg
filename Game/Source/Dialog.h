@@ -35,7 +35,7 @@ private:
 	int dialogFont;
 
 	// Dialog bg image
-	SDL_Texture* dialogImg;
+	SDL_Texture* dialogImg = nullptr;
 	int dialogWidth, dialogHeight;
 
 	// Whether the dialog has finished or not

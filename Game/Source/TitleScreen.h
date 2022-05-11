@@ -70,59 +70,59 @@ public:
 	bool toTitleScreen = false;
 	bool OptionsMenu = false;
 
-	SDL_Texture* titleScreen;
-	SDL_Texture* titleScreenLetters;
-	SDL_Texture* settingsLetters;
-	SDL_Texture* creditsScene;
-	SDL_Texture* loading;
+	SDL_Texture* titleScreen = nullptr;
+	SDL_Texture* titleScreenLetters = nullptr;
+	SDL_Texture* settingsLetters = nullptr;
+	SDL_Texture* creditsScene = nullptr;
+	SDL_Texture* loading = nullptr;
 	//BUTTONS TEXTURES
-	SDL_Texture* newGameButton;
-	SDL_Texture* continueButton;
-	SDL_Texture* continueButtonOff;
-	SDL_Texture* optionsButton;
-	SDL_Texture* creditsButton;
-	SDL_Texture* returnButton;
-	SDL_Texture* exitButton;
+	SDL_Texture* newGameButton = nullptr;
+	SDL_Texture* continueButton = nullptr;
+	SDL_Texture* continueButtonOff = nullptr;
+	SDL_Texture* optionsButton = nullptr;
+	SDL_Texture* creditsButton = nullptr;
+	SDL_Texture* returnButton = nullptr;
+	SDL_Texture* exitButton = nullptr;
 
-	SDL_Texture* newGameButtonOnIdle;
-	SDL_Texture* continueButtonOnIdle;
-	SDL_Texture* continueButtonOffOnIdle;
-	SDL_Texture* optionsButtonOnIdle;
-	SDL_Texture* creditsButtonOnIdle;
-	SDL_Texture* returnButtonOnIdle;
-	SDL_Texture* exitButtonOnIdle;
+	SDL_Texture* newGameButtonOnIdle = nullptr;
+	SDL_Texture* continueButtonOnIdle = nullptr;
+	SDL_Texture* continueButtonOffOnIdle = nullptr;
+	SDL_Texture* optionsButtonOnIdle = nullptr;
+	SDL_Texture* creditsButtonOnIdle = nullptr;
+	SDL_Texture* returnButtonOnIdle = nullptr;
+	SDL_Texture* exitButtonOnIdle = nullptr;
 
-	SDL_Texture* newGameButtonPressed;
-	SDL_Texture* continueButtonPressed;
-	SDL_Texture* continueButtonOffPressed;
-	SDL_Texture* optionsButtonPressed;
-	SDL_Texture* creditsButtonPressed;
-	SDL_Texture* returnButtonPressed;
-	SDL_Texture* exitButtonPressed;
+	SDL_Texture* newGameButtonPressed = nullptr;
+	SDL_Texture* continueButtonPressed = nullptr;
+	SDL_Texture* continueButtonOffPressed = nullptr;
+	SDL_Texture* optionsButtonPressed = nullptr;
+	SDL_Texture* creditsButtonPressed = nullptr;
+	SDL_Texture* returnButtonPressed = nullptr;
+	SDL_Texture* exitButtonPressed = nullptr;
 	//CHECBOX TEXTURES
-	SDL_Texture* fullScreenCheckOn;
-	SDL_Texture* fullScreenCheckOff;
-	SDL_Texture* fullScreenTag;
-	SDL_Texture* VSyncOn;
-	SDL_Texture* VSyncOff;
+	SDL_Texture* fullScreenCheckOn = nullptr;
+	SDL_Texture* fullScreenCheckOff = nullptr;
+	SDL_Texture* fullScreenTag = nullptr;
+	SDL_Texture* VSyncOn = nullptr;
+	SDL_Texture* VSyncOff = nullptr;
 
-	SDL_Texture* fullScreenCheckOnOnIdle;
-	SDL_Texture* fullScreenCheckOffOnIdle;
-	SDL_Texture* VSyncOnOnIdle;
-	SDL_Texture* VSyncOffOnIdle;
+	SDL_Texture* fullScreenCheckOnOnIdle = nullptr;
+	SDL_Texture* fullScreenCheckOffOnIdle = nullptr;
+	SDL_Texture* VSyncOnOnIdle = nullptr;
+	SDL_Texture* VSyncOffOnIdle = nullptr;
 
-	SDL_Texture* fullScreenCheckOnPressed;
-	SDL_Texture* fullScreenCheckOffPressed;
-	SDL_Texture* VSyncOnPressed;
-	SDL_Texture* VSyncOffPressed;
+	SDL_Texture* fullScreenCheckOnPressed = nullptr;
+	SDL_Texture* fullScreenCheckOffPressed = nullptr;
+	SDL_Texture* VSyncOnPressed = nullptr;
+	SDL_Texture* VSyncOffPressed = nullptr;
 	//SLIDER TEXTURES
-	SDL_Texture* baseSlider_fx;
-	SDL_Texture* baseSlider_music;
-	SDL_Texture* sliderSelector;
+	SDL_Texture* baseSlider_fx = nullptr;
+	SDL_Texture* baseSlider_music = nullptr;
+	SDL_Texture* sliderSelector = nullptr;
 
-	SDL_Texture* sliderSelectorOnIdle;
+	SDL_Texture* sliderSelectorOnIdle = nullptr;
 
-	SDL_Texture* sliderSelectorPressed;
+	SDL_Texture* sliderSelectorPressed = nullptr;
 
 	//GUI BUTTONS
 	GuiButton* newGameButton_;

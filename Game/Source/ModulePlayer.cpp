@@ -226,6 +226,8 @@ bool ModulePlayer::Start()
 	deletePlayer = false;
 	checkPointReached = false;
 
+	readingNote = false;
+
 	collider = app->collisions->AddCollider({ position.x + 5, position.y - 56, 45, 56 }, Collider::Type::PLAYER, this); //{ position.x + 5, position.y + 3, 28, 33 
 	
 
@@ -1313,9 +1315,9 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			}
 		}
 
-		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::DOCTOR_NOTE_MESSAGE)
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS) && c2->type == Collider::Type::DOCTOR_NOTE_MESSAGE)
 		{
-			
+			readingNote = !readingNote;
 		}
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::BASE_COMPUTER)

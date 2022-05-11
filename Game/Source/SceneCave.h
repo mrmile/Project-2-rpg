@@ -51,12 +51,12 @@ public:
 	bool enableSceneMotel = false;
 
 private:
-	SDL_Texture* img;
+	SDL_Texture* img = nullptr;
 
 	int sceneSoundRandomizerNumber;
 	
 public:
-	SDL_Texture* spotLight;
+	SDL_Texture* spotLight = nullptr;
 
 	uint cave_bg_noise1 = 0;
 	uint cave_bg_noise2 = 0;

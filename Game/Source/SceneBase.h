@@ -50,12 +50,12 @@ public:
 	bool enableSceneMainMap = false;
 
 private:
-	SDL_Texture* img;
+	SDL_Texture* img = nullptr;
 
 	int sceneSoundRandomizerNumber;
 	
 public:
-	SDL_Texture* spotLight;
+	SDL_Texture* spotLight = nullptr;
 
 };
 

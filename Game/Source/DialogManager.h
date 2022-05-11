@@ -27,22 +27,22 @@ public:
 
 private:
 
-	SDL_Texture* textButton;
-	SDL_Texture* textRectanlgeNPC;
-	SDL_Texture* textRectanlgePlayer;
-	SDL_Texture* textNameNPC1;
-	SDL_Texture* textNameNPC2;
-	SDL_Texture* textNameNPC3;
-	SDL_Texture* textNameNPC4;
-	SDL_Texture* textNamePlayer;
-	SDL_Texture* textOption1;
-	SDL_Texture* textOption2;
-	SDL_Texture* textOptionUnselected;
+	SDL_Texture* textButton = nullptr;
+	SDL_Texture* textRectanlgeNPC = nullptr;
+	SDL_Texture* textRectanlgePlayer = nullptr;
+	SDL_Texture* textNameNPC1 = nullptr;
+	SDL_Texture* textNameNPC2 = nullptr;
+	SDL_Texture* textNameNPC3 = nullptr;
+	SDL_Texture* textNameNPC4 = nullptr;
+	SDL_Texture* textNamePlayer = nullptr;
+	SDL_Texture* textOption1 = nullptr;
+	SDL_Texture* textOption2 = nullptr;
+	SDL_Texture* textOptionUnselected = nullptr;
 	
-	GuiButton* GUItextButton;
-	GuiButton* GUItextRectanlgeNPC;
-	GuiButton* GUItextOption1;
-	GuiButton* GUItextOption2;
+	GuiButton* GUItextButton = nullptr;
+	GuiButton* GUItextRectanlgeNPC = nullptr;
+	GuiButton* GUItextOption1 = nullptr;
+	GuiButton* GUItextOption2 = nullptr;
 
 public:
 
