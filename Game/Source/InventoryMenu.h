@@ -99,6 +99,10 @@ private:
 	SDL_Texture* cardDescription;
 	SDL_Texture* combatSuitDescription;
 	SDL_Texture* knifeDescription;
+	SDL_Texture* equipButton;
+	SDL_Texture* unequipButton;
+	SDL_Texture* useButton;
+	SDL_Texture* deleteButton;
 
 public:
 

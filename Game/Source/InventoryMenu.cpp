@@ -67,14 +67,19 @@ bool InventoryMenu::Start()
 	radioDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/InventoryItemRadio.png");
 	combatSuitDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/InventoryItemDefaultCombatSuit.png");
 	knifeDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/InventoryItemKnife.png");
+
+	equipButton = app->tex->Load("Assets/textures/GUI/Inventory/equipButton.png");
+	unequipButton = app->tex->Load("Assets/textures/GUI/Inventory/unequipButton.png");
+	useButton = app->tex->Load("Assets/textures/GUI/Inventory/useButton.png");
+	deleteButton = app->tex->Load("Assets/textures/GUI/Inventory/deleteButton.png");
 	//Still need button textures the position does not matter right now as we are gonna update it 
 
 	Equipment.itemRect = { 70,107,26,25 };
 
-	DeleteItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 29, "Delete item Button", { 25,160,26,25 }, this, object_health_pack, NULL, {});
-	EquipItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 30, "Equip item Button", { 25,160,26,25 }, this, object_food, NULL, {});
-	UseItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 31, "Use item Button", { 25,160,26,25 }, this, object_food, NULL, {});
-	DeEquipButton = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 33, "DeEquip item button", { 25,160,26,25 }, this, object_food, NULL, {});
+	DeleteItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 29, "Delete item Button", { 25,160,35,25 }, this, deleteButton, NULL, {});
+	EquipItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 30, "Equip item Button", { 25,160,35,25 }, this, equipButton, NULL, {});
+	UseItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 31, "Use item Button", { 25,160,35,25 }, this, useButton, NULL, {});
+	DeEquipButton = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 33, "DeEquip item button", { 25,160,35,25 }, this, unequipButton, NULL, {});
 	EquipmentButton = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 34, "EquipmentButton", Equipment.itemRect, this, NULL, NULL, {});
 
 	int counter = 0;
@@ -196,6 +201,12 @@ bool InventoryMenu::CleanUp()
 	app->tex->UnLoad(radioDescription);
 	app->tex->UnLoad(combatSuitDescription);
 	app->tex->UnLoad(knifeDescription);
+
+	app->tex->UnLoad(equipButton);
+	app->tex->UnLoad(unequipButton);
+	app->tex->UnLoad(useButton);
+	app->tex->UnLoad(deleteButton);
+
 	app->guiManager->DestroyGuiControl(29);
 	app->guiManager->DestroyGuiControl(30);
 	app->guiManager->DestroyGuiControl(31);
