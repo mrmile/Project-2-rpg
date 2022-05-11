@@ -45,7 +45,6 @@ bool InventoryMenu::Awake()
 bool InventoryMenu::Start()
 {
 	inventoryHUD = app->tex->Load("Assets/textures/GUI/Inventory/InventoryHud.png");
-	medicKitDescription = app->tex->Load("Assets/textures/GUI/Inventory/medicKitDescription.png");
 	//characterName1 = app->tex->Load("Assets/textures/GUI/Inventory/chararcterName1.png"); // Just for testing
 	object_food = app->tex->Load("Assets/textures/GUI/Inventory/food_item_test.png");
 	object_health_pack = app->tex->Load("Assets/textures/GUI/Inventory/health_pack_item_test.png");
@@ -55,6 +54,15 @@ bool InventoryMenu::Start()
 	default_gun = app->tex->Load("Assets/textures/GUI/Inventory/default_gun.png");
 	short_gun = app->tex->Load("Assets/textures/GUI/Inventory/short_scope_gun.png");
 	long_gun = app->tex->Load("Assets/textures/GUI/Inventory/long_scope_gun.png");
+
+	medicKitDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/medicKitDescription.png");
+	cardDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/InventoryItemCard.png");
+	foodDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/InventoryItemFood.png");
+	grenadeDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/InventoryItemGrenade.png");
+	defaultGunDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/InventoryItemDefaultGun.png");
+	shortGunDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/InventoryItemShortRifle.png");
+	longGunDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/InventoryItemLongRifle.png");
+	radioDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/InventoryItemRadio.png");
 	//Still need button textures the position does not matter right now as we are gonna update it 
 
 	Equipment.itemRect = { 70,107,26,25 };
@@ -170,6 +178,14 @@ bool InventoryMenu::CleanUp()
 	app->tex->UnLoad(short_gun);
 	app->tex->UnLoad(long_gun);
 	app->tex->UnLoad(object_grenade);
+
+	app->tex->UnLoad(cardDescription);
+	app->tex->UnLoad(foodDescription);
+	app->tex->UnLoad(grenadeDescription);
+	app->tex->UnLoad(defaultGunDescription);
+	app->tex->UnLoad(shortGunDescription);
+	app->tex->UnLoad(longGunDescription);
+	app->tex->UnLoad(radioDescription);
 	app->guiManager->DestroyGuiControl(29);
 	app->guiManager->DestroyGuiControl(30);
 	app->guiManager->DestroyGuiControl(31);
@@ -385,14 +401,51 @@ bool InventoryMenu::DrawItemDescription(ItemList* item)
 {
 	if (item->amount > 0)
 	{
-		/*if (item->type == EntityType::OBJECT_FOOD)
+		if (item->type == EntityType::OBJECT_FOOD)
 		{
+			app->render->DrawTexture2(foodDescription, -15, 0, NULL);
 		
 			return true;
-		}*/
+		}
 		if (item->type == EntityType::OBJECT_HEALTH_PACK)
 		{
 			app->render->DrawTexture2(medicKitDescription, -15, 0, NULL);
+
+			return true;
+		}
+		if (item->type == EntityType::OBJECT_CARD)
+		{
+			app->render->DrawTexture2(cardDescription, -15, 0, NULL);
+
+			return true;
+		}
+		if (item->type == EntityType::OBJECT_GRENADE)
+		{
+			app->render->DrawTexture2(grenadeDescription, -15, 0, NULL);
+
+			return true;
+		}
+		if (item->type == EntityType::OBJECT_DEFAULT_GUN)
+		{
+			app->render->DrawTexture2(defaultGunDescription, -15, 0, NULL);
+
+			return true;
+		}
+		if (item->type == EntityType::OBJECT_SHORT_SCOPE_GUN)
+		{
+			app->render->DrawTexture2(shortGunDescription, -15, 0, NULL);
+
+			return true;
+		}
+		if (item->type == EntityType::OBJECT_lONG_SCOPE_GUN)
+		{
+			app->render->DrawTexture2(longGunDescription, -15, 0, NULL);
+
+			return true;
+		}
+		if (item->type == EntityType::OBJECT_RADIO)
+		{
+			app->render->DrawTexture2(radioDescription, -15, 0, NULL);
 
 			return true;
 		}
