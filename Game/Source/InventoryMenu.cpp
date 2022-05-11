@@ -65,6 +65,8 @@ bool InventoryMenu::Start()
 	shortGunDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/InventoryItemShortRifle.png");
 	longGunDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/InventoryItemLongRifle.png");
 	radioDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/InventoryItemRadio.png");
+	combatSuitDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/InventoryItemDefaultCombatSuit.png");
+	knifeDescription = app->tex->Load("Assets/textures/GUI/Inventory/itemDescriptions/InventoryItemKnife.png");
 	//Still need button textures the position does not matter right now as we are gonna update it 
 
 	Equipment.itemRect = { 70,107,26,25 };
@@ -190,6 +192,8 @@ bool InventoryMenu::CleanUp()
 	app->tex->UnLoad(shortGunDescription);
 	app->tex->UnLoad(longGunDescription);
 	app->tex->UnLoad(radioDescription);
+	app->tex->UnLoad(combatSuitDescription);
+	app->tex->UnLoad(knifeDescription);
 	app->guiManager->DestroyGuiControl(29);
 	app->guiManager->DestroyGuiControl(30);
 	app->guiManager->DestroyGuiControl(31);
@@ -466,6 +470,18 @@ bool InventoryMenu::DrawItemDescription(ItemList* item)
 		if (item->type == EntityType::OBJECT_RADIO)
 		{
 			app->render->DrawTexture2(radioDescription, -15, 0, NULL);
+
+			return true;
+		}
+		if (item->type == EntityType::OBJECT_SUIT)
+		{
+			app->render->DrawTexture2(combatSuitDescription, -15, 0, NULL);
+
+			return true;
+		}
+		if (item->type == EntityType::OBJECT_KNIFE)
+		{
+			app->render->DrawTexture2(knifeDescription, -15, 0, NULL);
 
 			return true;
 		}

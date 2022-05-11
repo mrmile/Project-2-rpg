@@ -140299,12 +140299,12 @@
   </object>
  </objectgroup>
  <objectgroup id="36" name="object_knife">
-  <object id="222" x="3389.5" y="3279.83" width="85" height="19">
+  <object id="222" x="3049.5" y="3318.49" width="85" height="19">
    <text wrap="1">Knife</text>
   </object>
  </objectgroup>
  <objectgroup id="37" name="object_suit">
-  <object id="223" x="3137.5" y="3267.83" width="85" height="19">
+  <object id="223" x="3297.5" y="3202.5" width="85" height="19">
    <text wrap="1">Combat Suit</text>
   </object>
  </objectgroup>

@@ -97,6 +97,8 @@ private:
 	SDL_Texture* shortGunDescription;
 	SDL_Texture* longGunDescription;
 	SDL_Texture* cardDescription;
+	SDL_Texture* combatSuitDescription;
+	SDL_Texture* knifeDescription;
 
 public:
 

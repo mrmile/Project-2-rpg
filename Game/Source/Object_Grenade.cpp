@@ -63,7 +63,7 @@ bool Object_Grenade::Update(float dt)
 			if (itemObtained == false)
 			{
 				SetToDelete();
-				app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_GRENADE, false, true);
+				app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_GRENADE, true, false);
 				itemObtained = true;
 			}
 		}
