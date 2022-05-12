@@ -400,93 +400,93 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->Standart_Zombie_List.end->data->body->DestroyFixture(entities[i]->Standart_Zombie_List.end->data->body->GetFixtureList());
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::ZOMBIE_RUNNER)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->Runner_Zombie_List.end->data->body->DestroyFixture(entities[i]->Runner_Zombie_List.end->data->body->GetFixtureList());
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::ZOMBIE_SPITTER)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->Spitter_Zombie_List.end->data->body->DestroyFixture(entities[i]->Spitter_Zombie_List.end->data->body->GetFixtureList());
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::NPC)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->NPC_List.end->data->body->DestroyFixture(entities[i]->NPC_List.end->data->body->GetFixtureList());
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::NPC2)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->NPC2_List.end->data->body->DestroyFixture(entities[i]->NPC2_List.end->data->body->GetFixtureList());
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::NPC3)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->NPC3_List.end->data->body->DestroyFixture(entities[i]->NPC3_List.end->data->body->GetFixtureList());
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::NPC4)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->NPC4_List.end->data->body->DestroyFixture(entities[i]->NPC4_List.end->data->body->GetFixtureList());
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::OBJECT_FOOD)
 				{
 					entities[i]->SetToDelete();
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::OBJECT_HEALTH_PACK)
 				{
 					entities[i]->SetToDelete();
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::OBJECT_RADIO)
 				{
 					entities[i]->SetToDelete();
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::OBJECT_KNIFE)
 				{
 					entities[i]->SetToDelete();
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::OBJECT_SUIT)
 				{
 					entities[i]->SetToDelete();
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::OBJECT_CARD)
 				{
 					entities[i]->SetToDelete();
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::OBJECT_GRENADE)
 				{
 					entities[i]->SetToDelete();
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::OBJECT_DEFAULT_GUN)
 				{
 					entities[i]->SetToDelete();
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::OBJECT_lONG_SCOPE_GUN)
 				{
 					entities[i]->SetToDelete();
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::OBJECT_SHORT_SCOPE_GUN)
 				{
 					entities[i]->SetToDelete();
-					entities[i] = nullptr;
+					/*entities[i] = nullptr;*/
 				}
 
 				entityPos = entityPos.next_sibling();
