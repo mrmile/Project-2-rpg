@@ -140419,7 +140419,6 @@
  </objectgroup>
  <objectgroup color="#ffff00" id="33" name="sensors_doctor_note">
   <object id="344" x="4895.5" y="1938" width="50.5" height="35.5"/>
-  <object id="345" x="3284" y="2594" width="53" height="36"/>
  </objectgroup>
  <objectgroup color="#000000" id="15" name="LEVEL_AREA" visible="0">
   <object id="257" x="2372.73" y="1457.58" width="3333.33" height="1684.85"/>
