@@ -1057,12 +1057,12 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		}
 	}
 
-	if (object->name == "doctor_note")
+	if (object->name == "sensors_doctor_note")
 	{
 		pugi::xml_node NewObject;
 		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
 		{
-			app->particles->AddParticle(app->particles->lifeRecoverPowerUp, NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int(), Collider::DOCTOR_NOTE_MESSAGE);
+			app->collisions->AddCollider({ NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int(), NewObject.attribute("width").as_int(), NewObject.attribute("height").as_int() }, Collider::Type::DOCTOR_NOTE_MESSAGE);
 		}
 	}
 
