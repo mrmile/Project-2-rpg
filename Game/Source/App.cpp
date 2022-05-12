@@ -96,13 +96,13 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(collisions);
 	AddModule(fade);
 	AddModule(pathfinding);
-	AddModule(pause_menu);
 	AddModule(inventoryMenu);
 	AddModule(combatMenu);
 	AddModule(dialogManager);
+	AddModule(questManager);
+	AddModule(pause_menu);
 	AddModule(guiManager);
 	AddModule(fonts);
-	AddModule(questManager);
 	AddModule(game_manager);
 	// Render last to swap buffer
 	AddModule(render);
