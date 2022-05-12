@@ -789,12 +789,7 @@ bool ModulePlayer::Update(float dt)
 				
 				if (app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_UP)
 				{
-					
-					if (CounterForEnemySelection < app->entity_manager->ListInCombat.count())
-					{
-						CounterForEnemySelection++;
-					}
-					enemySelected = app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position;
+					enemySelected = app->entity_manager->ListInCombat.start->data->position;
 				}
 				
 
