@@ -124,13 +124,13 @@ public:
 	GuiButton* UseItem;
 	GuiButton* DeleteItem;
 	GuiButton* EquipItem;
-	GuiButton* EquipmentButton;
+	GuiButton* EquipmentButton[3];
 	GuiButton* DeEquipButton;
 	GuiButton* ItemButton[MAX_ITEMS];
 
 	ItemList itemList[MAX_ITEMS];
 	ItemList itemUsing;
-	ItemList Equipment;
+	ItemList Equipment[3];
 
 	int mouseX, mouseY;
 
