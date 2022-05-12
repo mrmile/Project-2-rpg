@@ -74,13 +74,13 @@ bool InventoryMenu::Start()
 	deleteButton = app->tex->Load("Assets/textures/GUI/Inventory/deleteButton.png");
 	//Still need button textures the position does not matter right now as we are gonna update it 
 
-	Equipment.itemRect = { 70,107,26,25 };
+	
 
 	DeleteItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 29, "Delete item Button", { 25,160,35,25 }, this, deleteButton, NULL, {});
 	EquipItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 30, "Equip item Button", { 25,160,35,25 }, this, equipButton, NULL, {});
 	UseItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 31, "Use item Button", { 25,160,35,25 }, this, useButton, NULL, {});
 	DeEquipButton = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 33, "DeEquip item button", { 25,160,35,25 }, this, unequipButton, NULL, {});
-	EquipmentButton = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 34, "EquipmentButton", Equipment.itemRect, this, NULL, NULL, {});
+	
 
 	int counter = 0;
 
@@ -102,8 +102,16 @@ bool InventoryMenu::Start()
 
 	}
 
+	for (int i = 0; i < 3; i++)
+	{
+		Equipment[i].itemRect = {69,82 + i*50,26,25};
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		EquipmentButton[i] = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 34, "EquipmentButton", Equipment[i].itemRect, this, NULL, NULL, {});
 
-	
+		EquipmentButton[i]->canClick = true;
+	}
 
 	return true;
 }
@@ -124,7 +132,6 @@ bool InventoryMenu::Update(float dt)
 		EquipItem->canClick = true;
 		UseItem->canClick = true;
 		DeEquipButton->canClick = true;
-		EquipmentButton->canClick = true;
 	}
 	if (showInventory == false)
 	{
@@ -132,17 +139,29 @@ bool InventoryMenu::Update(float dt)
 		EquipItem->canClick = false;
 		UseItem->canClick = false;
 		DeEquipButton->canClick = false;
-		EquipmentButton->canClick = false;
 	}
 
 	app->input->GetMousePosition(mouseX, mouseY);
 	UpdateItemList();
 	UpdateEquipment();
 
-	if (Equipment.type == ItemType::NONE)
+	//ARMAS A RANGO EL 0
+	if (Equipment[0].type == ItemType::NONE)
 	{
 		app->player->EquipmentDamage = 0;
 		app->player->EquipmentRange = 0;
+	}
+
+	//ARMAS A MELEE EL 1
+	if (Equipment[1].type == ItemType::NONE)
+	{
+		app->player->MeleeDamage = 0;
+	}
+
+	//ARMADURA EL 2
+	if (Equipment[2].type == ItemType::NONE)
+	{
+		app->player->PlayerMaxHP = 100;
 	}
 
 	return true;
@@ -319,29 +338,33 @@ void InventoryMenu::DrawAllInventoryItems()
 
 void InventoryMenu::DrawEquipment()
 {
-	if (Equipment.type != ItemType::NONE)
+	for (int i = 0; i < 3; i++)
 	{
-		if (Equipment.type == ItemType::OBJECT_DEFAULT_GUN && Equipment.amount > 0)
+		if (Equipment[i].type != ItemType::NONE)
 		{
-			app->render->DrawTexture2(default_gun, Equipment.itemRect.x, Equipment.itemRect.y);
-		}
-		if (Equipment.type == ItemType::OBJECT_lONG_SCOPE_GUN && Equipment.amount > 0)
-		{
-			app->render->DrawTexture2(long_gun, Equipment.itemRect.x, Equipment.itemRect.y);
-		}
-		if (Equipment.type == ItemType::OBJECT_SHORT_SCOPE_GUN && Equipment.amount > 0)
-		{
-			app->render->DrawTexture2(short_gun, Equipment.itemRect.x, Equipment.itemRect.y);
-		}
-		if (Equipment.type == ItemType::OBJECT_KNIFE && Equipment.amount > 0)
-		{
-			app->render->DrawTexture2(object_knife, Equipment.itemRect.x, Equipment.itemRect.y);
-		}
-		if (Equipment.type == ItemType::OBJECT_SUIT && Equipment.amount > 0)
-		{
-			app->render->DrawTexture2(object_suit, Equipment.itemRect.x, Equipment.itemRect.y);
+			if (Equipment[i].type == ItemType::OBJECT_DEFAULT_GUN && Equipment[i].amount > 0)
+			{
+				app->render->DrawTexture2(default_gun, Equipment[i].itemRect.x, Equipment[i].itemRect.y);
+			}
+			if (Equipment[i].type == ItemType::OBJECT_lONG_SCOPE_GUN && Equipment[i].amount > 0)
+			{
+				app->render->DrawTexture2(long_gun, Equipment[i].itemRect.x, Equipment[i].itemRect.y);
+			}
+			if (Equipment[i].type == ItemType::OBJECT_SHORT_SCOPE_GUN && Equipment[i].amount > 0)
+			{
+				app->render->DrawTexture2(short_gun, Equipment[i].itemRect.x, Equipment[i].itemRect.y);
+			}
+			if (Equipment[i].type == ItemType::OBJECT_KNIFE && Equipment[i].amount > 0)
+			{
+				app->render->DrawTexture2(object_knife, Equipment[i].itemRect.x, Equipment[i].itemRect.y);
+			}
+			if (Equipment[i].type == ItemType::OBJECT_SUIT && Equipment[i].amount > 0)
+			{
+				app->render->DrawTexture2(object_suit, Equipment[i].itemRect.x, Equipment[i].itemRect.y);
+			}
 		}
 	}
+	
 }
 
 bool InventoryMenu::OnGuiMouseClickEvent(GuiControl* control)
@@ -440,12 +463,14 @@ ItemList InventoryMenu::GetItemFromPosition(int mouseX, int mouseY)
 			itemUsing = itemList[i];
 			return itemList[i];
 		}
-
-		if ((mouseX > Equipment.itemRect.x && mouseX < (Equipment.itemRect.x + Equipment.itemRect.w)) &&
-			(mouseY > Equipment.itemRect.y && mouseY < Equipment.itemRect.y + Equipment.itemRect.h))
+	}
+	for (int i = 0; i < 3; i++)
+	{
+		if ((mouseX > Equipment[i].itemRect.x && mouseX < (Equipment[i].itemRect.x + Equipment[i].itemRect.w)) &&
+			(mouseY > Equipment[i].itemRect.y && mouseY < Equipment[i].itemRect.y + Equipment[i].itemRect.h))
 		{
-			itemUsing = Equipment;
-			return Equipment;
+			itemUsing = Equipment[i];
+			return Equipment[i];
 		}
 	}
 }
@@ -554,8 +579,8 @@ bool InventoryMenu::DeEquipItemSelected(ItemList* item)
 		{
 			AddItemToInventory(ItemType::OBJECT_DEFAULT_GUN, false, true);
 
-			Equipment.amount = 0;
-			Equipment.alreadyEquipped = false;
+			Equipment[0].amount = 0;
+			Equipment[0].alreadyEquipped = false;
 			
 			return true;
 		}
@@ -563,8 +588,8 @@ bool InventoryMenu::DeEquipItemSelected(ItemList* item)
 		{
 			AddItemToInventory(ItemType::OBJECT_lONG_SCOPE_GUN, false, true);
 
-			Equipment.amount = 0;
-			Equipment.alreadyEquipped = false;
+			Equipment[0].amount = 0;
+			Equipment[0].alreadyEquipped = false;
 
 			return true;
 		}
@@ -572,8 +597,8 @@ bool InventoryMenu::DeEquipItemSelected(ItemList* item)
 		{
 			AddItemToInventory(ItemType::OBJECT_SHORT_SCOPE_GUN, false, true);
 
-			Equipment.amount = 0;
-			Equipment.alreadyEquipped = false;
+			Equipment[0].amount = 0;
+			Equipment[0].alreadyEquipped = false;
 		
 			return true;
 		}
@@ -581,17 +606,17 @@ bool InventoryMenu::DeEquipItemSelected(ItemList* item)
 		{
 			AddItemToInventory(ItemType::OBJECT_KNIFE, false, true);
 
-			Equipment.amount = 0;
-			Equipment.alreadyEquipped = false;
+			Equipment[1].amount = 0;
+			Equipment[1].alreadyEquipped = false;
 
 			return true;
 		}
 		if (item->type == ItemType::OBJECT_SUIT)
 		{
 			AddItemToInventory(ItemType::OBJECT_SUIT, false, true);
-
-			Equipment.amount = 0;
-			Equipment.alreadyEquipped = false;
+			app->player->playerHP -= 100;
+			Equipment[2].amount = 0;
+			Equipment[2].alreadyEquipped = false;
 
 			return true;
 		}
@@ -608,47 +633,71 @@ bool InventoryMenu::DeleteItemSelected(ItemList* item)
 }
 bool InventoryMenu::EquipItemSelected(ItemList* item)
 {
-	if (Equipment.type == ItemType::NONE)
+	if (Equipment[0].type == ItemType::NONE)
 	{
 		//Also need to create a function for the player that updates it's damage in function of the item equipped
-		Equipment.type = item->type;
-		Equipment.alreadyEquipped = true;
-		Equipment.amount = 1;
-		item->amount--;
-		if (Equipment.type == ItemType::OBJECT_DEFAULT_GUN)
+		if (item->type == ItemType::OBJECT_DEFAULT_GUN || item->type == ItemType::OBJECT_SHORT_SCOPE_GUN || item->type == ItemType::OBJECT_lONG_SCOPE_GUN)
 		{
-			app->player->EquipmentDamage = 2;
-			app->player->EquipmentRange = 150;
+			Equipment[0].type = item->type;
+			Equipment[0].alreadyEquipped = true;
+			Equipment[0].amount = 1;
+			item->amount--;
+			if (Equipment[0].type == ItemType::OBJECT_DEFAULT_GUN)
+			{
+				app->player->EquipmentDamage = 2;
+				app->player->EquipmentRange = 150;
+			}
+			if (Equipment[0].type == ItemType::OBJECT_SHORT_SCOPE_GUN)
+			{
+				app->player->EquipmentDamage = 6;
+				app->player->EquipmentRange = 75;
+			}
+			if (Equipment[0].type == ItemType::OBJECT_lONG_SCOPE_GUN)
+			{
+				app->player->EquipmentDamage = 3;
+				app->player->EquipmentRange = 300;
+			}
 		}
-		if (Equipment.type == ItemType::OBJECT_SHORT_SCOPE_GUN)
+	}
+
+	if (Equipment[1].type == ItemType::NONE)
+	{
+		//Also need to create a function for the player that updates it's damage in function of the item equipped
+		if (item->type == ItemType::OBJECT_KNIFE)
 		{
-			app->player->EquipmentDamage = 6;
-			app->player->EquipmentRange = 75;
-		}
-		if (Equipment.type == ItemType::OBJECT_lONG_SCOPE_GUN)
-		{
-			app->player->EquipmentDamage = 3;
-			app->player->EquipmentRange = 300;
-		}
-		if (Equipment.type == ItemType::OBJECT_KNIFE)
-		{
-			app->player->EquipmentDamage = 3;
-			app->player->EquipmentRange = 300;
-		}
-		if (Equipment.type == ItemType::OBJECT_SUIT)
-		{
-			app->player->EquipmentDamage = 3;
-			app->player->EquipmentRange = 300;
+			Equipment[1].type = item->type;
+			Equipment[1].alreadyEquipped = true;
+			Equipment[1].amount = 1;
+			item->amount--;
+
+			if (Equipment[1].type == ItemType::OBJECT_KNIFE)
+			{
+				app->player->MeleeDamage = 2;
+			}
 		}
 		
-		return true;
 	}
-	if (Equipment.type != ItemType::NONE)
+	if (Equipment[2].type == ItemType::NONE)
 	{
-		//do not allow the equipment change unless you unequip the item first
-		return true;
+		if (item->type == ItemType::OBJECT_SUIT)
+		{
+			//Also need to create a function for the player that updates it's damage in function of the item equipped
+			Equipment[2].type = item->type;
+			Equipment[2].alreadyEquipped = true;
+			Equipment[2].amount = 1;
+			item->amount--;
+
+			if (Equipment[2].type == ItemType::OBJECT_SUIT)
+			{
+				app->player->playerHP += 100;
+				app->player->PlayerMaxHP = 200;
+			}
+		}
+		
 	}
-	
+
+	return true;
+
 }
 void InventoryMenu::UpdateItemList()
 {
@@ -675,17 +724,21 @@ void InventoryMenu::UpdateItemList()
 
 void InventoryMenu::UpdateEquipment()
 {
-	if (itemUsing.type != ItemType::NONE)
+	for (int i = 0; i < 3; i++)
 	{
-		if (Equipment.type == itemUsing.type)
+		if (itemUsing.type != ItemType::NONE)
 		{
-
-			if (Equipment.amount == 0)
+			if (Equipment[i].type == itemUsing.type)
 			{
-				Equipment.usable = false;
-				Equipment.equipable = false;
-				Equipment.type = ItemType::NONE;
+
+				if (Equipment[i].amount == 0)
+				{
+					Equipment[i].usable = false;
+					Equipment[i].equipable = false;
+					Equipment[i].type = ItemType::NONE;
+				}
 			}
 		}
 	}
+
 }

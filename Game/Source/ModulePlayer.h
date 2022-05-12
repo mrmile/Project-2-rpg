@@ -70,7 +70,9 @@ public:
 	int EquipmentRange;
 	int EquipmentDamage;
 
+	int MeleeDamage;
 
+	int PlayerMaxHP;
 	// The speed in which we move the player (pixels per frame)
 	int speed = 1;
 
