@@ -155,13 +155,13 @@ bool InventoryMenu::Update(float dt)
 	//ARMAS A MELEE EL 1
 	if (Equipment[1].type == ItemType::NONE)
 	{
-		
+		app->player->MeleeDamage = 0;
 	}
 
 	//ARMADURA EL 2
 	if (Equipment[2].type == ItemType::NONE)
 	{
-		
+		app->player->PlayerMaxHP = 100;
 	}
 
 	return true;
@@ -614,7 +614,7 @@ bool InventoryMenu::DeEquipItemSelected(ItemList* item)
 		if (item->type == ItemType::OBJECT_SUIT)
 		{
 			AddItemToInventory(ItemType::OBJECT_SUIT, false, true);
-
+			app->player->playerHP -= 100;
 			Equipment[2].amount = 0;
 			Equipment[2].alreadyEquipped = false;
 
@@ -672,8 +672,7 @@ bool InventoryMenu::EquipItemSelected(ItemList* item)
 
 			if (Equipment[1].type == ItemType::OBJECT_KNIFE)
 			{
-				//app->player->EquipmentDamage = 3;
-				//app->player->EquipmentRange = 300;
+				app->player->MeleeDamage = 2;
 			}
 		}
 		
@@ -690,8 +689,8 @@ bool InventoryMenu::EquipItemSelected(ItemList* item)
 
 			if (Equipment[2].type == ItemType::OBJECT_SUIT)
 			{
-				//app->player->EquipmentDamage = 3;
-				//app->player->EquipmentRange = 300;
+				app->player->playerHP += 100;
+				app->player->PlayerMaxHP = 200;
 			}
 		}
 		

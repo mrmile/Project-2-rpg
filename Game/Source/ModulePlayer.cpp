@@ -269,7 +269,8 @@ bool ModulePlayer::Start()
 
 	app->win->GetWindowSize(winWidth, winHeight);
 
-	playerHP = 100;
+	PlayerMaxHP = 100;
+	playerHP = 50;
 	/*invincibleDelay = 120;*/
 	playerFPS = 0;
 
@@ -968,23 +969,23 @@ bool ModulePlayer::PostUpdate()
 		quad = { 5, 10, playerHP, 10 };
 
 		SDL_Rect quad2;
-		quad2 = { 5, 10, 100, 10 };
+		quad2 = { 5, 10, PlayerMaxHP, 10 };
 
 		SDL_Rect bgquad;
-		bgquad = { 3, 8, 104, 14 };
+		bgquad = { 3, 8, PlayerMaxHP+4, 14 };
 		app->render->DrawRectangle2(bgquad, 255, 255, 255, 255, 0.0f, true);
 		app->render->DrawRectangle2(quad2, 200, 200, 200, 255, 0.0f, true);
 		//app->render->DrawRectangle(bgquad, 255, 255, 255, 165, true, true);
-		if (playerHP >= 100)
+		if (playerHP >= PlayerMaxHP)
 		{
-			playerHP = 100;
+			playerHP = PlayerMaxHP;
 			app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
 		}
-		else if (playerHP > 50)
+		else if (playerHP > PlayerMaxHP/2)
 		{
 			app->render->DrawRectangle2(quad, 120, 255, 0, 255, 0.0f, true);
 		}
-		else if (playerHP > 20 && playerHP <= 50)
+		else if (playerHP > PlayerMaxHP/5 && playerHP <= PlayerMaxHP/2)
 		{
 			app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
 		}
