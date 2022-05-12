@@ -43,7 +43,6 @@ bool EntityManager::Start()
 	texture_enemies_runner_zombie = app->tex->Load("Assets/textures/Enemies/zombie__with_spawn.png");
 	texture_enemies_spitter_zombie = app->tex->Load("Assets/textures/Enemies/zombie__with_spawn.png");
 	texture_npcs = app->tex->Load("Assets/textures/NPCs/Implemented.png");
-	texture_items = app->tex->Load("Assets/textures/SceneObjects/items.png");
 
 	return true;
 }

@@ -182,9 +182,7 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	PlayerPickUpRadius.anim.speed = 0.15f;
 	PlayerPickUpRadius.lifetime = 5;
 
-	ItemFood.anim.PushBack({ 350, 17, 40, 35 });
-	ItemFood.speed.x = 0;
-	ItemFood.speed.y = 0;
+	ItemFood.anim.PushBack({ 234, 51, 34, 30 });
 	ItemFood.anim.loop = true;
 	ItemFood.anim.speed = 0.15f;
 
@@ -251,8 +249,8 @@ ModuleParticles::~ModuleParticles()
 bool ModuleParticles::Start()
 {
 	LOG("Loading particles");
-	texture = app->tex->Load("Assets/textures/particles.png");
-
+	/*texture = app->tex->Load("Assets/textures/particles.png");*/
+	texture_items = app->tex->Load("Assets/textures/SceneObjects/Final_items.png");
 	
 
 	return true;
@@ -423,7 +421,7 @@ bool ModuleParticles::PostUpdate()
 
 		if (particle != nullptr && particle->isAlive)
 		{
-			app->render->DrawTexture(texture, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+			app->render->DrawTexture(texture_items, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
 		}
 	}
 
