@@ -28,7 +28,7 @@ Object_DefaultGun::Object_DefaultGun(int x,int y) : Entity(x,y)
 	EntityKillable = false;
 
 	
-	Idle_item.PushBack({24,45,25,56});
+	Idle_item.PushBack({2,55,32,22});
 	Idle_item.loop = false;
 	Idle_item.speed = 0.3f;
 
