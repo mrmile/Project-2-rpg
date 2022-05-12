@@ -29,7 +29,7 @@ Object_Card::Object_Card(int x, int y) : Entity(x, y)
 	EntityKillable = false;
 
 
-	Idle_item.PushBack({ 24,45,25,56 });
+	Idle_item.PushBack({ 6,118,20,13 });
 	Idle_item.loop = false;
 	Idle_item.speed = 0.3f;
 

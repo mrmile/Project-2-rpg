@@ -54,7 +54,8 @@ bool EntityManager::Start()
 	texture_enemies_runner_zombie = app->tex->Load("Assets/textures/Enemies/zombie__with_spawn.png");
 	texture_enemies_spitter_zombie = app->tex->Load("Assets/textures/Enemies/zombie__with_spawn.png");
 	texture_npcs = app->tex->Load("Assets/textures/NPCs/Implemented.png");
-	
+	texture_items = app->tex->Load("Assets/textures/SceneObjects/items.png");
+
 	return true;
 }
 
@@ -234,11 +235,17 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				//entities[i]->texture = texture_objects;
 				entities[i] = new Object_Food(info.x, info.y);
 				HelperQueue[i].type = EntityType::OBJECT_FOOD;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				entities[i]->texture = texture_items;
 				break;
 			case EntityType::OBJECT_HEALTH_PACK:
 				//entities[i]->texture = texture_objects;
 				entities[i] = new Object_HealthPack(info.x, info.y);
 				HelperQueue[i].type = EntityType::OBJECT_HEALTH_PACK;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				entities[i]->texture = texture_items;
 				break;
 
 			case EntityType::OBJECT_DEFAULT_GUN:
@@ -246,8 +253,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i].type = EntityType::OBJECT_DEFAULT_GUN;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				//entities[i]->texture =;
-
+				entities[i]->texture = texture_items;
 				break;
 
 			case EntityType::OBJECT_lONG_SCOPE_GUN:
@@ -255,8 +261,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i].type = EntityType::OBJECT_lONG_SCOPE_GUN;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				//entities[i]->texture =;
-
+				entities[i]->texture = texture_items;
 				break;
 
 			case EntityType::OBJECT_SHORT_SCOPE_GUN:
@@ -264,8 +269,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i].type = EntityType::OBJECT_SHORT_SCOPE_GUN;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				//entities[i]->texture =;
-
+				entities[i]->texture = texture_items;
 				break;
 
 			case EntityType::OBJECT_RADIO:
@@ -273,8 +277,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i].type = EntityType::OBJECT_RADIO;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				//entities[i]->texture =;
-
+				entities[i]->texture = texture_items;
 				break;
 
 			case EntityType::OBJECT_KNIFE:
@@ -282,8 +285,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i].type = EntityType::OBJECT_KNIFE;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				//entities[i]->texture =;
-
+				entities[i]->texture = texture_items;
 				break;
 
 			case EntityType::OBJECT_SUIT:
@@ -291,8 +293,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i].type = EntityType::OBJECT_SUIT;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				//entities[i]->texture =;
-
+				entities[i]->texture = texture_items;
 				break;
 
 			case EntityType::OBJECT_CARD:
@@ -300,8 +301,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i].type = EntityType::OBJECT_CARD;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				//entities[i]->texture =;
-
+				entities[i]->texture = texture_items;
 				break;
 
 			case EntityType::OBJECT_GRENADE:
@@ -309,7 +309,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i].type = EntityType::OBJECT_GRENADE;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				//entities[i]->texture =;
+				entities[i]->texture = texture_items;
 
 				break;
 

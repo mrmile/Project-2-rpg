@@ -116,6 +116,7 @@ private:
 	SDL_Texture* texture_enemies_runner_zombie = nullptr;
 	SDL_Texture* texture_enemies_spitter_zombie = nullptr;
 	SDL_Texture* texture_npcs = nullptr;
+	SDL_Texture* texture_items = nullptr;
 
 	EntityHelper HelperQueue[MAX_ENTITIES];
 
