@@ -1118,15 +1118,19 @@ bool ModulePlayer::PostUpdate()
 			//Experiment (folder icon)
 			
 				//DAY 1 (notepad icon)
+					//BACK (back arrow icon)
 				//BACK (back arrow icon)
 			
 				//DAY 5 (notepad icon)
+					//BACK (back arrow icon)
 				//BACK (back arrow icon)
 				
 				//DAY 10 (notepad icon)
+					//BACK (back arrow icon)
 				//BACK (back arrow icon)
 				
 				//DAY 15 (notepad icon)
+					//BACK (back arrow icon)
 					//UNLOCK HARBOR.EXE (executable icon)
 				//BACK (back arrow icon)
 
