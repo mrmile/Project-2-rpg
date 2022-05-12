@@ -434,7 +434,7 @@ bool ModuleParticles::PostUpdate()
 
 	if(app->sceneCave->sceneCave == true) app->render->DrawTexture(app->sceneCave->spotLight, app->player->position.x - 960 + 25, app->player->position.y - 540 - 25, NULL);
 
-	if (app->sceneBase->sceneBase == true) app->render->DrawTexture(app->sceneBase->spotLight, app->player->position.x - 960 + 25, app->player->position.y - 540 - 25, NULL);
+	if (app->sceneBase->sceneBase == true && app->player->usingComputer == false) app->render->DrawTexture(app->sceneBase->spotLight, app->player->position.x - 960 + 25, app->player->position.y - 540 - 25, NULL);
 
 	if (app->sceneMainMap->sceneMainMap == true && app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2) app->render->DrawTexture(app->sceneMainMap->spotLight, app->player->position.x - 1056 + 30, app->player->position.y - 594 - 30, NULL);
 	if (app->sceneMainMap->sceneMainMap == true && app->questManager->mainQuestID == KILL_THE_PATIENT_ZERO_3) app->render->DrawTexture(app->sceneMainMap->sunrise_effect, app->player->position.x - 960, app->player->position.y - 540, NULL);

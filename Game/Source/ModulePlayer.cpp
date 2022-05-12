@@ -162,9 +162,12 @@ bool ModulePlayer::Start()
 	
 	texture = app->tex->Load("Assets/textures/Character/SWAT_Character.png");
 	doctorNote = app->tex->Load("Assets/textures/extras/doctor_note.png");
+	computerBG = app->tex->Load("Assets/textures/extras/computer_bg.png");
 
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
 	itemGrab = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_grab_finish_back_fast_begin_0.wav");
+	computerOff = app->audio->LoadFx("Assets/audio/fx/extra/windows_off.wav");
+	computerOn = app->audio->LoadFx("Assets/audio/fx/extra/windows_on.wav");
 
 	if (app->sceneMainMap->sceneMainMap == true || app->sceneMotel->sceneMotel == true)
 	{
@@ -228,6 +231,8 @@ bool ModulePlayer::Start()
 	checkPointReached = false;
 
 	readingNote = false;
+	usingComputer = false;
+	computerMenuID = 0;
 
 	collider = app->collisions->AddCollider({ position.x + 5, position.y - 56, 45, 56 }, Collider::Type::PLAYER, this); //{ position.x + 5, position.y + 3, 28, 33 
 	
@@ -1101,6 +1106,29 @@ bool ModulePlayer::PostUpdate()
 
 		if(readingNote == true) app->render->DrawTexture2(doctorNote, 0, 0, NULL);
 
+		if (usingComputer == true)
+		{
+			app->render->DrawTexture2(computerBG, 0, 0, NULL);
+
+			//Aquí va la lógica del computer GUI:
+
+			//Experiment (folder icon)
+			
+				//DAY 1 (notepad icon)
+				//BACK (back arrow icon)
+			
+				//DAY 5 (notepad icon)
+				//BACK (back arrow icon)
+				
+				//DAY 10 (notepad icon)
+				//BACK (back arrow icon)
+				
+				//DAY 15 (notepad icon)
+					//UNLOCK HARBOR.EXE (executable icon)
+				//BACK (back arrow icon)
+
+		}
+
 		return true;
 	
 	
@@ -1110,6 +1138,7 @@ bool ModulePlayer::CleanUp()
 {
 	app->tex->UnLoad(texture);
 	app->tex->UnLoad(doctorNote);
+	app->tex->UnLoad(computerBG);
 
 	//deletePlayer = true;
 	app->player->Player->body->DestroyFixture(app->player->Player->body->GetFixtureList());
@@ -1329,25 +1358,34 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 			if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_DOWN)
 			{
-				app->player->readingNote = !app->player->readingNote;
-				app->audio->PlayFx(app->player->itemGrab);
+				readingNote = !readingNote;
+				app->audio->PlayFx(itemGrab);
 			}
 		}
 
-		if ((c2->type == Collider::Type::PLAYER) && collider->type == Collider::Type::BASE_COMPUTER)
+		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::BASE_COMPUTER)
 		{
 			if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_DOWN)
 			{
-				
+				if (usingComputer == false)
+				{
+					usingComputer = true;
+					app->audio->PlayFx(computerOn);
+				}
+				else if (usingComputer == true)
+				{
+					usingComputer = false;
+					app->audio->PlayFx(computerOff);
+				}
 			}
 		}
 
-		if ((c2->type == Collider::Type::PLAYER) && collider->type == Collider::Type::TNT_SWITCH)
+		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::TNT_SWITCH)
 		{
 
 		}
 
-		if ((c2->type == Collider::Type::PLAYER) && collider->type == Collider::Type::SWITCH)
+		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::SWITCH)
 		{
 
 		}

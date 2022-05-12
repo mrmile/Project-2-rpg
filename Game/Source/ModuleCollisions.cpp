@@ -115,7 +115,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_DEFAULT_GUN] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_SUIT] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_KNIFE] = false;
-	matrix[Collider::Type::PLAYER][Collider::Type::BASE_COMPUTER] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::BASE_COMPUTER] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_RADIO] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_CARD] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_PICKUP_RADIUS] = false;
@@ -758,6 +758,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ITEM_SUIT] = true;
 	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ITEM_KNIFE] = true;
 	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::PLAYER_PICKUP_RADIUS] = false;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::BASE_COMPUTER] = false;
 
 }
 
@@ -925,6 +926,9 @@ void ModuleCollisions::DebugDraw()
 				app->render->DrawRectangle(colliders[i]->rect, 0, 0, 0, alpha);
 				break;
 			case Collider::Type::DOCTOR_NOTE_MESSAGE: // purple
+				app->render->DrawRectangle(colliders[i]->rect, 128, 0, 255, alpha);
+				break;
+			case Collider::Type::BASE_COMPUTER: // purple
 				app->render->DrawRectangle(colliders[i]->rect, 128, 0, 255, alpha);
 				break;
 			case Collider::Type::DOOR_KEY_READER: // light yellow

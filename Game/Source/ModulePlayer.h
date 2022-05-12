@@ -88,6 +88,8 @@ public:
 
 	SDL_Texture* doctorNote = nullptr;
 
+	SDL_Texture* computerBG = nullptr;
+
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
@@ -137,6 +139,9 @@ public:
 	uint paused = 0;
 	uint gameOverfx = 0;
 	uint itemGrab = 0;
+
+	uint computerOn = 0;
+	uint computerOff = 0;
 
 	// The player's colliders
 	Collider* collider = nullptr;
@@ -219,6 +224,8 @@ public:
 
 	// Reading/watching notes or videos
 	bool readingNote = false;
+	bool usingComputer = false;
+	int computerMenuID = 0;
 
 	//FX
 	int walkSoundID = 0;
