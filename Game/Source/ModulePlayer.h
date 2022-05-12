@@ -84,6 +84,7 @@ public:
 
 	SDL_Texture* gameOverScreen = nullptr;
 
+	SDL_Texture* doctorNote = nullptr;
 
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction

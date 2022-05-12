@@ -161,6 +161,7 @@ bool ModulePlayer::Start()
 	bool ret = true;
 	
 	texture = app->tex->Load("Assets/textures/Character/SWAT_Character.png");
+	doctorNote = app->tex->Load("Assets/textures/extras/doctor_note.png");
 
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
 	itemGrab = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_grab_finish_back_fast_begin_0.wav");
@@ -1097,6 +1098,8 @@ bool ModulePlayer::PostUpdate()
 
 		//app->fonts->BlitText(150, 248, scoreFont, "this is just a font test message");
 
+		if(readingNote == true) app->render->DrawTexture2(doctorNote, 0, 0, NULL);
+
 		return true;
 	
 	
@@ -1105,6 +1108,7 @@ bool ModulePlayer::PostUpdate()
 bool ModulePlayer::CleanUp()
 {
 	app->tex->UnLoad(texture);
+	app->tex->UnLoad(doctorNote);
 
 	//deletePlayer = true;
 	app->player->Player->body->DestroyFixture(app->player->Player->body->GetFixtureList());
@@ -1292,11 +1296,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				layerZeroReveal = false;
 			}
 		}
-
-		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::SWITCH)
-		{
-			
-		}
 		
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::INSTANT_DEATH)
 		{
@@ -1328,6 +1327,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::TNT_SWITCH)
 		{
 			
+		}
+
+		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::SWITCH)
+		{
+
 		}
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::ENABLE_FINAL_BATTLE)
