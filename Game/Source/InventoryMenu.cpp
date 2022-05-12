@@ -44,7 +44,13 @@ bool InventoryMenu::Awake()
 // Called before the first frame
 bool InventoryMenu::Start()
 {
-	inventoryHUD = app->tex->Load("Assets/textures/GUI/Inventory/InventoryHud.png");
+	inventoryHUD = app->tex->Load("Assets/textures/GUI/Inventory/InventoryHud4.png");
+	characterHealth100 = app->tex->Load("Assets/textures/GUI/Inventory/barLife100.png");
+	characterHealth80 = app->tex->Load("Assets/textures/GUI/Inventory/barLife80.png");
+	characterHealth60 = app->tex->Load("Assets/textures/GUI/Inventory/barLife60.png");
+	characterHealth40 = app->tex->Load("Assets/textures/GUI/Inventory/barLife40.png");
+	characterHealth20 = app->tex->Load("Assets/textures/GUI/Inventory/barLife20.png");
+	characterHealth0 = app->tex->Load("Assets/textures/GUI/Inventory/barLife00.png");
 	//characterName1 = app->tex->Load("Assets/textures/GUI/Inventory/chararcterName1.png"); // Just for testing
 	object_food = app->tex->Load("Assets/textures/GUI/Inventory/food_item_test.png");
 	object_health_pack = app->tex->Load("Assets/textures/GUI/Inventory/health_pack_item_test.png");
@@ -175,6 +181,32 @@ bool InventoryMenu::PostUpdate()
 	if (app->player->pauseMenu == false && app->titleScreen->active == false && app->creditsScreen->active == false && showInventory == true)
 	{
 		app->render->DrawTexture2(inventoryHUD, 0, 0, NULL);
+
+		if (app->player->playerHP == 100)
+		{
+			app->render->DrawTexture2(characterHealth100, 0, 0, NULL);
+		}
+		if (app->player->playerHP < 100 && app->player->playerHP >= 60)
+		{
+			app->render->DrawTexture2(characterHealth80, 0, 0, NULL);
+		}
+		if (app->player->playerHP < 80 && app->player->playerHP >= 40)
+		{
+			app->render->DrawTexture2(characterHealth60, 0, 0, NULL);
+		}
+		if (app->player->playerHP < 60 && app->player->playerHP >= 20)
+		{
+			app->render->DrawTexture2(characterHealth40, 0, 0, NULL);
+		}
+		if (app->player->playerHP < 40 && app->player->playerHP > 0)
+		{
+			app->render->DrawTexture2(characterHealth20, 0, 0, NULL);
+		}
+		if (app->player->playerHP <= 0)
+		{
+			app->render->DrawTexture2(characterHealth0, 0, 0, NULL);
+		}
+
 		//app->render->DrawTexture2(characterName1, 0, 0, NULL); // Just for testing
 		DrawAllInventoryItems();
 		DrawEquipment();
@@ -215,6 +247,12 @@ bool InventoryMenu::PostUpdate()
 bool InventoryMenu::CleanUp()
 {
 	app->tex->UnLoad(inventoryHUD);
+	app->tex->UnLoad(characterHealth100);
+	app->tex->UnLoad(characterHealth80);
+	app->tex->UnLoad(characterHealth60);
+	app->tex->UnLoad(characterHealth40);
+	app->tex->UnLoad(characterHealth20);
+	app->tex->UnLoad(characterHealth0);
 	app->tex->UnLoad(object_food);
 	app->tex->UnLoad(object_health_pack);
 	app->tex->UnLoad(medicKitDescription);

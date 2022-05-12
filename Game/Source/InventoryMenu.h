@@ -93,6 +93,12 @@ public:
 private:
 
 	SDL_Texture* inventoryHUD = nullptr;
+	SDL_Texture* characterHealth100 = nullptr;
+	SDL_Texture* characterHealth80 = nullptr;
+	SDL_Texture* characterHealth60 = nullptr;
+	SDL_Texture* characterHealth40 = nullptr;
+	SDL_Texture* characterHealth20 = nullptr;
+	SDL_Texture* characterHealth0 = nullptr;
 	SDL_Texture* medicKitDescription = nullptr;
 	/*SDL_Texture* characterName1 = nullptr;*/
 	SDL_Texture* object_food = nullptr;
