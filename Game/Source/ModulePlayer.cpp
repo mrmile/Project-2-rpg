@@ -14,7 +14,7 @@
 //#include "ModuleFonts.h"
 #include "GameManager.h"
 #include "Log.h"
-
+#include "GuiManager.h"
 #include "SceneMotel.h"
 #include "SceneMainMap.h"
 #include "SceneCave.h"
@@ -270,7 +270,7 @@ bool ModulePlayer::Start()
 	app->win->GetWindowSize(winWidth, winHeight);
 
 	PlayerMaxHP = 100;
-	playerHP = 50;
+	playerHP = 100;
 	/*invincibleDelay = 120;*/
 	playerFPS = 0;
 
@@ -784,10 +784,18 @@ bool ModulePlayer::Update(float dt)
 			if (entityTurnPlayer == TurnState::FinishTurn)
 			{
 				Player->body->SetLinearVelocity({ 0.0f,0.0f });
-
+				
 				//Attack methodology, after attacking the player goes to wait turn
-				int mousePosX, mousePosY;
-				app->input->GetMouseMotion(mousePosX, mousePosY);
+				
+				if (app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_UP)
+				{
+					
+					if (CounterForEnemySelection < app->entity_manager->ListInCombat.count())
+					{
+						CounterForEnemySelection++;
+					}
+					enemySelected = app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position;
+				}
 				
 
 				if (playerAttacked == true)
@@ -1365,7 +1373,25 @@ iPoint ModulePlayer::GetLastPosition()
 void ModulePlayer::RangedAttack()
 {
 	//Add logic for ranged attack
+	if (enemySelected.x < position.x)
+	{
+		app->particles->playerRangedAttack.speed.x = -2;
+		app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
+		app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
 
+		playerAttacked = true;
+	}
+
+	if (enemySelected.x > position.x)
+	{
+		app->particles->playerRangedAttack.speed.x = 2;
+		
+		app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
+		app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
+
+		playerAttacked = true;
+	}
+	
 	//
 }
 void ModulePlayer::MeleeAttack()
@@ -1374,8 +1400,6 @@ void ModulePlayer::MeleeAttack()
 
 	//Example of addition of particles for melee
 	//app->particles->AddParticle(app->particles->playerAttack, app->player->position.x + 30, app->player->position.y + 12, Collider::Type::PLAYER_ATTACK);
-
-	app->particles->AddParticle(app->particles->playerAttack, enemyPosition.x, enemyPosition.y, Collider::Type::PLAYER_ATTACK);
-
+	
 	playerAttacked = true;
 }
