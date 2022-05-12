@@ -41,7 +41,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::LAYER_ZERO][Collider::Type::PLAYER_PICKUP_RADIUS] = false;
 
 	matrix[Collider::Type::ITEM_FOOD][Collider::Type::LAYER_ZERO] = false;
-	matrix[Collider::Type::ITEM_FOOD][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ITEM_FOOD][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::ITEM_FOOD][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ITEM_FOOD][Collider::Type::INSTANT_DEATH] = false;
 	matrix[Collider::Type::ITEM_FOOD][Collider::Type::EXIT_1] = false;
@@ -65,7 +65,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_FOOD][Collider::Type::PLAYER_PICKUP_RADIUS] = true;
 
 	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::LAYER_ZERO] = false;
-	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::INSTANT_DEATH] = false;
 	matrix[Collider::Type::ITEM_HEALTH_PACK][Collider::Type::EXIT_1] = false;
@@ -107,21 +107,21 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::RANGED_ENEMY] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_RANGED_ATTACK] = false;
-	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_FOOD] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_HEALTH_PACK] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_GRENADE] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_LONG_RANGE_GUN] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_SHORT_RANGE_GUN] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_DEFAULT_GUN] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_SUIT] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_KNIFE] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::BASE_COMPUTER] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_RADIO] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_CARD] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_FOOD] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_HEALTH_PACK] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_GRENADE] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_LONG_RANGE_GUN] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_SHORT_RANGE_GUN] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_DEFAULT_GUN] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_SUIT] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_KNIFE] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::BASE_COMPUTER] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_RADIO] = false;
+	matrix[Collider::Type::PLAYER][Collider::Type::ITEM_CARD] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_PICKUP_RADIUS] = false;
 
 	matrix[Collider::Type::ITEM_CARD][Collider::Type::LAYER_ZERO] = false;
-	matrix[Collider::Type::ITEM_CARD][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ITEM_CARD][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::ITEM_CARD][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ITEM_CARD][Collider::Type::ENEMY_ATTACK] = false;
 	matrix[Collider::Type::ITEM_CARD][Collider::Type::INSTANT_DEATH] = false;
@@ -538,7 +538,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ENABLE_FINAL_BATTLE][Collider::Type::PLAYER_PICKUP_RADIUS] = false;
 
 	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::LAYER_ZERO] = false;
-	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::INSTANT_DEATH] = false;
 	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::EXIT_1] = false;
@@ -546,7 +546,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::EXIT_3] = false;
 	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::NULL_COLLIDER] = false;
-	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::PLAYER_FEET] = true;
+	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::PLAYER_FEET] = false;
 	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
 	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::DOOR_KEY_READER] = false;
 	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::TNT_SWITCH] = false;
@@ -562,7 +562,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_GRENADE][Collider::Type::PLAYER_PICKUP_RADIUS] = true;
 
 	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::LAYER_ZERO] = false;
-	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::INSTANT_DEATH] = false;
 	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::EXIT_1] = false;
@@ -570,7 +570,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::EXIT_3] = false;
 	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::NULL_COLLIDER] = false;
-	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::PLAYER_FEET] = true;
+	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::PLAYER_FEET] = false;
 	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
 	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::DOOR_KEY_READER] = false;
 	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::TNT_SWITCH] = false;
@@ -586,7 +586,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_LONG_RANGE_GUN][Collider::Type::PLAYER_PICKUP_RADIUS] = true;
 
 	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::LAYER_ZERO] = false;
-	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::INSTANT_DEATH] = false;
 	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::EXIT_1] = false;
@@ -594,7 +594,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::EXIT_3] = false;
 	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::NULL_COLLIDER] = false;
-	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::PLAYER_FEET] = true;
+	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::PLAYER_FEET] = false;
 	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
 	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::DOOR_KEY_READER] = false;
 	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::TNT_SWITCH] = false;
@@ -610,7 +610,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_SHORT_RANGE_GUN][Collider::Type::PLAYER_PICKUP_RADIUS] = true;
 
 	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::LAYER_ZERO] = false;
-	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::INSTANT_DEATH] = false;
 	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::EXIT_1] = false;
@@ -618,7 +618,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::EXIT_3] = false;
 	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::NULL_COLLIDER] = false;
-	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::PLAYER_FEET] = true;
+	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::PLAYER_FEET] = false;
 	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
 	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::DOOR_KEY_READER] = false;
 	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::TNT_SWITCH] = false;
@@ -634,7 +634,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_DEFAULT_GUN][Collider::Type::PLAYER_PICKUP_RADIUS] = true;
 
 	matrix[Collider::Type::ITEM_KNIFE][Collider::Type::LAYER_ZERO] = false;
-	matrix[Collider::Type::ITEM_KNIFE][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ITEM_KNIFE][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::ITEM_KNIFE][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ITEM_KNIFE][Collider::Type::INSTANT_DEATH] = false;
 	matrix[Collider::Type::ITEM_KNIFE][Collider::Type::EXIT_1] = false;
@@ -642,7 +642,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_KNIFE][Collider::Type::EXIT_3] = false;
 	matrix[Collider::Type::ITEM_KNIFE][Collider::Type::SWITCH] = false;
 	matrix[Collider::Type::ITEM_KNIFE][Collider::Type::NULL_COLLIDER] = false;
-	matrix[Collider::Type::ITEM_KNIFE][Collider::Type::PLAYER_FEET] = true;
+	matrix[Collider::Type::ITEM_KNIFE][Collider::Type::PLAYER_FEET] = false;
 	matrix[Collider::Type::ITEM_KNIFE][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
 	matrix[Collider::Type::ITEM_KNIFE][Collider::Type::DOOR_KEY_READER] = false;
 	matrix[Collider::Type::ITEM_KNIFE][Collider::Type::TNT_SWITCH] = false;
@@ -658,7 +658,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_KNIFE][Collider::Type::PLAYER_PICKUP_RADIUS] = true;
 
 	matrix[Collider::Type::ITEM_SUIT][Collider::Type::LAYER_ZERO] = false;
-	matrix[Collider::Type::ITEM_SUIT][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ITEM_SUIT][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::ITEM_SUIT][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ITEM_SUIT][Collider::Type::INSTANT_DEATH] = false;
 	matrix[Collider::Type::ITEM_SUIT][Collider::Type::EXIT_1] = false;
@@ -682,7 +682,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ITEM_SUIT][Collider::Type::PLAYER_PICKUP_RADIUS] = true;
 
 	matrix[Collider::Type::ITEM_RADIO][Collider::Type::LAYER_ZERO] = false;
-	matrix[Collider::Type::ITEM_RADIO][Collider::Type::PLAYER] = true;
+	matrix[Collider::Type::ITEM_RADIO][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::ITEM_RADIO][Collider::Type::ENEMY] = false;
 	matrix[Collider::Type::ITEM_RADIO][Collider::Type::INSTANT_DEATH] = false;
 	matrix[Collider::Type::ITEM_RADIO][Collider::Type::EXIT_1] = false;
@@ -755,6 +755,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ITEM_HEALTH_PACK] = true;
 	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ITEM_FOOD] = true;
 	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ITEM_DEFAULT_GUN] = true;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ITEM_SUIT] = true;
+	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::ITEM_KNIFE] = true;
 	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::PLAYER_PICKUP_RADIUS] = false;
 
 }

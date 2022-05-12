@@ -11,9 +11,24 @@ struct SDL_Texture;
 
 #define MAX_ITEMS 28
 
+enum class ItemType
+{
+	NONE,
+	OBJECT_FOOD,
+	OBJECT_HEALTH_PACK,
+	OBJECT_RADIO,
+	OBJECT_lONG_SCOPE_GUN,
+	OBJECT_SHORT_SCOPE_GUN,
+	OBJECT_DEFAULT_GUN,
+	OBJECT_CARD,
+	OBJECT_GRENADE,
+	OBJECT_SUIT,
+	OBJECT_KNIFE,
+
+};
 struct ItemList
 {
-	EntityType type = EntityType::NONE;
+	ItemType type = ItemType::NONE;
 	int amount = 0;
 	bool usable = false;
 	bool equipable = false;
@@ -63,7 +78,7 @@ public:
 
 	bool DeEquipItemSelected(ItemList* item);
 
-	bool AddItemToInventory(EntityType type, bool usable, bool equipable);
+	bool AddItemToInventory(ItemType type, bool usable, bool equipable);
 
 	void UpdateItemList();
 

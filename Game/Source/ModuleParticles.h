@@ -75,6 +75,17 @@ public:
 	Particle RadioActive;
 	Particle PlayerPickUpRadius;
 
+	Particle ItemFood;
+	Particle ItemHealthPack;
+	Particle ItemRadio;
+	Particle ItemCard;
+	Particle ItemDefaultGun;
+	Particle ItemLongRangeGun;
+	Particle ItemShortRangeGun;
+	Particle ItemKnife;
+	Particle ItemGrenade;
+	Particle ItemSuit;
+
 private:
 	// Particles spritesheet loaded into an SDL Texture
 	SDL_Texture* texture = nullptr;

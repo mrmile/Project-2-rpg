@@ -19,17 +19,6 @@
 #include "Zombie_Runner.h"
 #include "Zombie_Spitter.h"
 
-#include "Object_Food.h"
-#include "Object_HealthPack.h"
-#include "Object_DefaultGun.h"
-#include "Object_LongScopeGun.h"
-#include "Object_ShortScopeGun.h"
-#include "Object_Radio.h"
-#include "Object_Card.h"
-#include "Object_Grenade.h"
-#include "ObjectSuit.h"
-#include "ObjectKnife.h"
-
 #define SPAWN_MARGIN 500
 
 EntityManager::EntityManager(bool start_enabled) : Module(start_enabled)
@@ -231,88 +220,6 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				entities[i]->type = info.type;
 				//entities[i]->texture = texture_npcs;
 				break;
-			case EntityType::OBJECT_FOOD:
-				//entities[i]->texture = texture_objects;
-				entities[i] = new Object_Food(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_FOOD;
-				entities[i]->id = i;
-				entities[i]->type = info.type;
-				entities[i]->texture = texture_items;
-				break;
-			case EntityType::OBJECT_HEALTH_PACK:
-				//entities[i]->texture = texture_objects;
-				entities[i] = new Object_HealthPack(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_HEALTH_PACK;
-				entities[i]->id = i;
-				entities[i]->type = info.type;
-				entities[i]->texture = texture_items;
-				break;
-
-			case EntityType::OBJECT_DEFAULT_GUN:
-				entities[i] = new Object_DefaultGun(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_DEFAULT_GUN;
-				entities[i]->id = i;
-				entities[i]->type = info.type;
-				entities[i]->texture = texture_items;
-				break;
-
-			case EntityType::OBJECT_lONG_SCOPE_GUN:
-				entities[i] = new Object_LongScopeGun(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_lONG_SCOPE_GUN;
-				entities[i]->id = i;
-				entities[i]->type = info.type;
-				entities[i]->texture = texture_items;
-				break;
-
-			case EntityType::OBJECT_SHORT_SCOPE_GUN:
-				entities[i] = new Object_ShortScopeGun(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_SHORT_SCOPE_GUN;
-				entities[i]->id = i;
-				entities[i]->type = info.type;
-				entities[i]->texture = texture_items;
-				break;
-
-			case EntityType::OBJECT_RADIO:
-				entities[i] = new Object_Radio(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_RADIO;
-				entities[i]->id = i;
-				entities[i]->type = info.type;
-				entities[i]->texture = texture_items;
-				break;
-
-			case EntityType::OBJECT_KNIFE:
-				entities[i] = new Object_Knife(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_KNIFE;
-				entities[i]->id = i;
-				entities[i]->type = info.type;
-				entities[i]->texture = texture_items;
-				break;
-
-			case EntityType::OBJECT_SUIT:
-				entities[i] = new Object_Suit(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_SUIT;
-				entities[i]->id = i;
-				entities[i]->type = info.type;
-				entities[i]->texture = texture_items;
-				break;
-
-			case EntityType::OBJECT_CARD:
-				entities[i] = new Object_Card(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_CARD;
-				entities[i]->id = i;
-				entities[i]->type = info.type;
-				entities[i]->texture = texture_items;
-				break;
-
-			case EntityType::OBJECT_GRENADE:
-				entities[i] = new Object_Grenade(info.x, info.y);
-				HelperQueue[i].type = EntityType::OBJECT_GRENADE;
-				entities[i]->id = i;
-				entities[i]->type = info.type;
-				entities[i]->texture = texture_items;
-
-				break;
-
 			case EntityType::ZOMBIE_STANDART:
 				entities[i] = new Zombie_Standart(info.x,info.y);
 				HelperQueue[i].type = EntityType::ZOMBIE_STANDART;
@@ -350,7 +257,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 
 void EntityManager::RegisterEntitesInCombat(Entity* entity)
 {
-	if (entity->type != EntityType::OBJECT_FOOD && entity->type != EntityType::OBJECT_HEALTH_PACK && entity->type != EntityType::NPC && entity->type != EntityType::NPC2 && entity->type != EntityType::NPC3 && entity->type != EntityType::NPC4)
+	if (entity->type != EntityType::NPC && entity->type != EntityType::NPC2 && entity->type != EntityType::NPC3 && entity->type != EntityType::NPC4)
 	{
 		if (entity->entityState == GameState::OutOfCombat)
 		{
@@ -438,56 +345,6 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 					entities[i]->NPC4_List.end->data->body->DestroyFixture(entities[i]->NPC4_List.end->data->body->GetFixtureList());
 					/*entities[i] = nullptr;*/
 				}
-				if (HelperQueue[i].type == EntityType::OBJECT_FOOD)
-				{
-					entities[i]->SetToDelete();
-					/*entities[i] = nullptr;*/
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_HEALTH_PACK)
-				{
-					entities[i]->SetToDelete();
-					/*entities[i] = nullptr;*/
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_RADIO)
-				{
-					entities[i]->SetToDelete();
-					/*entities[i] = nullptr;*/
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_KNIFE)
-				{
-					entities[i]->SetToDelete();
-					/*entities[i] = nullptr;*/
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_SUIT)
-				{
-					entities[i]->SetToDelete();
-					/*entities[i] = nullptr;*/
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_CARD)
-				{
-					entities[i]->SetToDelete();
-					/*entities[i] = nullptr;*/
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_GRENADE)
-				{
-					entities[i]->SetToDelete();
-					/*entities[i] = nullptr;*/
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_DEFAULT_GUN)
-				{
-					entities[i]->SetToDelete();
-					/*entities[i] = nullptr;*/
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_lONG_SCOPE_GUN)
-				{
-					entities[i]->SetToDelete();
-					/*entities[i] = nullptr;*/
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_SHORT_SCOPE_GUN)
-				{
-					entities[i]->SetToDelete();
-					/*entities[i] = nullptr;*/
-				}
 
 				entityPos = entityPos.next_sibling();
 				entityAtributes = entityAtributes.next_sibling();
@@ -524,46 +381,6 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				if (HelperQueue[i].type == EntityType::NPC4)
 				{
 					AddEntity(EntityType::NPC4, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_FOOD)
-				{
-					AddEntity(EntityType::OBJECT_FOOD, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_HEALTH_PACK)
-				{
-					AddEntity(EntityType::OBJECT_HEALTH_PACK, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_RADIO)
-				{
-					AddEntity(EntityType::OBJECT_RADIO, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_KNIFE)
-				{
-					AddEntity(EntityType::OBJECT_KNIFE, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_SUIT)
-				{
-					AddEntity(EntityType::OBJECT_SUIT, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_CARD)
-				{
-					AddEntity(EntityType::OBJECT_CARD, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_GRENADE)
-				{
-					AddEntity(EntityType::OBJECT_GRENADE, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_DEFAULT_GUN)
-				{
-					AddEntity(EntityType::OBJECT_DEFAULT_GUN, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_lONG_SCOPE_GUN)
-				{
-					AddEntity(EntityType::OBJECT_lONG_SCOPE_GUN, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
-				}
-				if (HelperQueue[i].type == EntityType::OBJECT_SHORT_SCOPE_GUN)
-				{
-					AddEntity(EntityType::OBJECT_SHORT_SCOPE_GUN, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
 			
 				entityPos = entityPos.next_sibling();

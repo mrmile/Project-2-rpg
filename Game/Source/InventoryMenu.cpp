@@ -123,7 +123,7 @@ bool InventoryMenu::Update(float dt)
 	UpdateItemList();
 	UpdateEquipment();
 
-	if (Equipment.type == EntityType::NONE)
+	if (Equipment.type == ItemType::NONE)
 	{
 		app->player->EquipmentDamage = 0;
 		app->player->EquipmentRange = 0;
@@ -215,13 +215,13 @@ bool InventoryMenu::CleanUp()
 	return true;
 }
 
-bool InventoryMenu::AddItemToInventory(EntityType type,bool usable,bool equipable)
+bool InventoryMenu::AddItemToInventory(ItemType type,bool usable,bool equipable)
 {
 	bool ret;
 
 	for (int i = 0; i < MAX_ITEMS; i++)
 	{
-		if (itemList[i].type != EntityType::NONE && itemList[i].type == type)
+		if (itemList[i].type != ItemType::NONE && itemList[i].type == type)
 		{
 			ret = true;
 
@@ -233,7 +233,7 @@ bool InventoryMenu::AddItemToInventory(EntityType type,bool usable,bool equipabl
 			
 			return ret;
 		}
-		if (itemList[i].type == EntityType::NONE)
+		if (itemList[i].type == ItemType::NONE)
 		{
 			ret = true;
 
@@ -254,45 +254,45 @@ void InventoryMenu::DrawAllInventoryItems()
 	for (int i = 0; i < MAX_ITEMS; i++)
 	{
 	
-		if (itemList[i].type != EntityType::NONE)
+		if (itemList[i].type != ItemType::NONE)
 		{
-			if (itemList[i].type == EntityType::OBJECT_FOOD && itemList[i].amount > 0)
+			if (itemList[i].type == ItemType::OBJECT_FOOD && itemList[i].amount > 0)
 			{
 				app->render->DrawTexture2(object_food, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
-			if (itemList[i].type == EntityType::OBJECT_HEALTH_PACK && itemList[i].amount > 0)
+			if (itemList[i].type == ItemType::OBJECT_HEALTH_PACK && itemList[i].amount > 0)
 			{
 				app->render->DrawTexture2(object_health_pack, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
-			if (itemList[i].type == EntityType::OBJECT_RADIO && itemList[i].amount > 0)
+			if (itemList[i].type == ItemType::OBJECT_RADIO && itemList[i].amount > 0)
 			{
 				app->render->DrawTexture2(object_radio, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
-			if (itemList[i].type == EntityType::OBJECT_KNIFE && itemList[i].amount > 0)
+			if (itemList[i].type == ItemType::OBJECT_KNIFE && itemList[i].amount > 0)
 			{
 				app->render->DrawTexture2(object_knife, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
-			if (itemList[i].type == EntityType::OBJECT_SUIT && itemList[i].amount > 0)
+			if (itemList[i].type == ItemType::OBJECT_SUIT && itemList[i].amount > 0)
 			{
 				app->render->DrawTexture2(object_suit, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
-			if (itemList[i].type == EntityType::OBJECT_CARD && itemList[i].amount > 0)
+			if (itemList[i].type == ItemType::OBJECT_CARD && itemList[i].amount > 0)
 			{
 				app->render->DrawTexture2(object_card, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
-			if (itemList[i].type == EntityType::OBJECT_GRENADE && itemList[i].amount > 0)
+			if (itemList[i].type == ItemType::OBJECT_GRENADE && itemList[i].amount > 0)
 			{
 				app->render->DrawTexture2(object_grenade, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
-			if (itemList[i].type == EntityType::OBJECT_DEFAULT_GUN && itemList[i].amount > 0)
+			if (itemList[i].type == ItemType::OBJECT_DEFAULT_GUN && itemList[i].amount > 0)
 			{
 				app->render->DrawTexture2(default_gun, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
-			if (itemList[i].type == EntityType::OBJECT_lONG_SCOPE_GUN && itemList[i].amount > 0)
+			if (itemList[i].type == ItemType::OBJECT_lONG_SCOPE_GUN && itemList[i].amount > 0)
 			{
 				app->render->DrawTexture2(long_gun, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
-			if (itemList[i].type == EntityType::OBJECT_SHORT_SCOPE_GUN && itemList[i].amount > 0)
+			if (itemList[i].type == ItemType::OBJECT_SHORT_SCOPE_GUN && itemList[i].amount > 0)
 			{
 				app->render->DrawTexture2(short_gun, itemList[i].itemRect.x, itemList[i].itemRect.y);
 			}
@@ -303,25 +303,25 @@ void InventoryMenu::DrawAllInventoryItems()
 
 void InventoryMenu::DrawEquipment()
 {
-	if (Equipment.type != EntityType::NONE)
+	if (Equipment.type != ItemType::NONE)
 	{
-		if (Equipment.type == EntityType::OBJECT_DEFAULT_GUN && Equipment.amount > 0)
+		if (Equipment.type == ItemType::OBJECT_DEFAULT_GUN && Equipment.amount > 0)
 		{
 			app->render->DrawTexture2(default_gun, Equipment.itemRect.x, Equipment.itemRect.y);
 		}
-		if (Equipment.type == EntityType::OBJECT_lONG_SCOPE_GUN && Equipment.amount > 0)
+		if (Equipment.type == ItemType::OBJECT_lONG_SCOPE_GUN && Equipment.amount > 0)
 		{
 			app->render->DrawTexture2(long_gun, Equipment.itemRect.x, Equipment.itemRect.y);
 		}
-		if (Equipment.type == EntityType::OBJECT_SHORT_SCOPE_GUN && Equipment.amount > 0)
+		if (Equipment.type == ItemType::OBJECT_SHORT_SCOPE_GUN && Equipment.amount > 0)
 		{
 			app->render->DrawTexture2(short_gun, Equipment.itemRect.x, Equipment.itemRect.y);
 		}
-		if (Equipment.type == EntityType::OBJECT_KNIFE && Equipment.amount > 0)
+		if (Equipment.type == ItemType::OBJECT_KNIFE && Equipment.amount > 0)
 		{
 			app->render->DrawTexture2(object_knife, Equipment.itemRect.x, Equipment.itemRect.y);
 		}
-		if (Equipment.type == EntityType::OBJECT_SUIT && Equipment.amount > 0)
+		if (Equipment.type == ItemType::OBJECT_SUIT && Equipment.amount > 0)
 		{
 			app->render->DrawTexture2(object_suit, Equipment.itemRect.x, Equipment.itemRect.y);
 		}
@@ -438,61 +438,61 @@ bool InventoryMenu::DrawItemDescription(ItemList* item)
 {
 	if (item->amount > 0)
 	{
-		if (item->type == EntityType::OBJECT_FOOD)
+		if (item->type == ItemType::OBJECT_FOOD)
 		{
 			app->render->DrawTexture2(foodDescription, -15, 0, NULL);
 		
 			return true;
 		}
-		if (item->type == EntityType::OBJECT_HEALTH_PACK)
+		if (item->type == ItemType::OBJECT_HEALTH_PACK)
 		{
 			app->render->DrawTexture2(medicKitDescription, -15, 0, NULL);
 
 			return true;
 		}
-		if (item->type == EntityType::OBJECT_CARD)
+		if (item->type == ItemType::OBJECT_CARD)
 		{
 			app->render->DrawTexture2(cardDescription, -15, 0, NULL);
 
 			return true;
 		}
-		if (item->type == EntityType::OBJECT_GRENADE)
+		if (item->type == ItemType::OBJECT_GRENADE)
 		{
 			app->render->DrawTexture2(grenadeDescription, -15, 0, NULL);
 
 			return true;
 		}
-		if (item->type == EntityType::OBJECT_DEFAULT_GUN)
+		if (item->type == ItemType::OBJECT_DEFAULT_GUN)
 		{
 			app->render->DrawTexture2(defaultGunDescription, -15, 0, NULL);
 
 			return true;
 		}
-		if (item->type == EntityType::OBJECT_SHORT_SCOPE_GUN)
+		if (item->type == ItemType::OBJECT_SHORT_SCOPE_GUN)
 		{
 			app->render->DrawTexture2(shortGunDescription, -15, 0, NULL);
 
 			return true;
 		}
-		if (item->type == EntityType::OBJECT_lONG_SCOPE_GUN)
+		if (item->type == ItemType::OBJECT_lONG_SCOPE_GUN)
 		{
 			app->render->DrawTexture2(longGunDescription, -15, 0, NULL);
 
 			return true;
 		}
-		if (item->type == EntityType::OBJECT_RADIO)
+		if (item->type == ItemType::OBJECT_RADIO)
 		{
 			app->render->DrawTexture2(radioDescription, -15, 0, NULL);
 
 			return true;
 		}
-		if (item->type == EntityType::OBJECT_SUIT)
+		if (item->type == ItemType::OBJECT_SUIT)
 		{
 			app->render->DrawTexture2(combatSuitDescription, -15, 0, NULL);
 
 			return true;
 		}
-		if (item->type == EntityType::OBJECT_KNIFE)
+		if (item->type == ItemType::OBJECT_KNIFE)
 		{
 			app->render->DrawTexture2(knifeDescription, -15, 0, NULL);
 
@@ -505,21 +505,21 @@ bool InventoryMenu::UseItemSelected(ItemList* item)
 {
 	if (item->amount > 0)
 	{
-		if (item->type == EntityType::OBJECT_FOOD)
+		if (item->type == ItemType::OBJECT_FOOD)
 		{
 			item->amount--;
 			app->player->playerHP += 15;
 
 			return true;
 		}
-		if (item->type == EntityType::OBJECT_HEALTH_PACK)
+		if (item->type == ItemType::OBJECT_HEALTH_PACK)
 		{
 			item->amount--;
 			app->player->playerHP += 100;
 
 			return true;
 		}
-		if (item->type == EntityType::OBJECT_RADIO)
+		if (item->type == ItemType::OBJECT_RADIO)
 		{
 			item->amount--;
 			//Add radio particle so zombies follow it instead of following the player
@@ -532,47 +532,47 @@ bool InventoryMenu::UseItemSelected(ItemList* item)
 
 bool InventoryMenu::DeEquipItemSelected(ItemList* item)
 {
-	if (item->type != EntityType::NONE)
+	if (item->type != ItemType::NONE)
 	{
-		if (item->type == EntityType::OBJECT_DEFAULT_GUN)
+		if (item->type == ItemType::OBJECT_DEFAULT_GUN)
 		{
-			AddItemToInventory(EntityType::OBJECT_DEFAULT_GUN, false, true);
+			AddItemToInventory(ItemType::OBJECT_DEFAULT_GUN, false, true);
 
 			Equipment.amount = 0;
 			Equipment.alreadyEquipped = false;
 			
 			return true;
 		}
-		if (item->type == EntityType::OBJECT_lONG_SCOPE_GUN)
+		if (item->type == ItemType::OBJECT_lONG_SCOPE_GUN)
 		{
-			AddItemToInventory(EntityType::OBJECT_lONG_SCOPE_GUN, false, true);
+			AddItemToInventory(ItemType::OBJECT_lONG_SCOPE_GUN, false, true);
 
 			Equipment.amount = 0;
 			Equipment.alreadyEquipped = false;
 
 			return true;
 		}
-		if (item->type == EntityType::OBJECT_SHORT_SCOPE_GUN)
+		if (item->type == ItemType::OBJECT_SHORT_SCOPE_GUN)
 		{
-			AddItemToInventory(EntityType::OBJECT_SHORT_SCOPE_GUN, false, true);
+			AddItemToInventory(ItemType::OBJECT_SHORT_SCOPE_GUN, false, true);
 
 			Equipment.amount = 0;
 			Equipment.alreadyEquipped = false;
 		
 			return true;
 		}
-		if (item->type == EntityType::OBJECT_KNIFE)
+		if (item->type == ItemType::OBJECT_KNIFE)
 		{
-			AddItemToInventory(EntityType::OBJECT_KNIFE, false, true);
+			AddItemToInventory(ItemType::OBJECT_KNIFE, false, true);
 
 			Equipment.amount = 0;
 			Equipment.alreadyEquipped = false;
 
 			return true;
 		}
-		if (item->type == EntityType::OBJECT_SUIT)
+		if (item->type == ItemType::OBJECT_SUIT)
 		{
-			AddItemToInventory(EntityType::OBJECT_SUIT, false, true);
+			AddItemToInventory(ItemType::OBJECT_SUIT, false, true);
 
 			Equipment.amount = 0;
 			Equipment.alreadyEquipped = false;
@@ -592,34 +592,34 @@ bool InventoryMenu::DeleteItemSelected(ItemList* item)
 }
 bool InventoryMenu::EquipItemSelected(ItemList* item)
 {
-	if (Equipment.type == EntityType::NONE)
+	if (Equipment.type == ItemType::NONE)
 	{
 		//Also need to create a function for the player that updates it's damage in function of the item equipped
 		Equipment.type = item->type;
 		Equipment.alreadyEquipped = true;
 		Equipment.amount = 1;
 		item->amount--;
-		if (Equipment.type == EntityType::OBJECT_DEFAULT_GUN)
+		if (Equipment.type == ItemType::OBJECT_DEFAULT_GUN)
 		{
 			app->player->EquipmentDamage = 2;
 			app->player->EquipmentRange = 150;
 		}
-		if (Equipment.type == EntityType::OBJECT_SHORT_SCOPE_GUN)
+		if (Equipment.type == ItemType::OBJECT_SHORT_SCOPE_GUN)
 		{
 			app->player->EquipmentDamage = 6;
 			app->player->EquipmentRange = 75;
 		}
-		if (Equipment.type == EntityType::OBJECT_lONG_SCOPE_GUN)
+		if (Equipment.type == ItemType::OBJECT_lONG_SCOPE_GUN)
 		{
 			app->player->EquipmentDamage = 3;
 			app->player->EquipmentRange = 300;
 		}
-		if (Equipment.type == EntityType::OBJECT_KNIFE)
+		if (Equipment.type == ItemType::OBJECT_KNIFE)
 		{
 			app->player->EquipmentDamage = 3;
 			app->player->EquipmentRange = 300;
 		}
-		if (Equipment.type == EntityType::OBJECT_SUIT)
+		if (Equipment.type == ItemType::OBJECT_SUIT)
 		{
 			app->player->EquipmentDamage = 3;
 			app->player->EquipmentRange = 300;
@@ -627,7 +627,7 @@ bool InventoryMenu::EquipItemSelected(ItemList* item)
 		
 		return true;
 	}
-	if (Equipment.type != EntityType::NONE)
+	if (Equipment.type != ItemType::NONE)
 	{
 		//do not allow the equipment change unless you unequip the item first
 		return true;
@@ -639,7 +639,7 @@ void InventoryMenu::UpdateItemList()
 	for (int i = 0; i < MAX_ITEMS; i++)
 	{
 
-		if (itemUsing.type != EntityType::NONE)
+		if (itemUsing.type != ItemType::NONE)
 		{
 			if (itemList[i].type == itemUsing.type)
 			{
@@ -649,7 +649,7 @@ void InventoryMenu::UpdateItemList()
 				{
 					itemList[i].usable = false;
 					itemList[i].equipable = false;
-					itemList[i].type = EntityType::NONE;
+					itemList[i].type = ItemType::NONE;
 				}
 			}
 		}
@@ -659,7 +659,7 @@ void InventoryMenu::UpdateItemList()
 
 void InventoryMenu::UpdateEquipment()
 {
-	if (itemUsing.type != EntityType::NONE)
+	if (itemUsing.type != ItemType::NONE)
 	{
 		if (Equipment.type == itemUsing.type)
 		{
@@ -668,7 +668,7 @@ void InventoryMenu::UpdateEquipment()
 			{
 				Equipment.usable = false;
 				Equipment.equipable = false;
-				Equipment.type = EntityType::NONE;
+				Equipment.type = ItemType::NONE;
 			}
 		}
 	}
