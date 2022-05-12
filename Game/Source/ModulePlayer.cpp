@@ -1184,6 +1184,69 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 
 		}
+		
+		//				--Esto no sirve para nada aquí. Lo he movido al entity.cpp--
+
+		/*if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_FOOD))
+		{
+			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_FOOD, true, false);
+			app->audio->PlayFx(itemGrab);
+		}
+
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_HEALTH_PACK))
+		{
+			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_HEALTH_PACK, true, false);
+			app->audio->PlayFx(itemGrab);
+		}
+
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_RADIO))
+		{
+			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_RADIO, true, false);
+			app->audio->PlayFx(itemGrab);
+		}
+		
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_DEFAULT_GUN))
+		{
+			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_DEFAULT_GUN, false, true);
+			app->audio->PlayFx(itemGrab);
+		}
+
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_KNIFE))
+		{
+			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_KNIFE, false, true);
+			app->audio->PlayFx(itemGrab);
+		}
+
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_SUIT))
+		{
+			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_SUIT, false, true);
+			app->audio->PlayFx(itemGrab);
+		}
+
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_LONG_RANGE_GUN))
+		{
+			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_lONG_SCOPE_GUN, false, true);
+			app->audio->PlayFx(itemGrab);
+		}
+
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_SHORT_RANGE_GUN))
+		{
+			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_SHORT_SCOPE_GUN, false, true);
+			app->audio->PlayFx(itemGrab);
+		}
+
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_CARD))
+		{
+			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_CARD, true, false);
+			app->audio->PlayFx(itemGrab);
+			app->questManager->SwitchMainQuest(LOOK_FOR_THE_COMPUTER_2);
+		}
+
+		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_GRENADE))
+		{
+			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_GRENADE, true, false);
+			app->audio->PlayFx(itemGrab);
+		}*/
 
 		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_RANGED_ATTACK)) /*&& invincibleDelay >= 120)*/
 		{
@@ -1251,27 +1314,36 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			}
 		}
 
-		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::DOCTOR_NOTE_MESSAGE)
-		{
-			readingNote = !readingNote;
-		}
-
-		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::BASE_COMPUTER)
-		{
-
-		}
-
-		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::TNT_SWITCH)
-		{
-			
-		}
-
-		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::SWITCH)
-		{
-
-		}
-
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::ENABLE_FINAL_BATTLE)
+		{
+
+		}
+
+		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DOCTOR_NOTE_MESSAGE)
+		{
+			if (layerZeroReveal == false)
+			{
+				layerZeroReveal = true;
+			}
+
+			if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_DOWN)
+			{
+				app->player->readingNote = !app->player->readingNote;
+				app->audio->PlayFx(app->player->itemGrab);
+			}
+		}
+
+		if ((c2->type == Collider::Type::PLAYER) && collider->type == Collider::Type::BASE_COMPUTER)
+		{
+
+		}
+
+		if ((c2->type == Collider::Type::PLAYER) && collider->type == Collider::Type::TNT_SWITCH)
+		{
+
+		}
+
+		if ((c2->type == Collider::Type::PLAYER) && collider->type == Collider::Type::SWITCH)
 		{
 
 		}
