@@ -118,7 +118,23 @@ bool InventoryMenu::PreUpdate()
 bool InventoryMenu::Update(float dt)
 {
 	//Used to get what item we are checking with the mouse in order for the buttons to work
-	
+	if (showInventory == true)
+	{
+		DeleteItem->canClick = true;
+		EquipItem->canClick = true;
+		UseItem->canClick = true;
+		DeEquipButton->canClick = true;
+		EquipmentButton->canClick = true;
+	}
+	if (showInventory == false)
+	{
+		DeleteItem->canClick = false;
+		EquipItem->canClick = false;
+		UseItem->canClick = false;
+		DeEquipButton->canClick = false;
+		EquipmentButton->canClick = false;
+	}
+
 	app->input->GetMousePosition(mouseX, mouseY);
 	UpdateItemList();
 	UpdateEquipment();
