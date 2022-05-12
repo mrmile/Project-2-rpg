@@ -1335,7 +1335,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		if ((c2->type == Collider::Type::PLAYER) && collider->type == Collider::Type::BASE_COMPUTER)
 		{
-
+			if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_DOWN)
+			{
+				
+			}
 		}
 
 		if ((c2->type == Collider::Type::PLAYER) && collider->type == Collider::Type::TNT_SWITCH)

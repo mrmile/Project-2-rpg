@@ -1066,6 +1066,15 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		}
 	}
 
+	if (object->name == "sensors_computer")
+	{
+		pugi::xml_node NewObject;
+		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		{
+			app->collisions->AddCollider({ NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int(), NewObject.attribute("width").as_int(), NewObject.attribute("height").as_int() }, Collider::Type::BASE_COMPUTER);
+		}
+	}
+
 	if (object->name == "sensors_TNT_switch")
 	{
 		pugi::xml_node NewObject;
