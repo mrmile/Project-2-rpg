@@ -21,6 +21,7 @@
 #include "ScenePlatform.h"
 #include "GameManager.h"
 #include "QuestManager.h"
+#include "CreditsScreen.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -172,7 +173,7 @@ bool ScenePlatform::PostUpdate()
 
 	if (app->player->winDelay > 300 && app->player->winDelay <= 301)
 	{
-		app->titleScreen->Enable();
+		app->creditsScreen->Enable();
 
 		app->player->Disable();
 		//app->sceneMainMap->Disable();
@@ -184,6 +185,9 @@ bool ScenePlatform::PostUpdate()
 		app->pause_menu->Disable();
 		app->scenePlatform->Disable();
 
+		app->sceneMainMap->enableScenePlatform = false;
+		app->player->entranceID = 0;
+		//app->titleScreen->credits = true;
 		//playerRestart = true;
 	}
 

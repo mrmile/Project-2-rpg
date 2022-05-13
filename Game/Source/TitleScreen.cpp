@@ -130,6 +130,8 @@ bool TitleScreen::Start()
 	GameHasContinued = false;
 	credits = false;
 
+	app->player->playerWin = false;
+
 	app->render->camera.x = 0;
 	app->render->camera.y = 0;
 

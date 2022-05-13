@@ -334,6 +334,20 @@ void App::FinishUpdate()
 		app->sceneMotel->destroyScene = false;
 	}
 
+	if (app->scenePlatform->destroyScene == true) // Tiene que borrar todos los chains del box2D y los sensores de colisiones del método antiguo que están en el nivel
+	{
+		// Borra los chains
+		for (int i = 0; i < app->map->mapChainsCounter; i++)
+		{
+			app->map->mapChains[i]->body->DestroyFixture(app->map->mapChains[i]->body->GetFixtureList());
+		}
+
+		// Borra los sensores
+		app->map->DeleteCollidersSensors();
+
+		app->sceneMotel->destroyScene = false;
+	}
+
 	if (app->sceneCave->enableSceneMainMap == true || app->sceneBase->enableSceneMainMap == true)
 	{
 		app->sceneBase->Disable();
