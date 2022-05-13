@@ -196,28 +196,28 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i].type = EntityType::NPC;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				//entities[i]->texture = texture_npcs;
+				entities[i]->texture = texture_npcs;
 				break;
 			case EntityType::NPC2:
 				entities[i] = new Npcs2(info.x, info.y);
 				HelperQueue[i].type = EntityType::NPC2;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				//entities[i]->texture = texture_npcs;
+				entities[i]->texture = texture_npcs;
 				break;
 			case EntityType::NPC3:
 				entities[i] = new Npcs3(info.x, info.y);
 				HelperQueue[i].type = EntityType::NPC3;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				//entities[i]->texture = texture_npcs;
+				entities[i]->texture = texture_npcs;
 				break;
 			case EntityType::NPC4:
 				entities[i] = new Npcs4(info.x, info.y);
 				HelperQueue[i].type = EntityType::NPC4;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				//entities[i]->texture = texture_npcs;
+				entities[i]->texture = texture_npcs;
 				break;
 			case EntityType::ZOMBIE_STANDART:
 				entities[i] = new Zombie_Standart(info.x,info.y);

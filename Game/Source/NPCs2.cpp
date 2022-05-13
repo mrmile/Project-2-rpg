@@ -54,8 +54,6 @@ bool Npcs2::Update(float dt)
 		iPoint NewPosition = position;
 		collider->SetPos(NewPosition.x, NewPosition.y);
 		NPC2_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
-		currentAnim = &Idle_Enemy;
-		currentAnim->loop = false;
 
 		return true;
 	}
@@ -74,7 +72,7 @@ bool Npcs2::Update(float dt)
 		}
 	}
 
-
+	currentAnim = &Idle_Enemy;
 
 
 
