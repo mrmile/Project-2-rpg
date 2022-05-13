@@ -792,10 +792,69 @@ bool ModulePlayer::Update(float dt)
 			if (entityTurnPlayer == TurnState::FinishTurn)
 			{
 				Player->body->SetLinearVelocity({ 0.0f,0.0f });
-				
+
+				//Looking position for the melee attack
+				if (app->input->keys[SDL_SCANCODE_DOWN] == KEY_UP)
+				{
+					PlayerLookingPosition = 3;
+				}
+				if (app->input->keys[SDL_SCANCODE_UP] == KEY_UP)
+				{
+					PlayerLookingPosition = 4;
+				}
+				if (app->input->keys[SDL_SCANCODE_LEFT] == KEY_UP)
+				{
+					PlayerLookingPosition = 1;
+				}
+				if (app->input->keys[SDL_SCANCODE_RIGHT] == KEY_UP)
+				{
+					PlayerLookingPosition = 2;
+				}
+
+				switch (PlayerLookingPosition)
+				{
+				case 1:
+					if (currentAnimation != &idleLeftAnim)
+					{
+						idleLeftAnim.Reset();
+						currentAnimation = &idleLeftAnim;
+					}
+
+					break;
+				case 2:
+					if (currentAnimation != &idleRightAnim)
+					{
+						idleRightAnim.Reset();
+						currentAnimation = &idleRightAnim;
+					}
+
+					break;
+
+				case 3:
+					if (currentAnimation != &idleDownAnim)
+					{
+						idleDownAnim.Reset();
+						currentAnimation = &idleDownAnim;
+					}
+
+					break;
+
+				case 4:
+					if (currentAnimation != &idleUpAnim)
+					{
+						idleUpAnim.Reset();
+						currentAnimation = &idleUpAnim;
+					}
+
+					break;
+				default:
+					break;
+				}
+
+
+
 				//Attack methodology, after attacking the player goes to wait turn
-				
-				if (app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_UP)
+				if (app->input->keys[SDL_SCANCODE_SPACE] == KeyState::KEY_UP)
 				{
 					CounterForEnemySelection++;
 					if (CounterForEnemySelection < app->entity_manager->ListInCombat.count())
@@ -1390,6 +1449,29 @@ void ModulePlayer::MeleeAttack()
 
 	//Example of addition of particles for melee
 	//app->particles->AddParticle(app->particles->playerAttack, app->player->position.x + 30, app->player->position.y + 12, Collider::Type::PLAYER_ATTACK);
+	switch (PlayerLookingPosition)
+	{
+	case 1:
+		app->particles->AddParticle(app->particles->playerAttack, app->player->position.x - 30, app->player->position.y - 20, Collider::Type::PLAYER_ATTACK);
+		playerAttacked = true;
+		break;
+	case 2:
+		app->particles->AddParticle(app->particles->playerAttack, app->player->position.x + 30, app->player->position.y - 20, Collider::Type::PLAYER_ATTACK);
+		playerAttacked = true;
+		break;
+
+	case 3:
+		app->particles->AddParticle(app->particles->playerAttack, app->player->position.x + 10, app->player->position.y + 20, Collider::Type::PLAYER_ATTACK);
+		playerAttacked = true;
+		break;
+
+	case 4:
+		app->particles->AddParticle(app->particles->playerAttack, app->player->position.x + 10, app->player->position.y -60, Collider::Type::PLAYER_ATTACK);
+		playerAttacked = true;
+		break;
+
+	default:
+		break;
+	}
 	
-	playerAttacked = true;
 }

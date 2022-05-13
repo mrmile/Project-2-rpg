@@ -56,9 +56,10 @@ bool Zombie_Standart::Update(float dt)
 	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
 	if (EntityHP <= 0)
 	{
+		//Standart_Zombie_List.end->data->body->DestroyFixture(Standart_Zombie_List.end->data->body->GetFixtureList());
 		SetToDelete();
 	}
-	if (collider->pendingToDelete == false)
+	if (EntityHP>0)
 	{
 		if (app->player->pauseMenu == true)
 		{
