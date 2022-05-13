@@ -85,6 +85,7 @@ public:
 	Particle ItemKnife;
 	Particle ItemGrenade;
 	Particle ItemSuit;
+	Particle ItemGun;
 
 private:
 	// Particles spritesheet loaded into an SDL Texture

@@ -204,7 +204,7 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	ItemHealthPack.anim.speed = 0.15f;
 
 	//??????
-	ItemLongRangeGun.anim.PushBack({ 60, 92, 58, 24 });  //({ 115, 164, 28, 25 })
+	ItemLongRangeGun.anim.PushBack({ 63, 93, 58, 24 });  //({ 115, 164, 28, 25 })
 	ItemLongRangeGun.anim.loop = true;
 	ItemLongRangeGun.anim.speed = 0.15f;
 	//??????
@@ -214,7 +214,7 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	ItemRadio.anim.speed = 0.15f;
 
 	//??????
-	ItemShortRangeGun.anim.PushBack({ 20, 93, 25, 17 });
+	ItemShortRangeGun.anim.PushBack({ 16, 95, 41, 19 });
 	ItemShortRangeGun.anim.loop = true;
 	ItemShortRangeGun.anim.speed = 0.15f;
 	//??????
@@ -226,6 +226,10 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	ItemSuit.anim.PushBack({ 18, 122, 27, 30 });
 	ItemSuit.anim.loop = true;
 	ItemSuit.anim.speed = 0.15f;
+
+	//ItemGun.anim.PushBack({ 118, 130, 25, 17 });
+	//ItemGun.anim.loop = true;
+	//ItemGun.anim.speed = 0.15f;
 }
 
 ModuleParticles::~ModuleParticles()
