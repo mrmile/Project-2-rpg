@@ -220,16 +220,14 @@ bool SceneMainMap::PostUpdate()
 
 	if (app->player->destroyedDelay > 210 && app->player->destroyedDelay <= 211)
 	{
-		//Mix_ResumeMusic();
+		app->audio->ChangeMusic(OFF, 0.2f, 0.2f);
 		//Mix_SetMusicPosition(0);
 		// Load music
 		//app->audio->PlayMusic("Assets/audio/music/jungle.ogg");
-
-		if(app->player->lives != 0) playerRestart = true;
-		if (app->player->lives == 0) app->titleScreen->toTitleScreen = true;
+		app->titleScreen->toTitleScreen = true;
 	}
 
-	if (app->player->winDelay > 300 && app->player->winDelay <= 301)
+	if (app->player->winDelay > 150 && app->player->winDelay <= 151)
 	{
 		app->titleScreen->Enable();
 

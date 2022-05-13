@@ -143,6 +143,8 @@ public:
 	uint paused = 0;
 	uint gameOverfx = 0;
 	uint itemGrab = 0;
+	uint shoot = 0;
+	uint gameOver = 0;
 
 	uint computerOn = 0;
 	uint computerOff = 0;

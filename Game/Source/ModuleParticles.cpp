@@ -411,11 +411,6 @@ bool ModuleParticles::PostUpdate()
 		}
 	}
 
-	if (app->titleScreen->toTitleScreen == true) // <-- No tendría que estar aquí pero es mas simple ponerlo aquí por como está ordenado el render draw
-	{
-		app->render->DrawTexture2(app->player->gameOverScreen, 0, 0, NULL, 0.0f);
-	}
-
 	if(app->sceneCave->sceneCave == true) app->render->DrawTexture(app->sceneCave->spotLight, app->player->position.x - 960 + 25, app->player->position.y - 540 - 25, NULL);
 
 	if (app->sceneBase->sceneBase == true && app->player->usingComputer == false) app->render->DrawTexture(app->sceneBase->spotLight, app->player->position.x - 960 + 25, app->player->position.y - 540 - 25, NULL);

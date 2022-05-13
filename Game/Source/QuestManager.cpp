@@ -9,6 +9,7 @@
 #include "Log.h"
 #include "List.h"
 #include "Audio.h"
+#include "TitleScreen.h"
 
 
 QuestManager::QuestManager(bool start_enabled) : Module(start_enabled)
@@ -175,6 +176,13 @@ bool QuestManager::PostUpdate()
 
 	SDL_Rect questAnimRect = app->questManager->currentAnimation->GetCurrentFrame();
 	app->render->DrawTexture2(questCompletionMessage, 480, 10, &questAnimRect);
+
+
+
+	if (app->titleScreen->toTitleScreen == true) // <-- No tendría que estar aquí pero es mas simple ponerlo aquí por como está ordenado el render draw
+	{
+		app->render->DrawTexture2(app->player->gameOverScreen, 0, 0, NULL, 0.0f);
+	}
 
 	return true;
 }

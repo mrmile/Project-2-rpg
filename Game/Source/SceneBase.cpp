@@ -174,9 +174,7 @@ bool SceneBase::PostUpdate()
 		//Mix_SetMusicPosition(0);
 		// Load music
 		//app->audio->PlayMusic("Assets/audio/music/jungle.ogg");
-
-		if (app->player->lives != 0) playerRestart = true;
-		if (app->player->lives == 0) app->titleScreen->toTitleScreen = true;
+		app->titleScreen->toTitleScreen = true;
 	}
 
 	if (app->player->winDelay > 300 && app->player->winDelay <= 301)
