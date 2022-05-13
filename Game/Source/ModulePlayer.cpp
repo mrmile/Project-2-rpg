@@ -170,7 +170,10 @@ bool ModulePlayer::Start()
 
 	returnComputer = app->tex->Load("Assets/textures/extras/returnComputer.png");
 	computerExecutable = app->tex->Load("Assets/textures/extras/computerExecutable.png");
-	noteComputerDay15 = app->tex->Load("Assets/textures/extras/noteComputer.png");
+	noteComputerDay1 = app->tex->Load("Assets/textures/extras/noteComputerDay1.png");
+	noteComputerDay5 = app->tex->Load("Assets/textures/extras/noteComputerDay5.png");
+	noteComputerDay10 = app->tex->Load("Assets/textures/extras/noteComputerDay10.png");
+	noteComputerDay15 = app->tex->Load("Assets/textures/extras/noteComputerDay15.png");
 	folderComputer = app->tex->Load("Assets/textures/extras/folderComputer.png");
 
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
@@ -217,6 +220,9 @@ bool ModulePlayer::Start()
 
 	returnComputerGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 41, "Computer Return Button", { 35,40,29,23 }, this, returnComputer, NULL, {});
 	computerExecutableGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 42, "Computer Executable Button", { 75,250,54,50 }, this, computerExecutable, NULL, {});
+	noteComputerDay1GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 45, "Computer Note Button", { 50,75,54,50 }, this, noteComputerDay1, NULL, {});
+	noteComputerDay5GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 46, "Computer Note Button", { 200,160,54,50 }, this, noteComputerDay5, NULL, {});
+	noteComputerDay10GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 47, "Computer Note Button", { 320,250,54,50 }, this, noteComputerDay10, NULL, {});
 	noteComputerDay15GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 43, "Computer Note Button", { 460,40,54,50 }, this, noteComputerDay15, NULL, {});
 	folderComputerGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 44, "Computer Fold Button", { 90,200,54,50 }, this, folderComputer, NULL, {});
 
@@ -323,6 +329,9 @@ bool ModulePlayer::Update(float dt)
 		}
 		if (computerPhase == 1)
 		{
+			noteComputerDay1GUI->canClick = true;
+			noteComputerDay5GUI->canClick = true;
+			noteComputerDay10GUI->canClick = true;
 			noteComputerDay15GUI->canClick = true;
 		}
 		if (computerPhase == 2) //condicion del .exe AlvaroComputer
@@ -336,6 +345,9 @@ bool ModulePlayer::Update(float dt)
 	{
 		returnComputerGUI->canClick = false;
 		folderComputerGUI->canClick = false;
+		noteComputerDay1GUI->canClick = false;
+		noteComputerDay5GUI->canClick = false;
+		noteComputerDay10GUI->canClick = false;
 		noteComputerDay15GUI->canClick = false;
 		computerExecutableGUI->canClick = false;
 	}
@@ -1627,6 +1639,15 @@ bool ModulePlayer::PostUpdate()
 
 			if (computerPhase == 1)
 			{
+				if (noteComputerDay1GUI->state == GuiControlState::NORMAL && noteComputerDay1GUI->canClick == true) noteComputerDay1GUI->SetTexture(noteComputerDay1);
+				noteComputerDay1GUI->Draw(app->render);
+
+				if (noteComputerDay5GUI->state == GuiControlState::NORMAL && noteComputerDay5GUI->canClick == true) noteComputerDay5GUI->SetTexture(noteComputerDay5);
+				noteComputerDay5GUI->Draw(app->render);
+
+				if (noteComputerDay10GUI->state == GuiControlState::NORMAL && noteComputerDay10GUI->canClick == true) noteComputerDay10GUI->SetTexture(noteComputerDay10);
+				noteComputerDay10GUI->Draw(app->render);
+
 				if (noteComputerDay15GUI->state == GuiControlState::NORMAL && noteComputerDay15GUI->canClick == true) noteComputerDay15GUI->SetTexture(noteComputerDay15);
 				noteComputerDay15GUI->Draw(app->render);
 			}
@@ -1659,12 +1680,18 @@ bool ModulePlayer::CleanUp()
 	app->tex->UnLoad(returnComputer);
 	app->tex->UnLoad(folderComputer);
 	app->tex->UnLoad(computerExecutable);
+	app->tex->UnLoad(noteComputerDay1);
+	app->tex->UnLoad(noteComputerDay5);
+	app->tex->UnLoad(noteComputerDay10);
 	app->tex->UnLoad(noteComputerDay15);
 
 	app->guiManager->DestroyGuiControl(41);
 	app->guiManager->DestroyGuiControl(42);
 	app->guiManager->DestroyGuiControl(43);
 	app->guiManager->DestroyGuiControl(44);
+	app->guiManager->DestroyGuiControl(45);
+	app->guiManager->DestroyGuiControl(46);
+	app->guiManager->DestroyGuiControl(47);
 
 	//deletePlayer = true;
 	app->player->Player->body->DestroyFixture(app->player->Player->body->GetFixtureList());
@@ -1973,6 +2000,21 @@ bool ModulePlayer::OnGuiMouseClickEvent(GuiControl* control) {
 		{
 			//app->audio->PlayFx(buttonClickedFx, 0);
 			computerPhase = 1;
+		}
+		if (control->id == 45 && noteComputerDay1GUI->canClick == true)
+		{
+			//app->audio->PlayFx(buttonClickedFx, 0);
+			//Nota 1
+		}
+		if (control->id == 46 && noteComputerDay5GUI->canClick == true)
+		{
+			//app->audio->PlayFx(buttonClickedFx, 0);
+			//Nota 5
+		}
+		if (control->id == 47 && noteComputerDay10GUI->canClick == true)
+		{
+			//app->audio->PlayFx(buttonClickedFx, 0);
+			//Nota 10
 		}
 		
 
