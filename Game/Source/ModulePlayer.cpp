@@ -163,6 +163,7 @@ bool ModulePlayer::Start()
 	texture = app->tex->Load("Assets/textures/Character/SWAT_Character.png");
 	doctorNote = app->tex->Load("Assets/textures/extras/doctor_note.png");
 	computerBG = app->tex->Load("Assets/textures/extras/computer_bg.png");
+	selectedEnemy = app->tex->Load("Assets/textures/CircleSelection.png");
 
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
 	itemGrab = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_grab_finish_back_fast_begin_0.wav");
@@ -807,6 +808,9 @@ bool ModulePlayer::Update(float dt)
 				{
 					entityTurnPlayer = TurnState::WaitTurn;
 				}
+				
+				
+				app->render->DrawTexture2(selectedEnemy, enemySelected.x-app->render->camera.x, enemySelected.y - app->render->camera.y, NULL);
 
 			}
 			if (entityTurnPlayer == TurnState::WaitTurn)
@@ -946,7 +950,7 @@ bool ModulePlayer::Update(float dt)
 
 bool ModulePlayer::PostUpdate()
 {
-	
+		
 		if (destroyed == true)
 		{
 			destroyedDelay++;
@@ -1228,69 +1232,6 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 
 		}
-		
-		//				--Esto no sirve para nada aquí. Lo he movido al entity.cpp--
-
-		/*if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_FOOD))
-		{
-			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_FOOD, true, false);
-			app->audio->PlayFx(itemGrab);
-		}
-
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_HEALTH_PACK))
-		{
-			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_HEALTH_PACK, true, false);
-			app->audio->PlayFx(itemGrab);
-		}
-
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_RADIO))
-		{
-			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_RADIO, true, false);
-			app->audio->PlayFx(itemGrab);
-		}
-		
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_DEFAULT_GUN))
-		{
-			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_DEFAULT_GUN, false, true);
-			app->audio->PlayFx(itemGrab);
-		}
-
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_KNIFE))
-		{
-			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_KNIFE, false, true);
-			app->audio->PlayFx(itemGrab);
-		}
-
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_SUIT))
-		{
-			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_SUIT, false, true);
-			app->audio->PlayFx(itemGrab);
-		}
-
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_LONG_RANGE_GUN))
-		{
-			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_lONG_SCOPE_GUN, false, true);
-			app->audio->PlayFx(itemGrab);
-		}
-
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_SHORT_RANGE_GUN))
-		{
-			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_SHORT_SCOPE_GUN, false, true);
-			app->audio->PlayFx(itemGrab);
-		}
-
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_CARD))
-		{
-			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_CARD, true, false);
-			app->audio->PlayFx(itemGrab);
-			app->questManager->SwitchMainQuest(LOOK_FOR_THE_COMPUTER_2);
-		}
-
-		if ((c1->type == Collider::Type::PLAYER_PICKUP_RADIUS && c2->type == Collider::Type::ITEM_GRENADE))
-		{
-			app->inventoryMenu->AddItemToInventory(EntityType::OBJECT_GRENADE, true, false);
-			app->audio->PlayFx(itemGrab);
-		}*/
 
 		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_RANGED_ATTACK)) /*&& invincibleDelay >= 120)*/
 		{
