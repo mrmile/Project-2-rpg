@@ -19,6 +19,7 @@
 #include "SceneMainMap.h"
 #include "SceneCave.h"
 #include "SceneBase.h"
+#include "ScenePlatform.h"
 #include "Map.h"
 #include "ModulePhysics.h"
 #include "ModuleCollisions.h"
@@ -198,7 +199,7 @@ bool ModulePlayer::Start()
 		playerWalkSound[6] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Dirt/FootstepDirt07.wav");
 	}
 
-	if (app->sceneBase->sceneBase == true)
+	if (app->sceneBase->sceneBase == true || app->scenePlatform->scenePlatform == true)
 	{
 		playerWalkSound[0] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Metal/FootstepMetal01.wav");
 		playerWalkSound[1] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Metal/FootstepMetal02.wav");

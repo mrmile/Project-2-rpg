@@ -154,6 +154,9 @@
     <ClCompile Include="Source\Map.cpp">
       <Filter>General\Scenes and Maps\Maps</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ScenePlatform.cpp">
+      <Filter>General\Scenes and Maps\Maps</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -337,6 +340,9 @@
       <Filter>General\Quests</Filter>
     </ClInclude>
     <ClInclude Include="Source\Map.h">
+      <Filter>General\Scenes and Maps\Maps</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ScenePlatform.h">
       <Filter>General\Scenes and Maps\Maps</Filter>
     </ClInclude>
   </ItemGroup>

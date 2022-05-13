@@ -25,6 +25,7 @@ class SceneMainMap;
 class SceneCave;
 class SceneBase;
 class SceneMotel;
+class ScenePlatform;
 class Map;
 class Enemies;
 class ModuleFadeToBlack;
@@ -124,6 +125,7 @@ public:
 	SceneCave* sceneCave;
 	SceneBase* sceneBase;
 	SceneMotel* sceneMotel;
+	ScenePlatform* scenePlatform;
 	Map* map;
 	Enemies* enemies;
 	ModuleFadeToBlack* fade;

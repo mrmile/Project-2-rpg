@@ -10,6 +10,7 @@
 #include "CreditsScreen.h"
 #include "SceneBase.h"
 #include "SceneMotel.h"
+#include "ScenePlatform.h"
 #include "Map.h"
 #include "ModuleFadeToBlack.h"
 #include "ModuleFonts.h"
@@ -57,6 +58,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	sceneCave = new SceneCave(false);
 	sceneBase = new SceneBase(false);
 	sceneMotel = new SceneMotel(false);
+	scenePlatform = new ScenePlatform(false);
 	map = new Map(false);
 	physics = new ModulePhysics(true);
 	fade = new ModuleFadeToBlack(true);
@@ -90,6 +92,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(sceneCave);
 	AddModule(sceneBase);
 	AddModule(sceneMotel);
+	AddModule(scenePlatform);
 	AddModule(player);
 	AddModule(entity_manager); 
 	AddModule(particles);
@@ -395,6 +398,22 @@ void App::FinishUpdate()
 		app->pause_menu->Enable();
 
 		app->sceneMainMap->enableSceneBase = false;
+	}
+
+	if (app->sceneMainMap->enableScenePlatform == true)
+	{
+		app->sceneMainMap->Disable();
+		app->sceneCave->Disable();
+		app->collisions->Enable();
+		app->map->Enable();
+		app->scenePlatform->Enable();
+		app->particles->Enable();
+		app->player->Enable();
+		app->entity_manager->Enable();
+		app->fonts->Enable();
+		app->pause_menu->Enable();
+
+		app->sceneMainMap->enableScenePlatform = false;
 	}
 
 	// L07: DONE 4: Now calculate:

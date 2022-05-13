@@ -1,18 +1,18 @@
-#ifndef __SCENE_MAIN_MAP_H__
-#define __SCENE_MAIN_MAP_H__
+#ifndef __SCENE_PLATFORM_H__
+#define __SCENE_PLATFORM_H__
 
 #include "Module.h"
 
 struct SDL_Texture;
 
-class SceneMainMap : public Module
+class ScenePlatform : public Module
 {
 public:
 
-	SceneMainMap(bool start_enabled = false);
+	ScenePlatform(bool start_enabled = false);
 
 	// Destructor
-	virtual ~SceneMainMap();
+	virtual ~ScenePlatform();
 
 	// Called before render is available
 	bool Awake();
@@ -45,22 +45,14 @@ public:
 
 	bool destroyScene;
 
-	bool sceneMainMap;
-
-	bool enableSceneCave = false;
-	bool enableSceneBase = false;
-	bool enableScenePlatform = false;
-
-	int PauseDelay=0;
-
-	SDL_Rect* rectangle = {};
-
-	SDL_Texture* spotLight = nullptr;
-	SDL_Texture* sunrise_effect = nullptr;
+	bool scenePlatform;
 
 private:
 	SDL_Texture* img = nullptr;
-	SDL_Texture* PauseFrame = nullptr;
+	
+public:
+
+
 };
 
-#endif // __SCENE_MAIN_MAP_H__
+#endif // __SCENE_PLATFORM_H__

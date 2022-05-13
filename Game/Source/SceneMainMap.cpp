@@ -262,6 +262,7 @@ bool SceneMainMap::PostUpdate()
 			enableSceneBase = false;
 			app->sceneBase->enableSceneMainMap = false;
 			app->sceneCave->enableSceneMainMap = false;
+			enableScenePlatform = false;
 
 			enableSceneCave = true;
 		}
@@ -270,10 +271,19 @@ bool SceneMainMap::PostUpdate()
 			app->sceneBase->enableSceneMainMap = false;
 			app->sceneCave->enableSceneMainMap = false;
 			enableSceneCave = false;
+			enableScenePlatform = false;
 
 			enableSceneBase = true;
 		}
+		if (app->player->entranceID == 3)
+		{
+			app->sceneBase->enableSceneMainMap = false;
+			app->sceneCave->enableSceneMainMap = false;
+			enableSceneCave = false;
+			enableSceneBase = false;
 
+			enableScenePlatform = true;
+		}
 
 		//app->fade->FadeToBlack(app->sceneMainMap, app->sceneCave, 60.0f);
 	}
