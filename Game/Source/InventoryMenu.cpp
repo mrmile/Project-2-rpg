@@ -182,23 +182,23 @@ bool InventoryMenu::PostUpdate()
 	{
 		app->render->DrawTexture2(inventoryHUD, 0, 0, NULL);
 
-		if (app->player->playerHP == 100)
+		if (app->player->playerHP >= app->player->PlayerMaxHP)
 		{
 			app->render->DrawTexture2(characterHealth100, 0, 0, NULL);
 		}
-		if (app->player->playerHP < 100 && app->player->playerHP >= 60)
+		if (app->player->playerHP > app->player->PlayerMaxHP / 1.25f && app->player->playerHP < app->player->PlayerMaxHP )
 		{
 			app->render->DrawTexture2(characterHealth80, 0, 0, NULL);
 		}
-		if (app->player->playerHP < 80 && app->player->playerHP >= 40)
+		if (app->player->playerHP > app->player->PlayerMaxHP / 1.66f && app->player->playerHP <= app->player->PlayerMaxHP / 1.25f)
 		{
 			app->render->DrawTexture2(characterHealth60, 0, 0, NULL);
 		}
-		if (app->player->playerHP < 60 && app->player->playerHP >= 20)
+		if (app->player->playerHP > app->player->PlayerMaxHP / 2.5f && app->player->playerHP <= app->player->PlayerMaxHP / 1.66f)
 		{
 			app->render->DrawTexture2(characterHealth40, 0, 0, NULL);
 		}
-		if (app->player->playerHP < 40 && app->player->playerHP > 0)
+		if (app->player->playerHP > app->player->PlayerMaxHP / 5 && app->player->playerHP <= app->player->PlayerMaxHP / 2.5f)
 		{
 			app->render->DrawTexture2(characterHealth20, 0, 0, NULL);
 		}
