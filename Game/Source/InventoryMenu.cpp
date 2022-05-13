@@ -187,37 +187,37 @@ bool InventoryMenu::PostUpdate()
 	if (app->player->pauseMenu == false && app->titleScreen->active == false && app->creditsScreen->active == false && showInventory == true)
 	{
 		app->render->DrawTexture2(inventoryHUD, 0, 0, NULL);
-		app->render->DrawTexture2(playerStats, 0, 1, NULL);
+		app->render->DrawTexture2(playerStats, 0, -6, NULL);
 
 		sprintf_s(scoreText, 10, "%7d", app->player->PlayerMaxHP);
-		app->fonts->BlitText(117, 35, scoreFont, scoreText);
+		app->fonts->BlitText(117, 28, scoreFont, scoreText);
 		/*app->fonts->BlitText(106, 47, scoreFont, scoreText);*/
 		sprintf_s(scoreText2, 10, "%7d", app->player->MeleeDamage + app->player->EquipmentDamage);
-		app->fonts->BlitText(106, 47, scoreFont2, scoreText2);
+		app->fonts->BlitText(106, 40, scoreFont2, scoreText2);
 
 		if (app->player->playerHP >= app->player->PlayerMaxHP)
 		{
-			app->render->DrawTexture2(characterHealth100, 0, 0, NULL);
+			app->render->DrawTexture2(characterHealth100, 0, -7, NULL);
 		}
 		if (app->player->playerHP > app->player->PlayerMaxHP / 1.25f && app->player->playerHP < app->player->PlayerMaxHP )
 		{
-			app->render->DrawTexture2(characterHealth80, 0, 0, NULL);
+			app->render->DrawTexture2(characterHealth80, 0, -7, NULL);
 		}
 		if (app->player->playerHP > app->player->PlayerMaxHP / 1.66f && app->player->playerHP <= app->player->PlayerMaxHP / 1.25f)
 		{
-			app->render->DrawTexture2(characterHealth60, 0, 0, NULL);
+			app->render->DrawTexture2(characterHealth60, 0, -7, NULL);
 		}
 		if (app->player->playerHP > app->player->PlayerMaxHP / 2.5f && app->player->playerHP <= app->player->PlayerMaxHP / 1.66f)
 		{
-			app->render->DrawTexture2(characterHealth40, 0, 0, NULL);
+			app->render->DrawTexture2(characterHealth40, 0, -7, NULL);
 		}
 		if (app->player->playerHP > app->player->PlayerMaxHP / 5 && app->player->playerHP <= app->player->PlayerMaxHP / 2.5f)
 		{
-			app->render->DrawTexture2(characterHealth20, 0, 0, NULL);
+			app->render->DrawTexture2(characterHealth20, 0, -7, NULL);
 		}
 		if (app->player->playerHP <= 0)
 		{
-			app->render->DrawTexture2(characterHealth0, 0, 0, NULL);
+			app->render->DrawTexture2(characterHealth0, 0, -7, NULL);
 		}
 
 		//app->render->DrawTexture2(characterName1, 0, 0, NULL); // Just for testing
