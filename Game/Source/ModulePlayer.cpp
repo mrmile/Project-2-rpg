@@ -785,6 +785,7 @@ bool ModulePlayer::Update(float dt)
 				{
 					Player->body->SetLinearVelocity({ 0.0f,0.0f });
 					CounterForEnemySelection = -1;
+					EnemySelectionBool = false;
 					entityTurnPlayer = TurnState::FinishTurn;
 				}
 			}
@@ -799,7 +800,13 @@ bool ModulePlayer::Update(float dt)
 					CounterForEnemySelection++;
 					if (CounterForEnemySelection < app->entity_manager->ListInCombat.count())
 					{
+						EnemySelectionBool = true;
 						enemySelected = app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position;
+					}
+
+					if (CounterForEnemySelection > app->entity_manager->ListInCombat.count())
+					{
+						CounterForEnemySelection = 0;
 					}
 				}
 				
@@ -809,8 +816,10 @@ bool ModulePlayer::Update(float dt)
 					entityTurnPlayer = TurnState::WaitTurn;
 				}
 				
-				
-				app->render->DrawTexture2(selectedEnemy, enemySelected.x-app->render->camera.x, enemySelected.y - app->render->camera.y, NULL);
+				if (EnemySelectionBool == true)
+				{
+					app->render->DrawTexture(selectedEnemy, enemySelected.x-10, enemySelected.y, NULL);
+				}
 
 			}
 			if (entityTurnPlayer == TurnState::WaitTurn)

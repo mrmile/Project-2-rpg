@@ -43,9 +43,9 @@ Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 	position.x = x;
 	position.y = y;
 
-	collider = app->collisions->AddCollider({ position.x, position.y - 46, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
+	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56}, Collider::Type::ENEMY, (Module*)app->entity_manager);
 
-	Standart_Zombie_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10));
+	Standart_Zombie_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y-46, 25, 10));
 	
 	
 	
@@ -54,463 +54,465 @@ Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 bool Zombie_Standart::Update(float dt)
 {
 	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
-	
-	if (app->player->pauseMenu == true)
+	if (EntityHP <= 0)
 	{
-		iPoint NewPosition = position;
-		collider->SetPos(NewPosition.x, NewPosition.y - 46);
-		Standart_Zombie_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
-		currentAnim = &Idle_Enemy;
-		currentAnim->loop = false;
-
-		return true;
+		SetToDelete();
 	}
-	if (app->player->pauseMenu == false)
+	if (collider->pendingToDelete == false)
 	{
-		//Escape Combat
-		if (app->player->escapeCombat == true)
+		if (app->player->pauseMenu == true)
 		{
-			entityState = GameState::OutOfCombat;
-			entityTurn = TurnState::NONE;
-		}
+			iPoint NewPosition = position;
+			collider->SetPos(NewPosition.x, NewPosition.y);
+			Standart_Zombie_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
+			currentAnim = &Idle_Enemy;
+			currentAnim->loop = false;
 
-		if (EntityHP == 0)
-		{
-			SetToDelete();
-			//Standart_Zombie_List.end->data->body->DestroyFixture(Standart_Zombie_List.end->data->body->GetFixtureList());
-			// NO FUNCIONA EL DESTRUIR LA FIXTURE
-		}
-		if (entityState == GameState::OutOfCombat)
-		{
-			//move normally
-			if (app->inventoryMenu->ActiveRadioAlive == true)
-			{
-				if (position.DistanceTo(app->inventoryMenu->ActiveRadioPosition) < 300)
-				{
-					collider->SetPos(position.x, position.y - 46);
-					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
-					currentAnim = &Idle_Enemy;
-					currentAnim->loop = true;
-
-					if (position.x > app->inventoryMenu->ActiveRadioPosition.x)
-					{
-						if (currentAnim != &leftWalkAnim_Enemy)
-						{
-							leftWalkAnim_Enemy.Reset();
-							currentAnim = &leftWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
-					}
-					if (position.x < app->inventoryMenu->ActiveRadioPosition.x)
-					{
-						if (currentAnim != &rightWalkAnim_Enemy)
-						{
-							rightWalkAnim_Enemy.Reset();
-							currentAnim = &rightWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
-					}
-					if (position.y > app->inventoryMenu->ActiveRadioPosition.y)
-					{
-						if (currentAnim != &upWalkAnim_Enemy)
-						{
-							upWalkAnim_Enemy.Reset();
-							currentAnim = &upWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
-					}
-					if (position.y < app->inventoryMenu->ActiveRadioPosition.y)
-					{
-						if (currentAnim != &downWalkAnim_Enemy)
-						{
-							downWalkAnim_Enemy.Reset();
-							currentAnim = &downWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
-					}
-
-
-					if ((app->inventoryMenu->ActiveRadioPosition.y > position.y) && (app->inventoryMenu->ActiveRadioPosition.x > position.x))
-					{
-						if (currentAnim != &rightDownWalkAnim_Enemy)
-						{
-							rightDownWalkAnim_Enemy.Reset();
-							currentAnim = &rightDownWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
-					}
-					if ((app->inventoryMenu->ActiveRadioPosition.x < position.x) && (app->inventoryMenu->ActiveRadioPosition.y > position.y))
-					{
-						if (currentAnim != &leftDownWalkAnim_Enemy)
-						{
-							rightDownWalkAnim_Enemy.Reset();
-							currentAnim = &rightDownWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
-					}
-					if ((app->inventoryMenu->ActiveRadioPosition.y < position.y) && (app->inventoryMenu->ActiveRadioPosition.x < position.x))
-					{
-						if (currentAnim != &leftUpWalkAnim_Enemy)
-						{
-							leftUpWalkAnim_Enemy.Reset();
-							currentAnim = &leftUpWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
-					}
-					if ((app->inventoryMenu->ActiveRadioPosition.x > position.x) && (app->inventoryMenu->ActiveRadioPosition.y < position.y))
-					{
-						if (currentAnim != &rightUpWalkAnim_Enemy)
-						{
-							leftUpWalkAnim_Enemy.Reset();
-							currentAnim = &leftUpWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
-					}
-				}
-				else
-				{
-					collider->SetPos(position.x, position.y - 46);
-					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
-					currentAnim = &Idle_Enemy;
-					currentAnim->loop = true;
-
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
-
-				}
-			}
-			if (app->inventoryMenu->ActiveRadioAlive == false)
-			{
-				if (position.DistanceTo(app->player->position) < 300)
-				{
-					collider->SetPos(position.x, position.y - 46);
-					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
-					currentAnim = &Idle_Enemy;
-					currentAnim->loop = true;
-
-					if (position.x > app->player->position.x)
-					{
-						if (currentAnim != &leftWalkAnim_Enemy)
-						{
-							leftWalkAnim_Enemy.Reset();
-							currentAnim = &leftWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
-					}
-					if (position.x < app->player->position.x)
-					{
-						if (currentAnim != &rightWalkAnim_Enemy)
-						{
-							rightWalkAnim_Enemy.Reset();
-							currentAnim = &rightWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
-					}
-					if (position.y > app->player->position.y)
-					{
-						if (currentAnim != &upWalkAnim_Enemy)
-						{
-							upWalkAnim_Enemy.Reset();
-							currentAnim = &upWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
-					}
-					if (position.y < app->player->position.y)
-					{
-						if (currentAnim != &downWalkAnim_Enemy)
-						{
-							downWalkAnim_Enemy.Reset();
-							currentAnim = &downWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
-					}
-
-
-					if ((app->player->position.y > position.y) && (app->player->position.x > position.x))
-					{
-						if (currentAnim != &rightDownWalkAnim_Enemy)
-						{
-							rightDownWalkAnim_Enemy.Reset();
-							currentAnim = &rightDownWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
-					}
-					if ((app->player->position.x < position.x) && (app->player->position.y > position.y))
-					{
-						if (currentAnim != &leftDownWalkAnim_Enemy)
-						{
-							rightDownWalkAnim_Enemy.Reset();
-							currentAnim = &rightDownWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
-					}
-					if ((app->player->position.y < position.y) && (app->player->position.x < position.x))
-					{
-						if (currentAnim != &leftUpWalkAnim_Enemy)
-						{
-							leftUpWalkAnim_Enemy.Reset();
-							currentAnim = &leftUpWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
-					}
-					if ((app->player->position.x > position.x) && (app->player->position.y < position.y))
-					{
-						if (currentAnim != &rightUpWalkAnim_Enemy)
-						{
-							leftUpWalkAnim_Enemy.Reset();
-							currentAnim = &leftUpWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
-					}
-				}
-				else
-				{
-					collider->SetPos(position.x, position.y - 46);
-					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
-					currentAnim = &Idle_Enemy;
-					currentAnim->loop = true;
-
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
-
-				}
-
-				if (position.DistanceTo(app->player->position) < 100)
-				{
-					app->entity_manager->RegisterEntitesInCombat(this);
-					entityState = GameState::InCombat;
-					//app->player->entityStatePlayer = GameState::InCombat;
-					app->game_manager->StartTurnManagement = true;
-				}
-			}
-			
-			
-			
 			return true;
-
-			
-
 		}
-		
-		if (entityState == GameState::InCombat)
+		if (app->player->pauseMenu == false)
 		{
-			
-			if (EntityHP > 0)
+			//Escape Combat
+			if (app->player->escapeCombat == true)
 			{
-				if (entityTurn == TurnState::NONE)
+				entityState = GameState::OutOfCombat;
+				entityTurn = TurnState::NONE;
+			}
+
+
+			if (entityState == GameState::OutOfCombat)
+			{
+				//move normally
+				if (app->inventoryMenu->ActiveRadioAlive == true)
 				{
-					//Assigning order of turns
-					collider->SetPos(position.x, position.y - 46);
-					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
-					currentAnim = &Idle_Enemy;
-					currentAnim->loop = true;
-
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
-
-				}
-				if (entityTurn == TurnState::StartOfTurn)
-				{
-					collider->SetPos(position.x, position.y - 46);
-					currentAnim = &Idle_Enemy;
-					currentAnim->loop = false;
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f }); //movimiento contrario a la direccion del jugador cuando nos chocamos con el
-
-					entityTurn = TurnState::MidOfTurn;
-
-				}
-				if (entityTurn == TurnState::MidOfTurn)
-				{
-
-					collider->SetPos(position.x, position.y - 46);
-					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
-					currentAnim = &Idle_Enemy;
-					currentAnim->loop = true;
-					counter++;
-					
-					if (position.x > app->player->position.x)
+					if (position.DistanceTo(app->inventoryMenu->ActiveRadioPosition) < 300)
 					{
-						if (currentAnim != &leftWalkAnim_Enemy)
+						collider->SetPos(position.x, position.y);
+						Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
+						currentAnim = &Idle_Enemy;
+						currentAnim->loop = true;
+
+						if (position.x > app->inventoryMenu->ActiveRadioPosition.x)
 						{
-							leftWalkAnim_Enemy.Reset();
-							currentAnim = &leftWalkAnim_Enemy;
+							if (currentAnim != &leftWalkAnim_Enemy)
+							{
+								leftWalkAnim_Enemy.Reset();
+								currentAnim = &leftWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
 						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
-					}
-					if (position.x < app->player->position.x)
-					{
-						if (currentAnim != &rightWalkAnim_Enemy)
+						if (position.x < app->inventoryMenu->ActiveRadioPosition.x)
 						{
-							rightWalkAnim_Enemy.Reset();
-							currentAnim = &rightWalkAnim_Enemy;
+							if (currentAnim != &rightWalkAnim_Enemy)
+							{
+								rightWalkAnim_Enemy.Reset();
+								currentAnim = &rightWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
 						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
-					}
-					if (position.y > app->player->position.y)
-					{
-						if (currentAnim != &upWalkAnim_Enemy)
+						if (position.y > app->inventoryMenu->ActiveRadioPosition.y)
 						{
-							upWalkAnim_Enemy.Reset();
-							currentAnim = &upWalkAnim_Enemy;
+							if (currentAnim != &upWalkAnim_Enemy)
+							{
+								upWalkAnim_Enemy.Reset();
+								currentAnim = &upWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
 						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
-					}
-					if (position.y < app->player->position.y)
-					{
-						if (currentAnim != &downWalkAnim_Enemy)
+						if (position.y < app->inventoryMenu->ActiveRadioPosition.y)
 						{
-							downWalkAnim_Enemy.Reset();
-							currentAnim = &downWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
-					}
-
-
-					if ((app->player->position.y > position.y) && (app->player->position.x > position.x))
-					{
-						if (currentAnim != &rightDownWalkAnim_Enemy)
-						{
-							rightDownWalkAnim_Enemy.Reset();
-							currentAnim = &rightDownWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
-					}
-					if ((app->player->position.x < position.x) && (app->player->position.y > position.y))
-					{
-						if (currentAnim != &leftDownWalkAnim_Enemy)
-						{
-							rightDownWalkAnim_Enemy.Reset();
-							currentAnim = &rightDownWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
-					}
-					if ((app->player->position.y < position.y) && (app->player->position.x < position.x))
-					{
-						if (currentAnim != &leftUpWalkAnim_Enemy)
-						{
-							leftUpWalkAnim_Enemy.Reset();
-							currentAnim = &leftUpWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
-					}
-					if ((app->player->position.x > position.x) && (app->player->position.y < position.y))
-					{
-						if (currentAnim != &rightUpWalkAnim_Enemy)
-						{
-							leftUpWalkAnim_Enemy.Reset();
-							currentAnim = &leftUpWalkAnim_Enemy;
-						}
-						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
-					}
-
-					if (counter == 150) entityTurn = TurnState::FinishTurn;
-
-				}
-				if (entityTurn == TurnState::FinishTurn)
-				{
-					//Change turn from enemy to player turn still have to develop a way to do it correctly
-					Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f });
-					collider->SetPos(position.x, position.y - 46);
-					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
-					
-					currentAnim = &Idle_Enemy;
-					currentAnim->loop = true;
-
-					if (position.DistanceTo(app->player->position) < 75)
-					{
-
-						if ((position.x == app->player->position.x) && (position.y < app->player->position.y))
-						{
-						
-							app->particles->AddParticle(app->particles->enemyAttack, position.x, position.y + 60, Collider::Type::ENEMY_ATTACK);
-
-						}
-						if ((position.x == app->player->position.x) && (position.y > app->player->position.y))
-						{
-						
-							app->particles->AddParticle(app->particles->enemyAttack, position.x , position.y - 60, Collider::Type::ENEMY_ATTACK);
-
-						}
-						if ((position.x < app->player->position.x) && (position.y == app->player->position.y))
-						{
-
-						
-							app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y , Collider::Type::ENEMY_ATTACK);
-
-
-						}
-						if ((position.x > app->player->position.x) && (position.y == app->player->position.y))
-						{
-							
-							app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y , Collider::Type::ENEMY_ATTACK);
-
-
+							if (currentAnim != &downWalkAnim_Enemy)
+							{
+								downWalkAnim_Enemy.Reset();
+								currentAnim = &downWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
 						}
 
-						if ((position.x > app->player->position.x) && (position.y > app->player->position.y))
+
+						if ((app->inventoryMenu->ActiveRadioPosition.y > position.y) && (app->inventoryMenu->ActiveRadioPosition.x > position.x))
 						{
-
-							
-							app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y - 30, Collider::Type::ENEMY_ATTACK);
-
-
+							if (currentAnim != &rightDownWalkAnim_Enemy)
+							{
+								rightDownWalkAnim_Enemy.Reset();
+								currentAnim = &rightDownWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
 						}
-						if ((position.x > app->player->position.x) && (position.y < app->player->position.y))
+						if ((app->inventoryMenu->ActiveRadioPosition.x < position.x) && (app->inventoryMenu->ActiveRadioPosition.y > position.y))
 						{
-							
-							app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y + 30, Collider::Type::ENEMY_ATTACK);
-
-
+							if (currentAnim != &leftDownWalkAnim_Enemy)
+							{
+								rightDownWalkAnim_Enemy.Reset();
+								currentAnim = &rightDownWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
 						}
-						if ((position.x < app->player->position.x) && (position.y > app->player->position.y))
+						if ((app->inventoryMenu->ActiveRadioPosition.y < position.y) && (app->inventoryMenu->ActiveRadioPosition.x < position.x))
 						{
-							
-							app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y - 30, Collider::Type::ENEMY_ATTACK);
-
-
+							if (currentAnim != &leftUpWalkAnim_Enemy)
+							{
+								leftUpWalkAnim_Enemy.Reset();
+								currentAnim = &leftUpWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
 						}
-						if ((position.x < app->player->position.x) && (position.y < app->player->position.y))
+						if ((app->inventoryMenu->ActiveRadioPosition.x > position.x) && (app->inventoryMenu->ActiveRadioPosition.y < position.y))
 						{
-							
-							app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y + 30, Collider::Type::ENEMY_ATTACK);
-
-
+							if (currentAnim != &rightUpWalkAnim_Enemy)
+							{
+								leftUpWalkAnim_Enemy.Reset();
+								currentAnim = &leftUpWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
 						}
-
-						entityTurn = TurnState::WaitTurn;
 					}
 					else
 					{
-						entityTurn = TurnState::WaitTurn;
-					}
-					
+						collider->SetPos(position.x, position.y);
+						Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
+						currentAnim = &Idle_Enemy;
+						currentAnim->loop = true;
 
+						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
+
+					}
 				}
-				if (entityTurn == TurnState::WaitTurn)
+				if (app->inventoryMenu->ActiveRadioAlive == false)
 				{
-					counter = 0;
-					collider->SetPos(position.x, position.y - 46);
-					Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
-					currentAnim = &Idle_Enemy;
-					currentAnim->loop = true;
-		
+					if (position.DistanceTo(app->player->position) < 300)
+					{
+						collider->SetPos(position.x, position.y);
+						Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
+						currentAnim = &Idle_Enemy;
+						currentAnim->loop = true;
+
+						if (position.x > app->player->position.x)
+						{
+							if (currentAnim != &leftWalkAnim_Enemy)
+							{
+								leftWalkAnim_Enemy.Reset();
+								currentAnim = &leftWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
+						}
+						if (position.x < app->player->position.x)
+						{
+							if (currentAnim != &rightWalkAnim_Enemy)
+							{
+								rightWalkAnim_Enemy.Reset();
+								currentAnim = &rightWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
+						}
+						if (position.y > app->player->position.y)
+						{
+							if (currentAnim != &upWalkAnim_Enemy)
+							{
+								upWalkAnim_Enemy.Reset();
+								currentAnim = &upWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
+						}
+						if (position.y < app->player->position.y)
+						{
+							if (currentAnim != &downWalkAnim_Enemy)
+							{
+								downWalkAnim_Enemy.Reset();
+								currentAnim = &downWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
+						}
+
+
+						if ((app->player->position.y > position.y) && (app->player->position.x > position.x))
+						{
+							if (currentAnim != &rightDownWalkAnim_Enemy)
+							{
+								rightDownWalkAnim_Enemy.Reset();
+								currentAnim = &rightDownWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
+						}
+						if ((app->player->position.x < position.x) && (app->player->position.y > position.y))
+						{
+							if (currentAnim != &leftDownWalkAnim_Enemy)
+							{
+								rightDownWalkAnim_Enemy.Reset();
+								currentAnim = &rightDownWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
+						}
+						if ((app->player->position.y < position.y) && (app->player->position.x < position.x))
+						{
+							if (currentAnim != &leftUpWalkAnim_Enemy)
+							{
+								leftUpWalkAnim_Enemy.Reset();
+								currentAnim = &leftUpWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
+						}
+						if ((app->player->position.x > position.x) && (app->player->position.y < position.y))
+						{
+							if (currentAnim != &rightUpWalkAnim_Enemy)
+							{
+								leftUpWalkAnim_Enemy.Reset();
+								currentAnim = &leftUpWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
+						}
+					}
+					else
+					{
+						collider->SetPos(position.x, position.y);
+						Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
+						currentAnim = &Idle_Enemy;
+						currentAnim->loop = true;
+
+						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
+
+					}
+
+					if (position.DistanceTo(app->player->position) < 100)
+					{
+						app->entity_manager->RegisterEntitesInCombat(this);
+						entityState = GameState::InCombat;
+						//app->player->entityStatePlayer = GameState::InCombat;
+						app->game_manager->StartTurnManagement = true;
+					}
 				}
-				if (app->sceneMainMap->playerRestart == true)
-				{
-					app->game_manager->counter = 0;
-					entityState = GameState::OutOfCombat;
-					entityTurn = TurnState::NONE;
-				}
-				
+
+
+
+				return true;
+
 
 
 			}
-				
 
-			
-			
+			if (entityState == GameState::InCombat)
+			{
+
+				if (EntityHP > 0)
+				{
+					if (entityTurn == TurnState::NONE)
+					{
+						//Assigning order of turns
+						collider->SetPos(position.x, position.y);
+						Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
+						currentAnim = &Idle_Enemy;
+						currentAnim->loop = true;
+
+						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
+
+					}
+					if (entityTurn == TurnState::StartOfTurn)
+					{
+						collider->SetPos(position.x, position.y);
+						currentAnim = &Idle_Enemy;
+						currentAnim->loop = false;
+						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f }); //movimiento contrario a la direccion del jugador cuando nos chocamos con el
+
+						entityTurn = TurnState::MidOfTurn;
+
+					}
+					if (entityTurn == TurnState::MidOfTurn)
+					{
+
+						collider->SetPos(position.x, position.y);
+						Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
+						currentAnim = &Idle_Enemy;
+						currentAnim->loop = true;
+						counter++;
+
+						if (position.x > app->player->position.x)
+						{
+							if (currentAnim != &leftWalkAnim_Enemy)
+							{
+								leftWalkAnim_Enemy.Reset();
+								currentAnim = &leftWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
+						}
+						if (position.x < app->player->position.x)
+						{
+							if (currentAnim != &rightWalkAnim_Enemy)
+							{
+								rightWalkAnim_Enemy.Reset();
+								currentAnim = &rightWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
+						}
+						if (position.y > app->player->position.y)
+						{
+							if (currentAnim != &upWalkAnim_Enemy)
+							{
+								upWalkAnim_Enemy.Reset();
+								currentAnim = &upWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
+						}
+						if (position.y < app->player->position.y)
+						{
+							if (currentAnim != &downWalkAnim_Enemy)
+							{
+								downWalkAnim_Enemy.Reset();
+								currentAnim = &downWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
+						}
+
+
+						if ((app->player->position.y > position.y) && (app->player->position.x > position.x))
+						{
+							if (currentAnim != &rightDownWalkAnim_Enemy)
+							{
+								rightDownWalkAnim_Enemy.Reset();
+								currentAnim = &rightDownWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
+						}
+						if ((app->player->position.x < position.x) && (app->player->position.y > position.y))
+						{
+							if (currentAnim != &leftDownWalkAnim_Enemy)
+							{
+								rightDownWalkAnim_Enemy.Reset();
+								currentAnim = &rightDownWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
+						}
+						if ((app->player->position.y < position.y) && (app->player->position.x < position.x))
+						{
+							if (currentAnim != &leftUpWalkAnim_Enemy)
+							{
+								leftUpWalkAnim_Enemy.Reset();
+								currentAnim = &leftUpWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
+						}
+						if ((app->player->position.x > position.x) && (app->player->position.y < position.y))
+						{
+							if (currentAnim != &rightUpWalkAnim_Enemy)
+							{
+								leftUpWalkAnim_Enemy.Reset();
+								currentAnim = &leftUpWalkAnim_Enemy;
+							}
+							Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
+						}
+
+						if (counter == 150) entityTurn = TurnState::FinishTurn;
+
+					}
+					if (entityTurn == TurnState::FinishTurn)
+					{
+						//Change turn from enemy to player turn still have to develop a way to do it correctly
+						Standart_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f });
+						collider->SetPos(position.x, position.y);
+						Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
+
+						currentAnim = &Idle_Enemy;
+						currentAnim->loop = true;
+
+						if (position.DistanceTo(app->player->position) < 75)
+						{
+
+							if ((position.x == app->player->position.x) && (position.y < app->player->position.y))
+							{
+
+								app->particles->AddParticle(app->particles->enemyAttack, position.x, position.y + 60, Collider::Type::ENEMY_ATTACK);
+
+							}
+							if ((position.x == app->player->position.x) && (position.y > app->player->position.y))
+							{
+
+								app->particles->AddParticle(app->particles->enemyAttack, position.x, position.y - 60, Collider::Type::ENEMY_ATTACK);
+
+							}
+							if ((position.x < app->player->position.x) && (position.y == app->player->position.y))
+							{
+
+
+								app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y, Collider::Type::ENEMY_ATTACK);
+
+
+							}
+							if ((position.x > app->player->position.x) && (position.y == app->player->position.y))
+							{
+
+								app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y, Collider::Type::ENEMY_ATTACK);
+
+
+							}
+
+							if ((position.x > app->player->position.x) && (position.y > app->player->position.y))
+							{
+
+
+								app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y - 30, Collider::Type::ENEMY_ATTACK);
+
+
+							}
+							if ((position.x > app->player->position.x) && (position.y < app->player->position.y))
+							{
+
+								app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y + 30, Collider::Type::ENEMY_ATTACK);
+
+
+							}
+							if ((position.x < app->player->position.x) && (position.y > app->player->position.y))
+							{
+
+								app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y - 30, Collider::Type::ENEMY_ATTACK);
+
+
+							}
+							if ((position.x < app->player->position.x) && (position.y < app->player->position.y))
+							{
+
+								app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y + 30, Collider::Type::ENEMY_ATTACK);
+
+
+							}
+
+							entityTurn = TurnState::WaitTurn;
+						}
+						else
+						{
+							entityTurn = TurnState::WaitTurn;
+						}
+
+
+					}
+					if (entityTurn == TurnState::WaitTurn)
+					{
+						counter = 0;
+						collider->SetPos(position.x, position.y);
+						Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
+						currentAnim = &Idle_Enemy;
+						currentAnim->loop = true;
+
+					}
+					if (app->sceneMainMap->playerRestart == true)
+					{
+						app->game_manager->counter = 0;
+						entityState = GameState::OutOfCombat;
+						entityTurn = TurnState::NONE;
+					}
+
+
+
+				}
+
+
+
+
+
+			}
+
 
 		}
-		
-		
 	}
+	
 	return true;
 }
 

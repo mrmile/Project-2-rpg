@@ -6,6 +6,7 @@
 #include "Render.h"
 #include "Textures.h"
 #include "ModulePlayer.h"
+#include "ModulePhysics.h"
 #include "GameManager.h"
 #include "InventoryMenu.h"
 #include "Audio.h"
@@ -53,6 +54,10 @@ void Entity::SetToDelete()
 
 	if (collider != nullptr)
 	{
+		if (type == EntityType::ZOMBIE_STANDART)
+		{
+			Standart_Zombie_List.end->data->body->DestroyFixture(Standart_Zombie_List.end->data->body->GetFixtureList());
+		}
 
 		collider->pendingToDelete = true;
 	}

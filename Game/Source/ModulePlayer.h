@@ -63,6 +63,7 @@ public:
 	int CounterForEnemySelection = -1;
 	iPoint enemySelected;
 
+	bool EnemySelectionBool = false;
 	//Player body for physics implementation
 	PhysBody* Player;
 

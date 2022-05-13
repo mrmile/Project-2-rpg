@@ -760,6 +760,38 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::PLAYER_PICKUP_RADIUS] = false;
 	matrix[Collider::Type::PLAYER_PICKUP_RADIUS][Collider::Type::BASE_COMPUTER] = false;
 
+
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::LAYER_ZERO] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::PLAYER] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::ENEMY] = true;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::INSTANT_DEATH] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::EXIT_1] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::EXIT_2] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::EXIT_3] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::SWITCH] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::NULL_COLLIDER] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::PLAYER_FEET] = true;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::DOCTOR_NOTE_MESSAGE] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::DOOR_KEY_READER] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::TNT_SWITCH] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::ENABLE_FINAL_BATTLE] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::ENEMY_ATTACK] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::PLAYER_ATTACK] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::PLAYER_RANGED_ATTACK] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::ITEM_GRENADE] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::ITEM_LONG_RANGE_GUN] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::ITEM_SHORT_RANGE_GUN] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::PLAYER_PICKUP_RADIUS] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::ITEM_RADIO] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::ITEM_CARD] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::ITEM_HEALTH_PACK] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::ITEM_FOOD] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::ITEM_DEFAULT_GUN] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::ITEM_SUIT] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::ITEM_KNIFE] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::PLAYER_PICKUP_RADIUS] = false;
+	matrix[Collider::Type::PLAYER_RANGED_ATTACK][Collider::Type::BASE_COMPUTER] = false;
+
 }
 
 // Destructor
