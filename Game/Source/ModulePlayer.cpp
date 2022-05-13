@@ -1809,7 +1809,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::ENABLE_FINAL_BATTLE)
 		{
-
+			playerWin = true;
 		}
 
 		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DOCTOR_NOTE_MESSAGE)

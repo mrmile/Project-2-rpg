@@ -1093,10 +1093,7 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		pugi::xml_node NewObject;
 		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
 		{
-			app->particles->AddParticle(app->particles->goalPool, NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int(), Collider::ENABLE_FINAL_BATTLE);
-
-			goalPoolPos.x = NewObject.attribute("x").as_int();
-			goalPoolPos.y = NewObject.attribute("y").as_int();
+			app->collisions->AddCollider({ NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int(), NewObject.attribute("width").as_int(), NewObject.attribute("height").as_int() }, Collider::Type::ENABLE_FINAL_BATTLE);
 		}
 	}
 
