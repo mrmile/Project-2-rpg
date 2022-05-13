@@ -47,6 +47,8 @@ public:
 
 	bool scenePlatform;
 
+	SDL_Texture* sunrise_effect = nullptr;
+
 private:
 	SDL_Texture* img = nullptr;
 	

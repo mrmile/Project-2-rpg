@@ -52,6 +52,8 @@ bool ScenePlatform::Start()
 {
 	app->map->Load("platform.tmx");
 
+	sunrise_effect = app->tex->Load("Assets/textures/Particles/sunrise_lighting.png");
+
 	godMode = false;
 	playerRestart = false;
 	destroyScene = false;
@@ -230,6 +232,8 @@ bool ScenePlatform::PostUpdate()
 bool ScenePlatform::CleanUp()
 {
 	LOG("Freeing scene");
+
+	app->tex->UnLoad(sunrise_effect);
 
 	destroyScene = true;
 	scenePlatform = false;

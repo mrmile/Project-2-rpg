@@ -177,6 +177,8 @@ public:
 
 	uint computerOn = 0;
 	uint computerOff = 0;
+	uint computerClick = 0;
+	uint harborUnlockFx = 0;
 
 	// The player's colliders
 	Collider* collider = nullptr;
@@ -260,7 +262,7 @@ public:
 	// Reading/watching notes or videos
 	bool readingNote = false;
 	bool usingComputer = false;
-	int computerMenuID = 0;
+	bool harborUnlock = false;
 
 	//FX
 	int walkSoundID = 0;

@@ -422,7 +422,7 @@ bool ModuleParticles::PostUpdate()
 
 	if (app->sceneMainMap->sceneMainMap == true && app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2) app->render->DrawTexture(app->sceneMainMap->spotLight, app->player->position.x - 1056 + 30, app->player->position.y - 594 - 30, NULL);
 	if (app->sceneMainMap->sceneMainMap == true && app->questManager->mainQuestID == KILL_THE_PATIENT_ZERO_3) app->render->DrawTexture(app->sceneMainMap->sunrise_effect, app->player->position.x - 960, app->player->position.y - 540, NULL);
-	if (app->scenePlatform->scenePlatform == true && app->questManager->mainQuestID == KILL_THE_PATIENT_ZERO_3) app->render->DrawTexture(app->sceneMainMap->sunrise_effect, app->player->position.x - 960, app->player->position.y - 540, NULL);
+	if (app->scenePlatform->scenePlatform == true && app->questManager->mainQuestID == KILL_THE_PATIENT_ZERO_3) app->render->DrawTexture(app->scenePlatform->sunrise_effect, app->player->position.x - 960, app->player->position.y - 540, NULL);
 
 	return true;
 }
