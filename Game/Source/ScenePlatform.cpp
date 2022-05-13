@@ -171,6 +171,11 @@ bool ScenePlatform::PostUpdate()
 		app->titleScreen->toTitleScreen = true;
 	}
 
+	if (app->player->winDelay > 4 && app->player->winDelay <= 5)
+	{
+		app->questManager->SwitchMainQuest(M_NONE);
+	}
+
 	if (app->player->winDelay > 300 && app->player->winDelay <= 301)
 	{
 		app->creditsScreen->Enable();
