@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="32" nextobjectid="218">
+<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="33" nextobjectid="219">
  <tileset firstgid="1" name="Shipcontainer_Roof" tilewidth="75" tileheight="39" spacing="1" tilecount="48" columns="8">
   <image source="Shipcontainer_Roof.png" width="607" height="239"/>
  </tileset>
@@ -120106,7 +120106,6 @@
    <polygon points="0,0 -105,-53.5 -31,-91.5 -138,-146 -175.5,-127 -105,-91.5 -179,-53.5 -37.5,19"/>
   </object>
  </objectgroup>
- <objectgroup id="26" name="Capa de Objetos 12"/>
  <objectgroup color="#0000ff" id="10" name="sensors_LAYER_ZERO">
   <properties>
    <property name="Collision" value="1"/>
@@ -120114,7 +120113,9 @@
    <property name="Parallax" value="1"/>
   </properties>
  </objectgroup>
- <objectgroup color="#ffff00" id="29" name="sensors_computer"/>
+ <objectgroup color="#ffffff" id="32" name="final_battle_Sensor">
+  <object id="218" x="3472" y="2024" width="253" height="94"/>
+ </objectgroup>
  <objectgroup color="#000000" id="15" name="LEVEL_AREA">
   <object id="197" x="2760" y="1829.58" width="1413.51" height="795.272"/>
  </objectgroup>
