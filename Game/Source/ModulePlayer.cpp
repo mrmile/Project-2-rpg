@@ -163,7 +163,6 @@ bool ModulePlayer::Start()
 	texture = app->tex->Load("Assets/textures/Character/SWAT_Character.png");
 	doctorNote = app->tex->Load("Assets/textures/extras/doctor_note.png");
 	computerBG = app->tex->Load("Assets/textures/extras/computer_bg.png");
-	selectedEnemy = app->tex->Load("Assets/textures/CircleSelection.png");
 	gameOverScreen = app->tex->Load("Assets/textures/extras/game_over_screen.png");
 	selectedEnemy = app->tex->Load("Assets/textures/CircleSelectionInRange.png");
 	selectedEnemyNotInRange = app->tex->Load("Assets/textures/CircleSelection.png");
