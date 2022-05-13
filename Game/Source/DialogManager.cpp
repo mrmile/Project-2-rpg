@@ -232,32 +232,33 @@ bool DialogManager::PostUpdate()
 				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
 				app->render->DrawTexture2(textNameNPC2, 0, 0, NULL);
 
-				app->fonts->BlitText(80, 250, scoreFont, "hello im the npc number two, and i have");
-				app->fonts->BlitText(80, 270, scoreFont, "two options for you to select, you can");
-				app->fonts->BlitText(80, 290, scoreFont, "choose what do you want a gun or an axe");
-				app->fonts->BlitText(493, 253, scoreFont, "gun");
-				app->fonts->BlitText(493, 300, scoreFont, "axe");
+				app->fonts->BlitText(77, 240, scoreFont, "the exit is blocked, compadre...");
+				app->fonts->BlitText(77, 260, scoreFont, "i remember there were a couple of tnt");
+				app->fonts->BlitText(77, 280, scoreFont, "somewhere around. look and activate them.");
+				app->fonts->BlitText(77, 300, scoreFont, "they may destroy these large rocks.");
+				app->fonts->BlitText(473, 253, scoreFont, "okey, thanks");
+				/*app->fonts->BlitText(493, 300, scoreFont, "axe");*/
 
 				if (GUItextOption1->state == GuiControlState::NORMAL && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOptionUnselected);
 				if (GUItextOption1->state == GuiControlState::FOCUSED && GUItextOption1->canClick == true) GUItextOption1->SetTexture(textOption1);
 				GUItextOption1->Draw(app->render);
 
-				if (GUItextOption2->state == GuiControlState::NORMAL && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOptionUnselected);
+				/*if (GUItextOption2->state == GuiControlState::NORMAL && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOptionUnselected);
 				if (GUItextOption2->state == GuiControlState::FOCUSED && GUItextOption2->canClick == true) GUItextOption2->SetTexture(textOption2);
-				GUItextOption2->Draw(app->render);
+				GUItextOption2->Draw(app->render);*/
 			}
 
 			if (dialoguePhase == 2 && option1Selected == true)
 			{
-				app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
-				app->fonts->BlitText(80, 250, scoreFont, "i prefer to have a gun with me");
+				app->render->DrawTexture2(textNameNPC2, 0, 0, NULL);
+				app->fonts->BlitText(80, 250, scoreFont, "buena suerte wey!");
 			}
 
-			if (dialoguePhase == 2 && option2Selected == true)
+			/*if (dialoguePhase == 2 && option2Selected == true)
 			{
 				app->render->DrawTexture2(textNamePlayer, 0, 0, NULL);
 				app->fonts->BlitText(80, 250, scoreFont, "i prefer to have an axe with me");
-			}
+			}*/
 		}
 
 		if (app->player->npc3Close == true)
@@ -280,9 +281,11 @@ bool DialogManager::PostUpdate()
 				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
 				app->render->DrawTexture2(textNameNPC3, 0, 0, NULL);
 
-				app->fonts->BlitText(80, 250, scoreFont, "hello im the npc number three, and i will");
-				app->fonts->BlitText(80, 270, scoreFont, "need your help to return to my base in");
-				app->fonts->BlitText(80, 290, scoreFont, "the other part of the city");
+				app->fonts->BlitText(77, 240, scoreFont, "night have fallen, be careful. zombies");
+				app->fonts->BlitText(77, 260, scoreFont, "during nightime transform into very large");
+				app->fonts->BlitText(77, 280, scoreFont, "monsters, i call them volatiles. if you");
+				app->fonts->BlitText(77, 300, scoreFont, "got caught you will die instantly");
+
 				app->fonts->BlitText(493, 253, scoreFont, "i accept");
 				app->fonts->BlitText(493, 300, scoreFont, "not now");
 
@@ -328,9 +331,10 @@ bool DialogManager::PostUpdate()
 				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
 				app->render->DrawTexture2(textNameNPC4, 0, 0, NULL);
 
-				app->fonts->BlitText(80, 250, scoreFont, "hello im the npc number four, and i have");
-				app->fonts->BlitText(80, 270, scoreFont, "a couple of questions for you, where did");
-				app->fonts->BlitText(80, 290, scoreFont, "you come from? and where are you going?");
+				app->fonts->BlitText(77, 250, scoreFont, "once you get on the floating platform you");
+				app->fonts->BlitText(77, 270, scoreFont, "wont be able to go back to this main zone");
+				app->fonts->BlitText(77, 290, scoreFont, "are you sure you want to continue");
+				/*app->fonts->BlitText(77, 300, scoreFont, "got caught you will die instantly");*/
 				/*app->fonts->BlitText(80, 290, scoreFont, "first dialog test, you have two options");*/
 
 				app->fonts->BlitText(493, 253, scoreFont, "chicago");
