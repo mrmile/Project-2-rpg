@@ -221,8 +221,8 @@ bool ModulePlayer::Start()
 	returnComputerGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 41, "Computer Return Button", { 35,40,29,23 }, this, returnComputer, NULL, {});
 	computerExecutableGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 42, "Computer Executable Button", { 75,250,54,50 }, this, computerExecutable, NULL, {});
 	noteComputerDay1GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 45, "Computer Note Button", { 50,75,54,50 }, this, noteComputerDay1, NULL, {});
-	noteComputerDay5GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 46, "Computer Note Button", { 200,160,54,50 }, this, noteComputerDay5, NULL, {});
-	noteComputerDay10GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 47, "Computer Note Button", { 320,250,54,50 }, this, noteComputerDay10, NULL, {});
+	noteComputerDay5GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 46, "Computer Note Button", { 160,190,54,50 }, this, noteComputerDay5, NULL, {});
+	noteComputerDay10GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 47, "Computer Note Button", { 520,250,54,50 }, this, noteComputerDay10, NULL, {});
 	noteComputerDay15GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 43, "Computer Note Button", { 460,40,54,50 }, this, noteComputerDay15, NULL, {});
 	folderComputerGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 44, "Computer Fold Button", { 90,200,54,50 }, this, folderComputer, NULL, {});
 
@@ -1652,7 +1652,19 @@ bool ModulePlayer::PostUpdate()
 				noteComputerDay15GUI->Draw(app->render);
 			}
 
-			if (computerPhase == 2) /* && la condicion que le quieras poner para que se vea el.exe AlvaroComputer*/
+			if (computerPhase == 2 && note1 == true) //AlvaroComputer Dibujar aqui las texturas de las notas
+			{
+				app->render->DrawTexture2(doctorNote, 0, 0, NULL);
+			}
+			if (computerPhase == 2 && note5 == true) //AlvaroComputer Dibujar aqui las texturas de las notas
+			{
+				app->render->DrawTexture2(doctorNote, 0, 0, NULL);
+			}
+			if (computerPhase == 2 && note10 == true) //AlvaroComputer Dibujar aqui las texturas de las notas
+			{
+				app->render->DrawTexture2(doctorNote, 0, 0, NULL);
+			}
+			if (computerPhase == 2 && note15 == true)
 			{
 				if (computerExecutableGUI->state == GuiControlState::NORMAL && computerExecutableGUI->canClick == true) computerExecutableGUI->SetTexture(computerExecutable);
 				computerExecutableGUI->Draw(app->render);
@@ -1984,6 +1996,10 @@ bool ModulePlayer::OnGuiMouseClickEvent(GuiControl* control) {
 		{
 			//app->audio->PlayFx(buttonClickedFx, 0);
 			if (computerPhase > 0) computerPhase--;
+			note1 = false;
+			note5 = false;
+			note10 = false;
+			note15 = false;
 		}
 		if (control->id == 42 && computerExecutableGUI->canClick == true)
 		{
@@ -1995,6 +2011,7 @@ bool ModulePlayer::OnGuiMouseClickEvent(GuiControl* control) {
 		{
 			//app->audio->PlayFx(buttonClickedFx, 0);
 			computerPhase = 2;
+			note15 = true;
 		}
 		if (control->id == 44 && folderComputerGUI->canClick == true)
 		{
@@ -2005,16 +2022,22 @@ bool ModulePlayer::OnGuiMouseClickEvent(GuiControl* control) {
 		{
 			//app->audio->PlayFx(buttonClickedFx, 0);
 			//Nota 1
+			computerPhase = 2;
+			note1 = true;
 		}
 		if (control->id == 46 && noteComputerDay5GUI->canClick == true)
 		{
 			//app->audio->PlayFx(buttonClickedFx, 0);
 			//Nota 5
+			computerPhase = 2;
+			note5 = true;
 		}
 		if (control->id == 47 && noteComputerDay10GUI->canClick == true)
 		{
 			//app->audio->PlayFx(buttonClickedFx, 0);
 			//Nota 10
+			computerPhase = 2;
+			note10 = true;
 		}
 		
 

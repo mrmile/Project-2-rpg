@@ -76,6 +76,10 @@ public:
 	int EquipmentDamage;
 
 	int computerPhase = 0;
+	bool note1 = false;
+	bool note5 = false;
+	bool note10 = false;
+	bool note15 = false;
 
 	int MeleeDamage;
 
