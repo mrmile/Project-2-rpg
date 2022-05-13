@@ -266,6 +266,7 @@ public:
 
 	//FX
 	int walkSoundID = 0;
+	int computerButtonsFX = 0;
 	uint playerHurtSound = 0;
 	uint playerWalkSound[6] = { 0 };
 
