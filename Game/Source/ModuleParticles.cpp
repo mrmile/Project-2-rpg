@@ -182,61 +182,47 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	PlayerPickUpRadius.anim.speed = 0.15f;
 	PlayerPickUpRadius.lifetime = 5;
 
-	ItemFood.anim.PushBack({ 234, 51, 34, 30 });
+	ItemFood.anim.PushBack({ 236, 53, 31, 28 });   //({ 236, 92, 31, 28 }); 
 	ItemFood.anim.loop = true;
 	ItemFood.anim.speed = 0.15f;
 
-	ItemCard.anim.PushBack({ 350, 17, 40, 35 });
-	ItemCard.speed.x = 0;
-	ItemCard.speed.y = 0;
+	ItemCard.anim.PushBack({ 171, 98, 22, 15 });
 	ItemCard.anim.loop = true;
 	ItemCard.anim.speed = 0.15f;
 
-	ItemDefaultGun.anim.PushBack({ 350, 17, 40, 35 });
-	ItemDefaultGun.speed.x = 0;
-	ItemDefaultGun.speed.y = 0;
+	ItemDefaultGun.anim.PushBack({ 11, 57, 53, 22 });  //({ 16, 165, 34, 24 })
 	ItemDefaultGun.anim.loop = true;
 	ItemDefaultGun.anim.speed = 0.15f;
 
-	ItemGrenade.anim.PushBack({ 350, 17, 40, 35 });
-	ItemGrenade.speed.x = 0;
-	ItemGrenade.speed.y = 0;
+	ItemGrenade.anim.PushBack({ 101, 60, 18, 18 });
 	ItemGrenade.anim.loop = true;
 	ItemGrenade.anim.speed = 0.15f;
 
-	ItemHealthPack.anim.PushBack({ 350, 17, 40, 35 });
-	ItemHealthPack.speed.x = 0;
-	ItemHealthPack.speed.y = 0;
+	ItemHealthPack.anim.PushBack({ 128, 55, 34, 27 });
 	ItemHealthPack.anim.loop = true;
 	ItemHealthPack.anim.speed = 0.15f;
 
-	ItemLongRangeGun.anim.PushBack({ 350, 17, 40, 35 });
-	ItemLongRangeGun.speed.x = 0;
-	ItemLongRangeGun.speed.y = 0;
+	//??????
+	ItemLongRangeGun.anim.PushBack({ 60, 92, 58, 24 });  //({ 115, 164, 28, 25 })
 	ItemLongRangeGun.anim.loop = true;
 	ItemLongRangeGun.anim.speed = 0.15f;
+	//??????
 
-	ItemRadio.anim.PushBack({ 350, 17, 40, 35 });
-	ItemRadio.speed.x = 0;
-	ItemRadio.speed.y = 0;
+	ItemRadio.anim.PushBack({ 128, 92, 33, 24 });
 	ItemRadio.anim.loop = true;
 	ItemRadio.anim.speed = 0.15f;
 
-	ItemShortRangeGun.anim.PushBack({ 350, 17, 40, 35 });
-	ItemShortRangeGun.speed.x = 0;
-	ItemShortRangeGun.speed.y = 0;
+	//??????
+	ItemShortRangeGun.anim.PushBack({ 20, 93, 25, 17 });
 	ItemShortRangeGun.anim.loop = true;
 	ItemShortRangeGun.anim.speed = 0.15f;
+	//??????
 
-	ItemKnife.anim.PushBack({ 350, 17, 40, 35 });
-	ItemKnife.speed.x = 0;
-	ItemKnife.speed.y = 0;
+	ItemKnife.anim.PushBack({ 200, 59, 30, 21 });
 	ItemKnife.anim.loop = true;
 	ItemKnife.anim.speed = 0.15f;
 
-	ItemSuit.anim.PushBack({ 350, 17, 40, 35 });
-	ItemSuit.speed.x = 0;
-	ItemSuit.speed.y = 0;
+	ItemSuit.anim.PushBack({ 18, 122, 27, 30 });
 	ItemSuit.anim.loop = true;
 	ItemSuit.anim.speed = 0.15f;
 }
