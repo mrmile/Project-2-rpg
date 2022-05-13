@@ -163,7 +163,8 @@ bool ModulePlayer::Start()
 	texture = app->tex->Load("Assets/textures/Character/SWAT_Character.png");
 	doctorNote = app->tex->Load("Assets/textures/extras/doctor_note.png");
 	computerBG = app->tex->Load("Assets/textures/extras/computer_bg.png");
-	selectedEnemy = app->tex->Load("Assets/textures/CircleSelection.png");
+	selectedEnemy = app->tex->Load("Assets/textures/CircleSelectionInRange.png");
+	selectedEnemyNotInRange = app->tex->Load("Assets/textures/CircleSelection.png");
 
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
 	itemGrab = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_grab_finish_back_fast_begin_0.wav");
@@ -854,7 +855,7 @@ bool ModulePlayer::Update(float dt)
 
 
 				//Attack methodology, after attacking the player goes to wait turn
-				if (app->input->keys[SDL_SCANCODE_SPACE] == KeyState::KEY_UP)
+				if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_UP)
 				{
 					CounterForEnemySelection++;
 					if (CounterForEnemySelection < app->entity_manager->ListInCombat.count())
@@ -875,7 +876,14 @@ bool ModulePlayer::Update(float dt)
 				
 				if (EnemySelectionBool == true)
 				{
-					app->render->DrawTexture(selectedEnemy, enemySelected.x-10, enemySelected.y, NULL);
+					if (position.DistanceTo(enemySelected) <= EquipmentRange)
+					{
+						app->render->DrawTexture(selectedEnemy, enemySelected.x - 15, enemySelected.y - 5, NULL);
+					}
+					if (position.DistanceTo(enemySelected) > EquipmentRange)
+					{
+						app->render->DrawTexture(selectedEnemyNotInRange, enemySelected.x - 15, enemySelected.y - 5, NULL);
+					}
 				}
 
 			}
@@ -1219,6 +1227,8 @@ bool ModulePlayer::CleanUp()
 	app->tex->UnLoad(texture);
 	app->tex->UnLoad(doctorNote);
 	app->tex->UnLoad(computerBG);
+	app->tex->UnLoad(selectedEnemy);
+	app->tex->UnLoad(selectedEnemyNotInRange);
 
 	//deletePlayer = true;
 	app->player->Player->body->DestroyFixture(app->player->Player->body->GetFixtureList());
@@ -1431,19 +1441,38 @@ void ModulePlayer::RangedAttack()
 		}
 		if (enemySelected.x < position.x)
 		{
-			app->particles->playerRangedAttack.speed.x = -10;
-			app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
-			app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
+			if (enemySelected.y == position.y)
+			{
+				app->particles->playerRangedAttack.speed.x = -10;
+				app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
+			}
+			else
+			{
+				app->particles->playerRangedAttack.speed.x = -10;
+				app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
+				app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
+			}
 
 			playerAttacked = true;
 		}
 
 		if (enemySelected.x > position.x)
 		{
-			app->particles->playerRangedAttack.speed.x = 10;
 
-			app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
-			app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
+			if (enemySelected.y == position.y)
+			{
+				app->particles->playerRangedAttack.speed.x = 10;
+				app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
+			}
+			else
+			{
+				app->particles->playerRangedAttack.speed.x = 10;
+				app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
+				app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
+			}
+			
+			
+			
 
 			playerAttacked = true;
 		}
