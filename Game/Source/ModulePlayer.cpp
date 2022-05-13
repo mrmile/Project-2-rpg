@@ -177,6 +177,7 @@ bool ModulePlayer::Start()
 	folderComputer = app->tex->Load("Assets/textures/extras/folderComputer.png");
 
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
+	computerButtonsFX = app->audio->LoadFx("Assets/audio/fx/extra/mouseClick.wav");
 	itemGrab = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_grab_finish_back_fast_begin_0.wav");
 	dead = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_2.wav");
 	shoot = app->audio->LoadFx("Assets/audio/fx/ZPlayer/PlayerActions/Gun.wav");
@@ -1994,7 +1995,7 @@ bool ModulePlayer::OnGuiMouseClickEvent(GuiControl* control) {
 		//Checks the GUI element ID
 		if (control->id == 41 && returnComputerGUI->canClick == true)
 		{
-			//app->audio->PlayFx(buttonClickedFx, 0);
+			app->audio->PlayFx(computerButtonsFX, 0);
 			if (computerPhase > 0) computerPhase--;
 			note1 = false;
 			note5 = false;
@@ -2003,38 +2004,38 @@ bool ModulePlayer::OnGuiMouseClickEvent(GuiControl* control) {
 		}
 		if (control->id == 42 && computerExecutableGUI->canClick == true)
 		{
-			//app->audio->PlayFx(buttonClickedFx, 0);
+			app->audio->PlayFx(computerButtonsFX, 0);
 
 			//Logica del harbor.exe			
 		}
 		if (control->id == 43 && noteComputerDay15GUI->canClick == true)
 		{
-			//app->audio->PlayFx(buttonClickedFx, 0);
+			app->audio->PlayFx(computerButtonsFX, 0);
 			computerPhase = 2;
 			note15 = true;
 		}
 		if (control->id == 44 && folderComputerGUI->canClick == true)
 		{
-			//app->audio->PlayFx(buttonClickedFx, 0);
+			app->audio->PlayFx(computerButtonsFX, 0);
 			computerPhase = 1;
 		}
 		if (control->id == 45 && noteComputerDay1GUI->canClick == true)
 		{
-			//app->audio->PlayFx(buttonClickedFx, 0);
+			app->audio->PlayFx(computerButtonsFX, 0);
 			//Nota 1
 			computerPhase = 2;
 			note1 = true;
 		}
 		if (control->id == 46 && noteComputerDay5GUI->canClick == true)
 		{
-			//app->audio->PlayFx(buttonClickedFx, 0);
+			app->audio->PlayFx(computerButtonsFX, 0);
 			//Nota 5
 			computerPhase = 2;
 			note5 = true;
 		}
 		if (control->id == 47 && noteComputerDay10GUI->canClick == true)
 		{
-			//app->audio->PlayFx(buttonClickedFx, 0);
+			app->audio->PlayFx(computerButtonsFX, 0);
 			//Nota 10
 			computerPhase = 2;
 			note10 = true;
