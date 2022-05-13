@@ -167,6 +167,11 @@ bool ModulePlayer::Start()
 	selectedEnemy = app->tex->Load("Assets/textures/CircleSelectionInRange.png");
 	selectedEnemyNotInRange = app->tex->Load("Assets/textures/CircleSelection.png");
 
+	returnComputer = app->tex->Load("Assets/textures/extras/returnComputer.png");
+	computerExecutable = app->tex->Load("Assets/textures/extras/computerExecutable.png");
+	noteComputer = app->tex->Load("Assets/textures/extras/noteComputer.png");
+	folderComputer = app->tex->Load("Assets/textures/extras/folderComputer.png");
+
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
 	itemGrab = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_grab_finish_back_fast_begin_0.wav");
 	dead = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_2.wav");
@@ -209,9 +214,12 @@ bool ModulePlayer::Start()
 		playerWalkSound[6] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Metal/FootstepMetal07.wav");
 	}
 
+	returnComputerGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 41, "Computer Return Button", { 35,40,29,23 }, this, returnComputer, NULL, {});
+	computerExecutableGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 42, "Computer Executable Button", { 75,250,54,50 }, this, computerExecutable, NULL, {});
+	noteComputerGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 43, "Computer Note Button", { 460,40,54,50 }, this, noteComputer, NULL, {});
+	folderComputerGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 44, "Computer Fold Button", { 90,200,54,50 }, this, folderComputer, NULL, {});
+
 	currentAnimation = &idleRightAnim;
-
-
 
 	//laserFx = app->audio->LoadFx("Assets/Fx/laser.wav");
 	//explosionFx = app->audio->LoadFx("Assets/Fx/explosion.wav");
@@ -306,7 +314,30 @@ bool ModulePlayer::PreUpdate()
 
 bool ModulePlayer::Update(float dt)
 {
-	
+	if (usingComputer == true)
+	{
+		if (computerPhase == 0)
+		{
+			folderComputerGUI->canClick = true;
+		}
+		if (computerPhase == 1)
+		{
+			noteComputerGUI->canClick = true;
+		}
+		if (computerPhase == 2) //condicion del .exe AlvaroComputer
+		{
+			computerExecutableGUI->canClick = true;
+		}
+
+		returnComputerGUI->canClick = true;
+	}
+	if (usingComputer == false)
+	{
+		returnComputerGUI->canClick = false;
+		folderComputerGUI->canClick = false;
+		noteComputerGUI->canClick = false;
+		computerExecutableGUI->canClick = false;
+	}
 	if (pauseMenu==true)
 	{
 		iPoint NewPosition = position;
@@ -1223,10 +1254,34 @@ bool ModulePlayer::PostUpdate()
 
 			//BACK (back arrow icon)
 
-		}
+			if (returnComputerGUI->state == GuiControlState::NORMAL && returnComputerGUI->canClick == true) returnComputerGUI->SetTexture(returnComputer);
+			returnComputerGUI->Draw(app->render);
 
+			if (computerPhase == 0)
+			{
+				if (folderComputerGUI->state == GuiControlState::NORMAL && folderComputerGUI->canClick == true) folderComputerGUI->SetTexture(folderComputer);
+				folderComputerGUI->Draw(app->render);
+			}
+
+			if (computerPhase == 1)
+			{
+				if (noteComputerGUI->state == GuiControlState::NORMAL && noteComputerGUI->canClick == true) noteComputerGUI->SetTexture(noteComputer);
+				noteComputerGUI->Draw(app->render);
+			}
+
+			if (computerPhase == 2) /* && la condicion que le quieras poner para que se vea el.exe AlvaroComputer*/
+			{
+				if (computerExecutableGUI->state == GuiControlState::NORMAL && computerExecutableGUI->canClick == true) computerExecutableGUI->SetTexture(computerExecutable);
+				computerExecutableGUI->Draw(app->render);
+				//usingComputer = false;
+			}
+		}
+		if (usingComputer == false)
+		{
+			computerPhase = 0;
+		}
+		
 		return true;
-	
 	
 }
 
@@ -1238,6 +1293,16 @@ bool ModulePlayer::CleanUp()
 	app->tex->UnLoad(gameOverScreen);
 	app->tex->UnLoad(selectedEnemy);
 	app->tex->UnLoad(selectedEnemyNotInRange);
+
+	app->tex->UnLoad(returnComputer);
+	app->tex->UnLoad(folderComputer);
+	app->tex->UnLoad(computerExecutable);
+	app->tex->UnLoad(noteComputer);
+
+	app->guiManager->DestroyGuiControl(41);
+	app->guiManager->DestroyGuiControl(42);
+	app->guiManager->DestroyGuiControl(43);
+	app->guiManager->DestroyGuiControl(44);
 
 	//deletePlayer = true;
 	app->player->Player->body->DestroyFixture(app->player->Player->body->GetFixtureList());
@@ -1519,4 +1584,41 @@ void ModulePlayer::MeleeAttack()
 		break;
 	}
 	
+}
+bool ModulePlayer::OnGuiMouseClickEvent(GuiControl* control) {
+	switch (control->type)
+	{
+	case GuiControlType::BUTTON:
+	{
+		//Checks the GUI element ID
+		if (control->id == 41 && returnComputerGUI->canClick == true)
+		{
+			//app->audio->PlayFx(buttonClickedFx, 0);
+			if (computerPhase > 0) computerPhase--;
+		}
+		if (control->id == 42 && computerExecutableGUI->canClick == true)
+		{
+			//app->audio->PlayFx(buttonClickedFx, 0);
+
+			//Logica del harbor.exe			
+		}
+		if (control->id == 43 && noteComputerGUI->canClick == true)
+		{
+			//app->audio->PlayFx(buttonClickedFx, 0);
+			computerPhase = 2;
+		}
+		if (control->id == 44 && folderComputerGUI->canClick == true)
+		{
+			//app->audio->PlayFx(buttonClickedFx, 0);
+			computerPhase = 1;
+		}
+		
+
+
+
+	default: break;
+	}
+	}
+
+	return true;
 }
