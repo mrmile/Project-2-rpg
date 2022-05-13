@@ -170,7 +170,7 @@ bool ModulePlayer::Start()
 
 	returnComputer = app->tex->Load("Assets/textures/extras/returnComputer.png");
 	computerExecutable = app->tex->Load("Assets/textures/extras/computerExecutable.png");
-	noteComputer = app->tex->Load("Assets/textures/extras/noteComputer.png");
+	noteComputerDay15 = app->tex->Load("Assets/textures/extras/noteComputer.png");
 	folderComputer = app->tex->Load("Assets/textures/extras/folderComputer.png");
 
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
@@ -217,7 +217,7 @@ bool ModulePlayer::Start()
 
 	returnComputerGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 41, "Computer Return Button", { 35,40,29,23 }, this, returnComputer, NULL, {});
 	computerExecutableGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 42, "Computer Executable Button", { 75,250,54,50 }, this, computerExecutable, NULL, {});
-	noteComputerGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 43, "Computer Note Button", { 460,40,54,50 }, this, noteComputer, NULL, {});
+	noteComputerDay15GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 43, "Computer Note Button", { 460,40,54,50 }, this, noteComputerDay15, NULL, {});
 	folderComputerGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 44, "Computer Fold Button", { 90,200,54,50 }, this, folderComputer, NULL, {});
 
 	currentAnimation = &idleRightAnim;
@@ -323,7 +323,7 @@ bool ModulePlayer::Update(float dt)
 		}
 		if (computerPhase == 1)
 		{
-			noteComputerGUI->canClick = true;
+			noteComputerDay15GUI->canClick = true;
 		}
 		if (computerPhase == 2) //condicion del .exe AlvaroComputer
 		{
@@ -336,7 +336,7 @@ bool ModulePlayer::Update(float dt)
 	{
 		returnComputerGUI->canClick = false;
 		folderComputerGUI->canClick = false;
-		noteComputerGUI->canClick = false;
+		noteComputerDay15GUI->canClick = false;
 		computerExecutableGUI->canClick = false;
 	}
 	if (pauseMenu==true)
@@ -1627,8 +1627,8 @@ bool ModulePlayer::PostUpdate()
 
 			if (computerPhase == 1)
 			{
-				if (noteComputerGUI->state == GuiControlState::NORMAL && noteComputerGUI->canClick == true) noteComputerGUI->SetTexture(noteComputer);
-				noteComputerGUI->Draw(app->render);
+				if (noteComputerDay15GUI->state == GuiControlState::NORMAL && noteComputerDay15GUI->canClick == true) noteComputerDay15GUI->SetTexture(noteComputerDay15);
+				noteComputerDay15GUI->Draw(app->render);
 			}
 
 			if (computerPhase == 2) /* && la condicion que le quieras poner para que se vea el.exe AlvaroComputer*/
@@ -1659,7 +1659,7 @@ bool ModulePlayer::CleanUp()
 	app->tex->UnLoad(returnComputer);
 	app->tex->UnLoad(folderComputer);
 	app->tex->UnLoad(computerExecutable);
-	app->tex->UnLoad(noteComputer);
+	app->tex->UnLoad(noteComputerDay15);
 
 	app->guiManager->DestroyGuiControl(41);
 	app->guiManager->DestroyGuiControl(42);
@@ -1964,7 +1964,7 @@ bool ModulePlayer::OnGuiMouseClickEvent(GuiControl* control) {
 
 			//Logica del harbor.exe			
 		}
-		if (control->id == 43 && noteComputerGUI->canClick == true)
+		if (control->id == 43 && noteComputerDay15GUI->canClick == true)
 		{
 			//app->audio->PlayFx(buttonClickedFx, 0);
 			computerPhase = 2;
