@@ -23,6 +23,9 @@
 #include "Log.h"
 #include "QuestManager.h"
 
+#include <stdio.h>
+#include <time.h>
+
 InventoryMenu::InventoryMenu(bool start_enabled) : Module(start_enabled)
 {
 	name.Create("InventoryMenu");
@@ -45,6 +48,7 @@ bool InventoryMenu::Awake()
 bool InventoryMenu::Start()
 {
 	inventoryHUD = app->tex->Load("Assets/textures/GUI/Inventory/InventoryHud4.png");
+	playerStats = app->tex->Load("Assets/textures/GUI/Inventory/playerStats.png");
 	characterHealth100 = app->tex->Load("Assets/textures/GUI/Inventory/barLife100.png");
 	characterHealth80 = app->tex->Load("Assets/textures/GUI/Inventory/barLife80.png");
 	characterHealth60 = app->tex->Load("Assets/textures/GUI/Inventory/barLife60.png");
@@ -80,7 +84,9 @@ bool InventoryMenu::Start()
 	deleteButton = app->tex->Load("Assets/textures/GUI/Inventory/deleteButton.png");
 	//Still need button textures the position does not matter right now as we are gonna update it 
 
-	
+	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
+	scoreFont = app->fonts->Load("Assets/textures/Fonts/rtype_font3.png", lookupTable, 2);
+	scoreFont2 = app->fonts->Load("Assets/textures/Fonts/rtype_font3.png", lookupTable, 2);
 
 	DeleteItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 29, "Delete item Button", { 25,160,35,25 }, this, deleteButton, NULL, {});
 	EquipItem = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 30, "Equip item Button", { 25,160,35,25 }, this, equipButton, NULL, {});
@@ -181,6 +187,13 @@ bool InventoryMenu::PostUpdate()
 	if (app->player->pauseMenu == false && app->titleScreen->active == false && app->creditsScreen->active == false && showInventory == true)
 	{
 		app->render->DrawTexture2(inventoryHUD, 0, 0, NULL);
+		app->render->DrawTexture2(playerStats, 0, 1, NULL);
+
+		sprintf_s(scoreText, 10, "%7d", app->player->PlayerMaxHP);
+		app->fonts->BlitText(117, 35, scoreFont, scoreText);
+		/*app->fonts->BlitText(106, 47, scoreFont, scoreText);*/
+		sprintf_s(scoreText2, 10, "%7d", app->player->MeleeDamage + app->player->EquipmentDamage);
+		app->fonts->BlitText(106, 47, scoreFont2, scoreText2);
 
 		if (app->player->playerHP >= app->player->PlayerMaxHP)
 		{
@@ -247,6 +260,7 @@ bool InventoryMenu::PostUpdate()
 bool InventoryMenu::CleanUp()
 {
 	app->tex->UnLoad(inventoryHUD);
+	app->tex->UnLoad(playerStats);
 	app->tex->UnLoad(characterHealth100);
 	app->tex->UnLoad(characterHealth80);
 	app->tex->UnLoad(characterHealth60);

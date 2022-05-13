@@ -93,6 +93,7 @@ public:
 private:
 
 	SDL_Texture* inventoryHUD = nullptr;
+	SDL_Texture* playerStats = nullptr;
 	SDL_Texture* characterHealth100 = nullptr;
 	SDL_Texture* characterHealth80 = nullptr;
 	SDL_Texture* characterHealth60 = nullptr;
@@ -140,6 +141,12 @@ public:
 
 	int mouseX, mouseY;
 
+	uint score = 10;
+	int scoreFont = -1;
+	char scoreText[10] = { "\0" };
+
+	int scoreFont2 = -1;
+	char scoreText2[10] = { "\0" };
 	
 	bool showInventory = false;
 
