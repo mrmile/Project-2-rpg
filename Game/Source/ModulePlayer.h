@@ -94,6 +94,8 @@ public:
 
 	SDL_Texture* selectedEnemy = nullptr;
 
+	SDL_Texture* selectedEnemyNotInRange = nullptr;
+
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
