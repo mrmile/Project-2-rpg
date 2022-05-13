@@ -105,12 +105,18 @@ public:
 
 	SDL_Texture* returnComputer = nullptr;
 	SDL_Texture* computerExecutable = nullptr;
-	SDL_Texture* noteComputer = nullptr;
+	SDL_Texture* noteComputerDay1 = nullptr;
+	SDL_Texture* noteComputerDay5 = nullptr;
+	SDL_Texture* noteComputerDay10 = nullptr;
+	SDL_Texture* noteComputerDay15 = nullptr;
 	SDL_Texture* folderComputer = nullptr;
 
 	GuiButton* returnComputerGUI;
 	GuiButton* computerExecutableGUI;
-	GuiButton* noteComputerGUI;
+	GuiButton* noteComputerDay1GUI;
+	GuiButton* noteComputerDay5GUI;
+	GuiButton* noteComputerDay10GUI;
+	GuiButton* noteComputerDay15GUI;
 	GuiButton* folderComputerGUI;
 
 	// The pointer to the current player animation
