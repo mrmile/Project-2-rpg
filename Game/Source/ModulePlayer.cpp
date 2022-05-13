@@ -868,8 +868,6 @@ bool ModulePlayer::Update(float dt)
 						CounterForEnemySelection = 0;
 					}
 				}
-				
-
 				if (playerAttacked == true)
 				{
 					entityTurnPlayer = TurnState::WaitTurn;
@@ -1422,33 +1420,46 @@ iPoint ModulePlayer::GetLastPosition()
 void ModulePlayer::RangedAttack()
 {
 	//Add logic for ranged attack
-	if (enemySelected.x < position.x)
+	if (position.DistanceTo(enemySelected) <= EquipmentRange)
 	{
-		app->particles->playerRangedAttack.speed.x = -10;
-		app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
-		app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
+		if (enemySelected.x == position.x)
+		{
+			app->particles->playerRangedAttack.speed.x = 0;
+			if (enemySelected.y < position.y) app->particles->playerRangedAttack.speed.y = -10;
+			if (enemySelected.y > position.y) app->particles->playerRangedAttack.speed.y = +10;
+			app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
+		}
+		if (enemySelected.x < position.x)
+		{
+			app->particles->playerRangedAttack.speed.x = -10;
+			app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
+			app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
 
-		playerAttacked = true;
+			playerAttacked = true;
+		}
+
+		if (enemySelected.x > position.x)
+		{
+			app->particles->playerRangedAttack.speed.x = 10;
+
+			app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
+			app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
+
+			playerAttacked = true;
+		}
 	}
-
-	if (enemySelected.x > position.x)
+	if (position.DistanceTo(enemySelected) > EquipmentRange)
 	{
-		app->particles->playerRangedAttack.speed.x = 10;
-		
-		app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
-		app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
-
+		//Not in range so the player misses his turn
 		playerAttacked = true;
 	}
 	
-	//
+	
 }
 void ModulePlayer::MeleeAttack()
 {
 	//Add logic for attack
 
-	//Example of addition of particles for melee
-	//app->particles->AddParticle(app->particles->playerAttack, app->player->position.x + 30, app->player->position.y + 12, Collider::Type::PLAYER_ATTACK);
 	switch (PlayerLookingPosition)
 	{
 	case 1:
