@@ -783,6 +783,7 @@ bool ModulePlayer::Update(float dt)
 				if (counter > 6)
 				{
 					Player->body->SetLinearVelocity({ 0.0f,0.0f });
+					CounterForEnemySelection = -1;
 					entityTurnPlayer = TurnState::FinishTurn;
 				}
 			}
@@ -794,7 +795,11 @@ bool ModulePlayer::Update(float dt)
 				
 				if (app->input->keys[SDL_SCANCODE_DOWN] == KeyState::KEY_UP)
 				{
-					enemySelected = app->entity_manager->ListInCombat.start->data->position;
+					CounterForEnemySelection++;
+					if (CounterForEnemySelection < app->entity_manager->ListInCombat.count())
+					{
+						enemySelected = app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position;
+					}
 				}
 				
 
@@ -1414,7 +1419,7 @@ void ModulePlayer::RangedAttack()
 	//Add logic for ranged attack
 	if (enemySelected.x < position.x)
 	{
-		app->particles->playerRangedAttack.speed.x = -2;
+		app->particles->playerRangedAttack.speed.x = -10;
 		app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
 		app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
 
@@ -1423,7 +1428,7 @@ void ModulePlayer::RangedAttack()
 
 	if (enemySelected.x > position.x)
 	{
-		app->particles->playerRangedAttack.speed.x = 2;
+		app->particles->playerRangedAttack.speed.x = 10;
 		
 		app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
 		app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
