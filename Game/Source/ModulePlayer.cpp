@@ -163,11 +163,17 @@ bool ModulePlayer::Start()
 	texture = app->tex->Load("Assets/textures/Character/SWAT_Character.png");
 	doctorNote = app->tex->Load("Assets/textures/extras/doctor_note.png");
 	computerBG = app->tex->Load("Assets/textures/extras/computer_bg.png");
+	selectedEnemy = app->tex->Load("Assets/textures/CircleSelection.png");
+	gameOverScreen = app->tex->Load("Assets/textures/extras/game_over_screen.png");
 	selectedEnemy = app->tex->Load("Assets/textures/CircleSelectionInRange.png");
 	selectedEnemyNotInRange = app->tex->Load("Assets/textures/CircleSelection.png");
 
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
 	itemGrab = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_grab_finish_back_fast_begin_0.wav");
+	dead = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_2.wav");
+	shoot = app->audio->LoadFx("Assets/audio/fx/ZPlayer/PlayerActions/Gun.wav");
+	gameOver = app->audio->LoadFx("Assets/audio/fx/ZPlayer/game_over.wav");
+
 	computerOff = app->audio->LoadFx("Assets/audio/fx/extra/windows_off.wav");
 	computerOn = app->audio->LoadFx("Assets/audio/fx/extra/windows_on.wav");
 
@@ -894,34 +900,6 @@ bool ModulePlayer::Update(float dt)
 				collider->SetPos(position.x + 5, position.y - 56);
 				//colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
 				counter = 0;
-				
-				if (playerHP <= 0)
-				{
-					/*invincibleDelay = 121;*/
-					playerHP = 0;
-					//app->audio->PlayFx(dead);
-					destroyed = true;
-
-				}
-				if (destroyed == true)
-				{
-					if (destroyedDelay < 1)
-					{
-						//Mix_PauseMusic();
-						
-						app->audio->PlayFx(dead);
-						//lives--;
-						app->sceneMainMap->playerRestart = true;
-						
-					}
-					if (destroyedDelay < 60) Player->body->SetLinearVelocity({ 0, 0 });
-
-					if (currentAnimation != &die)
-					{
-						die.Reset();
-						currentAnimation = &die;
-					}
-				}
 
 			}
 		}
@@ -933,6 +911,34 @@ bool ModulePlayer::Update(float dt)
 			if ((escapeCombatCounterToReset / 300) % 2 == 0)
 			{
 				escapeCombat = false;
+			}
+		}
+
+		if (playerHP <= 0)
+		{
+			/*invincibleDelay = 121;*/
+			playerHP = 0;
+			//app->audio->PlayFx(dead);
+			destroyed = true;
+
+		}
+		if (destroyed == true)
+		{
+			if (destroyedDelay < 1)
+			{
+				//Mix_PauseMusic();
+
+				app->audio->PlayFx(gameOver);
+				//lives--;
+
+
+			}
+			Player->body->SetLinearVelocity({ 0, 0 });
+
+			if (currentAnimation != &die)
+			{
+				die.Reset();
+				currentAnimation = &die;
 			}
 		}
 
@@ -1174,6 +1180,9 @@ bool ModulePlayer::PostUpdate()
 				app->collisions->Disable();
 				app->particles->Disable();
 				app->sceneMainMap->Disable();
+				app->sceneCave->Disable();
+				app->sceneBase->Disable();
+				app->sceneMotel->Disable();
 				app->player->Disable();
 				app->entity_manager->Disable();
 				app->fonts->Disable();
@@ -1227,6 +1236,7 @@ bool ModulePlayer::CleanUp()
 	app->tex->UnLoad(texture);
 	app->tex->UnLoad(doctorNote);
 	app->tex->UnLoad(computerBG);
+	app->tex->UnLoad(gameOverScreen);
 	app->tex->UnLoad(selectedEnemy);
 	app->tex->UnLoad(selectedEnemyNotInRange);
 
@@ -1458,7 +1468,6 @@ void ModulePlayer::RangedAttack()
 
 		if (enemySelected.x > position.x)
 		{
-
 			if (enemySelected.y == position.y)
 			{
 				app->particles->playerRangedAttack.speed.x = 10;
@@ -1470,9 +1479,6 @@ void ModulePlayer::RangedAttack()
 				app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
 				app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
 			}
-			
-			
-			
 
 			playerAttacked = true;
 		}
