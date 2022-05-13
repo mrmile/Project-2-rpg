@@ -81,7 +81,7 @@ bool GuiManager::PostUpdate()
 	if (app->input->arrowPointerPosition.x > -app->render->camera.x / 10000 + app->render->camera.w/2 - 10) app->input->arrowPointerPosition.x = -app->render->camera.x / 10000 + app->render->camera.w/2 - 10;
 	if (app->input->arrowPointerPosition.y > -app->render->camera.y / 10000 + app->render->camera.h/2 - 10) app->input->arrowPointerPosition.y = -app->render->camera.y / 10000 + app->render->camera.h/2 - 10;
 
-	if (app->player->showCombatHUD == true || app->player->pauseMenu == true || app->inventoryMenu->showInventory == true || app->titleScreen->active == true || app->player->npcClose == true || app->player->npc2Close == true || app->player->npc3Close == true || app->player->npc4Close == true || app->creditsScreen->creditsScene == true)
+	if (app->player->showCombatHUD == true || app->player->pauseMenu == true || app->inventoryMenu->showInventory == true || app->titleScreen->active == true || app->player->npcClose == true || app->player->npc2Close == true || app->player->npc3Close == true || app->player->npc4Close == true || app->creditsScreen->creditsScene == true || app->player->usingComputer == true)
 	{
 		if (app->input->usingGamepadID[0] == false)
 		{
