@@ -140,7 +140,7 @@ bool ScenePlatform::PostUpdate()
 
 	if (sceneTimer <= 2)
 	{
-		//app->audio->ChangeMusic(BASE, 0.5f, 0.5f);
+		app->audio->ChangeMusic(SHIP_DECK, 0.5f, 0.5f);
 	}
 
 	if (sceneTimer % 720 == 0 && sceneTimer > 5 && app->player->pauseMenu == false)

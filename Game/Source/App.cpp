@@ -345,7 +345,7 @@ void App::FinishUpdate()
 		// Borra los sensores
 		app->map->DeleteCollidersSensors();
 
-		app->sceneMotel->destroyScene = false;
+		app->scenePlatform->destroyScene = false;
 	}
 
 	if (app->sceneCave->enableSceneMainMap == true || app->sceneBase->enableSceneMainMap == true)
