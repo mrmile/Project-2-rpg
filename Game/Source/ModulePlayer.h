@@ -6,6 +6,7 @@
 #include "Point.h"
 #include "ModulePhysics.h"
 #include "GameManager.h"
+#include "GuiButton.h"
 
 
 struct SDL_Texture;
@@ -41,6 +42,8 @@ public:
 	bool LoadState(pugi::xml_node&);
 	bool SaveState(pugi::xml_node&) const;
 
+	bool OnGuiMouseClickEvent(GuiControl* control);
+
 	//void b2dOnCollision(PhysBody* bodyA, PhysBody* bodyB);
 
 	// Collision callback, called when the player intersects with another collider
@@ -72,6 +75,8 @@ public:
 	int EquipmentRange;
 	int EquipmentDamage;
 
+	int computerPhase = 0;
+
 	int MeleeDamage;
 
 	int PlayerMaxHP;
@@ -95,6 +100,18 @@ public:
 	SDL_Texture* selectedEnemy = nullptr;
 
 	SDL_Texture* selectedEnemyNotInRange = nullptr;
+
+	//Computer textures and GUI
+
+	SDL_Texture* returnComputer = nullptr;
+	SDL_Texture* computerExecutable = nullptr;
+	SDL_Texture* noteComputer = nullptr;
+	SDL_Texture* folderComputer = nullptr;
+
+	GuiButton* returnComputerGUI;
+	GuiButton* computerExecutableGUI;
+	GuiButton* noteComputerGUI;
+	GuiButton* folderComputerGUI;
 
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
