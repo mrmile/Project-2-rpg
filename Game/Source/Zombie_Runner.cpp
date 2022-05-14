@@ -563,7 +563,6 @@ bool Zombie_Runner::Update(float dt)
 		currentAnim = &idleDownAnim_Enemy1;
 		currentAnim->loop = false;
 
-		return true;
 	}
 	if (app->player->pauseMenu == false)
 	{
@@ -776,7 +775,6 @@ bool Zombie_Runner::Update(float dt)
 			
 
 
-			return true;
 
 		}
 		
