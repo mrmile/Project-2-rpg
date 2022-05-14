@@ -1014,6 +1014,8 @@ bool Zombie_Standart::Update(float dt)
 		}
 	}
 	
+	currentAnim->Update();
+
 	return true;
 }
 

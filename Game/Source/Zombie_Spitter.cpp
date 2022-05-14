@@ -1008,6 +1008,9 @@ bool Zombie_Spitter::Update(float dt)
 		}
 
 	}
+
+	currentAnim->Update();
+
 	return true;
 }
 	

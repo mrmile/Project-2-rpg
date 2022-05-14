@@ -1012,6 +1012,9 @@ bool Zombie_Runner::Update(float dt)
 		
 		
 	}
+
+	currentAnim->Update();
+
 	return true;
 }
 
