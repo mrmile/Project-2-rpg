@@ -584,7 +584,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &leftWalkAnim_Enemy1)
 						{
-							leftWalkAnim_Enemy1.Reset();
+							//leftWalkAnim_Enemy1.Reset();
 							currentAnim = &leftWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
@@ -593,7 +593,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &rightWalkAnim_Enemy1)
 						{
-							rightWalkAnim_Enemy1.Reset();
+							//rightWalkAnim_Enemy1.Reset();
 							currentAnim = &rightWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
@@ -602,7 +602,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &upWalkAnim_Enemy1)
 						{
-							upWalkAnim_Enemy1.Reset();
+							//upWalkAnim_Enemy1.Reset();
 							currentAnim = &upWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
@@ -611,7 +611,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &downWalkAnim_Enemy1)
 						{
-							downWalkAnim_Enemy1.Reset();
+							//downWalkAnim_Enemy1.Reset();
 							currentAnim = &downWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
@@ -622,7 +622,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &rightDownWalkAnim_Enemy1)
 						{
-							rightDownWalkAnim_Enemy1.Reset();
+							//rightDownWalkAnim_Enemy1.Reset();
 							currentAnim = &rightDownWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
@@ -631,7 +631,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &leftDownWalkAnim_Enemy1)
 						{
-							rightDownWalkAnim_Enemy1.Reset();
+							//rightDownWalkAnim_Enemy1.Reset();
 							currentAnim = &rightDownWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
@@ -640,7 +640,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &leftUpWalkAnim_Enemy1)
 						{
-							leftUpWalkAnim_Enemy1.Reset();
+							//leftUpWalkAnim_Enemy1.Reset();
 							currentAnim = &leftUpWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
@@ -649,7 +649,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &rightUpWalkAnim_Enemy1)
 						{
-							leftUpWalkAnim_Enemy1.Reset();
+							//leftUpWalkAnim_Enemy1.Reset();
 							currentAnim = &leftUpWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
@@ -679,7 +679,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &leftWalkAnim_Enemy1)
 						{
-							leftWalkAnim_Enemy1.Reset();
+							//leftWalkAnim_Enemy1.Reset();
 							currentAnim = &leftWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
@@ -688,7 +688,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &rightWalkAnim_Enemy1)
 						{
-							rightWalkAnim_Enemy1.Reset();
+							//rightWalkAnim_Enemy1.Reset();
 							currentAnim = &rightWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
@@ -697,7 +697,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &upWalkAnim_Enemy1)
 						{
-							upWalkAnim_Enemy1.Reset();
+							//upWalkAnim_Enemy1.Reset();
 							currentAnim = &upWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
@@ -706,7 +706,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &downWalkAnim_Enemy1)
 						{
-							downWalkAnim_Enemy1.Reset();
+							//downWalkAnim_Enemy1.Reset();
 							currentAnim = &downWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
@@ -717,7 +717,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &rightDownWalkAnim_Enemy1)
 						{
-							rightDownWalkAnim_Enemy1.Reset();
+							//rightDownWalkAnim_Enemy1.Reset();
 							currentAnim = &rightDownWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
@@ -726,7 +726,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &leftDownWalkAnim_Enemy1)
 						{
-							rightDownWalkAnim_Enemy1.Reset();
+							//rightDownWalkAnim_Enemy1.Reset();
 							currentAnim = &rightDownWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
@@ -735,7 +735,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &leftUpWalkAnim_Enemy1)
 						{
-							leftUpWalkAnim_Enemy1.Reset();
+							//leftUpWalkAnim_Enemy1.Reset();
 							currentAnim = &leftUpWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
@@ -744,7 +744,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &rightUpWalkAnim_Enemy1)
 						{
-							leftUpWalkAnim_Enemy1.Reset();
+							//leftUpWalkAnim_Enemy1.Reset();
 							currentAnim = &leftUpWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
@@ -815,7 +815,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &leftWalkAnim_Enemy1)
 						{
-							leftWalkAnim_Enemy1.Reset();
+							//leftWalkAnim_Enemy1.Reset();
 							currentAnim = &leftWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
@@ -824,7 +824,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &rightWalkAnim_Enemy1)
 						{
-							rightWalkAnim_Enemy1.Reset();
+							//rightWalkAnim_Enemy1.Reset();
 							currentAnim = &rightWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
@@ -833,7 +833,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &upWalkAnim_Enemy1)
 						{
-							upWalkAnim_Enemy1.Reset();
+							//upWalkAnim_Enemy1.Reset();
 							currentAnim = &upWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
@@ -842,7 +842,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &downWalkAnim_Enemy1)
 						{
-							downWalkAnim_Enemy1.Reset();
+							//downWalkAnim_Enemy1.Reset();
 							currentAnim = &downWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
@@ -853,7 +853,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &rightDownWalkAnim_Enemy1)
 						{
-							rightDownWalkAnim_Enemy1.Reset();
+							//rightDownWalkAnim_Enemy1.Reset();
 							currentAnim = &rightDownWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
@@ -862,7 +862,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &leftDownWalkAnim_Enemy1)
 						{
-							rightDownWalkAnim_Enemy1.Reset();
+							//rightDownWalkAnim_Enemy1.Reset();
 							currentAnim = &rightDownWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
@@ -871,7 +871,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &leftUpWalkAnim_Enemy1)
 						{
-							leftUpWalkAnim_Enemy1.Reset();
+							//leftUpWalkAnim_Enemy1.Reset();
 							currentAnim = &leftUpWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
@@ -880,7 +880,7 @@ bool Zombie_Spitter::Update(float dt)
 					{
 						if (currentAnim != &rightUpWalkAnim_Enemy1)
 						{
-							leftUpWalkAnim_Enemy1.Reset();
+							//leftUpWalkAnim_Enemy1.Reset();
 							currentAnim = &leftUpWalkAnim_Enemy1;
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
