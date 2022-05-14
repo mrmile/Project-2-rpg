@@ -24,6 +24,10 @@ enum class EntityType
 	ZOMBIE_SPITTER,
 	ZOMBIE_STANDART,
 	SWITCH_KEY,
+	ROCK_ONE,
+	ROCK_TWO,
+	FENCE_ONE,
+	FENCE_TWO,
 
 };
 

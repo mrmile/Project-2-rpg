@@ -160,6 +160,18 @@
     <ClCompile Include="Source\Switch.cpp">
       <Filter>General\Entities\PuzzlesElements</Filter>
     </ClCompile>
+    <ClCompile Include="Source\fenceOne.cpp">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\fenceTwo.cpp">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\rockOne.cpp">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\rockTwo.cpp">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -349,6 +361,18 @@
       <Filter>General\Scenes and Maps\Maps</Filter>
     </ClInclude>
     <ClInclude Include="Source\Switch.h">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\fenceOne.h">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\fenceTwo.h">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\rockOne.h">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\rockTwo.h">
       <Filter>General\Entities\PuzzlesElements</Filter>
     </ClInclude>
   </ItemGroup>

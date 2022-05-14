@@ -136,6 +136,8 @@
     <ClCompile Include="Source\DialogNode.cpp" />
     <ClCompile Include="Source\Entity.cpp" />
     <ClCompile Include="Source\EntityManager.cpp" />
+    <ClCompile Include="Source\fenceOne.cpp" />
+    <ClCompile Include="Source\fenceTwo.cpp" />
     <ClCompile Include="Source\Final_Boss.cpp" />
     <ClCompile Include="Source\GameManager.cpp" />
     <ClCompile Include="Source\GuiButton.cpp" />
@@ -165,6 +167,8 @@
     <ClCompile Include="Source\PauseMenu.cpp" />
     <ClCompile Include="Source\PerfTimer.cpp" />
     <ClCompile Include="Source\QuestManager.cpp" />
+    <ClCompile Include="Source\rockOne.cpp" />
+    <ClCompile Include="Source\rockTwo.cpp" />
     <ClCompile Include="Source\SceneBase.cpp" />
     <ClCompile Include="Source\SceneCave.cpp" />
     <ClCompile Include="Source\Render.cpp" />
@@ -188,6 +192,8 @@
     <ClInclude Include="Source\DialogNode.h" />
     <ClInclude Include="Source\Entity.h" />
     <ClInclude Include="Source\EntityManager.h" />
+    <ClInclude Include="Source\fenceOne.h" />
+    <ClInclude Include="Source\fenceTwo.h" />
     <ClInclude Include="Source\Final_Boss.h" />
     <ClInclude Include="Source\GameManager.h" />
     <ClInclude Include="Source\GuiButton.h" />
@@ -216,6 +222,8 @@
     <ClInclude Include="Source\PQueue.h" />
     <ClInclude Include="Source\QuestManager.h" />
     <ClInclude Include="Source\Queue.h" />
+    <ClInclude Include="Source\rockOne.h" />
+    <ClInclude Include="Source\rockTwo.h" />
     <ClInclude Include="Source\SceneBase.h" />
     <ClInclude Include="Source\SceneCave.h" />
     <ClInclude Include="Source\Audio.h" />

@@ -50,6 +50,10 @@ struct Collider
 		ACTIVE_RADIO,
 		PLAYER_PICKUP_RADIUS,
 		SWITCH_KEY,
+		ROCK_ONE,
+		ROCK_TWO,
+		FENCE_ONE,
+		FENCE_TWO,
 
 		MAX
 	};

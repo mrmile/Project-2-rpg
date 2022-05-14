@@ -10,7 +10,6 @@
 #include "Entity.h"
 #include "ModulePlayer.h"
 
-
 #include "NPCs.h"
 #include "NPCs2.h"
 #include "NPCs3.h"
@@ -19,6 +18,10 @@
 #include "Zombie_Runner.h"
 #include "Zombie_Spitter.h"
 #include "Switch.h"
+#include "rockOne.h"
+#include "rockTwo.h"
+#include "fenceOne.h"
+#include "fenceTwo.h"
 
 #define SPAWN_MARGIN 500
 
@@ -110,6 +113,22 @@ bool EntityManager::CleanUp()
 			if (HelperQueue[i].type == EntityType::SWITCH_KEY)
 			{
 				entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+			}
+			if (HelperQueue[i].type == EntityType::ROCK_ONE)
+			{
+				entities[i]->RockOne_List.end->data->body->DestroyFixture(entities[i]->RockOne_List.end->data->body->GetFixtureList());
+			}
+			if (HelperQueue[i].type == EntityType::ROCK_TWO)
+			{
+				entities[i]->RockTwo_List.end->data->body->DestroyFixture(entities[i]->RockTwo_List.end->data->body->GetFixtureList());
+			}
+			if (HelperQueue[i].type == EntityType::FENCE_ONE)
+			{
+				entities[i]->FenceOne_List.end->data->body->DestroyFixture(entities[i]->FenceOne_List.end->data->body->GetFixtureList());
+			}
+			if (HelperQueue[i].type == EntityType::FENCE_TWO)
+			{
+				entities[i]->FenceTwo_List.end->data->body->DestroyFixture(entities[i]->FenceTwo_List.end->data->body->GetFixtureList());
 			}
 			if (HelperQueue[i].type == EntityType::NPC)
 			{
@@ -204,6 +223,34 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				entities[i]->type = info.type;
 				entities[i]->texture = texture_switch;
 				break;
+			case EntityType::ROCK_ONE:
+				entities[i] = new RockOne(info.x, info.y);
+				HelperQueue[i].type = EntityType::ROCK_ONE;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				entities[i]->texture = texture_switch;
+				break;
+			case EntityType::ROCK_TWO:
+				entities[i] = new RockTwo(info.x, info.y);
+				HelperQueue[i].type = EntityType::ROCK_TWO;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				entities[i]->texture = texture_switch;
+				break;
+			case EntityType::FENCE_ONE:
+				entities[i] = new FenceOne(info.x, info.y);
+				HelperQueue[i].type = EntityType::FENCE_ONE;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				entities[i]->texture = texture_switch;
+				break;
+			case EntityType::FENCE_TWO:
+				entities[i] = new FenceTwo(info.x, info.y);
+				HelperQueue[i].type = EntityType::FENCE_TWO;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				entities[i]->texture = texture_switch;
+				break;
 			case EntityType::NPC:
 				entities[i] = new Npcs(info.x, info.y);
 				HelperQueue[i].type = EntityType::NPC;
@@ -269,7 +316,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 
 void EntityManager::RegisterEntitesInCombat(Entity* entity)
 {
-	if (entity->type != EntityType::NPC && entity->type != EntityType::NPC2 && entity->type != EntityType::NPC3 && entity->type != EntityType::NPC4 && entity->type != EntityType::SWITCH_KEY)
+	if (entity->type != EntityType::NPC && entity->type != EntityType::NPC2 && entity->type != EntityType::NPC3 && entity->type != EntityType::NPC4 && entity->type != EntityType::SWITCH_KEY && entity->type != EntityType::ROCK_ONE && entity->type != EntityType::ROCK_TWO && entity->type != EntityType::FENCE_ONE && entity->type != EntityType::FENCE_TWO)
 	{
 		if (entity->entityState == GameState::OutOfCombat)
 		{
@@ -339,6 +386,30 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 					entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
 					/*entities[i] = nullptr;*/
 				}
+				if (HelperQueue[i].type == EntityType::ROCK_ONE)
+				{
+					entities[i]->SetToDelete();
+					entities[i]->RockOne_List.end->data->body->DestroyFixture(entities[i]->RockOne_List.end->data->body->GetFixtureList());
+					/*entities[i] = nullptr;*/
+				}
+				if (HelperQueue[i].type == EntityType::ROCK_TWO)
+				{
+					entities[i]->SetToDelete();
+					entities[i]->RockTwo_List.end->data->body->DestroyFixture(entities[i]->RockTwo_List.end->data->body->GetFixtureList());
+					/*entities[i] = nullptr;*/
+				}
+				if (HelperQueue[i].type == EntityType::FENCE_ONE)
+				{
+					entities[i]->SetToDelete();
+					entities[i]->FenceOne_List.end->data->body->DestroyFixture(entities[i]->FenceOne_List.end->data->body->GetFixtureList());
+					/*entities[i] = nullptr;*/
+				}
+				if (HelperQueue[i].type == EntityType::FENCE_TWO)
+				{
+					entities[i]->SetToDelete();
+					entities[i]->FenceTwo_List.end->data->body->DestroyFixture(entities[i]->FenceTwo_List.end->data->body->GetFixtureList());
+					/*entities[i] = nullptr;*/
+				}
 				if (HelperQueue[i].type == EntityType::NPC)
 				{
 					entities[i]->SetToDelete();
@@ -387,6 +458,22 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				if (HelperQueue[i].type == EntityType::SWITCH_KEY)
 				{
 					AddEntity(EntityType::SWITCH_KEY, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::ROCK_ONE)
+				{
+					AddEntity(EntityType::ROCK_ONE, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::ROCK_TWO)
+				{
+					AddEntity(EntityType::ROCK_TWO, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::FENCE_ONE)
+				{
+					AddEntity(EntityType::FENCE_ONE, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::FENCE_TWO)
+				{
+					AddEntity(EntityType::FENCE_TWO, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
 				if (HelperQueue[i].type == EntityType::NPC)
 				{

@@ -41,6 +41,10 @@ public:
 	List<PhysBody*> NPC3_List;
 	List<PhysBody*> NPC4_List;
 	List<PhysBody*> Switch_List;
+	List<PhysBody*> RockOne_List;
+	List<PhysBody*> RockTwo_List;
+	List<PhysBody*> FenceOne_List;
+	List<PhysBody*> FenceTwo_List;
 
 	//id used to register enemies into combat
 	int id;
