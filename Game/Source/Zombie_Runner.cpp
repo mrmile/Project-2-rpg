@@ -633,7 +633,7 @@ bool Zombie_Runner::Update(float dt)
 						if (currentAnim != &leftDownWalkAnim_Enemy1)
 						{
 							//rightDownWalkAnim_Enemy1.Reset();
-							currentAnim = &rightDownWalkAnim_Enemy1;
+							currentAnim = &leftDownWalkAnim_Enemy1;
 						}
 						Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.25f, 1.25f });
 					}
@@ -651,7 +651,7 @@ bool Zombie_Runner::Update(float dt)
 						if (currentAnim != &rightUpWalkAnim_Enemy1)
 						{
 							//leftUpWalkAnim_Enemy1.Reset();
-							currentAnim = &leftUpWalkAnim_Enemy1;
+							currentAnim = &rightUpWalkAnim_Enemy1;
 						}
 						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.25f, -1.25f });
 					}
@@ -729,7 +729,7 @@ bool Zombie_Runner::Update(float dt)
 						if (currentAnim != &leftDownWalkAnim_Enemy1)
 						{
 							//rightDownWalkAnim_Enemy1.Reset();
-							currentAnim = &rightDownWalkAnim_Enemy1;
+							currentAnim = &leftDownWalkAnim_Enemy1;
 						}
 						Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.25f, 1.25f });
 					}
@@ -747,7 +747,7 @@ bool Zombie_Runner::Update(float dt)
 						if (currentAnim != &rightUpWalkAnim_Enemy1)
 						{
 							//leftUpWalkAnim_Enemy1.Reset();
-							currentAnim = &leftUpWalkAnim_Enemy1;
+							currentAnim = &rightUpWalkAnim_Enemy1;
 						}
 						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.25f, -1.25f });
 					}
@@ -865,7 +865,7 @@ bool Zombie_Runner::Update(float dt)
 						if (currentAnim != &leftDownWalkAnim_Enemy1)
 						{
 							//rightDownWalkAnim_Enemy1.Reset();
-							currentAnim = &rightDownWalkAnim_Enemy1;
+							currentAnim = &leftDownWalkAnim_Enemy1;
 						}
 						Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.25f, 1.25f });
 					}
@@ -883,7 +883,7 @@ bool Zombie_Runner::Update(float dt)
 						if (currentAnim != &rightUpWalkAnim_Enemy1)
 						{
 							//leftUpWalkAnim_Enemy1.Reset();
-							currentAnim = &leftUpWalkAnim_Enemy1;
+							currentAnim = &rightUpWalkAnim_Enemy1;
 						}
 						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.25f, -1.25f });
 					}
