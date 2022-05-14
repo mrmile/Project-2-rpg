@@ -133,6 +133,9 @@ public:
 	Animation* currentAnimation = nullptr;
 
 	// A set of animations
+
+	//IDLE
+
 	Animation idleRightAnim;
 	Animation idleLeftAnim;
 	Animation idleDownAnim;
@@ -143,6 +146,8 @@ public:
 	Animation idleDownLeftAnim;
 	Animation idleDownRightAnim;
 
+
+	//WALK
 
 	Animation rightWalkAnim;
 	Animation leftWalkAnim;
@@ -155,6 +160,8 @@ public:
 	Animation leftUpWalkAnim;
 
 
+	//RUN
+
 	Animation rightRunAnim; // Las animaciones de Run son las mismas que las del walk pero se le cambia la velocidad del pushBack()
 	Animation leftRunAnim;
 	Animation downRunAnim;
@@ -166,7 +173,51 @@ public:
 	Animation leftUpRunAnim;
 
 
+	//ATTACK
+
+	Animation rightAttackAnim;
+	Animation leftAttackAnim;
+	Animation downAttackAnim;
+	Animation upAttackAnim;
+
+	Animation rightDownAttackAnim;
+	Animation leftDownAttackAnim;
+	Animation rightUpAttackAnim;
+	Animation leftUpAttackAnim;
+
+
+	//RECHARGE
+
+	Animation rightRechargeAnim;
+	Animation leftRechargeAnim;
+	Animation downRechargeAnim;
+	Animation upRechargeAnim;
+
+	Animation rightDownRechargeAnim;
+	Animation leftDownRechargeAnim;
+	Animation rightUpRechargeAnim;
+	Animation leftUpRechargeAnim;
+
+
+	//MELE ATTACK
+
+	Animation rightMeleAttackAnim;
+	Animation leftMeleAttackAnim;
+	Animation downMeleAttackAnim;
+	Animation upMeleAttackAnim;
+
+	Animation rightDownMeleAttackAnim;
+	Animation leftMeleDownAttackAnim;
+	Animation rightUpMeleAttackAnim;
+	Animation leftUpMeleAttackAnim;
+
+
+	//DIE 
+
 	Animation die;
+
+	// BATTLE WIN
+
 	Animation battleWin;
 
 	
