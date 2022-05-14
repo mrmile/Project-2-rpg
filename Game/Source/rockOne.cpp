@@ -60,14 +60,17 @@ bool RockOne::Update(float dt)
 	{
 		RockOne_List.end->data->GetPosition(position.x, position.y);
 	}
-
+	
 	currentAnim = &rockOne;
 
 	if (app->player->rock1Removed == true)
 	{
-		RockOne_List.end->data->body->DestroyFixture(RockOne_List.end->data->body->GetFixtureList());
+		//RockOne_List.end->data->body->DestroyFixture(RockOne_List.end->data->body->GetFixtureList());
+		RockOne_List.end->data->body->SetTransform({ 0,0 }, 0);
 		SetToDelete();
 	}
+	
+	
 
 	return true;
 

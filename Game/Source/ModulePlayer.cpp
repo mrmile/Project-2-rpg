@@ -1927,6 +1927,17 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			}
 		}
 
+		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DOOR_KEY_READER)
+		{
+			if (baseUnlock == false)
+			{
+				if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_DOWN)
+				{
+					baseUnlock = true;
+				}
+			}
+		}
+
 		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::SWITCH)
 		{
 

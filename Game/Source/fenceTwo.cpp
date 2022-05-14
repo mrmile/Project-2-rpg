@@ -39,7 +39,7 @@ FenceTwo::FenceTwo(int x, int y) : Entity(x, y)
 
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::FENCE_TWO, (Module*)app->entity_manager);
 	//entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
-	FenceTwo_List.add(app->physics->CreateColliderRectangle(position.x, position.y, 50, 40));
+	FenceTwo_List.add(app->physics->CreateColliderRectangle(position.x, position.y, 60, 104));
 
 }
 
@@ -65,7 +65,8 @@ bool FenceTwo::Update(float dt)
 
 	if (app->player->harborUnlock == true)
 	{
-		FenceTwo_List.end->data->body->DestroyFixture(FenceTwo_List.end->data->body->GetFixtureList());
+		//FenceTwo_List.end->data->body->DestroyFixture(FenceTwo_List.end->data->body->GetFixtureList());
+		FenceTwo_List.end->data->body->SetTransform({ 0,0 }, 0);
 		SetToDelete();
 	}
 

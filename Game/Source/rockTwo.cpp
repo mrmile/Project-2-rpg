@@ -63,7 +63,8 @@ bool RockTwo::Update(float dt)
 
 	if (app->player->rock2Removed == true)
 	{
-		RockTwo_List.end->data->body->DestroyFixture(RockTwo_List.end->data->body->GetFixtureList());
+		//RockTwo_List.end->data->body->DestroyFixture(RockTwo_List.end->data->body->GetFixtureList());
+		RockTwo_List.end->data->body->SetTransform({ 0,0 }, 0);
 		SetToDelete();
 	}
 

@@ -39,7 +39,7 @@ FenceOne::FenceOne(int x, int y) : Entity(x, y)
 
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::FENCE_ONE, (Module*)app->entity_manager);
 	//entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
-	FenceOne_List.add(app->physics->CreateColliderRectangle(position.x, position.y, 50, 40));
+	FenceOne_List.add(app->physics->CreateColliderRectangle(position.x, position.y, 60, 104));
 
 }
 
@@ -64,7 +64,8 @@ bool FenceOne::Update(float dt)
 
 	if (app->player->baseUnlock == true)
 	{
-		FenceOne_List.end->data->body->DestroyFixture(FenceOne_List.end->data->body->GetFixtureList());
+		//FenceOne_List.end->data->body->DestroyFixture(FenceOne_List.end->data->body->GetFixtureList());
+		FenceOne_List.end->data->body->SetTransform({ 0,0 }, 0);
 		SetToDelete();
 	}
 	
