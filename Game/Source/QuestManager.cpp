@@ -149,17 +149,17 @@ bool QuestManager::PostUpdate()
 		}
 		case FIND_THE_DOCTOR_1:
 		{
-			if (app->inventoryMenu->showInventory == true)app->render->DrawTexture2(mainQuestDescription_1, 0, 0, NULL);
+			if (app->inventoryMenu->showInventory == true && app->player->showCombatHUD == false)app->render->DrawTexture2(mainQuestDescription_1, 0, 0, NULL);
 			break;
 		}
 		case LOOK_FOR_THE_COMPUTER_2:
 		{
-			if (app->inventoryMenu->showInventory == true)app->render->DrawTexture2(mainQuestDescription_2, 0, 0, NULL);
+			if (app->inventoryMenu->showInventory == true && app->player->showCombatHUD == false)app->render->DrawTexture2(mainQuestDescription_2, 0, 0, NULL);
 			break;
 		}
 		case KILL_THE_PATIENT_ZERO_3:
 		{
-			if (app->inventoryMenu->showInventory == true)app->render->DrawTexture2(mainQuestDescription_3, 0, 0, NULL);
+			if (app->inventoryMenu->showInventory == true && app->player->showCombatHUD == false)app->render->DrawTexture2(mainQuestDescription_3, 0, 0, NULL);
 			break;
 		}
 	}

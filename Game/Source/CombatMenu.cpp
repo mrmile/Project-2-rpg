@@ -18,6 +18,7 @@
 #include "EntityManager.h"
 #include "GameManager.h"
 #include "CreditsScreen.h"
+#include "InventoryMenu.h"
 #include "Entity.h"
 #include "Defs.h"
 #include "Render.h"
@@ -191,6 +192,9 @@ bool CombatMenu::OnGuiMouseClickEvent(GuiControl* control)
 		{
 			//RESUME BUTTON
 			app->audio->PlayFx(buttonClickedFx, 0);
+
+			app->inventoryMenu->showInventory = !app->inventoryMenu->showInventory;
+			
 		}
 		if (control->id == 28 && combatEscapeGUI->canClick == true)
 			//escape from combat = true
