@@ -39,56 +39,56 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	idleRightAnim_Enemy1.PushBack({ 403, 603, 85, 144 });
 	idleRightAnim_Enemy1.PushBack({ 560, 603, 85, 144 });
 	idleRightAnim_Enemy1.loop = true;
-	idleRightAnim_Enemy1.speed = 0.3f;
+	idleRightAnim_Enemy1.speed = 0.05f;
 
 	idleLeftAnim_Enemy1.PushBack({ 88, 27, 85, 144 });
 	idleLeftAnim_Enemy1.PushBack({ 246, 27, 85, 144 });
 	idleLeftAnim_Enemy1.PushBack({ 403, 27, 85, 144 });
 	idleLeftAnim_Enemy1.PushBack({ 560, 27, 85, 144 });
 	idleLeftAnim_Enemy1.loop = true;
-	idleLeftAnim_Enemy1.speed = 0.3f;
+	idleLeftAnim_Enemy1.speed = 0.05f;
 
 	idleDownAnim_Enemy1.PushBack({ 88, 891, 85, 144 });  //idle_enemy
 	idleDownAnim_Enemy1.PushBack({ 246, 891, 85, 144 });
 	idleDownAnim_Enemy1.PushBack({ 403, 891, 85, 144 });
 	idleDownAnim_Enemy1.PushBack({ 560, 891, 85, 144 });
 	idleDownAnim_Enemy1.loop = true;
-	idleDownAnim_Enemy1.speed = 0.3f;
+	idleDownAnim_Enemy1.speed = 0.05f;
 
 	idleUpAnim_Enemy1.PushBack({ 88, 315, 85, 144 });
 	idleUpAnim_Enemy1.PushBack({ 246, 315, 85, 144 });
 	idleUpAnim_Enemy1.PushBack({ 403, 315, 85, 144 });
 	idleUpAnim_Enemy1.PushBack({ 560, 315, 85, 144 });
 	idleUpAnim_Enemy1.loop = true;
-	idleUpAnim_Enemy1.speed = 0.3f;
+	idleUpAnim_Enemy1.speed = 0.05f;
 
 	idleUpLeftAnim_Enemy1.PushBack({ 88, 171, 85, 144 });
 	idleUpLeftAnim_Enemy1.PushBack({ 246, 171, 85, 144 });
 	idleUpLeftAnim_Enemy1.PushBack({ 403, 171, 85, 144 });
 	idleUpLeftAnim_Enemy1.PushBack({ 560, 171, 85, 144 });
 	idleUpLeftAnim_Enemy1.loop = true;
-	idleUpLeftAnim_Enemy1.speed = 0.3f;
+	idleUpLeftAnim_Enemy1.speed = 0.05f;
 
 	idleUpRightAnim_Enemy1.PushBack({ 88, 459, 85, 144 });
 	idleUpRightAnim_Enemy1.PushBack({ 246, 459, 85, 144 });
 	idleUpRightAnim_Enemy1.PushBack({ 403, 459, 85, 144 });
 	idleUpRightAnim_Enemy1.PushBack({ 560, 459, 85, 144 });
 	idleUpRightAnim_Enemy1.loop = true;
-	idleUpRightAnim_Enemy1.speed = 0.3f;
+	idleUpRightAnim_Enemy1.speed = 0.05f;
 
 	idleDownLeftAnim_Enemy1.PushBack({ 88, 1035, 85, 144 });
 	idleDownLeftAnim_Enemy1.PushBack({ 246, 1035, 85, 144 });
 	idleDownLeftAnim_Enemy1.PushBack({ 403, 1035, 85, 144 });
 	idleDownLeftAnim_Enemy1.PushBack({ 560, 1035, 85, 144 });
 	idleDownLeftAnim_Enemy1.loop = true;
-	idleDownLeftAnim_Enemy1.speed = 0.3f;
+	idleDownLeftAnim_Enemy1.speed = 0.05f;
 
 	idleDownRightAnim_Enemy1.PushBack({ 88, 747, 85, 144 });
 	idleDownRightAnim_Enemy1.PushBack({ 246, 747, 85, 144 });
 	idleDownRightAnim_Enemy1.PushBack({ 403, 747, 85, 144 });
 	idleDownRightAnim_Enemy1.PushBack({ 560, 747, 85, 144 });
 	idleDownRightAnim_Enemy1.loop = true;
-	idleDownRightAnim_Enemy1.speed = 0.3f;
+	idleDownRightAnim_Enemy1.speed = 0.05f;
 
 
 
@@ -103,7 +103,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	rightWalkAnim_Enemy1.PushBack({ 1663, 603, 85, 144 });
 	rightWalkAnim_Enemy1.PushBack({ 1820, 603, 85, 144 });
 	rightWalkAnim_Enemy1.loop = true;
-	rightWalkAnim_Enemy1.speed = 0.3f;
+	rightWalkAnim_Enemy1.speed = 0.2f;
 
 	leftWalkAnim_Enemy1.PushBack({ 719, 27, 85, 144 });
 	leftWalkAnim_Enemy1.PushBack({ 876, 27, 85, 144 });
@@ -114,7 +114,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	leftWalkAnim_Enemy1.PushBack({ 1663, 27, 85, 144 });
 	leftWalkAnim_Enemy1.PushBack({ 1820, 27, 85, 144 });
 	leftWalkAnim_Enemy1.loop = true;
-	leftWalkAnim_Enemy1.speed = 0.3f;
+	leftWalkAnim_Enemy1.speed = 0.2f;
 
 	downWalkAnim_Enemy1.PushBack({ 719, 891, 85, 144 });
 	downWalkAnim_Enemy1.PushBack({ 876, 891, 85, 144 });
@@ -125,7 +125,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	downWalkAnim_Enemy1.PushBack({ 1663, 891, 85, 144 });
 	downWalkAnim_Enemy1.PushBack({ 1820, 891, 85, 144 });
 	downWalkAnim_Enemy1.loop = true;
-	downWalkAnim_Enemy1.speed = 0.3f;
+	downWalkAnim_Enemy1.speed = 0.2f;
 
 	upWalkAnim_Enemy1.PushBack({ 719, 315, 85, 144 });
 	upWalkAnim_Enemy1.PushBack({ 876, 315, 85, 144 });
@@ -136,7 +136,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	upWalkAnim_Enemy1.PushBack({ 1663, 315, 85, 144 });
 	upWalkAnim_Enemy1.PushBack({ 1820, 315, 85, 144 });
 	upWalkAnim_Enemy1.loop = true;
-	upWalkAnim_Enemy1.speed = 0.3f;
+	upWalkAnim_Enemy1.speed = 0.2f;
 
 	rightDownWalkAnim_Enemy1.PushBack({ 719, 747, 85, 144 });
 	rightDownWalkAnim_Enemy1.PushBack({ 876, 747, 85, 144 });
@@ -147,7 +147,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	rightDownWalkAnim_Enemy1.PushBack({ 1663, 747, 85, 144 });
 	rightDownWalkAnim_Enemy1.PushBack({ 1820, 747, 85, 144 });
 	rightDownWalkAnim_Enemy1.loop = true;
-	rightDownWalkAnim_Enemy1.speed = 0.3f;
+	rightDownWalkAnim_Enemy1.speed = 0.2f;
 
 	leftDownWalkAnim_Enemy1.PushBack({ 719, 1035, 85, 144 });
 	leftDownWalkAnim_Enemy1.PushBack({ 876, 1035, 85, 144 });
@@ -158,7 +158,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	leftDownWalkAnim_Enemy1.PushBack({ 1663, 1035, 85, 144 });
 	leftDownWalkAnim_Enemy1.PushBack({ 1820, 1035, 85, 144 });
 	leftDownWalkAnim_Enemy1.loop = true;
-	leftDownWalkAnim_Enemy1.speed = 0.3f;
+	leftDownWalkAnim_Enemy1.speed = 0.2f;
 
 	rightUpWalkAnim_Enemy1.PushBack({ 719, 459, 85, 144 });
 	rightUpWalkAnim_Enemy1.PushBack({ 876, 459, 85, 144 });
@@ -169,7 +169,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	rightUpWalkAnim_Enemy1.PushBack({ 1663, 459, 85, 144 });
 	rightUpWalkAnim_Enemy1.PushBack({ 1820, 459, 85, 144 });
 	rightUpWalkAnim_Enemy1.loop = true;
-	rightUpWalkAnim_Enemy1.speed = 0.3f;
+	rightUpWalkAnim_Enemy1.speed = 0.2f;
 
 	leftUpWalkAnim_Enemy1.PushBack({ 719, 171, 85, 144 });
 	leftUpWalkAnim_Enemy1.PushBack({ 876, 171, 85, 144 });
@@ -180,7 +180,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	leftUpWalkAnim_Enemy1.PushBack({ 1663, 171, 85, 144 });
 	leftUpWalkAnim_Enemy1.PushBack({ 1820, 171, 85, 144 });
 	leftUpWalkAnim_Enemy1.loop = true;
-	leftUpWalkAnim_Enemy1.speed = 0.3f;
+	leftUpWalkAnim_Enemy1.speed = 0.2f;
 
 
 	//ATTACK
@@ -195,7 +195,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	rightAttackAnim_Enemy1.PushBack({ 2450, 603, 85, 144 });
 	rightAttackAnim_Enemy1.PushBack({ 2608, 603, 85, 144 });
 	rightAttackAnim_Enemy1.loop = true;
-	rightAttackAnim_Enemy1.speed = 0.3f;
+	rightAttackAnim_Enemy1.speed = 0.05f;
 
 	leftAttackAnim_Enemy1.PushBack({ 2608, 27, 85, 144 });
 	leftAttackAnim_Enemy1.PushBack({ 2450, 27, 85, 144 });
@@ -207,7 +207,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	leftAttackAnim_Enemy1.PushBack({ 2450, 27, 85, 144 });
 	leftAttackAnim_Enemy1.PushBack({ 2608, 27, 85, 144 });
 	leftAttackAnim_Enemy1.loop = true;
-	leftAttackAnim_Enemy1.speed = 0.3f;
+	leftAttackAnim_Enemy1.speed = 0.05f;
 
 	downAttackAnim_Enemy1.PushBack({ 2608, 891, 85, 144 });
 	downAttackAnim_Enemy1.PushBack({ 2450, 891, 85, 144 });
@@ -219,7 +219,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	downAttackAnim_Enemy1.PushBack({ 2450, 891, 85, 144 });
 	downAttackAnim_Enemy1.PushBack({ 2608, 891, 85, 144 });
 	downAttackAnim_Enemy1.loop = true;
-	downAttackAnim_Enemy1.speed = 0.3f;
+	downAttackAnim_Enemy1.speed = 0.05f;
 
 	upAttackAnim_Enemy1.PushBack({ 2608, 315, 85, 144 });
 	upAttackAnim_Enemy1.PushBack({ 2450, 315, 85, 144 });
@@ -231,7 +231,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	upAttackAnim_Enemy1.PushBack({ 2450, 315, 85, 144 });
 	upAttackAnim_Enemy1.PushBack({ 2608, 315, 85, 144 });
 	upAttackAnim_Enemy1.loop = true;
-	upAttackAnim_Enemy1.speed = 0.3f;
+	upAttackAnim_Enemy1.speed = 0.05f;
 
 	rightDownAttackAnim_Enemy1.PushBack({ 2608, 747, 85, 144 });
 	rightDownAttackAnim_Enemy1.PushBack({ 2450, 747, 85, 144 });
@@ -243,7 +243,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	rightDownAttackAnim_Enemy1.PushBack({ 2450, 747, 85, 144 });
 	rightDownAttackAnim_Enemy1.PushBack({ 2608, 747, 85, 144 });
 	rightDownAttackAnim_Enemy1.loop = true;
-	rightDownAttackAnim_Enemy1.speed = 0.3f;
+	rightDownAttackAnim_Enemy1.speed = 0.05f;
 
 
 	leftDownAttackAnim_Enemy1.PushBack({ 2608, 1035, 85, 144 });
@@ -256,7 +256,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	leftDownAttackAnim_Enemy1.PushBack({ 2450, 1035, 85, 144 });
 	leftDownAttackAnim_Enemy1.PushBack({ 2608, 1035, 85, 144 });
 	leftDownAttackAnim_Enemy1.loop = true;
-	leftDownAttackAnim_Enemy1.speed = 0.3f;
+	leftDownAttackAnim_Enemy1.speed = 0.05f;
 
 	rightUpAttackAnim_Enemy1.PushBack({ 2608, 459, 85, 144 });
 	rightUpAttackAnim_Enemy1.PushBack({ 2450, 459, 85, 144 });
@@ -268,7 +268,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	rightUpAttackAnim_Enemy1.PushBack({ 2450, 459, 85, 144 });
 	rightUpAttackAnim_Enemy1.PushBack({ 2608, 459, 85, 144 });
 	rightUpAttackAnim_Enemy1.loop = true;
-	rightUpAttackAnim_Enemy1.speed = 0.3f;
+	rightUpAttackAnim_Enemy1.speed = 0.05f;
 
 	leftUpAttackAnim_Enemy1.PushBack({ 2608, 171, 85, 144 });
 	leftUpAttackAnim_Enemy1.PushBack({ 2450, 171, 85, 144 });
@@ -280,7 +280,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	leftUpAttackAnim_Enemy1.PushBack({ 2450, 171, 85, 144 });
 	leftUpAttackAnim_Enemy1.PushBack({ 2608, 171, 85, 144 });
 	leftUpAttackAnim_Enemy1.loop = true;
-	leftUpAttackAnim_Enemy1.speed = 0.3f;
+	leftUpAttackAnim_Enemy1.speed = 0.05f;
 
 
 	//SPAWN
@@ -294,7 +294,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	rightSpawnAnim_Enemy1.PushBack({ 6703, 603, 85, 144 });
 	rightSpawnAnim_Enemy1.PushBack({ 6860, 603, 85, 144 });
 	rightSpawnAnim_Enemy1.loop = true;
-	rightSpawnAnim_Enemy1.speed = 0.3f;
+	rightSpawnAnim_Enemy1.speed = 0.05f;
 
 	leftSpawnAnim_Enemy1.PushBack({ 5758, 27, 85, 144 });
 	leftSpawnAnim_Enemy1.PushBack({ 5915, 27, 85, 144 });
@@ -305,7 +305,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	leftSpawnAnim_Enemy1.PushBack({ 6703, 27, 85, 144 });
 	leftSpawnAnim_Enemy1.PushBack({ 6860, 27, 85, 144 });
 	leftSpawnAnim_Enemy1.loop = true;
-	leftSpawnAnim_Enemy1.speed = 0.3f;
+	leftSpawnAnim_Enemy1.speed = 0.05f;
 
 	downSpawnAnim_Enemy1.PushBack({ 5758, 891, 85, 144 });
 	downSpawnAnim_Enemy1.PushBack({ 5915, 891, 85, 144 });
@@ -316,7 +316,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	downSpawnAnim_Enemy1.PushBack({ 6703, 891, 85, 144 });
 	downSpawnAnim_Enemy1.PushBack({ 6860, 891, 85, 144 });
 	downSpawnAnim_Enemy1.loop = true;
-	downSpawnAnim_Enemy1.speed = 0.3f;
+	downSpawnAnim_Enemy1.speed = 0.05f;
 
 	upSpawnAnim_Enemy1.PushBack({ 5758, 315, 85, 144 });
 	upSpawnAnim_Enemy1.PushBack({ 5915, 315, 85, 144 });
@@ -327,7 +327,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	upSpawnAnim_Enemy1.PushBack({ 6703, 315, 85, 144 });
 	upSpawnAnim_Enemy1.PushBack({ 6860, 315, 85, 144 });
 	upSpawnAnim_Enemy1.loop = true;
-	upSpawnAnim_Enemy1.speed = 0.3f;
+	upSpawnAnim_Enemy1.speed = 0.05f;
 
 	rightDownSpawnAnim_Enemy1.PushBack({ 5758, 747, 85, 144 });
 	rightDownSpawnAnim_Enemy1.PushBack({ 5915, 747, 85, 144 });
@@ -338,7 +338,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	rightDownSpawnAnim_Enemy1.PushBack({ 6703, 747, 85, 144 });
 	rightDownSpawnAnim_Enemy1.PushBack({ 6860, 747, 85, 144 });
 	rightDownSpawnAnim_Enemy1.loop = true;
-	rightDownSpawnAnim_Enemy1.speed = 0.3f;
+	rightDownSpawnAnim_Enemy1.speed = 0.05f;
 
 	leftDownSpawnAnim_Enemy1.PushBack({ 5758, 1035, 85, 144 });
 	leftDownSpawnAnim_Enemy1.PushBack({ 5915, 1035, 85, 144 });
@@ -349,7 +349,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	leftDownSpawnAnim_Enemy1.PushBack({ 6703, 1035, 85, 144 });
 	leftDownSpawnAnim_Enemy1.PushBack({ 6860, 1035, 85, 144 });
 	leftDownSpawnAnim_Enemy1.loop = true;
-	leftDownSpawnAnim_Enemy1.speed = 0.3f;
+	leftDownSpawnAnim_Enemy1.speed = 0.05f;
 
 	rightUpSpawnAnim_Enemy1.PushBack({ 5758, 459, 85, 144 });
 	rightUpSpawnAnim_Enemy1.PushBack({ 5915, 459, 85, 144 });
@@ -360,7 +360,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	rightUpSpawnAnim_Enemy1.PushBack({ 6703, 459, 85, 144 });
 	rightUpSpawnAnim_Enemy1.PushBack({ 6860, 459, 85, 144 });
 	rightUpSpawnAnim_Enemy1.loop = true;
-	rightUpSpawnAnim_Enemy1.speed = 0.3f;
+	rightUpSpawnAnim_Enemy1.speed = 0.05f;
 
 	leftUpSpawnAnim_Enemy1.PushBack({ 5758, 171, 85, 144 });
 	leftUpSpawnAnim_Enemy1.PushBack({ 5915, 171, 85, 144 });
@@ -371,7 +371,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	leftUpSpawnAnim_Enemy1.PushBack({ 6703, 171, 85, 144 });
 	leftUpSpawnAnim_Enemy1.PushBack({ 6860, 171, 85, 144 });
 	leftUpSpawnAnim_Enemy1.loop = true;
-	leftUpSpawnAnim_Enemy1.speed = 0.3f;
+	leftUpSpawnAnim_Enemy1.speed = 0.05f;
 
 
 	//DIE
@@ -383,7 +383,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	rightDieAnim_Enemy1.PushBack({ 4183, 603, 85, 144 });
 	rightDieAnim_Enemy1.PushBack({ 4340, 603, 85, 144 });
 	rightDieAnim_Enemy1.loop = true;
-	rightDieAnim_Enemy1.speed = 0.3f;
+	rightDieAnim_Enemy1.speed = 0.05f;
 
 	leftDieAnim_Enemy1.PushBack({ 3553, 27, 85, 144 });
 	leftDieAnim_Enemy1.PushBack({ 3710, 27, 85, 144 });
@@ -392,7 +392,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	leftDieAnim_Enemy1.PushBack({ 4183, 27, 85, 144 });
 	leftDieAnim_Enemy1.PushBack({ 4340, 27, 85, 144 });
 	leftDieAnim_Enemy1.loop = true;
-	leftDieAnim_Enemy1.speed = 0.3f;
+	leftDieAnim_Enemy1.speed = 0.05f;
 
 	downDieAnim_Enemy1.PushBack({ 3553, 891, 85, 144 });
 	downDieAnim_Enemy1.PushBack({ 3710, 891, 85, 144 });
@@ -401,7 +401,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	downDieAnim_Enemy1.PushBack({ 4183, 891, 85, 144 });
 	downDieAnim_Enemy1.PushBack({ 4340, 891, 85, 144 });
 	downDieAnim_Enemy1.loop = true;
-	downDieAnim_Enemy1.speed = 0.3f;
+	downDieAnim_Enemy1.speed = 0.05f;
 
 	upDieAnim_Enemy1.PushBack({ 3553, 315, 85, 144 });
 	upDieAnim_Enemy1.PushBack({ 3710, 315, 85, 144 });
@@ -410,7 +410,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	upDieAnim_Enemy1.PushBack({ 4183, 315, 85, 144 });
 	upDieAnim_Enemy1.PushBack({ 4340, 315, 85, 144 });
 	upDieAnim_Enemy1.loop = true;
-	upDieAnim_Enemy1.speed = 0.3f;
+	upDieAnim_Enemy1.speed = 0.05f;
 
 	rightDownDieAnim_Enemy1.PushBack({ 3553, 747, 85, 144 });
 	rightDownDieAnim_Enemy1.PushBack({ 3710, 747, 85, 144 });
@@ -419,7 +419,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	rightDownDieAnim_Enemy1.PushBack({ 4183, 747, 85, 144 });
 	rightDownDieAnim_Enemy1.PushBack({ 4340, 747, 85, 144 });
 	rightDownDieAnim_Enemy1.loop = true;
-	rightDownDieAnim_Enemy1.speed = 0.3f;
+	rightDownDieAnim_Enemy1.speed = 0.05f;
 
 	leftDownDieAnim_Enemy1.PushBack({ 3553, 1035, 85, 144 });
 	leftDownDieAnim_Enemy1.PushBack({ 3710, 1035, 85, 144 });
@@ -428,7 +428,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	leftDownDieAnim_Enemy1.PushBack({ 4183, 1035, 85, 144 });
 	leftDownDieAnim_Enemy1.PushBack({ 4340, 1035, 85, 144 });
 	leftDownDieAnim_Enemy1.loop = true;
-	leftDownDieAnim_Enemy1.speed = 0.3f;
+	leftDownDieAnim_Enemy1.speed = 0.05f;
 
 	rightUpDieAnim_Enemy1.PushBack({ 3553, 459, 85, 144 });
 	rightUpDieAnim_Enemy1.PushBack({ 3710, 459, 85, 144 });
@@ -437,7 +437,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	rightUpDieAnim_Enemy1.PushBack({ 4183, 459, 85, 144 });
 	rightUpDieAnim_Enemy1.PushBack({ 4340, 459, 85, 144 });
 	rightUpDieAnim_Enemy1.loop = true;
-	rightUpDieAnim_Enemy1.speed = 0.3f;
+	rightUpDieAnim_Enemy1.speed = 0.05f;
 
 	leftUpDieAnim_Enemy1.PushBack({ 3553, 171, 85, 144 });
 	leftUpDieAnim_Enemy1.PushBack({ 3710, 171, 85, 144 });
@@ -446,7 +446,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	leftUpDieAnim_Enemy1.PushBack({ 4183, 171, 85, 144 });
 	leftUpDieAnim_Enemy1.PushBack({ 4340, 171, 85, 144 });
 	leftUpDieAnim_Enemy1.loop = true;
-	leftUpDieAnim_Enemy1.speed = 0.3f;
+	leftUpDieAnim_Enemy1.speed = 0.05f;
 
 
 	//CRITICAL DIE
@@ -460,7 +460,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	rightCriticalDieAnim_Enemy1.PushBack({ 5443, 603, 85, 144 });
 	rightCriticalDieAnim_Enemy1.PushBack({ 5600, 603, 85, 144 });
 	rightCriticalDieAnim_Enemy1.loop = true;
-	rightCriticalDieAnim_Enemy1.speed = 0.3f;
+	rightCriticalDieAnim_Enemy1.speed = 0.05f;
 
 	leftCriticalDieAnim_Enemy1.PushBack({ 4498, 27, 85, 144 });
 	leftCriticalDieAnim_Enemy1.PushBack({ 4655, 27, 85, 144 });
@@ -471,7 +471,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	leftCriticalDieAnim_Enemy1.PushBack({ 5443, 27, 85, 144 });
 	leftCriticalDieAnim_Enemy1.PushBack({ 5600, 27, 85, 144 });
 	leftCriticalDieAnim_Enemy1.loop = true;
-	leftCriticalDieAnim_Enemy1.speed = 0.3f;
+	leftCriticalDieAnim_Enemy1.speed = 0.05f;
 
 	downCriticalDieAnim_Enemy1.PushBack({ 4498, 891, 85, 144 });
 	downCriticalDieAnim_Enemy1.PushBack({ 4655, 891, 85, 144 });
@@ -482,7 +482,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	downCriticalDieAnim_Enemy1.PushBack({ 5443, 891, 85, 144 });
 	downCriticalDieAnim_Enemy1.PushBack({ 5600, 891, 85, 144 });
 	downCriticalDieAnim_Enemy1.loop = true;
-	downCriticalDieAnim_Enemy1.speed = 0.3f;
+	downCriticalDieAnim_Enemy1.speed = 0.05f;
 
 	upCriticalDieAnim_Enemy1.PushBack({ 4498, 315, 85, 144 });
 	upCriticalDieAnim_Enemy1.PushBack({ 4655, 315, 85, 144 });
@@ -493,7 +493,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	upCriticalDieAnim_Enemy1.PushBack({ 5443, 315, 85, 144 });
 	upCriticalDieAnim_Enemy1.PushBack({ 5600, 315, 85, 144 });
 	upCriticalDieAnim_Enemy1.loop = true;
-	upCriticalDieAnim_Enemy1.speed = 0.3f;
+	upCriticalDieAnim_Enemy1.speed = 0.05f;
 
 	rightDownCriticalDieAnim_Enemy1.PushBack({ 4498, 747, 85, 144 });
 	rightDownCriticalDieAnim_Enemy1.PushBack({ 4655, 747, 85, 144 });
@@ -504,7 +504,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	rightDownCriticalDieAnim_Enemy1.PushBack({ 5443, 747, 85, 144 });
 	rightDownCriticalDieAnim_Enemy1.PushBack({ 5600, 747, 85, 144 });
 	rightDownCriticalDieAnim_Enemy1.loop = true;
-	rightDownCriticalDieAnim_Enemy1.speed = 0.3f;
+	rightDownCriticalDieAnim_Enemy1.speed = 0.05f;
 
 	leftDownCriticalDieAnim_Enemy1.PushBack({ 4498, 1035, 85, 144 });
 	leftDownCriticalDieAnim_Enemy1.PushBack({ 4655, 1035, 85, 144 });
@@ -515,7 +515,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	leftDownCriticalDieAnim_Enemy1.PushBack({ 5443, 1035, 85, 144 });
 	leftDownCriticalDieAnim_Enemy1.PushBack({ 5600, 1035, 85, 144 });
 	leftDownCriticalDieAnim_Enemy1.loop = true;
-	leftDownCriticalDieAnim_Enemy1.speed = 0.3f;
+	leftDownCriticalDieAnim_Enemy1.speed = 0.05f;
 
 	rightUpCriticalDieAnim_Enemy1.PushBack({ 4498, 459, 85, 144 });
 	rightUpCriticalDieAnim_Enemy1.PushBack({ 4655, 459, 85, 144 });
@@ -526,7 +526,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	rightUpCriticalDieAnim_Enemy1.PushBack({ 5443, 459, 85, 144 });
 	rightUpCriticalDieAnim_Enemy1.PushBack({ 5600, 459, 85, 144 });
 	rightUpCriticalDieAnim_Enemy1.loop = true;
-	rightUpCriticalDieAnim_Enemy1.speed = 0.3f;
+	rightUpCriticalDieAnim_Enemy1.speed = 0.05f;
 
 	leftUpCriticalDieAnim_Enemy1.PushBack({ 4498, 171, 85, 144 });
 	leftUpCriticalDieAnim_Enemy1.PushBack({ 4655, 171, 85, 144 });
@@ -537,7 +537,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	leftUpCriticalDieAnim_Enemy1.PushBack({ 5443, 171, 85, 144 });
 	leftUpCriticalDieAnim_Enemy1.PushBack({ 5600, 171, 85, 144 });
 	leftUpCriticalDieAnim_Enemy1.loop = true;
-	leftUpCriticalDieAnim_Enemy1.speed = 0.3f;
+	leftUpCriticalDieAnim_Enemy1.speed = 0.05f;
 	
 
 	position.x = x;
