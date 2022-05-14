@@ -157,6 +157,9 @@
     <ClCompile Include="Source\ScenePlatform.cpp">
       <Filter>General\Scenes and Maps\Maps</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Switch.cpp">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -345,6 +348,9 @@
     <ClInclude Include="Source\ScenePlatform.h">
       <Filter>General\Scenes and Maps\Maps</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Switch.h">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -388,6 +394,9 @@
     </Filter>
     <Filter Include="General\Quests">
       <UniqueIdentifier>{7af92d0d-0105-4bd6-9f30-c85b2d07bf22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General\Entities\PuzzlesElements">
+      <UniqueIdentifier>{67f75a07-63f4-440a-8f77-0fda107e9812}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

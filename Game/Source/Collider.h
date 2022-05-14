@@ -49,6 +49,7 @@ struct Collider
 		BASE_COMPUTER,
 		ACTIVE_RADIO,
 		PLAYER_PICKUP_RADIUS,
+		SWITCH_KEY,
 
 		MAX
 	};

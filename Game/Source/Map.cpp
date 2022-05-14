@@ -895,6 +895,15 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		}
 	}
 
+	if (object->name == "switch_key")
+	{
+		pugi::xml_node NewObject;
+		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		{
+			app->entity_manager->AddEntity(EntityType::SWITCH_KEY, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+		}
+	}
+
 	if (object->name == "npc")
 	{
 		pugi::xml_node NewObject;

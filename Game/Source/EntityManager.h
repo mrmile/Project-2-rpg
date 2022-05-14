@@ -23,6 +23,7 @@ enum class EntityType
 	ZOMBIE_RUNNER,
 	ZOMBIE_SPITTER,
 	ZOMBIE_STANDART,
+	SWITCH_KEY,
 
 };
 
@@ -106,6 +107,7 @@ private:
 	SDL_Texture* texture_enemies_spitter_zombie = nullptr;
 	SDL_Texture* texture_npcs = nullptr;
 	SDL_Texture* texture_items = nullptr;
+	SDL_Texture* texture_switch = nullptr;
 
 	EntityHelper HelperQueue[MAX_ENTITIES];
 

@@ -171,6 +171,7 @@
     <ClCompile Include="Source\SceneMainMap.cpp" />
     <ClCompile Include="Source\SceneMotel.cpp" />
     <ClCompile Include="Source\ScenePlatform.cpp" />
+    <ClCompile Include="Source\Switch.cpp" />
     <ClCompile Include="Source\Textures.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\TitleScreen.cpp" />
@@ -225,6 +226,7 @@
     <ClInclude Include="Source\SceneMainMap.h" />
     <ClInclude Include="Source\SceneMotel.h" />
     <ClInclude Include="Source\ScenePlatform.h" />
+    <ClInclude Include="Source\Switch.h" />
     <ClInclude Include="Source\Textures.h" />
     <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\TitleScreen.h" />

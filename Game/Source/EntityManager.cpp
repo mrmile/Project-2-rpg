@@ -18,6 +18,7 @@
 #include "Zombie_Standart.h"
 #include "Zombie_Runner.h"
 #include "Zombie_Spitter.h"
+#include "Switch.h"
 
 #define SPAWN_MARGIN 500
 
@@ -43,6 +44,7 @@ bool EntityManager::Start()
 	texture_enemies_runner_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_runner.png");
 	texture_enemies_spitter_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_spitter_with_spawn.png");
 	texture_npcs = app->tex->Load("Assets/textures/NPCs/Implemented/General_NPCs.png");
+	texture_switch = app->tex->Load("Assets/textures/SceneObjects/switch.png");
 
 	return true;
 }
@@ -104,6 +106,10 @@ bool EntityManager::CleanUp()
 			if (HelperQueue[i].type == EntityType::ZOMBIE_SPITTER)
 			{
 				entities[i]->Spitter_Zombie_List.end->data->body->DestroyFixture(entities[i]->Spitter_Zombie_List.end->data->body->GetFixtureList());
+			}
+			if (HelperQueue[i].type == EntityType::SWITCH_KEY)
+			{
+				entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
 			}
 			if (HelperQueue[i].type == EntityType::NPC)
 			{
@@ -191,6 +197,13 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 			case EntityType::PLAYER:
 				//entities[i]->texture = texture_player;
 				break;
+			case EntityType::SWITCH_KEY:
+				entities[i] = new Switch(info.x, info.y);
+				HelperQueue[i].type = EntityType::SWITCH_KEY;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				entities[i]->texture = texture_switch;
+				break;
 			case EntityType::NPC:
 				entities[i] = new Npcs(info.x, info.y);
 				HelperQueue[i].type = EntityType::NPC;
@@ -256,7 +269,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 
 void EntityManager::RegisterEntitesInCombat(Entity* entity)
 {
-	if (entity->type != EntityType::NPC && entity->type != EntityType::NPC2 && entity->type != EntityType::NPC3 && entity->type != EntityType::NPC4)
+	if (entity->type != EntityType::NPC && entity->type != EntityType::NPC2 && entity->type != EntityType::NPC3 && entity->type != EntityType::NPC4 && entity->type != EntityType::SWITCH_KEY)
 	{
 		if (entity->entityState == GameState::OutOfCombat)
 		{
@@ -320,6 +333,12 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 					entities[i]->Spitter_Zombie_List.end->data->body->DestroyFixture(entities[i]->Spitter_Zombie_List.end->data->body->GetFixtureList());
 					/*entities[i] = nullptr;*/
 				}
+				if (HelperQueue[i].type == EntityType::SWITCH_KEY)
+				{
+					entities[i]->SetToDelete();
+					entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+					/*entities[i] = nullptr;*/
+				}
 				if (HelperQueue[i].type == EntityType::NPC)
 				{
 					entities[i]->SetToDelete();
@@ -364,6 +383,10 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				if (HelperQueue[i].type == EntityType::ZOMBIE_SPITTER)
 				{
 					AddEntity(EntityType::ZOMBIE_SPITTER, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::SWITCH_KEY)
+				{
+					AddEntity(EntityType::SWITCH_KEY, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
 				if (HelperQueue[i].type == EntityType::NPC)
 				{

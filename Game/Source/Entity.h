@@ -40,6 +40,7 @@ public:
 	List<PhysBody*> NPC2_List;
 	List<PhysBody*> NPC3_List;
 	List<PhysBody*> NPC4_List;
+	List<PhysBody*> Switch_List;
 
 	//id used to register enemies into combat
 	int id;
