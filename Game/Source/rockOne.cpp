@@ -39,7 +39,7 @@ RockOne::RockOne(int x, int y) : Entity(x, y)
 
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ROCK_ONE, (Module*)app->entity_manager);
 	//entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
-	RockOne_List.add(app->physics->CreateColliderRectangle(position.x, position.y, 30, 50));
+	RockOne_List.add(app->physics->CreateColliderRectangle(position.x, position.y, 74, 90));
 
 }
 
@@ -54,6 +54,8 @@ bool RockOne::Update(float dt)
 		return true;
 	}
 
+	position.x = position.x + 50;
+
 	if (app->player->pauseMenu == false)
 	{
 		RockOne_List.end->data->GetPosition(position.x, position.y);
@@ -61,27 +63,12 @@ bool RockOne::Update(float dt)
 
 	currentAnim = &rockOne;
 
-	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
-	/*
-	if (app->player->pauseMenu == true)
+	if (app->player->rock1Removed == true)
 	{
-		iPoint NewPosition = position;
-		collider->SetPos(NewPosition.x, NewPosition.y);
-		entityBody->GetPosition(NewPosition.x, NewPosition.y);
-		currentAnim = &Idle_Enemy;
-		currentAnim->loop = false;
-
-		return true;
+		RockOne_List.end->data->body->DestroyFixture(RockOne_List.end->data->body->GetFixtureList());
+		SetToDelete();
 	}
-	if (app->player->pauseMenu == false)
-	{
-		collider->SetPos(position.x, position.y);
-		entityBody->GetPosition(position.x, position.y);
-		currentAnim = &Idle_Enemy;
-		currentAnim->loop = false;
 
-	}
-	*/
 	return true;
 
 }

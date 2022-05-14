@@ -63,27 +63,12 @@ bool FenceTwo::Update(float dt)
 	currentAnim = &fenceTwo;
 
 
-	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
-	/*
-	if (app->player->pauseMenu == true)
+	if (app->player->harborUnlock == true)
 	{
-		iPoint NewPosition = position;
-		collider->SetPos(NewPosition.x, NewPosition.y);
-		entityBody->GetPosition(NewPosition.x, NewPosition.y);
-		currentAnim = &Idle_Enemy;
-		currentAnim->loop = false;
-
-		return true;
+		FenceTwo_List.end->data->body->DestroyFixture(FenceTwo_List.end->data->body->GetFixtureList());
+		SetToDelete();
 	}
-	if (app->player->pauseMenu == false)
-	{
-		collider->SetPos(position.x, position.y);
-		entityBody->GetPosition(position.x, position.y);
-		currentAnim = &Idle_Enemy;
-		currentAnim->loop = false;
 
-	}
-	*/
 	return true;
 
 }

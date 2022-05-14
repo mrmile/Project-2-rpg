@@ -38,7 +38,7 @@ RockTwo::RockTwo(int x, int y) : Entity(x, y)
 
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ROCK_TWO, (Module*)app->entity_manager);
 	//entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
-	RockTwo_List.add(app->physics->CreateColliderRectangle(position.x, position.y, 30, 50));
+	RockTwo_List.add(app->physics->CreateColliderRectangle(position.x, position.y, 74, 90));
 
 }
 
@@ -60,6 +60,13 @@ bool RockTwo::Update(float dt)
 
 
 	currentAnim = &rockTwo;
+
+	if (app->player->rock2Removed == true)
+	{
+		RockTwo_List.end->data->body->DestroyFixture(RockTwo_List.end->data->body->GetFixtureList());
+		SetToDelete();
+	}
+
 	return true;
 
 }

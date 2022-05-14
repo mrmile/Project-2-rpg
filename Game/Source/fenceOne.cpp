@@ -62,28 +62,12 @@ bool FenceOne::Update(float dt)
 
 	currentAnim = &fenceOne;
 
-
-	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
-	/*
-	if (app->player->pauseMenu == true)
+	if (app->player->baseUnlock == true)
 	{
-		iPoint NewPosition = position;
-		collider->SetPos(NewPosition.x, NewPosition.y);
-		entityBody->GetPosition(NewPosition.x, NewPosition.y);
-		currentAnim = &Idle_Enemy;
-		currentAnim->loop = false;
-
-		return true;
+		FenceOne_List.end->data->body->DestroyFixture(FenceOne_List.end->data->body->GetFixtureList());
+		SetToDelete();
 	}
-	if (app->player->pauseMenu == false)
-	{
-		collider->SetPos(position.x, position.y);
-		entityBody->GetPosition(position.x, position.y);
-		currentAnim = &Idle_Enemy;
-		currentAnim->loop = false;
-
-	}
-	*/
+	
 	return true;
 
 }

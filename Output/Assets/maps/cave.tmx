@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.7.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="33" nextobjectid="206">
+<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="35" nextobjectid="214">
  <tileset firstgid="1" name="cave_ground" tilewidth="75" tileheight="39" tilecount="448" columns="16">
   <image source="cave_ground.png" width="1200" height="1092"/>
  </tileset>
  <tileset firstgid="449" name="cave_walls" tilewidth="75" tileheight="156" tilecount="112" columns="16">
   <image source="cave_walls.png" width="1200" height="1092"/>
  </tileset>
+ <tileset firstgid="561" source="object_img_data/puzzle_elements.tsx"/>
  <layer id="23" name="cave_ground" width="100" height="200">
   <properties>
    <property name="Draw" value="1"/>
@@ -80049,12 +80050,8 @@
    <tile/>
   </data>
  </layer>
- <objectgroup id="31" name="rock_one">
-  <object id="204" x="2776" y="2708" width="30" height="30"/>
- </objectgroup>
- <objectgroup id="32" name="rock_two">
-  <object id="205" x="2900" y="2646" width="26" height="28"/>
- </objectgroup>
+ <objectgroup id="31" name="rock_one"/>
+ <objectgroup id="32" name="rock_two"/>
  <objectgroup id="20" name="npc">
   <properties>
    <property name="Collision" type="int" value="1"/>
@@ -80154,6 +80151,18 @@
  </objectgroup>
  <objectgroup color="#aa0000" id="30" name="sensors_TNT_switch2">
   <object id="203" x="4019.33" y="2100" width="30" height="26"/>
+ </objectgroup>
+ <objectgroup id="34" name="rock_one">
+  <object id="206" gid="561" x="3950.5" y="2185" width="75" height="117"/>
+  <object id="207" gid="561" x="3988" y="2210.5" width="75" height="117"/>
+  <object id="208" gid="561" x="4040" y="2109" width="75" height="117"/>
+  <object id="209" gid="561" x="4077.5" y="2137.5" width="75" height="117"/>
+  <object id="210" gid="561" x="4142.5" y="2151" width="75" height="117"/>
+ </objectgroup>
+ <objectgroup id="33" name="rock_two">
+  <object id="211" gid="561" x="4825" y="1662.5" width="75" height="117"/>
+  <object id="212" gid="561" x="4864" y="1684" width="75" height="117"/>
+  <object id="213" gid="561" x="4841.5" y="1731" width="75" height="117"/>
  </objectgroup>
  <objectgroup color="#000000" id="15" name="LEVEL_AREA" visible="0">
   <object id="197" x="2184.85" y="993.939" width="2906.06" height="2103.03"/>
