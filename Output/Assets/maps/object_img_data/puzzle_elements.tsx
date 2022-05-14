@@ -8,6 +8,6 @@
   <image width="60" height="104" source="fence.png"/>
  </tile>
  <tile id="2">
-  <image width="40" height="85" source="switch_L.png"/>
+  <image width="29" height="61" source="switch_L.png"/>
  </tile>
 </tileset>

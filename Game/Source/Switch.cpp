@@ -40,7 +40,7 @@ Switch::Switch(int x, int y) : Entity(x, y)
 	Green_Switch.loop = true;
 	Green_Switch.speed = 0.3f;
 
-
+	isActivated = false;
 
 	position.x = x;
 	position.y = y;
@@ -65,33 +65,27 @@ bool Switch::Update(float dt)
 	if (app->player->pauseMenu == false)
 	{
 		Switch_List.end->data->GetPosition(position.x, position.y);
+		if (position.DistanceTo(app->player->position) < 65)
+		{
+			if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_DOWN && app->player->baseUnlock == true && isActivated == false)
+			{
+
+				isActivated = true;
+			}
+		}
 	}
 
 
-	currentAnim = &Green_Switch;
-
-
-	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
-	/*
-	if (app->player->pauseMenu == true)
+	if (isActivated == false)
 	{
-		iPoint NewPosition = position;
-		collider->SetPos(NewPosition.x, NewPosition.y);
-		entityBody->GetPosition(NewPosition.x, NewPosition.y);
-		currentAnim = &Idle_Enemy;
-		currentAnim->loop = false;
-
-		return true;
+		currentAnim = &Red_Switch;
 	}
-	if (app->player->pauseMenu == false)
+	if (isActivated == true)
 	{
-		collider->SetPos(position.x, position.y);
-		entityBody->GetPosition(position.x, position.y);
-		currentAnim = &Idle_Enemy;
-		currentAnim->loop = false;
-
+		currentAnim = &Green_Switch;
 	}
-	*/
+
+	
 	return true;
 
 }

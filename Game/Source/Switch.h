@@ -24,6 +24,8 @@ private:
 
 
 	int counter;
+
+	int isActivated = false;
 };
 
 #endif 
