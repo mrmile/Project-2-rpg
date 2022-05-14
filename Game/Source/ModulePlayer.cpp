@@ -193,6 +193,8 @@ bool ModulePlayer::Start()
 	computerClick = app->audio->LoadFx("Assets/audio/fx/extra/click.wav");
 	harborUnlockFx = app->audio->LoadFx("Assets/audio/fx/extra/harbor_unlock.wav");
 
+	explosionFx_far = app->audio->LoadFx("Assets/audio/fx/zombies/zombie_grenade_explode_far.wav");
+
 	if (app->sceneMainMap->sceneMainMap == true || app->sceneMotel->sceneMotel == true)
 	{
 		playerWalkSound[0] = app->audio->LoadFx("Assets/audio/fx/ZPlayer/Footsteps/Tile/FootstepTile01.wav");
@@ -262,6 +264,8 @@ bool ModulePlayer::Start()
 
 	readingNote = false;
 	usingComputer = false;
+	usingSwitch = false;
+	usingCardReader = false;
 
 	collider = app->collisions->AddCollider({ position.x + 5, position.y - 56, 45, 56 }, Collider::Type::PLAYER, this); //{ position.x + 5, position.y + 3, 28, 33 
 	
@@ -1901,7 +1905,26 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::TNT_SWITCH)
 		{
+			if (rock1Removed == false)
+			{
+				if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_DOWN)
+				{
+					app->audio->PlayFx(explosionFx_far);
+					rock1Removed = true;
+				}
+			}
+		}
 
+		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::TNT_SWITCH2)
+		{
+			if (rock2Removed == false)
+			{
+				if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_DOWN)
+				{
+					app->audio->PlayFx(explosionFx_far);
+					rock2Removed = true;
+				}
+			}
 		}
 
 		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::SWITCH)

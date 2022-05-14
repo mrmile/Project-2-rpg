@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="30" nextobjectid="202">
+<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="31" nextobjectid="204">
  <tileset firstgid="1" name="cave_ground" tilewidth="75" tileheight="39" tilecount="448" columns="16">
   <image source="cave_ground.png" width="1200" height="1092"/>
  </tileset>
@@ -80145,7 +80145,9 @@
  </objectgroup>
  <objectgroup color="#aa0000" id="29" name="sensors_TNT_switch">
   <object id="200" x="2319.33" y="1985.33" width="26.6667" height="26.6667"/>
-  <object id="201" x="4019.33" y="2100" width="30" height="26"/>
+ </objectgroup>
+ <objectgroup color="#aa0000" id="30" name="sensors_TNT_switch2">
+  <object id="203" x="4019.33" y="2100" width="30" height="26"/>
  </objectgroup>
  <objectgroup color="#000000" id="15" name="LEVEL_AREA" visible="0">
   <object id="197" x="2184.85" y="993.939" width="2906.06" height="2103.03"/>

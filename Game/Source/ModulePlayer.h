@@ -236,6 +236,8 @@ public:
 	uint computerClick = 0;
 	uint harborUnlockFx = 0;
 
+	uint explosionFx_far = 0;
+
 	// The player's colliders
 	Collider* collider = nullptr;
 
@@ -318,13 +320,19 @@ public:
 	// Reading/watching notes or videos
 	bool readingNote = false;
 	bool usingComputer = false;
+	bool usingSwitch = false;
+	bool usingCardReader = false;
+
 	bool harborUnlock = false;
+	bool baseUnlock = false;
+	bool rock1Removed = false;
+	bool rock2Removed = false;
 
 	//FX
 	int walkSoundID = 0;
 	int computerButtonsFX = 0;
 	uint playerHurtSound = 0;
-	uint playerWalkSound[6] = { 0 };
+	uint playerWalkSound[7] = { 0 };
 
 };
 
