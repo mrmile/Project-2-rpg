@@ -230,7 +230,7 @@ bool ModulePlayer::Start()
 	computerExecutableGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 42, "Computer Executable Button", { 407,245,54,50 }, this, computerExecutable, NULL, {});
 	noteComputerDay1GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 45, "Computer Note Button", { 50,75,54,50 }, this, noteComputerDay1, NULL, {});
 	noteComputerDay5GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 46, "Computer Note Button", { 160,190,54,50 }, this, noteComputerDay5, NULL, {});
-	noteComputerDay10GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 47, "Computer Note Button", { 520,250,54,50 }, this, noteComputerDay10, NULL, {});
+	noteComputerDay10GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 47, "Computer Note Button", { 520,235,54,50 }, this, noteComputerDay10, NULL, {});
 	noteComputerDay15GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 43, "Computer Note Button", { 460,40,54,50 }, this, noteComputerDay15, NULL, {});
 	folderComputerGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 44, "Computer Fold Button", { 90,200,54,50 }, this, folderComputer, NULL, {});
 
@@ -328,36 +328,40 @@ bool ModulePlayer::PreUpdate()
 
 bool ModulePlayer::Update(float dt)
 {
-	if (usingComputer == true)
+	if (pauseMenu == false && app->inventoryMenu->showInventory == false && destroyed == false && talking == false && app->player->showCombatHUD == false)
 	{
-		if (computerPhase == 0)
+		if (usingComputer == true)
 		{
-			folderComputerGUI->canClick = true;
-		}
-		if (computerPhase == 1)
-		{
-			noteComputerDay1GUI->canClick = true;
-			noteComputerDay5GUI->canClick = true;
-			noteComputerDay10GUI->canClick = true;
-			noteComputerDay15GUI->canClick = true;
-		}
-		if (computerPhase == 2) //condicion del .exe AlvaroComputer
-		{
-			computerExecutableGUI->canClick = true;
-		}
+			if (computerPhase == 0)
+			{
+				folderComputerGUI->canClick = true;
+			}
+			if (computerPhase == 1)
+			{
+				noteComputerDay1GUI->canClick = true;
+				noteComputerDay5GUI->canClick = true;
+				noteComputerDay10GUI->canClick = true;
+				noteComputerDay15GUI->canClick = true;
+			}
+			if (computerPhase == 2) //condicion del .exe AlvaroComputer
+			{
+				computerExecutableGUI->canClick = true;
+			}
 
-		returnComputerGUI->canClick = true;
+			returnComputerGUI->canClick = true;
+		}
+		if (usingComputer == false)
+		{
+			returnComputerGUI->canClick = false;
+			folderComputerGUI->canClick = false;
+			noteComputerDay1GUI->canClick = false;
+			noteComputerDay5GUI->canClick = false;
+			noteComputerDay10GUI->canClick = false;
+			noteComputerDay15GUI->canClick = false;
+			computerExecutableGUI->canClick = false;
+		}
 	}
-	if (usingComputer == false)
-	{
-		returnComputerGUI->canClick = false;
-		folderComputerGUI->canClick = false;
-		noteComputerDay1GUI->canClick = false;
-		noteComputerDay5GUI->canClick = false;
-		noteComputerDay10GUI->canClick = false;
-		noteComputerDay15GUI->canClick = false;
-		computerExecutableGUI->canClick = false;
-	}
+	
 	if (pauseMenu==true)
 	{
 		iPoint NewPosition = position;
@@ -2005,8 +2009,8 @@ bool ModulePlayer::OnGuiMouseClickEvent(GuiControl* control) {
 	case GuiControlType::BUTTON:
 	{
 		//Checks the GUI element ID
-		if (pauseMenu == false && app->inventoryMenu->showInventory == false && destroyed == false && talking == false)
-		{
+		
+		
 			if (control->id == 41 && returnComputerGUI->canClick == true)
 			{
 				app->audio->PlayFx(computerClick, 0);
@@ -2060,7 +2064,7 @@ bool ModulePlayer::OnGuiMouseClickEvent(GuiControl* control) {
 				computerPhase = 2;
 				note10 = true;
 			}
-		}
+		
 		
 
 
