@@ -1048,12 +1048,12 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		}
 	}
 
-	if (object->name == "item_bunker_key")
+	if (object->name == "sensors_card_reader")
 	{
 		pugi::xml_node NewObject;
 		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
 		{
-			app->particles->AddParticle(app->particles->coin, NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int(), Collider::ITEM_CARD);
+			app->collisions->AddCollider({ NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int(), NewObject.attribute("width").as_int(), NewObject.attribute("height").as_int() }, Collider::Type::DOOR_KEY_READER);
 		}
 	}
 
@@ -1080,11 +1080,7 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		pugi::xml_node NewObject;
 		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
 		{
-			app->particles->AddParticle(app->particles->checkPointGrabbed, NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int(), Collider::NONE);
-			app->particles->AddParticle(app->particles->checkPoint, NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int(), Collider::TNT_SWITCH);
-
-			playerCheckPointPos.x = NewObject.attribute("x").as_int();
-			playerCheckPointPos.y = NewObject.attribute("y").as_int();
+			app->collisions->AddCollider({ NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int(), NewObject.attribute("width").as_int(), NewObject.attribute("height").as_int() }, Collider::Type::TNT_SWITCH);
 		}
 	}
 

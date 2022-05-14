@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="40" nextobjectid="229">
+<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="41" nextobjectid="230">
  <tileset firstgid="1" name="city_walls" tilewidth="75" tileheight="117" tilecount="128" columns="16">
   <image source="city_walls.png" width="1250" height="936"/>
  </tileset>
@@ -15960,6 +15960,7 @@
    <tile/>
    <tile/>
    <tile/>
+   <tile gid="311"/>
    <tile/>
    <tile/>
    <tile/>
@@ -16059,9 +16060,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="311"/>
+   <tile gid="311"/>
    <tile/>
    <tile/>
    <tile/>
@@ -16159,9 +16159,9 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="311"/>
+   <tile gid="311"/>
+   <tile gid="311"/>
    <tile/>
    <tile/>
    <tile/>
@@ -16260,8 +16260,8 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
-   <tile/>
+   <tile gid="311"/>
+   <tile gid="311"/>
    <tile/>
    <tile/>
    <tile/>
@@ -16360,7 +16360,7 @@
    <tile/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="311"/>
    <tile/>
    <tile/>
    <tile/>
@@ -55982,7 +55982,7 @@
    <tile gid="305"/>
    <tile gid="305"/>
    <tile gid="305"/>
-   <tile gid="305"/>
+   <tile/>
    <tile gid="305"/>
    <tile gid="305"/>
    <tile gid="305"/>
@@ -56082,8 +56082,8 @@
    <tile gid="305"/>
    <tile gid="305"/>
    <tile gid="305"/>
-   <tile gid="305"/>
-   <tile gid="305"/>
+   <tile/>
+   <tile/>
    <tile gid="305"/>
    <tile gid="305"/>
    <tile gid="305"/>
@@ -56181,9 +56181,9 @@
    <tile gid="305"/>
    <tile gid="305"/>
    <tile gid="305"/>
-   <tile gid="305"/>
-   <tile gid="305"/>
-   <tile gid="305"/>
+   <tile/>
+   <tile gid="410"/>
+   <tile/>
    <tile gid="305"/>
    <tile gid="305"/>
    <tile gid="305"/>
@@ -56282,8 +56282,8 @@
    <tile gid="305"/>
    <tile gid="305"/>
    <tile gid="305"/>
-   <tile gid="305"/>
-   <tile gid="305"/>
+   <tile/>
+   <tile/>
    <tile gid="305"/>
    <tile gid="305"/>
    <tile gid="305"/>
@@ -56382,7 +56382,7 @@
    <tile gid="305"/>
    <tile gid="305"/>
    <tile gid="305"/>
-   <tile gid="305"/>
+   <tile/>
    <tile gid="305"/>
    <tile gid="305"/>
    <tile gid="305"/>
@@ -140452,6 +140452,9 @@
  <objectgroup color="#ff0000" id="39" name="sensors_EXIT_3">
   <object id="227" x="5017" y="3036" width="186" height="73"/>
   <object id="228" x="5086" y="3114" width="95" height="56"/>
+ </objectgroup>
+ <objectgroup color="#aaaaff" id="40" name="sensors_card_reader">
+  <object id="229" x="2198.5" y="3068" width="34.5" height="20.5"/>
  </objectgroup>
  <objectgroup color="#000000" id="15" name="LEVEL_AREA" visible="0">
   <object id="160" x="868" y="1768" width="4936" height="2024"/>
