@@ -112,6 +112,10 @@ private:
 	SDL_Texture* texture_npcs = nullptr;
 	SDL_Texture* texture_items = nullptr;
 	SDL_Texture* texture_switch = nullptr;
+	SDL_Texture* texture_rockOne = nullptr;
+	SDL_Texture* texture_rockTwo = nullptr;
+	SDL_Texture* texture_fenceOne = nullptr;
+	SDL_Texture* texture_fenceTwo = nullptr;
 
 	EntityHelper HelperQueue[MAX_ENTITIES];
 

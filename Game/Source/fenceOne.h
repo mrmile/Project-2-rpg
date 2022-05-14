@@ -19,10 +19,8 @@ public:
 
 private:
 
-	Animation Red_Switch;
-	Animation Green_Switch;
-
-
+	Animation fenceOne;
+	
 	int counter;
 };
 

@@ -48,6 +48,10 @@ bool EntityManager::Start()
 	texture_enemies_spitter_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_spitter_with_spawn.png");
 	texture_npcs = app->tex->Load("Assets/textures/NPCs/Implemented/General_NPCs.png");
 	texture_switch = app->tex->Load("Assets/textures/SceneObjects/switch.png");
+	texture_rockOne = app->tex->Load("Assets/textures/SceneObjects/rock.png");
+	texture_rockTwo = app->tex->Load("Assets/textures/SceneObjects/rock.png");
+	texture_fenceOne = app->tex->Load("Assets/textures/SceneObjects/fence.png");
+	texture_fenceTwo = app->tex->Load("Assets/textures/SceneObjects/fence.png");
 
 	return true;
 }
@@ -228,28 +232,28 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i].type = EntityType::ROCK_ONE;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				entities[i]->texture = texture_switch;
+				entities[i]->texture = texture_rockOne;
 				break;
 			case EntityType::ROCK_TWO:
 				entities[i] = new RockTwo(info.x, info.y);
 				HelperQueue[i].type = EntityType::ROCK_TWO;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				entities[i]->texture = texture_switch;
+				entities[i]->texture = texture_rockTwo;
 				break;
 			case EntityType::FENCE_ONE:
 				entities[i] = new FenceOne(info.x, info.y);
 				HelperQueue[i].type = EntityType::FENCE_ONE;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				entities[i]->texture = texture_switch;
+				entities[i]->texture = texture_fenceOne;
 				break;
 			case EntityType::FENCE_TWO:
 				entities[i] = new FenceTwo(info.x, info.y);
 				HelperQueue[i].type = EntityType::FENCE_TWO;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				entities[i]->texture = texture_switch;
+				entities[i]->texture = texture_fenceTwo;
 				break;
 			case EntityType::NPC:
 				entities[i] = new Npcs(info.x, info.y);

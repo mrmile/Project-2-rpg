@@ -31,22 +31,14 @@ RockTwo::RockTwo(int x, int y) : Entity(x, y)
 
 	//Have the Soldiers describe a path in the screen taking into account the collisions
 
-	Red_Switch.PushBack({ 0,0,32,60 });
-	Red_Switch.loop = true;
-	Red_Switch.speed = 0.3f;
-
-	Green_Switch.PushBack({ 89,0,32,60 });
-	Green_Switch.loop = true;
-	Green_Switch.speed = 0.3f;
-
-
+	rockTwo.PushBack({ 0,26,74,90 });
 
 	position.x = x;
 	position.y = y;
 
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ROCK_TWO, (Module*)app->entity_manager);
 	//entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
-	RockTwo_List.add(app->physics->CreateColliderRectangle(position.x, position.y, 20, 50));
+	RockTwo_List.add(app->physics->CreateColliderRectangle(position.x, position.y, 30, 50));
 
 }
 
@@ -67,7 +59,7 @@ bool RockTwo::Update(float dt)
 	}
 
 
-	currentAnim = &Green_Switch;
+	currentAnim = &rockTwo;
 	return true;
 
 }
