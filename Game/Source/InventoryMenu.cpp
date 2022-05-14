@@ -82,7 +82,8 @@ bool InventoryMenu::Start()
 	unequipButton = app->tex->Load("Assets/textures/GUI/Inventory/unequipButton.png");
 	useButton = app->tex->Load("Assets/textures/GUI/Inventory/useButton.png");
 	deleteButton = app->tex->Load("Assets/textures/GUI/Inventory/deleteButton.png");
-	//Still need button textures the position does not matter right now as we are gonna update it 
+
+	objectEquipedFX = app->audio->LoadFx("Assets/audio/fx/UISounds/objectEquipedFX.wav");
 
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
 	scoreFont = app->fonts->Load("Assets/textures/Fonts/rtype_font3.png", lookupTable, 2);
@@ -174,6 +175,7 @@ bool InventoryMenu::Update(float dt)
 	if (Equipment[2].type == ItemType::NONE)
 	{
 		app->player->PlayerMaxHP = 100;
+		combatSuitStrenghtPoints = 0;
 	}
 
 	return true;
@@ -192,7 +194,7 @@ bool InventoryMenu::PostUpdate()
 		sprintf_s(scoreText, 10, "%7d", app->player->PlayerMaxHP);
 		app->fonts->BlitText(117, 28, scoreFont, scoreText);
 		/*app->fonts->BlitText(106, 47, scoreFont, scoreText);*/
-		sprintf_s(scoreText2, 10, "%7d", app->player->MeleeDamage + app->player->EquipmentDamage);
+		sprintf_s(scoreText2, 10, "%7d", app->player->MeleeDamage + app->player->EquipmentDamage + combatSuitStrenghtPoints);
 		app->fonts->BlitText(106, 40, scoreFont2, scoreText2);
 
 		if (app->player->playerHP >= app->player->PlayerMaxHP)
@@ -690,6 +692,7 @@ bool InventoryMenu::EquipItemSelected(ItemList* item)
 		//Also need to create a function for the player that updates it's damage in function of the item equipped
 		if (item->type == ItemType::OBJECT_DEFAULT_GUN || item->type == ItemType::OBJECT_SHORT_SCOPE_GUN || item->type == ItemType::OBJECT_lONG_SCOPE_GUN)
 		{
+			app->audio->PlayFx(objectEquipedFX, 0);
 			Equipment[0].type = item->type;
 			Equipment[0].alreadyEquipped = true;
 			Equipment[0].amount = 1;
@@ -717,6 +720,7 @@ bool InventoryMenu::EquipItemSelected(ItemList* item)
 		//Also need to create a function for the player that updates it's damage in function of the item equipped
 		if (item->type == ItemType::OBJECT_KNIFE)
 		{
+			app->audio->PlayFx(objectEquipedFX, 0);
 			Equipment[1].type = item->type;
 			Equipment[1].alreadyEquipped = true;
 			Equipment[1].amount = 1;
@@ -733,6 +737,7 @@ bool InventoryMenu::EquipItemSelected(ItemList* item)
 	{
 		if (item->type == ItemType::OBJECT_SUIT)
 		{
+			app->audio->PlayFx(objectEquipedFX, 0);
 			//Also need to create a function for the player that updates it's damage in function of the item equipped
 			Equipment[2].type = item->type;
 			Equipment[2].alreadyEquipped = true;
@@ -743,6 +748,7 @@ bool InventoryMenu::EquipItemSelected(ItemList* item)
 			{
 				app->player->playerHP += 100;
 				app->player->PlayerMaxHP = 200;
+				combatSuitStrenghtPoints = 8;
 			}
 		}
 		

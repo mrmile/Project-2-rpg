@@ -141,6 +141,10 @@ public:
 
 	int mouseX, mouseY;
 
+	uint objectEquipedFX = 0;
+
+	int combatSuitStrenghtPoints = 0;
+
 	uint score = 10;
 	int scoreFont = -1;
 	char scoreText[10] = { "\0" };
