@@ -19,7 +19,8 @@ public:
 
 private:
 
-	Animation Idle_Switch;
+	Animation Red_Switch;
+	Animation Green_Switch;
 
 
 	int counter;

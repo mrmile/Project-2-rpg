@@ -32,9 +32,13 @@ Switch::Switch(int x, int y) : Entity(x, y)
 
 	//Have the Soldiers describe a path in the screen taking into account the collisions
 
-	Idle_Switch.PushBack({ 0,0,32,60 });
-	Idle_Switch.loop = true;
-	Idle_Switch.speed = 0.3f;
+	Red_Switch.PushBack({ 0,0,32,60 });
+	Red_Switch.loop = true;
+	Red_Switch.speed = 0.3f;
+
+	Green_Switch.PushBack({ 89,0,32,60 });
+	Green_Switch.loop = true;
+	Green_Switch.speed = 0.3f;
 
 
 
@@ -64,7 +68,7 @@ bool Switch::Update(float dt)
 	}
 
 
-	currentAnim = &Idle_Switch;
+	currentAnim = &Green_Switch;
 
 
 	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
