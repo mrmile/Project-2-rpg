@@ -168,6 +168,12 @@ bool ModulePlayer::Start()
 	selectedEnemy = app->tex->Load("Assets/textures/CircleSelectionInRange.png");
 	selectedEnemyNotInRange = app->tex->Load("Assets/textures/CircleSelection.png");
 
+	noteDay1 = app->tex->Load("Assets/textures/extras/day1_text.png");
+	noteDay5 = app->tex->Load("Assets/textures/extras/day5_text.png");
+	noteDay10 = app->tex->Load("Assets/textures/extras/day10_text.png");
+	noteDay15 = app->tex->Load("Assets/textures/extras/day15_text.png");
+
+
 	returnComputer = app->tex->Load("Assets/textures/extras/returnComputer.png");
 	computerExecutable = app->tex->Load("Assets/textures/extras/computerExecutable.png");
 	noteComputerDay1 = app->tex->Load("Assets/textures/extras/noteComputerDay1.png");
@@ -221,7 +227,7 @@ bool ModulePlayer::Start()
 	}
 
 	returnComputerGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 41, "Computer Return Button", { 35,40,29,23 }, this, returnComputer, NULL, {});
-	computerExecutableGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 42, "Computer Executable Button", { 75,250,54,50 }, this, computerExecutable, NULL, {});
+	computerExecutableGUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 42, "Computer Executable Button", { 407,245,54,50 }, this, computerExecutable, NULL, {});
 	noteComputerDay1GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 45, "Computer Note Button", { 50,75,54,50 }, this, noteComputerDay1, NULL, {});
 	noteComputerDay5GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 46, "Computer Note Button", { 160,190,54,50 }, this, noteComputerDay5, NULL, {});
 	noteComputerDay10GUI = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 47, "Computer Note Button", { 520,250,54,50 }, this, noteComputerDay10, NULL, {});
@@ -1655,18 +1661,19 @@ bool ModulePlayer::PostUpdate()
 
 			if (computerPhase == 2 && note1 == true) //AlvaroComputer Dibujar aqui las texturas de las notas
 			{
-				app->render->DrawTexture2(doctorNote, 0, 0, NULL);
+				app->render->DrawTexture2(noteDay1, 0, 0, NULL);
 			}
 			if (computerPhase == 2 && note5 == true) //AlvaroComputer Dibujar aqui las texturas de las notas
 			{
-				app->render->DrawTexture2(doctorNote, 0, 0, NULL);
+				app->render->DrawTexture2(noteDay5, 0, 0, NULL);
 			}
 			if (computerPhase == 2 && note10 == true) //AlvaroComputer Dibujar aqui las texturas de las notas
 			{
-				app->render->DrawTexture2(doctorNote, 0, 0, NULL);
+				app->render->DrawTexture2(noteDay10, 0, 0, NULL);
 			}
 			if (computerPhase == 2 && note15 == true)
 			{
+				app->render->DrawTexture2(noteDay15, 0, 0, NULL);
 				if (computerExecutableGUI->state == GuiControlState::NORMAL && computerExecutableGUI->canClick == true) computerExecutableGUI->SetTexture(computerExecutable);
 				computerExecutableGUI->Draw(app->render);
 				//usingComputer = false;
@@ -1689,6 +1696,11 @@ bool ModulePlayer::CleanUp()
 	app->tex->UnLoad(gameOverScreen);
 	app->tex->UnLoad(selectedEnemy);
 	app->tex->UnLoad(selectedEnemyNotInRange);
+
+	app->tex->UnLoad(noteDay1);
+	app->tex->UnLoad(noteDay5);
+	app->tex->UnLoad(noteDay10);
+	app->tex->UnLoad(noteDay15);
 
 	app->tex->UnLoad(returnComputer);
 	app->tex->UnLoad(folderComputer);

@@ -115,6 +115,11 @@ public:
 	SDL_Texture* noteComputerDay15 = nullptr;
 	SDL_Texture* folderComputer = nullptr;
 
+	SDL_Texture* noteDay1 = nullptr;
+	SDL_Texture* noteDay5 = nullptr;
+	SDL_Texture* noteDay10 = nullptr;
+	SDL_Texture* noteDay15 = nullptr;
+
 	GuiButton* returnComputerGUI;
 	GuiButton* computerExecutableGUI;
 	GuiButton* noteComputerDay1GUI;
