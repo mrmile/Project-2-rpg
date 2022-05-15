@@ -43,7 +43,7 @@ void Entity::Draw()
 {
 	if (currentAnim != nullptr)
 	{
-		app->render->DrawTexture(texture, position.x, position.y, &(currentAnim->GetCurrentFrame()));
+			app->render->DrawTexture(texture, position.x - 25, position.y - 46, &(currentAnim->GetCurrentFrame()));
 	}
 }
 
