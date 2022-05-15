@@ -87,7 +87,7 @@ bool CombatMenu::Update(float dt)
 	{
 		if (transitionStarting == true)
 		{
-			app->transitions_manager->SelectTransition(1, 2500, 2500);
+			app->transitions_manager->SelectTransition(1, 0, 25);
 			transitionStarting = false;
 		}
 	}

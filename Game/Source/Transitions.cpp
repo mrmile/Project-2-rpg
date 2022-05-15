@@ -23,11 +23,11 @@ bool Transitions::Start()
 	
 	app->win->GetWindowSize(win_width, win_height);
 
-	combatFull = app->tex->Load("Assets/textures/Scences/CombatTransition/FullOpacity.png");
-	combat80 = app->tex->Load("Assets/textures/Scences/CombatTransition/80%opacity.png");
-	combat60 = app->tex->Load("Assets/textures/Scences/CombatTransition/60%opacity.png");
-	combat40 = app->tex->Load("Assets/textures/Scences/CombatTransition/40%.png");
-	combat20 = app->tex->Load("Assets/textures/Scences/CombatTransition/20%.png");
+	combatFull = app->tex->Load("Assets/textures/FullOpacity.png");
+	combat80 = app->tex->Load("Assets/textures/80%opacity.png");
+	combat60 = app->tex->Load("Assets/textures/60%opacity.png");
+	combat40 = app->tex->Load("Assets/textures/40%.png");
+	combat20 = app->tex->Load("Assets/textures/20%.png");
 
 	return true;
 }
@@ -128,11 +128,11 @@ void Transitions::DrawTransition1()
 	
 	if (currentStep == Fade_Step::TRANSTITION)
 	{
-		if (timer_in_transition >= 2500 && timer_in_transition < timer_out_transition / 5)
+		if (timer_in_transition >= 0 && timer_in_transition < timer_out_transition / 5)
 		{
 			app->render->DrawTexture2(combat20, 0, 0, NULL);
 		}
-		if (timer_in_transition >= timer_in_transition < timer_out_transition / 5 && timer_in_transition < (timer_out_transition / 5)*2)
+		if (timer_in_transition >= timer_out_transition / 5 && timer_in_transition < (timer_out_transition / 5)*2)
 		{
 			app->render->DrawTexture2(combat40, 0, 0, NULL);
 		}
@@ -151,23 +151,23 @@ void Transitions::DrawTransition1()
 	}
 	if (currentStep == Fade_Step::FROM_TRANSITION)
 	{
-		if (timer_out_transition>= timer_in_transition && timer_out_transition > (timer_in_transition/5)*4)
+		if (timer_out_transition < timer_in_transition && timer_out_transition > (timer_in_transition/5)*4)
 		{
 			app->render->DrawTexture2(combatFull, 0, 0, NULL);
 		}
-		if (timer_out_transition >= (timer_in_transition / 5) * 4 && timer_out_transition > (timer_in_transition / 5) * 3)
+		if (timer_out_transition <= (timer_in_transition / 5) * 4 && timer_out_transition > (timer_in_transition / 5) * 3)
 		{
 			app->render->DrawTexture2(combat80, 0, 0, NULL);
 		}
-		if (timer_out_transition >= (timer_in_transition / 5) * 3 && timer_out_transition > (timer_in_transition / 5) * 2)
+		if (timer_out_transition <= (timer_in_transition / 5) * 3 && timer_out_transition > (timer_in_transition / 5) * 2)
 		{
 			app->render->DrawTexture2(combat60, 0, 0, NULL);
 		}
-		if (timer_out_transition >= (timer_in_transition / 5) * 2 && timer_out_transition > (timer_in_transition / 5))
+		if (timer_out_transition <= (timer_in_transition / 5) * 2 && timer_out_transition > (timer_in_transition / 5))
 		{
 			app->render->DrawTexture2(combat40, 0, 0, NULL);
 		}
-		if (timer_out_transition >= (timer_in_transition / 5) && timer_out_transition > 0)
+		if (timer_out_transition <= (timer_in_transition / 5) && timer_out_transition > 0)
 		{
 			app->render->DrawTexture2(combat20, 0, 0, NULL);
 		}
