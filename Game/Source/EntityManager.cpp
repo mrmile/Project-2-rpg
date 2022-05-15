@@ -354,28 +354,28 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				entities[i]->texture = texture_switch;
 				break;
 			case EntityType::SWITCH_KEY2:
-				entities[i] = new Switch(info.x, info.y);
+				entities[i] = new Switch2(info.x, info.y);
 				HelperQueue[i].type = EntityType::SWITCH_KEY2;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
 				entities[i]->texture = texture_switch;
 				break;
 			case EntityType::SWITCH_KEY3:
-				entities[i] = new Switch(info.x, info.y);
+				entities[i] = new Switch3(info.x, info.y);
 				HelperQueue[i].type = EntityType::SWITCH_KEY3;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
 				entities[i]->texture = texture_switch;
 				break;
 			case EntityType::SWITCH_KEY4:
-				entities[i] = new Switch(info.x, info.y);
+				entities[i] = new Switch4(info.x, info.y);
 				HelperQueue[i].type = EntityType::SWITCH_KEY4;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
 				entities[i]->texture = texture_switch;
 				break;
 			case EntityType::SWITCH_KEY5:
-				entities[i] = new Switch(info.x, info.y);
+				entities[i] = new Switch5(info.x, info.y);
 				HelperQueue[i].type = EntityType::SWITCH_KEY5;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
