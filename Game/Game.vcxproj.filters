@@ -187,6 +187,9 @@
     <ClCompile Include="Source\Switch5.cpp">
       <Filter>General\Entities\PuzzlesElements</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Transitions.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -404,6 +407,9 @@
     </ClInclude>
     <ClInclude Include="Source\Switch5.h">
       <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Transitions.h">
+      <Filter>General</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
