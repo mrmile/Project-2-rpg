@@ -32,7 +32,7 @@ Npcs3::Npcs3(int x, int y) : Entity(x, y)
 
 	//Have the Soldiers describe a path in the screen taking into account the collisions
 
-	Idle_Enemy.PushBack({ 358,47,30,61 });
+	Idle_Enemy.PushBack({ 358,46,30,61 });
 	Idle_Enemy.loop = true;
 	Idle_Enemy.speed = 0.3f;
 
