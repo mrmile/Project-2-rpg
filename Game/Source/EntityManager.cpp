@@ -524,97 +524,97 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->Standart_Zombie_List.end->data->body->DestroyFixture(entities[i]->Standart_Zombie_List.end->data->body->GetFixtureList());
-					/*entities[i] = nullptr;*/
+					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::ZOMBIE_RUNNER)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->Runner_Zombie_List.end->data->body->DestroyFixture(entities[i]->Runner_Zombie_List.end->data->body->GetFixtureList());
-					/*entities[i] = nullptr;*/
+					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::ZOMBIE_SPITTER)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->Spitter_Zombie_List.end->data->body->DestroyFixture(entities[i]->Spitter_Zombie_List.end->data->body->GetFixtureList());
-					/*entities[i] = nullptr;*/
+					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::SWITCH_KEY)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
-					/*entities[i] = nullptr;*/
+					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::SWITCH_KEY2)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->Switch_List2.end->data->body->DestroyFixture(entities[i]->Switch_List2.end->data->body->GetFixtureList());
-					/*entities[i] = nullptr;*/
+					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::SWITCH_KEY3)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->Switch_List3.end->data->body->DestroyFixture(entities[i]->Switch_List3.end->data->body->GetFixtureList());
-					/*entities[i] = nullptr;*/
+					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::SWITCH_KEY4)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->Switch_List4.end->data->body->DestroyFixture(entities[i]->Switch_List4.end->data->body->GetFixtureList());
-					/*entities[i] = nullptr;*/
+					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::SWITCH_KEY5)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->Switch_List5.end->data->body->DestroyFixture(entities[i]->Switch_List5.end->data->body->GetFixtureList());
-					/*entities[i] = nullptr;*/
+					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::ROCK_ONE)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->RockOne_List.end->data->body->DestroyFixture(entities[i]->RockOne_List.end->data->body->GetFixtureList());
-					/*entities[i] = nullptr;*/
+					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::ROCK_TWO)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->RockTwo_List.end->data->body->DestroyFixture(entities[i]->RockTwo_List.end->data->body->GetFixtureList());
-					/*entities[i] = nullptr;*/
+					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::FENCE_ONE)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->FenceOne_List.end->data->body->DestroyFixture(entities[i]->FenceOne_List.end->data->body->GetFixtureList());
-					/*entities[i] = nullptr;*/
+					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::FENCE_TWO)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->FenceTwo_List.end->data->body->DestroyFixture(entities[i]->FenceTwo_List.end->data->body->GetFixtureList());
-					/*entities[i] = nullptr;*/
+					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::NPC)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->NPC_List.end->data->body->DestroyFixture(entities[i]->NPC_List.end->data->body->GetFixtureList());
-					/*entities[i] = nullptr;*/
+					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::NPC2)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->NPC2_List.end->data->body->DestroyFixture(entities[i]->NPC2_List.end->data->body->GetFixtureList());
-					/*entities[i] = nullptr;*/
+					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::NPC3)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->NPC3_List.end->data->body->DestroyFixture(entities[i]->NPC3_List.end->data->body->GetFixtureList());
-					/*entities[i] = nullptr;*/
+					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::NPC4)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->NPC4_List.end->data->body->DestroyFixture(entities[i]->NPC4_List.end->data->body->GetFixtureList());
-					/*entities[i] = nullptr;*/
+					entities[i] = nullptr;
 				}
 
 				entityPos = entityPos.next_sibling();

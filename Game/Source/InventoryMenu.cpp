@@ -145,6 +145,7 @@ bool InventoryMenu::Update(float dt)
 		EquipItem->canClick = true;
 		UseItem->canClick = true;
 		DeEquipButton->canClick = true;
+
 	}
 	if (showInventory == false)
 	{
@@ -804,4 +805,80 @@ void InventoryMenu::UpdateEquipment()
 		}
 	}
 
+}
+
+bool InventoryMenu::SaveState(pugi::xml_node& data) const
+{
+	
+	for (uint i = 0; i < MAX_ITEMS; ++i)
+	{
+		if (itemList[i].type != ItemType::NONE)
+		{
+			int type = (int)itemList[i].type;
+			pugi::xml_node item = data.append_child("item_list");
+			item.append_attribute("type") = type;
+			item.append_attribute("amount") = itemList[i].amount;
+			item.append_attribute("usable") = itemList[i].usable;		
+			item.append_attribute("equipable") = itemList[i].equipable;
+			item.append_attribute("already_equipped") = itemList[i].alreadyEquipped;
+
+			item.next_sibling("item_list");
+		}
+	}
+	for (uint i = 0; i < 3; i++)
+	{
+		if (Equipment[i].type != ItemType::NONE)
+		{
+			int type = (int)Equipment[i].type;
+			pugi::xml_node equipment = data.append_child("equipment_list");
+
+			equipment.append_attribute("type") = type;
+			equipment.append_attribute("amount") = Equipment[i].amount;
+			equipment.append_attribute("usable") = Equipment[i].usable;
+			equipment.append_attribute("equipable") = Equipment[i].equipable;
+			equipment.append_attribute("already_equipped") = Equipment[i].alreadyEquipped;
+
+			equipment.next_sibling("equipment_list");
+		}
+	}
+
+	return true;
+
+}
+bool InventoryMenu::LoadState(pugi::xml_node& data)
+{
+	pugi::xml_node item = data.child("item_list");
+	pugi::xml_node equipment = data.child("equipment_list");
+
+	
+	for (uint i = 0; i < MAX_ITEMS; ++i)
+	{
+		if (itemList[i].type == ItemType::NONE)
+		{
+			itemList[i].type = (ItemType)item.attribute("type").as_int();
+			itemList[i].amount = item.attribute("amount").as_int();
+			itemList[i].usable = item.attribute("usable").as_bool();
+			itemList[i].equipable = item.attribute("equipable").as_bool();
+			itemList[i].alreadyEquipped = item.attribute("already_equipped").as_bool();
+
+		}
+		item = item.next_sibling();
+	}
+
+	for (uint i = 0; i < 3; ++i)
+	{
+		if (Equipment[i].type == ItemType::NONE)
+		{
+			Equipment[i].type = (ItemType)equipment.attribute("type").as_int();
+			Equipment[i].amount = equipment.attribute("amount").as_int();
+			Equipment[i].usable = equipment.attribute("usable").as_bool();
+			Equipment[i].equipable = equipment.attribute("equipable").as_bool();
+			Equipment[i].alreadyEquipped = equipment.attribute("already_equipped").as_bool();
+
+		}
+		equipment = equipment.next_sibling();
+	}
+	
+
+	return true;
 }

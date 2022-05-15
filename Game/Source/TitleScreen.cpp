@@ -22,6 +22,7 @@
 #include "Entity.h"
 #include "SceneBase.h"
 #include "QuestManager.h"
+#include "InventoryMenu.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -227,6 +228,7 @@ bool TitleScreen::Update(float dt)
 			app->map->Enable();
 			app->particles->Enable();
 			app->sceneMainMap->Enable();
+			app->inventoryMenu->Enable();
 			app->player->Enable();
 			app->entity_manager->Enable();
 			app->fonts->Enable();

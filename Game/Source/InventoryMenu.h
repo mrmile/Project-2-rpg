@@ -90,6 +90,9 @@ public:
 
 	bool EquipItemSelected(ItemList* item);
 
+	bool LoadState(pugi::xml_node&);
+	bool SaveState(pugi::xml_node&) const;
+
 private:
 
 	SDL_Texture* inventoryHUD = nullptr;

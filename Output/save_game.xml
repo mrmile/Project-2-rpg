@@ -11,12 +11,14 @@
 	<TitleScreen>
 		<saved_game bool="true" Fx="90" Music="90" FullScreen="false" />
 	</TitleScreen>
+	<CreditsScreen />
 	<SceneMainMap />
 	<SceneCave />
 	<SceneBase />
-	<:anonymous />
+	<SceneMotel />
+	<ScenePlatform />
 	<player>
-		<position x="3115" y="3238" />
+		<position x="3300" y="3078" />
 		<atributes score="0" hp="100" lives="3" timer="450" entranceID="0" sceneMainMap="true" sceneCave="false" sceneBase="false" />
 	</player>
 	<entities>
@@ -40,17 +42,36 @@
 		<atributes entityHp="1" />
 		<position x="3293" y="2157" />
 		<atributes entityHp="1" />
+		<position x="2208" y="3086" />
+		<atributes entityHp="1" />
+		<position x="4498" y="2944" />
+		<atributes entityHp="1" />
+		<position x="2471" y="2840" />
+		<atributes entityHp="1" />
+		<position x="3057" y="2971" />
+		<atributes entityHp="1" />
+		<position x="2868" y="3621" />
+		<atributes entityHp="1" />
+		<position x="3972" y="3359" />
+		<atributes entityHp="1" />
+		<position x="3089" y="2068" />
+		<atributes entityHp="1" />
 	</entities>
 	<:anonymous />
 	<:anonymous />
 	<:anonymous />
 	<pathfinding />
-	<guiManager />
-	<PauseMenu />
+	<InventoryMenu>
+		<item_list type="6" amount="1" usable="false" equipable="true" already_equipped="false" />
+	</InventoryMenu>
 	<PauseMenu />
 	<DialogManager />
+	<QuestManager />
+	<PauseMenu />
+	<guiManager />
+	<:anonymous />
 	<GameManager />
 	<renderer>
-		<camera x="-5620" y="-6121" />
+		<camera x="-5990" y="-5801" />
 	</renderer>
 </save_state>
