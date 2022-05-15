@@ -65,7 +65,7 @@ public:
 	unsigned int LoadFx(const char* path);
 
 	// Play a previously loaded WAV
-	bool PlayFxSpatially(unsigned int fx, iPoint soundGeneratorPosition, int repeat = 0);
+	bool PlayFxSpatially(unsigned int fx, iPoint soundGeneratorPosition, int channel = -1, int repeat = 0);
 
 	bool PlayFx(unsigned int fx, int repeat = 0);
 

@@ -470,7 +470,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 
 void EntityManager::RegisterEntitesInCombat(Entity* entity)
 {
-	if (entity->type != EntityType::NPC && entity->type != EntityType::NPC2 && entity->type != EntityType::NPC3 && entity->type != EntityType::NPC4 && entity->type != EntityType::SWITCH_KEY && entity->type != EntityType::ROCK_ONE && entity->type != EntityType::ROCK_TWO && entity->type != EntityType::FENCE_ONE && entity->type != EntityType::FENCE_TWO)
+	if (entity->type != EntityType::NPC && entity->type != EntityType::NPC2 && entity->type != EntityType::NPC3 && entity->type != EntityType::NPC4 && entity->type != EntityType::SWITCH_KEY && entity->type != EntityType::SWITCH_KEY2 && entity->type != EntityType::SWITCH_KEY3 && entity->type != EntityType::SWITCH_KEY4 && entity->type != EntityType::SWITCH_KEY5 && entity->type != EntityType::ROCK_ONE && entity->type != EntityType::ROCK_TWO && entity->type != EntityType::FENCE_ONE && entity->type != EntityType::FENCE_TWO)
 	{
 		if (entity->entityState == GameState::OutOfCombat)
 		{

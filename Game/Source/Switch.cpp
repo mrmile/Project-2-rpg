@@ -86,7 +86,7 @@ void Switch::Update(float dt)
 			if (app->player->baseUnlock == true && counter % 120 == 0)
 			{
 				iPoint NewPosition2 = position;
-				app->audio->PlayFxSpatially(app->player->alarmSwitchFx, NewPosition2);
+				app->audio->PlayFxSpatially(app->player->alarmSwitch1Fx, NewPosition2);
 			}
 		}
 		if (isActivated == true)

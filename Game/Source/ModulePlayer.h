@@ -238,8 +238,13 @@ public:
 
 	uint explosionFx_far = 0;
 	uint alarmCardReaderFx = 0;
-	uint alarmSwitchFx = 0;
+	uint alarmSwitch1Fx = 0;
+	uint alarmSwitch2Fx = 0;
+	uint alarmSwitch3Fx = 0;
+	uint alarmSwitch4Fx = 0;
+	uint alarmSwitch5Fx = 0;
 	uint switchOkFx = 0;
+	uint decodeButtonFx = 0;
 
 	// The player's colliders
 	Collider* collider = nullptr;

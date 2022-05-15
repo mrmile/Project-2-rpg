@@ -66,7 +66,7 @@ bool Audio::Update(float dt)
 {
 
 	if (playMusicSpatially == false) Mix_VolumeMusic(SliderLevelMusic);
-	Mix_Volume(-1, SliderLevelFX);
+	//Mix_Volume(-1, SliderLevelFX);
 
 	return true;
 }
@@ -177,7 +177,7 @@ unsigned int Audio::LoadFx(const char* path)
 }
 
 // Play WAV
-bool Audio::PlayFxSpatially(unsigned int id, iPoint soundGeneratorPosition, int repeat)
+bool Audio::PlayFxSpatially(unsigned int id, iPoint soundGeneratorPosition, int channel, int repeat)
 {
 	bool ret = false;
 
@@ -185,15 +185,15 @@ bool Audio::PlayFxSpatially(unsigned int id, iPoint soundGeneratorPosition, int 
 		return false;
 
 	// Todo 3 (done): Finish the new PlayFx function to be able to play sound effects spatially
-	int setChunkVolume = SliderLevelFX - (sqrt(pow(app->player->position.x - soundGeneratorPosition.x, 2) + pow(app->player->position.y - soundGeneratorPosition.y, 2)) / 15);
+	int setChunkVolume = SliderLevelFX - (sqrt(pow(app->player->position.x - soundGeneratorPosition.x, 2) + pow(app->player->position.y - soundGeneratorPosition.y, 2)) / 10);
 
 	if (setChunkVolume <= 0) setChunkVolume = 0;
 
 	if (id > 0 && id <= fx.count())
 	{
-		Mix_PlayChannel(-1, fx[id - 1], repeat);
-
 		Mix_VolumeChunk(fx[id - 1], setChunkVolume);
+
+		Mix_PlayChannel(-1, fx[id - 1], repeat);
 	}
 
 	return ret;
@@ -209,6 +209,8 @@ bool Audio::PlayFx(unsigned int id, int repeat)
 
 	if (id > 0 && id <= fx.count())
 	{
+		Mix_VolumeChunk(fx[id - 1], SliderLevelFX);
+
 		Mix_PlayChannel(-1, fx[id - 1], repeat);
 	}
 

@@ -585,8 +585,14 @@ bool ModulePlayer::Start()
 	computerClick = app->audio->LoadFx("Assets/audio/fx/extra/click.wav");
 	harborUnlockFx = app->audio->LoadFx("Assets/audio/fx/extra/harbor_unlock.wav");
 	alarmCardReaderFx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_card_reader.wav");
-	alarmSwitchFx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch.wav");
 	switchOkFx = app->audio->LoadFx("Assets/audio/fx/extra/switch_ok.wav");
+	decodeButtonFx = app->audio->LoadFx("Assets/audio/fx/extra/decode_button.wav");
+
+	alarmSwitch1Fx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch.wav");
+	alarmSwitch2Fx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch2.wav");
+	alarmSwitch3Fx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch3.wav");
+	alarmSwitch4Fx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch4.wav");
+	alarmSwitch5Fx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch5.wav");
 
 	explosionFx_far = app->audio->LoadFx("Assets/audio/fx/zombies/zombie_grenade_explode_far.wav");
 
