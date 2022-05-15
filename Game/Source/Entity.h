@@ -41,6 +41,10 @@ public:
 	List<PhysBody*> NPC3_List;
 	List<PhysBody*> NPC4_List;
 	List<PhysBody*> Switch_List;
+	List<PhysBody*> Switch_List2;
+	List<PhysBody*> Switch_List3;
+	List<PhysBody*> Switch_List4;
+	List<PhysBody*> Switch_List5;
 	List<PhysBody*> RockOne_List;
 	List<PhysBody*> RockTwo_List;
 	List<PhysBody*> FenceOne_List;

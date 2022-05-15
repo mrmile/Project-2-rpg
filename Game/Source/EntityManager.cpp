@@ -18,6 +18,10 @@
 #include "Zombie_Runner.h"
 #include "Zombie_Spitter.h"
 #include "Switch.h"
+#include "Switch2.h"
+#include "Switch3.h"
+#include "Switch4.h"
+#include "Switch5.h"
 #include "rockOne.h"
 #include "rockTwo.h"
 #include "fenceOne.h"
@@ -136,26 +140,26 @@ bool EntityManager::Update(float dt)
 			if (entities[i]->type == EntityType::SWITCH_KEY2)
 			{
 				entities[i]->SetToDelete();
-				entities[i]->Switch_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->Switch_List.end->data->body->SetAwake(false);
+				entities[i]->Switch_List2.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Switch_List2.end->data->body->SetAwake(false);
 			}
 			if (entities[i]->type == EntityType::SWITCH_KEY3)
 			{
 				entities[i]->SetToDelete();
-				entities[i]->Switch_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->Switch_List.end->data->body->SetAwake(false);
+				entities[i]->Switch_List3.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Switch_List3.end->data->body->SetAwake(false);
 			}
 			if (entities[i]->type == EntityType::SWITCH_KEY4)
 			{
 				entities[i]->SetToDelete();
-				entities[i]->Switch_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->Switch_List.end->data->body->SetAwake(false);
+				entities[i]->Switch_List4.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Switch_List4.end->data->body->SetAwake(false);
 			}
 			if (entities[i]->type == EntityType::SWITCH_KEY5)
 			{
 				entities[i]->SetToDelete();
-				entities[i]->Switch_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->Switch_List.end->data->body->SetAwake(false);
+				entities[i]->Switch_List5.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Switch_List5.end->data->body->SetAwake(false);
 			}
 			if (entities[i]->type == EntityType::ROCK_ONE)
 			{
@@ -226,19 +230,19 @@ bool EntityManager::CleanUp()
 			}
 			if (HelperQueue[i].type == EntityType::SWITCH_KEY2)
 			{
-				entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+				entities[i]->Switch_List2.end->data->body->DestroyFixture(entities[i]->Switch_List2.end->data->body->GetFixtureList());
 			}
 			if (HelperQueue[i].type == EntityType::SWITCH_KEY3)
 			{
-				entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+				entities[i]->Switch_List3.end->data->body->DestroyFixture(entities[i]->Switch_List3.end->data->body->GetFixtureList());
 			}
 			if (HelperQueue[i].type == EntityType::SWITCH_KEY4)
 			{
-				entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+				entities[i]->Switch_List4.end->data->body->DestroyFixture(entities[i]->Switch_List4.end->data->body->GetFixtureList());
 			}
 			if (HelperQueue[i].type == EntityType::SWITCH_KEY5)
 			{
-				entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+				entities[i]->Switch_List5.end->data->body->DestroyFixture(entities[i]->Switch_List5.end->data->body->GetFixtureList());
 			}
 			if (HelperQueue[i].type == EntityType::ROCK_ONE)
 			{
@@ -351,28 +355,28 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				break;
 			case EntityType::SWITCH_KEY2:
 				entities[i] = new Switch(info.x, info.y);
-				HelperQueue[i].type = EntityType::SWITCH_KEY;
+				HelperQueue[i].type = EntityType::SWITCH_KEY2;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
 				entities[i]->texture = texture_switch;
 				break;
 			case EntityType::SWITCH_KEY3:
 				entities[i] = new Switch(info.x, info.y);
-				HelperQueue[i].type = EntityType::SWITCH_KEY;
+				HelperQueue[i].type = EntityType::SWITCH_KEY3;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
 				entities[i]->texture = texture_switch;
 				break;
 			case EntityType::SWITCH_KEY4:
 				entities[i] = new Switch(info.x, info.y);
-				HelperQueue[i].type = EntityType::SWITCH_KEY;
+				HelperQueue[i].type = EntityType::SWITCH_KEY4;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
 				entities[i]->texture = texture_switch;
 				break;
 			case EntityType::SWITCH_KEY5:
 				entities[i] = new Switch(info.x, info.y);
-				HelperQueue[i].type = EntityType::SWITCH_KEY;
+				HelperQueue[i].type = EntityType::SWITCH_KEY5;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
 				entities[i]->texture = texture_switch;
@@ -543,25 +547,25 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				if (HelperQueue[i].type == EntityType::SWITCH_KEY2)
 				{
 					entities[i]->SetToDelete();
-					entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+					entities[i]->Switch_List2.end->data->body->DestroyFixture(entities[i]->Switch_List2.end->data->body->GetFixtureList());
 					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::SWITCH_KEY3)
 				{
 					entities[i]->SetToDelete();
-					entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+					entities[i]->Switch_List3.end->data->body->DestroyFixture(entities[i]->Switch_List3.end->data->body->GetFixtureList());
 					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::SWITCH_KEY4)
 				{
 					entities[i]->SetToDelete();
-					entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+					entities[i]->Switch_List4.end->data->body->DestroyFixture(entities[i]->Switch_List4.end->data->body->GetFixtureList());
 					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::SWITCH_KEY5)
 				{
 					entities[i]->SetToDelete();
-					entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+					entities[i]->Switch_List5.end->data->body->DestroyFixture(entities[i]->Switch_List5.end->data->body->GetFixtureList());
 					/*entities[i] = nullptr;*/
 				}
 				if (HelperQueue[i].type == EntityType::ROCK_ONE)

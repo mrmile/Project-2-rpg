@@ -50,7 +50,7 @@ Switch4::Switch4(int x, int y) : Entity(x, y)
 
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::SWITCH_KEY, (Module*)app->entity_manager);
 	//entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
-	Switch_List.add(app->physics->CreateColliderRectangle(position.x, position.y, 20, 50));
+	Switch_List4.add(app->physics->CreateColliderRectangle(position.x, position.y, 20, 50));
 
 }
 
@@ -62,13 +62,13 @@ void Switch4::Update(float dt)
 	{
 		iPoint NewPosition = position;
 		collider->SetPos(NewPosition.x, NewPosition.y);
-		Switch_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
+		Switch_List4.end->data->GetPosition(NewPosition.x, NewPosition.y);
 
 	}
 
 	if (app->player->pauseMenu == false && app->inventoryMenu->showInventory == false)
 	{
-		Switch_List.end->data->GetPosition(position.x, position.y);
+		Switch_List4.end->data->GetPosition(position.x, position.y);
 		if (position.DistanceTo(app->player->position) < 65)
 		{
 			if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_DOWN && app->player->baseUnlock == true && isActivated == false)
