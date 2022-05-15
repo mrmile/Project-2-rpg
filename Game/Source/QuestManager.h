@@ -44,6 +44,9 @@ public:
 	void SwitchMainQuest(int questID);
 	void SwitchSecondaryQuest(int questID);
 
+	bool LoadState(pugi::xml_node&);
+	bool SaveState(pugi::xml_node&) const;
+
 	// Called before quitting
 	bool CleanUp();
 	

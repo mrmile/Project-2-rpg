@@ -211,3 +211,20 @@ bool QuestManager::CleanUp()
 
 	return true;
 }
+
+
+bool QuestManager::SaveState(pugi::xml_node& data) const
+{
+	pugi::xml_node MainQuest = data.append_child("MainQuest");
+	MainQuest.append_attribute("id") = mainQuestID;
+
+	return true;
+}
+bool QuestManager::LoadState(pugi::xml_node& data)
+{
+	pugi::xml_node MainQuest = data.child("MainQuest");
+
+	mainQuestID = data.attribute("id").as_int();
+
+	return true;
+}
