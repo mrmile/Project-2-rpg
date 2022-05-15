@@ -41,6 +41,9 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 {
 	name.Create("player");
 
+
+	//IDLE
+
 	idleRightAnim.PushBack({ 141, 579, 80, 95 });
 	idleRightAnim.loop = true;
 	idleRightAnim.speed = 0.3f;
@@ -73,7 +76,9 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	idleDownRightAnim.loop = true;
 	idleDownRightAnim.speed = 0.3f;
 
-	
+
+	//WALK 
+
 	rightWalkAnim.PushBack({ 0, 472, 54, 60 });
 	rightWalkAnim.loop = true;
 	rightWalkAnim.speed = 0.3f;
@@ -105,6 +110,9 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	leftUpWalkAnim.PushBack({ 0, 472, 54, 60 });
 	leftUpWalkAnim.loop = true;
 	leftUpWalkAnim.speed = 0.3f;
+
+
+	//RUN
 
 	rightRunAnim.PushBack({ 0, 472, 54, 60 });
 	rightRunAnim.loop = true;
