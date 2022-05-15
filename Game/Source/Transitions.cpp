@@ -23,7 +23,11 @@ bool Transitions::Start()
 	
 	app->win->GetWindowSize(win_width, win_height);
 
-	loading = app->tex->Load("Assets/textures/loadingScreen.png");
+	combatFull = app->tex->Load("Assets/textures/Scences/CombatTransition/FullOpacity.png");
+	combat80 = app->tex->Load("Assets/textures/Scences/CombatTransition/80%opacity.png");
+	combat60 = app->tex->Load("Assets/textures/Scences/CombatTransition/60%opacity.png");
+	combat40 = app->tex->Load("Assets/textures/Scences/CombatTransition/40%.png");
+	combat20 = app->tex->Load("Assets/textures/Scences/CombatTransition/20%.png");
 
 	return true;
 }
@@ -120,25 +124,64 @@ void Transitions::SelectTransition(int id,int timer1,int timer2)
 
 void Transitions::DrawTransition1()
 {
-	//SLIDE TRANSITION
 
-	SDL_Rect Rect1;
 	
-	Rect1.x = 0;
-	Rect1.y = 0;
-	Rect1.h = win_height;
-	Rect1.w = 0;
-	
-	if(currentStep == Fade_Step::TRANSTITION) Rect1.w = EaseLinearInOut(timer_in_transition / 8, win_width / 64, win_width, 240); 
-	if (currentStep == Fade_Step::FROM_TRANSITION) Rect1.w = EaseLinearInOut(timer_out_transition / 8, win_width / 64, win_width, 240);
-	//app->render->DrawRectangle(Rect1, 255, 0, 0, 255);
+	if (currentStep == Fade_Step::TRANSTITION)
+	{
+		if (timer_in_transition >= 2500 && timer_in_transition < timer_out_transition / 5)
+		{
+			app->render->DrawTexture2(combat20, 0, 0, NULL);
+		}
+		if (timer_in_transition >= timer_in_transition < timer_out_transition / 5 && timer_in_transition < (timer_out_transition / 5)*2)
+		{
+			app->render->DrawTexture2(combat40, 0, 0, NULL);
+		}
+		if (timer_in_transition >= (timer_out_transition / 5) * 2 && timer_in_transition < (timer_out_transition / 5) * 3)
+		{
+			app->render->DrawTexture2(combat60, 0, 0, NULL);
+		}
+		if (timer_in_transition >= (timer_out_transition / 5) * 3 && timer_in_transition < (timer_out_transition / 5) * 4)
+		{
+			app->render->DrawTexture2(combat80, 0, 0, NULL);
+		}
+		if (timer_in_transition >= (timer_out_transition / 5) * 4 && timer_in_transition < timer_out_transition)
+		{
+			app->render->DrawTexture2(combatFull, 0, 0, NULL);
+		}
+	}
+	if (currentStep == Fade_Step::FROM_TRANSITION)
+	{
+		if (timer_out_transition>= timer_in_transition && timer_out_transition > (timer_in_transition/5)*4)
+		{
+			app->render->DrawTexture2(combatFull, 0, 0, NULL);
+		}
+		if (timer_out_transition >= (timer_in_transition / 5) * 4 && timer_out_transition > (timer_in_transition / 5) * 3)
+		{
+			app->render->DrawTexture2(combat80, 0, 0, NULL);
+		}
+		if (timer_out_transition >= (timer_in_transition / 5) * 3 && timer_out_transition > (timer_in_transition / 5) * 2)
+		{
+			app->render->DrawTexture2(combat60, 0, 0, NULL);
+		}
+		if (timer_out_transition >= (timer_in_transition / 5) * 2 && timer_out_transition > (timer_in_transition / 5))
+		{
+			app->render->DrawTexture2(combat40, 0, 0, NULL);
+		}
+		if (timer_out_transition >= (timer_in_transition / 5) && timer_out_transition > 0)
+		{
+			app->render->DrawTexture2(combat20, 0, 0, NULL);
+		}
+	}
 
-	app->render->DrawTexture2(loading, 0, 0, NULL);
+	
+
+	
 
 }
 
 void Transitions::DrawTransition2()
 {
+	/*
 	SDL_Rect Rect1;
 	SDL_Rect Rect2;
 	SDL_Rect Rect3;
@@ -171,11 +214,12 @@ void Transitions::DrawTransition2()
 	app->render->DrawRectangle(Rect3, 0, 0, 255, 255);
 	app->render->DrawRectangle(Rect4, 123, 0, 122, 255);
 
-	
+	*/
 }
 
 void Transitions::DrawTransition3()
 {
+	/*
 	SDL_Rect Rect1;
 	SDL_Rect Rect2;
 	SDL_Rect Rect3;
@@ -229,12 +273,12 @@ void Transitions::DrawTransition3()
 		app->render->DrawTexture(pokeball, (Rect4.x + Rect4.w - 120), (Rect4.y - 10), NULL, 0, EaseLinearIn(timer_out_transition / 24, win_width / 64, win_width, 240));
 		app->render->DrawTexture(pokeball, (Rect5.x + Rect5.w - 120), (Rect5.y - 10), NULL, 0, EaseLinearIn(timer_out_transition / 24, win_width / 64, win_width, 240));
 	}
-
+	*/
 }
 
 void Transitions::DrawTransition4()
 {
-	
+	/*
 	SDL_Rect Rect1;
 	Rect1.x = 0;
 	Rect1.y = 0;
@@ -243,7 +287,7 @@ void Transitions::DrawTransition4()
 	
 	if (currentStep == Fade_Step::TRANSTITION) app->render->DrawRectangle(Rect1, timer_in_transition/10, 0, 0, 255); 
 	if (currentStep == Fade_Step::FROM_TRANSITION) app->render->DrawRectangle(Rect1, timer_out_transition/10, 0, 0, 255); 
-
+	*/
 
 }
 

@@ -87,7 +87,7 @@ bool CombatMenu::Update(float dt)
 	{
 		if (transitionStarting == true)
 		{
-			app->transitions_manager->SelectTransition(1, 250, 250);
+			app->transitions_manager->SelectTransition(1, 2500, 2500);
 			transitionStarting = false;
 		}
 	}
@@ -103,6 +103,7 @@ bool CombatMenu::Update(float dt)
 
 	if (app->player->showCombatHUD == false)
 	{
+		transitionStarting = true;
 		combatShootGUI->canClick = false;
 		combatMeleeGUI->canClick = false;
 		combatItemsGUI->canClick = false;

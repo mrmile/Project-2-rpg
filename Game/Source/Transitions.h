@@ -46,9 +46,11 @@ public:
 
 	// The rectangles of the screen, used to render the animation
 	
-	SDL_Texture* loading;
-	SDL_Texture* pokeball;
-	SDL_Texture* texture;
+	SDL_Texture* combatFull;
+	SDL_Texture* combat80;
+	SDL_Texture* combat60;
+	SDL_Texture* combat40;
+	SDL_Texture* combat20;
 };
 
 #endif // __WINDOW_H__

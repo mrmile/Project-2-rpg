@@ -186,7 +186,6 @@ bool EntityManager::Update(float dt)
 				entities[i]->FenceTwo_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
 				entities[i]->FenceTwo_List.end->data->body->SetAwake(false);
 			}
-
 		}
 			
 	}
