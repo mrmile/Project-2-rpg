@@ -187,6 +187,9 @@
     <ClCompile Include="Source\Switch5.cpp">
       <Filter>General\Entities\PuzzlesElements</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Transitions.cpp">
+      <Filter>General\Transitions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -405,6 +408,12 @@
     <ClInclude Include="Source\Switch5.h">
       <Filter>General\Entities\PuzzlesElements</Filter>
     </ClInclude>
+    <ClInclude Include="Source\easings.h">
+      <Filter>General\Transitions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Transitions.h">
+      <Filter>General\Transitions</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -451,6 +460,9 @@
     </Filter>
     <Filter Include="General\Entities\PuzzlesElements">
       <UniqueIdentifier>{67f75a07-63f4-440a-8f77-0fda107e9812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General\Transitions">
+      <UniqueIdentifier>{48fba849-1f71-4683-b522-b09a7ccaf6b6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
