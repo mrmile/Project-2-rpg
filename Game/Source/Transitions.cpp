@@ -132,6 +132,7 @@ void Transitions::SelectTransition(int id,int timer1,int timer2)
 		animationSelected = id;
 	}
 }
+
 bool Transitions::CleanUp()
 {
 	app->tex->UnLoad(combat20);
@@ -139,7 +140,10 @@ bool Transitions::CleanUp()
 	app->tex->UnLoad(combat60);
 	app->tex->UnLoad(combat80);
 	app->tex->UnLoad(combatFull);
+
+	return true;
 }
+
 void Transitions::DrawTransition1()
 {
 
