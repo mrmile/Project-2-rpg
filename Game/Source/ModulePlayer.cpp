@@ -589,10 +589,10 @@ bool ModulePlayer::Start()
 	decodeButtonFx = app->audio->LoadFx("Assets/audio/fx/extra/decode_button.wav");
 
 	alarmSwitch1Fx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch.wav");
-	alarmSwitch2Fx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch2.wav");
-	alarmSwitch3Fx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch3.wav");
-	alarmSwitch4Fx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch4.wav");
-	alarmSwitch5Fx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch5.wav");
+	alarmSwitch2Fx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch.wav");
+	alarmSwitch3Fx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch.wav");
+	alarmSwitch4Fx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch.wav");
+	alarmSwitch5Fx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch.wav");
 
 	explosionFx_far = app->audio->LoadFx("Assets/audio/fx/zombies/zombie_grenade_explode_far.wav");
 
@@ -779,6 +779,30 @@ bool ModulePlayer::Update(float dt)
 	{
 		playerFPS++;
 		
+		if (app->player->baseUnlock == true && playerFPS % 120 == 0)
+		{
+
+			if (switch1Ok == false)
+			{
+				app->audio->PlayFxSpatially(app->player->alarmSwitch1Fx, { 2482,2863 });
+			}
+			if (switch2Ok == false)
+			{
+				app->audio->PlayFxSpatially(app->player->alarmSwitch2Fx, { 3067,2997 });
+			}
+			if (switch3Ok == false)
+			{
+				app->audio->PlayFxSpatially(app->player->alarmSwitch3Fx, { 2879,3641 });
+			}
+			if (switch4Ok == false)
+			{
+				app->audio->PlayFxSpatially(app->player->alarmSwitch4Fx, { 3981,3380 });
+			}
+			if (switch5Ok == false)
+			{
+				app->audio->PlayFxSpatially(app->player->alarmSwitch5Fx, { 3099,2093 });
+			}
+		}
 
 		//OPTICK_EVENT();
 		collider->SetPos(position.x + 5, position.y - 56);

@@ -76,18 +76,13 @@ void Switch4::Update(float dt)
 				app->player->switchesPressed++;
 				app->audio->PlayFx(app->player->switchOkFx);
 				isActivated = true;
+				app->player->switch4Ok = true;
 			}
 		}
 
 		if (isActivated == false)
 		{
 			currentAnim = &Red_Switch;
-
-			if (app->player->baseUnlock == true && counter % 120 == 0)
-			{
-				iPoint NewPosition2 = position;
-				app->audio->PlayFxSpatially(app->player->alarmSwitch4Fx, NewPosition2);
-			}
 		}
 		if (isActivated == true)
 		{

@@ -336,6 +336,11 @@ public:
 	bool rock1Removed = false;
 	bool rock2Removed = false;
 	int switchesPressed = 0;
+	bool switch1Ok = false;
+	bool switch2Ok = false;
+	bool switch3Ok = false;
+	bool switch4Ok = false;
+	bool switch5Ok = false;
 
 	//FX
 	int walkSoundID = 0;

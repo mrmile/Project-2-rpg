@@ -267,6 +267,11 @@ bool TitleScreen::Update(float dt)
 			app->player->rock1Removed = false;
 			app->player->rock2Removed = false;
 			app->player->switchesPressed = 0;
+			app->player->switch1Ok = false;
+			app->player->switch2Ok = false;
+			app->player->switch3Ok = false;
+			app->player->switch4Ok = false;
+			app->player->switch5Ok = false;
 			app->questManager->mainQuestID = FIND_THE_DOCTOR_1;
 
 			app->titleScreen->Disable();
