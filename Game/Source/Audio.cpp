@@ -185,7 +185,7 @@ bool Audio::PlayFxSpatially(unsigned int id, iPoint soundGeneratorPosition, int 
 		return false;
 
 	// Todo 3 (done): Finish the new PlayFx function to be able to play sound effects spatially
-	int setChunkVolume = SliderLevelFX - (sqrt(pow(app->player->position.x - soundGeneratorPosition.x, 2) + pow(app->player->position.y - soundGeneratorPosition.y, 2)) / 6);
+	int setChunkVolume = SliderLevelFX - (sqrt(pow(app->player->position.x - soundGeneratorPosition.x, 2) + pow(app->player->position.y - soundGeneratorPosition.y, 2)) / 15);
 
 	if (setChunkVolume <= 0) setChunkVolume = 0;
 

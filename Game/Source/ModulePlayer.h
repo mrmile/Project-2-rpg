@@ -237,6 +237,9 @@ public:
 	uint harborUnlockFx = 0;
 
 	uint explosionFx_far = 0;
+	uint alarmCardReaderFx = 0;
+	uint alarmSwitchFx = 0;
+	uint switchOkFx = 0;
 
 	// The player's colliders
 	Collider* collider = nullptr;
@@ -327,6 +330,7 @@ public:
 	bool baseUnlock = false;
 	bool rock1Removed = false;
 	bool rock2Removed = false;
+	int switchesPressed = 0;
 
 	//FX
 	int walkSoundID = 0;

@@ -17,6 +17,7 @@
 #include "Log.h"
 #include "ModulePhysics.h"
 #include "ModuleParticles.h"
+#include "InventoryMenu.h"
 
 #include "Defs.h"
 
@@ -42,6 +43,8 @@ Switch::Switch(int x, int y) : Entity(x, y)
 
 	isActivated = false;
 
+	counter = 0;
+
 	position.x = x;
 	position.y = y;
 
@@ -53,6 +56,8 @@ Switch::Switch(int x, int y) : Entity(x, y)
 
 void Switch::Update(float dt)
 {
+	counter++;
+
 	if (app->player->pauseMenu == true)
 	{
 		iPoint NewPosition = position;
@@ -61,27 +66,32 @@ void Switch::Update(float dt)
 
 	}
 
-	if (app->player->pauseMenu == false)
+	if (app->player->pauseMenu == false && app->inventoryMenu->showInventory == false)
 	{
 		Switch_List.end->data->GetPosition(position.x, position.y);
 		if (position.DistanceTo(app->player->position) < 65)
 		{
 			if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_DOWN && app->player->baseUnlock == true && isActivated == false)
 			{
-
+				app->player->switchesPressed++;
+				app->audio->PlayFx(app->player->switchOkFx);
 				isActivated = true;
 			}
 		}
-	}
 
+		if (isActivated == false)
+		{
+			currentAnim = &Red_Switch;
 
-	if (isActivated == false)
-	{
-		currentAnim = &Red_Switch;
-	}
-	if (isActivated == true)
-	{
-		currentAnim = &Green_Switch;
+			if (app->player->baseUnlock == true && counter % 120 == 0)
+			{
+				app->audio->PlayFxSpatially(app->player->alarmSwitchFx, position);
+			}
+		}
+		if (isActivated == true)
+		{
+			currentAnim = &Green_Switch;
+		}
 	}
 
 	

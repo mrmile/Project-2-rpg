@@ -584,6 +584,9 @@ bool ModulePlayer::Start()
 	computerOn = app->audio->LoadFx("Assets/audio/fx/extra/windows_on.wav");
 	computerClick = app->audio->LoadFx("Assets/audio/fx/extra/click.wav");
 	harborUnlockFx = app->audio->LoadFx("Assets/audio/fx/extra/harbor_unlock.wav");
+	alarmCardReaderFx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_card_reader.wav");
+	alarmSwitchFx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch.wav");
+	switchOkFx = app->audio->LoadFx("Assets/audio/fx/extra/switch_ok.wav");
 
 	explosionFx_far = app->audio->LoadFx("Assets/audio/fx/zombies/zombie_grenade_explode_far.wav");
 
@@ -2325,6 +2328,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			{
 				if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_DOWN)
 				{
+					app->audio->PlayFx(alarmCardReaderFx);
 					baseUnlock = true;
 				}
 			}
