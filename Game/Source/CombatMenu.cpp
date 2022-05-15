@@ -24,6 +24,7 @@
 #include "Render.h"
 #include "Log.h"
 #include "QuestManager.h"
+#include "Transitions.h"
 
 #include <SDL_mixer/include/SDL_mixer.h>
 
@@ -82,6 +83,15 @@ bool CombatMenu::PreUpdate()
 // Called each loop iteration
 bool CombatMenu::Update(float dt)
 {
+	if (app->player->entityStatePlayer == GameState::InCombat)
+	{
+		if (transitionStarting == true)
+		{
+			app->transition_manager->SelectTransition(1, 0, 25);
+			transitionStarting = false;
+		}
+	}
+
 	if (app->player->showCombatHUD == true && app->player->pauseMenu == false && app->titleScreen->active == false && app->creditsScreen->active == false)
 	{
 		combatShootGUI->canClick = true;

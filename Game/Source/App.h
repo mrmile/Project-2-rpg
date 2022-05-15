@@ -44,6 +44,7 @@ class CombatMenu;
 class DialogManager;
 class QuestManager;
 class GameManager;
+class Transitions;
 
 class App
 {
@@ -143,6 +144,7 @@ public:
 	DialogManager* dialogManager;
 	QuestManager* questManager;
 	GameManager* game_manager;
+	Transitions* transition_manager;
 
 	bool AppTitleScreenFull = false;
 

@@ -32,7 +32,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Releasev2|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -184,6 +184,7 @@
     <ClCompile Include="Source\Textures.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\TitleScreen.cpp" />
+    <ClCompile Include="Source\Transitions.cpp" />
     <ClCompile Include="Source\Window.cpp" />
     <ClCompile Include="Source\Zombie_Runner.cpp" />
     <ClCompile Include="Source\Zombie_Spitter.cpp" />
@@ -248,6 +249,7 @@
     <ClInclude Include="Source\Textures.h" />
     <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\TitleScreen.h" />
+    <ClInclude Include="Source\Transitions.h" />
     <ClInclude Include="Source\Window.h" />
     <ClInclude Include="Source\Defs.h" />
     <ClInclude Include="Source\List.h" />
