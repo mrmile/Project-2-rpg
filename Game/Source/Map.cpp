@@ -1,5 +1,5 @@
 
-//#include "App.h"
+#include "App.h"
 #include "Render.h"
 #include "Textures.h"
 #include "Map.h"
@@ -173,7 +173,7 @@ void Map::Draw()
 						if (pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) + 98/*98 VARÍA SEGÚN LA ALTURA REAL DEL JUGADOR*/ > app->player->position.y && app->player->hasBeenDrawed == false)
 						{
 							SDL_Rect playerRect = app->player->currentAnimation->GetCurrentFrame();
-							app->render->DrawTexture(app->player->texture, app->player->position.x, app->player->position.y - 50, &playerRect);
+							app->render->DrawTexture(app->player->texture, app->player->position.x - 20, app->player->position.y - 70, &playerRect);
 
 							app->player->hasBeenDrawed = true;
 						}
@@ -977,15 +977,6 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		}
 	}
 
-	if (object->name == "npc")
-	{
-		pugi::xml_node NewObject;
-		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
-		{
-			app->entity_manager->AddEntity(EntityType::NPC, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
-		}
-	}
-
 	if (object->name == "npc_2")
 	{
 		pugi::xml_node NewObject;
@@ -995,12 +986,24 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		}
 	}
 
-	if (object->name == "npc_3")
+	if (app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2)
 	{
-		pugi::xml_node NewObject;
-		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		if (object->name == "npc")
 		{
-			app->entity_manager->AddEntity(EntityType::NPC3, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			pugi::xml_node NewObject;
+			for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+			{
+				app->entity_manager->AddEntity(EntityType::NPC, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			}
+		}
+
+		if (object->name == "npc_3")
+		{
+			pugi::xml_node NewObject;
+			for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+			{
+				app->entity_manager->AddEntity(EntityType::NPC3, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			}
 		}
 	}
 

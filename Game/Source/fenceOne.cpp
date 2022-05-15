@@ -38,6 +38,9 @@ FenceOne::FenceOne(int x, int y) : Entity(x, y)
 	position.x = x;
 	position.y = y;
 
+	offsetX = 0;
+	offsetY = 0;
+
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::FENCE_ONE, (Module*)app->entity_manager);
 	//entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
 	FenceOne_List.add(app->physics->CreateColliderRectangle(position.x, position.y, 60, 104));

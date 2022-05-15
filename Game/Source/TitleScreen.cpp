@@ -172,7 +172,7 @@ bool TitleScreen::Update(float dt)
 	if (MainMenu == true)
 	{
 		newGameButton_->canClick = true;
-		continueButton_->canClick = true;
+		continueButton_->canClick = false;
 		optionsButton_->canClick = true;
 		creditsButton_->canClick = true;
 		exitButton_->canClick = true;

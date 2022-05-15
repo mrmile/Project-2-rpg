@@ -544,6 +544,9 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	position.x = x;
 	position.y = y;
 
+	offsetX = -25;
+	offsetY = -90;
+
 	collider = app->collisions->AddCollider({ position.x, position.y-56, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
 
 	Runner_Zombie_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10));

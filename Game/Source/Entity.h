@@ -17,6 +17,9 @@ class Entity
 public:
 
 	iPoint position;
+	int offsetX;
+	int offsetY;
+
 	SDL_Texture* texture = nullptr;
 	//ENTITY LIFE POINTS
 	int EntityHP;
