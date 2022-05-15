@@ -17,6 +17,7 @@
 #include "Log.h"
 #include "ModulePhysics.h"
 #include "ModuleParticles.h"
+#include "QuestManager.h"
 
 #include "Defs.h"
 
@@ -61,9 +62,11 @@ void FenceOne::Update(float dt)
 
 	currentAnim = &fenceOne;
 
-	if (app->player->baseUnlock == true)
+	if (app->player->baseUnlock == true && app->player->switchesPressed >= 5)
 	{
 		EntityHP = 0;
+		if(app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2) app->questManager->SwitchSecondaryQuest(S_NONE);
+		app->audio->ChangeMusic(MAIN_MAP_AT_NIGHT, 0.0f, 0.0f);
 	}
 	
 

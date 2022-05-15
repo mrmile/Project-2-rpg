@@ -10,6 +10,7 @@
 #include "ModulePlayer.h"
 #include "Window.h"
 #include "QuestManager.h"
+#include "SceneMainMap.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -1102,30 +1103,33 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		}
 	}
 
-	if (object->name == "zombie_standart")
+	if (app->questManager->mainQuestID != LOOK_FOR_THE_COMPUTER_2)
 	{
-		pugi::xml_node NewObject;
-		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		if (object->name == "zombie_standart")
 		{
-			app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			pugi::xml_node NewObject;
+			for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+			{
+				app->entity_manager->AddEntity(EntityType::ZOMBIE_STANDART, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			}
 		}
-	}
 
-	if (object->name == "zombie_spitter")
-	{
-		pugi::xml_node NewObject;
-		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		if (object->name == "zombie_spitter")
 		{
-			app->entity_manager->AddEntity(EntityType::ZOMBIE_SPITTER, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			pugi::xml_node NewObject;
+			for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+			{
+				app->entity_manager->AddEntity(EntityType::ZOMBIE_SPITTER, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			}
 		}
-	}
 
-	if (object->name == "zombie_runner")
-	{
-		pugi::xml_node NewObject;
-		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		if (object->name == "zombie_runner")
 		{
-			app->entity_manager->AddEntity(EntityType::ZOMBIE_RUNNER, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			pugi::xml_node NewObject;
+			for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+			{
+				app->entity_manager->AddEntity(EntityType::ZOMBIE_RUNNER, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			}
 		}
 	}
 

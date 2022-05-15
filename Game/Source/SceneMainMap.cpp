@@ -247,42 +247,45 @@ bool SceneMainMap::PostUpdate()
 	{
 		app->player->exitActivated = false;
 
-		app->player->Disable();
-		//app->sceneMainMap->Disable();
-		app->collisions->Disable();
-		app->map->Disable();
-		app->entity_manager->Disable();
-		app->particles->Disable();
-		app->fonts->Disable();
-		app->pause_menu->Disable();
-		app->sceneMainMap->Disable();
-
-		if (app->player->entranceID == 1)
+		if (app->questManager->secondaryQuestID != ACTIVATE_SWITCHES)
 		{
-			enableSceneBase = false;
-			app->sceneBase->enableSceneMainMap = false;
-			app->sceneCave->enableSceneMainMap = false;
-			enableScenePlatform = false;
+			app->player->Disable();
+			//app->sceneMainMap->Disable();
+			app->collisions->Disable();
+			app->map->Disable();
+			app->entity_manager->Disable();
+			app->particles->Disable();
+			app->fonts->Disable();
+			app->pause_menu->Disable();
+			app->sceneMainMap->Disable();
 
-			enableSceneCave = true;
-		}
-		if (app->player->entranceID == 2)
-		{
-			app->sceneBase->enableSceneMainMap = false;
-			app->sceneCave->enableSceneMainMap = false;
-			enableSceneCave = false;
-			enableScenePlatform = false;
+			if (app->player->entranceID == 1)
+			{
+				enableSceneBase = false;
+				app->sceneBase->enableSceneMainMap = false;
+				app->sceneCave->enableSceneMainMap = false;
+				enableScenePlatform = false;
 
-			enableSceneBase = true;
-		}
-		if (app->player->entranceID == 3)
-		{
-			app->sceneBase->enableSceneMainMap = false;
-			app->sceneCave->enableSceneMainMap = false;
-			enableSceneCave = false;
-			enableSceneBase = false;
+				enableSceneCave = true;
+			}
+			if (app->player->entranceID == 2)
+			{
+				app->sceneBase->enableSceneMainMap = false;
+				app->sceneCave->enableSceneMainMap = false;
+				enableSceneCave = false;
+				enableScenePlatform = false;
 
-			enableScenePlatform = true;
+				enableSceneBase = true;
+			}
+			if (app->player->entranceID == 3)
+			{
+				app->sceneBase->enableSceneMainMap = false;
+				app->sceneCave->enableSceneMainMap = false;
+				enableSceneCave = false;
+				enableSceneBase = false;
+
+				enableScenePlatform = true;
+			}
 		}
 
 		//app->fade->FadeToBlack(app->sceneMainMap, app->sceneCave, 60.0f);

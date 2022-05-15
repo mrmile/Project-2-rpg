@@ -778,31 +778,6 @@ bool ModulePlayer::Update(float dt)
 	if (pauseMenu == false && app->inventoryMenu->showInventory == false)
 	{
 		playerFPS++;
-		
-		if (app->player->baseUnlock == true && playerFPS % 120 == 0)
-		{
-
-			if (switch1Ok == false)
-			{
-				app->audio->PlayFxSpatially(app->player->alarmSwitch1Fx, { 2482,2863 });
-			}
-			if (switch2Ok == false)
-			{
-				app->audio->PlayFxSpatially(app->player->alarmSwitch2Fx, { 3067,2997 });
-			}
-			if (switch3Ok == false)
-			{
-				app->audio->PlayFxSpatially(app->player->alarmSwitch3Fx, { 2879,3641 });
-			}
-			if (switch4Ok == false)
-			{
-				app->audio->PlayFxSpatially(app->player->alarmSwitch4Fx, { 3981,3380 });
-			}
-			if (switch5Ok == false)
-			{
-				app->audio->PlayFxSpatially(app->player->alarmSwitch5Fx, { 3099,2093 });
-			}
-		}
 
 		//OPTICK_EVENT();
 		collider->SetPos(position.x + 5, position.y - 56);
@@ -2354,11 +2329,13 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DOOR_KEY_READER)
 		{
-			if (baseUnlock == false)
+			if (baseUnlock == false && app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2)
 			{
 				if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_DOWN)
 				{
+					app->audio->ChangeMusic(TENSION_PUZZLE_1, 0.2f, 0.2f);
 					app->audio->PlayFx(alarmCardReaderFx);
+					app->questManager->secondaryQuestID = ACTIVATE_SWITCHES;
 					baseUnlock = true;
 				}
 			}

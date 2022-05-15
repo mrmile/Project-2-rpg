@@ -18,7 +18,7 @@ enum MainQuests
 enum SecondaryQuests
 {
 	S_NONE = 0,
-
+	ACTIVATE_SWITCHES,
 };
 
 class QuestManager : public Module
@@ -58,6 +58,9 @@ public:
 	SDL_Texture* mainQuestDescription_1 = nullptr;
 	SDL_Texture* mainQuestDescription_2 = nullptr;
 	SDL_Texture* mainQuestDescription_3 = nullptr;
+
+	SDL_Texture* secondaryQuestSwitches = nullptr;
+
 	SDL_Texture* questCompletionMessage = nullptr;
 
 	uint questCompleted = 0;

@@ -82,6 +82,10 @@ void Switch4::Update(float dt)
 
 		if (isActivated == false)
 		{
+			if (app->player->baseUnlock == true && counter % 120 == 0 && app->player->switch4Ok == false)
+			{
+				app->audio->PlayFxSpatially(app->player->alarmSwitch4Fx, position);
+			}
 			currentAnim = &Red_Switch;
 		}
 		if (isActivated == true)

@@ -65,6 +65,7 @@ bool QuestManager::Start()
 	mainQuestDescription_1 = app->tex->Load("Assets/textures/GUI/Inventory/mainQuest_1.png");
 	mainQuestDescription_2 = app->tex->Load("Assets/textures/GUI/Inventory/mainQuest_2.png");
 	mainQuestDescription_3 = app->tex->Load("Assets/textures/GUI/Inventory/mainQuest_3.png");
+	secondaryQuestSwitches = app->tex->Load("Assets/textures/GUI/Inventory/secondaryQuest_switches.png");
 
 	questCompletionMessage = app->tex->Load("Assets/textures/GUI/questCompletedMessage.png");
 
@@ -154,7 +155,7 @@ bool QuestManager::PostUpdate()
 		}
 		case LOOK_FOR_THE_COMPUTER_2:
 		{
-			if (app->inventoryMenu->showInventory == true && app->player->showCombatHUD == false)app->render->DrawTexture2(mainQuestDescription_2, 0, 0, NULL);
+			if (app->inventoryMenu->showInventory == true && app->player->showCombatHUD == false && secondaryQuestID != ACTIVATE_SWITCHES)app->render->DrawTexture2(mainQuestDescription_2, 0, 0, NULL);
 			break;
 		}
 		case KILL_THE_PATIENT_ZERO_3:
@@ -169,6 +170,11 @@ bool QuestManager::PostUpdate()
 		case S_NONE:
 		{
 			
+			break;
+		}
+		case ACTIVATE_SWITCHES:
+		{
+			if (app->inventoryMenu->showInventory == true && app->player->showCombatHUD == false)app->render->DrawTexture2(mainQuestDescription_2, 0, 0, NULL);
 			break;
 		}
 	}
@@ -208,6 +214,8 @@ bool QuestManager::CleanUp()
 	app->tex->UnLoad(mainQuestDescription_1);
 	app->tex->UnLoad(mainQuestDescription_2);
 	app->tex->UnLoad(mainQuestDescription_3);
+	app->tex->UnLoad(secondaryQuestSwitches);
+	app->tex->UnLoad(questCompletionMessage);
 
 	return true;
 }
