@@ -63,9 +63,7 @@ void FenceOne::Update(float dt)
 
 	if (app->player->baseUnlock == true)
 	{
-		//FenceOne_List.end->data->body->DestroyFixture(FenceOne_List.end->data->body->GetFixtureList());
-		FenceOne_List.end->data->body->SetTransform({ 0,0 }, 0);
-		SetToDelete();
+		EntityHP = 0;
 	}
 	
 

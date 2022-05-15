@@ -64,9 +64,7 @@ void FenceTwo::Update(float dt)
 
 	if (app->player->harborUnlock == true)
 	{
-		//FenceTwo_List.end->data->body->DestroyFixture(FenceTwo_List.end->data->body->GetFixtureList());
-		FenceTwo_List.end->data->body->SetTransform({ 0,0 }, 0);
-		SetToDelete();
+		EntityHP = 0;
 	}
 
 

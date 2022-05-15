@@ -29,6 +29,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	entityState = GameState::OutOfCombat;
 	entityTurn = TurnState::NONE;
 	counter = 0;
+	EntityKillable = true;
 	//HERE WE ADD THE ANIMATIONS WITH GIMP
 	
 	
@@ -996,13 +997,6 @@ void Zombie_Runner::Update(float dt)
 					entityTurn = TurnState::NONE;
 				}*/
 			}
-
-
-			if (EntityHP == 0)
-			{
-				SetToDelete();
-			}
-
 
 		}
 

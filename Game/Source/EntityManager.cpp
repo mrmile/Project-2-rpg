@@ -88,7 +88,74 @@ bool EntityManager::Update(float dt)
 				entities[i]->SetToDelete();
 				entities[i]->Standart_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
 				entities[i]->Standart_Zombie_List.end->data->body->SetAwake(false);
-				//entities[i]->Standart_Zombie_List.end->data->body->GetWorld()->DestroyBody(entities[i]->Standart_Zombie_List.end->data->body);
+			}
+			if (entities[i]->type == EntityType::ZOMBIE_RUNNER)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Runner_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Runner_Zombie_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::ZOMBIE_SPITTER)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Spitter_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Spitter_Zombie_List.end->data->body->SetAwake(false);
+			}
+
+			if (entities[i]->type == EntityType::NPC)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->NPC_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->NPC_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::NPC2)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->NPC2_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->NPC2_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::NPC3)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->NPC3_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->NPC3_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::NPC4)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->NPC4_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->NPC4_List.end->data->body->SetAwake(false);
+			}
+
+			if (entities[i]->type == EntityType::SWITCH_KEY)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Switch_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Switch_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::ROCK_ONE)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->RockOne_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->RockOne_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::ROCK_TWO)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->RockTwo_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->RockTwo_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::FENCE_ONE)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->FenceOne_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->FenceOne_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::FENCE_TWO)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->FenceTwo_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->FenceTwo_List.end->data->body->SetAwake(false);
 			}
 
 		}

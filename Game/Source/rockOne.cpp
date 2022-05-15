@@ -64,9 +64,7 @@ void RockOne::Update(float dt)
 
 	if (app->player->rock1Removed == true)
 	{
-		//RockOne_List.end->data->body->DestroyFixture(RockOne_List.end->data->body->GetFixtureList());
-		RockOne_List.end->data->body->SetTransform({ 0,0 }, 0);
-		SetToDelete();
+		EntityHP = 0;
 	}
 	
 	
