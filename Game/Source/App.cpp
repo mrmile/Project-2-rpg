@@ -33,6 +33,7 @@
 #include "QuestManager.h"
 #include "GameManager.h"
 #include "Transitions.h"
+//#include "AssetsManager.h"
 
 #include <iostream>
 #include <sstream>
@@ -77,6 +78,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	questManager = new QuestManager(true);
 	game_manager = new GameManager(true);
 	transitions_manager = new Transitions(true);
+	/*assetsManager = new AssetsManager(true);*/
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -110,6 +112,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(fonts);
 	AddModule(game_manager);
 	AddModule(transitions_manager);
+	/*AddModule(assetsManager);*/
 	// Render last to swap buffer
 	AddModule(render);
 

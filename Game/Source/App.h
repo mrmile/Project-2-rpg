@@ -45,6 +45,7 @@ class DialogManager;
 class QuestManager;
 class GameManager;
 class Transitions;
+//class AssetsManager;
 
 class App
 {
@@ -145,6 +146,7 @@ public:
 	QuestManager* questManager;
 	GameManager* game_manager;
 	Transitions* transitions_manager;
+	/*AssetsManager* assetsManager;*/
 	bool AppTitleScreenFull = false;
 
 private:
