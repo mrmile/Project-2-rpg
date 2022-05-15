@@ -332,7 +332,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	rightRunAnim.PushBack({ 2095, 3885, 85, 105 });
 	rightRunAnim.PushBack({ 2180, 3885, 85, 105 });
 	rightRunAnim.loop = true;
-	rightRunAnim.speed = 0.4f;
+	rightRunAnim.speed = 0.56f;
 
 	leftRunAnim.PushBack({ 140, 3465, 85, 105 });
 	leftRunAnim.PushBack({ 225, 3465, 85, 105 });
@@ -360,7 +360,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	leftRunAnim.PushBack({ 2095, 3465, 85, 105 });
 	leftRunAnim.PushBack({ 2180, 3465, 85, 105 });
 	leftRunAnim.loop = true;
-	leftRunAnim.speed = 0.4f;
+	leftRunAnim.speed = 0.56f;
 
 	downRunAnim.PushBack({ 140, 4095, 85, 105 });
 	downRunAnim.PushBack({ 225, 4095, 85, 105 });
@@ -388,7 +388,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	downRunAnim.PushBack({ 2095, 4095, 85, 105 });
 	downRunAnim.PushBack({ 2180, 4095, 85, 105 });
 	downRunAnim.loop = true;
-	downRunAnim.speed = 0.4f;
+	downRunAnim.speed = 0.56f;
 
 	upRunAnim.PushBack({ 140, 3675, 85, 105 });
 	upRunAnim.PushBack({ 225, 3675, 85, 105 });
@@ -416,7 +416,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	upRunAnim.PushBack({ 2095, 3675, 85, 105 });
 	upRunAnim.PushBack({ 2180, 3675, 85, 105 });
 	upRunAnim.loop = true;
-	upRunAnim.speed = 0.4f;
+	upRunAnim.speed = 0.56f;
 
 	rightDownRunAnim.PushBack({ 140, 3990, 85, 105 });
 	rightDownRunAnim.PushBack({ 225, 3990, 85, 105 });
@@ -444,7 +444,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	rightDownRunAnim.PushBack({ 2095, 3990, 85, 105 });
 	rightDownRunAnim.PushBack({ 2180, 3990, 85, 105 });
 	rightDownRunAnim.loop = true;
-	rightDownRunAnim.speed = 0.4f;
+	rightDownRunAnim.speed = 0.56f;
 
 	leftDownRunAnim.PushBack({ 140, 3360, 85, 105 });
 	leftDownRunAnim.PushBack({ 225, 3360, 85, 105 });
@@ -472,7 +472,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	leftDownRunAnim.PushBack({ 2095, 3360, 85, 105 });
 	leftDownRunAnim.PushBack({ 2180, 3360, 85, 105 });
 	leftDownRunAnim.loop = true;
-	leftDownRunAnim.speed = 0.4f;
+	leftDownRunAnim.speed = 0.56f;
 
 	rightUpRunAnim.PushBack({ 140, 3780, 85, 105 });
 	rightUpRunAnim.PushBack({ 225, 3780, 85, 105 });
@@ -500,7 +500,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	rightUpRunAnim.PushBack({ 2095, 3780, 85, 105 });
 	rightUpRunAnim.PushBack({ 2180, 3780, 85, 105 });
 	rightUpRunAnim.loop = true;
-	rightUpRunAnim.speed = 0.4f;
+	rightUpRunAnim.speed = 0.56f;
 
 	leftUpRunAnim.PushBack({ 140, 3570, 85, 105 });
 	leftUpRunAnim.PushBack({ 225, 3570, 85, 105 });
@@ -528,7 +528,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	leftUpRunAnim.PushBack({ 2095, 3570, 85, 105 });
 	leftUpWalkAnim.PushBack({ 2180, 3570, 85, 105 });
 	leftUpRunAnim.loop = true;
-	leftUpRunAnim.speed = 0.4f;
+	leftUpRunAnim.speed = 0.56f;
 
 	entityTurnPlayer = TurnState::NONE;
 	entityStatePlayer = GameState::OutOfCombat;
@@ -881,7 +881,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &leftWalkAnim)
 						{
-							leftWalkAnim.Reset();
+							//leftWalkAnim.Reset();
 							currentAnimation = &leftWalkAnim;
 						}
 					}
@@ -889,7 +889,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &leftRunAnim)
 						{
-							leftRunAnim.Reset();
+							//leftRunAnim.Reset();
 							currentAnimation = &leftRunAnim;
 						}
 					}
@@ -904,7 +904,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &upWalkAnim)
 						{
-							upWalkAnim.Reset();
+							//upWalkAnim.Reset();
 							currentAnimation = &upWalkAnim;
 							PlayerLookingPosition = 4;
 						}
@@ -913,7 +913,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &upRunAnim)
 						{
-							upRunAnim.Reset();
+							//upRunAnim.Reset();
 							currentAnimation = &upRunAnim;
 							PlayerLookingPosition = 4;
 						}
@@ -928,7 +928,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &rightWalkAnim)
 						{
-							rightWalkAnim.Reset();
+							//rightWalkAnim.Reset();
 							currentAnimation = &rightWalkAnim;
 						}
 					}
@@ -936,7 +936,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &rightRunAnim)
 						{
-							rightRunAnim.Reset();
+							//rightRunAnim.Reset();
 							currentAnimation = &rightRunAnim;
 						}
 					}
@@ -951,7 +951,7 @@ bool ModulePlayer::Update(float dt)
 
 						if (currentAnimation != &downWalkAnim)
 						{
-							downWalkAnim.Reset();
+							//downWalkAnim.Reset();
 							currentAnimation = &downWalkAnim;
 							PlayerLookingPosition = 3;
 						}
@@ -961,7 +961,7 @@ bool ModulePlayer::Update(float dt)
 
 						if (currentAnimation != &downRunAnim)
 						{
-							downRunAnim.Reset();
+							//downRunAnim.Reset();
 							currentAnimation = &downRunAnim;
 							PlayerLookingPosition = 3;
 						}
@@ -975,7 +975,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &leftDownWalkAnim)
 						{
-							leftDownWalkAnim.Reset();
+							//leftDownWalkAnim.Reset();
 							currentAnimation = &leftDownWalkAnim;
 							PlayerLookingPosition = 5;
 						}
@@ -984,7 +984,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &leftDownRunAnim)
 						{
-							leftDownRunAnim.Reset();
+							//leftDownRunAnim.Reset();
 							currentAnimation = &leftDownRunAnim;
 							PlayerLookingPosition = 5;
 						}
@@ -998,7 +998,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &rightDownWalkAnim)
 						{
-							rightDownWalkAnim.Reset();
+							//rightDownWalkAnim.Reset();
 							currentAnimation = &rightDownWalkAnim;
 							PlayerLookingPosition = 6;
 						}
@@ -1007,7 +1007,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &rightDownRunAnim)
 						{
-							rightDownRunAnim.Reset();
+							//rightDownRunAnim.Reset();
 							currentAnimation = &rightDownRunAnim;
 							PlayerLookingPosition = 6;
 						}
@@ -1020,7 +1020,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &leftUpWalkAnim)
 						{
-							leftUpWalkAnim.Reset();
+							//leftUpWalkAnim.Reset();
 							currentAnimation = &leftUpWalkAnim;
 							PlayerLookingPosition = 7;
 						}
@@ -1029,7 +1029,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &leftUpRunAnim)
 						{
-							leftUpRunAnim.Reset();
+							//leftUpRunAnim.Reset();
 							currentAnimation = &leftUpRunAnim;
 							PlayerLookingPosition = 7;
 						}
@@ -1042,7 +1042,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &rightUpWalkAnim)
 						{
-							rightUpWalkAnim.Reset();
+							//rightUpWalkAnim.Reset();
 							currentAnimation = &rightUpWalkAnim;
 							PlayerLookingPosition = 8;
 						}
@@ -1051,7 +1051,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &rightUpRunAnim)
 						{
-							rightUpRunAnim.Reset();
+							//rightUpRunAnim.Reset();
 							currentAnimation = &rightUpRunAnim;
 							PlayerLookingPosition = 8;
 						}
@@ -1102,7 +1102,7 @@ bool ModulePlayer::Update(float dt)
 					case 1:
 						if (currentAnimation != &idleLeftAnim)
 						{
-							idleLeftAnim.Reset();
+							//idleLeftAnim.Reset();
 							currentAnimation = &idleLeftAnim;
 						}
 
@@ -1110,7 +1110,7 @@ bool ModulePlayer::Update(float dt)
 					case 2:
 						if (currentAnimation != &idleRightAnim)
 						{
-							idleRightAnim.Reset();
+							//idleRightAnim.Reset();
 							currentAnimation = &idleRightAnim;
 						}
 
@@ -1119,7 +1119,7 @@ bool ModulePlayer::Update(float dt)
 					case 3:
 						if (currentAnimation != &idleDownAnim)
 						{
-							idleDownAnim.Reset();
+							//idleDownAnim.Reset();
 							currentAnimation = &idleDownAnim;
 						}
 
@@ -1128,7 +1128,7 @@ bool ModulePlayer::Update(float dt)
 					case 4:
 						if (currentAnimation != &idleUpAnim)
 						{
-							idleUpAnim.Reset();
+							//idleUpAnim.Reset();
 							currentAnimation = &idleUpAnim;
 						}
 
@@ -1137,7 +1137,7 @@ bool ModulePlayer::Update(float dt)
 					case 5:
 						if (currentAnimation != &idleDownLeftAnim)
 						{
-							idleDownLeftAnim.Reset();
+							//idleDownLeftAnim.Reset();
 							currentAnimation = &idleDownLeftAnim;
 						}
 
@@ -1146,7 +1146,7 @@ bool ModulePlayer::Update(float dt)
 					case 6:
 						if (currentAnimation != &idleDownRightAnim)
 						{
-							idleDownRightAnim.Reset();
+							//idleDownRightAnim.Reset();
 							currentAnimation = &idleDownRightAnim;
 						}
 
@@ -1155,7 +1155,7 @@ bool ModulePlayer::Update(float dt)
 					case 7:
 						if (currentAnimation != &idleUpLeftAnim)
 						{
-							idleUpLeftAnim.Reset();
+							//idleUpLeftAnim.Reset();
 							currentAnimation = &idleUpLeftAnim;
 						}
 
@@ -1164,7 +1164,7 @@ bool ModulePlayer::Update(float dt)
 					case 8:
 						if (currentAnimation != &idleUpRightAnim)
 						{
-							idleUpRightAnim.Reset();
+							//idleUpRightAnim.Reset();
 							currentAnimation = &idleUpRightAnim;
 						}
 
@@ -1275,7 +1275,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &leftWalkAnim)
 						{
-							leftWalkAnim.Reset();
+							//leftWalkAnim.Reset();
 							currentAnimation = &leftWalkAnim;
 						}
 					}
@@ -1283,7 +1283,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &leftRunAnim)
 						{
-							leftRunAnim.Reset();
+							//leftRunAnim.Reset();
 							currentAnimation = &leftRunAnim;
 						}
 					}
@@ -1298,7 +1298,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &upWalkAnim)
 						{
-							upWalkAnim.Reset();
+							//upWalkAnim.Reset();
 							currentAnimation = &upWalkAnim;
 							PlayerLookingPosition = 4;
 						}
@@ -1307,7 +1307,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &upRunAnim)
 						{
-							upRunAnim.Reset();
+							//upRunAnim.Reset();
 							currentAnimation = &upRunAnim;
 							PlayerLookingPosition = 4;
 						}
@@ -1322,7 +1322,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &rightWalkAnim)
 						{
-							rightWalkAnim.Reset();
+							//rightWalkAnim.Reset();
 							currentAnimation = &rightWalkAnim;
 						}
 					}
@@ -1330,7 +1330,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &rightRunAnim)
 						{
-							rightRunAnim.Reset();
+							//rightRunAnim.Reset();
 							currentAnimation = &rightRunAnim;
 						}
 					}
@@ -1345,7 +1345,7 @@ bool ModulePlayer::Update(float dt)
 
 						if (currentAnimation != &downWalkAnim)
 						{
-							downWalkAnim.Reset();
+							//downWalkAnim.Reset();
 							currentAnimation = &downWalkAnim;
 							PlayerLookingPosition = 3;
 						}
@@ -1355,7 +1355,7 @@ bool ModulePlayer::Update(float dt)
 
 						if (currentAnimation != &downRunAnim)
 						{
-							downRunAnim.Reset();
+							//downRunAnim.Reset();
 							currentAnimation = &downRunAnim;
 							PlayerLookingPosition = 3;
 						}
@@ -1369,7 +1369,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &leftDownWalkAnim)
 						{
-							leftDownWalkAnim.Reset();
+							//leftDownWalkAnim.Reset();
 							currentAnimation = &leftDownWalkAnim;
 							PlayerLookingPosition = 5;
 						}
@@ -1378,7 +1378,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &leftDownRunAnim)
 						{
-							leftDownRunAnim.Reset();
+							//leftDownRunAnim.Reset();
 							currentAnimation = &leftDownRunAnim;
 							PlayerLookingPosition = 5;
 						}
@@ -1392,7 +1392,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &rightDownWalkAnim)
 						{
-							rightDownWalkAnim.Reset();
+							//rightDownWalkAnim.Reset();
 							currentAnimation = &rightDownWalkAnim;
 							PlayerLookingPosition = 6;
 						}
@@ -1401,7 +1401,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &rightDownRunAnim)
 						{
-							rightDownRunAnim.Reset();
+							//rightDownRunAnim.Reset();
 							currentAnimation = &rightDownRunAnim;
 							PlayerLookingPosition = 6;
 						}
@@ -1414,7 +1414,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &leftUpWalkAnim)
 						{
-							leftUpWalkAnim.Reset();
+							//leftUpWalkAnim.Reset();
 							currentAnimation = &leftUpWalkAnim;
 							PlayerLookingPosition = 7;
 						}
@@ -1423,7 +1423,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &leftUpRunAnim)
 						{
-							leftUpRunAnim.Reset();
+							//leftUpRunAnim.Reset();
 							currentAnimation = &leftUpRunAnim;
 							PlayerLookingPosition = 7;
 						}
@@ -1436,7 +1436,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &rightUpWalkAnim)
 						{
-							rightUpWalkAnim.Reset();
+							//rightUpWalkAnim.Reset();
 							currentAnimation = &rightUpWalkAnim;
 							PlayerLookingPosition = 8;
 						}
@@ -1445,7 +1445,7 @@ bool ModulePlayer::Update(float dt)
 					{
 						if (currentAnimation != &rightUpRunAnim)
 						{
-							rightUpRunAnim.Reset();
+							//rightUpRunAnim.Reset();
 							currentAnimation = &rightUpRunAnim;
 							PlayerLookingPosition = 8;
 						}
@@ -1468,7 +1468,7 @@ bool ModulePlayer::Update(float dt)
 					case 1:
 						if (currentAnimation != &idleLeftAnim)
 						{
-							idleLeftAnim.Reset();
+							//idleLeftAnim.Reset();
 							currentAnimation = &idleLeftAnim;
 						}
 
@@ -1476,7 +1476,7 @@ bool ModulePlayer::Update(float dt)
 					case 2:
 						if (currentAnimation != &idleRightAnim)
 						{
-							idleRightAnim.Reset();
+							//idleRightAnim.Reset();
 							currentAnimation = &idleRightAnim;
 						}
 
@@ -1485,7 +1485,7 @@ bool ModulePlayer::Update(float dt)
 					case 3:
 						if (currentAnimation != &idleDownAnim)
 						{
-							idleDownAnim.Reset();
+							//idleDownAnim.Reset();
 							currentAnimation = &idleDownAnim;
 						}
 
@@ -1494,7 +1494,7 @@ bool ModulePlayer::Update(float dt)
 					case 4:
 						if (currentAnimation != &idleUpAnim)
 						{
-							idleUpAnim.Reset();
+							//idleUpAnim.Reset();
 							currentAnimation = &idleUpAnim;
 						}
 
@@ -1503,7 +1503,7 @@ bool ModulePlayer::Update(float dt)
 					case 5:
 						if (currentAnimation != &idleDownLeftAnim)
 						{
-							idleDownLeftAnim.Reset();
+							//idleDownLeftAnim.Reset();
 							currentAnimation = &idleDownLeftAnim;
 						}
 
@@ -1512,7 +1512,7 @@ bool ModulePlayer::Update(float dt)
 					case 6:
 						if (currentAnimation != &idleDownRightAnim)
 						{
-							idleDownRightAnim.Reset();
+							//idleDownRightAnim.Reset();
 							currentAnimation = &idleDownRightAnim;
 						}
 
@@ -1521,7 +1521,7 @@ bool ModulePlayer::Update(float dt)
 					case 7:
 						if (currentAnimation != &idleUpLeftAnim)
 						{
-							idleUpLeftAnim.Reset();
+							//idleUpLeftAnim.Reset();
 							currentAnimation = &idleUpLeftAnim;
 						}
 
@@ -1530,7 +1530,7 @@ bool ModulePlayer::Update(float dt)
 					case 8:
 						if (currentAnimation != &idleUpRightAnim)
 						{
-							idleUpRightAnim.Reset();
+							//idleUpRightAnim.Reset();
 							currentAnimation = &idleUpRightAnim;
 						}
 
@@ -1634,7 +1634,7 @@ bool ModulePlayer::Update(float dt)
 				case 1:
 					if (currentAnimation != &idleLeftAnim)
 					{
-						idleLeftAnim.Reset();
+						//idleLeftAnim.Reset();
 						currentAnimation = &idleLeftAnim;
 					}
 
@@ -1642,7 +1642,7 @@ bool ModulePlayer::Update(float dt)
 				case 2:
 					if (currentAnimation != &idleRightAnim)
 					{
-						idleRightAnim.Reset();
+						//idleRightAnim.Reset();
 						currentAnimation = &idleRightAnim;
 					}
 
@@ -1651,7 +1651,7 @@ bool ModulePlayer::Update(float dt)
 				case 3:
 					if (currentAnimation != &idleDownAnim)
 					{
-						idleDownAnim.Reset();
+						//idleDownAnim.Reset();
 						currentAnimation = &idleDownAnim;
 					}
 
@@ -1660,7 +1660,7 @@ bool ModulePlayer::Update(float dt)
 				case 4:
 					if (currentAnimation != &idleUpAnim)
 					{
-						idleUpAnim.Reset();
+						//idleUpAnim.Reset();
 						currentAnimation = &idleUpAnim;
 					}
 
