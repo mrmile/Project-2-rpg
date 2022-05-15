@@ -16,11 +16,16 @@ public:
 	virtual ~Transitions();
 
 	// Called before the first frame
+
+	bool Awake();
+
 	bool Start();
 
 	bool Update();
 
 	bool PostUpdate();
+
+	bool CleanUp();
 	void SelectTransition(int id,int timer_in_transition, int timer_out_transition);
 	//NEED TO CREATE MORE DRAWTRANSITIONS
 	void DrawTransition1();

@@ -4,6 +4,7 @@
 #include "easings.h"
 #include "Window.h"
 #include "Textures.h"
+#include "Log.h"
 #include <SDL_image/include/SDL_image.h>
 #include <iostream>
 
@@ -17,6 +18,16 @@ Transitions::Transitions(bool start_enabled) : Module(start_enabled)
 }
 
 Transitions::~Transitions() {}
+
+bool Transitions::Awake()
+{
+	LOG("Transitions");
+	bool ret = true;
+
+	return ret;
+
+	return true;
+}
 
 bool Transitions::Start()
 {
@@ -121,7 +132,14 @@ void Transitions::SelectTransition(int id,int timer1,int timer2)
 		animationSelected = id;
 	}
 }
-
+bool Transitions::CleanUp()
+{
+	app->tex->UnLoad(combat20);
+	app->tex->UnLoad(combat40);
+	app->tex->UnLoad(combat60);
+	app->tex->UnLoad(combat80);
+	app->tex->UnLoad(combatFull);
+}
 void Transitions::DrawTransition1()
 {
 
