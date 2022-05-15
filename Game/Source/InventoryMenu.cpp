@@ -833,7 +833,7 @@ bool InventoryMenu::SaveState(pugi::xml_node& data) const
 			pugi::xml_node equipment = data.append_child("equipment_list");
 
 			equipment.append_attribute("type") = type;
-			equipment.append_attribute("amount") = Equipment[i].amount;
+			equipment.append_attribute("amount") = 1;
 			equipment.append_attribute("usable") = Equipment[i].usable;
 			equipment.append_attribute("equipable") = Equipment[i].equipable;
 			equipment.append_attribute("already_equipped") = Equipment[i].alreadyEquipped;
@@ -870,9 +870,6 @@ bool InventoryMenu::LoadState(pugi::xml_node& data)
 		if (Equipment[i].type == ItemType::NONE)
 		{
 			Equipment[i].type = (ItemType)equipment.attribute("type").as_int();
-			Equipment[i].amount = equipment.attribute("amount").as_int();
-			Equipment[i].usable = equipment.attribute("usable").as_bool();
-			Equipment[i].equipable = equipment.attribute("equipable").as_bool();
 			Equipment[i].alreadyEquipped = equipment.attribute("already_equipped").as_bool();
 
 		}
