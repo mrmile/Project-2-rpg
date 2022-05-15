@@ -47,15 +47,13 @@ Npcs::Npcs(int x,int y) : Entity(x,y)
 	
 }
 
-bool Npcs::Update(float dt)
+void Npcs::Update(float dt)
 {
 	if (app->player->pauseMenu == true)
 	{
 		iPoint NewPosition = position;
 		collider->SetPos(NewPosition.x, NewPosition.y);
 		NPC_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
-
-		return true;
 	}
 
 	if (app->player->pauseMenu == false)
@@ -96,9 +94,7 @@ bool Npcs::Update(float dt)
 		currentAnim->loop = false;
 
 	}
-	*/
-	return true;
-	
+	*/	
 }
 
 

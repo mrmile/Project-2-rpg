@@ -51,7 +51,7 @@ Switch::Switch(int x, int y) : Entity(x, y)
 
 }
 
-bool Switch::Update(float dt)
+void Switch::Update(float dt)
 {
 	if (app->player->pauseMenu == true)
 	{
@@ -59,7 +59,6 @@ bool Switch::Update(float dt)
 		collider->SetPos(NewPosition.x, NewPosition.y);
 		Switch_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
 
-		return true;
 	}
 
 	if (app->player->pauseMenu == false)
@@ -86,6 +85,5 @@ bool Switch::Update(float dt)
 	}
 
 	
-	return true;
 
 }

@@ -13,7 +13,7 @@ public:
 	Zombie_Runner(int x,int y);
 
 	
-	bool Update(float dt) override;
+	void Update(float dt) override;
 
 	
 	

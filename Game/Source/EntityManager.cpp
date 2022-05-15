@@ -76,8 +76,23 @@ bool EntityManager::Update(float dt)
 
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
-		if (entities[i] != nullptr)
+		if (entities[i] != nullptr && entities[i]->EntityHP > 0)
+		{
 			entities[i]->Update(dt);
+		}
+
+		if (entities[i] != nullptr && entities[i]->EntityHP <= 0)
+		{
+			if (entities[i]->type == EntityType::ZOMBIE_STANDART)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Standart_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Standart_Zombie_List.end->data->body->SetAwake(false);
+				//entities[i]->Standart_Zombie_List.end->data->body->GetWorld()->DestroyBody(entities[i]->Standart_Zombie_List.end->data->body);
+			}
+
+		}
+			
 	}
 
 	//HandleEntitiesDespawn();
@@ -90,7 +105,7 @@ bool EntityManager::PostUpdate()
 {
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
-		if (entities[i] != nullptr)
+		if (entities[i] != nullptr && entities[i]->EntityHP > 0)
 			entities[i]->Draw();
 	}
 
@@ -193,7 +208,7 @@ void EntityManager::HandleEntitiesSpawn()
 
 void EntityManager::HandleEntitiesDespawn()
 {
-	/*
+	
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
 		if (entities[i] != nullptr)
@@ -204,7 +219,7 @@ void EntityManager::HandleEntitiesDespawn()
 			}
 		}
 	}
-	*/
+	
 }
 
 void EntityManager::SpawnEntity(const EntitySpawnPoint& info)

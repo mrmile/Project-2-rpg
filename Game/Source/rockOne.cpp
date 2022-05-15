@@ -43,7 +43,7 @@ RockOne::RockOne(int x, int y) : Entity(x, y)
 
 }
 
-bool RockOne::Update(float dt)
+void RockOne::Update(float dt)
 {
 	if (app->player->pauseMenu == true)
 	{
@@ -51,7 +51,6 @@ bool RockOne::Update(float dt)
 		collider->SetPos(NewPosition.x, NewPosition.y);
 		RockOne_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
 
-		return true;
 	}
 
 	position.x = position.x + 50;
@@ -72,6 +71,5 @@ bool RockOne::Update(float dt)
 	
 	
 
-	return true;
 
 }

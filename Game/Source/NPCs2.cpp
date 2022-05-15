@@ -47,7 +47,7 @@ Npcs2::Npcs2(int x, int y) : Entity(x, y)
 
 }
 
-bool Npcs2::Update(float dt)
+void Npcs2::Update(float dt)
 {
 	if (app->player->pauseMenu == true)
 	{
@@ -55,7 +55,6 @@ bool Npcs2::Update(float dt)
 		collider->SetPos(NewPosition.x, NewPosition.y);
 		NPC2_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
 
-		return true;
 	}
 
 	if (app->player->pauseMenu == false)
@@ -97,6 +96,5 @@ bool Npcs2::Update(float dt)
 
 	}
 	*/
-	return true;
 
 }

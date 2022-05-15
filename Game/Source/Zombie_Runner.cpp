@@ -551,10 +551,10 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	
 }
 
-bool Zombie_Runner::Update(float dt)
+void Zombie_Runner::Update(float dt)
 {
 	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
-	
+
 	if (app->player->pauseMenu == true)
 	{
 		iPoint NewPosition = position;
@@ -571,7 +571,7 @@ bool Zombie_Runner::Update(float dt)
 		if (entityState == GameState::OutOfCombat)
 		{
 			//move normally
-			
+
 			if (app->inventoryMenu->ActiveRadioAlive == true)
 			{
 				if (position.DistanceTo(app->inventoryMenu->ActiveRadioPosition) < 300)
@@ -772,15 +772,15 @@ bool Zombie_Runner::Update(float dt)
 					app->game_manager->StartTurnManagement = true;
 				}
 			}
-			
+
 
 
 
 		}
-		
+
 		if (entityState == GameState::InCombat)
 		{
-			
+
 			if (EntityHP > 0)
 			{
 				if (entityTurn == TurnState::NONE)
@@ -812,7 +812,7 @@ bool Zombie_Runner::Update(float dt)
 					currentAnim = &idleDownAnim_Enemy1;
 					currentAnim->loop = true;
 					counter++;
-					
+
 					if (position.x > app->player->position.x)
 					{
 						if (currentAnim != &leftWalkAnim_Enemy1)
@@ -897,7 +897,7 @@ bool Zombie_Runner::Update(float dt)
 					Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f });
 					collider->SetPos(position.x, position.y - 46);
 					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
-					
+
 					currentAnim = &idleDownAnim_Enemy1;
 					currentAnim->loop = true;
 
@@ -906,28 +906,28 @@ bool Zombie_Runner::Update(float dt)
 
 						if ((position.x == app->player->position.x) && (position.y < app->player->position.y))
 						{
-						
+
 							app->particles->AddParticle(app->particles->enemyAttack, position.x, position.y + 60, Collider::Type::ENEMY_ATTACK);
 
 						}
 						if ((position.x == app->player->position.x) && (position.y > app->player->position.y))
 						{
-						
-							app->particles->AddParticle(app->particles->enemyAttack, position.x , position.y - 60, Collider::Type::ENEMY_ATTACK);
+
+							app->particles->AddParticle(app->particles->enemyAttack, position.x, position.y - 60, Collider::Type::ENEMY_ATTACK);
 
 						}
 						if ((position.x < app->player->position.x) && (position.y == app->player->position.y))
 						{
 
-						
-							app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y , Collider::Type::ENEMY_ATTACK);
+
+							app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y, Collider::Type::ENEMY_ATTACK);
 
 
 						}
 						if ((position.x > app->player->position.x) && (position.y == app->player->position.y))
 						{
-							
-							app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y , Collider::Type::ENEMY_ATTACK);
+
+							app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y, Collider::Type::ENEMY_ATTACK);
 
 
 						}
@@ -935,28 +935,28 @@ bool Zombie_Runner::Update(float dt)
 						if ((position.x > app->player->position.x) && (position.y > app->player->position.y))
 						{
 
-							
+
 							app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y - 30, Collider::Type::ENEMY_ATTACK);
 
 
 						}
 						if ((position.x > app->player->position.x) && (position.y < app->player->position.y))
 						{
-							
+
 							app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y + 30, Collider::Type::ENEMY_ATTACK);
 
 
 						}
 						if ((position.x < app->player->position.x) && (position.y > app->player->position.y))
 						{
-							
+
 							app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y - 30, Collider::Type::ENEMY_ATTACK);
 
 
 						}
 						if ((position.x < app->player->position.x) && (position.y < app->player->position.y))
 						{
-							
+
 							app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y + 30, Collider::Type::ENEMY_ATTACK);
 
 
@@ -969,7 +969,7 @@ bool Zombie_Runner::Update(float dt)
 					{
 						entityTurn = TurnState::WaitTurn;
 					}
-					
+
 
 				}
 				if (entityTurn == TurnState::WaitTurn)
@@ -996,24 +996,23 @@ bool Zombie_Runner::Update(float dt)
 					entityTurn = TurnState::NONE;
 				}*/
 			}
-				
+
 
 			if (EntityHP == 0)
 			{
 				SetToDelete();
 			}
 
-			
+
 		}
-		
-		
-		
-		
+
+
+
+
 	}
 
 	currentAnim->Update();
 
-	return true;
 }
 
 

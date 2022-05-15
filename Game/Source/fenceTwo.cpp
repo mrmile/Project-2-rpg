@@ -43,7 +43,7 @@ FenceTwo::FenceTwo(int x, int y) : Entity(x, y)
 
 }
 
-bool FenceTwo::Update(float dt)
+void FenceTwo::Update(float dt)
 {
 	if (app->player->pauseMenu == true)
 	{
@@ -51,7 +51,6 @@ bool FenceTwo::Update(float dt)
 		collider->SetPos(NewPosition.x, NewPosition.y);
 		FenceTwo_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
 
-		return true;
 	}
 
 	if (app->player->pauseMenu == false)
@@ -70,6 +69,5 @@ bool FenceTwo::Update(float dt)
 		SetToDelete();
 	}
 
-	return true;
 
 }

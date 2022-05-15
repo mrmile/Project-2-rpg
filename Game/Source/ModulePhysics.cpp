@@ -225,6 +225,50 @@ PhysBody* ModulePhysics::CreateWalkingEnemyBox(int x, int y, int width, int heig
 	return pbody;
 }
 
+
+PhysBody* ModulePhysics::CreateZombieStandartBox(int x, int y, int width, int height)
+{
+	b2BodyDef body;
+	body.type = b2_dynamicBody;
+	body.position.Set(PIXEL_TO_METERS(x), PIXEL_TO_METERS(y));
+	body.gravityScale = 0.0f;
+	b2Body* b = world->CreateBody(&body);
+	b2PolygonShape box;
+
+
+
+	box.SetAsBox(PIXEL_TO_METERS(width) * 0.5f, PIXEL_TO_METERS(height) * 0.5f);
+
+	b2FixtureDef fixture;
+	fixture.shape = &box;
+	fixture.density = 50.0f;
+
+	//fixture.friction = 0.5f;
+
+	b->CreateFixture(&fixture);
+
+	b2Vec2 colliderPosPoint;
+	colliderPosPoint.x = PIXEL_TO_METERS(-14);
+	colliderPosPoint.y = PIXEL_TO_METERS(-17);
+
+	PhysBody* pbody = new PhysBody();
+	pbody->body = b;
+	b->SetUserData(pbody);
+	pbody->width = width * 0.5f;
+	pbody->height = height * 0.5f;
+	pbody->body->SetFixedRotation(true);
+
+	b2Filter filter;
+
+	filter.categoryBits = 0x0001;
+	filter.maskBits = 0x0001;
+
+	pbody->body->GetFixtureList()->SetFilterData(filter);
+
+
+	return pbody;
+}
+
 PhysBody* ModulePhysics::CreateNPCbox(int x, int y, int width, int height)
 {
 	b2BodyDef body;

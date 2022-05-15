@@ -43,7 +43,7 @@ FenceOne::FenceOne(int x, int y) : Entity(x, y)
 
 }
 
-bool FenceOne::Update(float dt)
+void FenceOne::Update(float dt)
 {
 	if (app->player->pauseMenu == true)
 	{
@@ -51,7 +51,6 @@ bool FenceOne::Update(float dt)
 		collider->SetPos(NewPosition.x, NewPosition.y);
 		FenceOne_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
 
-		return true;
 	}
 
 	if (app->player->pauseMenu == false)
@@ -69,7 +68,6 @@ bool FenceOne::Update(float dt)
 		SetToDelete();
 	}
 	
-	return true;
 
 }
 

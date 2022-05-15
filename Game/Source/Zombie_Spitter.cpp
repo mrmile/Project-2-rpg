@@ -550,7 +550,7 @@ Zombie_Spitter::Zombie_Spitter(int x,int y) : Entity(x,y)
 	
 }
 
-bool Zombie_Spitter::Update(float dt)
+void Zombie_Spitter::Update(float dt)
 {
 	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
 	
@@ -1009,7 +1009,6 @@ bool Zombie_Spitter::Update(float dt)
 
 	currentAnim->Update();
 
-	return true;
 }
 	
 

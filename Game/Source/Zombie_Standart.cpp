@@ -545,22 +545,18 @@ Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56}, Collider::Type::ENEMY, (Module*)app->entity_manager);
 
-	Standart_Zombie_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y-46, 25, 10));
+	Standart_Zombie_List.add(app->physics->CreateZombieStandartBox(position.x, position.y, 25, 10));
 	
 	
 	
 }
 
-bool Zombie_Standart::Update(float dt)
+void Zombie_Standart::Update(float dt)
 {
 	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
-	if (EntityHP <= 0)
-	{
-		//Standart_Zombie_List.end->data->body->DestroyFixture(Standart_Zombie_List.end->data->body->GetFixtureList());
-		SetToDelete();
-	}
 	if (EntityHP>0)
 	{
+
 		if (app->player->pauseMenu == true)
 		{
 			iPoint NewPosition = position;
@@ -1008,13 +1004,15 @@ bool Zombie_Standart::Update(float dt)
 
 			}
 
-
+			currentAnim->Update();
 		}
 	}
 	
-	currentAnim->Update();
+		
+	
+	
 
-	return true;
+	
 }
 
 

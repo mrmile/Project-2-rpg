@@ -57,7 +57,7 @@ public:
 
 	const Collider* GetColldier() const;
 	//logic of the entity
-	virtual bool Update(float dt);
+	virtual void Update(float dt);
 
 	//Drawing methodology
 	virtual void Draw();

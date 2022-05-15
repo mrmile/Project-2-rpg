@@ -50,7 +50,7 @@ Final_Boss::Final_Boss(int x,int y) : Entity(x,y)
 	
 }
 
-bool Final_Boss::Update(float dt)
+void Final_Boss::Update(float dt)
 {
 	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
 	
@@ -62,7 +62,6 @@ bool Final_Boss::Update(float dt)
 		currentAnim = &Idle_Enemy;
 		currentAnim->loop = false;
 
-		return true;
 	}
 	if (app->player->pauseMenu == false)
 	{
@@ -84,7 +83,6 @@ bool Final_Boss::Update(float dt)
 			//move normally
 			
 			
-			return true;
 
 			
 
@@ -139,12 +137,10 @@ bool Final_Boss::Update(float dt)
 
 			
 			
-			return true;
 		}
 		
 		
 		
-		return true;
 	}
 	
 }

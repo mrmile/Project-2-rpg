@@ -42,7 +42,7 @@ RockTwo::RockTwo(int x, int y) : Entity(x, y)
 
 }
 
-bool RockTwo::Update(float dt)
+void RockTwo::Update(float dt)
 {
 	if (app->player->pauseMenu == true)
 	{
@@ -50,7 +50,6 @@ bool RockTwo::Update(float dt)
 		collider->SetPos(NewPosition.x, NewPosition.y);
 		RockTwo_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
 
-		return true;
 	}
 
 	if (app->player->pauseMenu == false)
@@ -68,6 +67,5 @@ bool RockTwo::Update(float dt)
 		SetToDelete();
 	}
 
-	return true;
 
 }

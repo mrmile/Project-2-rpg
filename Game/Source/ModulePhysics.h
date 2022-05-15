@@ -53,6 +53,8 @@ public:
 	PhysBody* CreateNPCbox(int x, int y, int width, int height);
 	PhysBody* CreateWalkingEnemyBox(int x, int y, int width, int height);
 
+	PhysBody* CreateZombieStandartBox(int x, int y, int width, int height);
+
 	// b2ContactListener ---
 	void BeginContact(b2Contact* contact);
 

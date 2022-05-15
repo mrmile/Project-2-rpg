@@ -26,7 +26,7 @@ const Collider* Entity::GetColldier() const
 {
 	return collider;
 }
-bool Entity::Update(float dt)
+void Entity::Update(float dt)
 {
 	if (currentAnim != nullptr)
 	{
@@ -38,7 +38,6 @@ bool Entity::Update(float dt)
 		collider->SetPos(position.x, position.y);
 	}
 
-	return true;
 }
 void Entity::Draw()
 {
