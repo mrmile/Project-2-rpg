@@ -332,7 +332,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	rightRunAnim.PushBack({ 2095, 3885, 85, 105 });
 	rightRunAnim.PushBack({ 2180, 3885, 85, 105 });
 	rightRunAnim.loop = true;
-	rightRunAnim.speed = 0.56f;
+	rightRunAnim.speed = 0.65f;
 
 	leftRunAnim.PushBack({ 140, 3465, 85, 105 });
 	leftRunAnim.PushBack({ 225, 3465, 85, 105 });
@@ -360,7 +360,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	leftRunAnim.PushBack({ 2095, 3465, 85, 105 });
 	leftRunAnim.PushBack({ 2180, 3465, 85, 105 });
 	leftRunAnim.loop = true;
-	leftRunAnim.speed = 0.56f;
+	leftRunAnim.speed = 0.65f;
 
 	downRunAnim.PushBack({ 140, 4095, 85, 105 });
 	downRunAnim.PushBack({ 225, 4095, 85, 105 });
@@ -388,7 +388,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	downRunAnim.PushBack({ 2095, 4095, 85, 105 });
 	downRunAnim.PushBack({ 2180, 4095, 85, 105 });
 	downRunAnim.loop = true;
-	downRunAnim.speed = 0.56f;
+	downRunAnim.speed = 0.65f;
 
 	upRunAnim.PushBack({ 140, 3675, 85, 105 });
 	upRunAnim.PushBack({ 225, 3675, 85, 105 });
@@ -416,7 +416,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	upRunAnim.PushBack({ 2095, 3675, 85, 105 });
 	upRunAnim.PushBack({ 2180, 3675, 85, 105 });
 	upRunAnim.loop = true;
-	upRunAnim.speed = 0.56f;
+	upRunAnim.speed = 0.65f;
 
 	rightDownRunAnim.PushBack({ 140, 3990, 85, 105 });
 	rightDownRunAnim.PushBack({ 225, 3990, 85, 105 });
@@ -444,7 +444,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	rightDownRunAnim.PushBack({ 2095, 3990, 85, 105 });
 	rightDownRunAnim.PushBack({ 2180, 3990, 85, 105 });
 	rightDownRunAnim.loop = true;
-	rightDownRunAnim.speed = 0.56f;
+	rightDownRunAnim.speed = 0.65f;
 
 	leftDownRunAnim.PushBack({ 140, 3360, 85, 105 });
 	leftDownRunAnim.PushBack({ 225, 3360, 85, 105 });
@@ -472,7 +472,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	leftDownRunAnim.PushBack({ 2095, 3360, 85, 105 });
 	leftDownRunAnim.PushBack({ 2180, 3360, 85, 105 });
 	leftDownRunAnim.loop = true;
-	leftDownRunAnim.speed = 0.56f;
+	leftDownRunAnim.speed = 0.65f;
 
 	rightUpRunAnim.PushBack({ 140, 3780, 85, 105 });
 	rightUpRunAnim.PushBack({ 225, 3780, 85, 105 });
@@ -500,7 +500,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	rightUpRunAnim.PushBack({ 2095, 3780, 85, 105 });
 	rightUpRunAnim.PushBack({ 2180, 3780, 85, 105 });
 	rightUpRunAnim.loop = true;
-	rightUpRunAnim.speed = 0.56f;
+	rightUpRunAnim.speed = 0.65f;
 
 	leftUpRunAnim.PushBack({ 140, 3570, 85, 105 });
 	leftUpRunAnim.PushBack({ 225, 3570, 85, 105 });
@@ -528,7 +528,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	leftUpRunAnim.PushBack({ 2095, 3570, 85, 105 });
 	leftUpWalkAnim.PushBack({ 2180, 3570, 85, 105 });
 	leftUpRunAnim.loop = true;
-	leftUpRunAnim.speed = 0.56f;
+	leftUpRunAnim.speed = 0.65f;
 
 	entityTurnPlayer = TurnState::NONE;
 	entityStatePlayer = GameState::OutOfCombat;

@@ -173,7 +173,7 @@ void Map::Draw()
 						if (pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) + 98/*98 VARÍA SEGÚN LA ALTURA REAL DEL JUGADOR*/ > app->player->position.y && app->player->hasBeenDrawed == false)
 						{
 							SDL_Rect playerRect = app->player->currentAnimation->GetCurrentFrame();
-							app->render->DrawTexture(app->player->texture, app->player->position.x, app->player->position.y - 50, &playerRect);
+							app->render->DrawTexture(app->player->texture, app->player->position.x - 20, app->player->position.y - 70, &playerRect);
 
 							app->player->hasBeenDrawed = true;
 						}
