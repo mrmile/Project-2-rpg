@@ -9,6 +9,7 @@
 #include "GameManager.h"
 #include "Entity.h"
 #include "ModulePlayer.h"
+#include "Transitions.h"
 
 #include "NPCs.h"
 #include "NPCs2.h"
@@ -485,6 +486,8 @@ void EntityManager::RegisterEntitesInCombat(Entity* entity)
 
 			app->player->entityStatePlayer = GameState::InCombat;
 			app->player->entityTurnPlayer = TurnState::NONE;
+			
+			
 
 		}
 	}

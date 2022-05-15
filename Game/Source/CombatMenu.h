@@ -62,6 +62,8 @@ private:
 
 	int buttonClickedFx = 0;
 	int buttonClickedMelee = 0;
+
+	bool transitionStarting = true;
 };
 
 #endif // __SCENE_FOREST_H__

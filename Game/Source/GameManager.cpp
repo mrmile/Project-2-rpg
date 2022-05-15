@@ -6,6 +6,7 @@
 #include "Defs.h"
 #include "Log.h"
 #include "List.h"
+#include "Transitions.h"
 
 
 GameManager::GameManager(bool start_enabled) : Module(start_enabled)
@@ -28,7 +29,6 @@ bool GameManager::Update(float dt)
 {
 	if (StartTurnManagement == true)
 	{
-		
 		if (app->entity_manager->ListInCombat.At(counter)->data->EntityHP <= 0)
 		{
 			//app->entity_manager->ListInCombat.At(counter)->data = nullptr;
