@@ -549,7 +549,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	Runner_Zombie_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10));
 	
 	offsetX = -25;
-	offsetY = -90;
+	offsetY = -50;
 	
 }
 
