@@ -543,6 +543,9 @@ Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 	position.x = x;
 	position.y = y;
 
+	offsetX = -25;
+	offsetY = -50;
+
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56}, Collider::Type::ENEMY, (Module*)app->entity_manager);
 
 	Standart_Zombie_List.add(app->physics->CreateZombieStandartBox(position.x, position.y, 25, 10));
