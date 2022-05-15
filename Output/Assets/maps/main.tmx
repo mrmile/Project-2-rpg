@@ -140138,15 +140138,15 @@
    <property name="Parallax" value="1"/>
   </properties>
   <object id="193" gid="1084" x="3410.67" y="3540.67" width="32" height="48"/>
-  <object id="194" gid="1085" x="4194" y="3476.67" width="33" height="55"/>
-  <object id="195" gid="1086" x="4414.67" y="2870.67" width="33" height="55"/>
-  <object id="200" gid="1084" x="2905.33" y="3041.33" width="32" height="48"/>
+  <object id="194" gid="1085" x="5050" y="3552.67" width="33" height="55"/>
+  <object id="195" gid="1086" x="4426.67" y="3359.34" width="33" height="55"/>
+  <object id="200" gid="1084" x="2782" y="2941.66" width="32" height="48"/>
  </objectgroup>
  <objectgroup id="17" name="zombie_runner">
-  <object id="201" gid="1085" x="4030.67" y="2628" width="33" height="55"/>
+  <object id="201" gid="1085" x="4186.67" y="2645.33" width="33" height="55"/>
  </objectgroup>
  <objectgroup id="18" name="zombie_spitter">
-  <object id="202" gid="1086" x="3289.33" y="2189.33" width="33" height="55"/>
+  <object id="202" gid="1086" x="3347.33" y="2064.33" width="33" height="55"/>
  </objectgroup>
  <objectgroup id="6" name="startPos">
   <object id="32" x="3320" y="3046" width="22.6667" height="22"/>
