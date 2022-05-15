@@ -1,4 +1,4 @@
-#include "Switch.h"
+#include "Switch2.h"
 
 #include "App.h"
 #include "ModuleCollisions.h"
@@ -21,7 +21,7 @@
 
 #include "Defs.h"
 
-Switch::Switch(int x, int y) : Entity(x, y)
+Switch2::Switch2(int x, int y) : Entity(x, y)
 {
 	EntityHP = 1;
 	EntityAP = 5;
@@ -54,7 +54,7 @@ Switch::Switch(int x, int y) : Entity(x, y)
 
 }
 
-void Switch::Update(float dt)
+void Switch2::Update(float dt)
 {
 	counter++;
 

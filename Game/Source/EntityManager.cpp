@@ -133,6 +133,30 @@ bool EntityManager::Update(float dt)
 				entities[i]->Switch_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
 				entities[i]->Switch_List.end->data->body->SetAwake(false);
 			}
+			if (entities[i]->type == EntityType::SWITCH_KEY2)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Switch_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Switch_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::SWITCH_KEY3)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Switch_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Switch_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::SWITCH_KEY4)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Switch_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Switch_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::SWITCH_KEY5)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Switch_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Switch_List.end->data->body->SetAwake(false);
+			}
 			if (entities[i]->type == EntityType::ROCK_ONE)
 			{
 				entities[i]->SetToDelete();
@@ -197,6 +221,22 @@ bool EntityManager::CleanUp()
 				entities[i]->Spitter_Zombie_List.end->data->body->DestroyFixture(entities[i]->Spitter_Zombie_List.end->data->body->GetFixtureList());
 			}
 			if (HelperQueue[i].type == EntityType::SWITCH_KEY)
+			{
+				entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+			}
+			if (HelperQueue[i].type == EntityType::SWITCH_KEY2)
+			{
+				entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+			}
+			if (HelperQueue[i].type == EntityType::SWITCH_KEY3)
+			{
+				entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+			}
+			if (HelperQueue[i].type == EntityType::SWITCH_KEY4)
+			{
+				entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+			}
+			if (HelperQueue[i].type == EntityType::SWITCH_KEY5)
 			{
 				entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
 			}
@@ -303,6 +343,34 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				//entities[i]->texture = texture_player;
 				break;
 			case EntityType::SWITCH_KEY:
+				entities[i] = new Switch(info.x, info.y);
+				HelperQueue[i].type = EntityType::SWITCH_KEY;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				entities[i]->texture = texture_switch;
+				break;
+			case EntityType::SWITCH_KEY2:
+				entities[i] = new Switch(info.x, info.y);
+				HelperQueue[i].type = EntityType::SWITCH_KEY;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				entities[i]->texture = texture_switch;
+				break;
+			case EntityType::SWITCH_KEY3:
+				entities[i] = new Switch(info.x, info.y);
+				HelperQueue[i].type = EntityType::SWITCH_KEY;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				entities[i]->texture = texture_switch;
+				break;
+			case EntityType::SWITCH_KEY4:
+				entities[i] = new Switch(info.x, info.y);
+				HelperQueue[i].type = EntityType::SWITCH_KEY;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				entities[i]->texture = texture_switch;
+				break;
+			case EntityType::SWITCH_KEY5:
 				entities[i] = new Switch(info.x, info.y);
 				HelperQueue[i].type = EntityType::SWITCH_KEY;
 				entities[i]->id = i;
@@ -472,6 +540,30 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 					entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
 					/*entities[i] = nullptr;*/
 				}
+				if (HelperQueue[i].type == EntityType::SWITCH_KEY2)
+				{
+					entities[i]->SetToDelete();
+					entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+					/*entities[i] = nullptr;*/
+				}
+				if (HelperQueue[i].type == EntityType::SWITCH_KEY3)
+				{
+					entities[i]->SetToDelete();
+					entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+					/*entities[i] = nullptr;*/
+				}
+				if (HelperQueue[i].type == EntityType::SWITCH_KEY4)
+				{
+					entities[i]->SetToDelete();
+					entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+					/*entities[i] = nullptr;*/
+				}
+				if (HelperQueue[i].type == EntityType::SWITCH_KEY5)
+				{
+					entities[i]->SetToDelete();
+					entities[i]->Switch_List.end->data->body->DestroyFixture(entities[i]->Switch_List.end->data->body->GetFixtureList());
+					/*entities[i] = nullptr;*/
+				}
 				if (HelperQueue[i].type == EntityType::ROCK_ONE)
 				{
 					entities[i]->SetToDelete();
@@ -544,6 +636,22 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				if (HelperQueue[i].type == EntityType::SWITCH_KEY)
 				{
 					AddEntity(EntityType::SWITCH_KEY, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::SWITCH_KEY2)
+				{
+					AddEntity(EntityType::SWITCH_KEY2, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::SWITCH_KEY3)
+				{
+					AddEntity(EntityType::SWITCH_KEY3, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::SWITCH_KEY4)
+				{
+					AddEntity(EntityType::SWITCH_KEY4, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::SWITCH_KEY5)
+				{
+					AddEntity(EntityType::SWITCH_KEY5, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
 				if (HelperQueue[i].type == EntityType::ROCK_ONE)
 				{

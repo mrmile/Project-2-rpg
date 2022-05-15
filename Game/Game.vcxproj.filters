@@ -175,6 +175,18 @@
     <ClCompile Include="Source\AssetsManager.cpp">
       <Filter>General</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Switch2.cpp">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Switch3.cpp">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Switch4.cpp">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Switch5.cpp">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -380,6 +392,18 @@
     </ClInclude>
     <ClInclude Include="Source\AssetsManager.h">
       <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Switch2.h">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Switch3.h">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Switch4.h">
+      <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Switch5.h">
+      <Filter>General\Entities\PuzzlesElements</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
