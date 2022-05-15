@@ -79,35 +79,35 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 
 	//WALK 
 
-	rightWalkAnim.PushBack({ 0, 472, 54, 60 });
+	rightWalkAnim.PushBack({ 140, 3885, 85, 105 });
 	rightWalkAnim.loop = true;
 	rightWalkAnim.speed = 0.3f;
 
-	leftWalkAnim.PushBack({ 0, 472, 54, 60 });
+	leftWalkAnim.PushBack({ 140, 3465, 85, 105 });
 	leftWalkAnim.loop = true;
 	leftWalkAnim.speed = 0.3f;
 
-	downWalkAnim.PushBack({ 0, 472, 54, 60 });
+	downWalkAnim.PushBack({ 140, 4095, 85, 105 });
 	downWalkAnim.loop = true;
 	downWalkAnim.speed = 0.3f;
 
-	upWalkAnim.PushBack({ 0, 472, 54, 60 });
+	upWalkAnim.PushBack({ 140, 3675, 85, 105 });
 	upWalkAnim.loop = true;
 	upWalkAnim.speed = 0.3f;
 
-	rightDownWalkAnim.PushBack({ 0, 472, 54, 60 });
+	rightDownWalkAnim.PushBack({ 140, 3990, 85, 105 });
 	rightDownWalkAnim.loop = true;
 	rightDownWalkAnim.speed = 0.3f;
 
-	leftDownWalkAnim.PushBack({ 0, 472, 54, 60 });
+	leftDownWalkAnim.PushBack({ 140, 3360, 85, 105 });
 	leftDownWalkAnim.loop = true;
 	leftDownWalkAnim.speed = 0.3f;
 
-	rightUpWalkAnim.PushBack({ 0, 472, 54, 60 });
+	rightUpWalkAnim.PushBack({ 140, 3780, 85, 105 });
 	rightUpWalkAnim.loop = true;
 	rightUpWalkAnim.speed = 0.3f;
 
-	leftUpWalkAnim.PushBack({ 0, 472, 54, 60 });
+	leftUpWalkAnim.PushBack({ 140, 3570, 85, 105 });
 	leftUpWalkAnim.loop = true;
 	leftUpWalkAnim.speed = 0.3f;
 
