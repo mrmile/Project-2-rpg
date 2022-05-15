@@ -172,6 +172,9 @@
     <ClCompile Include="Source\rockTwo.cpp">
       <Filter>General\Entities\PuzzlesElements</Filter>
     </ClCompile>
+    <ClCompile Include="Source\AssetsManager.cpp">
+      <Filter>General</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -374,6 +377,9 @@
     </ClInclude>
     <ClInclude Include="Source\rockTwo.h">
       <Filter>General\Entities\PuzzlesElements</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AssetsManager.h">
+      <Filter>General</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

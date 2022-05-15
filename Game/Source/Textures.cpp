@@ -1,6 +1,7 @@
 #include "App.h"
 #include "Render.h"
 #include "Textures.h"
+#include "AssetsManager.h"
 
 #include "Defs.h"
 #include "Log.h"

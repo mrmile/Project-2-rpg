@@ -128,6 +128,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\AssetsManager.cpp" />
     <ClCompile Include="Source\Collider.cpp" />
     <ClCompile Include="Source\CombatMenu.cpp" />
     <ClCompile Include="Source\CreditsScreen.cpp" />
@@ -184,6 +185,7 @@
     <ClCompile Include="Source\Zombie_Spitter.cpp" />
     <ClCompile Include="Source\Zombie_Standart.cpp" />
     <ClInclude Include="Source\Animation.h" />
+    <ClInclude Include="Source\AssetsManager.h" />
     <ClInclude Include="Source\Collider.h" />
     <ClInclude Include="Source\CombatMenu.h" />
     <ClInclude Include="Source\CreditsScreen.h" />
