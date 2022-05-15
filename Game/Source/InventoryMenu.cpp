@@ -631,6 +631,7 @@ bool InventoryMenu::DeEquipItemSelected(ItemList* item)
 	{
 		if (item->type == ItemType::OBJECT_DEFAULT_GUN)
 		{
+			app->audio->PlayFx(objectEquipedFX, 0);
 			AddItemToInventory(ItemType::OBJECT_DEFAULT_GUN, false, true);
 
 			Equipment[0].amount = 0;
@@ -640,6 +641,7 @@ bool InventoryMenu::DeEquipItemSelected(ItemList* item)
 		}
 		if (item->type == ItemType::OBJECT_lONG_SCOPE_GUN)
 		{
+			app->audio->PlayFx(objectEquipedFX, 0);
 			AddItemToInventory(ItemType::OBJECT_lONG_SCOPE_GUN, false, true);
 
 			Equipment[0].amount = 0;
@@ -649,6 +651,7 @@ bool InventoryMenu::DeEquipItemSelected(ItemList* item)
 		}
 		if (item->type == ItemType::OBJECT_SHORT_SCOPE_GUN)
 		{
+			app->audio->PlayFx(objectEquipedFX, 0);
 			AddItemToInventory(ItemType::OBJECT_SHORT_SCOPE_GUN, false, true);
 
 			Equipment[0].amount = 0;
@@ -658,6 +661,7 @@ bool InventoryMenu::DeEquipItemSelected(ItemList* item)
 		}
 		if (item->type == ItemType::OBJECT_KNIFE)
 		{
+			app->audio->PlayFx(objectEquipedFX, 0);
 			AddItemToInventory(ItemType::OBJECT_KNIFE, false, true);
 
 			Equipment[1].amount = 0;
@@ -667,6 +671,7 @@ bool InventoryMenu::DeEquipItemSelected(ItemList* item)
 		}
 		if (item->type == ItemType::OBJECT_SUIT)
 		{
+			app->audio->PlayFx(objectEquipedFX, 0);
 			AddItemToInventory(ItemType::OBJECT_SUIT, false, true);
 			app->player->playerHP -= 100;
 			Equipment[2].amount = 0;
