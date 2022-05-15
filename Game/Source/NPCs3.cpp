@@ -61,7 +61,7 @@ void Npcs3::Update(float dt)
 	if (app->player->pauseMenu == false)
 	{
 		NPC3_List.end->data->GetPosition(position.x, position.y);
-		if (position.DistanceTo(app->player->position) < 10)
+		if (position.DistanceTo(app->player->position) < 20)
 		{
 			/*app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);*/
 			app->player->npc3Close = true;
