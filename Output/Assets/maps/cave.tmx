@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="35" nextobjectid="214">
+<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="36" nextobjectid="215">
  <tileset firstgid="1" name="cave_ground" tilewidth="75" tileheight="39" tilecount="448" columns="16">
   <image source="cave_ground.png" width="1200" height="1092"/>
  </tileset>
@@ -80163,6 +80163,9 @@
   <object id="211" gid="561" x="4825" y="1662.5" width="75" height="117"/>
   <object id="212" gid="561" x="4864" y="1684" width="75" height="117"/>
   <object id="213" gid="561" x="4841.5" y="1731" width="75" height="117"/>
+ </objectgroup>
+ <objectgroup color="#ffaa00" id="35" name="npc_2">
+  <object id="214" x="4732" y="1698.67"/>
  </objectgroup>
  <objectgroup color="#000000" id="15" name="LEVEL_AREA" visible="0">
   <object id="197" x="2184.85" y="993.939" width="2906.06" height="2103.03"/>

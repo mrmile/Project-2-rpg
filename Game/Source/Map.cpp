@@ -977,15 +977,6 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		}
 	}
 
-	if (object->name == "npc")
-	{
-		pugi::xml_node NewObject;
-		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
-		{
-			app->entity_manager->AddEntity(EntityType::NPC, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
-		}
-	}
-
 	if (object->name == "npc_2")
 	{
 		pugi::xml_node NewObject;
@@ -995,12 +986,24 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		}
 	}
 
-	if (object->name == "npc_3")
+	if (app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2)
 	{
-		pugi::xml_node NewObject;
-		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		if (object->name == "npc")
 		{
-			app->entity_manager->AddEntity(EntityType::NPC3, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			pugi::xml_node NewObject;
+			for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+			{
+				app->entity_manager->AddEntity(EntityType::NPC, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			}
+		}
+
+		if (object->name == "npc_3")
+		{
+			pugi::xml_node NewObject;
+			for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+			{
+				app->entity_manager->AddEntity(EntityType::NPC3, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			}
 		}
 	}
 
