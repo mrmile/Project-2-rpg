@@ -560,6 +560,13 @@ bool ModulePlayer::Start()
 	selectedEnemy = app->tex->Load("Assets/textures/CircleSelectionInRange.png");
 	selectedEnemyNotInRange = app->tex->Load("Assets/textures/CircleSelection.png");
 
+	characterHealth100 = app->tex->Load("Assets/textures/GUI/Inventory/barLife100.png");
+	characterHealth80 = app->tex->Load("Assets/textures/GUI/Inventory/barLife80.png");
+	characterHealth60 = app->tex->Load("Assets/textures/GUI/Inventory/barLife60.png");
+	characterHealth40 = app->tex->Load("Assets/textures/GUI/Inventory/barLife40.png");
+	characterHealth20 = app->tex->Load("Assets/textures/GUI/Inventory/barLife20.png");
+	characterHealth0 = app->tex->Load("Assets/textures/GUI/Inventory/barLife00.png");
+
 	noteDay1 = app->tex->Load("Assets/textures/extras/day1_text.png");
 	noteDay5 = app->tex->Load("Assets/textures/extras/day5_text.png");
 	noteDay10 = app->tex->Load("Assets/textures/extras/day10_text.png");
@@ -1882,41 +1889,66 @@ bool ModulePlayer::PostUpdate()
 		sprintf_s(timerText, 10, "%3d", sceneTimer);
 
 
-		SDL_Rect quad;
-		quad = { 5, 10, playerHP, 10 };
+		//SDL_Rect quad;
+		//quad = { 5, 10, playerHP, 10 };
 
-		SDL_Rect quad2;
-		quad2 = { 5, 10, PlayerMaxHP, 10 };
+		//SDL_Rect quad2;
+		//quad2 = { 5, 10, PlayerMaxHP, 10 };
 
-		SDL_Rect bgquad;
-		bgquad = { 3, 8, PlayerMaxHP+4, 14 };
-		app->render->DrawRectangle2(bgquad, 255, 255, 255, 255, 0.0f, true);
-		app->render->DrawRectangle2(quad2, 200, 200, 200, 255, 0.0f, true);
-		//app->render->DrawRectangle(bgquad, 255, 255, 255, 165, true, true);
-		if (playerHP >= PlayerMaxHP)
-		{
-			playerHP = PlayerMaxHP;
-			app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
-		}
-		else if (playerHP > PlayerMaxHP/2)
-		{
-			app->render->DrawRectangle2(quad, 120, 255, 0, 255, 0.0f, true);
-		}
-		else if (playerHP > PlayerMaxHP/5 && playerHP <= PlayerMaxHP/2)
-		{
-			app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
-		}
-		else
-		{
-			if ((playerFPS / 5) % 2 == 0)
-			{
-				app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
-			}
-			else
-			{
-				app->render->DrawRectangle2(quad, 255, 150, 0, 255, 0.0f, true);
-			}
+		//SDL_Rect bgquad;
+		//bgquad = { 3, 8, PlayerMaxHP+4, 14 };
+		//app->render->DrawRectangle2(bgquad, 255, 255, 255, 255, 0.0f, true);
+		//app->render->DrawRectangle2(quad2, 200, 200, 200, 255, 0.0f, true);
+		////app->render->DrawRectangle(bgquad, 255, 255, 255, 165, true, true);
+		//if (playerHP >= PlayerMaxHP)
+		//{
+		//	playerHP = PlayerMaxHP;
+		//	app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
+		//}
+		//else if (playerHP > PlayerMaxHP/2)
+		//{
+		//	app->render->DrawRectangle2(quad, 120, 255, 0, 255, 0.0f, true);
+		//}
+		//else if (playerHP > PlayerMaxHP/5 && playerHP <= PlayerMaxHP/2)
+		//{
+		//	app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
+		//}
+		//else
+		//{
+		//	if ((playerFPS / 5) % 2 == 0)
+		//	{
+		//		app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
+		//	}
+		//	else
+		//	{
+		//		app->render->DrawRectangle2(quad, 255, 150, 0, 255, 0.0f, true);
+		//	}
 
+		//}
+
+		if (app->player->playerHP >= app->player->PlayerMaxHP)
+		{
+			app->render->DrawTexture2(characterHealth100, -60, -7, NULL);
+		}
+		if (app->player->playerHP > app->player->PlayerMaxHP / 1.25f && app->player->playerHP < app->player->PlayerMaxHP)
+		{
+			app->render->DrawTexture2(characterHealth80, -60, -7, NULL);
+		}
+		if (app->player->playerHP > app->player->PlayerMaxHP / 1.66f && app->player->playerHP <= app->player->PlayerMaxHP / 1.25f)
+		{
+			app->render->DrawTexture2(characterHealth60, -60, -7, NULL);
+		}
+		if (app->player->playerHP > app->player->PlayerMaxHP / 2.5f && app->player->playerHP <= app->player->PlayerMaxHP / 1.66f)
+		{
+			app->render->DrawTexture2(characterHealth40, -60, -7, NULL);
+		}
+		if (app->player->playerHP > app->player->PlayerMaxHP / 5 && app->player->playerHP <= app->player->PlayerMaxHP / 2.5f)
+		{
+			app->render->DrawTexture2(characterHealth20, -60, -7, NULL);
+		}
+		if (app->player->playerHP <= 0)
+		{
+			app->render->DrawTexture2(characterHealth0, -60, -7, NULL);
 		}
 
 		if (app->sceneCave->playerRestart == true)
