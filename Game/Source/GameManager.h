@@ -37,6 +37,10 @@ public:
 	bool PostUpdate();
 
 	void ClearList();
+
+	bool CheckList();
+
+	void SetAlllistToNone();
 	
 	int counter = 0;
 
