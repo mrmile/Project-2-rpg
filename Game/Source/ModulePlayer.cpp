@@ -567,6 +567,8 @@ bool ModulePlayer::Start()
 	characterHealth20 = app->tex->Load("Assets/textures/GUI/Inventory/barLife20.png");
 	characterHealth0 = app->tex->Load("Assets/textures/GUI/Inventory/barLife00.png");
 
+	glassEffect = app->tex->Load("Assets/textures/GUI/glassesEffect.png");
+
 	noteDay1 = app->tex->Load("Assets/textures/extras/day1_text.png");
 	noteDay5 = app->tex->Load("Assets/textures/extras/day5_text.png");
 	noteDay10 = app->tex->Load("Assets/textures/extras/day10_text.png");
@@ -790,6 +792,8 @@ bool ModulePlayer::Update(float dt)
 		collider->SetPos(position.x + 5, position.y - 56);
 		
 		playerTimer++;
+
+
 		//------------------------------------------------------------------------------------------------------------------------------------------
 		if (talking == false && entityStatePlayer == GameState::OutOfCombat)
 		{
@@ -1951,6 +1955,11 @@ bool ModulePlayer::PostUpdate()
 			app->render->DrawTexture2(characterHealth0, -60, -7, NULL);
 		}
 
+		if (app->inventoryMenu->showInventory == false && pauseMenu == false && app->inventoryMenu->suitEquiped == true)
+		{
+			app->render->DrawTexture2(glassEffect, 0, 0, NULL);
+		}
+
 		if (app->sceneCave->playerRestart == true)
 		{
 			//horizontalCB = true;
@@ -2150,6 +2159,14 @@ bool ModulePlayer::CleanUp()
 	app->tex->UnLoad(noteComputerDay5);
 	app->tex->UnLoad(noteComputerDay10);
 	app->tex->UnLoad(noteComputerDay15);
+
+	app->tex->UnLoad(glassEffect);
+	app->tex->UnLoad(characterHealth100);
+	app->tex->UnLoad(characterHealth80);
+	app->tex->UnLoad(characterHealth60);
+	app->tex->UnLoad(characterHealth40);
+	app->tex->UnLoad(characterHealth20);
+	app->tex->UnLoad(characterHealth0);
 
 	app->guiManager->DestroyGuiControl(41);
 	app->guiManager->DestroyGuiControl(42);

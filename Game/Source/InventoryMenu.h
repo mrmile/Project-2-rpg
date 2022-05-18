@@ -159,6 +159,7 @@ public:
 
 	bool showEquipableOptions = false;
 	bool showUsableOptions = false;
+	bool suitEquiped = false;
 
 	bool showOptionsForEquipment = false;
 
