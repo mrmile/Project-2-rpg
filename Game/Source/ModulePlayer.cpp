@@ -1682,17 +1682,18 @@ bool ModulePlayer::Update(float dt)
 				//Attack methodology, after attacking the player goes to wait turn
 				if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_UP)
 				{
-					CounterForEnemySelection++;
+					
 					if (CounterForEnemySelection < app->entity_manager->ListInCombat.count())
 					{
-						EnemySelectionBool = true;
-						enemySelected = app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position;
+						CounterForEnemySelection++;
 					}
-
-					if (CounterForEnemySelection > app->entity_manager->ListInCombat.count())
+					if (CounterForEnemySelection >= app->entity_manager->ListInCombat.count())
 					{
 						CounterForEnemySelection = 0;
 					}
+
+					EnemySelectionBool = true;
+					enemySelected = app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position;
 				}
 				if (playerAttacked == true)
 				{

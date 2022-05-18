@@ -545,9 +545,9 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	position.y = y;
 
 	offsetX = -25;
-	offsetY = -90;
+	offsetY = -50;
 
-	collider = app->collisions->AddCollider({ position.x, position.y-56, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
+	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
 
 	Runner_Zombie_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10));
 	
@@ -562,7 +562,7 @@ void Zombie_Runner::Update(float dt)
 	if (app->player->pauseMenu == true)
 	{
 		iPoint NewPosition = position;
-		collider->SetPos(NewPosition.x, NewPosition.y - 46);
+		collider->SetPos(NewPosition.x, NewPosition.y);
 		Runner_Zombie_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
 		currentAnim = &idleDownAnim_Enemy1;
 		currentAnim->loop = false;
@@ -580,7 +580,7 @@ void Zombie_Runner::Update(float dt)
 			{
 				if (position.DistanceTo(app->inventoryMenu->ActiveRadioPosition) < 300)
 				{
-					collider->SetPos(position.x, position.y - 46);
+					collider->SetPos(position.x, position.y);
 					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
 					currentAnim = &idleDownAnim_Enemy1;
 					currentAnim->loop = true;
@@ -662,7 +662,7 @@ void Zombie_Runner::Update(float dt)
 				}
 				else
 				{
-					collider->SetPos(position.x, position.y - 46);
+					collider->SetPos(position.x, position.y);
 					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
 					currentAnim = &idleDownAnim_Enemy1;
 					currentAnim->loop = true;
@@ -676,7 +676,7 @@ void Zombie_Runner::Update(float dt)
 			{
 				if (position.DistanceTo(app->player->position) < 300)
 				{
-					collider->SetPos(position.x, position.y - 46);
+					collider->SetPos(position.x, position.y);
 					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
 					currentAnim = &idleDownAnim_Enemy1;
 					currentAnim->loop = true;
@@ -758,7 +758,7 @@ void Zombie_Runner::Update(float dt)
 				}
 				else
 				{
-					collider->SetPos(position.x, position.y - 46);
+					collider->SetPos(position.x, position.y);
 					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
 					currentAnim = &idleDownAnim_Enemy1;
 					currentAnim->loop = true;
@@ -790,7 +790,7 @@ void Zombie_Runner::Update(float dt)
 				if (entityTurn == TurnState::NONE)
 				{
 					//Assigning order of turns
-					collider->SetPos(position.x, position.y - 46);
+					collider->SetPos(position.x, position.y);
 					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
 					currentAnim = &idleDownAnim_Enemy1;
 					currentAnim->loop = true;
@@ -800,7 +800,7 @@ void Zombie_Runner::Update(float dt)
 				}
 				if (entityTurn == TurnState::StartOfTurn)
 				{
-					collider->SetPos(position.x, position.y - 46);
+					collider->SetPos(position.x, position.y);
 					currentAnim = &idleDownAnim_Enemy1;
 					currentAnim->loop = false;
 					Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f }); //movimiento contrario a la direccion del jugador cuando nos chocamos con el
@@ -811,7 +811,7 @@ void Zombie_Runner::Update(float dt)
 				if (entityTurn == TurnState::MidOfTurn)
 				{
 
-					collider->SetPos(position.x, position.y - 46);
+					collider->SetPos(position.x, position.y);
 					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
 					currentAnim = &idleDownAnim_Enemy1;
 					currentAnim->loop = true;
@@ -899,7 +899,7 @@ void Zombie_Runner::Update(float dt)
 				{
 					//Change turn from enemy to player turn still have to develop a way to do it correctly
 					Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f });
-					collider->SetPos(position.x, position.y - 46);
+					collider->SetPos(position.x, position.y);
 					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
 
 					currentAnim = &idleDownAnim_Enemy1;
@@ -980,7 +980,7 @@ void Zombie_Runner::Update(float dt)
 				{
 					//Change turn from enemy to player turn still have to develop a way to do it correctly
 					counter = 0;
-					collider->SetPos(position.x, position.y - 46);
+					collider->SetPos(position.x, position.y);
 					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
 					currentAnim = &idleDownAnim_Enemy1;
 					currentAnim->loop = true;
