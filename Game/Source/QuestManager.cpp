@@ -174,7 +174,7 @@ bool QuestManager::PostUpdate()
 		}
 		case ACTIVATE_SWITCHES:
 		{
-			if (app->inventoryMenu->showInventory == true && app->player->showCombatHUD == false)app->render->DrawTexture2(mainQuestDescription_2, 0, 0, NULL);
+			if (app->inventoryMenu->showInventory == true && app->player->showCombatHUD == false)app->render->DrawTexture2(secondaryQuestSwitches, 0, 0, NULL);
 			break;
 		}
 	}
