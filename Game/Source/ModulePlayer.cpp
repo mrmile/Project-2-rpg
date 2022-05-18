@@ -2362,46 +2362,8 @@ void ModulePlayer::RangedAttack()
 	//Add logic for ranged attack
 	if (position.DistanceTo(enemySelected) <= EquipmentRange)
 	{
-		if (enemySelected.x == position.x)
-		{
-			app->particles->playerRangedAttack.speed.x = 0;
-			if (enemySelected.y < position.y) app->particles->playerRangedAttack.speed.y = -10;
-			if (enemySelected.y > position.y) app->particles->playerRangedAttack.speed.y = +10;
-			app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
-		}
-		if (enemySelected.x < position.x)
-		{
-			if (enemySelected.y == position.y)
-			{
-				app->particles->playerRangedAttack.speed.x = -10;
-				app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
-			}
-			else
-			{
-				app->particles->playerRangedAttack.speed.x = -10;
-				app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
-				app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
-			}
-
-			playerAttacked = true;
-		}
-
-		if (enemySelected.x > position.x)
-		{
-			if (enemySelected.y == position.y)
-			{
-				app->particles->playerRangedAttack.speed.x = 10;
-				app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
-			}
-			else
-			{
-				app->particles->playerRangedAttack.speed.x = 10;
-				app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
-				app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
-			}
-
-			playerAttacked = true;
-		}
+		app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->EntityHP -= EquipmentDamage;
+		playerAttacked = true;
 	}
 	if (position.DistanceTo(enemySelected) > EquipmentRange)
 	{
