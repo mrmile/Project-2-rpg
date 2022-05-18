@@ -84,9 +84,10 @@ bool EntityManager::Update(float dt)
 		{
 			entities[i]->Update(dt);
 		}
-
+		
 		if (entities[i] != nullptr && entities[i]->EntityHP <= 0)
 		{
+
 			if (entities[i]->type == EntityType::ZOMBIE_STANDART)
 			{
 				entities[i]->SetToDelete();
@@ -105,7 +106,6 @@ bool EntityManager::Update(float dt)
 				entities[i]->Spitter_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
 				entities[i]->Spitter_Zombie_List.end->data->body->SetAwake(false);
 			}
-
 			if (entities[i]->type == EntityType::NPC)
 			{
 				entities[i]->SetToDelete();

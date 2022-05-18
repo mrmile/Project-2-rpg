@@ -64,6 +64,11 @@ bool GameManager::Update(float dt)
 				app->entity_manager->ListInCombat.At(counter)->data->entityTurn = TurnState::StartOfTurn;
 				app->player->entityTurnPlayer == TurnState::NONE;
 			}
+
+			if (app->entity_manager->ListInCombat.At(counter)->data->EntityHP <= 0)
+			{
+				app->entity_manager->ListInCombat.At(counter)->data->entityTurn = TurnState::NONE;
+			}
 		}
 
 	}

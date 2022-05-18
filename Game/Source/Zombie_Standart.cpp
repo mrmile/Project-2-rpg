@@ -1000,6 +1000,7 @@ void Zombie_Standart::Update(float dt)
 
 
 				}
+				
 
 
 
