@@ -136,8 +136,6 @@ public:
 	SDL_Texture* characterHealth20 = nullptr;
 	SDL_Texture* characterHealth0 = nullptr;
 
-	SDL_Texture* glassEffect = nullptr;
-
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;

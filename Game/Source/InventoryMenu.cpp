@@ -177,7 +177,6 @@ bool InventoryMenu::Update(float dt)
 	{
 		app->player->PlayerMaxHP = 100;
 		combatSuitStrenghtPoints = 0;
-		suitEquiped = false;
 	}
 
 	return true;
@@ -756,7 +755,6 @@ bool InventoryMenu::EquipItemSelected(ItemList* item)
 				app->player->playerHP += 100;
 				app->player->PlayerMaxHP = 200;
 				combatSuitStrenghtPoints = 8;
-				suitEquiped = true;
 			}
 		}
 		
