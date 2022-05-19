@@ -132,7 +132,7 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	RangedAttack.speed.y = 0;
 	RangedAttack.anim.loop = true;
 	RangedAttack.anim.speed = 0.15f;
-	RangedAttack.lifetime = 100;
+	RangedAttack.lifetime = 200;
 
 	playerAttack.anim.PushBack({ 350, 17, 40, 35 });
 	playerAttack.anim.PushBack({ 351, 48, 39, 30 });
@@ -203,21 +203,20 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	ItemHealthPack.anim.loop = true;
 	ItemHealthPack.anim.speed = 0.15f;
 
-	//??????
 	ItemLongRangeGun.anim.PushBack({ 63, 93, 58, 24 });  //({ 115, 164, 28, 25 })
 	ItemLongRangeGun.anim.loop = true;
 	ItemLongRangeGun.anim.speed = 0.15f;
-	//??????
+
 
 	ItemRadio.anim.PushBack({ 128, 92, 33, 24 });
 	ItemRadio.anim.loop = true;
 	ItemRadio.anim.speed = 0.15f;
 
-	//??????
+	
 	ItemShortRangeGun.anim.PushBack({ 16, 95, 41, 19 });
 	ItemShortRangeGun.anim.loop = true;
 	ItemShortRangeGun.anim.speed = 0.15f;
-	//??????
+
 
 	ItemKnife.anim.PushBack({ 200, 59, 30, 21 });
 	ItemKnife.anim.loop = true;

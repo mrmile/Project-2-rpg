@@ -679,7 +679,7 @@ void Zombie_Spitter::Update(float dt)
 					currentAnim = &idleDownAnim_Enemy1;
 					currentAnim->loop = true;
 
-					if (position.x > app->player->position.x)
+					if (position.x > app->player->position.x + app->player->collider->rect.w / 2)
 					{
 						if (currentAnim != &leftWalkAnim_Enemy1)
 						{
@@ -688,7 +688,7 @@ void Zombie_Spitter::Update(float dt)
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
 					}
-					if (position.x < app->player->position.x)
+					if (position.x < app->player->position.x + app->player->collider->rect.w / 2)
 					{
 						if (currentAnim != &rightWalkAnim_Enemy1)
 						{
@@ -697,7 +697,7 @@ void Zombie_Spitter::Update(float dt)
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
 					}
-					if (position.y > app->player->position.y)
+					if (position.y > app->player->position.y - app->player->collider->rect.h)
 					{
 						if (currentAnim != &upWalkAnim_Enemy1)
 						{
@@ -706,7 +706,7 @@ void Zombie_Spitter::Update(float dt)
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
 					}
-					if (position.y < app->player->position.y)
+					if (position.y < app->player->position.y - app->player->collider->rect.h)
 					{
 						if (currentAnim != &downWalkAnim_Enemy1)
 						{
@@ -717,7 +717,7 @@ void Zombie_Spitter::Update(float dt)
 					}
 
 
-					if ((app->player->position.y > position.y) && (app->player->position.x > position.x))
+					if ((app->player->position.y - app->player->collider->rect.h > position.y) && (app->player->position.x + app->player->collider->rect.w / 2 > position.x))
 					{
 						if (currentAnim != &rightDownWalkAnim_Enemy1)
 						{
@@ -726,7 +726,7 @@ void Zombie_Spitter::Update(float dt)
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
 					}
-					if ((app->player->position.x < position.x) && (app->player->position.y > position.y))
+					if ((app->player->position.x + app->player->collider->rect.w / 2 < position.x) && (app->player->position.y - app->player->collider->rect.h > position.y))
 					{
 						if (currentAnim != &leftDownWalkAnim_Enemy1)
 						{
@@ -735,7 +735,7 @@ void Zombie_Spitter::Update(float dt)
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
 					}
-					if ((app->player->position.y < position.y) && (app->player->position.x < position.x))
+					if ((app->player->position.y - app->player->collider->rect.h < position.y) && (app->player->position.x + app->player->collider->rect.w / 2 < position.x))
 					{
 						if (currentAnim != &leftUpWalkAnim_Enemy1)
 						{
@@ -744,7 +744,7 @@ void Zombie_Spitter::Update(float dt)
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
 					}
-					if ((app->player->position.x > position.x) && (app->player->position.y < position.y))
+					if ((app->player->position.x + app->player->collider->rect.w / 2 > position.x) && (app->player->position.y - app->player->collider->rect.h < position.y))
 					{
 						if (currentAnim != &rightUpWalkAnim_Enemy1)
 						{
@@ -815,7 +815,7 @@ void Zombie_Spitter::Update(float dt)
 					currentAnim->loop = true;
 					counter++;
 
-					if (position.x > app->player->position.x)
+					if (position.x > app->player->position.x + app->player->collider->rect.w / 2)
 					{
 						if (currentAnim != &leftWalkAnim_Enemy1)
 						{
@@ -824,7 +824,7 @@ void Zombie_Spitter::Update(float dt)
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
 					}
-					if (position.x < app->player->position.x)
+					if (position.x < app->player->position.x + app->player->collider->rect.w / 2)
 					{
 						if (currentAnim != &rightWalkAnim_Enemy1)
 						{
@@ -833,7 +833,7 @@ void Zombie_Spitter::Update(float dt)
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
 					}
-					if (position.y > app->player->position.y)
+					if (position.y > app->player->position.y - app->player->collider->rect.h)
 					{
 						if (currentAnim != &upWalkAnim_Enemy1)
 						{
@@ -842,7 +842,7 @@ void Zombie_Spitter::Update(float dt)
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
 					}
-					if (position.y < app->player->position.y)
+					if (position.y < app->player->position.y - app->player->collider->rect.h)
 					{
 						if (currentAnim != &downWalkAnim_Enemy1)
 						{
@@ -853,7 +853,7 @@ void Zombie_Spitter::Update(float dt)
 					}
 
 
-					if ((app->player->position.y > position.y) && (app->player->position.x > position.x))
+					if ((app->player->position.y - app->player->collider->rect.h > position.y) && (app->player->position.x + app->player->collider->rect.w / 2 > position.x))
 					{
 						if (currentAnim != &rightDownWalkAnim_Enemy1)
 						{
@@ -862,7 +862,7 @@ void Zombie_Spitter::Update(float dt)
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
 					}
-					if ((app->player->position.x < position.x) && (app->player->position.y > position.y))
+					if ((app->player->position.x + app->player->collider->rect.w / 2 < position.x) && (app->player->position.y - app->player->collider->rect.h > position.y))
 					{
 						if (currentAnim != &leftDownWalkAnim_Enemy1)
 						{
@@ -871,7 +871,7 @@ void Zombie_Spitter::Update(float dt)
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
 					}
-					if ((app->player->position.y < position.y) && (app->player->position.x < position.x))
+					if ((app->player->position.y - app->player->collider->rect.h < position.y) && (app->player->position.x + app->player->collider->rect.w / 2 < position.x))
 					{
 						if (currentAnim != &leftUpWalkAnim_Enemy1)
 						{
@@ -880,7 +880,7 @@ void Zombie_Spitter::Update(float dt)
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
 					}
-					if ((app->player->position.x > position.x) && (app->player->position.y < position.y))
+					if ((app->player->position.x + app->player->collider->rect.w / 2 > position.x) && (app->player->position.y - app->player->collider->rect.h < position.y))
 					{
 						if (currentAnim != &rightUpWalkAnim_Enemy1)
 						{
@@ -889,7 +889,6 @@ void Zombie_Spitter::Update(float dt)
 						}
 						Spitter_Zombie_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
 					}
-
 					if (counter == 150) entityTurn = TurnState::FinishTurn;
 
 				}
@@ -903,66 +902,59 @@ void Zombie_Spitter::Update(float dt)
 					currentAnim = &idleDownAnim_Enemy1;
 					currentAnim->loop = true;
 
-					if (position.DistanceTo(app->player->position) < 150)
+					if (position.DistanceTo(app->player->position) < 300)
 					{
-						if ((position.x == app->player->position.x) && (position.y < app->player->position.y))
+						if ((position.x == app->player->position.x + app->player->collider->rect.w / 2) && (position.y < app->player->position.y - app->player->collider->rect.h))
 						{
 							app->particles->RangedAttack.speed.y = 5;
 							app->particles->AddParticle(app->particles->RangedAttack, position.x, position.y + 30, Collider::Type::ENEMY_RANGED_ATTACK);
-
 						}
-						if ((position.x == app->player->position.x) && (position.y > app->player->position.y))
+						if ((position.x == app->player->position.x + app->player->collider->rect.w / 2) && (position.y > app->player->position.y - app->player->collider->rect.h))
 						{
 							app->particles->RangedAttack.speed.y = -5;
 							app->particles->AddParticle(app->particles->RangedAttack, position.x, position.y - 30, Collider::Type::ENEMY_RANGED_ATTACK);
 
 						}
-						if ((position.x < app->player->position.x) && (position.y == app->player->position.y))
+						if ((position.x < app->player->position.x + app->player->collider->rect.w / 2) && (position.y == app->player->position.y - app->player->collider->rect.h))
 						{
 
+							app->particles->RangedAttack.speed.x = 2;
 							app->particles->AddParticle(app->particles->RangedAttack, position.x + 30, position.y, Collider::Type::ENEMY_RANGED_ATTACK);
 
 
 						}
-						if ((position.x > app->player->position.x) && (position.y == app->player->position.y))
+						if ((position.x > app->player->position.x + app->player->collider->rect.w / 2) && (position.y == app->player->position.y - app->player->collider->rect.h))
 						{
-							app->particles->RangedAttack.speed.x *= -1;
+							app->particles->RangedAttack.speed.x = -2; 
 							app->particles->AddParticle(app->particles->RangedAttack, position.x - 30, position.y, Collider::Type::ENEMY_RANGED_ATTACK);
-
-
 						}
 
-						if ((position.x > app->player->position.x) && (position.y   > app->player->position.y))
+						if ((position.x > app->player->position.x + app->player->collider->rect.w / 2) && (position.y > app->player->position.y - app->player->collider->rect.h))
 						{
-							app->particles->RangedAttack.speed.x *= -1;
-							app->particles->RangedAttack.speed.y = ((app->player->position.y - position.y) / ((app->player->position.x - position.x) / app->particles->RangedAttack.speed.x));
+
+							app->particles->RangedAttack.speed.x = -2;
+							app->particles->RangedAttack.speed.y = ((app->player->position.y - position.y - app->player->collider->rect.h) / ((app->player->position.x + app->player->collider->rect.w / 2 - position.x) / app->particles->RangedAttack.speed.x));
 							app->particles->AddParticle(app->particles->RangedAttack, position.x - 30, position.y - 30, Collider::Type::ENEMY_RANGED_ATTACK);
-
-
 						}
-						if ((position.x > app->player->position.x) && (position.y   < app->player->position.y))
+						if ((position.x > app->player->position.x + app->player->collider->rect.w / 2) && (position.y < app->player->position.y - app->player->collider->rect.h))
 						{
-							app->particles->RangedAttack.speed.x *= -1;
-							app->particles->RangedAttack.speed.y = ((app->player->position.y - position.y) / ((app->player->position.x - position.x) / app->particles->RangedAttack.speed.x));
+							app->particles->RangedAttack.speed.x = -2;
+							app->particles->RangedAttack.speed.y = ((app->player->position.y - position.y - app->player->collider->rect.h) / ((app->player->position.x + app->player->collider->rect.w / 2 - position.x) / app->particles->RangedAttack.speed.x));
 							app->particles->AddParticle(app->particles->RangedAttack, position.x - 30, position.y + 30, Collider::Type::ENEMY_RANGED_ATTACK);
-
-
 						}
-						if ((position.x < app->player->position.x) && (position.y   > app->player->position.y))
+						if ((position.x < app->player->position.x + app->player->collider->rect.w / 2) && (position.y > app->player->position.y - app->player->collider->rect.h))
 						{
-							app->particles->RangedAttack.speed.y = ((app->player->position.y - position.y) / ((app->player->position.x - position.x) / app->particles->RangedAttack.speed.x));
+							app->particles->RangedAttack.speed.x = 2;
+							app->particles->RangedAttack.speed.y = ((app->player->position.y - position.y - app->player->collider->rect.h) / ((app->player->position.x + app->player->collider->rect.w / 2 - position.x) / app->particles->RangedAttack.speed.x));
 							app->particles->AddParticle(app->particles->RangedAttack, position.x + 30, position.y - 30, Collider::Type::ENEMY_RANGED_ATTACK);
-
-
 						}
-						if ((position.x < app->player->position.x) && (position.y   < app->player->position.y))
+						if ((position.x < app->player->position.x + app->player->collider->rect.w / 2) && (position.y < app->player->position.y - app->player->collider->rect.h))
 						{
-							app->particles->RangedAttack.speed.y = ((app->player->position.y - position.y) / ((app->player->position.x - position.x) / app->particles->RangedAttack.speed.x));
+							app->particles->RangedAttack.speed.x = 2;
+							app->particles->RangedAttack.speed.y = ((app->player->position.y - position.y - app->player->collider->rect.h) / ((app->player->position.x + app->player->collider->rect.w / 2 - position.x) / app->particles->RangedAttack.speed.x));
 							app->particles->AddParticle(app->particles->RangedAttack, position.x + 30, position.y + 30, Collider::Type::ENEMY_RANGED_ATTACK);
 
-
 						}
-
 
 						entityTurn = TurnState::WaitTurn;
 					}
