@@ -128,7 +128,7 @@ bool CombatMenu::PostUpdate()
 	if (app->player->showCombatHUD == true && app->player->pauseMenu == false && app->titleScreen->active == false && app->creditsScreen->active == false)
 	{
 		/*app->render->DrawTexture(app->guiManager->arrowPointer, app->guiManager->mouseX, app->guiManager->mouseY, NULL);*/
-		DrawEntitiesHP();
+		if(app->inventoryMenu->showInventory == false) DrawEntitiesHP();
 		if (app->player->entityTurnPlayer == TurnState::WaitTurn)
 		{
 			delay++;

@@ -22,7 +22,7 @@
 
 Zombie_Spitter::Zombie_Spitter(int x,int y) : Entity(x,y)
 {	
-	MaxHp = 4;
+	MaxHp = 10;
 	EntityHP = MaxHp;
 	EntityAP = 5;
 	EntityMP = 3;
