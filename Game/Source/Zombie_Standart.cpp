@@ -23,7 +23,8 @@
 
 Zombie_Standart::Zombie_Standart(int x,int y) : Entity(x,y)
 {	
-	EntityHP = 3;
+	MaxHp = 10;
+	EntityHP = MaxHp;
 	EntityAP = 5;
 	EntityMP = 3;
 	entityState = GameState::OutOfCombat;

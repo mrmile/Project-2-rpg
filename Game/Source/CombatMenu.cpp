@@ -61,7 +61,16 @@ bool CombatMenu::Start()
 	combatMelee = app->tex->Load("Assets/textures/GUI/CombatUI/combatMelee.png");
 	combatItems = app->tex->Load("Assets/textures/GUI/CombatUI/combatItems.png");
 	combatEscape = app->tex->Load("Assets/textures/GUI/CombatUI/combatEscape.png");
-
+	entitiesHP100 = app->tex->Load("Assets/textures/GUI/Health100PERCENT.png");
+	entitiesHP90 = app->tex->Load("Assets/textures/GUI/Helath_90_pecent.png");
+	entitiesHP80 = app->tex->Load("Assets/textures/GUI/Helath_80_pecent.png");
+	entitiesHP70 = app->tex->Load("Assets/textures/GUI/Helath_70_pecent.png");
+	entitiesHP60 = app->tex->Load("Assets/textures/GUI/Helath_60_pecent.png");
+	entitiesHP50 = app->tex->Load("Assets/textures/GUI/Helath_50_pecent.png");
+	entitiesHP40 = app->tex->Load("Assets/textures/GUI/Helath_40_pecent.png");
+	entitiesHP30 = app->tex->Load("Assets/textures/GUI/Helath_30_pecent.png");
+	entitiesHP20 = app->tex->Load("Assets/textures/GUI/Helath_20_pecent.png");
+	entitiesHP10 = app->tex->Load("Assets/textures/GUI/Helath_10_pecent.png");
 	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/UISounds/buttonClickedFX.wav");
 	buttonClickedMelee = app->audio->LoadFx("Assets/audio/fx/ZPlayer/PlayerActions/Neck.wav");
 	
@@ -119,7 +128,7 @@ bool CombatMenu::PostUpdate()
 	if (app->player->showCombatHUD == true && app->player->pauseMenu == false && app->titleScreen->active == false && app->creditsScreen->active == false)
 	{
 		/*app->render->DrawTexture(app->guiManager->arrowPointer, app->guiManager->mouseX, app->guiManager->mouseY, NULL);*/
-
+		DrawEntitiesHP();
 		if (app->player->entityTurnPlayer == TurnState::WaitTurn)
 		{
 			delay++;
@@ -170,6 +179,16 @@ bool CombatMenu::CleanUp()
 	app->tex->UnLoad(combatMelee);
 	app->tex->UnLoad(combatItems);
 	app->tex->UnLoad(combatEscape);
+	app->tex->UnLoad(entitiesHP100);
+	app->tex->UnLoad(entitiesHP90);
+	app->tex->UnLoad(entitiesHP80);
+	app->tex->UnLoad(entitiesHP70);
+	app->tex->UnLoad(entitiesHP60);
+	app->tex->UnLoad(entitiesHP50);
+	app->tex->UnLoad(entitiesHP40);
+	app->tex->UnLoad(entitiesHP30);
+	app->tex->UnLoad(entitiesHP20);
+	app->tex->UnLoad(entitiesHP10);
 	app->guiManager->DestroyGuiControl(25);
 	app->guiManager->DestroyGuiControl(26);
 	app->guiManager->DestroyGuiControl(27);
@@ -221,4 +240,15 @@ bool CombatMenu::OnGuiMouseClickEvent(GuiControl* control)
 	}
 
 	return true;
+}
+
+void CombatMenu::DrawEntitiesHP()
+{
+	for (int i = 0; i < app->entity_manager->ListInCombat.count(); i++)
+	{
+		if (app->entity_manager->ListInCombat.At(i)->data->EntityHP <= app->entity_manager->ListInCombat.At(i)->data->MaxHp && app->entity_manager->ListInCombat.At(i)->data->EntityHP > (app->entity_manager->ListInCombat.At(i)->data->MaxHp/10) * 9)
+		{
+			//app->render->DrawTexture(entitiesHP100, app->entity_manager->ListInCombat.At(i)->data->position.x + app->entity_manager->ListInCombat.At(i)->data->GetColldier()->rect.w / 2, app->entity_manager->ListInCombat.At(i)->data->position.y - app->entity_manager->ListInCombat.At(i)->data->GetColldier()->rect.h,NULL);
+		}
+	}
 }

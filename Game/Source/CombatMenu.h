@@ -35,6 +35,8 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	void DrawEntitiesHP();
+
 	bool OnGuiMouseClickEvent(GuiControl* control);
 
 private:
@@ -49,6 +51,17 @@ private:
 	SDL_Texture* combatMelee = nullptr;
 	SDL_Texture* combatItems = nullptr;
 	SDL_Texture* combatEscape = nullptr;
+
+	SDL_Texture* entitiesHP100 = nullptr;
+	SDL_Texture* entitiesHP90 = nullptr;
+	SDL_Texture* entitiesHP80 = nullptr;
+	SDL_Texture* entitiesHP70 = nullptr;
+	SDL_Texture* entitiesHP60 = nullptr;
+	SDL_Texture* entitiesHP50 = nullptr;
+	SDL_Texture* entitiesHP40 = nullptr;
+	SDL_Texture* entitiesHP30 = nullptr;
+	SDL_Texture* entitiesHP20 = nullptr;
+	SDL_Texture* entitiesHP10 = nullptr;
 
 	//GUI BUTTONS
 	GuiButton* combatShootGUI = nullptr;

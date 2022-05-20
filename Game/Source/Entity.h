@@ -23,6 +23,7 @@ public:
 	SDL_Texture* texture = nullptr;
 	//ENTITY LIFE POINTS
 	int EntityHP;
+	int MaxHp;
 	//ENTITY ACTION POINTS
 	int EntityAP;
 	//ENTITY MOVEMENT POINTS
