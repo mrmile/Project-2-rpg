@@ -102,7 +102,7 @@ bool GameManager::CheckList()
 
 	for (int i = 0; i < app->entity_manager->ListInCombat.count(); i++)
 	{
-		if (app->entity_manager->ListInCombat.At(i)->data->EntityHP < 0)
+		if (app->entity_manager->ListInCombat.At(i)->data->EntityHP <= 0)
 		{
 			CounterForTurnManagement++;
 		}

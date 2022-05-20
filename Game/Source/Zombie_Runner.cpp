@@ -23,7 +23,7 @@
 
 Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 {	
-	MaxHp = 8;
+	MaxHp = 20;
 	EntityHP = MaxHp;
 	EntityAP = 5;
 	EntityMP = 3;

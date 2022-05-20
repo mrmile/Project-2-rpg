@@ -61,7 +61,7 @@ bool CombatMenu::Start()
 	combatMelee = app->tex->Load("Assets/textures/GUI/CombatUI/combatMelee.png");
 	combatItems = app->tex->Load("Assets/textures/GUI/CombatUI/combatItems.png");
 	combatEscape = app->tex->Load("Assets/textures/GUI/CombatUI/combatEscape.png");
-	entitiesHP100 = app->tex->Load("Assets/textures/GUI/Health100PERCENT.png");
+	entitiesHP100 = app->tex->Load("Assets/textures/GUI/Health_100_pecent.png");
 	entitiesHP90 = app->tex->Load("Assets/textures/GUI/Helath_90_pecent.png");
 	entitiesHP80 = app->tex->Load("Assets/textures/GUI/Helath_80_pecent.png");
 	entitiesHP70 = app->tex->Load("Assets/textures/GUI/Helath_70_pecent.png");
@@ -248,7 +248,43 @@ void CombatMenu::DrawEntitiesHP()
 	{
 		if (app->entity_manager->ListInCombat.At(i)->data->EntityHP <= app->entity_manager->ListInCombat.At(i)->data->MaxHp && app->entity_manager->ListInCombat.At(i)->data->EntityHP > (app->entity_manager->ListInCombat.At(i)->data->MaxHp/10) * 9)
 		{
-			//app->render->DrawTexture(entitiesHP100, app->entity_manager->ListInCombat.At(i)->data->position.x + app->entity_manager->ListInCombat.At(i)->data->GetColldier()->rect.w / 2, app->entity_manager->ListInCombat.At(i)->data->position.y - app->entity_manager->ListInCombat.At(i)->data->GetColldier()->rect.h,NULL);
+			app->render->DrawTexture(entitiesHP100, app->entity_manager->ListInCombat.At(i)->data->position.x - app->entity_manager->ListInCombat.At(i)->data->GetColldier()->rect.w / 2, app->entity_manager->ListInCombat.At(i)->data->position.y - 20 ,NULL);
+		}
+		if(app->entity_manager->ListInCombat.At(i)->data->EntityHP <= (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10) * 9 && app->entity_manager->ListInCombat.At(i)->data->EntityHP > (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10) * 8)
+		{
+			app->render->DrawTexture(entitiesHP90, app->entity_manager->ListInCombat.At(i)->data->position.x - app->entity_manager->ListInCombat.At(i)->data->GetColldier()->rect.w / 2, app->entity_manager->ListInCombat.At(i)->data->position.y - 20, NULL);
+		}
+		if (app->entity_manager->ListInCombat.At(i)->data->EntityHP <= (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10) * 8 && app->entity_manager->ListInCombat.At(i)->data->EntityHP > (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10) * 7)
+		{
+			app->render->DrawTexture(entitiesHP80, app->entity_manager->ListInCombat.At(i)->data->position.x - app->entity_manager->ListInCombat.At(i)->data->GetColldier()->rect.w / 2, app->entity_manager->ListInCombat.At(i)->data->position.y - 20, NULL);
+		}
+		if (app->entity_manager->ListInCombat.At(i)->data->EntityHP <= (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10) * 7 && app->entity_manager->ListInCombat.At(i)->data->EntityHP > (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10) * 6)
+		{
+			app->render->DrawTexture(entitiesHP70, app->entity_manager->ListInCombat.At(i)->data->position.x - app->entity_manager->ListInCombat.At(i)->data->GetColldier()->rect.w / 2, app->entity_manager->ListInCombat.At(i)->data->position.y - 20, NULL);
+		}
+		if (app->entity_manager->ListInCombat.At(i)->data->EntityHP <= (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10) * 6 && app->entity_manager->ListInCombat.At(i)->data->EntityHP > (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10) * 5)
+		{
+			app->render->DrawTexture(entitiesHP60, app->entity_manager->ListInCombat.At(i)->data->position.x - app->entity_manager->ListInCombat.At(i)->data->GetColldier()->rect.w / 2, app->entity_manager->ListInCombat.At(i)->data->position.y - 20, NULL);
+		}
+		if (app->entity_manager->ListInCombat.At(i)->data->EntityHP <= (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10) * 5 && app->entity_manager->ListInCombat.At(i)->data->EntityHP > (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10) * 4)
+		{
+			app->render->DrawTexture(entitiesHP50, app->entity_manager->ListInCombat.At(i)->data->position.x - app->entity_manager->ListInCombat.At(i)->data->GetColldier()->rect.w / 2, app->entity_manager->ListInCombat.At(i)->data->position.y - 20, NULL);
+		}
+		if (app->entity_manager->ListInCombat.At(i)->data->EntityHP <= (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10) * 4 && app->entity_manager->ListInCombat.At(i)->data->EntityHP > (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10) * 3)
+		{
+			app->render->DrawTexture(entitiesHP40, app->entity_manager->ListInCombat.At(i)->data->position.x - app->entity_manager->ListInCombat.At(i)->data->GetColldier()->rect.w / 2, app->entity_manager->ListInCombat.At(i)->data->position.y - 20, NULL);
+		}
+		if (app->entity_manager->ListInCombat.At(i)->data->EntityHP <= (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10) * 3 && app->entity_manager->ListInCombat.At(i)->data->EntityHP > (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10) * 2)
+		{
+			app->render->DrawTexture(entitiesHP30, app->entity_manager->ListInCombat.At(i)->data->position.x - app->entity_manager->ListInCombat.At(i)->data->GetColldier()->rect.w / 2, app->entity_manager->ListInCombat.At(i)->data->position.y - 20, NULL);
+		}
+		if (app->entity_manager->ListInCombat.At(i)->data->EntityHP <= (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10) * 2 && app->entity_manager->ListInCombat.At(i)->data->EntityHP > (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10))
+		{
+			app->render->DrawTexture(entitiesHP20, app->entity_manager->ListInCombat.At(i)->data->position.x - app->entity_manager->ListInCombat.At(i)->data->GetColldier()->rect.w / 2, app->entity_manager->ListInCombat.At(i)->data->position.y - 20, NULL);
+		}
+		if (app->entity_manager->ListInCombat.At(i)->data->EntityHP <= (app->entity_manager->ListInCombat.At(i)->data->MaxHp / 10) && app->entity_manager->ListInCombat.At(i)->data->EntityHP > 0)
+		{
+			app->render->DrawTexture(entitiesHP10, app->entity_manager->ListInCombat.At(i)->data->position.x - app->entity_manager->ListInCombat.At(i)->data->GetColldier()->rect.w / 2, app->entity_manager->ListInCombat.At(i)->data->position.y - 20, NULL);
 		}
 	}
 }
