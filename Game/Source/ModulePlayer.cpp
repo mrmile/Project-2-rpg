@@ -1553,7 +1553,6 @@ bool ModulePlayer::Update(float dt)
 		{
 			showCombatHUD = true;
 
-
 			if (entityTurnPlayer == TurnState::NONE)
 			{
 				counter = 0;
