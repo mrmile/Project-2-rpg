@@ -190,6 +190,9 @@
     <ClCompile Include="Source\Transitions.cpp">
       <Filter>General</Filter>
     </ClCompile>
+    <ClCompile Include="Source\MapMenu.cpp">
+      <Filter>General\Menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -410,6 +413,9 @@
     </ClInclude>
     <ClInclude Include="Source\Transitions.h">
       <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MapMenu.h">
+      <Filter>General\Menus</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

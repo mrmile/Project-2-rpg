@@ -6,6 +6,7 @@
 #include "math.h"
 #include "SceneMainMap.h"
 #include "Log.h"
+#include "MapMenu.h"
 #include "InventoryMenu.h"
 #include "ModulePlayer.h"
 
@@ -75,7 +76,11 @@ bool ModulePhysics::PreUpdate()
 	{
 		return true;
 	}
-	if (app->player->pauseMenu == false && app->inventoryMenu->showInventory == false)
+	if (app->mapMenu->showMapMenu == true)
+	{
+		return true;
+	}
+	if (app->player->pauseMenu == false && app->inventoryMenu->showInventory == false && app->mapMenu->showMapMenu == false)
 	{
 	
 		world->Step(1.0f / 60.0f, 6, 2);

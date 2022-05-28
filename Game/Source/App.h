@@ -41,6 +41,7 @@ class GuiManager;
 class PauseMenu;
 class InventoryMenu;
 class CombatMenu;
+class MapMenu;
 class DialogManager;
 class QuestManager;
 class GameManager;
@@ -140,6 +141,7 @@ public:
 	PauseMenu* pause_menu;
 	InventoryMenu* inventoryMenu;
 	CombatMenu* combatMenu;
+	MapMenu* mapMenu;
 	EntityManager* entity_manager;
 	DialogManager* dialogManager;
 	QuestManager* questManager;

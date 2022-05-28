@@ -26,6 +26,7 @@
 #include "ModuleParticles.h"
 #include "Audio.h"
 #include "TitleScreen.h"
+#include "MapMenu.h"
 #include "InventoryMenu.h"
 #include "ModuleFonts.h"
 #include "QuestManager.h"
@@ -740,7 +741,7 @@ bool ModulePlayer::PreUpdate()
 
 bool ModulePlayer::Update(float dt)
 {
-	if (pauseMenu == false && app->inventoryMenu->showInventory == false && destroyed == false && talking == false && app->player->showCombatHUD == false)
+	if (pauseMenu == false && app->inventoryMenu->showInventory == false && destroyed == false && talking == false && app->player->showCombatHUD == false && app->mapMenu->showMapMenu == false)
 	{
 		if (usingComputer == true)
 		{
@@ -782,7 +783,7 @@ bool ModulePlayer::Update(float dt)
 		return true;
 	}
 
-	if (pauseMenu == false && app->inventoryMenu->showInventory == false)
+	if (pauseMenu == false && app->inventoryMenu->showInventory == false && app->mapMenu->showMapMenu == false)
 	{
 		playerFPS++;
 
@@ -1848,6 +1849,12 @@ bool ModulePlayer::Update(float dt)
 	{
 		/*app->audio->PlayFx(paused);*/
 		app->inventoryMenu->showInventory = !app->inventoryMenu->showInventory;
+	}
+
+	if ((app->input->keys[SDL_SCANCODE_M] == KEY_DOWN) && app->player->destroyed == false && app->player->playerWin == false)
+	{
+		/*app->audio->PlayFx(paused);*/
+		app->mapMenu->showMapMenu = !app->mapMenu->showMapMenu;
 	}
 
 	

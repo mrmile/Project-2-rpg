@@ -29,6 +29,7 @@
 #include "PauseMenu.h"
 #include "InventoryMenu.h"
 #include "CombatMenu.h"
+#include "MapMenu.h"
 #include "DialogManager.h"
 #include "QuestManager.h"
 #include "GameManager.h"
@@ -67,6 +68,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	pause_menu = new PauseMenu(false);
 	inventoryMenu = new InventoryMenu(true);
 	combatMenu = new CombatMenu(true);
+	mapMenu = new MapMenu(true);
 	entity_manager = new EntityManager(true);
 	particles = new ModuleParticles(true);
 	pathfinding = new PathFinding(false);
@@ -102,6 +104,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(pathfinding);
 	AddModule(inventoryMenu);
 	AddModule(combatMenu);
+	AddModule(mapMenu);
 	AddModule(dialogManager);
 	AddModule(questManager);
 	AddModule(pause_menu);
