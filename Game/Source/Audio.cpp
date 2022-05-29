@@ -332,7 +332,7 @@ bool Audio::ChangeMusic(int Id, float fadeInTime, float fadeOutTime)
 	{
 		Mix_ResumeMusic();
 
-		app->audio->PlayMusic("Assets/audio/music/radio_item_music.wav", fadeInTime, fadeOutTime);
+		app->audio->PlayMusic("Assets/audio/music/radio_item_music.ogg", fadeInTime, fadeOutTime);
 
 		break;
 	}

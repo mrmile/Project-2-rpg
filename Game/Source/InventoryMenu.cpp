@@ -622,9 +622,9 @@ bool InventoryMenu::UseItemSelected(ItemList* item)
 			//Add radio particle so zombies follow it instead of following the player
 			app->particles->AddParticle(app->particles->RadioActive, app->player->position.x, app->player->position.y+25, Collider::Type::ACTIVE_RADIO);
 
-			app->audio->ChangeMusic(RADIO_ITEM_MUSIC, 0.1f, 0.1f);
+			app->audio->ChangeMusic(RADIO_ITEM_MUSIC, 0.0f, 0.0f);
 			app->audio->playMusicSpatially = true;
-			app->audio->musicSourcePosition = app->inventoryMenu->ActiveRadioPosition;
+			app->audio->musicSourcePosition = app->player->position;
 
 			return true;
 		}

@@ -158,12 +158,9 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	playerRangedAttack.anim.speed = 0.15f;
 	playerRangedAttack.lifetime = 100;
 
-	RadioActive.anim.PushBack({ 350, 17, 40, 35 });
-	RadioActive.anim.PushBack({ 351, 48, 39, 30 });
-	RadioActive.anim.PushBack({ 354, 138, 32, 35 });
-	RadioActive.anim.PushBack({ 380, 138, 40, 35 });
-	RadioActive.anim.PushBack({ 420, 138, 40, 35 });
-	RadioActive.anim.PushBack({ 460, 138, 40, 35 });
+	RadioActive.anim.PushBack({ 157, 125, 53, 27 });
+	RadioActive.anim.PushBack({ 175, 233, 53, 27 });
+	RadioActive.anim.PushBack({ 230, 233, 53, 27 });
 	RadioActive.speed.x = 0;
 	RadioActive.speed.y = 0;
 	RadioActive.anim.loop = true;
@@ -383,6 +380,18 @@ bool ModuleParticles::Update(float dt)
 				if (particles[i]->collider->type == Collider::Type::ACTIVE_RADIO)
 				{
 					app->inventoryMenu->ActiveRadioAlive = false;
+
+					if (app->sceneBase->sceneBase == true) app->audio->ChangeMusic(BASE, 0.0f, 0.0f);
+					if (app->sceneMotel->sceneMotel == true) app->audio->ChangeMusic(MOTEL_ZONE, 0.0f, 0.0f);
+					if (app->sceneCave->sceneCave == true) app->audio->ChangeMusic(CAVE, 0.0f, 0.0f);
+					if (app->scenePlatform->scenePlatform == true) app->audio->ChangeMusic(MAIN_MAP_SUNRISE, 0.0f, 0.0f);
+					if (app->sceneMainMap->sceneMainMap == true)
+					{
+						if (app->questManager->mainQuestID == FIND_THE_DOCTOR_1) app->audio->ChangeMusic(MAIN_MAP, 0.0f, 0.0f);
+						if (app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2 && app->questManager->secondaryQuestID != ACTIVATE_SWITCHES) app->audio->ChangeMusic(MAIN_MAP_AT_NIGHT, 0.0f, 0.0f);
+						if (app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2 && app->questManager->secondaryQuestID == ACTIVATE_SWITCHES) app->audio->ChangeMusic(TENSION_PUZZLE_1, 0.0f, 0.0f);
+						if (app->questManager->mainQuestID == KILL_THE_PATIENT_ZERO_3) app->audio->ChangeMusic(MAIN_MAP_SUNRISE, 0.0f, 0.0f);
+					}
 				}
 				particles[i]->SetToDelete();
 			}
