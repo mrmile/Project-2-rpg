@@ -198,11 +198,7 @@ bool EntityManager::Update(float dt)
 
 bool EntityManager::PostUpdate()
 {
-	for (uint i = 0; i < MAX_ENTITIES; ++i)
-	{
-		if (entities[i] != nullptr && entities[i]->EntityHP > 0)
-			entities[i]->Draw();
-	}
+	//Movido al Map.cpp para el nuevo sistema de dibujado (sprite sorting)
 
 	return true;
 }

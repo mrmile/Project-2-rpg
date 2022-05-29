@@ -87,7 +87,7 @@ public:
 	Particle ItemSuit;
 	Particle ItemGun;
 
-private:
+public:
 	// Particles spritesheet loaded into an SDL Texture
 	SDL_Texture* texture = nullptr;
 	SDL_Texture* texture_items = nullptr;

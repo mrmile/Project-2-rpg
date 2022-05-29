@@ -57,6 +57,8 @@ public:
 	//id used to register enemies into combat
 	int id;
 
+	bool hasBeenDrawed = false;
+
 public:
 	
 	Entity(int x,int y);
@@ -85,8 +87,6 @@ protected:
 	iPoint spawnPos;
 
 public:
-
-	bool hasBeenDrawed = false;
 
 	//List<PhysBody*> Flying_Enemy_2_List;
 	//List<PhysBody*> Walking_Enemy_List;

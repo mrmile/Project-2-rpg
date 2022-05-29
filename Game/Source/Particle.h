@@ -52,6 +52,8 @@ public:
 
 	// A flag for the particle removal. Important! We do not delete objects instantly
 	bool pendingToDelete = false;
+
+	bool hasBeenDrawed = false;
 };
 
 #endif //__PARTICLE_H__

@@ -102,7 +102,7 @@ public:
 
 	int x = 0;
 
-private:
+public:
 
 	void SpawnEntity(const EntitySpawnPoint& info);
 

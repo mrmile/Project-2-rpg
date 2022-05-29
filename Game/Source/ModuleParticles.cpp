@@ -413,16 +413,8 @@ bool ModuleParticles::Update(float dt)
 
 bool ModuleParticles::PostUpdate()
 {
-	//Iterating all particle array and drawing any active particles
-	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
-	{
-		Particle* particle = particles[i];
-
-		if (particle != nullptr && particle->isAlive)
-		{
-			app->render->DrawTexture(texture_items, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
-		}
-	}
+	//Movido la parte del draw() al Map.cpp para el nuevo sistema de dibujado (sprite sorting)
+	
 
 	if(app->sceneCave->sceneCave == true) app->render->DrawTexture(app->sceneCave->spotLight, app->player->position.x - 960 + 25, app->player->position.y - 540 - 25, NULL);
 
