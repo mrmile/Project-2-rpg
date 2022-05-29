@@ -168,7 +168,7 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	RadioActive.speed.y = 0;
 	RadioActive.anim.loop = true;
 	RadioActive.anim.speed = 0.15f;
-	RadioActive.lifetime = 240;
+	RadioActive.lifetime = 3600;
 
 
 	PlayerPickUpRadius.anim.PushBack({ 350, 17, 40, 35 });

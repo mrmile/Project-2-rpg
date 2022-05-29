@@ -59,6 +59,9 @@ bool Audio::Awake(pugi::xml_node& config)
 	Mix_Volume(-1, SliderLevelFX);
 	Mix_VolumeMusic(SliderLevelMusic);
 
+	musicSourcePosition.x = 0;
+	musicSourcePosition.y = 0;
+
 	return ret;
 }
 
@@ -66,6 +69,8 @@ bool Audio::Update(float dt)
 {
 
 	if (playMusicSpatially == false) Mix_VolumeMusic(SliderLevelMusic);
+	if (playMusicSpatially == true) PlayMusicSpatially(musicSourcePosition);
+
 	//Mix_Volume(-1, SliderLevelFX);
 
 	return true;
@@ -327,7 +332,7 @@ bool Audio::ChangeMusic(int Id, float fadeInTime, float fadeOutTime)
 	{
 		Mix_ResumeMusic();
 
-		app->audio->PlayMusic("Assets/Audio/Music/radio_item_music.ogg", fadeInTime, fadeOutTime);
+		app->audio->PlayMusic("Assets/audio/music/radio_item_music.wav", fadeInTime, fadeOutTime);
 
 		break;
 	}
@@ -427,7 +432,7 @@ bool Audio::ChangeMusic(int Id, float fadeInTime, float fadeOutTime)
 bool Audio::PlayMusicSpatially(iPoint musicGeneratorPosition)
 {
 	// Todo 2 (done): Complete the function to be able to play music tracks spatially
-	int setMusicVolume = SliderLevelMusic - (sqrt(pow(app->player->position.x - musicGeneratorPosition.x, 2) + pow(app->player->position.y - musicGeneratorPosition.y, 2)) / 6);
+	int setMusicVolume = SliderLevelMusic - (sqrt(pow(app->player->position.x - musicGeneratorPosition.x, 2) + pow(app->player->position.y - musicGeneratorPosition.y, 2)) / 8);
 
 	if (setMusicVolume <= 0) setMusicVolume = 0;
 

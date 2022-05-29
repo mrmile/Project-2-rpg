@@ -599,6 +599,7 @@ bool InventoryMenu::DrawItemDescription(ItemList* item)
 
 bool InventoryMenu::UseItemSelected(ItemList* item)
 {
+
 	if (item->amount > 0)
 	{
 		if (item->type == ItemType::OBJECT_FOOD)
@@ -620,6 +621,10 @@ bool InventoryMenu::UseItemSelected(ItemList* item)
 			item->amount--;
 			//Add radio particle so zombies follow it instead of following the player
 			app->particles->AddParticle(app->particles->RadioActive, app->player->position.x, app->player->position.y+25, Collider::Type::ACTIVE_RADIO);
+
+			app->audio->ChangeMusic(RADIO_ITEM_MUSIC, 0.1f, 0.1f);
+			app->audio->playMusicSpatially = true;
+			app->audio->musicSourcePosition = app->inventoryMenu->ActiveRadioPosition;
 
 			return true;
 		}

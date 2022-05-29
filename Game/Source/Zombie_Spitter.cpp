@@ -578,7 +578,7 @@ void Zombie_Spitter::Update(float dt)
 
 			if (app->inventoryMenu->ActiveRadioAlive == true)
 			{
-				if (position.DistanceTo(app->inventoryMenu->ActiveRadioPosition) < 300)
+				if (position.DistanceTo(app->inventoryMenu->ActiveRadioPosition) < 2500)
 				{
 					collider->SetPos(position.x, position.y);
 					Spitter_Zombie_List.end->data->GetPosition(position.x, position.y);

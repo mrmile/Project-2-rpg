@@ -86,6 +86,7 @@ public:
 	int SliderLevelMusic = 90;
 
 	bool playMusicSpatially = false;
+	iPoint musicSourcePosition;
 
 };
 

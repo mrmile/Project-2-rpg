@@ -140298,7 +140298,7 @@
   </object>
  </objectgroup>
  <objectgroup id="35" name="object_grenade">
-  <object id="221" x="3494.17" y="1391.17" width="85" height="19">
+  <object id="221" x="3515.5" y="2183.17" width="85" height="19">
    <text wrap="1">Grenade</text>
   </object>
  </objectgroup>
@@ -140318,7 +140318,7 @@
   </object>
  </objectgroup>
  <objectgroup id="31" name="object_radio">
-  <object id="217" x="3563.2" y="1350.38" width="85" height="19">
+  <object id="217" x="3316.53" y="2365.05" width="85" height="19">
    <text wrap="1">Radio</text>
   </object>
  </objectgroup>

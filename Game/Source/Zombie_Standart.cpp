@@ -585,7 +585,7 @@ void Zombie_Standart::Update(float dt)
 				//move normally
 				if (app->inventoryMenu->ActiveRadioAlive == true)
 				{
-					if (position.DistanceTo(app->inventoryMenu->ActiveRadioPosition) < 300)
+					if (position.DistanceTo(app->inventoryMenu->ActiveRadioPosition) < 2650)
 					{
 						collider->SetPos(position.x, position.y);
 						Standart_Zombie_List.end->data->GetPosition(position.x, position.y);
