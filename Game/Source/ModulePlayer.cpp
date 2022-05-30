@@ -2292,7 +2292,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::INSTANT_DEATH)
 		{
-			playerHP -= 100;
+			playerHP -= 250;
 			if (playerHP < 0) playerHP = 0;
 			invincibleDelay = 0;
 			if (playerHP != 0) app->audio->PlayFx(damaged);
