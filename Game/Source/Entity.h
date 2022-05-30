@@ -37,6 +37,7 @@ public:
 	GameState entityState;
 	TurnState entityTurn;
 
+	List<PhysBody*> Volatile_Zombie_List;
 	List<PhysBody*> Standart_Zombie_List;
 	List<PhysBody*> Runner_Zombie_List;
 	List<PhysBody*> Spitter_Zombie_List;

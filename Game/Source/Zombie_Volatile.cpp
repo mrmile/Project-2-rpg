@@ -1,4 +1,4 @@
-#include "Zombie_Runner.h"
+#include "Zombie_Volatile.h"
 
 #include "App.h"
 #include "ModuleCollisions.h"
@@ -18,10 +18,11 @@
 #include "ModulePhysics.h"
 #include "ModuleParticles.h"
 #include "InventoryMenu.h"
+#include "QuestManager.h"
 
 #include "Defs.h"
 
-Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
+Zombie_Volatile::Zombie_Volatile(int x,int y) : Entity(x,y)
 {	
 	MaxHp = 20;
 	EntityHP = MaxHp;
@@ -548,7 +549,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	offsetX = -25;
 	offsetY = -50;
 
-	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
+	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::INSTANT_DEATH, (Module*)app->entity_manager);
 
 	Runner_Zombie_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10));
 	
@@ -556,7 +557,7 @@ Zombie_Runner::Zombie_Runner(int x,int y) : Entity(x,y)
 	
 }
 
-void Zombie_Runner::Update(float dt)
+void Zombie_Volatile::Update(float dt)
 {
 	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
 
@@ -577,7 +578,7 @@ void Zombie_Runner::Update(float dt)
 		{
 			//move normally
 
-			if (app->inventoryMenu->ActiveRadioAlive == true)
+			if (app->inventoryMenu->ActiveRadioAlive == true && app->questManager->secondaryQuestID != ACTIVATE_SWITCHES)
 			{
 				if (position.DistanceTo(app->inventoryMenu->ActiveRadioPosition) < 2500)
 				{
@@ -593,7 +594,7 @@ void Zombie_Runner::Update(float dt)
 							//leftWalkAnim_Enemy1.Reset();
 							currentAnim = &leftWalkAnim_Enemy1;
 						}
-						Runner_Zombie_List.end->data->body->SetLinearVelocity({ -2.0f, 0.0f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ -3.25f, 0.0f });
 					}
 					if (position.x < app->inventoryMenu->ActiveRadioPosition.x)
 					{
@@ -602,7 +603,7 @@ void Zombie_Runner::Update(float dt)
 							//rightWalkAnim_Enemy1.Reset();
 							currentAnim = &rightWalkAnim_Enemy1;
 						}
-						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 2.0f, 0.0f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 3.25f, 0.0f });
 					}
 					if (position.y > app->inventoryMenu->ActiveRadioPosition.y)
 					{
@@ -611,7 +612,7 @@ void Zombie_Runner::Update(float dt)
 							//upWalkAnim_Enemy1.Reset();
 							currentAnim = &upWalkAnim_Enemy1;
 						}
-						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -2.0f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -3.25f });
 					}
 					if (position.y < app->inventoryMenu->ActiveRadioPosition.y)
 					{
@@ -620,7 +621,7 @@ void Zombie_Runner::Update(float dt)
 							//downWalkAnim_Enemy1.Reset();
 							currentAnim = &downWalkAnim_Enemy1;
 						}
-						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 2.0f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 3.25f });
 					}
 
 
@@ -631,7 +632,7 @@ void Zombie_Runner::Update(float dt)
 							//rightDownWalkAnim_Enemy1.Reset();
 							currentAnim = &rightDownWalkAnim_Enemy1;
 						}
-						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 2.0f, 2.0f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 3.25f, 3.25f });
 					}
 					if ((app->inventoryMenu->ActiveRadioPosition.x < position.x) && (app->inventoryMenu->ActiveRadioPosition.y > position.y))
 					{
@@ -640,7 +641,7 @@ void Zombie_Runner::Update(float dt)
 							//rightDownWalkAnim_Enemy1.Reset();
 							currentAnim = &leftDownWalkAnim_Enemy1;
 						}
-						Runner_Zombie_List.end->data->body->SetLinearVelocity({ -2.0f, 2.0f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ -3.25f, 3.25f });
 					}
 					if ((app->inventoryMenu->ActiveRadioPosition.y < position.y) && (app->inventoryMenu->ActiveRadioPosition.x < position.x))
 					{
@@ -649,7 +650,7 @@ void Zombie_Runner::Update(float dt)
 							//leftUpWalkAnim_Enemy1.Reset();
 							currentAnim = &leftUpWalkAnim_Enemy1;
 						}
-						Runner_Zombie_List.end->data->body->SetLinearVelocity({ -2.0f, -2.0f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ -3.25f, -3.25f });
 					}
 					if ((app->inventoryMenu->ActiveRadioPosition.x > position.x) && (app->inventoryMenu->ActiveRadioPosition.y < position.y))
 					{
@@ -658,7 +659,7 @@ void Zombie_Runner::Update(float dt)
 							//leftUpWalkAnim_Enemy1.Reset();
 							currentAnim = &rightUpWalkAnim_Enemy1;
 						}
-						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 2.0f, -2.0f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 3.25f, -3.25f });
 					}
 				}
 				else
@@ -675,7 +676,7 @@ void Zombie_Runner::Update(float dt)
 			}
 			if (app->inventoryMenu->ActiveRadioAlive == false)
 			{
-				if (position.DistanceTo(app->player->position) < 300)
+				if (app->questManager->secondaryQuestID == ACTIVATE_SWITCHES)
 				{
 					collider->SetPos(position.x, position.y);
 					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
@@ -691,7 +692,7 @@ void Zombie_Runner::Update(float dt)
 								//leftWalkAnim_Enemy1.Reset();
 								currentAnim = &leftWalkAnim_Enemy1;
 							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ -2.0f, 0.0f });
+							Runner_Zombie_List.end->data->body->SetLinearVelocity({ -3.25f, 0.0f });
 						}
 						if (position.x < app->player->position.x + app->player->collider->rect.w / 2)
 						{
@@ -700,7 +701,7 @@ void Zombie_Runner::Update(float dt)
 								//rightWalkAnim_Enemy1.Reset();
 								currentAnim = &rightWalkAnim_Enemy1;
 							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 2.0f, 0.0f });
+							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 3.25f, 0.0f });
 						}
 						if (position.y > app->player->position.y - app->player->collider->rect.h)
 						{
@@ -709,7 +710,7 @@ void Zombie_Runner::Update(float dt)
 								//upWalkAnim_Enemy1.Reset();
 								currentAnim = &upWalkAnim_Enemy1;
 							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -2.0f });
+							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -3.25f });
 						}
 						if (position.y < app->player->position.y - app->player->collider->rect.h)
 						{
@@ -718,7 +719,7 @@ void Zombie_Runner::Update(float dt)
 								//downWalkAnim_Enemy1.Reset();
 								currentAnim = &downWalkAnim_Enemy1;
 							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 2.0f });
+							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 3.25f });
 						}
 
 
@@ -729,7 +730,7 @@ void Zombie_Runner::Update(float dt)
 								//rightDownWalkAnim_Enemy1.Reset();
 								currentAnim = &rightDownWalkAnim_Enemy1;
 							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 2.0f, 2.0f });
+							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 3.25f, 3.25f });
 						}
 						if ((app->player->position.x + app->player->collider->rect.w / 2 < position.x) && (app->player->position.y - app->player->collider->rect.h > position.y))
 						{
@@ -738,7 +739,7 @@ void Zombie_Runner::Update(float dt)
 								//rightDownWalkAnim_Enemy1.Reset();
 								currentAnim = &leftDownWalkAnim_Enemy1;
 							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ -2.0f, 2.0f });
+							Runner_Zombie_List.end->data->body->SetLinearVelocity({ -3.25f, 3.25f });
 						}
 						if ((app->player->position.y - app->player->collider->rect.h < position.y) && (app->player->position.x + app->player->collider->rect.w / 2 < position.x))
 						{
@@ -747,7 +748,7 @@ void Zombie_Runner::Update(float dt)
 								//leftUpWalkAnim_Enemy1.Reset();
 								currentAnim = &leftUpWalkAnim_Enemy1;
 							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ -2.0f, -2.0f });
+							Runner_Zombie_List.end->data->body->SetLinearVelocity({ -3.25f, -3.25f });
 						}
 						if ((app->player->position.x + app->player->collider->rect.w / 2 > position.x) && (app->player->position.y - app->player->collider->rect.h < position.y))
 						{
@@ -756,7 +757,7 @@ void Zombie_Runner::Update(float dt)
 								//leftUpWalkAnim_Enemy1.Reset();
 								currentAnim = &rightUpWalkAnim_Enemy1;
 							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 2.0f, -2.0f });
+							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 3.25f, -3.25f });
 						}
 					}
 				}
@@ -770,253 +771,12 @@ void Zombie_Runner::Update(float dt)
 					Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
 
 				}
-
-				if (position.DistanceTo(app->player->position) < 100 && app->player->escapeCombat == false)
-				{
-					app->entity_manager->RegisterEntitesInCombat(this);
-					entityState = GameState::InCombat;
-					//app->player->entityStatePlayer = GameState::InCombat;
-					//app->player->entityTurnPlayer = TurnState::NONE;
-					app->game_manager->StartTurnManagement = true;
-				}
 			}
 
 
 
 
 		}
-
-		if (entityState == GameState::InCombat)
-		{
-
-			if (EntityHP > 0)
-			{
-				if (entityTurn == TurnState::NONE)
-				{
-					//Assigning order of turns
-					collider->SetPos(position.x, position.y);
-					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
-					currentAnim = &idleDownAnim_Enemy1;
-					currentAnim->loop = true;
-
-					Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
-
-				}
-				if (entityTurn == TurnState::StartOfTurn)
-				{
-					collider->SetPos(position.x, position.y);
-					currentAnim = &idleDownAnim_Enemy1;
-					currentAnim->loop = false;
-					Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f }); //movimiento contrario a la direccion del jugador cuando nos chocamos con el
-
-					entityTurn = TurnState::MidOfTurn;
-
-				}
-				if (entityTurn == TurnState::MidOfTurn)
-				{
-
-					collider->SetPos(position.x, position.y);
-					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
-					currentAnim = &idleDownAnim_Enemy1;
-					currentAnim->loop = true;
-					counter++;
-
-					if (position.DistanceTo({ app->player->position.x + app->player->collider->rect.w / 2 , app->player->position.y - app->player->collider->rect.h }) > 60)
-					{
-						if (position.x > app->player->position.x + app->player->collider->rect.w / 2)
-						{
-							if (currentAnim != &leftWalkAnim_Enemy1)
-							{
-								//leftWalkAnim_Enemy1.Reset();
-								currentAnim = &leftWalkAnim_Enemy1;
-							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.25f, 0.0f });
-						}
-						if (position.x < app->player->position.x + app->player->collider->rect.w / 2)
-						{
-							if (currentAnim != &rightWalkAnim_Enemy1)
-							{
-								//rightWalkAnim_Enemy1.Reset();
-								currentAnim = &rightWalkAnim_Enemy1;
-							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.25f, 0.0f });
-						}
-						if (position.y > app->player->position.y - app->player->collider->rect.h)
-						{
-							if (currentAnim != &upWalkAnim_Enemy1)
-							{
-								//upWalkAnim_Enemy1.Reset();
-								currentAnim = &upWalkAnim_Enemy1;
-							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -1.25f });
-						}
-						if (position.y < app->player->position.y - app->player->collider->rect.h)
-						{
-							if (currentAnim != &downWalkAnim_Enemy1)
-							{
-								//downWalkAnim_Enemy1.Reset();
-								currentAnim = &downWalkAnim_Enemy1;
-							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 1.25f });
-						}
-
-
-						if ((app->player->position.y - app->player->collider->rect.h > position.y) && (app->player->position.x + app->player->collider->rect.w / 2 > position.x))
-						{
-							if (currentAnim != &rightDownWalkAnim_Enemy1)
-							{
-								//rightDownWalkAnim_Enemy1.Reset();
-								currentAnim = &rightDownWalkAnim_Enemy1;
-							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.25f, 1.25f });
-						}
-						if ((app->player->position.x + app->player->collider->rect.w / 2 < position.x) && (app->player->position.y - app->player->collider->rect.h > position.y))
-						{
-							if (currentAnim != &leftDownWalkAnim_Enemy1)
-							{
-								//rightDownWalkAnim_Enemy1.Reset();
-								currentAnim = &leftDownWalkAnim_Enemy1;
-							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.25f, 1.25f });
-						}
-						if ((app->player->position.y - app->player->collider->rect.h < position.y) && (app->player->position.x + app->player->collider->rect.w / 2 < position.x))
-						{
-							if (currentAnim != &leftUpWalkAnim_Enemy1)
-							{
-								//leftUpWalkAnim_Enemy1.Reset();
-								currentAnim = &leftUpWalkAnim_Enemy1;
-							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.25f, -1.25f });
-						}
-						if ((app->player->position.x + app->player->collider->rect.w / 2 > position.x) && (app->player->position.y - app->player->collider->rect.h < position.y))
-						{
-							if (currentAnim != &rightUpWalkAnim_Enemy1)
-							{
-								//leftUpWalkAnim_Enemy1.Reset();
-								currentAnim = &rightUpWalkAnim_Enemy1;
-							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.25f, -1.25f });
-						}
-
-						if (counter == 150) entityTurn = TurnState::FinishTurn;
-					}
-
-					if (position.DistanceTo({ app->player->position.x + app->player->collider->rect.w / 2 , app->player->position.y - app->player->collider->rect.h }) <= 60)
-					{
-						entityTurn = TurnState::FinishTurn;
-					}
-
-				}
-				if (entityTurn == TurnState::FinishTurn)
-				{
-					//Change turn from enemy to player turn still have to develop a way to do it correctly
-					Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f });
-					collider->SetPos(position.x, position.y);
-					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
-
-					currentAnim = &idleDownAnim_Enemy1;
-					currentAnim->loop = true;
-
-					if (position.DistanceTo({ app->player->position.x + app->player->collider->rect.w / 2, app->player->position.y - app->player->collider->rect.h }) < 75)
-					{
-
-						if ((position.x == app->player->position.x + app->player->collider->rect.w / 2) && (position.y < app->player->position.y - app->player->collider->rect.h))
-						{
-
-							app->particles->AddParticle(app->particles->enemyAttack, position.x, position.y + 30, Collider::Type::ENEMY_ATTACK);
-
-						}
-						if ((position.x == app->player->position.x + app->player->collider->rect.w / 2) && (position.y > app->player->position.y - app->player->collider->rect.h))
-						{
-
-							app->particles->AddParticle(app->particles->enemyAttack, position.x, position.y - 30, Collider::Type::ENEMY_ATTACK);
-
-						}
-						if ((position.x < app->player->position.x + app->player->collider->rect.w / 2) && (position.y == app->player->position.y - app->player->collider->rect.h))
-						{
-
-
-							app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y, Collider::Type::ENEMY_ATTACK);
-
-
-						}
-						if ((position.x > app->player->position.x + app->player->collider->rect.w / 2) && (position.y == app->player->position.y - app->player->collider->rect.h))
-						{
-
-							app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y, Collider::Type::ENEMY_ATTACK);
-
-
-						}
-
-						if ((position.x > app->player->position.x + app->player->collider->rect.w / 2) && (position.y > app->player->position.y - app->player->collider->rect.h))
-						{
-
-
-							app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y - 30, Collider::Type::ENEMY_ATTACK);
-
-
-						}
-						if ((position.x > app->player->position.x + app->player->collider->rect.w / 2) && (position.y < app->player->position.y - app->player->collider->rect.h))
-						{
-
-							app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y + 30, Collider::Type::ENEMY_ATTACK);
-
-
-						}
-						if ((position.x < app->player->position.x + app->player->collider->rect.w / 2) && (position.y > app->player->position.y - app->player->collider->rect.h))
-						{
-
-							app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y - 30, Collider::Type::ENEMY_ATTACK);
-
-
-						}
-						if ((position.x < app->player->position.x + app->player->collider->rect.w / 2) && (position.y < app->player->position.y - app->player->collider->rect.h))
-						{
-
-							app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y + 30, Collider::Type::ENEMY_ATTACK);
-
-
-						}
-
-
-						entityTurn = TurnState::WaitTurn;
-					}
-					else
-					{
-						entityTurn = TurnState::WaitTurn;
-					}
-
-
-				}
-				if (entityTurn == TurnState::WaitTurn)
-				{
-					//Change turn from enemy to player turn still have to develop a way to do it correctly
-					counter = 0;
-					collider->SetPos(position.x, position.y);
-					Runner_Zombie_List.end->data->GetPosition(position.x, position.y);
-					currentAnim = &idleDownAnim_Enemy1;
-					currentAnim->loop = true;
-
-				}
-				if (app->sceneMainMap->playerRestart == true)
-				{
-					app->game_manager->counter = 0;
-					entityState = GameState::OutOfCombat;
-					entityTurn = TurnState::NONE;
-				}
-				//Escape Combat
-				/*if (app->player->escapeCombat == true)
-				{
-					app->game_manager->counter = 0;
-					entityState = GameState::OutOfCombat;
-					entityTurn = TurnState::NONE;
-				}*/
-			}
-
-		}
-
-
-
 
 	}
 

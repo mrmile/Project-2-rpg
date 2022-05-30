@@ -190,6 +190,7 @@
     <ClCompile Include="Source\Zombie_Runner.cpp" />
     <ClCompile Include="Source\Zombie_Spitter.cpp" />
     <ClCompile Include="Source\Zombie_Standart.cpp" />
+    <ClCompile Include="Source\Zombie_Volatile.cpp" />
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\AssetsManager.h" />
     <ClInclude Include="Source\Collider.h" />
@@ -266,6 +267,7 @@
     <ClInclude Include="Source\Zombie_Runner.h" />
     <ClInclude Include="Source\Zombie_Spitter.h" />
     <ClInclude Include="Source\Zombie_Standart.h" />
+    <ClInclude Include="Source\Zombie_Volatile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

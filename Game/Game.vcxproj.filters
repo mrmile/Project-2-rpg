@@ -193,6 +193,9 @@
     <ClCompile Include="Source\MapMenu.cpp">
       <Filter>General\Menus</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Zombie_Volatile.cpp">
+      <Filter>General\Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -416,6 +419,9 @@
     </ClInclude>
     <ClInclude Include="Source\MapMenu.h">
       <Filter>General\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Zombie_Volatile.h">
+      <Filter>General\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
