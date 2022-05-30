@@ -2377,6 +2377,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					app->audio->PlayFx(alarmCardReaderFx);
 					app->questManager->secondaryQuestID = ACTIVATE_SWITCHES;
 					baseUnlock = true;
+
+					app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 1516, 3040);
+					app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 3367, 2014);
+					app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 4327, 2757);
+					app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 3295, 3495);
 				}
 			}
 		}

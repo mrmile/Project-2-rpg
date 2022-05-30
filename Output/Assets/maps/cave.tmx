@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="36" nextobjectid="215">
+<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="36" nextobjectid="216">
  <tileset firstgid="1" name="cave_ground" tilewidth="75" tileheight="39" tilecount="448" columns="16">
   <image source="cave_ground.png" width="1200" height="1092"/>
  </tileset>
  <tileset firstgid="449" name="cave_walls" tilewidth="75" tileheight="156" tilecount="112" columns="16">
-  <image source="cave_walls.png" width="1200" height="1092"/>
+  <image source="cave_walls.png" width="1200" height="1058"/>
  </tileset>
  <tileset firstgid="561" source="object_img_data/puzzle_elements.tsx"/>
  <layer id="23" name="cave_ground" width="100" height="200">
@@ -50085,7 +50085,7 @@
    <tile gid="452"/>
    <tile/>
    <tile/>
-   <tile/>
+   <tile gid="540"/>
    <tile/>
    <tile/>
    <tile gid="455"/>
@@ -80135,6 +80135,9 @@
   </object>
   <object id="193" x="4626" y="1740.33">
    <polygon points="0,0 4.66667,-3.66667 0,-7 -4.66667,-3.33333"/>
+  </object>
+  <object id="215" x="3515" y="1938">
+   <polygon points="0,0 37,-19 0,-38 -37,-19"/>
   </object>
  </objectgroup>
  <objectgroup id="25" name="yellow_light_source"/>

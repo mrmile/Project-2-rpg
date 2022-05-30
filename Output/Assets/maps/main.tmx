@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="50" nextobjectid="266">
+<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="50" nextobjectid="275">
  <tileset firstgid="1" name="city_walls" tilewidth="75" tileheight="117" tilecount="128" columns="16">
   <image source="city_walls.png" width="1250" height="936"/>
  </tileset>
@@ -140285,50 +140285,74 @@
   </object>
  </objectgroup>
  <objectgroup id="28" name="object_food">
-  <object id="211" x="3858.83" y="3517.17" width="85" height="19">
+  <object id="211" x="3720.16" y="3249.17" width="85" height="19">
    <text wrap="1">Food</text>
   </object>
-  <object id="212" x="3782.84" y="2370.5" width="85" height="19">
+  <object id="212" x="2574.84" y="2682.5" width="85" height="19">
+   <text wrap="1">Food</text>
+  </object>
+  <object id="271" x="3616.5" y="2036.5" width="85" height="19">
+   <text wrap="1">Food</text>
+  </object>
+  <object id="273" x="3853.5" y="2820.5" width="85" height="19">
    <text wrap="1">Food</text>
   </object>
  </objectgroup>
  <objectgroup id="29" name="object_health_pack">
-  <object id="214" x="3022.84" y="2817.16" width="85" height="19">
+  <object id="214" x="3276.17" y="2911.83" width="85" height="19">
+   <text wrap="1">HealthPack</text>
+  </object>
+  <object id="266" x="1096.5" y="2998.5" width="85" height="19">
+   <text wrap="1">HealthPack</text>
+  </object>
+  <object id="267" x="5427.5" y="2360.5" width="85" height="19">
    <text wrap="1">HealthPack</text>
   </object>
  </objectgroup>
  <objectgroup id="35" name="object_grenade">
-  <object id="221" x="3515.5" y="2183.17" width="85" height="19">
+  <object id="221" x="2904.83" y="2035.17" width="85" height="19">
+   <text wrap="1">Grenade</text>
+  </object>
+  <object id="269" x="2350" y="2746" width="85" height="19">
+   <text wrap="1">Grenade</text>
+  </object>
+  <object id="270" x="2632.5" y="3743.5" width="85" height="19">
+   <text wrap="1">Grenade</text>
+  </object>
+  <object id="274" x="3568.5" y="2933.5" width="85" height="19">
    <text wrap="1">Grenade</text>
   </object>
  </objectgroup>
  <objectgroup id="36" name="object_knife">
-  <object id="222" x="3026.83" y="3378.49" width="85" height="19">
+  <object id="222" x="2765.16" y="3191.49" width="85" height="19">
    <text wrap="1">Knife</text>
   </object>
  </objectgroup>
  <objectgroup id="37" name="object_suit">
-  <object id="223" x="3297.5" y="3202.5" width="85" height="19">
+  <object id="223" x="1170.83" y="3049.17" width="85" height="19">
    <text wrap="1">Combat Suit</text>
   </object>
  </objectgroup>
  <objectgroup id="30" name="object_default_gun">
-  <object id="216" x="3207.5" y="3117.5" width="85" height="19">
+  <object id="216" x="3207.17" y="3062.17" width="85" height="19">
    <text wrap="1">DefaultGun</text>
   </object>
  </objectgroup>
  <objectgroup id="31" name="object_radio">
-  <object id="217" x="3316.53" y="2365.05" width="85" height="19">
+  <object id="217" x="3504.53" y="2481.05" width="85" height="19">
+   <text wrap="1">Radio</text>
+  </object>
+  <object id="272" x="2702.5" y="3502.5" width="85" height="19">
    <text wrap="1">Radio</text>
   </object>
  </objectgroup>
  <objectgroup id="32" name="object_short_scope_gun">
-  <object id="218" x="2194.83" y="2928.5" width="85" height="19">
+  <object id="218" x="2784.83" y="3521.5" width="85" height="19">
    <text wrap="1">ShortScope</text>
   </object>
  </objectgroup>
  <objectgroup id="33" name="object_long_scope_gun">
-  <object id="219" x="3317.17" y="2701.83" width="85" height="19">
+  <object id="219" x="3042.5" y="2442.5" width="85" height="19">
    <text wrap="1">LongScope</text>
   </object>
  </objectgroup>
@@ -140338,9 +140362,9 @@
    <property name="Draw" value="0"/>
    <property name="Parallax" value="1"/>
   </properties>
-  <object id="12" x="3344.5" y="2935" width="142" height="42"/>
+  <object id="12" x="3340.5" y="2933.67" width="142" height="42"/>
   <object id="13" x="3359.5" y="2977" width="95" height="15.5"/>
-  <object id="14" x="3238" y="2920" width="205" height="13"/>
+  <object id="14" x="3243" y="2918" width="205" height="13"/>
   <object id="15" x="3255.5" y="2903" width="153.5" height="13"/>
   <object id="16" x="3284" y="2887.5" width="91.5" height="13"/>
   <object id="17" x="3306" y="2875" width="46" height="9.5"/>
@@ -140408,7 +140432,7 @@
   <object id="123" x="2688" y="3582" width="232.667" height="20"/>
   <object id="124" x="2726" y="3607.33" width="173.333" height="13.3333"/>
   <object id="125" x="2756" y="3623.33" width="98" height="14.6667"/>
-  <object id="126" x="2655.33" y="3252.67" width="323.333" height="20"/>
+  <object id="126" x="2655.33" y="3248.67" width="323.333" height="20"/>
   <object id="127" x="2666.67" y="3273.33" width="212.667" height="10.6667"/>
   <object id="128" x="2763.33" y="3288.67" width="110" height="40"/>
   <object id="129" x="2710" y="3295.33" width="45.3333" height="13.3333"/>
