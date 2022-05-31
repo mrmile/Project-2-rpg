@@ -2143,6 +2143,13 @@ bool ModulePlayer::CleanUp()
 	app->guiManager->DestroyGuiControl(46);
 	app->guiManager->DestroyGuiControl(47);
 
+	app->tex->UnLoad(characterHealth100);
+	app->tex->UnLoad(characterHealth80);
+	app->tex->UnLoad(characterHealth60);
+	app->tex->UnLoad(characterHealth40);
+	app->tex->UnLoad(characterHealth20);
+	app->tex->UnLoad(characterHealth0);
+
 	//deletePlayer = true;
 	app->player->Player->body->DestroyFixture(app->player->Player->body->GetFixtureList());
 	//app->collisions->RemoveCollider(app->player->collider);
