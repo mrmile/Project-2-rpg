@@ -1933,30 +1933,7 @@ bool ModulePlayer::PostUpdate()
 
 		//}
 
-		if (app->player->playerHP >= app->player->PlayerMaxHP)
-		{
-			app->render->DrawTexture2(characterHealth100, -60, -7, NULL);
-		}
-		if (app->player->playerHP > app->player->PlayerMaxHP / 1.25f && app->player->playerHP < app->player->PlayerMaxHP)
-		{
-			app->render->DrawTexture2(characterHealth80, -60, -7, NULL);
-		}
-		if (app->player->playerHP > app->player->PlayerMaxHP / 1.66f && app->player->playerHP <= app->player->PlayerMaxHP / 1.25f)
-		{
-			app->render->DrawTexture2(characterHealth60, -60, -7, NULL);
-		}
-		if (app->player->playerHP > app->player->PlayerMaxHP / 2.5f && app->player->playerHP <= app->player->PlayerMaxHP / 1.66f)
-		{
-			app->render->DrawTexture2(characterHealth40, -60, -7, NULL);
-		}
-		if (app->player->playerHP > app->player->PlayerMaxHP / 5 && app->player->playerHP <= app->player->PlayerMaxHP / 2.5f)
-		{
-			app->render->DrawTexture2(characterHealth20, -60, -7, NULL);
-		}
-		if (app->player->playerHP <= 0)
-		{
-			app->render->DrawTexture2(characterHealth0, -60, -7, NULL);
-		}
+		//Interfaz movida al questManager para que se dibuje bien
 
 		if (app->sceneCave->playerRestart == true)
 		{
@@ -2107,15 +2084,15 @@ bool ModulePlayer::PostUpdate()
 				noteComputerDay15GUI->Draw(app->render);
 			}
 
-			if (computerPhase == 2 && note1 == true) //AlvaroComputer Dibujar aqui las texturas de las notas
+			if (computerPhase == 2 && note1 == true) 
 			{
 				app->render->DrawTexture2(noteDay1, 0, 0, NULL);
 			}
-			if (computerPhase == 2 && note5 == true) //AlvaroComputer Dibujar aqui las texturas de las notas
+			if (computerPhase == 2 && note5 == true)
 			{
 				app->render->DrawTexture2(noteDay5, 0, 0, NULL);
 			}
-			if (computerPhase == 2 && note10 == true) //AlvaroComputer Dibujar aqui las texturas de las notas
+			if (computerPhase == 2 && note10 == true)
 			{
 				app->render->DrawTexture2(noteDay10, 0, 0, NULL);
 			}
