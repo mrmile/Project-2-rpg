@@ -80121,6 +80121,6 @@
   <object id="213" x="3309.5" y="1727.5" width="46" height="41"/>
  </objectgroup>
  <objectgroup color="#000000" id="15" name="LEVEL_AREA" visible="0">
-  <object id="197" x="1300.85" y="1493.94" width="2368.06" height="1371.03"/>
+  <object id="197" x="1300.85" y="1280.61" width="2368.06" height="1584.36"/>
  </objectgroup>
 </map>

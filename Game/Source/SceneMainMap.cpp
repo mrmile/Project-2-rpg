@@ -253,6 +253,7 @@ bool SceneMainMap::PostUpdate()
 			if (app->inventoryMenu->ActiveRadioAlive == true)
 			{
 				app->audio->playMusicSpatially = false;
+				app->inventoryMenu->ActiveRadioAlive = false;
 			}
 
 			app->player->Disable();
