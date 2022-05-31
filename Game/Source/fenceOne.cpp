@@ -18,6 +18,7 @@
 #include "ModulePhysics.h"
 #include "ModuleParticles.h"
 #include "QuestManager.h"
+#include "InventoryMenu.h"
 
 #include "Defs.h"
 
@@ -69,7 +70,7 @@ void FenceOne::Update(float dt)
 	{
 		EntityHP = 0;
 		if(app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2) app->questManager->SwitchSecondaryQuest(S_NONE);
-		app->audio->ChangeMusic(MAIN_MAP_AT_NIGHT, 0.0f, 0.0f);
+		if(app->inventoryMenu->ActiveRadioAlive == false) app->audio->ChangeMusic(MAIN_MAP_AT_NIGHT, 0.0f, 0.0f);
 	}
 	
 
