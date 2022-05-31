@@ -676,7 +676,7 @@ bool ModulePlayer::Start()
 	usingSwitch = false;
 	usingCardReader = false;
 
-	collider = app->collisions->AddCollider({ position.x + 5, position.y - 56, 45, 56 }, Collider::Type::PLAYER, this); //{ position.x + 5, position.y + 3, 28, 33 
+	collider = app->collisions->AddCollider({ position.x + 5, position.y - 20, 35, 25 }, Collider::Type::PLAYER, this); //{ position.x + 5, position.y + 3, 28, 33 
 	
 
 	Player = app->physics->CreatePlayerBox(position.x, position.y, 20, 5);
@@ -694,7 +694,7 @@ bool ModulePlayer::Start()
 	//LOADING FONT FOR GAME
 	char lookupTable[] = { "0123456789" };
 	scoreFont = app->fonts->Load("Assets/textures/numbersV3.png", lookupTable, 1);
-
+	
 	PlayerLookingPosition = 2;
 
 	playerTimer = 0;
@@ -788,7 +788,7 @@ bool ModulePlayer::Update(float dt)
 		playerFPS++;
 
 		//OPTICK_EVENT();
-		collider->SetPos(position.x + 5, position.y - 56);
+		collider->SetPos(position.x + 5, position.y - 20);
 		
 		playerTimer++;
 		//------------------------------------------------------------------------------------------------------------------------------------------

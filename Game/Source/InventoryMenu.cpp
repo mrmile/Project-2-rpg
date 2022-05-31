@@ -626,6 +626,14 @@ bool InventoryMenu::UseItemSelected(ItemList* item)
 			app->audio->playMusicSpatially = true;
 			app->audio->musicSourcePosition = app->player->position;
 
+			/*if (app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2 && app->sceneMainMap->sceneMainMap == true && app->questManager->secondaryQuestID != ACTIVATE_SWITCHES)
+			{
+				app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 1516, 3040);
+				app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 3367, 2014);
+				app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 4327, 2757);
+				app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 3295, 3495);
+			}*/
+
 			return true;
 		}
 	}

@@ -50,6 +50,7 @@ bool EntityManager::Start()
 {
 	texture_enemies_base_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_with_spawn.png");
 	texture_enemies_runner_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_runner.png");
+	texture_enemies_volatile_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_volatile.png");
 	texture_enemies_spitter_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_spitter_with_spawn.png");
 	texture_npcs = app->tex->Load("Assets/textures/NPCs/Implemented/General_NPCs.png");
 	texture_switch = app->tex->Load("Assets/textures/SceneObjects/switch.png");
@@ -449,7 +450,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i].type = EntityType::ZOMBIE_VOLATILE;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				entities[i]->texture = texture_enemies_base_zombie; // <-- To be changed
+				entities[i]->texture = texture_enemies_volatile_zombie;
 
 				break;
 			case EntityType::ZOMBIE_STANDART:

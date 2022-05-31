@@ -380,6 +380,7 @@ bool ModuleParticles::Update(float dt)
 				if (particles[i]->collider->type == Collider::Type::ACTIVE_RADIO)
 				{
 					app->inventoryMenu->ActiveRadioAlive = false;
+					app->audio->playMusicSpatially = false;
 
 					if (app->sceneBase->sceneBase == true) app->audio->ChangeMusic(BASE, 0.0f, 0.0f);
 					if (app->sceneMotel->sceneMotel == true) app->audio->ChangeMusic(MOTEL_ZONE, 0.0f, 0.0f);
