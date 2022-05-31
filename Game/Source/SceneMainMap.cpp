@@ -22,6 +22,7 @@
 #include "SceneMotel.h"
 #include "GameManager.h"
 #include "QuestManager.h"
+#include "InventoryMenu.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -249,6 +250,11 @@ bool SceneMainMap::PostUpdate()
 
 		if (app->questManager->secondaryQuestID != ACTIVATE_SWITCHES)
 		{
+			if (app->inventoryMenu->ActiveRadioAlive == true)
+			{
+				app->audio->playMusicSpatially = false;
+			}
+
 			app->player->Disable();
 			//app->sceneMainMap->Disable();
 			app->collisions->Disable();
