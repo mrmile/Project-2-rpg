@@ -41,11 +41,11 @@ class GuiManager;
 class PauseMenu;
 class InventoryMenu;
 class CombatMenu;
+class MapMenu;
 class DialogManager;
 class QuestManager;
 class GameManager;
 class Transitions;
-//class AssetsManager;
 
 class App
 {
@@ -141,12 +141,13 @@ public:
 	PauseMenu* pause_menu;
 	InventoryMenu* inventoryMenu;
 	CombatMenu* combatMenu;
+	MapMenu* mapMenu;
 	EntityManager* entity_manager;
 	DialogManager* dialogManager;
 	QuestManager* questManager;
 	GameManager* game_manager;
-	Transitions* transitions_manager;
-	/*AssetsManager* assetsManager;*/
+	Transitions* transition_manager;
+
 	bool AppTitleScreenFull = false;
 
 private:

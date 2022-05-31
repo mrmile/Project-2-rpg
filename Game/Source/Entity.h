@@ -19,9 +19,11 @@ public:
 	iPoint position;
 	int offsetX;
 	int offsetY;
+
 	SDL_Texture* texture = nullptr;
 	//ENTITY LIFE POINTS
 	int EntityHP;
+	int MaxHp;
 	//ENTITY ACTION POINTS
 	int EntityAP;
 	//ENTITY MOVEMENT POINTS
@@ -35,6 +37,7 @@ public:
 	GameState entityState;
 	TurnState entityTurn;
 
+	List<PhysBody*> Volatile_Zombie_List;
 	List<PhysBody*> Standart_Zombie_List;
 	List<PhysBody*> Runner_Zombie_List;
 	List<PhysBody*> Spitter_Zombie_List;
@@ -54,6 +57,8 @@ public:
 
 	//id used to register enemies into combat
 	int id;
+
+	bool hasBeenDrawed = false;
 
 public:
 	
@@ -83,8 +88,6 @@ protected:
 	iPoint spawnPos;
 
 public:
-
-	bool hasBeenDrawed = false;
 
 	//List<PhysBody*> Flying_Enemy_2_List;
 	//List<PhysBody*> Walking_Enemy_List;

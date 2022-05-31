@@ -1,12 +1,14 @@
 
-//#include "App.h"
+#include "App.h"
 #include "Render.h"
 #include "Textures.h"
 #include "Map.h"
 #include "ModulePhysics.h"
 #include "ModuleCollisions.h"
 #include "ModuleParticles.h"
+#include "Particle.h"
 #include "EntityManager.h"
+#include "Entity.h"
 #include "ModulePlayer.h"
 #include "Window.h"
 #include "QuestManager.h"
@@ -145,6 +147,22 @@ void Map::Draw()
 
 	mapLayerItem = mapData.layers.start;
 	app->player->hasBeenDrawed = false;
+	for (uint i = 0; i < MAX_ENTITIES; ++i)
+	{
+		if (app->entity_manager->entities[i] != nullptr && app->entity_manager->entities[i]->EntityHP > 0)
+		{
+			app->entity_manager->entities[i]->hasBeenDrawed = false;
+		}
+	}
+	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+	{
+		Particle* particle = app->particles->particles[i];
+
+		if (particle != nullptr && particle->isAlive)
+		{
+			app->particles->particles[i]->hasBeenDrawed = false;
+		}
+	}
 
 	while (mapLayerItem != NULL)
 	{
@@ -162,9 +180,7 @@ void Map::Draw()
 					if (gid > 0)
 					{
 
-						//L06: TODO 4: Obtain the tile set using GetTilesetFromTileId
-						//now we always use the firt tileset in the list
-						//TileSet* tileset = mapData.tilesets.start->data;
+						//Draw player sorted
 						TileSet* tileset = GetTilesetFromTileId(gid);
 
 						SDL_Rect r = tileset->GetTileRect(gid);
@@ -176,6 +192,35 @@ void Map::Draw()
 							app->render->DrawTexture(app->player->texture, app->player->position.x - 20, app->player->position.y - 70, &playerRect);
 
 							app->player->hasBeenDrawed = true;
+						}
+
+						//Draw entities sorted
+						for (uint i = 0; i < MAX_ENTITIES; ++i)
+						{
+							if (app->entity_manager->entities[i] != nullptr && app->entity_manager->entities[i]->EntityHP > 0)
+							{
+								if (pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) + 98 > app->entity_manager->entities[i]->position.y && app->entity_manager->entities[i]->hasBeenDrawed == false)
+								{
+									app->entity_manager->entities[i]->Draw();
+									app->entity_manager->entities[i]->hasBeenDrawed = true;
+								}
+							}
+						}
+
+						//Draw particles sorted
+						//Iterating all particle array and drawing any active particles
+						for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
+						{
+							Particle* particle = app->particles->particles[i];
+
+							if (particle != nullptr && particle->isAlive)
+							{
+								if (pos.y + (MAP_TILEHEIGHT - tileset->tileHeight) + 98 > particle->position.y && app->particles->particles[i]->hasBeenDrawed == false)
+								{
+									app->render->DrawTexture(app->particles->texture_items, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
+									app->particles->particles[i]->hasBeenDrawed = true;
+								}
+							}
 						}
 
 						//app->render->DrawTexture(tileset->texture, pos.x, pos.y, &r);

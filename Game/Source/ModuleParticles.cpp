@@ -132,7 +132,7 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	RangedAttack.speed.y = 0;
 	RangedAttack.anim.loop = true;
 	RangedAttack.anim.speed = 0.15f;
-	RangedAttack.lifetime = 100;
+	RangedAttack.lifetime = 200;
 
 	playerAttack.anim.PushBack({ 350, 17, 40, 35 });
 	playerAttack.anim.PushBack({ 351, 48, 39, 30 });
@@ -158,17 +158,14 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	playerRangedAttack.anim.speed = 0.15f;
 	playerRangedAttack.lifetime = 100;
 
-	RadioActive.anim.PushBack({ 350, 17, 40, 35 });
-	RadioActive.anim.PushBack({ 351, 48, 39, 30 });
-	RadioActive.anim.PushBack({ 354, 138, 32, 35 });
-	RadioActive.anim.PushBack({ 380, 138, 40, 35 });
-	RadioActive.anim.PushBack({ 420, 138, 40, 35 });
-	RadioActive.anim.PushBack({ 460, 138, 40, 35 });
+	RadioActive.anim.PushBack({ 157, 125, 53, 27 });
+	RadioActive.anim.PushBack({ 175, 233, 53, 27 });
+	RadioActive.anim.PushBack({ 230, 233, 53, 27 });
 	RadioActive.speed.x = 0;
 	RadioActive.speed.y = 0;
 	RadioActive.anim.loop = true;
 	RadioActive.anim.speed = 0.15f;
-	RadioActive.lifetime = 240;
+	RadioActive.lifetime = 3600;
 
 
 	PlayerPickUpRadius.anim.PushBack({ 350, 17, 40, 35 });
@@ -203,21 +200,20 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	ItemHealthPack.anim.loop = true;
 	ItemHealthPack.anim.speed = 0.15f;
 
-	//??????
 	ItemLongRangeGun.anim.PushBack({ 63, 93, 58, 24 });  //({ 115, 164, 28, 25 })
 	ItemLongRangeGun.anim.loop = true;
 	ItemLongRangeGun.anim.speed = 0.15f;
-	//??????
+
 
 	ItemRadio.anim.PushBack({ 128, 92, 33, 24 });
 	ItemRadio.anim.loop = true;
 	ItemRadio.anim.speed = 0.15f;
 
-	//??????
+	
 	ItemShortRangeGun.anim.PushBack({ 16, 95, 41, 19 });
 	ItemShortRangeGun.anim.loop = true;
 	ItemShortRangeGun.anim.speed = 0.15f;
-	//??????
+
 
 	ItemKnife.anim.PushBack({ 200, 59, 30, 21 });
 	ItemKnife.anim.loop = true;
@@ -384,6 +380,19 @@ bool ModuleParticles::Update(float dt)
 				if (particles[i]->collider->type == Collider::Type::ACTIVE_RADIO)
 				{
 					app->inventoryMenu->ActiveRadioAlive = false;
+					app->audio->playMusicSpatially = false;
+
+					if (app->sceneBase->sceneBase == true) app->audio->ChangeMusic(BASE, 0.0f, 0.0f);
+					if (app->sceneMotel->sceneMotel == true) app->audio->ChangeMusic(MOTEL_ZONE, 0.0f, 0.0f);
+					if (app->sceneCave->sceneCave == true) app->audio->ChangeMusic(CAVE, 0.0f, 0.0f);
+					if (app->scenePlatform->scenePlatform == true) app->audio->ChangeMusic(MAIN_MAP_SUNRISE, 0.0f, 0.0f);
+					if (app->sceneMainMap->sceneMainMap == true)
+					{
+						if (app->questManager->mainQuestID == FIND_THE_DOCTOR_1) app->audio->ChangeMusic(MAIN_MAP, 0.0f, 0.0f);
+						if (app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2 && app->questManager->secondaryQuestID != ACTIVATE_SWITCHES) app->audio->ChangeMusic(MAIN_MAP_AT_NIGHT, 0.0f, 0.0f);
+						if (app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2 && app->questManager->secondaryQuestID == ACTIVATE_SWITCHES) app->audio->ChangeMusic(TENSION_PUZZLE_1, 0.0f, 0.0f);
+						if (app->questManager->mainQuestID == KILL_THE_PATIENT_ZERO_3) app->audio->ChangeMusic(MAIN_MAP_SUNRISE, 0.0f, 0.0f);
+					}
 				}
 				particles[i]->SetToDelete();
 			}
@@ -405,16 +414,8 @@ bool ModuleParticles::Update(float dt)
 
 bool ModuleParticles::PostUpdate()
 {
-	//Iterating all particle array and drawing any active particles
-	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
-	{
-		Particle* particle = particles[i];
-
-		if (particle != nullptr && particle->isAlive)
-		{
-			app->render->DrawTexture(texture_items, particle->position.x, particle->position.y, &(particle->anim.GetCurrentFrame()));
-		}
-	}
+	//Movido la parte del draw() al Map.cpp para el nuevo sistema de dibujado (sprite sorting)
+	
 
 	if(app->sceneCave->sceneCave == true) app->render->DrawTexture(app->sceneCave->spotLight, app->player->position.x - 960 + 25, app->player->position.y - 540 - 25, NULL);
 

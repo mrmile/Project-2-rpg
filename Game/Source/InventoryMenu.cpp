@@ -599,6 +599,7 @@ bool InventoryMenu::DrawItemDescription(ItemList* item)
 
 bool InventoryMenu::UseItemSelected(ItemList* item)
 {
+
 	if (item->amount > 0)
 	{
 		if (item->type == ItemType::OBJECT_FOOD)
@@ -620,6 +621,18 @@ bool InventoryMenu::UseItemSelected(ItemList* item)
 			item->amount--;
 			//Add radio particle so zombies follow it instead of following the player
 			app->particles->AddParticle(app->particles->RadioActive, app->player->position.x, app->player->position.y+25, Collider::Type::ACTIVE_RADIO);
+
+			app->audio->ChangeMusic(RADIO_ITEM_MUSIC, 0.0f, 0.0f);
+			app->audio->playMusicSpatially = true;
+			app->audio->musicSourcePosition = app->player->position;
+
+			/*if (app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2 && app->sceneMainMap->sceneMainMap == true && app->questManager->secondaryQuestID != ACTIVATE_SWITCHES)
+			{
+				app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 1516, 3040);
+				app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 3367, 2014);
+				app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 4327, 2757);
+				app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 3295, 3495);
+			}*/
 
 			return true;
 		}
@@ -833,7 +846,7 @@ bool InventoryMenu::SaveState(pugi::xml_node& data) const
 			pugi::xml_node equipment = data.append_child("equipment_list");
 
 			equipment.append_attribute("type") = type;
-			equipment.append_attribute("amount") = 1;
+			equipment.append_attribute("amount") = Equipment[i].amount;
 			equipment.append_attribute("usable") = Equipment[i].usable;
 			equipment.append_attribute("equipable") = Equipment[i].equipable;
 			equipment.append_attribute("already_equipped") = Equipment[i].alreadyEquipped;
@@ -870,6 +883,9 @@ bool InventoryMenu::LoadState(pugi::xml_node& data)
 		if (Equipment[i].type == ItemType::NONE)
 		{
 			Equipment[i].type = (ItemType)equipment.attribute("type").as_int();
+			Equipment[i].amount = equipment.attribute("amount").as_int();
+			Equipment[i].usable = equipment.attribute("usable").as_bool();
+			Equipment[i].equipable = equipment.attribute("equipable").as_bool();
 			Equipment[i].alreadyEquipped = equipment.attribute("already_equipped").as_bool();
 
 		}

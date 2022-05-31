@@ -8,11 +8,6 @@
 
 #include "SDL_image/include/SDL_image.h"
 //#pragma comment(lib, "../Game/Source/External/SDL_image/libx86/SDL2_image.lib")
-#ifdef _DEBUG
-#pragma comment( lib, "../Game/Source/External/PhysFS/libx86/physfs.lib" )
-#else
-#pragma comment( lib, "../Game/Source/External/PhysFS/libx86/physfs.lib" )
-#endif
 
 Textures::Textures(bool start_enabled) : Module(start_enabled)
 {

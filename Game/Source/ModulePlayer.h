@@ -75,6 +75,7 @@ public:
 	int EquipmentRange;
 	int EquipmentDamage;
 
+	//Computer Puzzle from the Military Base
 	int computerPhase = 0;
 	bool note1 = false;
 	bool note5 = false;
@@ -127,6 +128,13 @@ public:
 	GuiButton* noteComputerDay10GUI;
 	GuiButton* noteComputerDay15GUI;
 	GuiButton* folderComputerGUI;
+
+	SDL_Texture* characterHealth100 = nullptr;
+	SDL_Texture* characterHealth80 = nullptr;
+	SDL_Texture* characterHealth60 = nullptr;
+	SDL_Texture* characterHealth40 = nullptr;
+	SDL_Texture* characterHealth20 = nullptr;
+	SDL_Texture* characterHealth0 = nullptr;
 
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
@@ -288,6 +296,7 @@ public:
 	//Collision bools
 	bool plantCollision;
 
+	//Pause Menu
 	bool pauseMenu = false;
 
 	bool hasBeenDrawed = false;
@@ -319,9 +328,10 @@ public:
 	GameState entityStatePlayer;
 	TurnState entityTurnPlayer;
 
+	//Combat Menu for the Player
 	bool showCombatHUD = false;
 	bool meleeAttack = false;
-	//Escape Combat
+	//Escape Combat 
 	bool escapeCombat = false;
 	int escapeCombatCounterToReset = 0;
 
@@ -344,7 +354,7 @@ public:
 
 	//FX
 	int walkSoundID = 0;
-	int computerButtonsFX = 0;
+	/*int computerButtonsFX = 0;*/
 	uint playerHurtSound = 0;
 	uint playerWalkSound[7] = { 0 };
 

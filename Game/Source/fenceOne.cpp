@@ -18,6 +18,7 @@
 #include "ModulePhysics.h"
 #include "ModuleParticles.h"
 #include "QuestManager.h"
+#include "InventoryMenu.h"
 
 #include "Defs.h"
 
@@ -37,6 +38,9 @@ FenceOne::FenceOne(int x, int y) : Entity(x, y)
 
 	position.x = x;
 	position.y = y;
+
+	offsetX = 0;
+	offsetY = 0;
 
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::FENCE_ONE, (Module*)app->entity_manager);
 	//entityBody = app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10);
@@ -66,7 +70,7 @@ void FenceOne::Update(float dt)
 	{
 		EntityHP = 0;
 		if(app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2) app->questManager->SwitchSecondaryQuest(S_NONE);
-		app->audio->ChangeMusic(MAIN_MAP_AT_NIGHT, 0.0f, 0.0f);
+		if(app->inventoryMenu->ActiveRadioAlive == false) app->audio->ChangeMusic(MAIN_MAP_AT_NIGHT, 0.0f, 0.0f);
 	}
 	
 

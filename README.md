@@ -34,6 +34,7 @@ Embarc in this horror adventure to save humanity from destruction, finding a cur
 
 * Otto Tolo
 
+    - Lead & Management
     - Github account: [ottotolo](https://github.com/ottotolo)
 
 * Alejandro Martin

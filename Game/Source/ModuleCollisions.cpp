@@ -94,7 +94,6 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::LAYER_ZERO] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY] = true;
-	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_ATTACK] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::INSTANT_DEATH] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::EXIT_1] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::EXIT_2] = true;
@@ -248,7 +247,6 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::TNT_SWITCH] = false;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::ENABLE_FINAL_BATTLE] = false;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::ENEMY_ATTACK] = false;
-	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::PLAYER_RANGED_ATTACK] = false;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::ITEM_GRENADE] = false;
 	matrix[Collider::Type::ENEMY_ATTACK][Collider::Type::ITEM_LONG_RANGE_GUN] = false;

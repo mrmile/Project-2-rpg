@@ -29,12 +29,11 @@
 #include "PauseMenu.h"
 #include "InventoryMenu.h"
 #include "CombatMenu.h"
+#include "MapMenu.h"
 #include "DialogManager.h"
 #include "QuestManager.h"
 #include "GameManager.h"
 #include "Transitions.h"
-//#include "AssetsManager.h"
-
 #include <iostream>
 #include <sstream>
 #include <Optick/include/optick.h>
@@ -69,6 +68,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	pause_menu = new PauseMenu(false);
 	inventoryMenu = new InventoryMenu(true);
 	combatMenu = new CombatMenu(true);
+	mapMenu = new MapMenu(true);
 	entity_manager = new EntityManager(true);
 	particles = new ModuleParticles(true);
 	pathfinding = new PathFinding(false);
@@ -77,8 +77,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	dialogManager = new DialogManager(true);
 	questManager = new QuestManager(true);
 	game_manager = new GameManager(true);
-	transitions_manager = new Transitions(true);
-	/*assetsManager = new AssetsManager(true);*/
+	transition_manager = new Transitions(true);
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -105,14 +104,14 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(pathfinding);
 	AddModule(inventoryMenu);
 	AddModule(combatMenu);
+	AddModule(mapMenu);
 	AddModule(dialogManager);
 	AddModule(questManager);
 	AddModule(pause_menu);
 	AddModule(guiManager);
 	AddModule(fonts);
 	AddModule(game_manager);
-	AddModule(transitions_manager);
-	/*AddModule(assetsManager);*/
+	AddModule(transition_manager);
 	// Render last to swap buffer
 	AddModule(render);
 

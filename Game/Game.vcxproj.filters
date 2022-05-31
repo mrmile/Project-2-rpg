@@ -188,7 +188,13 @@
       <Filter>General\Entities\PuzzlesElements</Filter>
     </ClCompile>
     <ClCompile Include="Source\Transitions.cpp">
-      <Filter>General\Transitions</Filter>
+      <Filter>General</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MapMenu.cpp">
+      <Filter>General\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Zombie_Volatile.cpp">
+      <Filter>General\Entities\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -408,11 +414,14 @@
     <ClInclude Include="Source\Switch5.h">
       <Filter>General\Entities\PuzzlesElements</Filter>
     </ClInclude>
-    <ClInclude Include="Source\easings.h">
-      <Filter>General\Transitions</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Transitions.h">
-      <Filter>General\Transitions</Filter>
+      <Filter>General</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MapMenu.h">
+      <Filter>General\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Zombie_Volatile.h">
+      <Filter>General\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -460,9 +469,6 @@
     </Filter>
     <Filter Include="General\Entities\PuzzlesElements">
       <UniqueIdentifier>{67f75a07-63f4-440a-8f77-0fda107e9812}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="General\Transitions">
-      <UniqueIdentifier>{48fba849-1f71-4683-b522-b09a7ccaf6b6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

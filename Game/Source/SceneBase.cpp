@@ -20,6 +20,7 @@
 #include "SceneMotel.h"
 #include "GameManager.h"
 #include "QuestManager.h"
+#include "InventoryMenu.h"
 
 #include "Defs.h"
 #include "Log.h"
@@ -194,6 +195,12 @@ bool SceneBase::PostUpdate()
 
 	if (app->player->exitActivated == true)
 	{
+		if (app->inventoryMenu->ActiveRadioAlive == true)
+		{
+			app->audio->playMusicSpatially = false;
+			app->inventoryMenu->ActiveRadioAlive = false;
+		}
+
 		app->player->exitActivated = false;
 
 		app->player->Disable();

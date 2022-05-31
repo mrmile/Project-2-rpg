@@ -26,6 +26,7 @@
 #include "ModuleParticles.h"
 #include "Audio.h"
 #include "TitleScreen.h"
+#include "MapMenu.h"
 #include "InventoryMenu.h"
 #include "ModuleFonts.h"
 #include "QuestManager.h"
@@ -332,7 +333,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	rightRunAnim.PushBack({ 2095, 3885, 85, 105 });
 	rightRunAnim.PushBack({ 2180, 3885, 85, 105 });
 	rightRunAnim.loop = true;
-	rightRunAnim.speed = 0.65f;
+	rightRunAnim.speed = 0.56f;
 
 	leftRunAnim.PushBack({ 140, 3465, 85, 105 });
 	leftRunAnim.PushBack({ 225, 3465, 85, 105 });
@@ -360,7 +361,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	leftRunAnim.PushBack({ 2095, 3465, 85, 105 });
 	leftRunAnim.PushBack({ 2180, 3465, 85, 105 });
 	leftRunAnim.loop = true;
-	leftRunAnim.speed = 0.65f;
+	leftRunAnim.speed = 0.56f;
 
 	downRunAnim.PushBack({ 140, 4095, 85, 105 });
 	downRunAnim.PushBack({ 225, 4095, 85, 105 });
@@ -388,7 +389,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	downRunAnim.PushBack({ 2095, 4095, 85, 105 });
 	downRunAnim.PushBack({ 2180, 4095, 85, 105 });
 	downRunAnim.loop = true;
-	downRunAnim.speed = 0.65f;
+	downRunAnim.speed = 0.56f;
 
 	upRunAnim.PushBack({ 140, 3675, 85, 105 });
 	upRunAnim.PushBack({ 225, 3675, 85, 105 });
@@ -416,7 +417,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	upRunAnim.PushBack({ 2095, 3675, 85, 105 });
 	upRunAnim.PushBack({ 2180, 3675, 85, 105 });
 	upRunAnim.loop = true;
-	upRunAnim.speed = 0.65f;
+	upRunAnim.speed = 0.56f;
 
 	rightDownRunAnim.PushBack({ 140, 3990, 85, 105 });
 	rightDownRunAnim.PushBack({ 225, 3990, 85, 105 });
@@ -444,7 +445,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	rightDownRunAnim.PushBack({ 2095, 3990, 85, 105 });
 	rightDownRunAnim.PushBack({ 2180, 3990, 85, 105 });
 	rightDownRunAnim.loop = true;
-	rightDownRunAnim.speed = 0.65f;
+	rightDownRunAnim.speed = 0.56f;
 
 	leftDownRunAnim.PushBack({ 140, 3360, 85, 105 });
 	leftDownRunAnim.PushBack({ 225, 3360, 85, 105 });
@@ -472,7 +473,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	leftDownRunAnim.PushBack({ 2095, 3360, 85, 105 });
 	leftDownRunAnim.PushBack({ 2180, 3360, 85, 105 });
 	leftDownRunAnim.loop = true;
-	leftDownRunAnim.speed = 0.65f;
+	leftDownRunAnim.speed = 0.56f;
 
 	rightUpRunAnim.PushBack({ 140, 3780, 85, 105 });
 	rightUpRunAnim.PushBack({ 225, 3780, 85, 105 });
@@ -500,7 +501,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	rightUpRunAnim.PushBack({ 2095, 3780, 85, 105 });
 	rightUpRunAnim.PushBack({ 2180, 3780, 85, 105 });
 	rightUpRunAnim.loop = true;
-	rightUpRunAnim.speed = 0.65f;
+	rightUpRunAnim.speed = 0.56f;
 
 	leftUpRunAnim.PushBack({ 140, 3570, 85, 105 });
 	leftUpRunAnim.PushBack({ 225, 3570, 85, 105 });
@@ -528,7 +529,7 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	leftUpRunAnim.PushBack({ 2095, 3570, 85, 105 });
 	leftUpWalkAnim.PushBack({ 2180, 3570, 85, 105 });
 	leftUpRunAnim.loop = true;
-	leftUpRunAnim.speed = 0.65f;
+	leftUpRunAnim.speed = 0.56f;
 
 	entityTurnPlayer = TurnState::NONE;
 	entityStatePlayer = GameState::OutOfCombat;
@@ -559,6 +560,13 @@ bool ModulePlayer::Start()
 	gameOverScreen = app->tex->Load("Assets/textures/extras/game_over_screen.png");
 	selectedEnemy = app->tex->Load("Assets/textures/CircleSelectionInRange.png");
 	selectedEnemyNotInRange = app->tex->Load("Assets/textures/CircleSelection.png");
+
+	characterHealth100 = app->tex->Load("Assets/textures/GUI/Inventory/barLife100.png");
+	characterHealth80 = app->tex->Load("Assets/textures/GUI/Inventory/barLife80.png");
+	characterHealth60 = app->tex->Load("Assets/textures/GUI/Inventory/barLife60.png");
+	characterHealth40 = app->tex->Load("Assets/textures/GUI/Inventory/barLife40.png");
+	characterHealth20 = app->tex->Load("Assets/textures/GUI/Inventory/barLife20.png");
+	characterHealth0 = app->tex->Load("Assets/textures/GUI/Inventory/barLife00.png");
 
 	noteDay1 = app->tex->Load("Assets/textures/extras/day1_text.png");
 	noteDay5 = app->tex->Load("Assets/textures/extras/day5_text.png");
@@ -668,7 +676,7 @@ bool ModulePlayer::Start()
 	usingSwitch = false;
 	usingCardReader = false;
 
-	collider = app->collisions->AddCollider({ position.x + 5, position.y - 56, 45, 56 }, Collider::Type::PLAYER, this); //{ position.x + 5, position.y + 3, 28, 33 
+	collider = app->collisions->AddCollider({ position.x + 5, position.y - 20, 35, 25 }, Collider::Type::PLAYER, this); //{ position.x + 5, position.y + 3, 28, 33 
 	
 
 	Player = app->physics->CreatePlayerBox(position.x, position.y, 20, 5);
@@ -686,7 +694,7 @@ bool ModulePlayer::Start()
 	//LOADING FONT FOR GAME
 	char lookupTable[] = { "0123456789" };
 	scoreFont = app->fonts->Load("Assets/textures/numbersV3.png", lookupTable, 1);
-
+	
 	PlayerLookingPosition = 2;
 
 	playerTimer = 0;
@@ -733,7 +741,7 @@ bool ModulePlayer::PreUpdate()
 
 bool ModulePlayer::Update(float dt)
 {
-	if (pauseMenu == false && app->inventoryMenu->showInventory == false && destroyed == false && talking == false && app->player->showCombatHUD == false)
+	if (pauseMenu == false && app->inventoryMenu->showInventory == false && destroyed == false && talking == false && app->player->showCombatHUD == false && app->mapMenu->showMapMenu == false)
 	{
 		if (usingComputer == true)
 		{
@@ -775,12 +783,12 @@ bool ModulePlayer::Update(float dt)
 		return true;
 	}
 
-	if (pauseMenu == false && app->inventoryMenu->showInventory == false)
+	if (pauseMenu == false && app->inventoryMenu->showInventory == false && app->mapMenu->showMapMenu == false)
 	{
 		playerFPS++;
 
 		//OPTICK_EVENT();
-		collider->SetPos(position.x + 5, position.y - 56);
+		collider->SetPos(position.x + 5, position.y - 20);
 		
 		playerTimer++;
 		//------------------------------------------------------------------------------------------------------------------------------------------
@@ -1553,6 +1561,7 @@ bool ModulePlayer::Update(float dt)
 		{
 			showCombatHUD = true;
 
+
 			if (entityTurnPlayer == TurnState::NONE)
 			{
 				counter = 0;
@@ -1681,17 +1690,18 @@ bool ModulePlayer::Update(float dt)
 				//Attack methodology, after attacking the player goes to wait turn
 				if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_UP)
 				{
-					CounterForEnemySelection++;
+					
 					if (CounterForEnemySelection < app->entity_manager->ListInCombat.count())
 					{
-						EnemySelectionBool = true;
-						enemySelected = app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position;
+						CounterForEnemySelection++;
 					}
-
-					if (CounterForEnemySelection > app->entity_manager->ListInCombat.count())
+					if (CounterForEnemySelection >= app->entity_manager->ListInCombat.count())
 					{
 						CounterForEnemySelection = 0;
 					}
+
+					EnemySelectionBool = true;
+					enemySelected = app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position;
 				}
 				if (playerAttacked == true)
 				{
@@ -1841,6 +1851,12 @@ bool ModulePlayer::Update(float dt)
 		app->inventoryMenu->showInventory = !app->inventoryMenu->showInventory;
 	}
 
+	if ((app->input->keys[SDL_SCANCODE_M] == KEY_DOWN) && app->player->destroyed == false && app->player->playerWin == false)
+	{
+		/*app->audio->PlayFx(paused);*/
+		app->mapMenu->showMapMenu = !app->mapMenu->showMapMenu;
+	}
+
 	
 	//------------------------------------------------------------------------------------------------------------------------------------------
 	return true;
@@ -1880,42 +1896,44 @@ bool ModulePlayer::PostUpdate()
 		sprintf_s(timerText, 10, "%3d", sceneTimer);
 
 
-		SDL_Rect quad;
-		quad = { 5, 10, playerHP, 10 };
+		//SDL_Rect quad;
+		//quad = { 5, 10, playerHP, 10 };
 
-		SDL_Rect quad2;
-		quad2 = { 5, 10, PlayerMaxHP, 10 };
+		//SDL_Rect quad2;
+		//quad2 = { 5, 10, PlayerMaxHP, 10 };
 
-		SDL_Rect bgquad;
-		bgquad = { 3, 8, PlayerMaxHP+4, 14 };
-		app->render->DrawRectangle2(bgquad, 255, 255, 255, 255, 0.0f, true);
-		app->render->DrawRectangle2(quad2, 200, 200, 200, 255, 0.0f, true);
-		//app->render->DrawRectangle(bgquad, 255, 255, 255, 165, true, true);
-		if (playerHP >= PlayerMaxHP)
-		{
-			playerHP = PlayerMaxHP;
-			app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
-		}
-		else if (playerHP > PlayerMaxHP/2)
-		{
-			app->render->DrawRectangle2(quad, 120, 255, 0, 255, 0.0f, true);
-		}
-		else if (playerHP > PlayerMaxHP/5 && playerHP <= PlayerMaxHP/2)
-		{
-			app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
-		}
-		else
-		{
-			if ((playerFPS / 5) % 2 == 0)
-			{
-				app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
-			}
-			else
-			{
-				app->render->DrawRectangle2(quad, 255, 150, 0, 255, 0.0f, true);
-			}
+		//SDL_Rect bgquad;
+		//bgquad = { 3, 8, PlayerMaxHP+4, 14 };
+		//app->render->DrawRectangle2(bgquad, 255, 255, 255, 255, 0.0f, true);
+		//app->render->DrawRectangle2(quad2, 200, 200, 200, 255, 0.0f, true);
+		////app->render->DrawRectangle(bgquad, 255, 255, 255, 165, true, true);
+		//if (playerHP >= PlayerMaxHP)
+		//{
+		//	playerHP = PlayerMaxHP;
+		//	app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
+		//}
+		//else if (playerHP > PlayerMaxHP/2)
+		//{
+		//	app->render->DrawRectangle2(quad, 120, 255, 0, 255, 0.0f, true);
+		//}
+		//else if (playerHP > PlayerMaxHP/5 && playerHP <= PlayerMaxHP/2)
+		//{
+		//	app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
+		//}
+		//else
+		//{
+		//	if ((playerFPS / 5) % 2 == 0)
+		//	{
+		//		app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
+		//	}
+		//	else
+		//	{
+		//		app->render->DrawRectangle2(quad, 255, 150, 0, 255, 0.0f, true);
+		//	}
 
-		}
+		//}
+
+		//Interfaz movida al questManager para que se dibuje bien
 
 		if (app->sceneCave->playerRestart == true)
 		{
@@ -2066,15 +2084,15 @@ bool ModulePlayer::PostUpdate()
 				noteComputerDay15GUI->Draw(app->render);
 			}
 
-			if (computerPhase == 2 && note1 == true) //AlvaroComputer Dibujar aqui las texturas de las notas
+			if (computerPhase == 2 && note1 == true) 
 			{
 				app->render->DrawTexture2(noteDay1, 0, 0, NULL);
 			}
-			if (computerPhase == 2 && note5 == true) //AlvaroComputer Dibujar aqui las texturas de las notas
+			if (computerPhase == 2 && note5 == true)
 			{
 				app->render->DrawTexture2(noteDay5, 0, 0, NULL);
 			}
-			if (computerPhase == 2 && note10 == true) //AlvaroComputer Dibujar aqui las texturas de las notas
+			if (computerPhase == 2 && note10 == true)
 			{
 				app->render->DrawTexture2(noteDay10, 0, 0, NULL);
 			}
@@ -2124,6 +2142,13 @@ bool ModulePlayer::CleanUp()
 	app->guiManager->DestroyGuiControl(45);
 	app->guiManager->DestroyGuiControl(46);
 	app->guiManager->DestroyGuiControl(47);
+
+	app->tex->UnLoad(characterHealth100);
+	app->tex->UnLoad(characterHealth80);
+	app->tex->UnLoad(characterHealth60);
+	app->tex->UnLoad(characterHealth40);
+	app->tex->UnLoad(characterHealth20);
+	app->tex->UnLoad(characterHealth0);
 
 	//deletePlayer = true;
 	app->player->Player->body->DestroyFixture(app->player->Player->body->GetFixtureList());
@@ -2251,7 +2276,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::INSTANT_DEATH)
 		{
-			playerHP -= 100;
+			playerHP -= 250;
 			if (playerHP < 0) playerHP = 0;
 			invincibleDelay = 0;
 			if (playerHP != 0) app->audio->PlayFx(damaged);
@@ -2336,6 +2361,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					app->audio->PlayFx(alarmCardReaderFx);
 					app->questManager->secondaryQuestID = ACTIVATE_SWITCHES;
 					baseUnlock = true;
+
+					app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 1516, 3040);
+					app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 3367, 2014);
+					app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 4327, 2757);
+					app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 3295, 3495);
 				}
 			}
 		}
@@ -2360,46 +2390,8 @@ void ModulePlayer::RangedAttack()
 	//Add logic for ranged attack
 	if (position.DistanceTo(enemySelected) <= EquipmentRange)
 	{
-		if (enemySelected.x == position.x)
-		{
-			app->particles->playerRangedAttack.speed.x = 0;
-			if (enemySelected.y < position.y) app->particles->playerRangedAttack.speed.y = -10;
-			if (enemySelected.y > position.y) app->particles->playerRangedAttack.speed.y = +10;
-			app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
-		}
-		if (enemySelected.x < position.x)
-		{
-			if (enemySelected.y == position.y)
-			{
-				app->particles->playerRangedAttack.speed.x = -10;
-				app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
-			}
-			else
-			{
-				app->particles->playerRangedAttack.speed.x = -10;
-				app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
-				app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
-			}
-
-			playerAttacked = true;
-		}
-
-		if (enemySelected.x > position.x)
-		{
-			if (enemySelected.y == position.y)
-			{
-				app->particles->playerRangedAttack.speed.x = 10;
-				app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
-			}
-			else
-			{
-				app->particles->playerRangedAttack.speed.x = 10;
-				app->particles->playerRangedAttack.speed.y = ((enemySelected.y - position.y) / ((enemySelected.x - position.x) / app->particles->playerRangedAttack.speed.x));
-				app->particles->AddParticle(app->particles->playerRangedAttack, position.x, position.y, Collider::Type::PLAYER_RANGED_ATTACK);
-			}
-
-			playerAttacked = true;
-		}
+		app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->EntityHP -= EquipmentDamage;
+		playerAttacked = true;
 	}
 	if (position.DistanceTo(enemySelected) > EquipmentRange)
 	{

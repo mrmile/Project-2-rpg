@@ -32,7 +32,7 @@
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
-    <PlatformToolset>v142</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Releasev2|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -83,7 +83,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib; SDL2_mixer.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\alvaromc1\Documents\GitHub\VideogameDevelopment\Game\Source\External\Optick\lib\debug;$(ProjectDir)Source\External\Box2D\libx86;$(ProjectDir)Source\External\SDL\libx86;$(ProjectDir)Source\External\SDL_image\libx86;$(ProjectDir)Source\External\SDL_mixer\libx86;C:\GitHub\Project-2-rpg\Game\Source\External\PhysFS\libx86</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\alvaromc1\Documents\GitHub\VideogameDevelopment\Game\Source\External\Optick\lib\debug;$(ProjectDir)Source\External\Box2D\libx86;$(ProjectDir)Source\External\SDL\libx86;$(ProjectDir)Source\External\SDL_image\libx86;$(ProjectDir)Source\External\SDL_mixer\libx86</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -152,6 +152,7 @@
     <ClCompile Include="Source\Audio.cpp" />
     <ClCompile Include="Source\Input.cpp" />
     <ClCompile Include="Source\Map.cpp" />
+    <ClCompile Include="Source\MapMenu.cpp" />
     <ClCompile Include="Source\ModuleCollisions.cpp" />
     <ClCompile Include="Source\ModuleFadeToBlack.cpp" />
     <ClCompile Include="Source\ModuleFonts.cpp" />
@@ -189,6 +190,7 @@
     <ClCompile Include="Source\Zombie_Runner.cpp" />
     <ClCompile Include="Source\Zombie_Spitter.cpp" />
     <ClCompile Include="Source\Zombie_Standart.cpp" />
+    <ClCompile Include="Source\Zombie_Volatile.cpp" />
     <ClInclude Include="Source\Animation.h" />
     <ClInclude Include="Source\AssetsManager.h" />
     <ClInclude Include="Source\Collider.h" />
@@ -197,7 +199,6 @@
     <ClInclude Include="Source\Dialog.h" />
     <ClInclude Include="Source\DialogManager.h" />
     <ClInclude Include="Source\DialogNode.h" />
-    <ClInclude Include="Source\easings.h" />
     <ClInclude Include="Source\Entity.h" />
     <ClInclude Include="Source\EntityManager.h" />
     <ClInclude Include="Source\fenceOne.h" />
@@ -212,6 +213,7 @@
     <ClInclude Include="Source\InventoryMenu.h" />
     <ClInclude Include="Source\LogoScreen.h" />
     <ClInclude Include="Source\Map.h" />
+    <ClInclude Include="Source\MapMenu.h" />
     <ClInclude Include="Source\ModuleCollisions.h" />
     <ClInclude Include="Source\ModuleFadeToBlack.h" />
     <ClInclude Include="Source\ModuleFonts.h" />
@@ -265,6 +267,7 @@
     <ClInclude Include="Source\Zombie_Runner.h" />
     <ClInclude Include="Source\Zombie_Spitter.h" />
     <ClInclude Include="Source\Zombie_Standart.h" />
+    <ClInclude Include="Source\Zombie_Volatile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -9,7 +9,6 @@
 #include "GameManager.h"
 #include "Entity.h"
 #include "ModulePlayer.h"
-#include "Transitions.h"
 
 #include "NPCs.h"
 #include "NPCs2.h"
@@ -18,6 +17,7 @@
 #include "Zombie_Standart.h"
 #include "Zombie_Runner.h"
 #include "Zombie_Spitter.h"
+#include "Zombie_Volatile.h"
 #include "Switch.h"
 #include "Switch2.h"
 #include "Switch3.h"
@@ -50,6 +50,7 @@ bool EntityManager::Start()
 {
 	texture_enemies_base_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_with_spawn.png");
 	texture_enemies_runner_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_runner.png");
+	texture_enemies_volatile_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_volatile.png");
 	texture_enemies_spitter_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_spitter_with_spawn.png");
 	texture_npcs = app->tex->Load("Assets/textures/NPCs/Implemented/General_NPCs.png");
 	texture_switch = app->tex->Load("Assets/textures/SceneObjects/switch.png");
@@ -85,9 +86,15 @@ bool EntityManager::Update(float dt)
 		{
 			entities[i]->Update(dt);
 		}
-
+		
 		if (entities[i] != nullptr && entities[i]->EntityHP <= 0)
 		{
+			if (entities[i]->type == EntityType::ZOMBIE_VOLATILE)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Volatile_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Volatile_Zombie_List.end->data->body->SetAwake(false);
+			}
 			if (entities[i]->type == EntityType::ZOMBIE_STANDART)
 			{
 				entities[i]->SetToDelete();
@@ -106,7 +113,6 @@ bool EntityManager::Update(float dt)
 				entities[i]->Spitter_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
 				entities[i]->Spitter_Zombie_List.end->data->body->SetAwake(false);
 			}
-
 			if (entities[i]->type == EntityType::NPC)
 			{
 				entities[i]->SetToDelete();
@@ -186,6 +192,7 @@ bool EntityManager::Update(float dt)
 				entities[i]->FenceTwo_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
 				entities[i]->FenceTwo_List.end->data->body->SetAwake(false);
 			}
+
 		}
 			
 	}
@@ -198,11 +205,7 @@ bool EntityManager::Update(float dt)
 
 bool EntityManager::PostUpdate()
 {
-	for (uint i = 0; i < MAX_ENTITIES; ++i)
-	{
-		if (entities[i] != nullptr && entities[i]->EntityHP > 0)
-			entities[i]->Draw();
-	}
+	//Movido al Map.cpp para el nuevo sistema de dibujado (sprite sorting)
 
 	return true;
 }
@@ -212,6 +215,10 @@ bool EntityManager::CleanUp()
 	{
 		if (entities[i] != nullptr)
 		{
+			if (HelperQueue[i].type == EntityType::ZOMBIE_VOLATILE)
+			{
+				entities[i]->Volatile_Zombie_List.end->data->body->DestroyFixture(entities[i]->Volatile_Zombie_List.end->data->body->GetFixtureList());
+			}
 			if (HelperQueue[i].type == EntityType::ZOMBIE_STANDART)
 			{
 				entities[i]->Standart_Zombie_List.end->data->body->DestroyFixture(entities[i]->Standart_Zombie_List.end->data->body->GetFixtureList());
@@ -437,6 +444,15 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				entities[i]->type = info.type;
 				entities[i]->texture = texture_npcs;
 				break;
+
+			case EntityType::ZOMBIE_VOLATILE:
+				entities[i] = new Zombie_Volatile(info.x, info.y);
+				HelperQueue[i].type = EntityType::ZOMBIE_VOLATILE;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				entities[i]->texture = texture_enemies_volatile_zombie;
+
+				break;
 			case EntityType::ZOMBIE_STANDART:
 				entities[i] = new Zombie_Standart(info.x,info.y);
 				HelperQueue[i].type = EntityType::ZOMBIE_STANDART;
@@ -485,8 +501,6 @@ void EntityManager::RegisterEntitesInCombat(Entity* entity)
 
 			app->player->entityStatePlayer = GameState::InCombat;
 			app->player->entityTurnPlayer = TurnState::NONE;
-			
-			
 
 		}
 	}
@@ -522,6 +536,12 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 
 			if (entities[i] != nullptr)
 			{
+				if (HelperQueue[i].type == EntityType::ZOMBIE_VOLATILE)
+				{
+					entities[i]->SetToDelete();
+					entities[i]->Volatile_Zombie_List.end->data->body->DestroyFixture(entities[i]->Volatile_Zombie_List.end->data->body->GetFixtureList());
+					entities[i] = nullptr;
+				}
 				if (HelperQueue[i].type == EntityType::ZOMBIE_STANDART)
 				{
 					entities[i]->SetToDelete();
@@ -627,6 +647,10 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 			{
 				//entities[i]->GetColldier();
 
+				if (HelperQueue[i].type == EntityType::ZOMBIE_VOLATILE)
+				{
+					AddEntity(EntityType::ZOMBIE_VOLATILE, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
 				if (HelperQueue[i].type == EntityType::ZOMBIE_STANDART)
 				{
 					AddEntity(EntityType::ZOMBIE_STANDART, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);

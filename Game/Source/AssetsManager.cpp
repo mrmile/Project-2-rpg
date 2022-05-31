@@ -1,11 +1,5 @@
 //#include "AssetsManager.h"
-//#include "PhysFS/include/physfs.h"
-//
-//#ifdef _DEBUG
-//#pragma comment( lib, "../Game/Source/External/PhysFS/libx86/physfs.lib" )
-//#else
-//#pragma comment( lib, "../Game/Source/External/PhysFS/libx86/physfs.lib" )
-//#endif
+//#include "External/PhysFS/include/physfs.h"
 //
 //AssetsManager::AssetsManager(bool start_enabled) : Module(start_enabled)
 //{

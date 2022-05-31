@@ -23,6 +23,7 @@ enum class EntityType
 	ZOMBIE_RUNNER,
 	ZOMBIE_SPITTER,
 	ZOMBIE_STANDART,
+	ZOMBIE_VOLATILE,
 	SWITCH_KEY,
 	SWITCH_KEY2,
 	SWITCH_KEY3,
@@ -102,7 +103,7 @@ public:
 
 	int x = 0;
 
-private:
+public:
 
 	void SpawnEntity(const EntitySpawnPoint& info);
 
@@ -113,6 +114,7 @@ private:
 	SDL_Texture* texture_enemies_base_zombie = nullptr;
 	SDL_Texture* texture_enemies_runner_zombie = nullptr;
 	SDL_Texture* texture_enemies_spitter_zombie = nullptr;
+	SDL_Texture* texture_enemies_volatile_zombie = nullptr;
 	SDL_Texture* texture_npcs = nullptr;
 	SDL_Texture* texture_items = nullptr;
 	SDL_Texture* texture_switch = nullptr;
