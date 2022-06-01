@@ -1951,27 +1951,32 @@ bool ModulePlayer::PostUpdate()
 		if (app->player->playerHP >= app->player->PlayerMaxHP)
 		{
 			app->render->DrawTexture2(app->player->characterHealth100, -60, -7, NULL);
+			lowHPdelay = 0;
 		}
 		if (app->player->playerHP > app->player->PlayerMaxHP / 1.25f && app->player->playerHP < app->player->PlayerMaxHP)
 		{
 			app->render->DrawTexture2(app->player->characterHealth80, -60, -7, NULL);
+			lowHPdelay = 0;
 		}
 		if (app->player->playerHP > app->player->PlayerMaxHP / 1.66f && app->player->playerHP <= app->player->PlayerMaxHP / 1.25f)
 		{
 			app->render->DrawTexture2(app->player->characterHealth60, -60, -7, NULL);
+			lowHPdelay = 0;
 		}
 		if (app->player->playerHP > app->player->PlayerMaxHP / 2.5f && app->player->playerHP <= app->player->PlayerMaxHP / 1.66f)
 		{
 			app->render->DrawTexture2(app->player->characterHealth40, -60, -7, NULL);
+			lowHPdelay = 0;
 		}
 		if (app->player->playerHP > app->player->PlayerMaxHP / 5 && app->player->playerHP <= app->player->PlayerMaxHP / 2.5f)
 		{
 			lowHPdelay++;
 
+			if (lowHPdelay < 20) app->render->DrawTexture2(lowHealthBlood, 0, 0, NULL);
+			if (lowHPdelay >= 20) app->render->DrawTexture2(lowHealthGreyBg, 0, 0, NULL);
+
 			app->render->DrawTexture2(characterHealth20, -60, -7, NULL);
 			if ((lowHPdelay / 60) % 2 == 0) app->render->DrawTexture2(characterHealth20Grey, -60, -7, NULL);
-
-			app->render->DrawTexture2(lowHealthGreyBg, 0, 0, NULL);
 		}
 		if (app->player->playerHP <= 0)
 		{
@@ -2193,7 +2198,10 @@ bool ModulePlayer::CleanUp()
 	app->tex->UnLoad(characterHealth60);
 	app->tex->UnLoad(characterHealth40);
 	app->tex->UnLoad(characterHealth20);
+	app->tex->UnLoad(characterHealth20Grey);
 	app->tex->UnLoad(characterHealth0);
+	app->tex->UnLoad(lowHealthBlood);
+	app->tex->UnLoad(lowHealthGreyBg);
 
 	//deletePlayer = true;
 	app->player->Player->body->DestroyFixture(app->player->Player->body->GetFixtureList());
