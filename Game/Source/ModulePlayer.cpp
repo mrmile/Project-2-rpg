@@ -566,7 +566,11 @@ bool ModulePlayer::Start()
 	characterHealth60 = app->tex->Load("Assets/textures/GUI/Inventory/barLife60.png");
 	characterHealth40 = app->tex->Load("Assets/textures/GUI/Inventory/barLife40.png");
 	characterHealth20 = app->tex->Load("Assets/textures/GUI/Inventory/barLife20.png");
+	characterHealth20Grey = app->tex->Load("Assets/textures/GUI/Inventory/barLife20Grey.png");
 	characterHealth0 = app->tex->Load("Assets/textures/GUI/Inventory/barLife00.png");
+
+	lowHealthBlood = app->tex->Load("Assets/textures/GUI/lowHealth1.png");
+	lowHealthGreyBg = app->tex->Load("Assets/textures/GUI/lowHealth2.png");
 
 	noteDay1 = app->tex->Load("Assets/textures/extras/day1_text.png");
 	noteDay5 = app->tex->Load("Assets/textures/extras/day5_text.png");
@@ -583,6 +587,7 @@ bool ModulePlayer::Start()
 	folderComputer = app->tex->Load("Assets/textures/extras/folderComputer.png");
 
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
+	heartbeatFX = app->audio->LoadFx("Assets/audio/fx/UISounds/heartbeat.wav");
 	itemGrab = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_grab_finish_back_fast_begin_0.wav");
 	dead = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_2.wav");
 	shoot = app->audio->LoadFx("Assets/audio/fx/ZPlayer/PlayerActions/Gun.wav");
@@ -1932,6 +1937,17 @@ bool ModulePlayer::PostUpdate()
 		//	}
 
 		//}
+		
+
+		/*app->render->DrawTexture2(characterHealth20, 0, 0, NULL);*/
+
+		/*lowHPdelay++;
+
+		app->render->DrawTexture2(characterHealth20, -60, -7, NULL);
+		if ((lowHPdelay / 60) % 2 == 0) app->render->DrawTexture2(characterHealth20Grey, -60, -7, NULL);
+		app->render->DrawTexture2(lowHealthGreyBg, 0, 0, NULL);
+		app->audio->PlayFx(heartbeatFX, 0);*/
+
 		if (app->player->playerHP >= app->player->PlayerMaxHP)
 		{
 			app->render->DrawTexture2(app->player->characterHealth100, -60, -7, NULL);
@@ -1950,7 +1966,12 @@ bool ModulePlayer::PostUpdate()
 		}
 		if (app->player->playerHP > app->player->PlayerMaxHP / 5 && app->player->playerHP <= app->player->PlayerMaxHP / 2.5f)
 		{
-			app->render->DrawTexture2(app->player->characterHealth20, -60, -7, NULL);
+			lowHPdelay++;
+
+			app->render->DrawTexture2(characterHealth20, -60, -7, NULL);
+			if ((lowHPdelay / 60) % 2 == 0) app->render->DrawTexture2(characterHealth20Grey, -60, -7, NULL);
+
+			app->render->DrawTexture2(lowHealthGreyBg, 0, 0, NULL);
 		}
 		if (app->player->playerHP <= 0)
 		{
@@ -2244,9 +2265,11 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		{
 			app->audio->PlayFx(playerHurtSound, 0);
 			playerHP -= 10;
-			
 
-
+			if (app->player->playerHP > app->player->PlayerMaxHP / 5 && app->player->playerHP <= app->player->PlayerMaxHP / 2.5f)
+			{
+				app->audio->PlayFx(heartbeatFX, 0);
+			}
 		}
 
 		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_RANGED_ATTACK)) /*&& invincibleDelay >= 120)*/
@@ -2254,9 +2277,12 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			app->audio->PlayFx(playerHurtSound, 0);
 			playerHP -= 10;
 			
-
-
+			if (app->player->playerHP > app->player->PlayerMaxHP / 5 && app->player->playerHP <= app->player->PlayerMaxHP / 2.5f)
+			{
+				app->audio->PlayFx(heartbeatFX, 0);
+			}
 		}
+
 		/*if ((c1->type == Collider::Type::PLAYER_ATTACK && c2->type == Collider::Type::ENEMY))
 		{
 
