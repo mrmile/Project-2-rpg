@@ -1932,6 +1932,30 @@ bool ModulePlayer::PostUpdate()
 		//	}
 
 		//}
+		if (app->player->playerHP >= app->player->PlayerMaxHP)
+		{
+			app->render->DrawTexture2(app->player->characterHealth100, -60, -7, NULL);
+		}
+		if (app->player->playerHP > app->player->PlayerMaxHP / 1.25f && app->player->playerHP < app->player->PlayerMaxHP)
+		{
+			app->render->DrawTexture2(app->player->characterHealth80, -60, -7, NULL);
+		}
+		if (app->player->playerHP > app->player->PlayerMaxHP / 1.66f && app->player->playerHP <= app->player->PlayerMaxHP / 1.25f)
+		{
+			app->render->DrawTexture2(app->player->characterHealth60, -60, -7, NULL);
+		}
+		if (app->player->playerHP > app->player->PlayerMaxHP / 2.5f && app->player->playerHP <= app->player->PlayerMaxHP / 1.66f)
+		{
+			app->render->DrawTexture2(app->player->characterHealth40, -60, -7, NULL);
+		}
+		if (app->player->playerHP > app->player->PlayerMaxHP / 5 && app->player->playerHP <= app->player->PlayerMaxHP / 2.5f)
+		{
+			app->render->DrawTexture2(app->player->characterHealth20, -60, -7, NULL);
+		}
+		if (app->player->playerHP <= 0)
+		{
+			app->render->DrawTexture2(app->player->characterHealth0, -60, -7, NULL);
+		}
 
 		//Interfaz movida al questManager para que se dibuje bien
 

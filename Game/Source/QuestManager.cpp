@@ -183,37 +183,6 @@ bool QuestManager::PostUpdate()
 	SDL_Rect questAnimRect = app->questManager->currentAnimation->GetCurrentFrame();
 	app->render->DrawTexture2(questCompletionMessage, 480, 10, &questAnimRect);
 
-	//User interface will be printed here (No tendría que estar aquí pero es mas simple ponerlo aquí por como está ordenado el render draw)
-	if (app->player->playerHP >= app->player->PlayerMaxHP)
-	{
-		app->render->DrawTexture2(app->player->characterHealth100, -60, -7, NULL);
-	}
-	if (app->player->playerHP > app->player->PlayerMaxHP / 1.25f && app->player->playerHP < app->player->PlayerMaxHP)
-	{
-		app->render->DrawTexture2(app->player->characterHealth80, -60, -7, NULL);
-	}
-	if (app->player->playerHP > app->player->PlayerMaxHP / 1.66f && app->player->playerHP <= app->player->PlayerMaxHP / 1.25f)
-	{
-		app->render->DrawTexture2(app->player->characterHealth60, -60, -7, NULL);
-	}
-	if (app->player->playerHP > app->player->PlayerMaxHP / 2.5f && app->player->playerHP <= app->player->PlayerMaxHP / 1.66f)
-	{
-		app->render->DrawTexture2(app->player->characterHealth40, -60, -7, NULL);
-	}
-	if (app->player->playerHP > app->player->PlayerMaxHP / 5 && app->player->playerHP <= app->player->PlayerMaxHP / 2.5f)
-	{
-		app->render->DrawTexture2(app->player->characterHealth20, -60, -7, NULL);
-	}
-	if (app->player->playerHP <= 0)
-	{
-		app->render->DrawTexture2(app->player->characterHealth0, -60, -7, NULL);
-	}
-
-	if (app->titleScreen->toTitleScreen == true)
-	{
-		app->render->DrawTexture2(app->player->gameOverScreen, 0, 0, NULL, 0.0f);
-	}
-
 	return true;
 }
 
