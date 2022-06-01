@@ -141,6 +141,7 @@ bool InventoryMenu::Update(float dt)
 	//Used to get what item we are checking with the mouse in order for the buttons to work
 	if (showInventory == true)
 	{
+		SetCanClickEquipAndItems(true);
 		DeleteItem->canClick = true;
 		EquipItem->canClick = true;
 		UseItem->canClick = true;
@@ -149,6 +150,7 @@ bool InventoryMenu::Update(float dt)
 	}
 	if (showInventory == false)
 	{
+		SetCanClickEquipAndItems(false);
 		DeleteItem->canClick = false;
 		EquipItem->canClick = false;
 		UseItem->canClick = false;
@@ -447,7 +449,7 @@ bool InventoryMenu::OnGuiMouseClickEvent(GuiControl* control)
 			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
 			UseItemSelected(&itemUsing);
 		}
-		if (control->id == 32)
+		if (control->id == 32 && ItemCanClickCheck() == true)
 		{
 			//Item Button in general
 			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
@@ -460,7 +462,7 @@ bool InventoryMenu::OnGuiMouseClickEvent(GuiControl* control)
 			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
 			DeEquipItemSelected(&itemUsing);
 		}
-		if (control->id == 34)
+		if (control->id == 34 && EquipmentCanClickCheck() == true)
 		{
 			//Equipment Button
 			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
@@ -817,6 +819,58 @@ void InventoryMenu::UpdateEquipment()
 			}
 		}
 	}
+
+}
+
+void InventoryMenu::SetCanClickEquipAndItems(bool state)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		EquipmentButton[i]->canClick = state;
+	}
+
+	for (int i = 0; i < MAX_ITEMS; i++)
+	{
+		ItemButton[i]->canClick = state;
+	}
+}
+bool InventoryMenu::EquipmentCanClickCheck()
+{
+	int counterForBool = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		if (EquipmentButton[i]->canClick == true) counterForBool++;
+
+	}
+	if (counterForBool >= 3)
+	{
+		return true;
+	}
+	if (counterForBool < 3)
+	{
+		return false;
+	}
+}
+
+bool InventoryMenu::ItemCanClickCheck()
+{
+	bool ret = true;
+	int counterForBool = 0;
+
+	for (int i = 0; i < MAX_ITEMS; i++)
+	{
+		if (ItemButton[i]->canClick == true) counterForBool++;
+
+	}
+	if (counterForBool >= MAX_ITEMS)
+	{
+		return true;
+	}
+	if (counterForBool < MAX_ITEMS)
+	{
+		return false;
+	}
+
 
 }
 

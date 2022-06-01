@@ -287,7 +287,19 @@ bool EntityManager::CleanUp()
 			entities[i] = nullptr;
 			delete entities[i];
 		}
+
 	}
+
+	app->tex->UnLoad(texture_enemies_base_zombie);
+	app->tex->UnLoad(texture_enemies_runner_zombie);
+	app->tex->UnLoad(texture_enemies_spitter_zombie);
+	app->tex->UnLoad(texture_enemies_volatile_zombie);
+	app->tex->UnLoad(texture_npcs);
+	app->tex->UnLoad(texture_fenceOne);
+	app->tex->UnLoad(texture_fenceTwo);
+	app->tex->UnLoad(texture_rockOne);
+	app->tex->UnLoad(texture_rockTwo);
+	app->tex->UnLoad(texture_switch);
 
 	return true;
 }
