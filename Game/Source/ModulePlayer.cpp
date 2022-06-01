@@ -26,10 +26,12 @@
 #include "ModuleParticles.h"
 #include "Audio.h"
 #include "TitleScreen.h"
+#include "CombatMenu.h"
 #include "MapMenu.h"
 #include "InventoryMenu.h"
 #include "ModuleFonts.h"
 #include "QuestManager.h"
+#include "Transitions.h"
 
 #include <stdio.h>
 #include <time.h>
@@ -2019,9 +2021,18 @@ bool ModulePlayer::PostUpdate()
 				app->sceneCave->Disable();
 				app->sceneBase->Disable();
 				app->sceneMotel->Disable();
+				app->scenePlatform->Disable();
 				app->player->Disable();
 				app->entity_manager->Disable();
 				app->fonts->Disable();
+				app->combatMenu->Disable();
+				app->game_manager->Disable();
+				app->inventoryMenu->Disable();
+				app->physics->Disable();
+				app->fade->Disable();
+				app->physics->Disable();
+				app->transition_manager->Disable();
+				app->questManager->Disable();
 
 				app->titleScreen->toTitleScreen = false;
 			}

@@ -34,8 +34,6 @@ class ModulePlayer;
 class ModuleCollisions;
 class EntityManager;
 class ModuleParticles;
-//class Enemy;
-class PathFinding;
 class ModuleFonts;
 class GuiManager;
 class PauseMenu;
@@ -135,7 +133,6 @@ public:
 	ModulePlayer* player;
 	ModuleCollisions* collisions;
 	ModuleParticles* particles;
-	PathFinding* pathfinding;
 	ModuleFonts* fonts;
 	GuiManager* guiManager;
 	PauseMenu* pause_menu;

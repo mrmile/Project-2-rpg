@@ -111,7 +111,6 @@ bool InventoryMenu::Start()
 	{
 		ItemButton[z] = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 32, "Access item button", itemList[z].itemRect, this, NULL, NULL, {});
 
-		ItemButton[z]->canClick = true;
 
 	}
 
@@ -123,7 +122,6 @@ bool InventoryMenu::Start()
 	{
 		EquipmentButton[i] = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 34, "EquipmentButton", Equipment[i].itemRect, this, NULL, NULL, {});
 
-		EquipmentButton[i]->canClick = true;
 	}
 
 	return true;
@@ -141,14 +139,15 @@ bool InventoryMenu::Update(float dt)
 	//Used to get what item we are checking with the mouse in order for the buttons to work
 	if (showInventory == true)
 	{
+		SetCanClickEquipAndItems(true);
 		DeleteItem->canClick = true;
 		EquipItem->canClick = true;
 		UseItem->canClick = true;
 		DeEquipButton->canClick = true;
-
 	}
 	if (showInventory == false)
 	{
+		SetCanClickEquipAndItems(false);
 		DeleteItem->canClick = false;
 		EquipItem->canClick = false;
 		UseItem->canClick = false;
@@ -447,20 +446,20 @@ bool InventoryMenu::OnGuiMouseClickEvent(GuiControl* control)
 			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
 			UseItemSelected(&itemUsing);
 		}
-		if (control->id == 32)
+		if (control->id == 32 && ItemCanClickCheck() == true)
 		{
 			//Item Button in general
 			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
 			ShowOptions(&GetItemFromPosition(mouseX, mouseY));
 		
 		}
-		if (control->id == 33)
+		if (control->id == 33 )
 		{
 			//DeEquip button
 			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
 			DeEquipItemSelected(&itemUsing);
 		}
-		if (control->id == 34)
+		if (control->id == 34 && EquipmentCanClickCheck() == true)
 		{
 			//Equipment Button
 			app->audio->PlayFx(app->pause_menu->buttonClickedFx, 0);
@@ -538,62 +537,55 @@ bool InventoryMenu::DrawItemDescription(ItemList* item)
 		{
 			app->render->DrawTexture2(foodDescription, -15, 0, NULL);
 		
-			return true;
 		}
 		if (item->type == ItemType::OBJECT_HEALTH_PACK)
 		{
 			app->render->DrawTexture2(medicKitDescription, -15, 0, NULL);
 
-			return true;
 		}
 		if (item->type == ItemType::OBJECT_CARD)
 		{
 			app->render->DrawTexture2(cardDescription, -15, 0, NULL);
 
-			return true;
 		}
 		if (item->type == ItemType::OBJECT_GRENADE)
 		{
 			app->render->DrawTexture2(grenadeDescription, -15, 0, NULL);
 
-			return true;
 		}
 		if (item->type == ItemType::OBJECT_DEFAULT_GUN)
 		{
 			app->render->DrawTexture2(defaultGunDescription, -15, 0, NULL);
 
-			return true;
 		}
 		if (item->type == ItemType::OBJECT_SHORT_SCOPE_GUN)
 		{
 			app->render->DrawTexture2(shortGunDescription, -15, 0, NULL);
 
-			return true;
 		}
 		if (item->type == ItemType::OBJECT_lONG_SCOPE_GUN)
 		{
 			app->render->DrawTexture2(longGunDescription, -15, 0, NULL);
 
-			return true;
 		}
 		if (item->type == ItemType::OBJECT_RADIO)
 		{
 			app->render->DrawTexture2(radioDescription, -15, 0, NULL);
 
-			return true;
 		}
 		if (item->type == ItemType::OBJECT_SUIT)
 		{
 			app->render->DrawTexture2(combatSuitDescription, -15, 0, NULL);
 
-			return true;
 		}
 		if (item->type == ItemType::OBJECT_KNIFE)
 		{
 			app->render->DrawTexture2(knifeDescription, -15, 0, NULL);
 
-			return true;
+			
 		}
+
+		return true;
 	}
 }
 
@@ -786,7 +778,6 @@ void InventoryMenu::UpdateItemList()
 			if (itemList[i].type == itemUsing.type)
 			{
 				itemList[i].amount = itemUsing.amount;
-
 				if (itemList[i].amount == 0)
 				{
 					itemList[i].usable = false;
@@ -818,6 +809,59 @@ void InventoryMenu::UpdateEquipment()
 		}
 	}
 
+}
+
+
+void InventoryMenu::SetCanClickEquipAndItems(bool state)
+{
+	for (int i = 0; i < 3; i++)
+	{
+		EquipmentButton[i]->canClick = state;
+	}
+
+	for (int i = 0; i < MAX_ITEMS; i++)
+	{
+		ItemButton[i]->canClick = state;
+	}
+}
+bool InventoryMenu::EquipmentCanClickCheck()
+{
+	int counterForBool = 0;
+	for (int i = 0; i < 3; i++)
+	{
+		if (EquipmentButton[i]->canClick == true) counterForBool++;
+
+	}
+	if (counterForBool >= 3)
+	{
+		return true;
+	}
+	if (counterForBool < 3)
+	{
+		return false;
+	}
+}
+
+bool InventoryMenu::ItemCanClickCheck()
+{
+	bool ret = true;
+	int counterForBool = 0;
+
+	for (int i = 0; i < MAX_ITEMS; i++)
+	{
+		if (ItemButton[i]->canClick == true) counterForBool++;
+
+	}
+	if (counterForBool >= MAX_ITEMS)
+	{
+		return true;
+	}
+	if (counterForBool < MAX_ITEMS)
+	{
+		return false;
+	}
+
+	
 }
 
 bool InventoryMenu::SaveState(pugi::xml_node& data) const
