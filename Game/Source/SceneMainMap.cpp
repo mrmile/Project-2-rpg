@@ -16,7 +16,6 @@
 #include "ModuleParticles.h"
 #include "ModuleFonts.h"
 #include "PauseMenu.h"
-#include "Pathfinding.h"
 #include "ModuleFadeToBlack.h"
 #include "SceneBase.h"
 #include "SceneMotel.h"

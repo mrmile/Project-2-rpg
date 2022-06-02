@@ -73,9 +73,6 @@
     <ClCompile Include="Source\ModulePhysics.cpp">
       <Filter>General</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Pathfinding.cpp">
-      <Filter>General</Filter>
-    </ClCompile>
     <ClCompile Include="Source\GamepadInput.cpp">
       <Filter>General</Filter>
     </ClCompile>
@@ -298,9 +295,6 @@
       <Filter>General</Filter>
     </ClInclude>
     <ClInclude Include="Source\ModulePhysics.h">
-      <Filter>General</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Pathfinding.h">
       <Filter>General</Filter>
     </ClInclude>
     <ClInclude Include="Source\GamepadInput.h">

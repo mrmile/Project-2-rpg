@@ -84,6 +84,12 @@ public:
 
 	void UpdateEquipment();
 
+	void SetCanClickEquipAndItems(bool state);
+
+	bool EquipmentCanClickCheck();
+
+	bool ItemCanClickCheck();
+
 	ItemList GetItemFromPosition(int mouseX, int mouseY);
 
 	//Equipment related functions

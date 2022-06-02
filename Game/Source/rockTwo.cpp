@@ -9,7 +9,6 @@
 #include "DynArray.h"
 #include "Input.h"
 #include "Map.h"
-#include "Pathfinding.h"
 #include "SceneMainMap.h"
 #include "Render.h"
 #include "Textures.h"

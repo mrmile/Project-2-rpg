@@ -23,7 +23,6 @@
 #include "Log.h"
 #include "Entity.h"
 #include "EntityManager.h"
-#include "Pathfinding.h"
 #include "GuiManager.h"
 #include "LogoScreen.h"
 #include "PauseMenu.h"
@@ -71,7 +70,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	mapMenu = new MapMenu(true);
 	entity_manager = new EntityManager(true);
 	particles = new ModuleParticles(true);
-	pathfinding = new PathFinding(false);
 	fonts = new ModuleFonts(false);
 	guiManager = new GuiManager(true);
 	dialogManager = new DialogManager(true);
@@ -101,7 +99,6 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(particles);
 	AddModule(collisions);
 	AddModule(fade);
-	AddModule(pathfinding);
 	AddModule(inventoryMenu);
 	AddModule(combatMenu);
 	AddModule(mapMenu);
