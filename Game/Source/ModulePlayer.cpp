@@ -1651,6 +1651,15 @@ bool ModulePlayer::Update(float dt)
 					Player->body->SetLinearVelocity({ 0.0f,0.0f });
 				}
 
+				//If you press space bar while in combat you can go directly to the attack state
+				if (app->input->keys[SDL_SCANCODE_SPACE] == KEY_DOWN)
+				{
+					Player->body->SetLinearVelocity({ 0.0f,0.0f });
+					CounterForEnemySelection = -1;
+					EnemySelectionBool = false;
+					entityTurnPlayer = TurnState::FinishTurn;
+				}
+
 				if (counter > 6)
 				{
 					Player->body->SetLinearVelocity({ 0.0f,0.0f });
