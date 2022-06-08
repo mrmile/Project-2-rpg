@@ -531,11 +531,42 @@ ModulePlayer::ModulePlayer(bool start_enabled) : Module(start_enabled)
 	leftUpRunAnim.loop = true;
 	leftUpRunAnim.speed = 0.56f;
 
+	//ATTACK
+
+	rightAttackAnim.PushBack({ 140, 3885, 85, 105 });
+	rightAttackAnim.loop = true;
+	rightAttackAnim.speed = 0.56f;
+
+	leftAttackAnim.PushBack({ 140, 3885, 85, 105 });
+	leftAttackAnim.loop = true;
+	leftAttackAnim.speed = 0.56f;
+
+	downAttackAnim.PushBack({ 140, 3885, 85, 105 });
+	downAttackAnim.loop = true;
+	downAttackAnim.speed = 0.56f;
+
+	upAttackAnim.PushBack({ 140, 3885, 85, 105 });
+	upAttackAnim.loop = true;
+	upAttackAnim.speed = 0.56f;
+
+	rightDownAttackAnim.PushBack({ 140, 3885, 85, 105 });
+	rightDownAttackAnim.loop = true;
+	rightDownAttackAnim.speed = 0.56f;
+
+	leftDownAttackAnim.PushBack({ 140, 3885, 85, 105 });
+	leftDownAttackAnim.loop = true;
+	leftDownAttackAnim.speed = 0.56f;
+
+	rightUpAttackAnim.PushBack({ 140, 3885, 85, 105 });
+	rightUpAttackAnim.loop = true;
+	rightUpAttackAnim.speed = 0.56f;
+
+	leftUpAttackAnim.PushBack({ 140, 3885, 85, 105 });
+	leftUpAttackAnim.loop = true;
+	leftUpAttackAnim.speed = 0.56f;
+
 	entityTurnPlayer = TurnState::NONE;
 	entityStatePlayer = GameState::OutOfCombat;
-
-
-
 }
 
 ModulePlayer::~ModulePlayer()
