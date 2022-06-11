@@ -196,6 +196,12 @@
     <ClCompile Include="Source\MiniBossOne.cpp">
       <Filter>General\Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Source\MiniBossThree.cpp">
+      <Filter>General\Entities\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\MiniBossTwo.cpp">
+      <Filter>General\Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -421,6 +427,12 @@
       <Filter>General\Entities\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Source\MiniBossOne.h">
+      <Filter>General\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MiniBossThree.h">
+      <Filter>General\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MiniBossTwo.h">
       <Filter>General\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

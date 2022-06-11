@@ -1162,6 +1162,24 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 			}
 		}
 
+		if (object->name == "mini_boss_two")
+		{
+			pugi::xml_node NewObject;
+			for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+			{
+				app->entity_manager->AddEntity(EntityType::MINI_BOSS_TWO, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			}
+		}
+
+		if (object->name == "mini_boss_three")
+		{
+			pugi::xml_node NewObject;
+			for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+			{
+				app->entity_manager->AddEntity(EntityType::MINI_BOSS_THREE, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+			}
+		}
+
 		if (object->name == "zombie_standart")
 		{
 			pugi::xml_node NewObject;
