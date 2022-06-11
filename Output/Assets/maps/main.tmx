@@ -140132,13 +140132,13 @@
   <object id="173" x="3189.33" y="2748" width="28" height="26.6667"/>
  </objectgroup>
  <objectgroup id="50" name="mini_boss_one">
-  <object id="275" x="2686.67" y="2404" width="24" height="24"/>
+  <object id="275" x="2501.34" y="2470.67" width="24" height="24"/>
  </objectgroup>
  <objectgroup id="51" name="mini_boss_two">
-  <object id="276" x="2698.67" y="2238.67" width="20" height="17.3333"/>
+  <object id="276" x="2688" y="2317.34" width="20" height="17.3333"/>
  </objectgroup>
  <objectgroup id="52" name="mini_boss_three">
-  <object id="277" x="2741.33" y="2121.33" width="22.6667" height="21.3333"/>
+  <object id="277" x="2714.66" y="2122.66" width="22.6667" height="21.3333"/>
  </objectgroup>
  <objectgroup id="16" name="zombie_standart">
   <properties>
