@@ -223,7 +223,7 @@ bool SceneMotel::PostUpdate()
 
 		if (app->render->camera.x < -app->map->bossAreaRightBound * 2 + 1280) app->render->camera.x = -app->map->bossAreaRightBound * 2 + 1280;
 		if (app->render->camera.x > -app->map->bossAreaLeftBound * 2) app->render->camera.x = -app->map->bossAreaLeftBound * 2;
-	
+	}
 
 
 	if (app->player->destroyedDelay > 210 && app->player->destroyedDelay <= 211)
