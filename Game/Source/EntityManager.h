@@ -112,6 +112,7 @@ public:
 	// A queue with all spawn points information
 	EntitySpawnPoint spawnQueue[MAX_ENTITIES];
 	Entity* entities[MAX_ENTITIES] = { nullptr };
+	SDL_Texture* texture_mini_boss_one = nullptr;
 	SDL_Texture* texture_enemies_base_zombie = nullptr;
 	SDL_Texture* texture_enemies_runner_zombie = nullptr;
 	SDL_Texture* texture_enemies_spitter_zombie = nullptr;

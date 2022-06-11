@@ -22,10 +22,10 @@
 
 Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 {
-	MaxHp = 10;
+	MaxHp = 40;
 	EntityHP = MaxHp;
-	EntityAP = 5;
-	EntityMP = 3;
+	EntityAP = 8;
+	EntityMP = 5;
 	entityState = GameState::OutOfCombat;
 	entityTurn = TurnState::NONE;
 	counter = 0;

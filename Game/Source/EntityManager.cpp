@@ -49,6 +49,7 @@ EntityManager::~EntityManager()
 
 bool EntityManager::Start()
 {
+	texture_mini_boss_one = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_with_spawn.png");
 	texture_enemies_base_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_with_spawn.png");
 	texture_enemies_runner_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_runner.png");
 	texture_enemies_volatile_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_volatile.png");
@@ -301,6 +302,7 @@ bool EntityManager::CleanUp()
 
 	}
 
+	app->tex->UnLoad(texture_mini_boss_one);
 	app->tex->UnLoad(texture_enemies_base_zombie);
 	app->tex->UnLoad(texture_enemies_runner_zombie);
 	app->tex->UnLoad(texture_enemies_spitter_zombie);
@@ -481,7 +483,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i].type = EntityType::MINI_BOSS_ONE;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				entities[i]->texture = texture_enemies_base_zombie;
+				entities[i]->texture = texture_mini_boss_one;
 
 				break;
 			case EntityType::ZOMBIE_STANDART:
