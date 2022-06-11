@@ -1235,6 +1235,32 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		}
 	}
 
+	if (object->name == "boss1_battle_Sensor")
+	{
+		pugi::xml_node NewObject;
+		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		{
+			app->collisions->AddCollider({ NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int(), NewObject.attribute("width").as_int(), NewObject.attribute("height").as_int() }, Collider::Type::ENABLE_BOSS_1);
+		}
+	}
+
+	if (object->name == "boss2_battle_Sensor")
+	{
+		pugi::xml_node NewObject;
+		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		{
+			app->collisions->AddCollider({ NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int(), NewObject.attribute("width").as_int(), NewObject.attribute("height").as_int() }, Collider::Type::ENABLE_BOSS_2);
+		}
+	}
+
+	if (object->name == "boss3_battle_Sensor")
+	{
+		pugi::xml_node NewObject;
+		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		{
+			app->collisions->AddCollider({ NewObject.attribute("x").as_int(), NewObject.attribute("y").as_int(), NewObject.attribute("width").as_int(), NewObject.attribute("height").as_int() }, Collider::Type::ENABLE_BOSS_3);
+		}
+	}
 
 
 	// Deffine level boundaries

@@ -54,6 +54,9 @@ struct Collider
 		ROCK_TWO,
 		FENCE_ONE,
 		FENCE_TWO,
+		ENABLE_BOSS_1,
+		ENABLE_BOSS_2,
+		ENABLE_BOSS_3,
 
 		MAX
 	};

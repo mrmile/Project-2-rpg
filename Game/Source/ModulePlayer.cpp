@@ -2401,6 +2401,27 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			playerWin = true;
 		}
 
+		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::ENABLE_BOSS_1)
+		{
+			if (app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2)
+			{
+
+			}
+		}
+
+		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::ENABLE_BOSS_2)
+		{
+			if (app->questManager->mainQuestID == KILL_THE_PATIENT_ZERO_3)
+			{
+
+			}
+		}
+
+		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::ENABLE_BOSS_3)
+		{
+			//if (thirdBossDead == true)
+		}
+
 		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DOCTOR_NOTE_MESSAGE)
 		{
 			if (layerZeroReveal == false)
