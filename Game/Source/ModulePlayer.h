@@ -141,6 +141,9 @@ public:
 	SDL_Texture* lowHealthBlood = nullptr;
 	SDL_Texture* lowHealthGreyBg = nullptr;
 
+	//Inventory and Map Icons
+	SDL_Texture* inventoryMapIcons = nullptr;
+
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;

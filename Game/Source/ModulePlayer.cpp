@@ -603,6 +603,8 @@ bool ModulePlayer::Start()
 	lowHealthBlood = app->tex->Load("Assets/textures/GUI/lowHealth1.png");
 	lowHealthGreyBg = app->tex->Load("Assets/textures/GUI/lowHealth2.png");
 
+	inventoryMapIcons = app->tex->Load("Assets/textures/GUI/inventoryAndMapIcons.png");
+
 	noteDay1 = app->tex->Load("Assets/textures/extras/day1_text.png");
 	noteDay5 = app->tex->Load("Assets/textures/extras/day5_text.png");
 	noteDay10 = app->tex->Load("Assets/textures/extras/day10_text.png");
@@ -2023,6 +2025,8 @@ bool ModulePlayer::PostUpdate()
 			app->render->DrawTexture2(app->player->characterHealth0, -60, -7, NULL);
 		}
 
+		app->render->DrawTexture2(inventoryMapIcons, 0, 0, NULL);
+
 		//Interfaz movida al questManager para que se dibuje bien
 
 		if (app->sceneCave->playerRestart == true)
@@ -2242,6 +2246,7 @@ bool ModulePlayer::CleanUp()
 	app->tex->UnLoad(characterHealth0);
 	app->tex->UnLoad(lowHealthBlood);
 	app->tex->UnLoad(lowHealthGreyBg);
+	app->tex->UnLoad(inventoryMapIcons);
 
 	//deletePlayer = true;
 	app->player->Player->body->DestroyFixture(app->player->Player->body->GetFixtureList());
