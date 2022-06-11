@@ -193,6 +193,9 @@
     <ClCompile Include="Source\Zombie_Volatile.cpp">
       <Filter>General\Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Source\MiniBossOne.cpp">
+      <Filter>General\Entities\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -415,6 +418,9 @@
       <Filter>General\Menus</Filter>
     </ClInclude>
     <ClInclude Include="Source\Zombie_Volatile.h">
+      <Filter>General\Entities\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\MiniBossOne.h">
       <Filter>General\Entities\Enemies</Filter>
     </ClInclude>
   </ItemGroup>

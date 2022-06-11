@@ -153,6 +153,7 @@
     <ClCompile Include="Source\Input.cpp" />
     <ClCompile Include="Source\Map.cpp" />
     <ClCompile Include="Source\MapMenu.cpp" />
+    <ClCompile Include="Source\MiniBossOne.cpp" />
     <ClCompile Include="Source\ModuleCollisions.cpp" />
     <ClCompile Include="Source\ModuleFadeToBlack.cpp" />
     <ClCompile Include="Source\ModuleFonts.cpp" />
@@ -213,6 +214,7 @@
     <ClInclude Include="Source\LogoScreen.h" />
     <ClInclude Include="Source\Map.h" />
     <ClInclude Include="Source\MapMenu.h" />
+    <ClInclude Include="Source\MiniBossOne.h" />
     <ClInclude Include="Source\ModuleCollisions.h" />
     <ClInclude Include="Source\ModuleFadeToBlack.h" />
     <ClInclude Include="Source\ModuleFonts.h" />

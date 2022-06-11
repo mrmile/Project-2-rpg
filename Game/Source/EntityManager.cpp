@@ -27,6 +27,7 @@
 #include "rockTwo.h"
 #include "fenceOne.h"
 #include "fenceTwo.h"
+#include "MiniBossOne.h"
 
 #define SPAWN_MARGIN 500
 
@@ -94,6 +95,12 @@ bool EntityManager::Update(float dt)
 				entities[i]->SetToDelete();
 				entities[i]->Volatile_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
 				entities[i]->Volatile_Zombie_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::MINI_BOSS_ONE)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Mini_Boss_One_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Mini_Boss_One_List.end->data->body->SetAwake(false);
 			}
 			if (entities[i]->type == EntityType::ZOMBIE_STANDART)
 			{
@@ -218,6 +225,10 @@ bool EntityManager::CleanUp()
 			if (HelperQueue[i].type == EntityType::ZOMBIE_VOLATILE)
 			{
 				entities[i]->Volatile_Zombie_List.end->data->body->DestroyFixture(entities[i]->Volatile_Zombie_List.end->data->body->GetFixtureList());
+			}
+			if (HelperQueue[i].type == EntityType::MINI_BOSS_ONE)
+			{
+				entities[i]->Mini_Boss_One_List.end->data->body->DestroyFixture(entities[i]->Standart_Zombie_List.end->data->body->GetFixtureList());
 			}
 			if (HelperQueue[i].type == EntityType::ZOMBIE_STANDART)
 			{
@@ -465,6 +476,14 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				entities[i]->texture = texture_enemies_volatile_zombie;
 
 				break;
+			case EntityType::MINI_BOSS_ONE:
+				entities[i] = new Mini_Boss_One(info.x, info.y);
+				HelperQueue[i].type = EntityType::MINI_BOSS_ONE;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				entities[i]->texture = texture_enemies_base_zombie;
+
+				break;
 			case EntityType::ZOMBIE_STANDART:
 				entities[i] = new Zombie_Standart(info.x,info.y);
 				HelperQueue[i].type = EntityType::ZOMBIE_STANDART;
@@ -552,6 +571,12 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->Volatile_Zombie_List.end->data->body->DestroyFixture(entities[i]->Volatile_Zombie_List.end->data->body->GetFixtureList());
+					entities[i] = nullptr;
+				}
+				if (HelperQueue[i].type == EntityType::MINI_BOSS_ONE)
+				{
+					entities[i]->SetToDelete();
+					entities[i]->Mini_Boss_One_List.end->data->body->DestroyFixture(entities[i]->Mini_Boss_One_List.end->data->body->GetFixtureList());
 					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::ZOMBIE_STANDART)
@@ -662,6 +687,10 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				if (HelperQueue[i].type == EntityType::ZOMBIE_VOLATILE)
 				{
 					AddEntity(EntityType::ZOMBIE_VOLATILE, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::MINI_BOSS_ONE)
+				{
+					AddEntity(EntityType::MINI_BOSS_ONE, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
 				if (HelperQueue[i].type == EntityType::ZOMBIE_STANDART)
 				{
