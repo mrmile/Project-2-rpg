@@ -52,7 +52,7 @@ bool MapMenu::Awake()
 // Called before the first frame
 bool MapMenu::Start()
 {
-	combatHUD = app->tex->Load("Assets/textures/GUI/CombatUI/combatHud3.png");
+	miniMap = app->tex->Load("Assets/textures/GUI/miniMap.png");
 	/*enemyTurn = app->tex->Load("Assets/textures/GUI/CombatUI/enemyTurn.png");
 	enemyTurn1 = app->tex->Load("Assets/textures/GUI/CombatUI/enemyTurn1.png");
 	enemyTurn2 = app->tex->Load("Assets/textures/GUI/CombatUI/enemyTurn2.png");
@@ -153,7 +153,7 @@ bool MapMenu::PostUpdate()
 
 	if (showMapMenu == true)
 	{
-		app->render->DrawTexture2(combatHUD, 0, 0, NULL);
+		app->render->DrawTexture2(miniMap, 0, 0, NULL);
 	}
 
 	return true;
@@ -162,7 +162,7 @@ bool MapMenu::PostUpdate()
 // Called before quitting
 bool MapMenu::CleanUp()
 {
-	app->tex->UnLoad(combatHUD);
+	app->tex->UnLoad(miniMap);
 	/*app->tex->UnLoad(enemyTurn);
 	app->tex->UnLoad(enemyTurn1);
 	app->tex->UnLoad(enemyTurn2);
