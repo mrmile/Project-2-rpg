@@ -38,6 +38,7 @@ private:
 	SDL_Texture* textOption1 = nullptr;
 	SDL_Texture* textOption2 = nullptr;
 	SDL_Texture* textOptionUnselected = nullptr;
+	SDL_Texture* tntExample = nullptr;
 	
 	GuiButton* GUItextButton = nullptr;
 	GuiButton* GUItextRectanlgeNPC = nullptr;

@@ -40,6 +40,7 @@ bool DialogManager::Start()
 	textOptionUnselected = app->tex->Load("Assets/textures/GUI/optionUnselected.png");
 	textOption1 = app->tex->Load("Assets/textures/GUI/option1.png");
 	textOption2 = app->tex->Load("Assets/textures/GUI/option1.png");
+	tntExample = app->tex->Load("Assets/textures/GUI/tntExampleDialog.png");
 
 	buttonClickedFx = app->audio->LoadFx("Assets/audio/fx/UISounds/buttonClickedFX.wav");
 
@@ -233,6 +234,7 @@ bool DialogManager::PostUpdate()
 			{
 				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
 				app->render->DrawTexture2(textNameNPC2, 0, 0, NULL);
+				app->render->DrawTexture2(tntExample, -60, 275, NULL);
 
 				app->fonts->BlitText(77, 240, scoreFont, "the exit is blocked, compadre...");
 				app->fonts->BlitText(77, 260, scoreFont, "i remember there were a couple of tnt");
@@ -436,6 +438,7 @@ bool DialogManager::CleanUp()
 	app->tex->UnLoad(textNamePlayer);
 	app->tex->UnLoad(textOption1);
 	app->tex->UnLoad(textOption2);
+	app->tex->UnLoad(tntExample);
 
 	app->guiManager->DestroyGuiControl(22);
 	app->guiManager->DestroyGuiControl(23);
