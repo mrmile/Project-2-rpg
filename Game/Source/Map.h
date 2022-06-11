@@ -209,6 +209,11 @@ public:
 	int levelAreaLeftBound = 0;
 	int levelAreaRightBound = 0;
 
+	int bossAreaUpperBound = 0;
+	int bossAreaLowerBound = 0;
+	int bossAreaLeftBound = 0;
+	int bossAreaRightBound = 0;
+
 	iPoint playerStartPos;
 	iPoint playerCheckPointPos;
 	iPoint goalPoolPos;

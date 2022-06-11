@@ -155,14 +155,32 @@ bool ScenePlatform::PostUpdate()
 
 	//if (app->player->horizontalCB == false && sceneTimer > 1) app->render->camera.x = -(app->player->Player->body->GetPosition().x * 100) + 630;
 
-	app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 100) + 630);
-	app->render->camera.y = (-(app->player->Player->body->GetPosition().y * 100) + 360);
+	if (app->player->inBossBatle == false)
+	{
+		if (app->player->entityStatePlayer == GameState::OutOfCombat)
+		{
+			app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 100) + 630);
+			app->render->camera.y = (-(app->player->Player->body->GetPosition().y * 100) + 360);
+		}
 
-	if (app->render->camera.y < -app->map->levelAreaLowerBound * 2 + 720) app->render->camera.y = -app->map->levelAreaLowerBound * 2 + 720; //720 * 3
-	if (app->render->camera.y > -app->map->levelAreaUpperBound * 2) app->render->camera.y = -app->map->levelAreaUpperBound * 2;
+		if (app->render->camera.y < -app->map->levelAreaLowerBound * 2 + 720) app->render->camera.y = -app->map->levelAreaLowerBound * 2 + 720; //720 * 3
+		if (app->render->camera.y > -app->map->levelAreaUpperBound * 2) app->render->camera.y = -app->map->levelAreaUpperBound * 2;
 
-	if (app->render->camera.x < -app->map->levelAreaRightBound * 2 + 1280) app->render->camera.x = -app->map->levelAreaRightBound * 2 + 1280;
-	if (app->render->camera.x > -app->map->levelAreaLeftBound * 2) app->render->camera.x = -app->map->levelAreaLeftBound * 2;
+		if (app->render->camera.x < -app->map->levelAreaRightBound * 2 + 1280) app->render->camera.x = -app->map->levelAreaRightBound * 2 + 1280;
+		if (app->render->camera.x > -app->map->levelAreaLeftBound * 2) app->render->camera.x = -app->map->levelAreaLeftBound * 2;
+	}
+	else if (app->player->inBossBatle == true)
+	{
+		app->render->camera.x = (-(app->player->Player->body->GetPosition().x * 100) + 630);
+		app->render->camera.y = (-(app->player->Player->body->GetPosition().y * 100) + 360);
+
+		if (app->render->camera.y < -app->map->bossAreaLowerBound * 2 + 720) app->render->camera.y = -app->map->bossAreaLowerBound * 2 + 720; //720 * 3
+		if (app->render->camera.y > -app->map->bossAreaUpperBound * 2) app->render->camera.y = -app->map->bossAreaUpperBound * 2;
+
+		if (app->render->camera.x < -app->map->bossAreaRightBound * 2 + 1280) app->render->camera.x = -app->map->bossAreaRightBound * 2 + 1280;
+		if (app->render->camera.x > -app->map->bossAreaLeftBound * 2) app->render->camera.x = -app->map->bossAreaLeftBound * 2;
+	}
+
 
 	if (app->player->destroyedDelay > 210 && app->player->destroyedDelay <= 211)
 	{

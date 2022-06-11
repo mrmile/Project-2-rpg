@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="34" nextobjectid="346">
+<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="35" nextobjectid="347">
  <tileset firstgid="1" name="desert_ground" tilewidth="75" tileheight="39" tilecount="560" columns="16">
   <image source="desert_ground.png" width="1200" height="1370"/>
  </tileset>
@@ -140419,6 +140419,9 @@
  </objectgroup>
  <objectgroup color="#ffff00" id="33" name="sensors_doctor_note">
   <object id="344" x="4895.5" y="1938" width="50.5" height="35.5"/>
+ </objectgroup>
+ <objectgroup color="#550000" id="34" name="BOSS_AREA">
+  <object id="346" x="2918" y="2370" width="1236" height="742"/>
  </objectgroup>
  <objectgroup color="#000000" id="15" name="LEVEL_AREA" visible="0">
   <object id="257" x="2372.73" y="1457.58" width="3333.33" height="1684.85"/>

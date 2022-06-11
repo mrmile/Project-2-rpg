@@ -344,6 +344,8 @@ public:
 	bool showCombatHUD = false;
 	bool meleeAttack = false;
 
+	bool inBossBatle = false;
+
 	//Escape Combat 
 	bool escapeCombat = false;
 	int escapeCombatCounterToReset = 0;

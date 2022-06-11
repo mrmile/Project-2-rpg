@@ -767,6 +767,8 @@ bool ModulePlayer::Start()
 	talking = false;
 
 	walkSoundID = 0;
+
+	inBossBatle = false;
 	
 	return ret;
 }

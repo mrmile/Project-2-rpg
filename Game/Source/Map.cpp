@@ -1250,6 +1250,19 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 		}
 	}
 
+	// Deffine boss area boundaries
+	if (object->name == "BOSS_AREA")
+	{
+		pugi::xml_node NewObject;
+		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		{
+			bossAreaUpperBound = NewObject.attribute("y").as_int();
+			bossAreaLowerBound = NewObject.attribute("y").as_int() + NewObject.attribute("height").as_int();
+			bossAreaLeftBound = NewObject.attribute("x").as_int();
+			bossAreaRightBound = NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int();
+		}
+	}
+
 	return ret;
 }
 
