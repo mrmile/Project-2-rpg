@@ -2156,7 +2156,7 @@ bool ModulePlayer::PostUpdate()
 					//UNLOCK HARBOR.EXE (executable icon)
 
 			//BACK (back arrow icon)
-
+			
 			if (returnComputerGUI->state == GuiControlState::NORMAL && returnComputerGUI->canClick == true) returnComputerGUI->SetTexture(returnComputer);
 			returnComputerGUI->Draw(app->render);
 
@@ -2489,25 +2489,23 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 		
 		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DOOR_KEY_READER)
 		{
-			if (baseUnlock == false && app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2)
+			if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_DOWN && baseUnlock == false && app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2)
 			{
-				if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_DOWN)
-				{
-					app->audio->ChangeMusic(TENSION_PUZZLE_1, 0.2f, 0.2f);
-					app->audio->PlayFx(alarmCardReaderFx);
-					app->questManager->secondaryQuestID = ACTIVATE_SWITCHES;
-					baseUnlock = true;
+				app->audio->ChangeMusic(TENSION_PUZZLE_1, 0.2f, 0.2f);
+				app->audio->PlayFx(alarmCardReaderFx);
+				app->questManager->secondaryQuestID = ACTIVATE_SWITCHES;
+				baseUnlock = true;
 
-					app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 1516, 3040);
-					app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 3367, 2014);
-					app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 4327, 2757);
-					app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 3295, 3495);
-				}
+				app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 1516, 3040);
+				app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 3367, 2014);
+				app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 4327, 2757);
+				app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 3295, 3495);
+
+
 			}
-			else if(baseUnlock == false && app->questManager->mainQuestID != LOOK_FOR_THE_COMPUTER_2)
-			{
-				app->fonts->BlitText(300, 150, app->dialogManager->scoreFont, "No card detected");
-			}
+
+			if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_DOWN) app->questManager->descriptionCounter = 0;
+			
 		}
 
 		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::SWITCH)

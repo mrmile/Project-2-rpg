@@ -12,6 +12,7 @@
 #include "TitleScreen.h"
 #include "DialogManager.h"
 #include "ModuleFonts.h"
+#include "SceneMainMap.h"
 
 
 QuestManager::QuestManager(bool start_enabled) : Module(start_enabled)
@@ -76,6 +77,7 @@ bool QuestManager::Start()
 
 	questCounter = 241;
 	currentAnimation = &none;
+	descriptionCounter = 241;
 
 	return true;
 }
@@ -83,6 +85,7 @@ bool QuestManager::Start()
 bool QuestManager::Update(float dt)
 {
 	questCounter++;
+	descriptionCounter++;
 
 	switch(mainQuestID)
 	{
@@ -178,11 +181,15 @@ bool QuestManager::PostUpdate()
 		{
 			if (app->inventoryMenu->showInventory == true && app->player->showCombatHUD == false)app->render->DrawTexture2(secondaryQuestSwitches, 0, 0, NULL);
 
-			app->fonts->BlitText(560, 76, app->dialogManager->scoreFont, "activate the switches");
+			if (app->inventoryMenu->showInventory == false && app->player->showCombatHUD == false && app->sceneMainMap->sceneMainMap == true && app->player->playerHP > 0)
+			{
+				app->fonts->BlitText(500, 65, app->dialogManager->scoreFont, "activate the switches");
 
-			sprintf_s(switchesActivatedText, 10, "%1d", app->player->switchesPressed);
-			app->fonts->BlitText(585, 85, app->dialogManager->scoreFont, switchesActivatedText);
-			
+				sprintf_s(switchesActivatedText, 10, "%1d", app->player->switchesPressed);
+				app->fonts->BlitText(576, 76, app->dialogManager->scoreFont, switchesActivatedText);
+				app->fonts->BlitText(576, 76, app->dialogManager->scoreFont, " /5");
+			}
+
 			break;
 		}
 	}
@@ -190,6 +197,18 @@ bool QuestManager::PostUpdate()
 
 	SDL_Rect questAnimRect = app->questManager->currentAnimation->GetCurrentFrame();
 	app->render->DrawTexture2(questCompletionMessage, 480, 10, &questAnimRect);
+
+	if (descriptionCounter <= 240 && app->inventoryMenu->showInventory == false && app->player->showCombatHUD == false && app->sceneMainMap->sceneMainMap == true && app->player->playerHP > 0)
+	{
+		if(mainQuestID == LOOK_FOR_THE_COMPUTER_2)
+		{
+			app->fonts->BlitText(250, 120, app->dialogManager->scoreFont, "card detected");
+			app->fonts->BlitText(240, 135, app->dialogManager->scoreFont, "critical error!");
+		}
+		
+
+		if(mainQuestID == FIND_THE_DOCTOR_1) app->fonts->BlitText(250, 120, app->dialogManager->scoreFont, "no card detected");
+	}
 
 	return true;
 }

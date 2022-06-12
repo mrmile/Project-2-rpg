@@ -56,6 +56,7 @@ public:
 	int secondaryQuestID = 0;
 
 	char switchesActivatedText[10] = { "\0" };
+	int descriptionCounter = 0;
 
 	SDL_Texture* mainQuestDescription_1 = nullptr;
 	SDL_Texture* mainQuestDescription_2 = nullptr;
