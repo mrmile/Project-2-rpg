@@ -183,7 +183,7 @@ bool QuestManager::PostUpdate()
 
 			if (app->inventoryMenu->showInventory == false && app->player->showCombatHUD == false && app->sceneMainMap->sceneMainMap == true && app->player->playerHP > 0)
 			{
-				app->fonts->BlitText(500, 65, app->dialogManager->scoreFont, "activate the switches");
+				app->fonts->BlitText(465, 65, app->dialogManager->scoreFont, "activate the switches");
 
 				sprintf_s(switchesActivatedText, 10, "%1d", app->player->switchesPressed);
 				app->fonts->BlitText(576, 76, app->dialogManager->scoreFont, switchesActivatedText);
