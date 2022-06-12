@@ -41,7 +41,7 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 	idleRightAnim_Enemy1.PushBack({ 3200, 512, 128, 128 });
 	idleRightAnim_Enemy1.PushBack({ 3072, 512, 128, 128 });
 	idleRightAnim_Enemy1.loop = true;
-	idleRightAnim_Enemy1.speed = 0.01f;
+	idleRightAnim_Enemy1.speed = 0.04f;
 
 	idleLeftAnim_Enemy1.PushBack({ 3072, 0, 128, 128 });
 	idleLeftAnim_Enemy1.PushBack({ 3200, 0, 128, 128 });
@@ -50,7 +50,7 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 	idleLeftAnim_Enemy1.PushBack({ 3200, 0, 128, 128 });
 	idleLeftAnim_Enemy1.PushBack({ 3072, 0, 128, 128 });
 	idleLeftAnim_Enemy1.loop = true;
-	idleLeftAnim_Enemy1.speed = 0.01f;
+	idleLeftAnim_Enemy1.speed = 0.04f;
 
 	idleDownAnim_Enemy1.PushBack({ 3072, 768, 128, 128 });  //idle_enemy
 	idleDownAnim_Enemy1.PushBack({ 3200, 768, 128, 128 });
@@ -59,7 +59,7 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 	idleDownAnim_Enemy1.PushBack({ 3200, 768, 128, 128 });
 	idleDownAnim_Enemy1.PushBack({ 3072, 768, 128, 128 });
 	idleDownAnim_Enemy1.loop = true;
-	idleDownAnim_Enemy1.speed = 0.01f;
+	idleDownAnim_Enemy1.speed = 0.04f;
 
 	idleUpAnim_Enemy1.PushBack({ 3072, 256, 128, 128 });
 	idleUpAnim_Enemy1.PushBack({ 3200, 256, 128, 128 });
@@ -68,7 +68,7 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 	idleUpAnim_Enemy1.PushBack({ 3200, 256, 128, 128 });
 	idleUpAnim_Enemy1.PushBack({ 3072, 256, 128, 128 });
 	idleUpAnim_Enemy1.loop = true;
-	idleUpAnim_Enemy1.speed = 0.01f;
+	idleUpAnim_Enemy1.speed = 0.04f;
 
 	idleUpLeftAnim_Enemy1.PushBack({ 3072, 128, 128, 128 });
 	idleUpLeftAnim_Enemy1.PushBack({ 3200, 128, 128, 128 });
@@ -77,7 +77,7 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 	idleUpLeftAnim_Enemy1.PushBack({ 3200, 128, 128, 128 });
 	idleUpLeftAnim_Enemy1.PushBack({ 3072, 128, 128, 128 });
 	idleUpLeftAnim_Enemy1.loop = true;
-	idleUpLeftAnim_Enemy1.speed = 0.01f;
+	idleUpLeftAnim_Enemy1.speed = 0.04f;
 
 	idleUpRightAnim_Enemy1.PushBack({ 3072, 384, 128, 128 });
 	idleUpRightAnim_Enemy1.PushBack({ 3200, 384, 128, 128 });
@@ -86,7 +86,7 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 	idleUpRightAnim_Enemy1.PushBack({ 3200, 384, 128, 128 });
 	idleUpRightAnim_Enemy1.PushBack({ 3072, 384, 128, 128 });
 	idleUpRightAnim_Enemy1.loop = true;
-	idleUpRightAnim_Enemy1.speed = 0.01f;
+	idleUpRightAnim_Enemy1.speed = 0.04f;
 
 	idleDownLeftAnim_Enemy1.PushBack({ 3072, 896, 128, 128 });
 	idleDownLeftAnim_Enemy1.PushBack({ 3200, 896, 128, 128 });
@@ -95,7 +95,7 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 	idleDownLeftAnim_Enemy1.PushBack({ 3200, 896, 128, 128 });
 	idleDownLeftAnim_Enemy1.PushBack({ 3072, 896, 128, 128 });
 	idleDownLeftAnim_Enemy1.loop = true;
-	idleDownLeftAnim_Enemy1.speed = 0.01f;
+	idleDownLeftAnim_Enemy1.speed = 0.04f;
 
 	idleDownRightAnim_Enemy1.PushBack({ 3072, 640, 128, 128 });
 	idleDownRightAnim_Enemy1.PushBack({ 3200, 640, 128, 128 });
@@ -104,7 +104,7 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 	idleDownRightAnim_Enemy1.PushBack({ 3200, 640, 128, 128 });
 	idleDownRightAnim_Enemy1.PushBack({ 3072, 640, 128, 128 });
 	idleDownRightAnim_Enemy1.loop = true;
-	idleDownRightAnim_Enemy1.speed = 0.01f;
+	idleDownRightAnim_Enemy1.speed = 0.04f;
 
 
 
@@ -257,174 +257,149 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 
 	//ATTACK
 
-	rightAttackAnim_Enemy1.PushBack({ 2608, 603, 128, 128 });
-	rightAttackAnim_Enemy1.PushBack({ 2450, 603, 128, 128 });
-	rightAttackAnim_Enemy1.PushBack({ 2293, 603, 128, 128 });
-	rightAttackAnim_Enemy1.PushBack({ 2135, 603, 128, 128 });
-	rightAttackAnim_Enemy1.PushBack({ 1978, 603, 128, 128 });
-	rightAttackAnim_Enemy1.PushBack({ 2135, 603, 128, 128 });
-	rightAttackAnim_Enemy1.PushBack({ 2293, 603, 128, 128 });
-	rightAttackAnim_Enemy1.PushBack({ 2450, 603, 128, 128 });
-	rightAttackAnim_Enemy1.PushBack({ 2608, 603, 128, 128 });
+	rightAttackAnim_Enemy1.PushBack({ 3072, 512, 128, 128 });
+	rightAttackAnim_Enemy1.PushBack({ 3200, 512, 128, 128 });
+	rightAttackAnim_Enemy1.PushBack({ 3328, 512, 128, 128 });
+	rightAttackAnim_Enemy1.PushBack({ 3456, 512, 128, 128 });
+	rightAttackAnim_Enemy1.PushBack({ 3200, 512, 128, 128 });
+	rightAttackAnim_Enemy1.PushBack({ 3072, 512, 128, 128 });
 	rightAttackAnim_Enemy1.loop = true;
 	rightAttackAnim_Enemy1.speed = 0.05f;
 
-	leftAttackAnim_Enemy1.PushBack({ 2608, 27, 85, 144 });
-	leftAttackAnim_Enemy1.PushBack({ 2450, 27, 85, 144 });
-	leftAttackAnim_Enemy1.PushBack({ 2293, 27, 85, 144 });
-	leftAttackAnim_Enemy1.PushBack({ 2135, 27, 85, 144 });
-	leftAttackAnim_Enemy1.PushBack({ 1978, 27, 85, 144 });
-	leftAttackAnim_Enemy1.PushBack({ 2135, 27, 85, 144 });
-	leftAttackAnim_Enemy1.PushBack({ 2293, 27, 85, 144 });
-	leftAttackAnim_Enemy1.PushBack({ 2450, 27, 85, 144 });
-	leftAttackAnim_Enemy1.PushBack({ 2608, 27, 85, 144 });
+	leftAttackAnim_Enemy1.PushBack({ 3072, 0, 128, 128 });
+	leftAttackAnim_Enemy1.PushBack({ 3200, 0, 128, 128 });
+	leftAttackAnim_Enemy1.PushBack({ 3328, 0, 128, 128 });
+	leftAttackAnim_Enemy1.PushBack({ 3456, 0, 128, 128 });
+	leftAttackAnim_Enemy1.PushBack({ 3200, 0, 128, 128 });
+	leftAttackAnim_Enemy1.PushBack({ 3072, 0, 128, 128 });
 	leftAttackAnim_Enemy1.loop = true;
 	leftAttackAnim_Enemy1.speed = 0.05f;
 
-	downAttackAnim_Enemy1.PushBack({ 2608, 891, 85, 144 });
-	downAttackAnim_Enemy1.PushBack({ 2450, 891, 85, 144 });
-	downAttackAnim_Enemy1.PushBack({ 2293, 891, 85, 144 });
-	downAttackAnim_Enemy1.PushBack({ 2135, 891, 85, 144 });
-	downAttackAnim_Enemy1.PushBack({ 1978, 891, 85, 144 });
-	downAttackAnim_Enemy1.PushBack({ 2135, 891, 85, 144 });
-	downAttackAnim_Enemy1.PushBack({ 2293, 891, 85, 144 });
-	downAttackAnim_Enemy1.PushBack({ 2450, 891, 85, 144 });
-	downAttackAnim_Enemy1.PushBack({ 2608, 891, 85, 144 });
+	downAttackAnim_Enemy1.PushBack({ 3072, 768, 128, 128 });
+	downAttackAnim_Enemy1.PushBack({ 3200, 768, 128, 128 });
+	downAttackAnim_Enemy1.PushBack({ 3328, 768, 128, 128 });
+	downAttackAnim_Enemy1.PushBack({ 3456, 768, 128, 128 });
+	downAttackAnim_Enemy1.PushBack({ 3200, 768, 128, 128 });
+	downAttackAnim_Enemy1.PushBack({ 3072, 768, 128, 128 });
 	downAttackAnim_Enemy1.loop = true;
 	downAttackAnim_Enemy1.speed = 0.05f;
 
-	upAttackAnim_Enemy1.PushBack({ 2608, 315, 85, 144 });
-	upAttackAnim_Enemy1.PushBack({ 2450, 315, 85, 144 });
-	upAttackAnim_Enemy1.PushBack({ 2293, 315, 85, 144 });
-	upAttackAnim_Enemy1.PushBack({ 2135, 315, 85, 144 });
-	upAttackAnim_Enemy1.PushBack({ 1978, 315, 85, 144 });
-	upAttackAnim_Enemy1.PushBack({ 2135, 315, 85, 144 });
-	upAttackAnim_Enemy1.PushBack({ 2293, 315, 85, 144 });
-	upAttackAnim_Enemy1.PushBack({ 2450, 315, 85, 144 });
-	upAttackAnim_Enemy1.PushBack({ 2608, 315, 85, 144 });
+	upAttackAnim_Enemy1.PushBack({ 3072, 256, 128, 128 });
+	upAttackAnim_Enemy1.PushBack({ 3200, 256, 128, 128 });
+	upAttackAnim_Enemy1.PushBack({ 3328, 256, 128, 128 });
+	upAttackAnim_Enemy1.PushBack({ 3456, 256, 128, 128 });
+	upAttackAnim_Enemy1.PushBack({ 3200, 256, 128, 128 });
+	upAttackAnim_Enemy1.PushBack({ 3072, 256, 128, 128 });
 	upAttackAnim_Enemy1.loop = true;
 	upAttackAnim_Enemy1.speed = 0.05f;
 
-	rightDownAttackAnim_Enemy1.PushBack({ 2608, 747, 85, 144 });
-	rightDownAttackAnim_Enemy1.PushBack({ 2450, 747, 85, 144 });
-	rightDownAttackAnim_Enemy1.PushBack({ 2293, 747, 85, 144 });
-	rightDownAttackAnim_Enemy1.PushBack({ 2135, 747, 85, 144 });
-	rightDownAttackAnim_Enemy1.PushBack({ 1978, 747, 85, 144 });
-	rightDownAttackAnim_Enemy1.PushBack({ 2135, 747, 85, 144 });
-	rightDownAttackAnim_Enemy1.PushBack({ 2293, 747, 85, 144 });
-	rightDownAttackAnim_Enemy1.PushBack({ 2450, 747, 85, 144 });
-	rightDownAttackAnim_Enemy1.PushBack({ 2608, 747, 85, 144 });
+	rightDownAttackAnim_Enemy1.PushBack({ 3072, 640, 128, 128 });
+	rightDownAttackAnim_Enemy1.PushBack({ 3200, 640, 128, 128 });
+	rightDownAttackAnim_Enemy1.PushBack({ 3328, 640, 128, 128 });
+	rightDownAttackAnim_Enemy1.PushBack({ 3456, 640, 128, 128 });
+	rightDownAttackAnim_Enemy1.PushBack({ 3200, 640, 128, 128 });
+	rightDownAttackAnim_Enemy1.PushBack({ 3072, 640, 128, 128 });
 	rightDownAttackAnim_Enemy1.loop = true;
 	rightDownAttackAnim_Enemy1.speed = 0.05f;
 
-
-	leftDownAttackAnim_Enemy1.PushBack({ 2608, 1035, 85, 144 });
-	leftDownAttackAnim_Enemy1.PushBack({ 2450, 1035, 85, 144 });
-	leftDownAttackAnim_Enemy1.PushBack({ 2293, 1035, 85, 144 });
-	leftDownAttackAnim_Enemy1.PushBack({ 2135, 1035, 85, 144 });
-	leftDownAttackAnim_Enemy1.PushBack({ 1978, 1035, 85, 144 });
-	leftDownAttackAnim_Enemy1.PushBack({ 2135, 1035, 85, 144 });
-	leftDownAttackAnim_Enemy1.PushBack({ 2293, 1035, 85, 144 });
-	leftDownAttackAnim_Enemy1.PushBack({ 2450, 1035, 85, 144 });
-	leftDownAttackAnim_Enemy1.PushBack({ 2608, 1035, 85, 144 });
+	leftDownAttackAnim_Enemy1.PushBack({ 3072, 896, 128, 128 });
+	leftDownAttackAnim_Enemy1.PushBack({ 3200, 896, 128, 128 });
+	leftDownAttackAnim_Enemy1.PushBack({ 3328, 896, 128, 128 });
+	leftDownAttackAnim_Enemy1.PushBack({ 3456, 896, 128, 128 });
+	leftDownAttackAnim_Enemy1.PushBack({ 3200, 896, 128, 128 });
+	leftDownAttackAnim_Enemy1.PushBack({ 3072, 896, 128, 128 });
 	leftDownAttackAnim_Enemy1.loop = true;
 	leftDownAttackAnim_Enemy1.speed = 0.05f;
 
-	rightUpAttackAnim_Enemy1.PushBack({ 2608, 459, 85, 144 });
-	rightUpAttackAnim_Enemy1.PushBack({ 2450, 459, 85, 144 });
-	rightUpAttackAnim_Enemy1.PushBack({ 2293, 459, 85, 144 });
-	rightUpAttackAnim_Enemy1.PushBack({ 2135, 459, 85, 144 });
-	rightUpAttackAnim_Enemy1.PushBack({ 1978, 459, 85, 144 });
-	rightUpAttackAnim_Enemy1.PushBack({ 2135, 459, 85, 144 });
-	rightUpAttackAnim_Enemy1.PushBack({ 2293, 459, 85, 144 });
-	rightUpAttackAnim_Enemy1.PushBack({ 2450, 459, 85, 144 });
-	rightUpAttackAnim_Enemy1.PushBack({ 2608, 459, 85, 144 });
+	rightUpAttackAnim_Enemy1.PushBack({ 3072, 384, 128, 128 });
+	rightUpAttackAnim_Enemy1.PushBack({ 3200, 384, 128, 128 });
+	rightUpAttackAnim_Enemy1.PushBack({ 3328, 384, 128, 128 });
+	rightUpAttackAnim_Enemy1.PushBack({ 3456, 384, 128, 128 });
+	rightUpAttackAnim_Enemy1.PushBack({ 3200, 384, 128, 128 });
+	rightUpAttackAnim_Enemy1.PushBack({ 3072, 384, 128, 128 });
 	rightUpAttackAnim_Enemy1.loop = true;
 	rightUpAttackAnim_Enemy1.speed = 0.05f;
 
-	leftUpAttackAnim_Enemy1.PushBack({ 2608, 171, 85, 144 });
-	leftUpAttackAnim_Enemy1.PushBack({ 2450, 171, 85, 144 });
-	leftUpAttackAnim_Enemy1.PushBack({ 2293, 171, 85, 144 });
-	leftUpAttackAnim_Enemy1.PushBack({ 2135, 171, 85, 144 });
-	leftUpAttackAnim_Enemy1.PushBack({ 1978, 171, 85, 144 });
-	leftUpAttackAnim_Enemy1.PushBack({ 2135, 171, 85, 144 });
-	leftUpAttackAnim_Enemy1.PushBack({ 2293, 171, 85, 144 });
-	leftUpAttackAnim_Enemy1.PushBack({ 2450, 171, 85, 144 });
-	leftUpAttackAnim_Enemy1.PushBack({ 2608, 171, 85, 144 });
+	leftUpAttackAnim_Enemy1.PushBack({ 3072, 128, 128, 128 });
+	leftUpAttackAnim_Enemy1.PushBack({ 3200, 128, 128, 128 });
+	leftUpAttackAnim_Enemy1.PushBack({ 3328, 128, 128, 128 });
+	leftUpAttackAnim_Enemy1.PushBack({ 3456, 128, 128, 128 });
+	leftUpAttackAnim_Enemy1.PushBack({ 3200, 128, 128, 128 });
+	leftUpAttackAnim_Enemy1.PushBack({ 3072, 128, 128, 128 });
 	leftUpAttackAnim_Enemy1.loop = true;
 	leftUpAttackAnim_Enemy1.speed = 0.05f;
 
 	//DIE
 
-	rightDieAnim_Enemy1.PushBack({ 3553, 603, 128, 128 });
-	rightDieAnim_Enemy1.PushBack({ 3710, 603, 128, 128 });
-	rightDieAnim_Enemy1.PushBack({ 3868, 603, 128, 128 });
-	rightDieAnim_Enemy1.PushBack({ 4025, 603, 128, 128 });
-	rightDieAnim_Enemy1.PushBack({ 4183, 603, 128, 128 });
-	rightDieAnim_Enemy1.PushBack({ 4340, 603, 128, 128 });
+	rightDieAnim_Enemy1.PushBack({ 2304, 512, 128, 128 });
+	rightDieAnim_Enemy1.PushBack({ 2432, 512, 128, 128 });
+	rightDieAnim_Enemy1.PushBack({ 2560, 512, 128, 128 });
+	rightDieAnim_Enemy1.PushBack({ 2688, 512, 128, 128 });
+	rightDieAnim_Enemy1.PushBack({ 2816, 512, 128, 128 });
+	rightDieAnim_Enemy1.PushBack({ 2944, 512, 128, 128 });
 	rightDieAnim_Enemy1.loop = true;
 	rightDieAnim_Enemy1.speed = 0.05f;
 
-	leftDieAnim_Enemy1.PushBack({ 3553, 27, 128, 128 });
-	leftDieAnim_Enemy1.PushBack({ 3710, 27, 128, 128 });
-	leftDieAnim_Enemy1.PushBack({ 3868, 27, 128, 128 });
-	leftDieAnim_Enemy1.PushBack({ 4025, 27, 128, 128 });
-	leftDieAnim_Enemy1.PushBack({ 4183, 27, 128, 128 });
-	leftDieAnim_Enemy1.PushBack({ 4340, 27, 128, 128 });
+	leftDieAnim_Enemy1.PushBack({ 2304, 0, 128, 128 });
+	leftDieAnim_Enemy1.PushBack({ 2432, 0, 128, 128 });
+	leftDieAnim_Enemy1.PushBack({ 2560, 0, 128, 128 });
+	leftDieAnim_Enemy1.PushBack({ 2688, 0, 128, 128 });
+	leftDieAnim_Enemy1.PushBack({ 2816, 0, 128, 128 });
+	leftDieAnim_Enemy1.PushBack({ 2944, 0, 128, 128 });
 	leftDieAnim_Enemy1.loop = true;
 	leftDieAnim_Enemy1.speed = 0.05f;
 
-	downDieAnim_Enemy1.PushBack({ 3553, 891, 128, 128 });
-	downDieAnim_Enemy1.PushBack({ 3710, 891, 128, 128 });
-	downDieAnim_Enemy1.PushBack({ 3868, 891, 128, 128 });
-	downDieAnim_Enemy1.PushBack({ 4025, 891, 128, 128 });
-	downDieAnim_Enemy1.PushBack({ 4183, 891, 128, 128 });
-	downDieAnim_Enemy1.PushBack({ 4340, 891, 128, 128 });
+	downDieAnim_Enemy1.PushBack({ 2304, 768, 128, 128 });
+	downDieAnim_Enemy1.PushBack({ 2432, 768, 128, 128 });
+	downDieAnim_Enemy1.PushBack({ 2560, 768, 128, 128 });
+	downDieAnim_Enemy1.PushBack({ 2688, 768, 128, 128 });
+	downDieAnim_Enemy1.PushBack({ 2816, 768, 128, 128 });
+	downDieAnim_Enemy1.PushBack({ 2944, 768, 128, 128 });
 	downDieAnim_Enemy1.loop = true;
 	downDieAnim_Enemy1.speed = 0.05f;
 
-	upDieAnim_Enemy1.PushBack({ 3553, 315, 128, 128 });
-	upDieAnim_Enemy1.PushBack({ 3710, 315, 128, 128 });
-	upDieAnim_Enemy1.PushBack({ 3868, 315, 128, 128 });
-	upDieAnim_Enemy1.PushBack({ 4025, 315, 128, 128 });
-	upDieAnim_Enemy1.PushBack({ 4183, 315, 128, 128 });
-	upDieAnim_Enemy1.PushBack({ 4340, 315, 128, 128 });
+	upDieAnim_Enemy1.PushBack({ 2304, 256, 128, 128 });
+	upDieAnim_Enemy1.PushBack({ 2432, 256, 128, 128 });
+	upDieAnim_Enemy1.PushBack({ 2560, 256, 128, 128 });
+	upDieAnim_Enemy1.PushBack({ 2688, 256, 128, 128 });
+	upDieAnim_Enemy1.PushBack({ 2816, 256, 128, 128 });
+	upDieAnim_Enemy1.PushBack({ 2944, 256, 128, 128 });
 	upDieAnim_Enemy1.loop = true;
 	upDieAnim_Enemy1.speed = 0.05f;
 
-	rightDownDieAnim_Enemy1.PushBack({ 3553, 747, 128, 128 });
-	rightDownDieAnim_Enemy1.PushBack({ 3710, 747, 128, 128 });
-	rightDownDieAnim_Enemy1.PushBack({ 3868, 747, 128, 128 });
-	rightDownDieAnim_Enemy1.PushBack({ 4025, 747, 128, 128 });
-	rightDownDieAnim_Enemy1.PushBack({ 4183, 747, 128, 128 });
-	rightDownDieAnim_Enemy1.PushBack({ 4340, 747, 128, 128 });
+	rightDownDieAnim_Enemy1.PushBack({ 2304, 640, 128, 128 });
+	rightDownDieAnim_Enemy1.PushBack({ 2432, 640, 128, 128 });
+	rightDownDieAnim_Enemy1.PushBack({ 2560, 640, 128, 128 });
+	rightDownDieAnim_Enemy1.PushBack({ 2688, 640, 128, 128 });
+	rightDownDieAnim_Enemy1.PushBack({ 2816, 640, 128, 128 });
+	rightDownDieAnim_Enemy1.PushBack({ 2944, 640, 128, 128 });
 	rightDownDieAnim_Enemy1.loop = true;
 	rightDownDieAnim_Enemy1.speed = 0.05f;
 
-	leftDownDieAnim_Enemy1.PushBack({ 3553, 1035, 128, 128 });
-	leftDownDieAnim_Enemy1.PushBack({ 3710, 1035, 128, 128 });
-	leftDownDieAnim_Enemy1.PushBack({ 3868, 1035, 128, 128 });
-	leftDownDieAnim_Enemy1.PushBack({ 4025, 1035, 128, 128 });
-	leftDownDieAnim_Enemy1.PushBack({ 4183, 1035, 128, 128 });
-	leftDownDieAnim_Enemy1.PushBack({ 4340, 1035, 128, 128 });
+	leftDownDieAnim_Enemy1.PushBack({ 2304, 896, 128, 128 });
+	leftDownDieAnim_Enemy1.PushBack({ 2432, 896, 128, 128 });
+	leftDownDieAnim_Enemy1.PushBack({ 2560, 896, 128, 128 });
+	leftDownDieAnim_Enemy1.PushBack({ 2688, 896, 128, 128 });
+	leftDownDieAnim_Enemy1.PushBack({ 2816, 896, 128, 128 });
+	leftDownDieAnim_Enemy1.PushBack({ 2944, 896, 128, 128 });
 	leftDownDieAnim_Enemy1.loop = true;
 	leftDownDieAnim_Enemy1.speed = 0.05f;
 
-	rightUpDieAnim_Enemy1.PushBack({ 3553, 459, 128, 128 });
-	rightUpDieAnim_Enemy1.PushBack({ 3710, 459, 128, 128 });
-	rightUpDieAnim_Enemy1.PushBack({ 3868, 459, 128, 128 });
-	rightUpDieAnim_Enemy1.PushBack({ 4025, 459, 128, 128 });
-	rightUpDieAnim_Enemy1.PushBack({ 4183, 459, 128, 128 });
-	rightUpDieAnim_Enemy1.PushBack({ 4340, 459, 128, 128 });
+	rightUpDieAnim_Enemy1.PushBack({ 2304, 384, 128, 128 });
+	rightUpDieAnim_Enemy1.PushBack({ 2432, 384, 128, 128 });
+	rightUpDieAnim_Enemy1.PushBack({ 2560, 384, 128, 128 });
+	rightUpDieAnim_Enemy1.PushBack({ 2688, 384, 128, 128 });
+	rightUpDieAnim_Enemy1.PushBack({ 2816, 384, 128, 128 });
+	rightUpDieAnim_Enemy1.PushBack({ 2944, 384, 128, 128 });
 	rightUpDieAnim_Enemy1.loop = true;
 	rightUpDieAnim_Enemy1.speed = 0.05f;
 
-	leftUpDieAnim_Enemy1.PushBack({ 3553, 171, 128, 128 });
-	leftUpDieAnim_Enemy1.PushBack({ 3710, 171, 128, 128 });
-	leftUpDieAnim_Enemy1.PushBack({ 3868, 171, 128, 128 });
-	leftUpDieAnim_Enemy1.PushBack({ 4025, 171, 128, 128 });
-	leftUpDieAnim_Enemy1.PushBack({ 4183, 171, 128, 128 });
-	leftUpDieAnim_Enemy1.PushBack({ 4340, 171, 128, 128 });
+	leftUpDieAnim_Enemy1.PushBack({ 2304, 128, 128, 128 });
+	leftUpDieAnim_Enemy1.PushBack({ 2432, 128, 128, 128 });
+	leftUpDieAnim_Enemy1.PushBack({ 2560, 128, 128, 128 });
+	leftUpDieAnim_Enemy1.PushBack({ 2688, 128, 128, 128 });
+	leftUpDieAnim_Enemy1.PushBack({ 2816, 128, 128, 128 });
+	leftUpDieAnim_Enemy1.PushBack({ 2944, 128, 128, 128 });
 	leftUpDieAnim_Enemy1.loop = true;
 	leftUpDieAnim_Enemy1.speed = 0.05f;
 

@@ -58,20 +58,6 @@ private:
 	Animation rightUpAttackAnim_Enemy1;
 	Animation leftUpAttackAnim_Enemy1;
 
-
-	//SPAWN
-
-	Animation rightSpawnAnim_Enemy1;
-	Animation leftSpawnAnim_Enemy1;
-	Animation downSpawnAnim_Enemy1;
-	Animation upSpawnAnim_Enemy1;
-
-	Animation rightDownSpawnAnim_Enemy1;
-	Animation leftDownSpawnAnim_Enemy1;
-	Animation rightUpSpawnAnim_Enemy1;
-	Animation leftUpSpawnAnim_Enemy1;
-
-
 	//DIE
 
 	Animation rightDieAnim_Enemy1;
@@ -83,19 +69,6 @@ private:
 	Animation leftDownDieAnim_Enemy1;
 	Animation rightUpDieAnim_Enemy1;
 	Animation leftUpDieAnim_Enemy1;
-
-
-	//CRITICAL DIE
-
-	Animation rightCriticalDieAnim_Enemy1;
-	Animation leftCriticalDieAnim_Enemy1;
-	Animation downCriticalDieAnim_Enemy1;
-	Animation upCriticalDieAnim_Enemy1;
-
-	Animation rightDownCriticalDieAnim_Enemy1;
-	Animation leftDownCriticalDieAnim_Enemy1;
-	Animation rightUpCriticalDieAnim_Enemy1;
-	Animation leftUpCriticalDieAnim_Enemy1;
 
 	int counter;
 };
