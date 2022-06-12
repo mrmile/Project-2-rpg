@@ -54,7 +54,7 @@ bool ModuleIntro::Awake()
 
 bool ModuleIntro::Start()
 {
-	logoAnimationP1 = app->tex->Load("Assets/textures/Scenes/Intro/intro.png");
+	intro = app->tex->Load("Assets/textures/Scenes/Intro/intro.png");
 
 	app->audio->ChangeMusic(STORY_INTRO, 0, 0);
 
@@ -124,7 +124,7 @@ bool ModuleIntro::PostUpdate()
 	//bool ret = true;
 
 
-	app->render->DrawTexture2(logoAnimationP1, 0, backwardsImage, NULL);
+	app->render->DrawTexture2(intro, 0, backwardsImage, NULL);
 
 	//return ret;
 
@@ -133,7 +133,7 @@ bool ModuleIntro::PostUpdate()
 
 bool ModuleIntro::CleanUp()
 {
-	app->tex->UnLoad(logoAnimationP1);
+	app->tex->UnLoad(intro);
 
 	return true;
 }

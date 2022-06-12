@@ -42,7 +42,7 @@ public:
 	int logoPart;
 	int backwardsImage = 0;
 
-	SDL_Texture* logoAnimationP1 = nullptr;
+	SDL_Texture* intro = nullptr;
 };
 
 #endif // __TITLE_SCREEN_H__
