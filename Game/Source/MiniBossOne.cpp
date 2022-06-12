@@ -411,7 +411,7 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 	position.x = x;
 	position.y = y;
 
-	offsetX = -25;
+	offsetX = -56;
 	offsetY = -50;
 
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
@@ -679,8 +679,7 @@ void Mini_Boss_One::Update(float dt)
 						currentAnim->loop = false;
 						Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f }); //movimiento contrario a la direccion del jugador cuando nos chocamos con el
 
-						srand(time(NULL));
-						RunningNumber = rand()%5;
+						
 						entityTurn = TurnState::MidOfTurn;
 
 					}
@@ -692,6 +691,11 @@ void Mini_Boss_One::Update(float dt)
 						currentAnim = &idleDownAnim_Enemy1;
 						currentAnim->loop = true;
 						counter++;
+						if (counter <= 1 && counter > 0)
+						{
+							srand(time(NULL));
+							RunningNumber = rand() % 5;
+						}
 						if (RunningNumber != 2)
 						{
 							if (position.DistanceTo({ app->player->position.x + app->player->collider->rect.w / 2 , app->player->position.y - app->player->collider->rect.h }) > 60)
@@ -968,6 +972,7 @@ void Mini_Boss_One::Update(float dt)
 
 
 				}
+				
 
 
 
@@ -979,9 +984,6 @@ void Mini_Boss_One::Update(float dt)
 			currentAnim->Update();
 		}
 	}
-
-
-
 
 
 

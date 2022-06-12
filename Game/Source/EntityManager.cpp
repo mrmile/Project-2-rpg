@@ -209,6 +209,32 @@ bool EntityManager::Update(float dt)
 				entities[i]->FenceTwo_List.end->data->body->SetAwake(false);
 			}
 
+			if (entities[i]->type == EntityType::MINI_BOSS_ONE)
+			{
+				app->player->boss1Dead = true;
+				app->player->inBossBatle = false;
+				entities[i]->SetToDelete();
+				entities[i]->Mini_Boss_One_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Mini_Boss_One_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::MINI_BOSS_TWO)
+			{
+				app->player->boss2Dead = true;
+				app->player->inBossBatle = false;
+				entities[i]->SetToDelete();
+				entities[i]->Mini_Boss_Two_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Mini_Boss_Two_List.end->data->body->SetAwake(false);
+			}
+			/*
+			if (entities[i]->type == EntityType::)
+			{
+				app->player->boss2Dead = true;
+				app->player->inBossBatle = false;
+				entities[i]->SetToDelete();
+				entities[i]->FenceTwo_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->FenceTwo_List.end->data->body->SetAwake(false);
+			}
+			*/
 		}
 			
 	}
