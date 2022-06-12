@@ -40,16 +40,9 @@ public:
 	int delay;
 	int animationPositionY;
 	int logoPart;
+	int backwardsImage = 0;
 
 	SDL_Texture* logoAnimationP1 = nullptr;
-	SDL_Texture* logoAnimationP2 = nullptr;
-	SDL_Texture* logoAnimationP3 = nullptr;
-	SDL_Texture* logoAnimationP4 = nullptr;
-	SDL_Texture* logoAnimationP5 = nullptr;
-	SDL_Texture* logoAnimationP6 = nullptr;
-	SDL_Texture* logoAnimationP7 = nullptr;
-	SDL_Texture* logoAnimationP8 = nullptr;
-
 };
 
 #endif // __TITLE_SCREEN_H__
