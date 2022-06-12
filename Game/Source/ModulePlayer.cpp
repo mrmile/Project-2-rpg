@@ -2407,8 +2407,8 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			if (app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2 && inBossBatle == false && boss1Dead == false)
 			{
 				inBossBatle = true;
-
-
+				app->audio->ChangeMusic(BOSS_1, 0.0f, 0.0f);
+				
 			}
 		}
 
@@ -2417,7 +2417,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			if (app->questManager->mainQuestID == KILL_THE_PATIENT_ZERO_3 && inBossBatle == false && boss2Dead == false)
 			{
 				inBossBatle = true;
-
+				app->audio->ChangeMusic(BOSS_2, 0.0f, 0.0f);
 
 			}
 		}
@@ -2427,7 +2427,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 			if (boss3Dead == false && inBossBatle == false)
 			{
 				inBossBatle = true;
-
+				app->audio->ChangeMusic(BOSS_3, 0.0f, 0.0f);
 
 			}
 		}
