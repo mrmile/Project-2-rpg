@@ -84,7 +84,7 @@ bool InventoryMenu::Start()
 	deleteButton = app->tex->Load("Assets/textures/GUI/Inventory/deleteButton.png");
 
 	objectEquipedFX = app->audio->LoadFx("Assets/audio/fx/UISounds/objectEquipedFX.wav");
-
+	grenadeUsed = app->audio->LoadFx("Assets/audio/fx/Zombies/zombie_grenade_explode.wav");
 	char lookupTable[] = { "! @,_./0123456789$;< ?abcdefghijklmnopqrstuvwxyz" };
 	scoreFont = app->fonts->Load("Assets/textures/Fonts/rtype_font3.png", lookupTable, 2);
 	scoreFont2 = app->fonts->Load("Assets/textures/Fonts/rtype_font3.png", lookupTable, 2);
@@ -644,7 +644,7 @@ bool InventoryMenu::UseItemSelected(ItemList* item)
 			item->amount--;
 			//Add radio particle so zombies follow it instead of following the player
 			app->particles->AddParticle(app->particles->GrenadeDamage, app->player->enemySelected.x, app->player->enemySelected.y, Collider::Type::GRENADE_DAMAGE);
-
+			app->audio->PlayFx(grenadeUsed, 0);
 
 			return true;
 		}

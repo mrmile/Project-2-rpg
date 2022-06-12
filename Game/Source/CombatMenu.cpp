@@ -204,7 +204,7 @@ bool CombatMenu::OnGuiMouseClickEvent(GuiControl* control)
 	case GuiControlType::BUTTON:
 	{
 		//Checks the GUI element ID
-		if (control->id == 25 && combatShootGUI->canClick == true)
+		if (control->id == 25 && combatShootGUI->canClick == true && app->player->entityTurnPlayer == TurnState::FinishTurn)
 		{
 			//RESUME BUTTON
 			app->audio->PlayFx(buttonClickedFx, 0);

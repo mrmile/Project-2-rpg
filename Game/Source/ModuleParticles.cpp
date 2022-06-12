@@ -226,6 +226,7 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	GrenadeDamage.anim.PushBack({ 350, 17, 150, 200 });
 	GrenadeDamage.anim.loop = true;
 	GrenadeDamage.anim.speed = 0.15f;
+	GrenadeDamage.lifetime = 5;
 
 	//ItemGun.anim.PushBack({ 118, 130, 25, 17 });
 	//ItemGun.anim.loop = true;

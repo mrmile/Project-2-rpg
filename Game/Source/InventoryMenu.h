@@ -151,6 +151,7 @@ public:
 	int mouseX, mouseY;
 
 	uint objectEquipedFX = 0;
+	uint grenadeUsed = 0;
 
 	int combatSuitStrenghtPoints = 0;
 
