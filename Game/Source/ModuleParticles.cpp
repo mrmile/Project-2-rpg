@@ -223,6 +223,10 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	ItemSuit.anim.loop = true;
 	ItemSuit.anim.speed = 0.15f;
 
+	GrenadeDamage.anim.PushBack({ 350, 17, 150, 200 });
+	GrenadeDamage.anim.loop = true;
+	GrenadeDamage.anim.speed = 0.15f;
+
 	//ItemGun.anim.PushBack({ 118, 130, 25, 17 });
 	//ItemGun.anim.loop = true;
 	//ItemGun.anim.speed = 0.15f;
@@ -315,7 +319,7 @@ void ModuleParticles::OnCollision(Collider* c1, Collider* c2)
 
 			if ((c2->type == Collider::Type::PLAYER_PICKUP_RADIUS) && (c1->type == Collider::Type::ITEM_GRENADE))
 			{
-				app->inventoryMenu->AddItemToInventory(ItemType::OBJECT_GRENADE, false, true);
+				app->inventoryMenu->AddItemToInventory(ItemType::OBJECT_GRENADE, true, false);
 				app->audio->PlayFx(app->player->itemGrab);
 				break;
 			}

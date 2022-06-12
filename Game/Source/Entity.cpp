@@ -67,9 +67,9 @@ void Entity::ReduceAP(int AP_used)
 void Entity::OnCollision(Collider* c2)
 {
 
-	if ((c2->type == Collider::Type::PLAYER_RANGED_ATTACK) && (EntityKillable == true))
+	if ((c2->type == Collider::Type::GRENADE_DAMAGE) && (EntityKillable == true))
 	{
-		EntityHP -= app->player->EquipmentDamage;
+		EntityHP -=	20;
 	}
 
 	if ((c2->type == Collider::Type::PLAYER_ATTACK) && (EntityKillable == true))

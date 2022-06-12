@@ -557,274 +557,145 @@ Mini_Boss_Two::Mini_Boss_Two(int x, int y) : Entity(x, y)
 void Mini_Boss_Two::Update(float dt)
 {
 	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
-	if (EntityHP > 0)
+	if (app->player->inBossBatle == false)
+	{
+		iPoint NewPosition = position;
+		collider->SetPos(NewPosition.x, NewPosition.y);
+		Mini_Boss_Two_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
+		currentAnim = nullptr;
+	}
+	if (app->player->inBossBatle == true)
 	{
 
-		if (app->player->pauseMenu == true)
+		if (EntityHP > 0)
 		{
-			iPoint NewPosition = position;
-			collider->SetPos(NewPosition.x, NewPosition.y);
-			Mini_Boss_Two_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
-			currentAnim = &idleDownAnim_Enemy1;
-			currentAnim->loop = false;
 
-		}
-		if (app->player->pauseMenu == false)
-		{
-			//Escape Combat
-			if (app->player->escapeCombat == true)
+			if (app->player->pauseMenu == true)
 			{
-				entityState = GameState::OutOfCombat;
-				entityTurn = TurnState::NONE;
+				iPoint NewPosition = position;
+				collider->SetPos(NewPosition.x, NewPosition.y);
+				Mini_Boss_Two_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
+				currentAnim = &idleDownAnim_Enemy1;
+				currentAnim->loop = false;
+
 			}
-
-
-			if (entityState == GameState::OutOfCombat)
+			if (app->player->pauseMenu == false)
 			{
-				//move normally
-				if (app->inventoryMenu->ActiveRadioAlive == true)
+				//Escape Combat
+				if (app->player->escapeCombat == true)
 				{
-					if (position.DistanceTo(app->inventoryMenu->ActiveRadioPosition) < 2650)
-					{
-						collider->SetPos(position.x, position.y);
-						Mini_Boss_Two_List.end->data->GetPosition(position.x, position.y);
-						currentAnim = &idleDownAnim_Enemy1;
-						currentAnim->loop = true;
-
-						if (position.x > app->inventoryMenu->ActiveRadioPosition.x)
-						{
-							if (currentAnim != &leftWalkAnim_Enemy1)
-							{
-								//leftWalkAnim_Enemy1.Reset();
-								currentAnim = &leftWalkAnim_Enemy1;
-							}
-							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
-						}
-						if (position.x < app->inventoryMenu->ActiveRadioPosition.x)
-						{
-							if (currentAnim != &rightWalkAnim_Enemy1)
-							{
-								//rightWalkAnim_Enemy1.Reset();
-								currentAnim = &rightWalkAnim_Enemy1;
-							}
-							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
-						}
-						if (position.y > app->inventoryMenu->ActiveRadioPosition.y)
-						{
-							if (currentAnim != &upWalkAnim_Enemy1)
-							{
-								//upWalkAnim_Enemy1.Reset();
-								currentAnim = &upWalkAnim_Enemy1;
-							}
-							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
-						}
-						if (position.y < app->inventoryMenu->ActiveRadioPosition.y)
-						{
-							if (currentAnim != &downWalkAnim_Enemy1)
-							{
-								//downWalkAnim_Enemy1.Reset();
-								currentAnim = &downWalkAnim_Enemy1;
-							}
-							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
-						}
-
-
-						if ((app->inventoryMenu->ActiveRadioPosition.y > position.y) && (app->inventoryMenu->ActiveRadioPosition.x > position.x))
-						{
-							if (currentAnim != &rightDownWalkAnim_Enemy1)
-							{
-								//rightDownWalkAnim_Enemy1.Reset();
-								currentAnim = &rightDownWalkAnim_Enemy1;
-							}
-							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
-						}
-						if ((app->inventoryMenu->ActiveRadioPosition.x < position.x) && (app->inventoryMenu->ActiveRadioPosition.y > position.y))
-						{
-							if (currentAnim != &leftDownWalkAnim_Enemy1)
-							{
-								//rightDownWalkAnim_Enemy1.Reset();
-								currentAnim = &leftDownWalkAnim_Enemy1;
-							}
-							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
-						}
-						if ((app->inventoryMenu->ActiveRadioPosition.y < position.y) && (app->inventoryMenu->ActiveRadioPosition.x < position.x))
-						{
-							if (currentAnim != &leftUpWalkAnim_Enemy1)
-							{
-								//leftUpWalkAnim_Enemy1.Reset();
-								currentAnim = &leftUpWalkAnim_Enemy1;
-							}
-							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
-						}
-						if ((app->inventoryMenu->ActiveRadioPosition.x > position.x) && (app->inventoryMenu->ActiveRadioPosition.y < position.y))
-						{
-							if (currentAnim != &rightUpWalkAnim_Enemy1)
-							{
-								//leftUpWalkAnim_Enemy1.Reset();
-								currentAnim = &rightUpWalkAnim_Enemy1;
-							}
-							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
-						}
-					}
-					else
-					{
-						collider->SetPos(position.x, position.y);
-						Mini_Boss_Two_List.end->data->GetPosition(position.x, position.y);
-						currentAnim = &idleDownAnim_Enemy1;
-						currentAnim->loop = true;
-
-						Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
-
-					}
-				}
-				if (app->inventoryMenu->ActiveRadioAlive == false)
-				{
-					if (position.DistanceTo(app->player->position) < 300)
-					{
-						collider->SetPos(position.x, position.y);
-						Mini_Boss_Two_List.end->data->GetPosition(position.x, position.y);
-						currentAnim = &idleDownAnim_Enemy1;
-						currentAnim->loop = true;
-
-						if (position.x > app->player->position.x + app->player->collider->rect.w / 2)
-						{
-							if (currentAnim != &leftWalkAnim_Enemy1)
-							{
-								//leftWalkAnim_Enemy1.Reset();
-								currentAnim = &leftWalkAnim_Enemy1;
-							}
-							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
-						}
-						if (position.x < app->player->position.x + app->player->collider->rect.w / 2)
-						{
-							if (currentAnim != &rightWalkAnim_Enemy1)
-							{
-								//rightWalkAnim_Enemy1.Reset();
-								currentAnim = &rightWalkAnim_Enemy1;
-							}
-							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
-						}
-						if (position.y > app->player->position.y - app->player->collider->rect.h)
-						{
-							if (currentAnim != &upWalkAnim_Enemy1)
-							{
-								//upWalkAnim_Enemy1.Reset();
-								currentAnim = &upWalkAnim_Enemy1;
-							}
-							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
-						}
-						if (position.y < app->player->position.y - app->player->collider->rect.h)
-						{
-							if (currentAnim != &downWalkAnim_Enemy1)
-							{
-								//downWalkAnim_Enemy1.Reset();
-								currentAnim = &downWalkAnim_Enemy1;
-							}
-							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
-						}
-
-
-						if ((app->player->position.y - app->player->collider->rect.h > position.y) && (app->player->position.x + app->player->collider->rect.w / 2 > position.x))
-						{
-							if (currentAnim != &rightDownWalkAnim_Enemy1)
-							{
-								//rightDownWalkAnim_Enemy1.Reset();
-								currentAnim = &rightDownWalkAnim_Enemy1;
-							}
-							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
-						}
-						if ((app->player->position.x + app->player->collider->rect.w / 2 < position.x) && (app->player->position.y - app->player->collider->rect.h > position.y))
-						{
-							if (currentAnim != &leftDownWalkAnim_Enemy1)
-							{
-								//rightDownWalkAnim_Enemy1.Reset();
-								currentAnim = &leftDownWalkAnim_Enemy1;
-							}
-							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
-						}
-						if ((app->player->position.y - app->player->collider->rect.h < position.y) && (app->player->position.x + app->player->collider->rect.w / 2 < position.x))
-						{
-							if (currentAnim != &leftUpWalkAnim_Enemy1)
-							{
-								//leftUpWalkAnim_Enemy1.Reset();
-								currentAnim = &leftUpWalkAnim_Enemy1;
-							}
-							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
-						}
-						if ((app->player->position.x + app->player->collider->rect.w / 2 > position.x) && (app->player->position.y - app->player->collider->rect.h < position.y))
-						{
-							if (currentAnim != &rightUpWalkAnim_Enemy1)
-							{
-								//leftUpWalkAnim_Enemy1.Reset();
-								currentAnim = &rightUpWalkAnim_Enemy1;
-							}
-							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
-						}
-					}
-					else
-					{
-						collider->SetPos(position.x, position.y);
-						Mini_Boss_Two_List.end->data->GetPosition(position.x, position.y);
-						currentAnim = &idleDownAnim_Enemy1;
-						currentAnim->loop = true;
-
-						Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
-
-					}
-
-					if (position.DistanceTo(app->player->position) < 100)
-					{
-						app->entity_manager->RegisterEntitesInCombat(this);
-						entityState = GameState::InCombat;
-						//app->player->entityStatePlayer = GameState::InCombat;
-						app->game_manager->StartTurnManagement = true;
-					}
+					entityState = GameState::OutOfCombat;
+					entityTurn = TurnState::NONE;
 				}
 
 
-
-
-
-
-			}
-
-			if (entityState == GameState::InCombat)
-			{
-
-				if (EntityHP > 0)
+				if (entityState == GameState::OutOfCombat)
 				{
-					if (entityTurn == TurnState::NONE)
+					//move normally
+					if (app->inventoryMenu->ActiveRadioAlive == true)
 					{
-						//Assigning order of turns
-						collider->SetPos(position.x, position.y);
-						Mini_Boss_Two_List.end->data->GetPosition(position.x, position.y);
-						currentAnim = &idleDownAnim_Enemy1;
-						currentAnim->loop = true;
-
-						Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
-
-					}
-					if (entityTurn == TurnState::StartOfTurn)
-					{
-						collider->SetPos(position.x, position.y);
-						currentAnim = &idleDownAnim_Enemy1;
-						currentAnim->loop = false;
-						Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f }); //movimiento contrario a la direccion del jugador cuando nos chocamos con el
-
-						entityTurn = TurnState::MidOfTurn;
-
-					}
-					if (entityTurn == TurnState::MidOfTurn)
-					{
-
-						collider->SetPos(position.x, position.y);
-						Mini_Boss_Two_List.end->data->GetPosition(position.x, position.y);
-						currentAnim = &idleDownAnim_Enemy1;
-						currentAnim->loop = true;
-						counter++;
-
-						if (position.DistanceTo({ app->player->position.x + app->player->collider->rect.w / 2 , app->player->position.y - app->player->collider->rect.h }) > 60)
+						if (position.DistanceTo(app->inventoryMenu->ActiveRadioPosition) < 2650)
 						{
+							collider->SetPos(position.x, position.y);
+							Mini_Boss_Two_List.end->data->GetPosition(position.x, position.y);
+							currentAnim = &idleDownAnim_Enemy1;
+							currentAnim->loop = true;
+
+							if (position.x > app->inventoryMenu->ActiveRadioPosition.x)
+							{
+								if (currentAnim != &leftWalkAnim_Enemy1)
+								{
+									//leftWalkAnim_Enemy1.Reset();
+									currentAnim = &leftWalkAnim_Enemy1;
+								}
+								Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
+							}
+							if (position.x < app->inventoryMenu->ActiveRadioPosition.x)
+							{
+								if (currentAnim != &rightWalkAnim_Enemy1)
+								{
+									//rightWalkAnim_Enemy1.Reset();
+									currentAnim = &rightWalkAnim_Enemy1;
+								}
+								Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
+							}
+							if (position.y > app->inventoryMenu->ActiveRadioPosition.y)
+							{
+								if (currentAnim != &upWalkAnim_Enemy1)
+								{
+									//upWalkAnim_Enemy1.Reset();
+									currentAnim = &upWalkAnim_Enemy1;
+								}
+								Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
+							}
+							if (position.y < app->inventoryMenu->ActiveRadioPosition.y)
+							{
+								if (currentAnim != &downWalkAnim_Enemy1)
+								{
+									//downWalkAnim_Enemy1.Reset();
+									currentAnim = &downWalkAnim_Enemy1;
+								}
+								Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
+							}
+
+
+							if ((app->inventoryMenu->ActiveRadioPosition.y > position.y) && (app->inventoryMenu->ActiveRadioPosition.x > position.x))
+							{
+								if (currentAnim != &rightDownWalkAnim_Enemy1)
+								{
+									//rightDownWalkAnim_Enemy1.Reset();
+									currentAnim = &rightDownWalkAnim_Enemy1;
+								}
+								Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
+							}
+							if ((app->inventoryMenu->ActiveRadioPosition.x < position.x) && (app->inventoryMenu->ActiveRadioPosition.y > position.y))
+							{
+								if (currentAnim != &leftDownWalkAnim_Enemy1)
+								{
+									//rightDownWalkAnim_Enemy1.Reset();
+									currentAnim = &leftDownWalkAnim_Enemy1;
+								}
+								Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
+							}
+							if ((app->inventoryMenu->ActiveRadioPosition.y < position.y) && (app->inventoryMenu->ActiveRadioPosition.x < position.x))
+							{
+								if (currentAnim != &leftUpWalkAnim_Enemy1)
+								{
+									//leftUpWalkAnim_Enemy1.Reset();
+									currentAnim = &leftUpWalkAnim_Enemy1;
+								}
+								Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
+							}
+							if ((app->inventoryMenu->ActiveRadioPosition.x > position.x) && (app->inventoryMenu->ActiveRadioPosition.y < position.y))
+							{
+								if (currentAnim != &rightUpWalkAnim_Enemy1)
+								{
+									//leftUpWalkAnim_Enemy1.Reset();
+									currentAnim = &rightUpWalkAnim_Enemy1;
+								}
+								Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
+							}
+						}
+						else
+						{
+							collider->SetPos(position.x, position.y);
+							Mini_Boss_Two_List.end->data->GetPosition(position.x, position.y);
+							currentAnim = &idleDownAnim_Enemy1;
+							currentAnim->loop = true;
+
+							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
+
+						}
+					}
+					if (app->inventoryMenu->ActiveRadioAlive == false)
+					{
+						if (position.DistanceTo(app->player->position) < 300)
+						{
+							collider->SetPos(position.x, position.y);
+							Mini_Boss_Two_List.end->data->GetPosition(position.x, position.y);
+							currentAnim = &idleDownAnim_Enemy1;
+							currentAnim->loop = true;
+
 							if (position.x > app->player->position.x + app->player->collider->rect.w / 2)
 							{
 								if (currentAnim != &leftWalkAnim_Enemy1)
@@ -899,124 +770,259 @@ void Mini_Boss_Two::Update(float dt)
 								}
 								Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
 							}
-
-							if (counter == 150) entityTurn = TurnState::FinishTurn;
-						}
-
-						if (position.DistanceTo({ app->player->position.x + app->player->collider->rect.w / 2 , app->player->position.y - app->player->collider->rect.h }) <= 60)
-						{
-							entityTurn = TurnState::FinishTurn;
-						}
-
-					}
-					if (entityTurn == TurnState::FinishTurn)
-					{
-						//Change turn from enemy to player turn still have to develop a way to do it correctly
-						Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f });
-						collider->SetPos(position.x, position.y);
-						Mini_Boss_Two_List.end->data->GetPosition(position.x, position.y);
-
-						currentAnim = &idleDownAnim_Enemy1;
-						currentAnim->loop = true;
-
-						if (position.DistanceTo({ app->player->position.x + app->player->collider->rect.w / 2, app->player->position.y - app->player->collider->rect.h }) < 75)
-						{
-
-							if ((position.x == app->player->position.x + app->player->collider->rect.w / 2) && (position.y < app->player->position.y - app->player->collider->rect.h))
-							{
-
-								app->particles->AddParticle(app->particles->enemyAttack, position.x, position.y + 30, Collider::Type::ENEMY_ATTACK);
-
-							}
-							if ((position.x == app->player->position.x + app->player->collider->rect.w / 2) && (position.y > app->player->position.y - app->player->collider->rect.h))
-							{
-
-								app->particles->AddParticle(app->particles->enemyAttack, position.x, position.y - 30, Collider::Type::ENEMY_ATTACK);
-
-							}
-							if ((position.x < app->player->position.x + app->player->collider->rect.w / 2) && (position.y == app->player->position.y - app->player->collider->rect.h))
-							{
-
-
-								app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y, Collider::Type::ENEMY_ATTACK);
-
-
-							}
-							if ((position.x > app->player->position.x + app->player->collider->rect.w / 2) && (position.y == app->player->position.y - app->player->collider->rect.h))
-							{
-
-								app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y, Collider::Type::ENEMY_ATTACK);
-
-
-							}
-
-							if ((position.x > app->player->position.x + app->player->collider->rect.w / 2) && (position.y > app->player->position.y - app->player->collider->rect.h))
-							{
-
-
-								app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y - 30, Collider::Type::ENEMY_ATTACK);
-
-
-							}
-							if ((position.x > app->player->position.x + app->player->collider->rect.w / 2) && (position.y < app->player->position.y - app->player->collider->rect.h))
-							{
-
-								app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y + 30, Collider::Type::ENEMY_ATTACK);
-
-
-							}
-							if ((position.x < app->player->position.x + app->player->collider->rect.w / 2) && (position.y > app->player->position.y - app->player->collider->rect.h))
-							{
-
-								app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y - 30, Collider::Type::ENEMY_ATTACK);
-
-
-							}
-							if ((position.x < app->player->position.x + app->player->collider->rect.w / 2) && (position.y < app->player->position.y - app->player->collider->rect.h))
-							{
-
-								app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y + 30, Collider::Type::ENEMY_ATTACK);
-
-
-							}
-
-							entityTurn = TurnState::WaitTurn;
 						}
 						else
 						{
-							entityTurn = TurnState::WaitTurn;
+							collider->SetPos(position.x, position.y);
+							Mini_Boss_Two_List.end->data->GetPosition(position.x, position.y);
+							currentAnim = &idleDownAnim_Enemy1;
+							currentAnim->loop = true;
+
+							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
+
 						}
 
+						if (position.DistanceTo(app->player->position) < 100)
+						{
+							app->entity_manager->RegisterEntitesInCombat(this);
+							entityState = GameState::InCombat;
+							//app->player->entityStatePlayer = GameState::InCombat;
+							app->game_manager->StartTurnManagement = true;
+						}
+					}
 
-					}
-					if (entityTurn == TurnState::WaitTurn)
-					{
-						counter = 0;
-						collider->SetPos(position.x, position.y);
-						Mini_Boss_Two_List.end->data->GetPosition(position.x, position.y);
-						currentAnim = &idleDownAnim_Enemy1;
-						currentAnim->loop = true;
 
-					}
-					if (app->sceneMainMap->playerRestart == true)
-					{
-						app->game_manager->counter = 0;
-						entityState = GameState::OutOfCombat;
-						entityTurn = TurnState::NONE;
-					}
+
 
 
 
 				}
 
+				if (entityState == GameState::InCombat)
+				{
+
+					if (EntityHP > 0)
+					{
+						if (entityTurn == TurnState::NONE)
+						{
+							//Assigning order of turns
+							collider->SetPos(position.x, position.y);
+							Mini_Boss_Two_List.end->data->GetPosition(position.x, position.y);
+							currentAnim = &idleDownAnim_Enemy1;
+							currentAnim->loop = true;
+
+							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f,0.0f });
+
+						}
+						if (entityTurn == TurnState::StartOfTurn)
+						{
+							collider->SetPos(position.x, position.y);
+							currentAnim = &idleDownAnim_Enemy1;
+							currentAnim->loop = false;
+							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f }); //movimiento contrario a la direccion del jugador cuando nos chocamos con el
+
+							entityTurn = TurnState::MidOfTurn;
+
+						}
+						if (entityTurn == TurnState::MidOfTurn)
+						{
+
+							collider->SetPos(position.x, position.y);
+							Mini_Boss_Two_List.end->data->GetPosition(position.x, position.y);
+							currentAnim = &idleDownAnim_Enemy1;
+							currentAnim->loop = true;
+							counter++;
+
+							if (position.DistanceTo({ app->player->position.x + app->player->collider->rect.w / 2 , app->player->position.y - app->player->collider->rect.h }) > 60)
+							{
+								if (position.x > app->player->position.x + app->player->collider->rect.w / 2)
+								{
+									if (currentAnim != &leftWalkAnim_Enemy1)
+									{
+										//leftWalkAnim_Enemy1.Reset();
+										currentAnim = &leftWalkAnim_Enemy1;
+									}
+									Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
+								}
+								if (position.x < app->player->position.x + app->player->collider->rect.w / 2)
+								{
+									if (currentAnim != &rightWalkAnim_Enemy1)
+									{
+										//rightWalkAnim_Enemy1.Reset();
+										currentAnim = &rightWalkAnim_Enemy1;
+									}
+									Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
+								}
+								if (position.y > app->player->position.y - app->player->collider->rect.h)
+								{
+									if (currentAnim != &upWalkAnim_Enemy1)
+									{
+										//upWalkAnim_Enemy1.Reset();
+										currentAnim = &upWalkAnim_Enemy1;
+									}
+									Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
+								}
+								if (position.y < app->player->position.y - app->player->collider->rect.h)
+								{
+									if (currentAnim != &downWalkAnim_Enemy1)
+									{
+										//downWalkAnim_Enemy1.Reset();
+										currentAnim = &downWalkAnim_Enemy1;
+									}
+									Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
+								}
+
+
+								if ((app->player->position.y - app->player->collider->rect.h > position.y) && (app->player->position.x + app->player->collider->rect.w / 2 > position.x))
+								{
+									if (currentAnim != &rightDownWalkAnim_Enemy1)
+									{
+										//rightDownWalkAnim_Enemy1.Reset();
+										currentAnim = &rightDownWalkAnim_Enemy1;
+									}
+									Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
+								}
+								if ((app->player->position.x + app->player->collider->rect.w / 2 < position.x) && (app->player->position.y - app->player->collider->rect.h > position.y))
+								{
+									if (currentAnim != &leftDownWalkAnim_Enemy1)
+									{
+										//rightDownWalkAnim_Enemy1.Reset();
+										currentAnim = &leftDownWalkAnim_Enemy1;
+									}
+									Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
+								}
+								if ((app->player->position.y - app->player->collider->rect.h < position.y) && (app->player->position.x + app->player->collider->rect.w / 2 < position.x))
+								{
+									if (currentAnim != &leftUpWalkAnim_Enemy1)
+									{
+										//leftUpWalkAnim_Enemy1.Reset();
+										currentAnim = &leftUpWalkAnim_Enemy1;
+									}
+									Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
+								}
+								if ((app->player->position.x + app->player->collider->rect.w / 2 > position.x) && (app->player->position.y - app->player->collider->rect.h < position.y))
+								{
+									if (currentAnim != &rightUpWalkAnim_Enemy1)
+									{
+										//leftUpWalkAnim_Enemy1.Reset();
+										currentAnim = &rightUpWalkAnim_Enemy1;
+									}
+									Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
+								}
+
+								if (counter == 150) entityTurn = TurnState::FinishTurn;
+							}
+
+							if (position.DistanceTo({ app->player->position.x + app->player->collider->rect.w / 2 , app->player->position.y - app->player->collider->rect.h }) <= 60)
+							{
+								entityTurn = TurnState::FinishTurn;
+							}
+
+						}
+						if (entityTurn == TurnState::FinishTurn)
+						{
+							//Change turn from enemy to player turn still have to develop a way to do it correctly
+							Mini_Boss_Two_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f });
+							collider->SetPos(position.x, position.y);
+							Mini_Boss_Two_List.end->data->GetPosition(position.x, position.y);
+
+							currentAnim = &idleDownAnim_Enemy1;
+							currentAnim->loop = true;
+
+							if (position.DistanceTo({ app->player->position.x + app->player->collider->rect.w / 2, app->player->position.y - app->player->collider->rect.h }) < 75)
+							{
+
+								if ((position.x == app->player->position.x + app->player->collider->rect.w / 2) && (position.y < app->player->position.y - app->player->collider->rect.h))
+								{
+
+									app->particles->AddParticle(app->particles->enemyAttack, position.x, position.y + 30, Collider::Type::BOSS_ATTACK_2);
+
+								}
+								if ((position.x == app->player->position.x + app->player->collider->rect.w / 2) && (position.y > app->player->position.y - app->player->collider->rect.h))
+								{
+
+									app->particles->AddParticle(app->particles->enemyAttack, position.x, position.y - 30, Collider::Type::BOSS_ATTACK_2);
+
+								}
+								if ((position.x < app->player->position.x + app->player->collider->rect.w / 2) && (position.y == app->player->position.y - app->player->collider->rect.h))
+								{
+
+
+									app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y, Collider::Type::BOSS_ATTACK_2);
+
+
+								}
+								if ((position.x > app->player->position.x + app->player->collider->rect.w / 2) && (position.y == app->player->position.y - app->player->collider->rect.h))
+								{
+
+									app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y, Collider::Type::BOSS_ATTACK_2);
+
+
+								}
+
+								if ((position.x > app->player->position.x + app->player->collider->rect.w / 2) && (position.y > app->player->position.y - app->player->collider->rect.h))
+								{
+
+
+									app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y - 30, Collider::Type::BOSS_ATTACK_2);
+
+
+								}
+								if ((position.x > app->player->position.x + app->player->collider->rect.w / 2) && (position.y < app->player->position.y - app->player->collider->rect.h))
+								{
+
+									app->particles->AddParticle(app->particles->enemyAttack, position.x - 30, position.y + 30, Collider::Type::BOSS_ATTACK_2);
+
+
+								}
+								if ((position.x < app->player->position.x + app->player->collider->rect.w / 2) && (position.y > app->player->position.y - app->player->collider->rect.h))
+								{
+
+									app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y - 30, Collider::Type::BOSS_ATTACK_2);
+
+
+								}
+								if ((position.x < app->player->position.x + app->player->collider->rect.w / 2) && (position.y < app->player->position.y - app->player->collider->rect.h))
+								{
+
+									app->particles->AddParticle(app->particles->enemyAttack, position.x + 30, position.y + 30, Collider::Type::BOSS_ATTACK_2);
+
+
+								}
+
+								entityTurn = TurnState::WaitTurn;
+							}
+							else
+							{
+								entityTurn = TurnState::WaitTurn;
+							}
+
+
+						}
+						if (entityTurn == TurnState::WaitTurn)
+						{
+							counter = 0;
+							collider->SetPos(position.x, position.y);
+							Mini_Boss_Two_List.end->data->GetPosition(position.x, position.y);
+							currentAnim = &idleDownAnim_Enemy1;
+							currentAnim->loop = true;
+
+						}
+						if (app->sceneMainMap->playerRestart == true)
+						{
+							app->game_manager->counter = 0;
+							entityState = GameState::OutOfCombat;
+							entityTurn = TurnState::NONE;
+						}
 
 
 
+					}
 
+				}
 
+				currentAnim->Update();
 			}
-
-			currentAnim->Update();
 		}
 	}
 

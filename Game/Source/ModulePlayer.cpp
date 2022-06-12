@@ -2256,10 +2256,32 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
 	if (app->sceneCave->godMode == false && app->sceneMainMap->godMode == false && destroyed == false && playerWin == false)
 	{
-		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_ATTACK ))/* && invincibleDelay >= 120*/
+		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::BOSS_ATTACK ))
 		{
 			app->audio->PlayFx(playerHurtSound, 0);
 			playerHP -= 10;
+
+			if (app->player->playerHP > app->player->PlayerMaxHP / 5 && app->player->playerHP <= app->player->PlayerMaxHP / 2.5f)
+			{
+				app->audio->PlayFx(heartbeatFX, 0);
+			}
+		}
+
+		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::BOSS_ATTACK))
+		{
+			app->audio->PlayFx(playerHurtSound, 0);
+			playerHP -= 15;
+
+			if (app->player->playerHP > app->player->PlayerMaxHP / 5 && app->player->playerHP <= app->player->PlayerMaxHP / 2.5f)
+			{
+				app->audio->PlayFx(heartbeatFX, 0);
+			}
+		}
+
+		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::BOSS_ATTACK_2))
+		{
+			app->audio->PlayFx(playerHurtSound, 0);
+			playerHP -= 30;
 
 			if (app->player->playerHP > app->player->PlayerMaxHP / 5 && app->player->playerHP <= app->player->PlayerMaxHP / 2.5f)
 			{

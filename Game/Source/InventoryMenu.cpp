@@ -638,6 +638,16 @@ bool InventoryMenu::UseItemSelected(ItemList* item)
 
 			return true;
 		}
+
+		if (item->type == ItemType::OBJECT_GRENADE)
+		{
+			item->amount--;
+			//Add radio particle so zombies follow it instead of following the player
+			app->particles->AddParticle(app->particles->GrenadeDamage, app->player->enemySelected.x, app->player->enemySelected.y, Collider::Type::GRENADE_DAMAGE);
+
+
+			return true;
+		}
 	}
 }
 
