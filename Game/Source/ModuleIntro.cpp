@@ -54,7 +54,7 @@ bool ModuleIntro::Awake()
 
 bool ModuleIntro::Start()
 {
-	logoAnimationP1 = app->tex->Load("Assets/textures/Scenes/LogoAnimationFrames/logo_animation_p1.png");
+	logoAnimationP1 = app->tex->Load("Assets/textures/Scenes/Intro/intro.png");
 
 	app->audio->ChangeMusic(STORY_INTRO, 0, 0);
 
@@ -73,7 +73,12 @@ bool ModuleIntro::Update(float dt)
 {
 	delay++;
 
-	if (delay > 500)
+	if ((delay % 2) == 0)
+	{
+		backwardsImage--;
+	}
+
+	if (delay >= 3155)
 	{
 		//app->physics->Enable();
 		app->collisions->Enable();
@@ -119,7 +124,7 @@ bool ModuleIntro::PostUpdate()
 	//bool ret = true;
 
 
-	app->render->DrawTexture2(logoAnimationP1, 0, animationPositionY, NULL);
+	app->render->DrawTexture2(logoAnimationP1, 0, backwardsImage, NULL);
 
 	//return ret;
 
