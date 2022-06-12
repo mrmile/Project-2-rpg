@@ -68,6 +68,8 @@ bool ModuleUI::Start()
 	QTE_keys_XB = app->tex->Load("Assets/textures/extras/QTE_keys_xb.png");
 	QTE_keys_PS = app->tex->Load("Assets/textures/extras/QTE_keys_ps.png");
 	QTE_keys_pointer = app->tex->Load("Assets/textures/extras/QTE_keys_pointer.png");
+	QTE_strength_bar = app->tex->Load("Assets/textures/extras/QTE_strength_bar.png");
+	QTE_timer_bar = app->tex->Load("Assets/textures/extras/QTE_timer_bar.png");
 
 
 	return true;
@@ -157,7 +159,6 @@ bool ModuleUI::PostUpdate()
 		}
 
 		if(app->titleScreen->toTitleScreen == true) app->render->DrawTexture2(app->player->gameOverScreen, 0, 0, NULL, 0.0f);
-
 	}
 
 	return true;
@@ -181,6 +182,8 @@ bool ModuleUI::CleanUp()
 	app->tex->UnLoad(QTE_keys_XB);
 	app->tex->UnLoad(QTE_keys_PS);
 	app->tex->UnLoad(QTE_keys_pointer);
+	app->tex->UnLoad(QTE_strength_bar);
+	app->tex->UnLoad(QTE_timer_bar);
 
 	return true;
 }

@@ -49,6 +49,8 @@ private:
 	SDL_Texture* QTE_keys_XB = nullptr;
 	SDL_Texture* QTE_keys_PS = nullptr;
 	SDL_Texture* QTE_keys_pointer = nullptr;
+	SDL_Texture* QTE_strength_bar = nullptr;
+	SDL_Texture* QTE_timer_bar = nullptr;
 
 
 	//Low Health Effects

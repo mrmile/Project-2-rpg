@@ -9,6 +9,7 @@
 #include "Textures.h"
 #include "GuiManager.h"
 #include "Audio.h"
+#include "ModuleUI.h"
 
 DialogManager::DialogManager(bool startEnabled):Module(startEnabled)
 {
@@ -456,7 +457,20 @@ bool DialogManager::PostUpdate()
 				app->fonts->BlitText(77, 240, scoreFont, "you all deserve the worst. prepare to");
 				app->fonts->BlitText(77, 260, scoreFont, "die.");
 			}
+
+			SDL_Rect quad;
+			quad = { 5, 10, app->player->QTE_Counter, 10 };
+
+			app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
+
+			if (app->player->finalBossPhaseCounter > 1918 && app->player->finalBossPhaseCounter <= 1920)app->player->QTE_Counter = 600;
+
+			if (app->player->finalBossPhaseCounter > 1920 && app->player->finalBossPhaseCounter <= 2520)
+			{
+				
+			}
 		}
+
 
 
 		if (app->player->npcClose == false && app->player->npc2Close == false && app->player->npc3Close == false && app->player->npc4Close == false)
