@@ -43,6 +43,7 @@ class DialogManager;
 class QuestManager;
 class GameManager;
 class Transitions;
+class ModuleUI;
 
 class App
 {
@@ -142,6 +143,7 @@ public:
 	QuestManager* questManager;
 	GameManager* game_manager;
 	Transitions* transition_manager;
+	ModuleUI* moduleUI;
 
 	bool AppTitleScreenFull = false;
 

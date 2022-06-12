@@ -162,6 +162,7 @@
     <ClCompile Include="Source\ModuleParticles.cpp" />
     <ClCompile Include="Source\ModulePhysics.cpp" />
     <ClCompile Include="Source\ModulePlayer.cpp" />
+    <ClCompile Include="Source\ModuleUI.cpp" />
     <ClCompile Include="Source\NPCs.cpp" />
     <ClCompile Include="Source\NPCs2.cpp" />
     <ClCompile Include="Source\NPCs3.cpp" />
@@ -224,6 +225,7 @@
     <ClInclude Include="Source\ModuleParticles.h" />
     <ClInclude Include="Source\ModulePhysics.h" />
     <ClInclude Include="Source\ModulePlayer.h" />
+    <ClInclude Include="Source\ModuleUI.h" />
     <ClInclude Include="Source\NPCs.h" />
     <ClInclude Include="Source\NPCs2.h" />
     <ClInclude Include="Source\NPCs3.h" />

@@ -593,19 +593,6 @@ bool ModulePlayer::Start()
 	selectedEnemy = app->tex->Load("Assets/textures/CircleSelectionInRange.png");
 	selectedEnemyNotInRange = app->tex->Load("Assets/textures/CircleSelection.png");
 
-	characterHealth100 = app->tex->Load("Assets/textures/GUI/Inventory/barLife100.png");
-	characterHealth80 = app->tex->Load("Assets/textures/GUI/Inventory/barLife80.png");
-	characterHealth60 = app->tex->Load("Assets/textures/GUI/Inventory/barLife60.png");
-	characterHealth40 = app->tex->Load("Assets/textures/GUI/Inventory/barLife40.png");
-	characterHealth20 = app->tex->Load("Assets/textures/GUI/Inventory/barLife20.png");
-	characterHealth20Grey = app->tex->Load("Assets/textures/GUI/Inventory/barLife20Grey.png");
-	characterHealth0 = app->tex->Load("Assets/textures/GUI/Inventory/barLife00.png");
-
-	lowHealthBlood = app->tex->Load("Assets/textures/GUI/lowHealth1.png");
-	lowHealthGreyBg = app->tex->Load("Assets/textures/GUI/lowHealth2.png");
-
-	inventoryMapIcons = app->tex->Load("Assets/textures/GUI/inventoryAndMapIcons.png");
-
 	noteDay1 = app->tex->Load("Assets/textures/extras/day1_text.png");
 	noteDay5 = app->tex->Load("Assets/textures/extras/day5_text.png");
 	noteDay10 = app->tex->Load("Assets/textures/extras/day10_text.png");
@@ -621,7 +608,6 @@ bool ModulePlayer::Start()
 	folderComputer = app->tex->Load("Assets/textures/extras/folderComputer.png");
 
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
-	heartbeatFX = app->audio->LoadFx("Assets/audio/fx/UISounds/heartbeat.wav");
 	itemGrab = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_grab_finish_back_fast_begin_0.wav");
 	dead = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_2.wav");
 	shoot = app->audio->LoadFx("Assets/audio/fx/ZPlayer/PlayerActions/Gun.wav");
@@ -642,6 +628,7 @@ bool ModulePlayer::Start()
 	alarmSwitch5Fx = app->audio->LoadFx("Assets/audio/fx/extra/alarm_switch.wav");
 
 	explosionFx_far = app->audio->LoadFx("Assets/audio/fx/zombies/zombie_grenade_explode_far.wav");
+	heartbeatFX = app->audio->LoadFx("Assets/audio/fx/UISounds/heartbeat.wav");
 
 	if (app->sceneMainMap->sceneMainMap == true || app->sceneMotel->sceneMotel == true)
 	{
@@ -1993,43 +1980,6 @@ bool ModulePlayer::PostUpdate()
 		app->render->DrawTexture2(lowHealthGreyBg, 0, 0, NULL);
 		app->audio->PlayFx(heartbeatFX, 0);*/
 
-		app->render->DrawTexture2(inventoryMapIcons, 0, 0, NULL);
-
-		if (app->player->playerHP >= app->player->PlayerMaxHP)
-		{
-			app->render->DrawTexture2(app->player->characterHealth100, -60, -7, NULL);
-			lowHPdelay = 0;
-		}
-		if (app->player->playerHP > app->player->PlayerMaxHP / 1.25f && app->player->playerHP < app->player->PlayerMaxHP)
-		{
-			app->render->DrawTexture2(app->player->characterHealth80, -60, -7, NULL);
-			lowHPdelay = 0;
-		}
-		if (app->player->playerHP > app->player->PlayerMaxHP / 1.66f && app->player->playerHP <= app->player->PlayerMaxHP / 1.25f)
-		{
-			app->render->DrawTexture2(app->player->characterHealth60, -60, -7, NULL);
-			lowHPdelay = 0;
-		}
-		if (app->player->playerHP > app->player->PlayerMaxHP / 2.5f && app->player->playerHP <= app->player->PlayerMaxHP / 1.66f)
-		{
-			app->render->DrawTexture2(app->player->characterHealth40, -60, -7, NULL);
-			lowHPdelay = 0;
-		}
-		if (app->player->playerHP > app->player->PlayerMaxHP / 5 && app->player->playerHP <= app->player->PlayerMaxHP / 2.5f)
-		{
-			lowHPdelay++;
-
-			if (lowHPdelay < 20) app->render->DrawTexture2(lowHealthBlood, 0, 0, NULL);
-			if (lowHPdelay >= 20) app->render->DrawTexture2(lowHealthGreyBg, 0, 0, NULL);
-
-			app->render->DrawTexture2(characterHealth20, -60, -7, NULL);
-			if ((lowHPdelay / 60) % 2 == 0) app->render->DrawTexture2(characterHealth20Grey, -60, -7, NULL);
-		}
-		if (app->player->playerHP <= 0)
-		{
-			app->render->DrawTexture2(app->player->characterHealth0, -60, -7, NULL);
-		}
-
 		//Interfaz movida al questManager para que se dibuje bien
 
 		if (app->sceneCave->playerRestart == true)
@@ -2239,17 +2189,6 @@ bool ModulePlayer::CleanUp()
 	app->guiManager->DestroyGuiControl(45);
 	app->guiManager->DestroyGuiControl(46);
 	app->guiManager->DestroyGuiControl(47);
-
-	app->tex->UnLoad(characterHealth100);
-	app->tex->UnLoad(characterHealth80);
-	app->tex->UnLoad(characterHealth60);
-	app->tex->UnLoad(characterHealth40);
-	app->tex->UnLoad(characterHealth20);
-	app->tex->UnLoad(characterHealth20Grey);
-	app->tex->UnLoad(characterHealth0);
-	app->tex->UnLoad(lowHealthBlood);
-	app->tex->UnLoad(lowHealthGreyBg);
-	app->tex->UnLoad(inventoryMapIcons);
 
 	//deletePlayer = true;
 	app->player->Player->body->DestroyFixture(app->player->Player->body->GetFixtureList());

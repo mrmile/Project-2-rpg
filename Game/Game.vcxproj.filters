@@ -199,6 +199,9 @@
     <ClCompile Include="Source\MiniBossTwo.cpp">
       <Filter>General\Entities\Enemies</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ModuleUI.cpp">
+      <Filter>General\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -429,6 +432,9 @@
     <ClInclude Include="Source\MiniBossTwo.h">
       <Filter>General\Entities\Enemies</Filter>
     </ClInclude>
+    <ClInclude Include="Source\ModuleUI.h">
+      <Filter>General\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="External">
@@ -475,6 +481,9 @@
     </Filter>
     <Filter Include="General\Entities\PuzzlesElements">
       <UniqueIdentifier>{67f75a07-63f4-440a-8f77-0fda107e9812}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="General\UI">
+      <UniqueIdentifier>{ba10492d-1f8b-4687-95ef-b9423890e709}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -33,6 +33,7 @@
 #include "QuestManager.h"
 #include "GameManager.h"
 #include "Transitions.h"
+#include "ModuleUI.h"
 #include <iostream>
 #include <sstream>
 #include <Optick/include/optick.h>
@@ -76,6 +77,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	questManager = new QuestManager(true);
 	game_manager = new GameManager(true);
 	transition_manager = new Transitions(true);
+	moduleUI = new ModuleUI(true);
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -109,6 +111,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(fonts);
 	AddModule(game_manager);
 	AddModule(transition_manager);
+	AddModule(moduleUI);
 	// Render last to swap buffer
 	AddModule(render);
 

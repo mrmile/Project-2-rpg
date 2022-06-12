@@ -129,21 +129,6 @@ public:
 	GuiButton* noteComputerDay15GUI;
 	GuiButton* folderComputerGUI;
 
-	SDL_Texture* characterHealth100 = nullptr;
-	SDL_Texture* characterHealth80 = nullptr;
-	SDL_Texture* characterHealth60 = nullptr;
-	SDL_Texture* characterHealth40 = nullptr;
-	SDL_Texture* characterHealth20 = nullptr;
-	SDL_Texture* characterHealth20Grey = nullptr;
-	SDL_Texture* characterHealth0 = nullptr;
-
-	//Low Health Effects
-	SDL_Texture* lowHealthBlood = nullptr;
-	SDL_Texture* lowHealthGreyBg = nullptr;
-
-	//Inventory and Map Icons
-	SDL_Texture* inventoryMapIcons = nullptr;
-
 	// The pointer to the current player animation
 	// It will be switched depending on the player's movement direction
 	Animation* currentAnimation = nullptr;
@@ -161,7 +146,6 @@ public:
 	Animation idleUpRightAnim;
 	Animation idleDownLeftAnim;
 	Animation idleDownRightAnim;
-
 
 	//WALK
 
@@ -298,10 +282,6 @@ public:
 
 	b2Vec2 b2VelocitySet;
 
-	//Low Health Effects
-
-	int lowHPdelay = 0;
-
 	//Margin of movement
 	int horizontalMargin = 45;
 
@@ -374,8 +354,8 @@ public:
 	//FX
 	int walkSoundID = 0;
 	/*int computerButtonsFX = 0;*/
-	uint heartbeatFX = 0;
 	uint playerHurtSound = 0;
+	uint heartbeatFX = 0;
 	uint playerWalkSound[7] = { 0 };
 
 };
