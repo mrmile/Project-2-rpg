@@ -51,7 +51,7 @@ EntityManager::~EntityManager()
 bool EntityManager::Start()
 {
 	texture_mini_boss_one = app->tex->Load("Assets/textures/Enemies/Werebear_Mutated_Zombies/werebear_brown.png");
-	texture_mini_boss_two = app->tex->Load("Assets/textures/Enemies/Lab_Ants/lab_ant.png");
+	texture_mini_boss_two = app->tex->Load("Assets/textures/Enemies/Lab_Ants/lab_ant_boss.png");
 	texture_enemies_base_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_with_spawn.png");
 	texture_enemies_runner_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_runner.png");
 	texture_enemies_volatile_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_volatile.png");
