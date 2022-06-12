@@ -149,6 +149,7 @@ void Final_Boss::Update(float dt)
 			counter++;
 
 
+
 		}
 		
 		currentAnim->Update();

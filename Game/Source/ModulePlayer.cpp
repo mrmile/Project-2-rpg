@@ -1066,6 +1066,7 @@ bool ModulePlayer::Start()
 	QTE_Counter = 0;
 	finalBossPhaseCounter = 0;
 
+
 	return ret;
 }
 

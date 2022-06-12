@@ -442,8 +442,19 @@ bool DialogManager::PostUpdate()
 			{
 				app->fonts->BlitText(77, 240, scoreFont, "but now i will kill you! you all have");
 				app->fonts->BlitText(77, 260, scoreFont, "done lots of damage to me with the");
-				app->fonts->BlitText(77, 280, scoreFont, "experiments. i did not wanted to");
-				app->fonts->BlitText(77, 300, scoreFont, "survive. and now you will pay for it.");
+				app->fonts->BlitText(77, 280, scoreFont, "experiments.");
+			}
+
+			if (app->player->finalBossPhaseCounter > 4380 && app->player->finalBossPhaseCounter <= 4740)
+			{
+				app->fonts->BlitText(77, 240, scoreFont, "i did not wanted to survive to the");
+				app->fonts->BlitText(77, 260, scoreFont, "accident. and now, you will pay for it.");
+			}
+
+			if (app->player->finalBossPhaseCounter > 4740 && app->player->finalBossPhaseCounter < 4980)
+			{
+				app->fonts->BlitText(77, 240, scoreFont, "you all deserve the worst. prepare to");
+				app->fonts->BlitText(77, 260, scoreFont, "die.");
 			}
 		}
 
