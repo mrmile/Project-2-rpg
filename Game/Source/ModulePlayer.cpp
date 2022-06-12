@@ -1992,6 +1992,8 @@ bool ModulePlayer::PostUpdate()
 		app->render->DrawTexture2(lowHealthGreyBg, 0, 0, NULL);
 		app->audio->PlayFx(heartbeatFX, 0);*/
 
+		app->render->DrawTexture2(inventoryMapIcons, 0, 0, NULL);
+
 		if (app->player->playerHP >= app->player->PlayerMaxHP)
 		{
 			app->render->DrawTexture2(app->player->characterHealth100, -60, -7, NULL);
@@ -2026,8 +2028,6 @@ bool ModulePlayer::PostUpdate()
 		{
 			app->render->DrawTexture2(app->player->characterHealth0, -60, -7, NULL);
 		}
-
-		app->render->DrawTexture2(inventoryMapIcons, 0, 0, NULL);
 
 		//Interfaz movida al questManager para que se dibuje bien
 
