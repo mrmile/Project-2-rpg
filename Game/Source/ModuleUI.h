@@ -45,6 +45,12 @@ private:
 	SDL_Texture* characterHealth20Grey = nullptr;
 	SDL_Texture* characterHealth0 = nullptr;
 
+	SDL_Texture* QTE_keys_KB = nullptr;
+	SDL_Texture* QTE_keys_XB = nullptr;
+	SDL_Texture* QTE_keys_PS = nullptr;
+	SDL_Texture* QTE_keys_pointer = nullptr;
+
+
 	//Low Health Effects
 	SDL_Texture* lowHealthBlood = nullptr;
 	SDL_Texture* lowHealthGreyBg = nullptr;

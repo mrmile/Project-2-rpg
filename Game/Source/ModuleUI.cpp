@@ -64,6 +64,12 @@ bool ModuleUI::Start()
 	lowHealthGreyBg = app->tex->Load("Assets/textures/GUI/lowHealth2.png");
 	inventoryMapIcons = app->tex->Load("Assets/textures/GUI/inventoryAndMapIcons.png");
 
+	QTE_keys_KB = app->tex->Load("Assets/textures/extras/QTE_keys_kb.png");
+	QTE_keys_XB = app->tex->Load("Assets/textures/extras/QTE_keys_xb.png");
+	QTE_keys_PS = app->tex->Load("Assets/textures/extras/QTE_keys_ps.png");
+	QTE_keys_pointer = app->tex->Load("Assets/textures/extras/QTE_keys_pointer.png");
+
+
 	return true;
 }
 
@@ -167,6 +173,11 @@ bool ModuleUI::CleanUp()
 	app->tex->UnLoad(lowHealthBlood);
 	app->tex->UnLoad(lowHealthGreyBg);
 	app->tex->UnLoad(inventoryMapIcons);
+
+	app->tex->UnLoad(QTE_keys_KB);
+	app->tex->UnLoad(QTE_keys_XB);
+	app->tex->UnLoad(QTE_keys_PS);
+	app->tex->UnLoad(QTE_keys_pointer);
 
 	return true;
 }
