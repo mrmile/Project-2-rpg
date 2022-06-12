@@ -30,6 +30,7 @@
 #include "InventoryMenu.h"
 #include "ModuleFonts.h"
 #include "QuestManager.h"
+#include "DialogManager.h"
 
 #include <stdio.h>
 #include <time.h>
@@ -2485,7 +2486,7 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 				}
 			}
 		}
-
+		
 		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DOOR_KEY_READER)
 		{
 			if (baseUnlock == false && app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2)
@@ -2502,6 +2503,10 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 					app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 4327, 2757);
 					app->entity_manager->AddEntity(EntityType::ZOMBIE_VOLATILE, 3295, 3495);
 				}
+			}
+			else if(baseUnlock == false && app->questManager->mainQuestID != LOOK_FOR_THE_COMPUTER_2)
+			{
+				app->fonts->BlitText(300, 150, app->dialogManager->scoreFont, "No card detected");
 			}
 		}
 
