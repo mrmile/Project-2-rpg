@@ -8,6 +8,8 @@ Their mission... find the doctor and stop the endemic virus that has asolated th
 
 Embarc in this horror adventure to save humanity from destruction, finding a cure for the virus while you fight numerous groups of zombies. And always remember, sometimes it's better to just run.
 
+Webpage: https://mrmile.github.io/Project-2-rpg/
+
 ## Key Features
 
 - Engaging story
