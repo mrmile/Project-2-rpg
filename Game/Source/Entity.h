@@ -39,7 +39,6 @@ public:
 
 	List<PhysBody*> Mini_Boss_One_List;
 	List<PhysBody*> Mini_Boss_Two_List;
-	List<PhysBody*> Mini_Boss_Three_List;
 	List<PhysBody*> Volatile_Zombie_List;
 	List<PhysBody*> Standart_Zombie_List;
 	List<PhysBody*> Runner_Zombie_List;
