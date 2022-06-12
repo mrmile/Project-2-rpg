@@ -24,7 +24,6 @@ private:
 	
 	
 	int counter = 0;
-	int phaseCounter = 0;
 };
 
 #endif 

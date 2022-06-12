@@ -36,6 +36,7 @@ bool DialogManager::Start()
 	textNameNPC2 = app->tex->Load("Assets/textures/GUI/textNameNPC2.png");
 	textNameNPC3 = app->tex->Load("Assets/textures/GUI/textNameNPC3.png");
 	textNameNPC4 = app->tex->Load("Assets/textures/GUI/textNameNPC4.png");
+	textNameFINAL_BOSS = app->tex->Load("Assets/textures/GUI/textNamePatientZero.png");
 	textNamePlayer = app->tex->Load("Assets/textures/GUI/textNamePlayer.png");
 	textOptionUnselected = app->tex->Load("Assets/textures/GUI/optionUnselected.png");
 	textOption1 = app->tex->Load("Assets/textures/GUI/option1.png");
@@ -410,6 +411,34 @@ bool DialogManager::PostUpdate()
 			}*/
 		}
 
+		if (app->player->activateFinalBoss == true)
+		{
+			if ((app->player->finalBossPhaseCounter > 10 && app->player->finalBossPhaseCounter < 1860)
+				|| (app->player->finalBossPhaseCounter > 4380 && app->player->finalBossPhaseCounter < 4980))
+			{
+				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
+				app->render->DrawTexture2(textNameFINAL_BOSS, 0, 0, NULL);
+			}
+
+			app->fonts->BlitText(77, 240, scoreFont, "night have fallen, be careful. zombies");
+			app->fonts->BlitText(77, 260, scoreFont, "during nightime transform into very large");
+			app->fonts->BlitText(77, 280, scoreFont, "monsters, i call them volatiles. if you");
+			app->fonts->BlitText(77, 300, scoreFont, "got caught you will die instantly");
+
+			if (app->player->finalBossPhaseCounter > 10 && app->player->finalBossPhaseCounter <= 660)
+			{
+				app->fonts->BlitText(77, 240, scoreFont, "well well, looks like you have found me.");
+				app->fonts->BlitText(77, 260, scoreFont, "as you may imagine i am the patient zero.");
+			}
+
+			if (app->player->finalBossPhaseCounter > 660 && app->player->finalBossPhaseCounter < 1860)
+			{
+				app->fonts->BlitText(77, 240, scoreFont, "its amazing you have made your way until");
+				app->fonts->BlitText(77, 260, scoreFont, "here. i have to accept you have done a");
+				app->fonts->BlitText(77, 280, scoreFont, "very good job.");
+			}
+		}
+
 
 		if (app->player->npcClose == false && app->player->npc2Close == false && app->player->npc3Close == false && app->player->npc4Close == false)
 		{
@@ -435,6 +464,7 @@ bool DialogManager::CleanUp()
 	app->tex->UnLoad(textNameNPC2);
 	app->tex->UnLoad(textNameNPC3);
 	app->tex->UnLoad(textNameNPC4);
+	app->tex->UnLoad(textNameFINAL_BOSS);
 	app->tex->UnLoad(textNamePlayer);
 	app->tex->UnLoad(textOption1);
 	app->tex->UnLoad(textOption2);

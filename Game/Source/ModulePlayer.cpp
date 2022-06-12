@@ -1063,6 +1063,9 @@ bool ModulePlayer::Start()
 	inBossBatle = false;
 	activateFinalBoss = false;
 
+	QTE_Counter = 0;
+	finalBossPhaseCounter = 0;
+
 	return ret;
 }
 

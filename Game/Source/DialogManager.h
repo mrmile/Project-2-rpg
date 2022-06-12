@@ -34,6 +34,7 @@ private:
 	SDL_Texture* textNameNPC2 = nullptr;
 	SDL_Texture* textNameNPC3 = nullptr;
 	SDL_Texture* textNameNPC4 = nullptr;
+	SDL_Texture* textNameFINAL_BOSS = nullptr;
 	SDL_Texture* textNamePlayer = nullptr;
 	SDL_Texture* textOption1 = nullptr;
 	SDL_Texture* textOption2 = nullptr;

@@ -22,6 +22,11 @@
 
 Final_Boss::Final_Boss(int x,int y) : Entity(x,y)
 {	
+
+
+
+
+
 	EntityHP = 1;
 	EntityAP = 5;
 	EntityMP = 3;
@@ -46,15 +51,12 @@ Final_Boss::Final_Boss(int x,int y) : Entity(x,y)
 	Standart_Zombie_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10));
 	
 	counter = 0;
-	phaseCounter = 0;
 	
 }
 
 void Final_Boss::Update(float dt)
 {
 	//ADD THE PATHFINDING LOGIC FOR MOVEMENT
-	
-	counter++;
 
 	if (app->player->pauseMenu == true)
 	{
@@ -143,14 +145,16 @@ void Final_Boss::Update(float dt)
 		
 		if (app->player->activateFinalBoss == true)
 		{
-			phaseCounter++;
+			app->player->finalBossPhaseCounter++;
+			counter++;
 
 
 		}
 		
+		currentAnim->Update();
 	}
 	
-	currentAnim->Update();
+	
 }
 
 
