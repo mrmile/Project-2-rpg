@@ -41,7 +41,7 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 	idleRightAnim_Enemy1.PushBack({ 3200, 512, 128, 128 });
 	idleRightAnim_Enemy1.PushBack({ 3072, 512, 128, 128 });
 	idleRightAnim_Enemy1.loop = true;
-	idleRightAnim_Enemy1.speed = 0.05f;
+	idleRightAnim_Enemy1.speed = 0.01f;
 
 	idleLeftAnim_Enemy1.PushBack({ 3072, 0, 128, 128 });
 	idleLeftAnim_Enemy1.PushBack({ 3200, 0, 128, 128 });
@@ -50,16 +50,16 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 	idleLeftAnim_Enemy1.PushBack({ 3200, 0, 128, 128 });
 	idleLeftAnim_Enemy1.PushBack({ 3072, 0, 128, 128 });
 	idleLeftAnim_Enemy1.loop = true;
-	idleLeftAnim_Enemy1.speed = 0.05f;
+	idleLeftAnim_Enemy1.speed = 0.01f;
 
-	idleDownAnim_Enemy1.PushBack({ 3072, 768, 85, 144 });  //idle_enemy
-	idleDownAnim_Enemy1.PushBack({ 3200, 768, 85, 144 });
-	idleDownAnim_Enemy1.PushBack({ 3328, 768, 85, 144 });
-	idleDownAnim_Enemy1.PushBack({ 3456, 768, 85, 144 });
-	idleDownAnim_Enemy1.PushBack({ 3200, 768, 85, 144 });
-	idleDownAnim_Enemy1.PushBack({ 3072, 768, 85, 144 });
+	idleDownAnim_Enemy1.PushBack({ 3072, 768, 128, 128 });  //idle_enemy
+	idleDownAnim_Enemy1.PushBack({ 3200, 768, 128, 128 });
+	idleDownAnim_Enemy1.PushBack({ 3328, 768, 128, 128 });
+	idleDownAnim_Enemy1.PushBack({ 3456, 768, 128, 128 });
+	idleDownAnim_Enemy1.PushBack({ 3200, 768, 128, 128 });
+	idleDownAnim_Enemy1.PushBack({ 3072, 768, 128, 128 });
 	idleDownAnim_Enemy1.loop = true;
-	idleDownAnim_Enemy1.speed = 0.05f;
+	idleDownAnim_Enemy1.speed = 0.01f;
 
 	idleUpAnim_Enemy1.PushBack({ 3072, 256, 128, 128 });
 	idleUpAnim_Enemy1.PushBack({ 3200, 256, 128, 128 });
@@ -68,7 +68,7 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 	idleUpAnim_Enemy1.PushBack({ 3200, 256, 128, 128 });
 	idleUpAnim_Enemy1.PushBack({ 3072, 256, 128, 128 });
 	idleUpAnim_Enemy1.loop = true;
-	idleUpAnim_Enemy1.speed = 0.05f;
+	idleUpAnim_Enemy1.speed = 0.01f;
 
 	idleUpLeftAnim_Enemy1.PushBack({ 3072, 128, 128, 128 });
 	idleUpLeftAnim_Enemy1.PushBack({ 3200, 128, 128, 128 });
@@ -77,7 +77,7 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 	idleUpLeftAnim_Enemy1.PushBack({ 3200, 128, 128, 128 });
 	idleUpLeftAnim_Enemy1.PushBack({ 3072, 128, 128, 128 });
 	idleUpLeftAnim_Enemy1.loop = true;
-	idleUpLeftAnim_Enemy1.speed = 0.05f;
+	idleUpLeftAnim_Enemy1.speed = 0.01f;
 
 	idleUpRightAnim_Enemy1.PushBack({ 3072, 384, 128, 128 });
 	idleUpRightAnim_Enemy1.PushBack({ 3200, 384, 128, 128 });
@@ -86,7 +86,7 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 	idleUpRightAnim_Enemy1.PushBack({ 3200, 384, 128, 128 });
 	idleUpRightAnim_Enemy1.PushBack({ 3072, 384, 128, 128 });
 	idleUpRightAnim_Enemy1.loop = true;
-	idleUpRightAnim_Enemy1.speed = 0.05f;
+	idleUpRightAnim_Enemy1.speed = 0.01f;
 
 	idleDownLeftAnim_Enemy1.PushBack({ 3072, 896, 128, 128 });
 	idleDownLeftAnim_Enemy1.PushBack({ 3200, 896, 128, 128 });
@@ -95,7 +95,7 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 	idleDownLeftAnim_Enemy1.PushBack({ 3200, 896, 128, 128 });
 	idleDownLeftAnim_Enemy1.PushBack({ 3072, 896, 128, 128 });
 	idleDownLeftAnim_Enemy1.loop = true;
-	idleDownLeftAnim_Enemy1.speed = 0.05f;
+	idleDownLeftAnim_Enemy1.speed = 0.01f;
 
 	idleDownRightAnim_Enemy1.PushBack({ 3072, 640, 128, 128 });
 	idleDownRightAnim_Enemy1.PushBack({ 3200, 640, 128, 128 });
@@ -104,7 +104,7 @@ Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 	idleDownRightAnim_Enemy1.PushBack({ 3200, 640, 128, 128 });
 	idleDownRightAnim_Enemy1.PushBack({ 3072, 640, 128, 128 });
 	idleDownRightAnim_Enemy1.loop = true;
-	idleDownRightAnim_Enemy1.speed = 0.05f;
+	idleDownRightAnim_Enemy1.speed = 0.01f;
 
 
 
