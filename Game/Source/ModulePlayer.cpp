@@ -2804,16 +2804,24 @@ iPoint ModulePlayer::GetLastPosition()
 void ModulePlayer::RangedAttack()
 {
 	//Add logic for ranged attack
-	if (position.DistanceTo(enemySelected) <= EquipmentRange)
+	if (EnemySelectionBool == true)
 	{
-		app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->EntityHP -= EquipmentDamage;
-		playerAttacked = true;
+		if (position.DistanceTo(enemySelected) <= EquipmentRange)
+		{
+			app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->EntityHP -= EquipmentDamage;
+			playerAttacked = true;
+		}
+		if (position.DistanceTo(enemySelected) > EquipmentRange)
+		{
+			//Not in range so the player misses his turn
+			playerAttacked = true;
+		}
 	}
-	if (position.DistanceTo(enemySelected) > EquipmentRange)
+	if (EnemySelectionBool == false)
 	{
-		//Not in range so the player misses his turn
-		playerAttacked = true;
+
 	}
+	
 	
 	
 }
