@@ -1239,6 +1239,15 @@ void ModuleCollisions::DebugDraw()
 			case Collider::Type::PLAYER_PICKUP_RADIUS: 
 				app->render->DrawRectangle(colliders[i]->rect, 172, 200, 200, alpha);
 				break;
+			case Collider::Type::ENABLE_BOSS_1: // light green
+				app->render->DrawRectangle(colliders[i]->rect, 172, 255, 200, alpha);
+				break;
+			case Collider::Type::ENABLE_BOSS_2: // light green
+				app->render->DrawRectangle(colliders[i]->rect, 172, 255, 200, alpha);
+				break;
+			case Collider::Type::ENABLE_BOSS_3:
+				app->render->DrawRectangle(colliders[i]->rect, 172, 200, 200, alpha);
+				break;
 			}
 		}
 		if (app->sceneCave->godMode == true || app->sceneMainMap->godMode == true)
@@ -1291,6 +1300,15 @@ void ModuleCollisions::DebugDraw()
 				app->render->DrawRectangle(colliders[i]->rect, 255, 255, 255, alpha);
 				break;
 			case Collider::Type::PLAYER_PICKUP_RADIUS:
+				app->render->DrawRectangle(colliders[i]->rect, 255, 255, 255, alpha);
+				break;
+			case Collider::Type::ENABLE_BOSS_1: // light green
+				app->render->DrawRectangle(colliders[i]->rect, 255, 255, 255, alpha);
+				break;
+			case Collider::Type::ENABLE_BOSS_2: // light green
+				app->render->DrawRectangle(colliders[i]->rect, 255, 255, 255, alpha);
+				break;
+			case Collider::Type::ENABLE_BOSS_3:
 				app->render->DrawRectangle(colliders[i]->rect, 255, 255, 255, alpha);
 				break;
 			}
