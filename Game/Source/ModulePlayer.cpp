@@ -2358,7 +2358,7 @@ bool ModulePlayer::PostUpdate()
 		{
 			gameOverDelay++;
 
-			app->render->DrawTexture2(gameOverScreen, 0, 0, NULL, 0.0f);
+			//app->render->DrawTexture2(gameOverScreen, 0, 0, NULL, 0.0f);
 
 			if (gameOverDelay > 1 && gameOverDelay <= 2) app->audio->PlayFx(gameOverfx);
 

@@ -155,6 +155,9 @@ bool ModuleUI::PostUpdate()
 				app->render->DrawTexture2(characterHealth0, -60, -7, NULL);
 			}
 		}
+
+		if(app->titleScreen->toTitleScreen == true) app->render->DrawTexture2(app->player->gameOverScreen, 0, 0, NULL, 0.0f);
+
 	}
 
 	return true;
