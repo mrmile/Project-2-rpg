@@ -431,11 +431,19 @@ bool DialogManager::PostUpdate()
 				app->fonts->BlitText(77, 260, scoreFont, "as you may imagine i am the patient zero.");
 			}
 
-			if (app->player->finalBossPhaseCounter > 660 && app->player->finalBossPhaseCounter < 1860)
+			if (app->player->finalBossPhaseCounter > 660 && app->player->finalBossPhaseCounter <= 1260)
 			{
 				app->fonts->BlitText(77, 240, scoreFont, "its amazing you have made your way until");
 				app->fonts->BlitText(77, 260, scoreFont, "here. i have to accept you have done a");
 				app->fonts->BlitText(77, 280, scoreFont, "very good job.");
+			}
+
+			if (app->player->finalBossPhaseCounter > 1260 && app->player->finalBossPhaseCounter < 1860)
+			{
+				app->fonts->BlitText(77, 240, scoreFont, "but now i will kill you! you all have");
+				app->fonts->BlitText(77, 260, scoreFont, "done lots of damage to me with the");
+				app->fonts->BlitText(77, 280, scoreFont, "experiments. i did not wanted to");
+				app->fonts->BlitText(77, 300, scoreFont, "survive. and now you will pay for it.");
 			}
 		}
 
