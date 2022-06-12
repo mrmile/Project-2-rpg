@@ -23,7 +23,8 @@ private:
 	Animation Idle_Enemy;
 	
 	
-	int counter;
+	int counter = 0;
+	int phaseCounter = 0;
 };
 
 #endif 

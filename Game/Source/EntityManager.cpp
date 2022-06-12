@@ -29,6 +29,7 @@
 #include "fenceTwo.h"
 #include "MiniBossOne.h"
 #include "MiniBossTwo.h"
+#include "Final_Boss.h"
 
 #define SPAWN_MARGIN 500
 
@@ -52,6 +53,7 @@ bool EntityManager::Start()
 {
 	texture_mini_boss_one = app->tex->Load("Assets/textures/Enemies/Werebear_Mutated_Zombies/werebear_brown.png");
 	texture_mini_boss_two = app->tex->Load("Assets/textures/Enemies/Lab_Ants/lab_ant_boss.png");
+	texture_final_boss = app->tex->Load("Assets/textures/Enemies/Final_Boss/FinalBoss.png");
 	texture_enemies_base_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_with_spawn.png");
 	texture_enemies_runner_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_runner.png");
 	texture_enemies_volatile_zombie = app->tex->Load("Assets/textures/Enemies/Zombies/zombie_volatile.png");
@@ -110,6 +112,12 @@ bool EntityManager::Update(float dt)
 				entities[i]->SetToDelete();
 				entities[i]->Mini_Boss_Two_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
 				entities[i]->Mini_Boss_Two_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::FINAL_BOSS)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Final_Boss_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Final_Boss_List.end->data->body->SetAwake(false);
 			}
 			if (entities[i]->type == EntityType::ZOMBIE_STANDART)
 			{
@@ -269,6 +277,10 @@ bool EntityManager::CleanUp()
 			{
 				entities[i]->Mini_Boss_Two_List.end->data->body->DestroyFixture(entities[i]->Mini_Boss_Two_List.end->data->body->GetFixtureList());
 			}
+			if (HelperQueue[i].type == EntityType::FINAL_BOSS)
+			{
+				entities[i]->Final_Boss_List.end->data->body->DestroyFixture(entities[i]->Final_Boss_List.end->data->body->GetFixtureList());
+			}
 			if (HelperQueue[i].type == EntityType::ZOMBIE_STANDART)
 			{
 				entities[i]->Standart_Zombie_List.end->data->body->DestroyFixture(entities[i]->Standart_Zombie_List.end->data->body->GetFixtureList());
@@ -342,6 +354,7 @@ bool EntityManager::CleanUp()
 
 	app->tex->UnLoad(texture_mini_boss_one);
 	app->tex->UnLoad(texture_mini_boss_two);
+	app->tex->UnLoad(texture_final_boss);
 	app->tex->UnLoad(texture_enemies_base_zombie);
 	app->tex->UnLoad(texture_enemies_runner_zombie);
 	app->tex->UnLoad(texture_enemies_spitter_zombie);
@@ -533,6 +546,14 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				entities[i]->texture = texture_mini_boss_two;
 
 				break;
+			case EntityType::FINAL_BOSS:
+				entities[i] = new Final_Boss(info.x, info.y);
+				HelperQueue[i].type = EntityType::FINAL_BOSS;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				entities[i]->texture = texture_final_boss;
+
+				break;
 			case EntityType::ZOMBIE_STANDART:
 				entities[i] = new Zombie_Standart(info.x,info.y);
 				HelperQueue[i].type = EntityType::ZOMBIE_STANDART;
@@ -632,6 +653,12 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				{
 					entities[i]->SetToDelete();
 					entities[i]->Mini_Boss_Two_List.end->data->body->DestroyFixture(entities[i]->Mini_Boss_Two_List.end->data->body->GetFixtureList());
+					entities[i] = nullptr;
+				}
+				if (HelperQueue[i].type == EntityType::FINAL_BOSS)
+				{
+					entities[i]->SetToDelete();
+					entities[i]->Final_Boss_List.end->data->body->DestroyFixture(entities[i]->Final_Boss_List.end->data->body->GetFixtureList());
 					entities[i] = nullptr;
 				}
 				if (HelperQueue[i].type == EntityType::ZOMBIE_STANDART)
@@ -750,6 +777,10 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				if (HelperQueue[i].type == EntityType::MINI_BOSS_TWO)
 				{
 					AddEntity(EntityType::MINI_BOSS_TWO, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::FINAL_BOSS)
+				{
+					AddEntity(EntityType::FINAL_BOSS, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
 				if (HelperQueue[i].type == EntityType::ZOMBIE_STANDART)
 				{

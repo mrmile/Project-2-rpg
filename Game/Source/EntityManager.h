@@ -25,6 +25,7 @@ enum class EntityType
 	ZOMBIE_STANDART,
 	MINI_BOSS_ONE,
 	MINI_BOSS_TWO,
+	FINAL_BOSS,
 	ZOMBIE_VOLATILE,
 	SWITCH_KEY,
 	SWITCH_KEY2,
@@ -115,6 +116,7 @@ public:
 	Entity* entities[MAX_ENTITIES] = { nullptr };
 	SDL_Texture* texture_mini_boss_one = nullptr;
 	SDL_Texture* texture_mini_boss_two = nullptr;
+	SDL_Texture* texture_final_boss = nullptr;
 	SDL_Texture* texture_enemies_base_zombie = nullptr;
 	SDL_Texture* texture_enemies_runner_zombie = nullptr;
 	SDL_Texture* texture_enemies_spitter_zombie = nullptr;
