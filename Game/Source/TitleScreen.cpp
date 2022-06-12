@@ -1,4 +1,5 @@
 #include "TitleScreen.h"
+#include "ModuleIntro.h"
 #include "App.h"
 #include "Input.h"
 #include "Textures.h"
@@ -248,45 +249,12 @@ bool TitleScreen::Update(float dt)
 
 		if (delay > 90 && delay <= 91)
 		{
-			//app->physics->Enable();
-			app->collisions->Enable();
-			app->map->Enable();
-			app->particles->Enable();
-			app->sceneMainMap->Enable();
-			app->player->Enable();
-			app->entity_manager->Enable();
-			app->fonts->Enable();
-			app->tex->Enable();
-			app->pause_menu->Enable();
-
-			app->player->score = 0;
-			//app->player->lives = 3;
-			SavedGame = false;
-
-			app->player->entranceID = 0;
-			app->player->harborUnlock = false;
-			app->player->baseUnlock = false;
-			app->player->rock1Removed = false;
-			app->player->rock2Removed = false;
-			app->player->switchesPressed = 0;
-			app->player->switch1Ok = false;
-			app->player->switch2Ok = false;
-			app->player->switch3Ok = false;
-			app->player->switch4Ok = false;
-			app->player->switch5Ok = false;
-			app->player->boss1Dead = false;
-			app->player->boss2Dead = false;
-			app->player->boss3Dead = false;
-			app->player->finalBossDead = false;
-			app->questManager->mainQuestID = FIND_THE_DOCTOR_1;
-
+			app->moduleIntro->Enable();
+			app->entity_manager->Disable();
 			app->titleScreen->Disable();
-			//app->fade->FadeToBlack(app->titleScreen, app->sceneCave, 60);
 		}
 	}
 
-	
-	
 	return true;
 }
 

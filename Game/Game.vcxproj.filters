@@ -202,6 +202,9 @@
     <ClCompile Include="Source\ModuleUI.cpp">
       <Filter>General\UI</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ModuleIntro.cpp">
+      <Filter>General\Scenes and Maps\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Defs.h">
@@ -434,6 +437,9 @@
     </ClInclude>
     <ClInclude Include="Source\ModuleUI.h">
       <Filter>General\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ModuleIntro.h">
+      <Filter>General\Scenes and Maps\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

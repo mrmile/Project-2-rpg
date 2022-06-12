@@ -7,6 +7,7 @@
 #include "Audio.h"
 #include "SceneMainMap.h"
 #include "SceneCave.h"
+#include "ModuleIntro.h"
 #include "CreditsScreen.h"
 #include "SceneBase.h"
 #include "SceneMotel.h"
@@ -54,6 +55,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	audio = new Audio(true);
 	logoScreen = new LogoScreen(true);
 	titleScreen = new TitleScreen(false);
+	moduleIntro = new ModuleIntro(false);
 	creditsScreen = new CreditsScreen(false);
 	sceneMainMap = new SceneMainMap(false);
 	sceneCave = new SceneCave(false);
@@ -90,6 +92,7 @@ App::App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(map);
 	AddModule(logoScreen);
 	AddModule(titleScreen);
+	AddModule(moduleIntro);
 	AddModule(creditsScreen);
 	AddModule(sceneMainMap);
 	AddModule(sceneCave);

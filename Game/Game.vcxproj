@@ -159,6 +159,7 @@
     <ClCompile Include="Source\ModuleFadeToBlack.cpp" />
     <ClCompile Include="Source\ModuleFonts.cpp" />
     <ClCompile Include="Source\GamepadInput.cpp" />
+    <ClCompile Include="Source\ModuleIntro.cpp" />
     <ClCompile Include="Source\ModuleParticles.cpp" />
     <ClCompile Include="Source\ModulePhysics.cpp" />
     <ClCompile Include="Source\ModulePlayer.cpp" />
@@ -222,6 +223,7 @@
     <ClInclude Include="Source\ModuleFadeToBlack.h" />
     <ClInclude Include="Source\ModuleFonts.h" />
     <ClInclude Include="Source\GamepadInput.h" />
+    <ClInclude Include="Source\ModuleIntro.h" />
     <ClInclude Include="Source\ModuleParticles.h" />
     <ClInclude Include="Source\ModulePhysics.h" />
     <ClInclude Include="Source\ModulePlayer.h" />
