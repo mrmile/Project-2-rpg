@@ -71,6 +71,8 @@ private:
 	Animation leftUpDieAnim_Enemy1;
 
 	int counter;
+
+	int RunningNumber;
 };
 
 #endif 

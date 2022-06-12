@@ -20,6 +20,10 @@
 
 #include "Defs.h"
 
+#include <stdlib.h>     /* srand, rand */
+#include <time.h>       /* time */
+
+
 Mini_Boss_One::Mini_Boss_One(int x, int y) : Entity(x, y)
 {
 	MaxHp = 40;
@@ -675,6 +679,8 @@ void Mini_Boss_One::Update(float dt)
 						currentAnim->loop = false;
 						Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f }); //movimiento contrario a la direccion del jugador cuando nos chocamos con el
 
+						srand(time(NULL));
+						RunningNumber = rand()%5;
 						entityTurn = TurnState::MidOfTurn;
 
 					}
@@ -686,91 +692,181 @@ void Mini_Boss_One::Update(float dt)
 						currentAnim = &idleDownAnim_Enemy1;
 						currentAnim->loop = true;
 						counter++;
-
-						if (position.DistanceTo({ app->player->position.x + app->player->collider->rect.w / 2 , app->player->position.y - app->player->collider->rect.h }) > 60)
+						if (RunningNumber != 2)
 						{
-							if (position.x > app->player->position.x + app->player->collider->rect.w / 2)
+							if (position.DistanceTo({ app->player->position.x + app->player->collider->rect.w / 2 , app->player->position.y - app->player->collider->rect.h }) > 60)
 							{
-								if (currentAnim != &leftWalkAnim_Enemy1)
+								if (position.x > app->player->position.x + app->player->collider->rect.w / 2)
 								{
-									//leftWalkAnim_Enemy1.Reset();
-									currentAnim = &leftWalkAnim_Enemy1;
+									if (currentAnim != &leftWalkAnim_Enemy1)
+									{
+										//leftWalkAnim_Enemy1.Reset();
+										currentAnim = &leftWalkAnim_Enemy1;
+									}
+									Mini_Boss_One_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
 								}
-								Mini_Boss_One_List.end->data->body->SetLinearVelocity({ -0.5f, 0.0f });
-							}
-							if (position.x < app->player->position.x + app->player->collider->rect.w / 2)
-							{
-								if (currentAnim != &rightWalkAnim_Enemy1)
+								if (position.x < app->player->position.x + app->player->collider->rect.w / 2)
 								{
-									//rightWalkAnim_Enemy1.Reset();
-									currentAnim = &rightWalkAnim_Enemy1;
+									if (currentAnim != &rightWalkAnim_Enemy1)
+									{
+										//rightWalkAnim_Enemy1.Reset();
+										currentAnim = &rightWalkAnim_Enemy1;
+									}
+									Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
 								}
-								Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 0.5f, 0.0f });
-							}
-							if (position.y > app->player->position.y - app->player->collider->rect.h)
-							{
-								if (currentAnim != &upWalkAnim_Enemy1)
+								if (position.y > app->player->position.y - app->player->collider->rect.h)
 								{
-									//upWalkAnim_Enemy1.Reset();
-									currentAnim = &upWalkAnim_Enemy1;
+									if (currentAnim != &upWalkAnim_Enemy1)
+									{
+										//upWalkAnim_Enemy1.Reset();
+										currentAnim = &upWalkAnim_Enemy1;
+									}
+									Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
 								}
-								Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 0.0f, -0.5f });
-							}
-							if (position.y < app->player->position.y - app->player->collider->rect.h)
-							{
-								if (currentAnim != &downWalkAnim_Enemy1)
+								if (position.y < app->player->position.y - app->player->collider->rect.h)
 								{
-									//downWalkAnim_Enemy1.Reset();
-									currentAnim = &downWalkAnim_Enemy1;
+									if (currentAnim != &downWalkAnim_Enemy1)
+									{
+										//downWalkAnim_Enemy1.Reset();
+										currentAnim = &downWalkAnim_Enemy1;
+									}
+									Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
 								}
-								Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 0.0f, 0.5f });
-							}
 
 
-							if ((app->player->position.y - app->player->collider->rect.h > position.y) && (app->player->position.x + app->player->collider->rect.w / 2 > position.x))
-							{
-								if (currentAnim != &rightDownWalkAnim_Enemy1)
+								if ((app->player->position.y - app->player->collider->rect.h > position.y) && (app->player->position.x + app->player->collider->rect.w / 2 > position.x))
 								{
-									//rightDownWalkAnim_Enemy1.Reset();
-									currentAnim = &rightDownWalkAnim_Enemy1;
+									if (currentAnim != &rightDownWalkAnim_Enemy1)
+									{
+										//rightDownWalkAnim_Enemy1.Reset();
+										currentAnim = &rightDownWalkAnim_Enemy1;
+									}
+									Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
 								}
-								Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 0.5f, 0.5f });
-							}
-							if ((app->player->position.x + app->player->collider->rect.w / 2 < position.x) && (app->player->position.y - app->player->collider->rect.h > position.y))
-							{
-								if (currentAnim != &leftDownWalkAnim_Enemy1)
+								if ((app->player->position.x + app->player->collider->rect.w / 2 < position.x) && (app->player->position.y - app->player->collider->rect.h > position.y))
 								{
-									//rightDownWalkAnim_Enemy1.Reset();
-									currentAnim = &leftDownWalkAnim_Enemy1;
+									if (currentAnim != &leftDownWalkAnim_Enemy1)
+									{
+										//rightDownWalkAnim_Enemy1.Reset();
+										currentAnim = &leftDownWalkAnim_Enemy1;
+									}
+									Mini_Boss_One_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
 								}
-								Mini_Boss_One_List.end->data->body->SetLinearVelocity({ -0.5f, 0.5f });
-							}
-							if ((app->player->position.y - app->player->collider->rect.h < position.y) && (app->player->position.x + app->player->collider->rect.w / 2 < position.x))
-							{
-								if (currentAnim != &leftUpWalkAnim_Enemy1)
+								if ((app->player->position.y - app->player->collider->rect.h < position.y) && (app->player->position.x + app->player->collider->rect.w / 2 < position.x))
 								{
-									//leftUpWalkAnim_Enemy1.Reset();
-									currentAnim = &leftUpWalkAnim_Enemy1;
+									if (currentAnim != &leftUpWalkAnim_Enemy1)
+									{
+										//leftUpWalkAnim_Enemy1.Reset();
+										currentAnim = &leftUpWalkAnim_Enemy1;
+									}
+									Mini_Boss_One_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
 								}
-								Mini_Boss_One_List.end->data->body->SetLinearVelocity({ -0.5f, -0.5f });
-							}
-							if ((app->player->position.x + app->player->collider->rect.w / 2 > position.x) && (app->player->position.y - app->player->collider->rect.h < position.y))
-							{
-								if (currentAnim != &rightUpWalkAnim_Enemy1)
+								if ((app->player->position.x + app->player->collider->rect.w / 2 > position.x) && (app->player->position.y - app->player->collider->rect.h < position.y))
 								{
-									//leftUpWalkAnim_Enemy1.Reset();
-									currentAnim = &rightUpWalkAnim_Enemy1;
+									if (currentAnim != &rightUpWalkAnim_Enemy1)
+									{
+										//leftUpWalkAnim_Enemy1.Reset();
+										currentAnim = &rightUpWalkAnim_Enemy1;
+									}
+									Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
 								}
-								Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 0.5f, -0.5f });
+
+								if (counter == 150) entityTurn = TurnState::FinishTurn;
 							}
 
-							if (counter == 150) entityTurn = TurnState::FinishTurn;
+							if (position.DistanceTo({ app->player->position.x + app->player->collider->rect.w / 2 , app->player->position.y - app->player->collider->rect.h }) <= 60)
+							{
+								entityTurn = TurnState::FinishTurn;
+							}
 						}
-
-						if (position.DistanceTo({ app->player->position.x + app->player->collider->rect.w / 2 , app->player->position.y - app->player->collider->rect.h }) <= 60)
+						if (RunningNumber == 2)
 						{
-							entityTurn = TurnState::FinishTurn;
+							if (position.DistanceTo({ app->player->position.x + app->player->collider->rect.w / 2 , app->player->position.y - app->player->collider->rect.h }) > 60)
+							{
+								if (position.x > app->player->position.x + app->player->collider->rect.w / 2)
+								{
+									if (currentAnim != &leftWalkAnim_Enemy1)
+									{
+										//leftWalkAnim_Enemy1.Reset();
+										currentAnim = &leftWalkAnim_Enemy1;
+									}
+									Mini_Boss_One_List.end->data->body->SetLinearVelocity({ -1.5f, 0.0f });
+								}
+								if (position.x < app->player->position.x + app->player->collider->rect.w / 2)
+								{
+									if (currentAnim != &rightWalkAnim_Enemy1)
+									{
+										//rightWalkAnim_Enemy1.Reset();
+										currentAnim = &rightWalkAnim_Enemy1;
+									}
+									Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 1.5f, 0.0f });
+								}
+								if (position.y > app->player->position.y - app->player->collider->rect.h)
+								{
+									if (currentAnim != &upWalkAnim_Enemy1)
+									{
+										//upWalkAnim_Enemy1.Reset();
+										currentAnim = &upWalkAnim_Enemy1;
+									}
+									Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 0.0f, -1.5f });
+								}
+								if (position.y < app->player->position.y - app->player->collider->rect.h)
+								{
+									if (currentAnim != &downWalkAnim_Enemy1)
+									{
+										//downWalkAnim_Enemy1.Reset();
+										currentAnim = &downWalkAnim_Enemy1;
+									}
+									Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 0.0f, 1.5f });
+								}
+
+
+								if ((app->player->position.y - app->player->collider->rect.h > position.y) && (app->player->position.x + app->player->collider->rect.w / 2 > position.x))
+								{
+									if (currentAnim != &rightDownWalkAnim_Enemy1)
+									{
+										//rightDownWalkAnim_Enemy1.Reset();
+										currentAnim = &rightDownWalkAnim_Enemy1;
+									}
+									Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 1.5f, 0.5f });
+								}
+								if ((app->player->position.x + app->player->collider->rect.w / 2 < position.x) && (app->player->position.y - app->player->collider->rect.h > position.y))
+								{
+									if (currentAnim != &leftDownWalkAnim_Enemy1)
+									{
+										//rightDownWalkAnim_Enemy1.Reset();
+										currentAnim = &leftDownWalkAnim_Enemy1;
+									}
+									Mini_Boss_One_List.end->data->body->SetLinearVelocity({ -1.5f, 1.5f });
+								}
+								if ((app->player->position.y - app->player->collider->rect.h < position.y) && (app->player->position.x + app->player->collider->rect.w / 2 < position.x))
+								{
+									if (currentAnim != &leftUpWalkAnim_Enemy1)
+									{
+										//leftUpWalkAnim_Enemy1.Reset();
+										currentAnim = &leftUpWalkAnim_Enemy1;
+									}
+									Mini_Boss_One_List.end->data->body->SetLinearVelocity({ -1.5f, -1.5f });
+								}
+								if ((app->player->position.x + app->player->collider->rect.w / 2 > position.x) && (app->player->position.y - app->player->collider->rect.h < position.y))
+								{
+									if (currentAnim != &rightUpWalkAnim_Enemy1)
+									{
+										//leftUpWalkAnim_Enemy1.Reset();
+										currentAnim = &rightUpWalkAnim_Enemy1;
+									}
+									Mini_Boss_One_List.end->data->body->SetLinearVelocity({ 1.5f, -1.5f });
+								}
+
+								if (counter == 150) entityTurn = TurnState::FinishTurn;
+							}
+
+							if (position.DistanceTo({ app->player->position.x + app->player->collider->rect.w / 2 , app->player->position.y - app->player->collider->rect.h }) <= 60)
+							{
+								entityTurn = TurnState::FinishTurn;
+							}
 						}
+						
 
 					}
 					if (entityTurn == TurnState::FinishTurn)

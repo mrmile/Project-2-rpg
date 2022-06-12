@@ -720,17 +720,17 @@ bool InventoryMenu::EquipItemSelected(ItemList* item)
 			item->amount--;
 			if (Equipment[0].type == ItemType::OBJECT_DEFAULT_GUN)
 			{
-				app->player->EquipmentDamage = 2;
+				app->player->EquipmentDamage = 8;
 				app->player->EquipmentRange = 150;
 			}
 			if (Equipment[0].type == ItemType::OBJECT_SHORT_SCOPE_GUN)
 			{
-				app->player->EquipmentDamage = 6;
+				app->player->EquipmentDamage = 10;
 				app->player->EquipmentRange = 75;
 			}
 			if (Equipment[0].type == ItemType::OBJECT_lONG_SCOPE_GUN)
 			{
-				app->player->EquipmentDamage = 3;
+				app->player->EquipmentDamage = 5;
 				app->player->EquipmentRange = 300;
 			}
 		}
@@ -749,7 +749,7 @@ bool InventoryMenu::EquipItemSelected(ItemList* item)
 
 			if (Equipment[1].type == ItemType::OBJECT_KNIFE)
 			{
-				app->player->MeleeDamage = 2;
+				app->player->MeleeDamage = 4;
 			}
 		}
 		
