@@ -32,11 +32,11 @@ Switch5::Switch5(int x, int y) : Entity(x, y)
 
 	//Have the Soldiers describe a path in the screen taking into account the collisions
 
-	Red_Switch.PushBack({ 0,0,32,60 });
+	Red_Switch.PushBack({ 1,0,32,60 });
 	Red_Switch.loop = true;
 	Red_Switch.speed = 0.3f;
 
-	Green_Switch.PushBack({ 89,0,32,60 });
+	Green_Switch.PushBack({ 91,0,32,60 });
 	Green_Switch.loop = true;
 	Green_Switch.speed = 0.3f;
 
