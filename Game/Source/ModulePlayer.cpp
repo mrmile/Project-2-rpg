@@ -2403,23 +2403,32 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::ENABLE_BOSS_1)
 		{
-			if (app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2)
+			if (app->questManager->mainQuestID == LOOK_FOR_THE_COMPUTER_2 && inBossBatle == false && boss1Dead == false)
 			{
+				inBossBatle = true;
+
 
 			}
 		}
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::ENABLE_BOSS_2)
 		{
-			if (app->questManager->mainQuestID == KILL_THE_PATIENT_ZERO_3)
+			if (app->questManager->mainQuestID == KILL_THE_PATIENT_ZERO_3 && inBossBatle == false && boss2Dead == false)
 			{
+				inBossBatle = true;
+
 
 			}
 		}
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::ENABLE_BOSS_3)
 		{
-			//if (thirdBossDead == true)
+			if (boss3Dead == false && inBossBatle == false)
+			{
+				inBossBatle = true;
+
+
+			}
 		}
 
 		if (c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::DOCTOR_NOTE_MESSAGE)

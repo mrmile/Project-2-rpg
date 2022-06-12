@@ -366,6 +366,10 @@ public:
 	bool switch3Ok = false;
 	bool switch4Ok = false;
 	bool switch5Ok = false;
+	bool boss1Dead = false;
+	bool boss2Dead = false;
+	bool boss3Dead = false;
+	bool finalBossDead = false;
 
 	//FX
 	int walkSoundID = 0;

@@ -440,6 +440,8 @@ bool DialogManager::CleanUp()
 	app->tex->UnLoad(textOption2);
 	app->tex->UnLoad(tntExample);
 
+	app->fonts->UnLoad(app->dialogManager->scoreFont);
+
 	app->guiManager->DestroyGuiControl(22);
 	app->guiManager->DestroyGuiControl(23);
 	app->guiManager->DestroyGuiControl(24);

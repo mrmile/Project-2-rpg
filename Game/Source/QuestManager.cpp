@@ -10,6 +10,8 @@
 #include "List.h"
 #include "Audio.h"
 #include "TitleScreen.h"
+#include "DialogManager.h"
+#include "ModuleFonts.h"
 
 
 QuestManager::QuestManager(bool start_enabled) : Module(start_enabled)
@@ -175,6 +177,12 @@ bool QuestManager::PostUpdate()
 		case ACTIVATE_SWITCHES:
 		{
 			if (app->inventoryMenu->showInventory == true && app->player->showCombatHUD == false)app->render->DrawTexture2(secondaryQuestSwitches, 0, 0, NULL);
+
+			app->fonts->BlitText(560, 76, app->dialogManager->scoreFont, "activate the switches");
+
+			sprintf_s(switchesActivatedText, 10, "%1d", app->player->switchesPressed);
+			app->fonts->BlitText(576, 85, app->dialogManager->scoreFont, switchesActivatedText);
+			
 			break;
 		}
 	}

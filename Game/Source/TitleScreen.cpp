@@ -274,6 +274,10 @@ bool TitleScreen::Update(float dt)
 			app->player->switch3Ok = false;
 			app->player->switch4Ok = false;
 			app->player->switch5Ok = false;
+			app->player->boss1Dead = false;
+			app->player->boss2Dead = false;
+			app->player->boss3Dead = false;
+			app->player->finalBossDead = false;
 			app->questManager->mainQuestID = FIND_THE_DOCTOR_1;
 
 			app->titleScreen->Disable();
