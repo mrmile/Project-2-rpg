@@ -757,7 +757,8 @@ bool ModulePlayer::Start()
 	walkSoundID = 0;
 
 	inBossBatle = false;
-	
+	activateFinalBoss = false;
+
 	return ret;
 }
 
@@ -2360,7 +2361,15 @@ void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::ENABLE_FINAL_BATTLE)
 		{
-			playerWin = true;
+			//playerWin = true;
+
+			if (inBossBatle == false)
+			{
+				inBossBatle = true;
+				activateFinalBoss = true;
+				app->audio->ChangeMusic(STORY_FINAL_BOSS_APPEARS, 0.0f, 0.0f);
+
+			}
 		}
 
 		if ((c1->type == Collider::Type::PLAYER) && c2->type == Collider::Type::ENABLE_BOSS_1)

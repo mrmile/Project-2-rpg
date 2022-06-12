@@ -351,6 +351,8 @@ public:
 	bool boss3Dead = false;
 	bool finalBossDead = false;
 
+	bool activateFinalBoss = false;
+
 	//FX
 	int walkSoundID = 0;
 	/*int computerButtonsFX = 0;*/
