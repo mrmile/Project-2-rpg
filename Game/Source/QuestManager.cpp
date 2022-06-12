@@ -181,7 +181,7 @@ bool QuestManager::PostUpdate()
 			app->fonts->BlitText(560, 76, app->dialogManager->scoreFont, "activate the switches");
 
 			sprintf_s(switchesActivatedText, 10, "%1d", app->player->switchesPressed);
-			app->fonts->BlitText(576, 85, app->dialogManager->scoreFont, switchesActivatedText);
+			app->fonts->BlitText(585, 85, app->dialogManager->scoreFont, switchesActivatedText);
 			
 			break;
 		}
