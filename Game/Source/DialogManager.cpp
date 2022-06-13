@@ -744,7 +744,7 @@ bool DialogManager::PostUpdate()
 				app->render->DrawTexture2(app->moduleUI->QTE_swat_final, 0, 10, NULL);
 
 				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_spam, 0, 0, NULL);
-				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_strength_bar, 0, 0, NULL);
 				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
 
 				if (app->player->QTE_Counter > 400)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
