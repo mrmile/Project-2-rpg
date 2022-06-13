@@ -11,3 +11,14 @@ the map.
 
 ## About us
 
+We are a group of students from the UPC Tech Talent Center in Barcelona. This game is the result of our
+final project.
+
+### Developer Team
+
+- Designer: Alvaro
+- AI Coder: Alejandro
+- UI Coder: Albert
+- Team Lead: Otto Tolo
+- Q&A: Ogylandy
+- Artist: Gerard
