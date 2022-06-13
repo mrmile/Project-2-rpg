@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="33" nextobjectid="219">
+<map version="1.2" tiledversion="1.3.5" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="35" nextobjectid="222">
  <tileset firstgid="1" name="base_ground_2" tilewidth="75" tileheight="39" spacing="1" tilecount="48" columns="8">
   <image source="base_ground_2.png" width="607" height="239"/>
  </tileset>
@@ -80125,5 +80125,11 @@
  </objectgroup>
  <objectgroup color="#000000" id="15" name="LEVEL_AREA" visible="0">
   <object id="197" x="1300.85" y="1280.61" width="2368.06" height="1584.36"/>
+ </objectgroup>
+ <objectgroup id="33" name="mini_boss_two">
+  <object id="220" x="3096" y="1796"/>
+ </objectgroup>
+ <objectgroup id="34" name="boss2_battle_Sensor">
+  <object id="221" x="2942.67" y="1770.67" width="37.3333" height="464"/>
  </objectgroup>
 </map>

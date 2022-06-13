@@ -106,7 +106,8 @@ bool CombatMenu::Update(float dt)
 		combatShootGUI->canClick = true;
 		combatMeleeGUI->canClick = true;
 		combatItemsGUI->canClick = true;
-		combatEscapeGUI->canClick = true;
+		if(app->player->inBossBatle == true) combatEscapeGUI->canClick = false;
+		if (app->player->inBossBatle == false) combatEscapeGUI->canClick = true;
 	}
 
 	if (app->player->showCombatHUD == false)

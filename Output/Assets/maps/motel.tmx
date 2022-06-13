@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="37" nextobjectid="349">
+<map version="1.2" tiledversion="1.3.5" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="39" nextobjectid="351">
  <tileset firstgid="1" name="desert_ground" tilewidth="75" tileheight="39" tilecount="560" columns="16">
   <image source="desert_ground.png" width="1200" height="1370"/>
  </tileset>
@@ -140416,6 +140416,12 @@
   <object id="341" x="4746" y="1994.5" width="85" height="19">
    <text wrap="1">OBJ CARD</text>
   </object>
+ </objectgroup>
+ <objectgroup id="37" name="mini_boss_one">
+  <object id="350" x="3486" y="2642" width="30" height="42"/>
+ </objectgroup>
+ <objectgroup id="38" name="boss1_battle_Sensor">
+  <object id="349" x="3312" y="2396" width="30" height="786"/>
  </objectgroup>
  <objectgroup color="#ffff00" id="33" name="sensors_doctor_note">
   <object id="344" x="4895.5" y="1938" width="50.5" height="35.5"/>
