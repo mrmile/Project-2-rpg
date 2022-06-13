@@ -1066,6 +1066,7 @@ bool ModulePlayer::Start()
 	QTE_Counter = 0;
 	finalBossPhaseCounter = 0;
 	finalBossPlayerStrikes = 0;
+	QTE_Counter_bar = 0;
 
 	return ret;
 }
@@ -1120,7 +1121,7 @@ bool ModulePlayer::Update(float dt)
 		return true;
 	}
 
-	if (pauseMenu == false && app->inventoryMenu->showInventory == false && app->mapMenu->showMapMenu == false)
+	if (pauseMenu == false && app->inventoryMenu->showInventory == false && app->mapMenu->showMapMenu == false && activateFinalBoss == false)
 	{
 		playerFPS++;
 

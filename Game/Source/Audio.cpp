@@ -388,7 +388,7 @@ bool Audio::ChangeMusic(int Id, float fadeInTime, float fadeOutTime)
 	{
 		Mix_ResumeMusic();
 
-		app->audio->PlayMusic("Assets/Audio/Music/logoMusicV2.ogg", fadeInTime, fadeOutTime);
+		app->audio->PlayMusic("Assets/Audio/Music/logoMusic.ogg", fadeInTime, fadeOutTime);
 
 		break;
 	}

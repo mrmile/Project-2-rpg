@@ -55,6 +55,8 @@ public:
 	bool option2SelectedSecondDialog = false;
 	int scoreFont = -1;
 	int nodeCounter = 0;
+
+	int QTE_keys_pointerPositionX = 0;
 };
 
 #endif // !__DIALOG_MANAGER_H__

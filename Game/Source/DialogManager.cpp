@@ -53,6 +53,9 @@ bool DialogManager::Start()
 	GUItextOption1 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 23, "Option Button", { 470,240,108,35 }, this, textOption1, NULL, {});
 	GUItextOption2 = (GuiButton*)app->guiManager->CreateGuiControl(GuiControlType::BUTTON, 24, "Option Button", { 470,285,108,35 }, this, textOption2, NULL, {});
 
+
+	QTE_keys_pointerPositionX = 0;
+
 	return true;
 }
 
@@ -432,7 +435,7 @@ bool DialogManager::PostUpdate()
 			if (app->player->finalBossPhaseCounter > 660 && app->player->finalBossPhaseCounter <= 1260)
 			{
 				app->fonts->BlitText(77, 240, scoreFont, "its amazing you have made your way until");
-				app->fonts->BlitText(77, 260, scoreFont, "here. i have to accept you have done a");
+				app->fonts->BlitText(77, 260, scoreFont, "here. i have to admit you have done a");
 				app->fonts->BlitText(77, 280, scoreFont, "very good job.");
 			}
 
@@ -456,12 +459,13 @@ bool DialogManager::PostUpdate()
 			}
 
 			SDL_Rect quad;
-			quad = { 203, 62, app->player->QTE_Counter/2 - 76, 16 };
-			int QTE_keys_pointerPositionX = 700;
+			quad = { 203, 62, app->player->QTE_Counter/*/2 - 76*/, 16 };
 			
-
+			
+			//app->player->QTE_Counter_bar;
 			if (app->player->finalBossPhaseCounter > 1918 && app->player->finalBossPhaseCounter <= 1920)
 			{
+
 				app->player->QTE_Counter = 600;
 				QTE_keys_pointerPositionX = 160;
 			}
@@ -471,13 +475,13 @@ bool DialogManager::PostUpdate()
 
 				app->render->DrawTexture2(app->moduleUI->QTE_swat1, 0, 0, NULL);
 
-				if(app->player->QTE_Counter > 300)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
-				else if (app->player->QTE_Counter > 150 && app->player->QTE_Counter <= 300)app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
-				else if (app->player->QTE_Counter <= 150)app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
-
 				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_1, 0, 0, NULL);
 				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
 				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
+
+				if (app->player->QTE_Counter > 300)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
+				else if (app->player->QTE_Counter > 150 && app->player->QTE_Counter <= 300)app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
+				else if (app->player->QTE_Counter <= 150)app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
 
 				if (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN && QTE_keys_pointerPositionX == 160)
 				{
@@ -524,13 +528,13 @@ bool DialogManager::PostUpdate()
 
 				app->render->DrawTexture2(app->moduleUI->QTE_zombie1, 0, 0, NULL);
 
+				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_2, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
+
 				if (app->player->QTE_Counter > 300)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
 				else if (app->player->QTE_Counter > 150 && app->player->QTE_Counter <= 300)app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
 				else if (app->player->QTE_Counter <= 150)app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
-
-				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_1, 0, 0, NULL);
-				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
-				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
 
 				if (app->input->keys[SDL_SCANCODE_C] == KEY_DOWN && QTE_keys_pointerPositionX == 160)
 				{
@@ -577,13 +581,13 @@ bool DialogManager::PostUpdate()
 
 				app->render->DrawTexture2(app->moduleUI->QTE_swat2, 0, 0, NULL);
 
+				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_3, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
+
 				if (app->player->QTE_Counter > 300)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
 				else if (app->player->QTE_Counter > 150 && app->player->QTE_Counter <= 300)app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
 				else if (app->player->QTE_Counter <= 150)app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
-
-				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_1, 0, 0, NULL);
-				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
-				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
 
 				if (app->input->keys[SDL_SCANCODE_UP] == KEY_DOWN && QTE_keys_pointerPositionX == 160)
 				{
@@ -630,13 +634,13 @@ bool DialogManager::PostUpdate()
 
 				app->render->DrawTexture2(app->moduleUI->QTE_zombie2, 0, 0, NULL);
 
+				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_4, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
+
 				if (app->player->QTE_Counter > 300)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
 				else if (app->player->QTE_Counter > 150 && app->player->QTE_Counter <= 300)app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
 				else if (app->player->QTE_Counter <= 150)app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
-
-				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_1, 0, 0, NULL);
-				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
-				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
 
 				if (app->input->keys[SDL_SCANCODE_LEFT] == KEY_DOWN && QTE_keys_pointerPositionX == 160)
 				{
@@ -673,24 +677,24 @@ bool DialogManager::PostUpdate()
 
 
 
-			if (app->player->finalBossPhaseCounter > 4980 && app->player->finalBossPhaseCounter <= 4982)
+			if (app->player->finalBossPhaseCounter > 4980+180 && app->player->finalBossPhaseCounter <= 4982 + 180)
 			{
 				app->player->QTE_Counter = 600;
 				QTE_keys_pointerPositionX = 160;
 			}
-			if (app->player->finalBossPhaseCounter > 4982 && app->player->finalBossPhaseCounter <= 5582)
+			if (app->player->finalBossPhaseCounter > 4982 + 180 && app->player->finalBossPhaseCounter <= 5582 + 180)
 			{
 				app->player->QTE_Counter--;
 
 				app->render->DrawTexture2(app->moduleUI->QTE_swat1, 0, 0, NULL);
 
+				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_5, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
+
 				if (app->player->QTE_Counter > 300)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
 				else if (app->player->QTE_Counter > 150 && app->player->QTE_Counter <= 300)app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
 				else if (app->player->QTE_Counter <= 150)app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
-
-				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_1, 0, 0, NULL);
-				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
-				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
 
 				if (app->input->keys[SDL_SCANCODE_UP] == KEY_DOWN && QTE_keys_pointerPositionX == 160)
 				{
@@ -728,26 +732,26 @@ bool DialogManager::PostUpdate()
 
 			
 
-			if (app->player->finalBossPhaseCounter > 5582 && app->player->finalBossPhaseCounter <= 5584)
+			if (app->player->finalBossPhaseCounter > 5582 + 180 && app->player->finalBossPhaseCounter <= 5584 + 180)
 			{
 				app->player->QTE_Counter = 0;
 				QTE_keys_pointerPositionX = 700;
 			}
-			if (app->player->finalBossPhaseCounter > 5584 && app->player->finalBossPhaseCounter <= 6184)
+			if (app->player->finalBossPhaseCounter > 5584 + 180 && app->player->finalBossPhaseCounter <= 6184 + 180)
 			{
 				//app->player->QTE_Counter--;
 
 				app->render->DrawTexture2(app->moduleUI->QTE_swat_final, 0, 0, NULL);
 
+				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_spam, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
+
 				if (app->player->QTE_Counter > 300)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
 				else if (app->player->QTE_Counter > 150 && app->player->QTE_Counter <= 300)app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
 				else if (app->player->QTE_Counter <= 150)app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
 
-				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_1, 0, 0, NULL);
-				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
-				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
-
-				if (app->input->keys[SDL_SCANCODE_UP] == KEY_DOWN && QTE_keys_pointerPositionX == 160)
+				if (app->input->keys[SDL_SCANCODE_UP] == KEY_DOWN)
 				{
 					if (app->player->QTE_Counter < 594)app->player->QTE_Counter += 10;
 				}
@@ -758,10 +762,10 @@ bool DialogManager::PostUpdate()
 
 				
 			}
-			if(app->player->finalBossPhaseCounter > 6184 && app->player->finalBossPhaseCounter <= 6186 && app->player->QTE_Counter < 520)app->player->finalBossPlayerStrikes++;
+			if(app->player->finalBossPhaseCounter > 6184 + 180 && app->player->finalBossPhaseCounter <= 6186 + 180 && app->player->QTE_Counter < 520)app->player->finalBossPlayerStrikes++;
 
 
-			if (app->player->finalBossPhaseCounter > 6420 && app->player->finalBossPhaseCounter <= 6422)
+			if (app->player->finalBossPhaseCounter > 6420 + 180 && app->player->finalBossPhaseCounter <= 6422 + 180)
 			{
 				if (app->player->finalBossPlayerStrikes >= 5) app->player->playerHP = 0;
 				else if (app->player->finalBossPlayerStrikes < 5) app->player->playerWin = true;
