@@ -59,6 +59,7 @@ bool ModuleIntro::Start()
 	app->audio->ChangeMusic(STORY_INTRO, 0, 0);
 
 	delay = 0;
+	backwardsImage = 0;
 	
 	return true;
 }
@@ -78,7 +79,7 @@ bool ModuleIntro::Update(float dt)
 		backwardsImage--;
 	}
 
-	if (delay >= 3155)
+	if (delay >= 3155 || (app->input->keys[SDL_SCANCODE_SPACE] == KEY_DOWN))
 	{
 		//app->physics->Enable();
 		app->collisions->Enable();
