@@ -5,7 +5,9 @@
 ## Our Game
 
 Area 52 is an Open-World Zombie Apocalypse Survival where you will have to manage your resources and fight 
-through the world's end to find a cure. This isometric 
+through the world's end to find a cure. This isometric new experience has everything you need from a game.
+A main story, multiple enemies, a engaging turn-based combat system and plenty of items to pick up around
+the map.
 
 ## About us
 
