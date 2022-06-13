@@ -354,6 +354,7 @@ public:
 	bool activateFinalBoss = false;
 	int QTE_Counter = 0;
 	int finalBossPhaseCounter = 0;
+	int finalBossPlayerStrikes = 0;
 
 	//FX
 	int walkSoundID = 0;

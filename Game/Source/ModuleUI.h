@@ -35,7 +35,7 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-private:
+public:
 
 	SDL_Texture* characterHealth100 = nullptr;
 	SDL_Texture* characterHealth80 = nullptr;
@@ -52,6 +52,18 @@ private:
 	SDL_Texture* QTE_strength_bar = nullptr;
 	SDL_Texture* QTE_timer_bar = nullptr;
 
+	SDL_Texture* QTE_kb_combo_1 = nullptr;
+	SDL_Texture* QTE_kb_combo_2 = nullptr;
+	SDL_Texture* QTE_kb_combo_3 = nullptr;
+	SDL_Texture* QTE_kb_combo_4 = nullptr;
+	SDL_Texture* QTE_kb_combo_5 = nullptr;
+	SDL_Texture* QTE_kb_combo_spam = nullptr;
+
+	SDL_Texture* QTE_swat1 = nullptr;
+	SDL_Texture* QTE_swat2 = nullptr;
+	SDL_Texture* QTE_swat_final = nullptr;
+	SDL_Texture* QTE_zombie1 = nullptr;
+	SDL_Texture* QTE_zombie2 = nullptr;
 
 	//Low Health Effects
 	SDL_Texture* lowHealthBlood = nullptr;

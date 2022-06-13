@@ -421,11 +421,6 @@ bool DialogManager::PostUpdate()
 				app->render->DrawTexture2(textNameFINAL_BOSS, 0, 0, NULL);
 			}
 
-			app->fonts->BlitText(77, 240, scoreFont, "night have fallen, be careful. zombies");
-			app->fonts->BlitText(77, 260, scoreFont, "during nightime transform into very large");
-			app->fonts->BlitText(77, 280, scoreFont, "monsters, i call them volatiles. if you");
-			app->fonts->BlitText(77, 300, scoreFont, "got caught you will die instantly");
-
 			if (app->player->finalBossPhaseCounter > 10 && app->player->finalBossPhaseCounter <= 660)
 			{
 				app->fonts->BlitText(77, 240, scoreFont, "well well, looks like you have found me.");
@@ -459,17 +454,320 @@ bool DialogManager::PostUpdate()
 			}
 
 			SDL_Rect quad;
-			quad = { 5, 10, app->player->QTE_Counter, 10 };
+			quad = { 203, 62, app->player->QTE_Counter/2 - 76, 16 };
+			int QTE_keys_pointerPositionX = 700;
+			
 
-			app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
-
-			if (app->player->finalBossPhaseCounter > 1918 && app->player->finalBossPhaseCounter <= 1920)app->player->QTE_Counter = 600;
-
+			if (app->player->finalBossPhaseCounter > 1918 && app->player->finalBossPhaseCounter <= 1920)
+			{
+				app->player->QTE_Counter = 600;
+				QTE_keys_pointerPositionX = 160;
+			}
 			if (app->player->finalBossPhaseCounter > 1920 && app->player->finalBossPhaseCounter <= 2520)
 			{
+				app->player->QTE_Counter--;
+
+				app->render->DrawTexture2(app->moduleUI->QTE_swat1, 0, 0, NULL);
+
+				if(app->player->QTE_Counter > 300)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
+				else if (app->player->QTE_Counter > 150 && app->player->QTE_Counter <= 300)app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
+				else if (app->player->QTE_Counter <= 150)app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
+
+				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_1, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
+
+				if (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN && QTE_keys_pointerPositionX == 160)
+				{
+					QTE_keys_pointerPositionX = 230;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_C] == KEY_DOWN && QTE_keys_pointerPositionX == 230)
+				{
+					QTE_keys_pointerPositionX = 300;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_X] == KEY_DOWN && QTE_keys_pointerPositionX == 300)
+				{
+					QTE_keys_pointerPositionX = 360;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_X] == KEY_DOWN && QTE_keys_pointerPositionX == 360)
+				{
+					QTE_keys_pointerPositionX = 430;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_X] == KEY_DOWN && QTE_keys_pointerPositionX == 430)
+				{
+					QTE_keys_pointerPositionX = 700;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->player->QTE_Counter <= 0 && QTE_keys_pointerPositionX != 700) app->player->finalBossPlayerStrikes++;
+			}
+
+
+			if (app->player->finalBossPhaseCounter > 2520 && app->player->finalBossPhaseCounter <= 2522)
+			{
+				app->player->QTE_Counter = 600;
+				QTE_keys_pointerPositionX = 160;
+			}
+			if (app->player->finalBossPhaseCounter > 2522 && app->player->finalBossPhaseCounter <= 3122)
+			{
+				app->player->QTE_Counter--;
+
+				app->render->DrawTexture2(app->moduleUI->QTE_zombie1, 0, 0, NULL);
+
+				if (app->player->QTE_Counter > 300)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
+				else if (app->player->QTE_Counter > 150 && app->player->QTE_Counter <= 300)app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
+				else if (app->player->QTE_Counter <= 150)app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
+
+				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_1, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
+
+				if (app->input->keys[SDL_SCANCODE_C] == KEY_DOWN && QTE_keys_pointerPositionX == 160)
+				{
+					QTE_keys_pointerPositionX = 230;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_X] == KEY_DOWN && QTE_keys_pointerPositionX == 230)
+				{
+					QTE_keys_pointerPositionX = 300;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN && QTE_keys_pointerPositionX == 300)
+				{
+					QTE_keys_pointerPositionX = 360;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_RIGHT] == KEY_DOWN && QTE_keys_pointerPositionX == 360)
+				{
+					QTE_keys_pointerPositionX = 430;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN && QTE_keys_pointerPositionX == 430)
+				{
+					QTE_keys_pointerPositionX = 700;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->player->QTE_Counter <= 0 && QTE_keys_pointerPositionX != 700) app->player->finalBossPlayerStrikes++;
+			}
+
+
+			if (app->player->finalBossPhaseCounter > 3122 && app->player->finalBossPhaseCounter <= 3124)
+			{
+				app->player->QTE_Counter = 600;
+				QTE_keys_pointerPositionX = 160;
+			}
+			if (app->player->finalBossPhaseCounter > 3124 && app->player->finalBossPhaseCounter <= 3724)
+			{
+				app->player->QTE_Counter--;
+
+				app->render->DrawTexture2(app->moduleUI->QTE_swat2, 0, 0, NULL);
+
+				if (app->player->QTE_Counter > 300)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
+				else if (app->player->QTE_Counter > 150 && app->player->QTE_Counter <= 300)app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
+				else if (app->player->QTE_Counter <= 150)app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
+
+				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_1, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
+
+				if (app->input->keys[SDL_SCANCODE_UP] == KEY_DOWN && QTE_keys_pointerPositionX == 160)
+				{
+					QTE_keys_pointerPositionX = 230;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN && QTE_keys_pointerPositionX == 230)
+				{
+					QTE_keys_pointerPositionX = 300;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_DOWN] == KEY_DOWN && QTE_keys_pointerPositionX == 300)
+				{
+					QTE_keys_pointerPositionX = 360;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_LEFT] == KEY_DOWN && QTE_keys_pointerPositionX == 360)
+				{
+					QTE_keys_pointerPositionX = 430;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_X] == KEY_DOWN && QTE_keys_pointerPositionX == 430)
+				{
+					QTE_keys_pointerPositionX = 700;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->player->QTE_Counter <= 0 && QTE_keys_pointerPositionX != 700) app->player->finalBossPlayerStrikes++;
+			}
+
+
+			if (app->player->finalBossPhaseCounter > 3724 && app->player->finalBossPhaseCounter <= 3726)
+			{
+				app->player->QTE_Counter = 600;
+				QTE_keys_pointerPositionX = 160;
+			}
+			if (app->player->finalBossPhaseCounter > 3726 && app->player->finalBossPhaseCounter <= 4326)
+			{
+				app->player->QTE_Counter--;
+
+				app->render->DrawTexture2(app->moduleUI->QTE_zombie2, 0, 0, NULL);
+
+				if (app->player->QTE_Counter > 300)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
+				else if (app->player->QTE_Counter > 150 && app->player->QTE_Counter <= 300)app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
+				else if (app->player->QTE_Counter <= 150)app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
+
+				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_1, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
+
+				if (app->input->keys[SDL_SCANCODE_LEFT] == KEY_DOWN && QTE_keys_pointerPositionX == 160)
+				{
+					QTE_keys_pointerPositionX = 230;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_DOWN] == KEY_DOWN && QTE_keys_pointerPositionX == 230)
+				{
+					QTE_keys_pointerPositionX = 300;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN && QTE_keys_pointerPositionX == 300)
+				{
+					QTE_keys_pointerPositionX = 360;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_RIGHT] == KEY_DOWN && QTE_keys_pointerPositionX == 360)
+				{
+					QTE_keys_pointerPositionX = 430;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_UP] == KEY_DOWN && QTE_keys_pointerPositionX == 430)
+				{
+					QTE_keys_pointerPositionX = 700;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->player->QTE_Counter <= 0 && QTE_keys_pointerPositionX != 700) app->player->finalBossPlayerStrikes++;
+			}
+
+
+
+			if (app->player->finalBossPhaseCounter > 4980 && app->player->finalBossPhaseCounter <= 4982)
+			{
+				app->player->QTE_Counter = 600;
+				QTE_keys_pointerPositionX = 160;
+			}
+			if (app->player->finalBossPhaseCounter > 4982 && app->player->finalBossPhaseCounter <= 5582)
+			{
+				app->player->QTE_Counter--;
+
+				app->render->DrawTexture2(app->moduleUI->QTE_swat1, 0, 0, NULL);
+
+				if (app->player->QTE_Counter > 300)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
+				else if (app->player->QTE_Counter > 150 && app->player->QTE_Counter <= 300)app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
+				else if (app->player->QTE_Counter <= 150)app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
+
+				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_1, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
+
+				if (app->input->keys[SDL_SCANCODE_UP] == KEY_DOWN && QTE_keys_pointerPositionX == 160)
+				{
+					QTE_keys_pointerPositionX = 230;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN && QTE_keys_pointerPositionX == 230)
+				{
+					QTE_keys_pointerPositionX = 300;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_C] == KEY_DOWN && QTE_keys_pointerPositionX == 300)
+				{
+					QTE_keys_pointerPositionX = 360;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_RIGHT] == KEY_DOWN && QTE_keys_pointerPositionX == 360)
+				{
+					QTE_keys_pointerPositionX = 430;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->input->keys[SDL_SCANCODE_X] == KEY_DOWN && QTE_keys_pointerPositionX == 430)
+				{
+					QTE_keys_pointerPositionX = 700;
+				}
+				else QTE_keys_pointerPositionX = 160;
+
+				if (app->player->QTE_Counter <= 0 && QTE_keys_pointerPositionX != 700) app->player->finalBossPlayerStrikes++;
+			}
+
+
+			
+
+			if (app->player->finalBossPhaseCounter > 5582 && app->player->finalBossPhaseCounter <= 5584)
+			{
+				app->player->QTE_Counter = 0;
+				QTE_keys_pointerPositionX = 700;
+			}
+			if (app->player->finalBossPhaseCounter > 5584 && app->player->finalBossPhaseCounter <= 6184)
+			{
+				//app->player->QTE_Counter--;
+
+				app->render->DrawTexture2(app->moduleUI->QTE_swat_final, 0, 0, NULL);
+
+				if (app->player->QTE_Counter > 300)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
+				else if (app->player->QTE_Counter > 150 && app->player->QTE_Counter <= 300)app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
+				else if (app->player->QTE_Counter <= 150)app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
+
+				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_1, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
+
+				if (app->input->keys[SDL_SCANCODE_UP] == KEY_DOWN && QTE_keys_pointerPositionX == 160)
+				{
+					if (app->player->QTE_Counter < 594)app->player->QTE_Counter += 10;
+				}
+				else
+				{
+					if (app->player->QTE_Counter > 0)app->player->QTE_Counter--;
+				}
+
 				
 			}
+			if(app->player->finalBossPhaseCounter > 6184 && app->player->finalBossPhaseCounter <= 6186 && app->player->QTE_Counter < 520)app->player->finalBossPlayerStrikes++;
+
+
+			if (app->player->finalBossPhaseCounter > 6420 && app->player->finalBossPhaseCounter <= 6422)
+			{
+				if (app->player->finalBossPlayerStrikes >= 5) app->player->playerHP = 0;
+				else if (app->player->finalBossPlayerStrikes < 5) app->player->playerWin = true;
+
+			}
 		}
+
+		
 
 
 

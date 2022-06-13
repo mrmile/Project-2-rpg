@@ -70,7 +70,18 @@ bool ModuleUI::Start()
 	QTE_keys_pointer = app->tex->Load("Assets/textures/extras/QTE_keys_pointer.png");
 	QTE_strength_bar = app->tex->Load("Assets/textures/extras/QTE_strength_bar.png");
 	QTE_timer_bar = app->tex->Load("Assets/textures/extras/QTE_timer_bar.png");
+	QTE_kb_combo_1 = app->tex->Load("Assets/textures/extras/QTE_kb_combo_1.png");
+	QTE_kb_combo_2 = app->tex->Load("Assets/textures/extras/QTE_kb_combo_2.png");
+	QTE_kb_combo_3 = app->tex->Load("Assets/textures/extras/QTE_kb_combo_3.png");
+	QTE_kb_combo_4 = app->tex->Load("Assets/textures/extras/QTE_kb_combo_4.png");
+	QTE_kb_combo_5 = app->tex->Load("Assets/textures/extras/QTE_kb_combo_5.png");
+	QTE_kb_combo_spam = app->tex->Load("Assets/textures/extras/QTE_kb_combo_spam.png");
 
+	QTE_swat1 = app->tex->Load("Assets/textures/extras/First_Combat_Image.png");
+	QTE_swat2 = app->tex->Load("Assets/textures/extras/Second_Combat_Image.png");
+	QTE_swat_final = app->tex->Load("Assets/textures/extras/Final_Combat_Image_Vs.png");
+	QTE_zombie1 = app->tex->Load("Assets/textures/extras/Zombie_Attack.png");
+	QTE_zombie2 = app->tex->Load("Assets/textures/extras/Zombie_Attack2.png");
 
 	return true;
 }
@@ -184,6 +195,18 @@ bool ModuleUI::CleanUp()
 	app->tex->UnLoad(QTE_keys_pointer);
 	app->tex->UnLoad(QTE_strength_bar);
 	app->tex->UnLoad(QTE_timer_bar);
+	app->tex->UnLoad(QTE_kb_combo_1);
+	app->tex->UnLoad(QTE_kb_combo_2);
+	app->tex->UnLoad(QTE_kb_combo_3);
+	app->tex->UnLoad(QTE_kb_combo_4);
+	app->tex->UnLoad(QTE_kb_combo_5);
+	app->tex->UnLoad(QTE_kb_combo_spam);
+
+	app->tex->UnLoad(QTE_swat1);
+	app->tex->UnLoad(QTE_swat2);
+	app->tex->UnLoad(QTE_swat_final);
+	app->tex->UnLoad(QTE_zombie1);
+	app->tex->UnLoad(QTE_zombie2);
 
 	return true;
 }
