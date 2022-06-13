@@ -419,7 +419,7 @@ bool DialogManager::PostUpdate()
 			if ((app->player->finalBossPhaseCounter > 10 && app->player->finalBossPhaseCounter < 1860)
 				|| (app->player->finalBossPhaseCounter > 4380 && app->player->finalBossPhaseCounter < 4980))
 			{
-				app->render->DrawTexture2(textRectanlgePlayer, 0, 0, NULL);
+				app->render->DrawTexture2(textRectanlgeNPC, 0, 0, NULL);
 				app->render->DrawTexture2(textNameFINAL_BOSS, 0, 0, NULL);
 			}
 
