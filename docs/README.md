@@ -15,34 +15,32 @@ We are a group of students from the UPC Tech Talent Center in Barcelona. This ga
 final project.
 
 ### Developer Team
+* Otto Tolo
 
-- Álvaro Milla
+    - Lead & Management
+    - Github account: [ottotolo](https://github.com/ottotolo)
 
-Design
-Github account: mrmile
+* Alejandro Martin
 
-- 
+    - Code
+    - Github account: [Alejandromo125](https://github.com/Alejandromo125)
 
-Code
-Github account: Alejandromo125
+* Gerard Martinez
 
-- Albert Ramisa
+    - Art & Audio
+    - Github account: [GerardMartinez02](https://github.com/GerardMartinez02)
 
-UI
-Github account: Taks7
+* Álvaro Milla
 
-- Otto Tolo
+    - Design
+    - Github account: [mrmile](https://github.com/mrmile)
 
-Lead & Management
-Github account: ottotolo
-Alejandro Martin
+* Ogylandy Yespagambetov
 
-- Ogylandy Yespagambetov
+    - QA
+    - Github account: [Oga29](https://github.com/Oga29)
 
-QA
-Github account: Oga29
+* Albert Ramisa
 
-- Gerard Martinez
-
-Art & Audio
-Github account: GerardMartinez02
+    - UI
+    - Github account: [Taks7](https://github.com/Taks7)
