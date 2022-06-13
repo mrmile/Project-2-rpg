@@ -419,8 +419,8 @@ Mini_Boss_Two::Mini_Boss_Two(int x, int y) : Entity(x, y)
 	position.x = x;
 	position.y = y;
 
-	offsetX = -25;
-	offsetY = -50;
+	offsetX = -145;
+	offsetY = -125;
 
 	collider = app->collisions->AddCollider({ position.x, position.y, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
 
