@@ -9,6 +9,8 @@ through the world's end to find a cure. This isometric new experience has everyt
 A main story, multiple enemies, a engaging turn-based combat system and plenty of items to pick up around
 the map.
 
+![game_logo](https://user-images.githubusercontent.com/73582929/158075658-79c248a1-b4db-4ed4-95ba-0093499cb414.png)
+
 ## About us
 
 We are a group of students from the UPC Tech Talent Center in Barcelona. This game is the result of our
