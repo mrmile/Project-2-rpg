@@ -462,6 +462,7 @@ void Mini_Boss_Two::Update(float dt)
 				{
 					entityState = GameState::OutOfCombat;
 					entityTurn = TurnState::NONE;
+					app->player->inBossBatle = false;
 				}
 
 

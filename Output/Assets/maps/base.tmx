@@ -80123,13 +80123,6 @@
  <objectgroup color="#550000" id="30" name="BOSS_AREA">
   <object id="215" x="2548" y="1644" width="1106" height="630"/>
  </objectgroup>
- <objectgroup color="#aa5500" id="31" name="mini_boss_two">
-  <object id="216" x="3224" y="1986" width="42" height="38"/>
- </objectgroup>
- <objectgroup color="#aa5500" id="32" name="boss2_battle_Sensor">
-  <object id="217" x="2880" y="1774" width="38" height="408"/>
-  <object id="218" x="1830" y="1080"/>
- </objectgroup>
  <objectgroup color="#000000" id="15" name="LEVEL_AREA" visible="0">
   <object id="197" x="1300.85" y="1280.61" width="2368.06" height="1584.36"/>
  </objectgroup>
