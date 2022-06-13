@@ -414,6 +414,8 @@ bool DialogManager::PostUpdate()
 
 		if (app->player->activateFinalBoss == true)
 		{
+			app->player->finalBossPhaseCounter++;
+
 			if ((app->player->finalBossPhaseCounter > 10 && app->player->finalBossPhaseCounter < 1860)
 				|| (app->player->finalBossPhaseCounter > 4380 && app->player->finalBossPhaseCounter < 4980))
 			{

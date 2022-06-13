@@ -627,7 +627,7 @@ void Final_Boss::Update(float dt)
 		
 		if (app->player->activateFinalBoss == true)
 		{
-			app->player->finalBossPhaseCounter++;
+			//app->player->finalBossPhaseCounter++;
 			counter++;
 
 
