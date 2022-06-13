@@ -44,3 +44,6 @@ final project.
 
     - UI
     - Github account: [Taks7](https://github.com/Taks7)
+
+
+Project Repository: [https://github.com/mrmile/Project-2-rpg](https://github.com/mrmile/Project-2-rpg)
