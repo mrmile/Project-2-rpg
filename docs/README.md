@@ -4,7 +4,8 @@
 
 ## Our Game
 
-Area 52 is an Open-World Zombie Apocalypse Survival where you will have to manage your resources
-and fight through the world's end to find a cure. This isometric 
+Area 52 is an Open-World Zombie Apocalypse Survival where you will have to manage your resources and fight 
+through the world's end to find a cure. This isometric 
 
 ## About us
+
