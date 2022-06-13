@@ -16,9 +16,33 @@ final project.
 
 ### Developer Team
 
-- Designer: Alvaro
-- AI Coder: Alejandro
-- UI Coder: Albert
-- Team Lead: Otto Tolo
-- Q&A: Ogylandy
-- Artist: Gerard
+- Álvaro Milla
+
+Design
+Github account: mrmile
+
+- 
+
+Code
+Github account: Alejandromo125
+
+- Albert Ramisa
+
+UI
+Github account: Taks7
+
+- Otto Tolo
+
+Lead & Management
+Github account: ottotolo
+Alejandro Martin
+
+- Ogylandy Yespagambetov
+
+QA
+Github account: Oga29
+
+- Gerard Martinez
+
+Art & Audio
+Github account: GerardMartinez02
