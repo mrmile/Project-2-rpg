@@ -2564,9 +2564,9 @@ bool ModulePlayer::SaveState(pugi::xml_node& data) const
 
 void ModulePlayer::OnCollision(Collider* c1, Collider* c2)
 {
-	if (app->sceneCave->godMode == false && app->sceneMainMap->godMode == false && destroyed == false && playerWin == false)
+	if (app->sceneCave->godMode == false && app->sceneMainMap->godMode == false && destroyed == false && playerWin == false && app->sceneBase->godMode == false)
 	{
-		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::BOSS_ATTACK ))
+		if ((c1->type == Collider::Type::PLAYER && c2->type == Collider::Type::ENEMY_ATTACK ))
 		{
 			app->audio->PlayFx(playerHurtSound, 0);
 			playerHP -= 10;

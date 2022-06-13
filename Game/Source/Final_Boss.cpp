@@ -530,7 +530,7 @@ Final_Boss::Final_Boss(int x,int y) : Entity(x,y)
 
 	collider = app->collisions->AddCollider({ position.x, position.y - 46, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
 
-	Standart_Zombie_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10));
+	Final_Boss_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10));
 	
 	counter = 0;
 	
@@ -544,87 +544,14 @@ void Final_Boss::Update(float dt)
 	{
 		iPoint NewPosition = position;
 		collider->SetPos(NewPosition.x, NewPosition.y - 46);
-		Standart_Zombie_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
+		Final_Boss_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
 		currentAnim = &idleDownAnim_Enemy1;
 		currentAnim->loop = false;
 
 	}
 	if (app->player->pauseMenu == false)
 	{
-		if (EntityHP == 0)
-		{
-			SetToDelete();
-		}
 
-		//Escape Combat
-		//if (app->player->escapeCombat == true)
-		//{
-		//	entityState = GameState::OutOfCombat;
-		//	entityTurn = TurnState::NONE;
-		//}
-
-		//
-		//if (entityState == GameState::OutOfCombat)
-		//{
-		//	//move normally
-		//	
-		//	
-
-		//	
-
-		//}
-		//
-		//if (entityState == GameState::InCombat)
-		//{
-		//	
-		//	if (EntityHP > 0)
-		//	{
-		//		if (entityTurn == TurnState::NONE)
-		//		{
-		//			//Assigning order of turns
-		//			
-		//		}
-		//		if (entityTurn == TurnState::StartOfTurn)
-		//		{
-		//			
-
-		//			entityTurn = TurnState::MidOfTurn;
-
-		//		}
-		//		if (entityTurn == TurnState::MidOfTurn)
-		//		{
-
-		//			
-		//			if (counter == 150) entityTurn = TurnState::FinishTurn;
-
-		//		}
-		//		if (entityTurn == TurnState::FinishTurn)
-		//		{
-		//			//Change turn from enemy to player turn still have to develop a way to do it correctly
-
-
-
-		//			entityTurn = TurnState::WaitTurn;
-		//			
-
-		//		}
-		//		if (entityTurn == TurnState::WaitTurn)
-		//		{
-		//			counter = 0;
-		//			
-		//			currentAnim->loop = true;
-		//
-		//		}
-		//		
-
-
-		//	}
-		//		
-
-		//	
-		//	
-		//}
-		
 		if (app->player->activateFinalBoss == true)
 		{
 			//app->player->finalBossPhaseCounter++;

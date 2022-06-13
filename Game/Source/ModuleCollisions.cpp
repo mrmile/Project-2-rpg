@@ -1245,6 +1245,12 @@ void ModuleCollisions::DebugDraw()
 			case Collider::Type::ENEMY_ATTACK: // red
 				app->render->DrawRectangle(colliders[i]->rect, 170, 255, 0, alpha);
 				break;
+			case Collider::Type::BOSS_ATTACK: // red
+				app->render->DrawRectangle(colliders[i]->rect, 170, 255, 0, alpha);
+				break;
+			case Collider::Type::BOSS_ATTACK_2: // red
+				app->render->DrawRectangle(colliders[i]->rect, 170, 255, 0, alpha);
+				break;
 			case Collider::Type::ENEMY_RANGED_ATTACK: // red
 				app->render->DrawRectangle(colliders[i]->rect, 170, 255, 0, alpha);
 				break;
