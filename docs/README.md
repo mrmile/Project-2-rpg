@@ -19,7 +19,7 @@ final project.
 ### Developer Team
 * Otto Tolo
 
-    - Lead & Management
+    - Marketing
     - Github account: [ottotolo](https://github.com/ottotolo)
 
 * Alejandro Martin
