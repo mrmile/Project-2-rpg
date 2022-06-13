@@ -131,7 +131,7 @@ bool ModuleUI::PostUpdate()
 	{
 		if (app->inventoryMenu->showInventory == false && app->player->pauseMenu == false && app->mapMenu->showMapMenu == false)
 		{
-			app->render->DrawTexture2(inventoryMapIcons, -200, 0, NULL);
+			app->render->DrawTexture2(inventoryMapIcons, -555, 308, NULL);
 
 			if (app->player->playerHP >= app->player->PlayerMaxHP)
 			{
