@@ -1121,7 +1121,7 @@ bool ModulePlayer::Update(float dt)
 		return true;
 	}
 
-	if (pauseMenu == false && app->inventoryMenu->showInventory == false && app->mapMenu->showMapMenu == false && activateFinalBoss == false)
+	if (pauseMenu == false && app->inventoryMenu->showInventory == false && app->mapMenu->showMapMenu == false)
 	{
 		playerFPS++;
 

@@ -531,6 +531,7 @@ Final_Boss::Final_Boss(int x,int y) : Entity(x,y)
 	collider = app->collisions->AddCollider({ position.x, position.y - 46, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
 
 	Standart_Zombie_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10));
+	currentAnim = &idleDownAnim_Enemy1;
 	
 	counter = 0;
 	
@@ -630,8 +631,35 @@ void Final_Boss::Update(float dt)
 			//app->player->finalBossPhaseCounter++;
 			counter++;
 
+			if (app->player->finalBossPhaseCounter > 10 && app->player->finalBossPhaseCounter <= 240)
+			{
+				Final_Boss_List.end->data->body->SetLinearVelocity({ -0.0f, -0.5f });
 
+				if (currentAnim != &downWalkAnim_Enemy1)
+				{
+					//downWalkAnim_Enemy1.Reset();
+					currentAnim = &downWalkAnim_Enemy1;
+				}
+			}
+			if (app->player->finalBossPhaseCounter > 240)
+			{
+				Final_Boss_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f });
 
+				if (currentAnim != &idleDownAnim_Enemy1)
+				{
+					//idleDownAnim_Enemy1.Reset();
+					currentAnim = &idleDownAnim_Enemy1;
+				}
+			}
+
+			if (app->player->finalBossPlayerStrikes < 5 && app->player->finalBossPhaseCounter <= 6186 + 180)
+			{
+				if (currentAnim != &downDieAnim_Enemy1)
+				{
+					//downDieAnim_Enemy1.Reset();
+					currentAnim = &downDieAnim_Enemy1;
+				}
+			}
 		}
 		
 		currentAnim->Update();

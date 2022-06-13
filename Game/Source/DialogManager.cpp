@@ -459,7 +459,7 @@ bool DialogManager::PostUpdate()
 			}
 
 			SDL_Rect quad;
-			quad = { 203, 62, app->player->QTE_Counter/*/2 - 76*/, 16 };
+			quad = { 203, 62, app->player->QTE_Counter/2/*/2 - 76*/, 16 };
 			
 			
 			//app->player->QTE_Counter_bar;
@@ -473,7 +473,7 @@ bool DialogManager::PostUpdate()
 			{
 				app->player->QTE_Counter--;
 
-				app->render->DrawTexture2(app->moduleUI->QTE_swat1, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_swat1, 0, 10, NULL);
 
 				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_1, 0, 0, NULL);
 				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
@@ -487,31 +487,31 @@ bool DialogManager::PostUpdate()
 				{
 					QTE_keys_pointerPositionX = 230;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if(app->input->keys[SDL_SCANCODE_Z] != KEY_DOWN && QTE_keys_pointerPositionX == 160) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_C] == KEY_DOWN && QTE_keys_pointerPositionX == 230)
 				{
 					QTE_keys_pointerPositionX = 300;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if(app->input->keys[SDL_SCANCODE_C] != KEY_DOWN && QTE_keys_pointerPositionX == 230) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_X] == KEY_DOWN && QTE_keys_pointerPositionX == 300)
 				{
 					QTE_keys_pointerPositionX = 360;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if(app->input->keys[SDL_SCANCODE_X] != KEY_DOWN && QTE_keys_pointerPositionX == 300) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_X] == KEY_DOWN && QTE_keys_pointerPositionX == 360)
 				{
 					QTE_keys_pointerPositionX = 430;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_X] != KEY_DOWN && QTE_keys_pointerPositionX == 360) QTE_keys_pointerPositionX = 160;
 
-				if (app->input->keys[SDL_SCANCODE_X] == KEY_DOWN && QTE_keys_pointerPositionX == 430)
+				if (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN && QTE_keys_pointerPositionX == 430)
 				{
 					QTE_keys_pointerPositionX = 700;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_Z] != KEY_DOWN && QTE_keys_pointerPositionX == 430) QTE_keys_pointerPositionX = 160;
 
 				if (app->player->QTE_Counter <= 0 && QTE_keys_pointerPositionX != 700) app->player->finalBossPlayerStrikes++;
 			}
@@ -526,7 +526,7 @@ bool DialogManager::PostUpdate()
 			{
 				app->player->QTE_Counter--;
 
-				app->render->DrawTexture2(app->moduleUI->QTE_zombie1, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_zombie1, 0, 10, NULL);
 
 				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_2, 0, 0, NULL);
 				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
@@ -540,31 +540,31 @@ bool DialogManager::PostUpdate()
 				{
 					QTE_keys_pointerPositionX = 230;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_C] != KEY_DOWN && QTE_keys_pointerPositionX == 160) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_X] == KEY_DOWN && QTE_keys_pointerPositionX == 230)
 				{
 					QTE_keys_pointerPositionX = 300;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_X] != KEY_DOWN && QTE_keys_pointerPositionX == 230) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN && QTE_keys_pointerPositionX == 300)
 				{
 					QTE_keys_pointerPositionX = 360;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_Z] != KEY_DOWN && QTE_keys_pointerPositionX == 300) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_RIGHT] == KEY_DOWN && QTE_keys_pointerPositionX == 360)
 				{
 					QTE_keys_pointerPositionX = 430;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_RIGHT] != KEY_DOWN && QTE_keys_pointerPositionX == 360) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN && QTE_keys_pointerPositionX == 430)
 				{
 					QTE_keys_pointerPositionX = 700;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_Z] != KEY_DOWN && QTE_keys_pointerPositionX == 430) QTE_keys_pointerPositionX = 160;
 
 				if (app->player->QTE_Counter <= 0 && QTE_keys_pointerPositionX != 700) app->player->finalBossPlayerStrikes++;
 			}
@@ -579,7 +579,7 @@ bool DialogManager::PostUpdate()
 			{
 				app->player->QTE_Counter--;
 
-				app->render->DrawTexture2(app->moduleUI->QTE_swat2, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_swat2, 0, 10, NULL);
 
 				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_3, 0, 0, NULL);
 				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
@@ -593,31 +593,31 @@ bool DialogManager::PostUpdate()
 				{
 					QTE_keys_pointerPositionX = 230;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_UP] != KEY_DOWN && QTE_keys_pointerPositionX == 160) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN && QTE_keys_pointerPositionX == 230)
 				{
 					QTE_keys_pointerPositionX = 300;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_Z] != KEY_DOWN && QTE_keys_pointerPositionX == 230) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_DOWN] == KEY_DOWN && QTE_keys_pointerPositionX == 300)
 				{
 					QTE_keys_pointerPositionX = 360;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_DOWN] != KEY_DOWN && QTE_keys_pointerPositionX == 300) QTE_keys_pointerPositionX = 160;
 
-				if (app->input->keys[SDL_SCANCODE_LEFT] == KEY_DOWN && QTE_keys_pointerPositionX == 360)
+				if (app->input->keys[SDL_SCANCODE_RIGHT] == KEY_DOWN && QTE_keys_pointerPositionX == 360)
 				{
 					QTE_keys_pointerPositionX = 430;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_LEFT] != KEY_DOWN && QTE_keys_pointerPositionX == 360) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_X] == KEY_DOWN && QTE_keys_pointerPositionX == 430)
 				{
 					QTE_keys_pointerPositionX = 700;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_X] != KEY_DOWN && QTE_keys_pointerPositionX == 430) QTE_keys_pointerPositionX = 160;
 
 				if (app->player->QTE_Counter <= 0 && QTE_keys_pointerPositionX != 700) app->player->finalBossPlayerStrikes++;
 			}
@@ -632,7 +632,7 @@ bool DialogManager::PostUpdate()
 			{
 				app->player->QTE_Counter--;
 
-				app->render->DrawTexture2(app->moduleUI->QTE_zombie2, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_zombie2, 0, 10, NULL);
 
 				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_4, 0, 0, NULL);
 				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
@@ -646,31 +646,31 @@ bool DialogManager::PostUpdate()
 				{
 					QTE_keys_pointerPositionX = 230;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_LEFT] != KEY_DOWN && QTE_keys_pointerPositionX == 160) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_DOWN] == KEY_DOWN && QTE_keys_pointerPositionX == 230)
 				{
 					QTE_keys_pointerPositionX = 300;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_DOWN] != KEY_DOWN && QTE_keys_pointerPositionX == 230) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN && QTE_keys_pointerPositionX == 300)
 				{
 					QTE_keys_pointerPositionX = 360;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_Z] != KEY_DOWN && QTE_keys_pointerPositionX == 300) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_RIGHT] == KEY_DOWN && QTE_keys_pointerPositionX == 360)
 				{
 					QTE_keys_pointerPositionX = 430;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_RIGHT] != KEY_DOWN && QTE_keys_pointerPositionX == 360) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_UP] == KEY_DOWN && QTE_keys_pointerPositionX == 430)
 				{
 					QTE_keys_pointerPositionX = 700;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_UP] != KEY_DOWN && QTE_keys_pointerPositionX == 430) QTE_keys_pointerPositionX = 160;
 
 				if (app->player->QTE_Counter <= 0 && QTE_keys_pointerPositionX != 700) app->player->finalBossPlayerStrikes++;
 			}
@@ -686,7 +686,7 @@ bool DialogManager::PostUpdate()
 			{
 				app->player->QTE_Counter--;
 
-				app->render->DrawTexture2(app->moduleUI->QTE_swat1, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_swat1, 0, 10, NULL);
 
 				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_5, 0, 0, NULL);
 				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
@@ -700,31 +700,31 @@ bool DialogManager::PostUpdate()
 				{
 					QTE_keys_pointerPositionX = 230;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_UP] != KEY_DOWN && QTE_keys_pointerPositionX == 160) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN && QTE_keys_pointerPositionX == 230)
 				{
 					QTE_keys_pointerPositionX = 300;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_Z] != KEY_DOWN && QTE_keys_pointerPositionX == 230) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_C] == KEY_DOWN && QTE_keys_pointerPositionX == 300)
 				{
 					QTE_keys_pointerPositionX = 360;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_C] != KEY_DOWN && QTE_keys_pointerPositionX == 300) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_RIGHT] == KEY_DOWN && QTE_keys_pointerPositionX == 360)
 				{
 					QTE_keys_pointerPositionX = 430;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_RIGHT] != KEY_DOWN && QTE_keys_pointerPositionX == 360) QTE_keys_pointerPositionX = 160;
 
 				if (app->input->keys[SDL_SCANCODE_X] == KEY_DOWN && QTE_keys_pointerPositionX == 430)
 				{
 					QTE_keys_pointerPositionX = 700;
 				}
-				else QTE_keys_pointerPositionX = 160;
+				//else if (app->input->keys[SDL_SCANCODE_X] != KEY_DOWN && QTE_keys_pointerPositionX == 430) QTE_keys_pointerPositionX = 160;
 
 				if (app->player->QTE_Counter <= 0 && QTE_keys_pointerPositionX != 700) app->player->finalBossPlayerStrikes++;
 			}
@@ -741,21 +741,21 @@ bool DialogManager::PostUpdate()
 			{
 				//app->player->QTE_Counter--;
 
-				app->render->DrawTexture2(app->moduleUI->QTE_swat_final, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_swat_final, 0, 10, NULL);
 
 				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_spam, 0, 0, NULL);
 				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
 				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
 
-				if (app->player->QTE_Counter > 300)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
+				if (app->player->QTE_Counter > 400)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
 				else if (app->player->QTE_Counter > 150 && app->player->QTE_Counter <= 300)app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
 				else if (app->player->QTE_Counter <= 150)app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
 
-				if (app->input->keys[SDL_SCANCODE_UP] == KEY_DOWN)
+				if (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN)
 				{
 					if (app->player->QTE_Counter < 594)app->player->QTE_Counter += 10;
 				}
-				else
+				else if (app->input->keys[SDL_SCANCODE_Z] == KEY_IDLE)
 				{
 					if (app->player->QTE_Counter > 0)app->player->QTE_Counter--;
 				}

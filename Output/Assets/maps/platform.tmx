@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="34" nextobjectid="220">
+<map version="1.8" tiledversion="1.8.2" orientation="staggered" renderorder="right-down" width="100" height="200" tilewidth="75" tileheight="39" infinite="0" staggeraxis="y" staggerindex="odd" nextlayerid="35" nextobjectid="221">
  <tileset firstgid="1" name="Shipcontainer_Roof" tilewidth="75" tileheight="39" spacing="1" tilecount="48" columns="8">
   <image source="Shipcontainer_Roof.png" width="607" height="239"/>
  </tileset>
