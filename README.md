@@ -36,7 +36,7 @@ Webpage: https://mrmile.github.io/Project-2-rpg/
 
 * Otto Tolo
 
-    - Lead & Management
+    - Marketing
     - Github account: [ottotolo](https://github.com/ottotolo)
 
 * Alejandro Martin
