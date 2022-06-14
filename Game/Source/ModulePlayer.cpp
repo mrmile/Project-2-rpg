@@ -1968,6 +1968,7 @@ bool ModulePlayer::Update(float dt)
 					CounterForEnemySelection = -1;
 					EnemySelectionBool = false;
 					entityTurnPlayer = TurnState::FinishTurn;
+					counter = 0;
 				}
 			}
 			if (entityTurnPlayer == TurnState::FinishTurn)
@@ -2032,8 +2033,8 @@ bool ModulePlayer::Update(float dt)
 					break;
 				}
 
-
-
+				
+					
 				//Attack methodology, after attacking the player goes to wait turn
 				if (app->input->keys[SDL_SCANCODE_X] == KeyState::KEY_UP)
 				{
@@ -2052,8 +2053,17 @@ bool ModulePlayer::Update(float dt)
 				}
 				if (playerAttacked == true)
 				{
+					
+					counter++;
+					currentAnimation = &upAttackAnim;
+					
+				}
+
+				if (counter >= 80)
+				{
 					entityTurnPlayer = TurnState::WaitTurn;
 				}
+
 				
 				if (EnemySelectionBool == true)
 				{
@@ -2076,6 +2086,50 @@ bool ModulePlayer::Update(float dt)
 				//colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
 				counter = 0;
 
+				if (currentAnimation == &idleUpAnim)
+				{
+					currentAnimation = &upAttackAnim;
+				}
+
+				switch (PlayerLookingPosition)
+				{
+				case 1:
+					if (currentAnimation != &idleLeftAnim)
+					{
+						//idleLeftAnim.Reset();
+						currentAnimation = &idleLeftAnim;
+					}
+
+					break;
+				case 2:
+					if (currentAnimation != &idleRightAnim)
+					{
+						//idleRightAnim.Reset();
+						currentAnimation = &idleRightAnim;
+					}
+
+					break;
+
+				case 3:
+					if (currentAnimation != &idleDownAnim)
+					{
+						//idleDownAnim.Reset();
+						currentAnimation = &idleDownAnim;
+					}
+
+					break;
+
+				case 4:
+					if (currentAnimation != &idleUpAnim)
+					{
+						//idleUpAnim.Reset();
+						currentAnimation = &idleUpAnim;
+					}
+
+					break;
+				default:
+					break;
+				}
 			}
 		}
 		//Escape Combat

@@ -364,6 +364,7 @@ public:
 	uint heartbeatFX = 0;
 	uint playerWalkSound[7] = { 0 };
 
+	
 };
 
 #endif //!__MODULE_PLAYER_H__
