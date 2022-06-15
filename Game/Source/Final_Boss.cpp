@@ -530,7 +530,7 @@ Final_Boss::Final_Boss(int x,int y) : Entity(x,y)
 
 	collider = app->collisions->AddCollider({ position.x, position.y - 46, 25, 56 }, Collider::Type::ENEMY, (Module*)app->entity_manager);
 
-	Standart_Zombie_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10));
+	Final_Boss_List.add(app->physics->CreateWalkingEnemyBox(position.x, position.y, 25, 10));
 	currentAnim = &idleDownAnim_Enemy1;
 	
 	counter = 0;
@@ -545,7 +545,7 @@ void Final_Boss::Update(float dt)
 	{
 		iPoint NewPosition = position;
 		collider->SetPos(NewPosition.x, NewPosition.y - 46);
-		Standart_Zombie_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
+		Final_Boss_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
 		currentAnim = &idleDownAnim_Enemy1;
 		currentAnim->loop = false;
 

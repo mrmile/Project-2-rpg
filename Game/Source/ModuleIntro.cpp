@@ -79,7 +79,7 @@ bool ModuleIntro::Update(float dt)
 		backwardsImage--;
 	}
 
-	if (delay >= 3155 || (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN))
+	if (delay >= 3155 || (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN) || (app->input->keys[SDL_SCANCODE_SPACE] == KEY_DOWN))
 	{
 		//app->physics->Enable();
 		app->collisions->Enable();
