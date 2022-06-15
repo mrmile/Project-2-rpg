@@ -93,7 +93,7 @@ bool EntityManager::Update(float dt)
 			entities[i]->Update(dt);
 		}
 		
-		if (entities[i] != nullptr && entities[i]->EntityHP <= 0 && entities[i]->entityDead==true)
+		if (entities[i] != nullptr && entities[i]->EntityHP <= 0)
 		{
 			if (entities[i]->type == EntityType::ZOMBIE_VOLATILE)
 			{
