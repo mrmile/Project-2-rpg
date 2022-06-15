@@ -2441,7 +2441,7 @@ bool ModulePlayer::PostUpdate()
 			counterForBossMusic2++;
 			if (counterForBossMusic2 >= 11 && counterForBossMusic2 < 12)
 			{
-				app->audio->ChangeMusic(MOTEL_ZONE, 0.0f, 0.0f);
+				app->audio->ChangeMusic(BASE, 0.0f, 0.0f);
 			}
 		}
 		
