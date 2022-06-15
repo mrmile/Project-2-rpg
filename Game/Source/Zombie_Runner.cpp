@@ -564,7 +564,7 @@ void Zombie_Runner::Update(float dt)
 		iPoint NewPosition = position;
 		collider->SetPos(NewPosition.x, NewPosition.y);
 		Runner_Zombie_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
-		currentAnim = &idleDownAnim_Enemy1;1.50f
+		currentAnim = &idleDownAnim_Enemy1;
 		currentAnim->loop = false;
 
 	}
