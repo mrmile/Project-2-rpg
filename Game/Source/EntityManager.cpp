@@ -91,153 +91,10 @@ bool EntityManager::Update(float dt)
 		if (entities[i] != nullptr && entities[i]->EntityHP > 0)
 		{
 			entities[i]->Update(dt);
-		}
-		
-		if (entities[i] != nullptr && entities[i]->EntityHP <= 0)
-		{
-			if (entities[i]->type == EntityType::ZOMBIE_VOLATILE)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->Volatile_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->Volatile_Zombie_List.end->data->body->SetAwake(false);
-			}
-			if (entities[i]->type == EntityType::ZOMBIE_STANDART)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->Standart_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->Standart_Zombie_List.end->data->body->SetAwake(false);
-			}
-			if (entities[i]->type == EntityType::ZOMBIE_RUNNER)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->Runner_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->Runner_Zombie_List.end->data->body->SetAwake(false);
-			}
-			if (entities[i]->type == EntityType::ZOMBIE_SPITTER)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->Spitter_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->Spitter_Zombie_List.end->data->body->SetAwake(false);
-			}
-			if (entities[i]->type == EntityType::NPC)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->NPC_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->NPC_List.end->data->body->SetAwake(false);
-			}
-			if (entities[i]->type == EntityType::NPC2)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->NPC2_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->NPC2_List.end->data->body->SetAwake(false);
-			}
-			if (entities[i]->type == EntityType::NPC3)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->NPC3_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->NPC3_List.end->data->body->SetAwake(false);
-			}
-			if (entities[i]->type == EntityType::NPC4)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->NPC4_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->NPC4_List.end->data->body->SetAwake(false);
-			}
-
-			if (entities[i]->type == EntityType::SWITCH_KEY)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->Switch_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->Switch_List.end->data->body->SetAwake(false);
-			}
-			if (entities[i]->type == EntityType::SWITCH_KEY2)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->Switch_List2.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->Switch_List2.end->data->body->SetAwake(false);
-			}
-			if (entities[i]->type == EntityType::SWITCH_KEY3)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->Switch_List3.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->Switch_List3.end->data->body->SetAwake(false);
-			}
-			if (entities[i]->type == EntityType::SWITCH_KEY4)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->Switch_List4.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->Switch_List4.end->data->body->SetAwake(false);
-			}
-			if (entities[i]->type == EntityType::SWITCH_KEY5)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->Switch_List5.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->Switch_List5.end->data->body->SetAwake(false);
-			}
-			if (entities[i]->type == EntityType::ROCK_ONE)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->RockOne_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->RockOne_List.end->data->body->SetAwake(false);
-			}
-			if (entities[i]->type == EntityType::ROCK_TWO)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->RockTwo_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->RockTwo_List.end->data->body->SetAwake(false);
-			}
-			if (entities[i]->type == EntityType::FINAL_BOSS)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->FinalBoss_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->FinalBoss_List.end->data->body->SetAwake(false);
-			}
-			if (entities[i]->type == EntityType::FENCE_ONE)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->FenceOne_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->FenceOne_List.end->data->body->SetAwake(false);
-			}
-			if (entities[i]->type == EntityType::FENCE_TWO)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->FenceTwo_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->FenceTwo_List.end->data->body->SetAwake(false);
-			}
-
-			if (entities[i]->type == EntityType::MINI_BOSS_ONE)
-			{
-				app->player->boss1Dead = true;
-				app->player->inBossBatle = false;
-				entities[i]->SetToDelete();
-				entities[i]->Mini_Boss_One_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->Mini_Boss_One_List.end->data->body->SetAwake(false);
-				app->audio->ChangeMusic(MOTEL_ZONE,0.0f,0.0f);
-			}
-			if (entities[i]->type == EntityType::MINI_BOSS_TWO)
-			{
-				app->player->boss2Dead = true;
-				app->player->inBossBatle = false;
-				entities[i]->SetToDelete();
-				entities[i]->Mini_Boss_Two_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->Mini_Boss_Two_List.end->data->body->SetAwake(false);
-				app->audio->ChangeMusic(BASE,0.0f,0.0f);
-			}
-			/*
-			if (entities[i]->type == EntityType::)
-			{
-				app->player->boss2Dead = true;
-				app->player->inBossBatle = false;
-				entities[i]->SetToDelete();
-				entities[i]->FenceTwo_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->FenceTwo_List.end->data->body->SetAwake(false);
-			}
-			*/
-		}
-			
+		}		
 	}
 
-	//HandleEntitiesDespawn();
+	HandleEntitiesDespawn();
 
 
 	return true;
@@ -396,12 +253,148 @@ void EntityManager::HandleEntitiesDespawn()
 	
 	for (uint i = 0; i < MAX_ENTITIES; ++i)
 	{
-		if (entities[i] != nullptr)
+
+		if (entities[i] != nullptr && entities[i]->EntityHP <= 0)
 		{
-			if (entities[i]->EntityHP == 0)
+			if (entities[i]->type == EntityType::ZOMBIE_VOLATILE)
 			{
 				entities[i]->SetToDelete();
+				entities[i]->Volatile_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Volatile_Zombie_List.end->data->body->SetAwake(false);
 			}
+			if (entities[i]->type == EntityType::ZOMBIE_STANDART)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Standart_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Standart_Zombie_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::ZOMBIE_RUNNER)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Runner_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Runner_Zombie_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::ZOMBIE_SPITTER)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Spitter_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Spitter_Zombie_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::NPC)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->NPC_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->NPC_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::NPC2)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->NPC2_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->NPC2_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::NPC3)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->NPC3_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->NPC3_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::NPC4)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->NPC4_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->NPC4_List.end->data->body->SetAwake(false);
+			}
+
+			if (entities[i]->type == EntityType::SWITCH_KEY)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Switch_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Switch_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::SWITCH_KEY2)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Switch_List2.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Switch_List2.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::SWITCH_KEY3)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Switch_List3.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Switch_List3.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::SWITCH_KEY4)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Switch_List4.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Switch_List4.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::SWITCH_KEY5)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->Switch_List5.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Switch_List5.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::ROCK_ONE)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->RockOne_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->RockOne_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::ROCK_TWO)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->RockTwo_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->RockTwo_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::FINAL_BOSS)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->FinalBoss_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->FinalBoss_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::FENCE_ONE)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->FenceOne_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->FenceOne_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::FENCE_TWO)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->FenceTwo_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->FenceTwo_List.end->data->body->SetAwake(false);
+			}
+
+			if (entities[i]->type == EntityType::MINI_BOSS_ONE)
+			{
+				app->player->boss1Dead = true;
+				app->player->inBossBatle = false;
+				app->player->musicAfterBosses1 = true;
+				entities[i]->SetToDelete();
+				entities[i]->Mini_Boss_One_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Mini_Boss_One_List.end->data->body->SetAwake(false);
+			}
+			if (entities[i]->type == EntityType::MINI_BOSS_TWO)
+			{
+				app->player->boss2Dead = true;
+				app->player->inBossBatle = false;
+				app->player->musicAfterBosses2 = true;
+				entities[i]->SetToDelete();
+				entities[i]->Mini_Boss_Two_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->Mini_Boss_Two_List.end->data->body->SetAwake(false);
+
+			}
+			/*
+			if (entities[i]->type == EntityType::)
+			{
+				app->player->boss2Dead = true;
+				app->player->inBossBatle = false;
+				entities[i]->SetToDelete();
+				entities[i]->FenceTwo_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->FenceTwo_List.end->data->body->SetAwake(false);
+			}
+			*/
 		}
 	}
 	

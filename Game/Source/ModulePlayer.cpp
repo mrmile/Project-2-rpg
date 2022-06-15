@@ -2260,6 +2260,16 @@ bool ModulePlayer::Update(float dt)
 		
 	}
 	
+	if (musicAfterBosses1 == true)
+	{
+		app->audio->ChangeMusic(MOTEL_ZONE, 0.0f, 0.0f);
+		musicAfterBosses1 = false;
+	}
+	if (musicAfterBosses2 == true)
+	{
+		app->audio->ChangeMusic(BASE, 0.0f, 0.0f);
+		musicAfterBosses2 = false;
+	}
 	
 	if ((app->input->keys[SDL_SCANCODE_P] == KEY_DOWN || app->input->keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN) && app->player->destroyed == false && app->player->playerWin == false)
 	{
