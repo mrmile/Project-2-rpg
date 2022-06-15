@@ -17,6 +17,7 @@
 #include "EntityManager.h"
 #include "SceneBase.h"
 #include "SceneMotel.h"
+#include "ScenePlatform.h"
 #include "Defs.h"
 #include "Log.h"
 #include "QuestManager.h"
@@ -206,6 +207,10 @@ bool PauseMenu::Update(float dt)
 			if(app->sceneCave->sceneCave == true) app->audio->ChangeMusic(CAVE, 0.5f, 0.5f);
 			if (app->sceneBase->sceneBase == true) app->audio->ChangeMusic(BASE, 0.5f, 0.5f);
 			if (app->sceneMotel->sceneMotel == true) app->audio->ChangeMusic(MOTEL_ZONE, 0.5f, 0.5f);
+			if (app->scenePlatform->scenePlatform == true) app->audio->ChangeMusic(MAIN_MAP_SUNRISE, 0.5f, 0.5f);
+			if (app->sceneMotel->sceneMotel == true && app->player->inBossBatle == true) app->audio->ChangeMusic(BOSS_1, 0.5f, 0.5f);
+			if (app->sceneBase->sceneBase == true && app->player->inBossBatle == true) app->audio->ChangeMusic(BOSS_2, 0.5f, 0.5f);
+			if (app->scenePlatform->scenePlatform == true && app->player->activateFinalBoss == true) app->audio->ChangeMusic(STORY_FINAL_BOSS_APPEARS, 0.5f, 0.5f);
 
 		}
 	}
