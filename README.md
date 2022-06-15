@@ -45,7 +45,7 @@ Webpage: https://mrmile.github.io/Project-2-rpg/
 
 * Alejandro Martin
 
-    - Code
+    - Lead Coder
     - Github account: [Alejandromo125](https://github.com/Alejandromo125)
 
 * Gerard Martinez
@@ -55,7 +55,7 @@ Webpage: https://mrmile.github.io/Project-2-rpg/
 
 * Álvaro Milla
 
-    - Design
+    - Design + Code
     - Github account: [mrmile](https://github.com/mrmile)
 
 * Ogylandy Yespagambetov
@@ -65,7 +65,7 @@ Webpage: https://mrmile.github.io/Project-2-rpg/
 
 * Albert Ramisa
 
-    - UI
+    - UI + Code
     - Github account: [Taks7](https://github.com/Taks7)
 
 ## License
