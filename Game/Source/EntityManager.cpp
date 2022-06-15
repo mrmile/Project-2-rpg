@@ -212,6 +212,7 @@ bool EntityManager::Update(float dt)
 				entities[i]->SetToDelete();
 				entities[i]->Mini_Boss_One_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
 				entities[i]->Mini_Boss_One_List.end->data->body->SetAwake(false);
+				app->audio->ChangeMusic(MOTEL_ZONE);
 			}
 			if (entities[i]->type == EntityType::MINI_BOSS_TWO)
 			{
@@ -220,6 +221,7 @@ bool EntityManager::Update(float dt)
 				entities[i]->SetToDelete();
 				entities[i]->Mini_Boss_Two_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
 				entities[i]->Mini_Boss_Two_List.end->data->body->SetAwake(false);
+				app->audio->ChangeMusic(BASE);
 			}
 			/*
 			if (entities[i]->type == EntityType::)
