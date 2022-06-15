@@ -20,6 +20,8 @@ public:
 private:
 
 	Animation fenceOne;
+	Animation fenceTwo;
+	Animation fenceThree;
 
 	int counter;
 };
