@@ -26,7 +26,6 @@
 #include "QuestManager.h"
 #include "Transitions.h"
 #include "MapMenu.h"
-#include "ScenePlatform.h"
 
 #include <SDL_mixer/include/SDL_mixer.h>
 
@@ -130,7 +129,7 @@ bool ModuleUI::PostUpdate()
 {
 	if (app->player->IsEnabled() == true)
 	{
-		if (app->inventoryMenu->showInventory == false && app->player->pauseMenu == false && app->mapMenu->showMapMenu == false && app->scenePlatform->IsEnabled() == false)
+		if (app->inventoryMenu->showInventory == false && app->player->pauseMenu == false && app->mapMenu->showMapMenu == false && app->player->activateFinalBoss == false)
 		{
 			 if(app->player->showCombatHUD == false && app->questManager->questCounter > 240) app->render->DrawTexture2(inventoryMapIcons, 0, 0, NULL);
 
