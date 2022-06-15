@@ -157,7 +157,7 @@ void Final_Boss::Update(float dt)
 				}
 			}
 
-			if (app->player->finalBossPlayerStrikes < 5 && app->player->finalBossPhaseCounter >= 6186 + 180)
+			if (app->player->finalBossPlayerStrikes < 4 && app->player->finalBossPhaseCounter >= 6186 + 180)
 			{
 				if (currentAnim != &fenceThree)
 				{
