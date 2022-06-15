@@ -370,7 +370,6 @@ void EntityManager::HandleEntitiesDespawn()
 			{
 				app->player->boss1Dead = true;
 				app->player->inBossBatle = false;
-				app->player->musicAfterBosses1 = true;
 				entities[i]->SetToDelete();
 				entities[i]->Mini_Boss_One_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
 				entities[i]->Mini_Boss_One_List.end->data->body->SetAwake(false);
@@ -379,7 +378,6 @@ void EntityManager::HandleEntitiesDespawn()
 			{
 				app->player->boss2Dead = true;
 				app->player->inBossBatle = false;
-				app->player->musicAfterBosses2 = true;
 				entities[i]->SetToDelete();
 				entities[i]->Mini_Boss_Two_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
 				entities[i]->Mini_Boss_Two_List.end->data->body->SetAwake(false);

@@ -914,7 +914,7 @@ bool ModulePlayer::Start()
 	playerHurtSound = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_1.wav");
 	itemGrab = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_grab_finish_back_fast_begin_0.wav");
 	dead = app->audio->LoadFx("Assets/audio/fx/ZPlayer/player_damaged_2.wav");
-	shoot = app->audio->LoadFx("Assets/audio/fx/ZPlayer/PlayerActions/Gun.wav");
+	shoot = app->audio->LoadFx("Assets/audio/fx/ZPlayer/PlayerActions/machin-gun-mg34-double-sound-effect-7-11005.wav");
 	gameOver = app->audio->LoadFx("Assets/audio/fx/ZPlayer/game_over.wav");
 
 	computerOff = app->audio->LoadFx("Assets/audio/fx/extra/windows_off.wav");
@@ -1954,7 +1954,7 @@ bool ModulePlayer::Update(float dt)
 				}
 
 				//If you press space bar while in combat you can go directly to the attack state
-				if (app->input->keys[SDL_SCANCODE_SPACE] == KEY_DOWN)
+				if (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN)
 				{
 					Player->body->SetLinearVelocity({ 0.0f,0.0f });
 					CounterForEnemySelection = -1;
@@ -2260,17 +2260,6 @@ bool ModulePlayer::Update(float dt)
 		
 	}
 	
-	if (musicAfterBosses1 == true)
-	{
-		app->audio->ChangeMusic(MOTEL_ZONE, 0.0f, 0.0f);
-		musicAfterBosses1 = false;
-	}
-	if (musicAfterBosses2 == true)
-	{
-		app->audio->ChangeMusic(BASE, 0.0f, 0.0f);
-		musicAfterBosses2 = false;
-	}
-	
 	if ((app->input->keys[SDL_SCANCODE_P] == KEY_DOWN || app->input->keys[SDL_SCANCODE_ESCAPE] == KEY_DOWN) && app->player->destroyed == false && app->player->playerWin == false)
 	{
 		app->audio->PlayFx(paused);
@@ -2437,6 +2426,23 @@ bool ModulePlayer::PostUpdate()
 			app->sceneMainMap->playerRestart = false;
 			entityStatePlayer = GameState::OutOfCombat;
 			entityTurnPlayer = TurnState::NONE;
+		}
+
+		if (boss1Dead == true)
+		{
+			counterForBossMusic++;
+			if (counterForBossMusic >= 11 && counterForBossMusic < 12)
+			{
+				app->audio->ChangeMusic(MOTEL_ZONE, 0.0f, 0.0f);
+			}
+		}
+		if (boss2Dead == true)
+		{
+			counterForBossMusic2++;
+			if (counterForBossMusic2 >= 11 && counterForBossMusic2 < 12)
+			{
+				app->audio->ChangeMusic(MOTEL_ZONE, 0.0f, 0.0f);
+			}
 		}
 		
 
@@ -2897,12 +2903,13 @@ void ModulePlayer::RangedAttack()
 		if (position.DistanceTo(enemySelected) <= EquipmentRange)
 		{
 			app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->EntityHP -= EquipmentDamage;
+			app->audio->PlayFx(shoot);
 			playerAttacked = true;
 		}
 		if (position.DistanceTo(enemySelected) > EquipmentRange)
 		{
 			//Not in range so the player misses his turn
-			playerAttacked = true;
+			playerAttacked = false;
 		}
 	}
 	if (EnemySelectionBool == false)

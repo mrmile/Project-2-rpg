@@ -70,8 +70,9 @@ public:
 	//Player body for physics implementation
 	PhysBody* Player;
 
-	bool musicAfterBosses1 = false;
-	bool musicAfterBosses2 = false;
+
+	int counterForBossMusic = 0;
+	int counterForBossMusic2 = 0;
 	//Related to Equipment (this will be later used in combat)
 	
 	int EquipmentRange;
