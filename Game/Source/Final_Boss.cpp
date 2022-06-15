@@ -35,21 +35,34 @@ Final_Boss::Final_Boss(int x, int y) : Entity(x, y)
 
 	//fenceOne.PushBack({ 180, 1263, 180, 180 });
 
-	fenceOne.PushBack({ 88, 747, 85, 144 });
-	fenceOne.PushBack({ 246, 747, 85, 144 });
-	fenceOne.PushBack({ 403, 747, 85, 144 });
-	fenceOne.PushBack({ 560, 747, 85, 144 });
+	
+	fenceOne.PushBack({ 180, 4512, 180, 180 });
+	fenceOne.PushBack({ 361, 4512, 180, 180 });
+	fenceOne.PushBack({ 541, 4512, 180, 180 });
+	fenceOne.PushBack({ 722, 4512, 180, 180 });
+	fenceOne.PushBack({ 902, 4512, 180, 180 });
+	fenceOne.PushBack({ 1083, 4512, 180, 180 });
+	fenceOne.PushBack({ 1263, 4512, 180, 180 });
+	fenceOne.PushBack({ 1444, 4512, 180, 180 });
+	fenceOne.PushBack({ 1624, 4512, 180, 180 });
+	fenceOne.PushBack({ 1805, 4512, 180, 180 });
+	fenceOne.PushBack({ 1985, 4512, 180, 180 });
+	fenceOne.PushBack({ 2166, 4512, 180, 180 });
+	fenceOne.PushBack({ 2346, 4512, 180, 180 });
+	fenceOne.PushBack({ 2527, 4512, 180, 180 });
+	fenceOne.PushBack({ 2707, 4512, 180, 180 });
+	fenceOne.PushBack({ 2888, 4512, 180, 180 });
+	fenceOne.PushBack({ 3068, 4512, 180, 180 });
+	fenceOne.PushBack({ 3249, 4512, 180, 180 });
 	fenceOne.loop = true;
 	fenceOne.speed = 0.15f;
 
-	fenceTwo.PushBack({ 88, 747, 85, 144 });
-	fenceTwo.PushBack({ 246, 747, 85, 144 });
-	fenceTwo.PushBack({ 403, 747, 85, 144 });
-	fenceTwo.PushBack({ 560, 747, 85, 144 });
+	fenceTwo.PushBack({ 0, 6144, 180, 180 });
 	fenceTwo.loop = true;
 	fenceTwo.speed = 0.15f;
 
 	fenceThree.PushBack({ 180, 1263, 180, 180 });
+	fenceThree.PushBack({ 361, 1263, 180, 180 });
 	fenceThree.PushBack({ 541, 1263, 180, 180 });
 	fenceThree.PushBack({ 722, 1263, 180, 180 });
 	fenceThree.PushBack({ 902, 1263, 180, 180 });
@@ -67,11 +80,18 @@ Final_Boss::Final_Boss(int x, int y) : Entity(x, y)
 	fenceThree.PushBack({ 3068, 1263, 180, 180 });
 	fenceThree.PushBack({ 3249, 1263, 180, 180 });
 	fenceThree.PushBack({ 3429, 1263, 180, 180 });
+	fenceThree.PushBack({ 3610, 1263, 180, 180 });
 	fenceThree.PushBack({ 3790, 1263, 180, 180 });
+	fenceThree.PushBack({ 3971, 1263, 180, 180 });
 	fenceThree.PushBack({ 4151, 1263, 180, 180 });
+	fenceThree.PushBack({ 4332, 1263, 180, 180 });
 	fenceThree.PushBack({ 4512, 1263, 180, 180 });
+	fenceThree.PushBack({ 4693, 1263, 180, 180 });
 	fenceThree.PushBack({ 4873, 1263, 180, 180 });
+	fenceThree.PushBack({ 5053, 1263, 180, 180 });
 	fenceThree.PushBack({ 5234, 1263, 180, 180 });
+	fenceThree.PushBack({ 5414, 1263, 180, 180 });
+	fenceThree.PushBack({ 5595, 1263, 180, 180 });
 	fenceThree.loop = false;
 	fenceThree.speed = 0.15f;
 
