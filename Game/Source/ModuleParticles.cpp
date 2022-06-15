@@ -122,12 +122,9 @@ ModuleParticles::ModuleParticles(bool start_enabled) : Module(start_enabled)
 	enemyAttack.anim.speed = 0.15f;
 	enemyAttack.lifetime = 15;
 
-	RangedAttack.anim.PushBack({ 350, 17, 40, 35 });
-	RangedAttack.anim.PushBack({ 351, 48, 39, 30 });
-	RangedAttack.anim.PushBack({ 354, 138, 32, 35 });
-	RangedAttack.anim.PushBack({ 380, 138, 40, 35 });
-	RangedAttack.anim.PushBack({ 420, 138, 40, 35 });
-	RangedAttack.anim.PushBack({ 460, 138, 40, 35 });
+	RangedAttack.anim.PushBack({ 124, 16, 51, 17 });
+	RangedAttack.anim.PushBack({ 173, 16, 51, 17 });
+	RangedAttack.anim.PushBack({ 220, 16, 51, 17 });
 	RangedAttack.speed.x = 2;
 	RangedAttack.speed.y = 0;
 	RangedAttack.anim.loop = true;
