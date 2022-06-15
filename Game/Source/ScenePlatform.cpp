@@ -82,7 +82,7 @@ bool ScenePlatform::PreUpdate()
 		app->titleScreen->GameHasContinued = false;
 	}*/
 
-	srand(time(NULL));
+	//srand(time(NULL));
 
 	return true;
 }

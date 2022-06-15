@@ -1168,18 +1168,17 @@ bool Map::LoadObject(pugi::xml_node& node, MapObjects* object)
 			app->entity_manager->AddEntity(EntityType::MINI_BOSS_TWO, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
 		}
 	}
+
+	if (object->name == "final_boss")
+	{
+		pugi::xml_node NewObject;
+		for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
+		{
+			app->entity_manager->AddEntity(EntityType::FINAL_BOSS, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
+		}
+	}
 	if (app->questManager->mainQuestID != LOOK_FOR_THE_COMPUTER_2)
 	{
-		
-
-		if (object->name == "final_boss")
-		{
-			pugi::xml_node NewObject;
-			for (NewObject = node.child("object"); NewObject && ret; NewObject = NewObject.next_sibling("object"))
-			{
-				app->entity_manager->AddEntity(EntityType::FINAL_BOSS, NewObject.attribute("x").as_int() + NewObject.attribute("width").as_int() / 2, NewObject.attribute("y").as_int() - NewObject.attribute("height").as_int() / 2);
-			}
-		}
 
 		if (object->name == "zombie_standart")
 		{
