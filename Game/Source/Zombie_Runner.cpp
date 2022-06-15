@@ -564,7 +564,7 @@ void Zombie_Runner::Update(float dt)
 		iPoint NewPosition = position;
 		collider->SetPos(NewPosition.x, NewPosition.y);
 		Runner_Zombie_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
-		currentAnim = &idleDownAnim_Enemy1;
+		currentAnim = &idleDownAnim_Enemy1;1.50f
 		currentAnim->loop = false;
 
 	}
@@ -592,7 +592,7 @@ void Zombie_Runner::Update(float dt)
 							//leftWalkAnim_Enemy1.Reset();
 							currentAnim = &leftWalkAnim_Enemy1;
 						}
-						Runner_Zombie_List.end->data->body->SetLinearVelocity({ -2.0f, 0.0f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.50f, 0.0f });
 					}
 					if (position.x < app->inventoryMenu->ActiveRadioPosition.x)
 					{
@@ -601,7 +601,7 @@ void Zombie_Runner::Update(float dt)
 							//rightWalkAnim_Enemy1.Reset();
 							currentAnim = &rightWalkAnim_Enemy1;
 						}
-						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 2.0f, 0.0f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.50f, 0.0f });
 					}
 					if (position.y > app->inventoryMenu->ActiveRadioPosition.y)
 					{
@@ -610,7 +610,7 @@ void Zombie_Runner::Update(float dt)
 							//upWalkAnim_Enemy1.Reset();
 							currentAnim = &upWalkAnim_Enemy1;
 						}
-						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -2.0f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -1.50f });
 					}
 					if (position.y < app->inventoryMenu->ActiveRadioPosition.y)
 					{
@@ -619,7 +619,7 @@ void Zombie_Runner::Update(float dt)
 							//downWalkAnim_Enemy1.Reset();
 							currentAnim = &downWalkAnim_Enemy1;
 						}
-						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 2.0f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 1.50f });
 					}
 
 
@@ -630,7 +630,7 @@ void Zombie_Runner::Update(float dt)
 							//rightDownWalkAnim_Enemy1.Reset();
 							currentAnim = &rightDownWalkAnim_Enemy1;
 						}
-						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 2.0f, 2.0f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.50f, 1.50f });
 					}
 					if ((app->inventoryMenu->ActiveRadioPosition.x < position.x) && (app->inventoryMenu->ActiveRadioPosition.y > position.y))
 					{
@@ -639,7 +639,7 @@ void Zombie_Runner::Update(float dt)
 							//rightDownWalkAnim_Enemy1.Reset();
 							currentAnim = &leftDownWalkAnim_Enemy1;
 						}
-						Runner_Zombie_List.end->data->body->SetLinearVelocity({ -2.0f, 2.0f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.50f, 1.50f });
 					}
 					if ((app->inventoryMenu->ActiveRadioPosition.y < position.y) && (app->inventoryMenu->ActiveRadioPosition.x < position.x))
 					{
@@ -648,7 +648,7 @@ void Zombie_Runner::Update(float dt)
 							//leftUpWalkAnim_Enemy1.Reset();
 							currentAnim = &leftUpWalkAnim_Enemy1;
 						}
-						Runner_Zombie_List.end->data->body->SetLinearVelocity({ -2.0f, -2.0f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.50f, -1.50f });
 					}
 					if ((app->inventoryMenu->ActiveRadioPosition.x > position.x) && (app->inventoryMenu->ActiveRadioPosition.y < position.y))
 					{
@@ -657,7 +657,7 @@ void Zombie_Runner::Update(float dt)
 							//leftUpWalkAnim_Enemy1.Reset();
 							currentAnim = &rightUpWalkAnim_Enemy1;
 						}
-						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 2.0f, -2.0f });
+						Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.50f, -1.50f });
 					}
 				}
 				else
@@ -690,7 +690,7 @@ void Zombie_Runner::Update(float dt)
 								//leftWalkAnim_Enemy1.Reset();
 								currentAnim = &leftWalkAnim_Enemy1;
 							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ -2.0f, 0.0f });
+							Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.50f, 0.0f });
 						}
 						if (position.x < app->player->position.x + app->player->collider->rect.w / 2)
 						{
@@ -699,7 +699,7 @@ void Zombie_Runner::Update(float dt)
 								//rightWalkAnim_Enemy1.Reset();
 								currentAnim = &rightWalkAnim_Enemy1;
 							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 2.0f, 0.0f });
+							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.50f, 0.0f });
 						}
 						if (position.y > app->player->position.y - app->player->collider->rect.h)
 						{
@@ -708,7 +708,7 @@ void Zombie_Runner::Update(float dt)
 								//upWalkAnim_Enemy1.Reset();
 								currentAnim = &upWalkAnim_Enemy1;
 							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -2.0f });
+							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, -1.50f });
 						}
 						if (position.y < app->player->position.y - app->player->collider->rect.h)
 						{
@@ -717,7 +717,7 @@ void Zombie_Runner::Update(float dt)
 								//downWalkAnim_Enemy1.Reset();
 								currentAnim = &downWalkAnim_Enemy1;
 							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 2.0f });
+							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 0.0f, 1.50f });
 						}
 
 
@@ -728,7 +728,7 @@ void Zombie_Runner::Update(float dt)
 								//rightDownWalkAnim_Enemy1.Reset();
 								currentAnim = &rightDownWalkAnim_Enemy1;
 							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 2.0f, 2.0f });
+							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.50f, 1.50f });
 						}
 						if ((app->player->position.x + app->player->collider->rect.w / 2 < position.x) && (app->player->position.y - app->player->collider->rect.h > position.y))
 						{
@@ -737,7 +737,7 @@ void Zombie_Runner::Update(float dt)
 								//rightDownWalkAnim_Enemy1.Reset();
 								currentAnim = &leftDownWalkAnim_Enemy1;
 							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ -2.0f, 2.0f });
+							Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.50f, 1.50f });
 						}
 						if ((app->player->position.y - app->player->collider->rect.h < position.y) && (app->player->position.x + app->player->collider->rect.w / 2 < position.x))
 						{
@@ -746,7 +746,7 @@ void Zombie_Runner::Update(float dt)
 								//leftUpWalkAnim_Enemy1.Reset();
 								currentAnim = &leftUpWalkAnim_Enemy1;
 							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ -2.0f, -2.0f });
+							Runner_Zombie_List.end->data->body->SetLinearVelocity({ -1.50f, -1.50f });
 						}
 						if ((app->player->position.x + app->player->collider->rect.w / 2 > position.x) && (app->player->position.y - app->player->collider->rect.h < position.y))
 						{
@@ -755,7 +755,7 @@ void Zombie_Runner::Update(float dt)
 								//leftUpWalkAnim_Enemy1.Reset();
 								currentAnim = &rightUpWalkAnim_Enemy1;
 							}
-							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 2.0f, -2.0f });
+							Runner_Zombie_List.end->data->body->SetLinearVelocity({ 1.50f, -1.50f });
 						}
 					}
 				}
