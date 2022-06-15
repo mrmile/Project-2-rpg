@@ -205,6 +205,7 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::ENEMY][Collider::Type::LAYER_ZERO] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::PLAYER] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::ENEMY] = false;
+	matrix[Collider::Type::ENEMY][Collider::Type::GRENADE_DAMAGE] = true;
 	matrix[Collider::Type::ENEMY][Collider::Type::INSTANT_DEATH] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::EXIT_1] = false;
 	matrix[Collider::Type::ENEMY][Collider::Type::EXIT_2] = false;
