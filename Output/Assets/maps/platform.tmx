@@ -120089,7 +120089,7 @@
   </properties>
  </objectgroup>
  <objectgroup id="35" name="final_boss">
-  <object id="221" x="3493.33" y="1988"/>
+  <object id="221" x="3536.33" y="2051"/>
  </objectgroup>
  <objectgroup id="17" name="zombie_runner"/>
  <objectgroup id="18" name="zombie_spitter"/>
