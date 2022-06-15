@@ -762,7 +762,7 @@ bool DialogManager::PostUpdate()
 
 				
 			}
-			if(app->player->finalBossPhaseCounter > 6184 && app->player->finalBossPhaseCounter <= 6186 && app->player->QTE_Counter < 520)app->player->finalBossPlayerStrikes++;
+			if(app->player->finalBossPhaseCounter > 6184 && app->player->finalBossPhaseCounter <= 6186 && app->player->QTE_Counter < 520)app->player->finalBossPlayerStrikes += 5;
 
 
 			if (app->player->finalBossPhaseCounter > 6420 && app->player->finalBossPhaseCounter <= 6422)
