@@ -64,6 +64,9 @@ bool SceneCave::Start()
 	destroyScene = false;
 	sceneCave = true;
 
+	app->player->mapID = 1;
+
+
 	app->sceneMainMap->sceneMainMap = false;
 	app->sceneBase->sceneBase = false;
 	app->sceneMotel->sceneMotel = false;

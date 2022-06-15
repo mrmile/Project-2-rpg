@@ -7,7 +7,10 @@
 #include "Render.h"
 #include "Window.h"
 #include "SceneMainMap.h"
+#include "SceneMotel.h"
+#include "SceneBase.h"
 #include "SceneCave.h"
+#include "ScenePlatform.h"
 #include "Map.h"
 #include "ModulePhysics.h"
 #include "ModulePlayer.h"
@@ -229,7 +232,11 @@ bool TitleScreen::Update(float dt)
 			app->collisions->Enable();
 			app->map->Enable();
 			app->particles->Enable();
-			app->sceneMainMap->Enable();
+			if (app->player->mapID == 0)app->sceneMainMap->Enable();
+			if (app->player->mapID == 1)app->sceneCave->Enable();
+			if (app->player->mapID == 2)app->sceneMotel->Enable();
+			if (app->player->mapID == 3)app->sceneBase->Enable();
+			if (app->player->mapID == 4) app->scenePlatform->Enable();
 			app->player->Enable();
 			app->entity_manager->Enable();
 			app->fonts->Enable();

@@ -68,6 +68,9 @@ bool ScenePlatform::Start()
 
 	sceneTimer = 0;
 
+	app->player->mapID = 4;
+
+
 	//app->SaveGameRequest();
 
 	return true;

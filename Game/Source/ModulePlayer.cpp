@@ -2592,11 +2592,9 @@ bool ModulePlayer::LoadState(pugi::xml_node& data)
 	playerHP = data.child("atributes").attribute("hp").as_int();
 	lives = data.child("atributes").attribute("lives").as_int();
 	sceneTimer = data.child("atributes").attribute("timer").as_int();
-	app->sceneMainMap->sceneMainMap = data.child("atributes").attribute("sceneMainMap").as_bool();
-	app->sceneCave->sceneCave = data.child("atributes").attribute("sceneCave").as_bool();
-	app->sceneBase->sceneBase = data.child("atributes").attribute("sceneBase").as_bool();
-	app->sceneMotel->sceneMotel = data.child("atributes").attribute("sceneMotel").as_bool();
-	app->scenePlatform->scenePlatform = data.child("atributes").attribute("scenePlatform").as_bool();
+	mapID = data.child("atributes").attribute("mapID").as_int();
+
+
 	//entranceID = data.child("atributes").attribute("entranceID").as_int();
 	//app->sceneMainMap->sceneMainMap = data.child("atributes").attribute("sceneMainMap").as_bool();
 	//app->sceneCave->sceneCave = data.child("atributes").attribute("sceneCave").as_bool();
@@ -2635,11 +2633,8 @@ bool ModulePlayer::SaveState(pugi::xml_node& data) const
 	playerAtributes.append_attribute("lives") = lives;
 	playerAtributes.append_attribute("timer") = sceneTimer;
 	playerAtributes.append_attribute("entranceID") = entranceID;
-	playerAtributes.append_attribute("sceneMainMap") = app->sceneMainMap->sceneMainMap;
-	playerAtributes.append_attribute("sceneCave") = app->sceneCave->sceneCave;
-	playerAtributes.append_attribute("sceneBase") = app->sceneBase->sceneBase;
-	playerAtributes.append_attribute("sceneMotel") = app->sceneMotel->sceneMotel;
-	playerAtributes.append_attribute("scenePlatform") = app->scenePlatform->scenePlatform;
+	playerAtributes.append_attribute("mapID") = mapID;
+	
 
 	return true;
 }

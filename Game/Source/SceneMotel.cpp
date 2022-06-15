@@ -54,6 +54,8 @@ bool SceneMotel::Start()
 	app->tex->Load("Assets/textures/GUI/PauseMenuFrame.png");
 	sceneTimer = 0;
 	
+	app->player->mapID = 2;
+
 	//b2Filter filter;
 
 	//filter.categoryBits = 1;
