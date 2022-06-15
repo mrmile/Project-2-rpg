@@ -173,7 +173,7 @@ bool TitleScreen::Update(float dt)
 	if (MainMenu == true)
 	{
 		newGameButton_->canClick = true;
-		continueButton_->canClick = false;
+		continueButton_->canClick = true;
 		optionsButton_->canClick = true;
 		creditsButton_->canClick = true;
 		exitButton_->canClick = true;
@@ -225,20 +225,18 @@ bool TitleScreen::Update(float dt)
 		if (delayToContinue > 90 && delayToContinue <= 91)
 		{
 			
+			//app->physics->Enable();
 			app->collisions->Enable();
 			app->map->Enable();
 			app->particles->Enable();
 			app->sceneMainMap->Enable();
-			app->inventoryMenu->Enable();
 			app->player->Enable();
 			app->entity_manager->Enable();
 			app->fonts->Enable();
 			app->tex->Enable();
 			app->pause_menu->Enable();
 
-			
-		
-			GameHasContinued = true;
+			app->titleScreen->SavedGame = false;
 
 			app->titleScreen->Disable();
 			//app->fade->FadeToBlack(app->titleScreen, app->sceneCave, 60);
