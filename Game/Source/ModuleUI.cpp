@@ -131,7 +131,7 @@ bool ModuleUI::PostUpdate()
 	{
 		if (app->inventoryMenu->showInventory == false && app->player->pauseMenu == false && app->mapMenu->showMapMenu == false)
 		{
-			 if(app->player->showCombatHUD == false ) app->render->DrawTexture2(inventoryMapIcons, -555, 308, NULL);
+			 if(app->player->showCombatHUD == false && app->questManager->questCounter > 240) app->render->DrawTexture2(inventoryMapIcons, 0, 0, NULL);
 
 			if (app->player->playerHP >= app->player->PlayerMaxHP)
 			{
