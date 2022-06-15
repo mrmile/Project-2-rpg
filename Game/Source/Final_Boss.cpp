@@ -33,7 +33,7 @@ Final_Boss::Final_Boss(int x, int y) : Entity(x, y)
 
 	//Have the Soldiers describe a path in the screen taking into account the collisions
 
-	fenceOne.PushBack({ 0,18,59,86 });
+	fenceOne.PushBack({ 180, 1263, 180, 180 });
 
 	position.x = x;
 	position.y = y;

@@ -472,7 +472,7 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				HelperQueue[i].type = EntityType::FINAL_BOSS;
 				entities[i]->id = i;
 				entities[i]->type = info.type;
-				entities[i]->texture = texture_fenceOne;
+				entities[i]->texture = texture_final_boss;
 				break;
 			case EntityType::FENCE_ONE:
 				entities[i] = new FenceOne(info.x, info.y);
