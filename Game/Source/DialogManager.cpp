@@ -747,8 +747,8 @@ bool DialogManager::PostUpdate()
 				app->render->DrawTexture2(app->moduleUI->QTE_strength_bar, -100, 0, NULL);
 				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
 
-				if (app->player->QTE_Counter > 400)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
-				else if (app->player->QTE_Counter > 150 && app->player->QTE_Counter <= 400)app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
+				if (app->player->QTE_Counter > 520)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
+				else if (app->player->QTE_Counter > 150 && app->player->QTE_Counter <= 520)app->render->DrawRectangle2(quad, 255, 255, 0, 255, 0.0f, true);
 				else if (app->player->QTE_Counter <= 150)app->render->DrawRectangle2(quad, 255, 0, 0, 255, 0.0f, true);
 
 				if (app->input->keys[SDL_SCANCODE_Z] == KEY_DOWN)
