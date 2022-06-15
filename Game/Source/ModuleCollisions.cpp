@@ -115,6 +115,8 @@ ModuleCollisions::ModuleCollisions(bool start_enabled) : Module(start_enabled)
 	matrix[Collider::Type::PLAYER][Collider::Type::TNT_SWITCH] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_ATTACK] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::ENEMY_RANGED_ATTACK] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::BOSS_ATTACK_2] = true;
+	matrix[Collider::Type::PLAYER][Collider::Type::BOSS_ATTACK] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::RANGED_ENEMY] = true;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_ATTACK] = false;
 	matrix[Collider::Type::PLAYER][Collider::Type::PLAYER_RANGED_ATTACK] = false;

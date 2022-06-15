@@ -459,7 +459,7 @@ bool DialogManager::PostUpdate()
 			}
 
 			SDL_Rect quad;
-			quad = { 203, 62, app->player->QTE_Counter/2/*/2 - 76*/, 16 };
+			quad = { 203 - 100, 62, app->player->QTE_Counter/2/*/2 - 76*/, 16 };
 			
 			
 			//app->player->QTE_Counter_bar;
@@ -476,7 +476,7 @@ bool DialogManager::PostUpdate()
 				app->render->DrawTexture2(app->moduleUI->QTE_swat1, 0, 10, NULL);
 
 				app->render->DrawTexture2(app->moduleUI->QTE_kb_combo_1, 0, 0, NULL);
-				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, 0, 0, NULL);
+				app->render->DrawTexture2(app->moduleUI->QTE_timer_bar, -100, 0, NULL);
 				app->render->DrawTexture2(app->moduleUI->QTE_keys_pointer, QTE_keys_pointerPositionX, 150, NULL);
 
 				if (app->player->QTE_Counter > 300)app->render->DrawRectangle2(quad, 0, 255, 0, 255, 0.0f, true);
