@@ -62,9 +62,14 @@ Final_Boss::Final_Boss(int x, int y) : Entity(x, y)
 	fenceOne.loop = true;
 	fenceOne.speed = 0.3f;
 
-	fenceTwo.PushBack({ 180, 2888, 180, 180 });
+	//fenceTwo.PushBack({ 180, 2888, 180, 180 });
+	fenceTwo.PushBack({ 0, 6144, 180, 180 });
+	fenceTwo.PushBack({ 180, 6144, 180, 180 });
+	//fenceTwo.PushBack({ 361, 6144, 180, 180 });
+	//fenceTwo.PushBack({ 541, 6144, 180, 180 });
 	fenceTwo.loop = true;
-	fenceTwo.speed = 0.15f;
+	fenceTwo.pingpong = true;
+	fenceTwo.speed = 0.05f;
 
 	fenceThree.PushBack({ 180, 1263, 180, 180 });
 	fenceThree.PushBack({ 361, 1263, 180, 180 });
