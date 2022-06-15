@@ -143,7 +143,7 @@ bool GamepadInput::Update(float dt)
 
 	if (pad.a == true && padPressed[1] == false)
 	{
-		app->input->keys[SDL_SCANCODE_C] = KeyState::KEY_DOWN;
+		app->input->keys[SDL_SCANCODE_M] = KeyState::KEY_DOWN;
 
 		padPressed[1] = true;
 	}
@@ -157,13 +157,13 @@ bool GamepadInput::Update(float dt)
 	}
 	else if (pad.start == false) padPressed[13] = false;
 
-	if (pad.back == true && padPressed[15] == false)
+	if (pad.y == true && padPressed[15] == false)
 	{
 		app->input->keys[SDL_SCANCODE_I] = KeyState::KEY_DOWN;
 
 		padPressed[15] = true;
 	}
-	else if (pad.back == false) padPressed[15] = false;
+	else if (pad.y == false) padPressed[15] = false;
 
 	keyDownDelay++;
 

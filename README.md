@@ -19,18 +19,22 @@ Webpage: https://mrmile.github.io/Project-2-rpg/
 ## Controls
 
  ### Keyboard
-- Arrow Keys: Move the character/change item/change options
-- Z: Interact with the environment (examples: grab an object, press a switch…)/select item/select options
-- X: Use item (keep in mind each item may have very different behavior) / go back (in menu)
-- C: Throw things away (normally items)
+- Arrow Keys: Move the character
+- X: Interact with the environment (examples: grab an object, press a switch…)
+- Z: Skip events & turn movement
+- M: Open/close map
+- I: Open/close inventory
 - Left Shift: Run
+- ESC: Pause menu
 
 ### Gamepad
-- Left Joystick: Move the character/change item/change options
-- X: Interact with the environment (examples: grab an object, press a switch…)/select item/select options
-- B: Use item (keep in mind each item may have very different behavior) / go back (in menu)
-- A: Throw things away (normally items)
+- Left Joystick: Move the character
+- B: Interact with the environment (examples: grab an object, press a switch…)
+- X: Skip events & turn movement & click button
+- A: Open/close map
+- Y: Open/close inventory
 - Left Trigger: Run
+- Back: Pause menu
 
 ## Developers
 
