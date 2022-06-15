@@ -2055,11 +2055,44 @@ bool ModulePlayer::Update(float dt)
 				{
 					
 					counter++;
-					currentAnimation = &upAttackAnim;
-					
-				}
 
-				if (counter >= 80)
+					if (position.x > app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position.x + app->player->collider->rect.w / 2)
+					{
+						currentAnimation = &leftAttackAnim;
+					}
+					if (position.x < app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position.x + app->player->collider->rect.w / 2)
+					{
+						currentAnimation = &rightAttackAnim;
+					}
+					if (position.y > app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position.y - app->player->collider->rect.h)
+					{
+						currentAnimation = &downAttackAnim;
+					}
+					if (position.y < app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position.y - app->player->collider->rect.h)
+					{
+						currentAnimation = &upAttackAnim;
+					}
+
+					if ((position.y > app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position.y) && (position.x > app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position.x ))
+					{
+						currentAnimation = &leftUpAttackAnim;
+					}
+					if ((position.y > app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position.y ) && (position.x < app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position.x))
+					{
+						currentAnimation = &rightUpAttackAnim;
+					}
+					if ((position.y < app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position.y) && (position.x > app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position.x ))
+					{
+						currentAnimation = &leftDownAttackAnim;
+					}
+					if ((position.y < app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position.y) && (position.x < app->entity_manager->ListInCombat.At(CounterForEnemySelection)->data->position.x ))
+					{
+						currentAnimation = &rightDownAttackAnim;
+					}
+				}
+			
+
+				if (counter >= 60)
 				{
 					entityTurnPlayer = TurnState::WaitTurn;
 				}
@@ -2086,49 +2119,37 @@ bool ModulePlayer::Update(float dt)
 				//colliderFeet->SetPos(NewPosition.x + 5, NewPosition.y + 23);
 				counter = 0;
 
-				if (currentAnimation == &idleUpAnim)
+				if (currentAnimation = &upAttackAnim)
 				{
-					currentAnimation = &upAttackAnim;
+					currentAnimation = &idleUpAnim;
 				}
-
-				switch (PlayerLookingPosition)
+				if (currentAnimation = &downAttackAnim)
 				{
-				case 1:
-					if (currentAnimation != &idleLeftAnim)
-					{
-						//idleLeftAnim.Reset();
-						currentAnimation = &idleLeftAnim;
-					}
-
-					break;
-				case 2:
-					if (currentAnimation != &idleRightAnim)
-					{
-						//idleRightAnim.Reset();
-						currentAnimation = &idleRightAnim;
-					}
-
-					break;
-
-				case 3:
-					if (currentAnimation != &idleDownAnim)
-					{
-						//idleDownAnim.Reset();
-						currentAnimation = &idleDownAnim;
-					}
-
-					break;
-
-				case 4:
-					if (currentAnimation != &idleUpAnim)
-					{
-						//idleUpAnim.Reset();
-						currentAnimation = &idleUpAnim;
-					}
-
-					break;
-				default:
-					break;
+					currentAnimation = &idleDownAnim;
+				}
+				if (currentAnimation = &rightAttackAnim)
+				{
+					currentAnimation = &idleRightAnim;
+				}
+				if (currentAnimation = &leftAttackAnim)
+				{
+					currentAnimation = &idleLeftAnim;
+				}
+				if (currentAnimation = &rightUpAttackAnim)
+				{
+					currentAnimation = &idleUpRightAnim;
+				}
+				if (currentAnimation = &leftUpAttackAnim)
+				{
+					currentAnimation = &idleUpLeftAnim;
+				}
+				if (currentAnimation = &rightDownAttackAnim)
+				{
+					currentAnimation = &idleDownRightAnim;
+				}
+				if (currentAnimation = &leftDownAttackAnim)
+				{
+					currentAnimation = &idleDownLeftAnim;
 				}
 			}
 		}

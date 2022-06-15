@@ -93,7 +93,7 @@ bool EntityManager::Update(float dt)
 			entities[i]->Update(dt);
 		}
 		
-		if (entities[i] != nullptr && entities[i]->EntityHP <= 0)
+		if (entities[i] != nullptr && entities[i]->EntityHP <= 0 && entities[i]->entityDead==true)
 		{
 			if (entities[i]->type == EntityType::ZOMBIE_VOLATILE)
 			{
@@ -212,7 +212,7 @@ bool EntityManager::Update(float dt)
 				entities[i]->SetToDelete();
 				entities[i]->Mini_Boss_One_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
 				entities[i]->Mini_Boss_One_List.end->data->body->SetAwake(false);
-				app->audio->ChangeMusic(MOTEL_ZONE);
+				app->audio->ChangeMusic(MOTEL_ZONE,0.0f,0.0f);
 			}
 			if (entities[i]->type == EntityType::MINI_BOSS_TWO)
 			{
@@ -221,7 +221,7 @@ bool EntityManager::Update(float dt)
 				entities[i]->SetToDelete();
 				entities[i]->Mini_Boss_Two_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
 				entities[i]->Mini_Boss_Two_List.end->data->body->SetAwake(false);
-				app->audio->ChangeMusic(BASE);
+				app->audio->ChangeMusic(BASE,0.0f,0.0f);
 			}
 			/*
 			if (entities[i]->type == EntityType::)

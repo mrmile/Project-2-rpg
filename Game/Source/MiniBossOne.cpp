@@ -994,6 +994,10 @@ void Mini_Boss_One::Update(float dt)
 				currentAnim->Update();
 			}
 		}
+		if (EntityHP <= 0)
+		{
+
+		}
 	}
 
 	

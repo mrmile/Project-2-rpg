@@ -30,7 +30,7 @@ public:
 	int EntityMP;
 	bool EntityKillable = false;
 	EntityType type;
-
+	bool entityDead;
 	bool itemObtained = false;
 	// A flag for the enemy removal. Important! We do not delete objects instantly
 	bool pendingToDelete = false;
