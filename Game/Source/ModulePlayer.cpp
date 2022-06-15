@@ -2909,7 +2909,7 @@ void ModulePlayer::RangedAttack()
 		if (position.DistanceTo(enemySelected) > EquipmentRange)
 		{
 			//Not in range so the player misses his turn
-			playerAttacked = false;
+			playerAttacked = true;
 		}
 	}
 	if (EnemySelectionBool == false)
