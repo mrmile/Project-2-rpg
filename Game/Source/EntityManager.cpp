@@ -101,12 +101,6 @@ bool EntityManager::Update(float dt)
 				entities[i]->Volatile_Zombie_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
 				entities[i]->Volatile_Zombie_List.end->data->body->SetAwake(false);
 			}
-			if (entities[i]->type == EntityType::FINAL_BOSS)
-			{
-				entities[i]->SetToDelete();
-				entities[i]->Final_Boss_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
-				entities[i]->Final_Boss_List.end->data->body->SetAwake(false);
-			}
 			if (entities[i]->type == EntityType::ZOMBIE_STANDART)
 			{
 				entities[i]->SetToDelete();
@@ -192,6 +186,12 @@ bool EntityManager::Update(float dt)
 				entities[i]->RockTwo_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
 				entities[i]->RockTwo_List.end->data->body->SetAwake(false);
 			}
+			if (entities[i]->type == EntityType::FINAL_BOSS)
+			{
+				entities[i]->SetToDelete();
+				entities[i]->FinalBoss_List.end->data->body->SetTransform({ 0,0 }, 0.0f);
+				entities[i]->FinalBoss_List.end->data->body->SetAwake(false);
+			}
 			if (entities[i]->type == EntityType::FENCE_ONE)
 			{
 				entities[i]->SetToDelete();
@@ -265,10 +265,6 @@ bool EntityManager::CleanUp()
 			{
 				entities[i]->Mini_Boss_Two_List.end->data->body->DestroyFixture(entities[i]->Mini_Boss_Two_List.end->data->body->GetFixtureList());
 			}
-			if (HelperQueue[i].type == EntityType::FINAL_BOSS)
-			{
-				entities[i]->Final_Boss_List.end->data->body->DestroyFixture(entities[i]->Final_Boss_List.end->data->body->GetFixtureList());
-			}
 			if (HelperQueue[i].type == EntityType::ZOMBIE_STANDART)
 			{
 				entities[i]->Standart_Zombie_List.end->data->body->DestroyFixture(entities[i]->Standart_Zombie_List.end->data->body->GetFixtureList());
@@ -308,6 +304,10 @@ bool EntityManager::CleanUp()
 			if (HelperQueue[i].type == EntityType::ROCK_TWO)
 			{
 				entities[i]->RockTwo_List.end->data->body->DestroyFixture(entities[i]->RockTwo_List.end->data->body->GetFixtureList());
+			}
+			if (HelperQueue[i].type == EntityType::FINAL_BOSS)
+			{
+				entities[i]->FinalBoss_List.end->data->body->DestroyFixture(entities[i]->FinalBoss_List.end->data->body->GetFixtureList());
 			}
 			if (HelperQueue[i].type == EntityType::FENCE_ONE)
 			{
@@ -467,6 +467,13 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				entities[i]->type = info.type;
 				entities[i]->texture = texture_rockTwo;
 				break;
+			case EntityType::FINAL_BOSS:
+				entities[i] = new Final_Boss(info.x, info.y);
+				HelperQueue[i].type = EntityType::FINAL_BOSS;
+				entities[i]->id = i;
+				entities[i]->type = info.type;
+				entities[i]->texture = texture_fenceOne;
+				break;
 			case EntityType::FENCE_ONE:
 				entities[i] = new FenceOne(info.x, info.y);
 				HelperQueue[i].type = EntityType::FENCE_ONE;
@@ -532,14 +539,6 @@ void EntityManager::SpawnEntity(const EntitySpawnPoint& info)
 				entities[i]->id = i;
 				entities[i]->type = info.type;
 				entities[i]->texture = texture_mini_boss_two;
-
-				break;
-			case EntityType::FINAL_BOSS:
-				entities[i] = new Final_Boss(info.x, info.y);
-				HelperQueue[i].type = EntityType::FINAL_BOSS;
-				entities[i]->id = i;
-				entities[i]->type = info.type;
-				entities[i]->texture = texture_final_boss;
 
 				break;
 			case EntityType::ZOMBIE_STANDART:
@@ -643,12 +642,6 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 					entities[i]->Mini_Boss_Two_List.end->data->body->DestroyFixture(entities[i]->Mini_Boss_Two_List.end->data->body->GetFixtureList());
 					entities[i] = nullptr;
 				}
-				if (HelperQueue[i].type == EntityType::FINAL_BOSS)
-				{
-					entities[i]->SetToDelete();
-					entities[i]->Final_Boss_List.end->data->body->DestroyFixture(entities[i]->Final_Boss_List.end->data->body->GetFixtureList());
-					entities[i] = nullptr;
-				}
 				if (HelperQueue[i].type == EntityType::ZOMBIE_STANDART)
 				{
 					entities[i]->SetToDelete();
@@ -709,6 +702,12 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 					entities[i]->RockTwo_List.end->data->body->DestroyFixture(entities[i]->RockTwo_List.end->data->body->GetFixtureList());
 					entities[i] = nullptr;
 				}
+				if (HelperQueue[i].type == EntityType::FINAL_BOSS)
+				{
+					entities[i]->SetToDelete();
+					entities[i]->FinalBoss_List.end->data->body->DestroyFixture(entities[i]->FinalBoss_List.end->data->body->GetFixtureList());
+					entities[i] = nullptr;
+				}
 				if (HelperQueue[i].type == EntityType::FENCE_ONE)
 				{
 					entities[i]->SetToDelete();
@@ -766,10 +765,6 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				{
 					AddEntity(EntityType::MINI_BOSS_TWO, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
-				if (HelperQueue[i].type == EntityType::FINAL_BOSS)
-				{
-					AddEntity(EntityType::FINAL_BOSS, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
-				}
 				if (HelperQueue[i].type == EntityType::ZOMBIE_STANDART)
 				{
 					AddEntity(EntityType::ZOMBIE_STANDART, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
@@ -809,6 +804,10 @@ bool EntityManager::LoadState(pugi::xml_node& data)
 				if (HelperQueue[i].type == EntityType::ROCK_TWO)
 				{
 					AddEntity(EntityType::ROCK_TWO, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
+				}
+				if (HelperQueue[i].type == EntityType::FINAL_BOSS)
+				{
+					AddEntity(EntityType::FINAL_BOSS, HelperQueue[i].position.x + 10, HelperQueue[i].position.y + 5);
 				}
 				if (HelperQueue[i].type == EntityType::FENCE_ONE)
 				{

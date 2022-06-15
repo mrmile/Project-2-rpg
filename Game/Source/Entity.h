@@ -39,7 +39,6 @@ public:
 
 	List<PhysBody*> Mini_Boss_One_List;
 	List<PhysBody*> Mini_Boss_Two_List;
-	List<PhysBody*> Final_Boss_List;
 	List<PhysBody*> Volatile_Zombie_List;
 	List<PhysBody*> Standart_Zombie_List;
 	List<PhysBody*> Runner_Zombie_List;
@@ -57,6 +56,7 @@ public:
 	List<PhysBody*> RockTwo_List;
 	List<PhysBody*> FenceOne_List;
 	List<PhysBody*> FenceTwo_List;
+	List<PhysBody*> FinalBoss_List;
 
 	//id used to register enemies into combat
 	int id;

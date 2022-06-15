@@ -25,7 +25,6 @@ enum class EntityType
 	ZOMBIE_STANDART,
 	MINI_BOSS_ONE,
 	MINI_BOSS_TWO,
-	FINAL_BOSS,
 	ZOMBIE_VOLATILE,
 	SWITCH_KEY,
 	SWITCH_KEY2,
@@ -36,6 +35,7 @@ enum class EntityType
 	ROCK_TWO,
 	FENCE_ONE,
 	FENCE_TWO,
+	FINAL_BOSS,
 
 };
 
