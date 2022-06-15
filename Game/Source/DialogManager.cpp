@@ -677,12 +677,12 @@ bool DialogManager::PostUpdate()
 
 
 
-			if (app->player->finalBossPhaseCounter > 4980+180 && app->player->finalBossPhaseCounter <= 4982 + 180)
+			if (app->player->finalBossPhaseCounter > 4980 && app->player->finalBossPhaseCounter <= 4982)
 			{
 				app->player->QTE_Counter = 600;
 				QTE_keys_pointerPositionX = 160;
 			}
-			if (app->player->finalBossPhaseCounter > 4982 + 180 && app->player->finalBossPhaseCounter <= 5582 + 180)
+			if (app->player->finalBossPhaseCounter > 4982 && app->player->finalBossPhaseCounter <= 5582)
 			{
 				app->player->QTE_Counter--;
 
@@ -732,12 +732,12 @@ bool DialogManager::PostUpdate()
 
 			
 
-			if (app->player->finalBossPhaseCounter > 5582 + 180 && app->player->finalBossPhaseCounter <= 5584 + 180)
+			if (app->player->finalBossPhaseCounter > 5582 && app->player->finalBossPhaseCounter <= 5584)
 			{
 				app->player->QTE_Counter = 0;
 				QTE_keys_pointerPositionX = 700;
 			}
-			if (app->player->finalBossPhaseCounter > 5584 + 180 && app->player->finalBossPhaseCounter <= 6184 + 180)
+			if (app->player->finalBossPhaseCounter > 5584 && app->player->finalBossPhaseCounter <= 6184)
 			{
 				//app->player->QTE_Counter--;
 
@@ -762,10 +762,10 @@ bool DialogManager::PostUpdate()
 
 				
 			}
-			if(app->player->finalBossPhaseCounter > 6184 + 180 && app->player->finalBossPhaseCounter <= 6186 + 180 && app->player->QTE_Counter < 520)app->player->finalBossPlayerStrikes++;
+			if(app->player->finalBossPhaseCounter > 6184 && app->player->finalBossPhaseCounter <= 6186 && app->player->QTE_Counter < 520)app->player->finalBossPlayerStrikes++;
 
 
-			if (app->player->finalBossPhaseCounter > 6420 + 180 && app->player->finalBossPhaseCounter <= 6422 + 180)
+			if (app->player->finalBossPhaseCounter > 6420 && app->player->finalBossPhaseCounter <= 6422)
 			{
 				if (app->player->finalBossPlayerStrikes >= 5) app->player->playerHP = 0;
 				else if (app->player->finalBossPlayerStrikes < 5) app->player->playerWin = true;
