@@ -33,7 +33,47 @@ Final_Boss::Final_Boss(int x, int y) : Entity(x, y)
 
 	//Have the Soldiers describe a path in the screen taking into account the collisions
 
-	fenceOne.PushBack({ 180, 1263, 180, 180 });
+	//fenceOne.PushBack({ 180, 1263, 180, 180 });
+
+	fenceOne.PushBack({ 88, 747, 85, 144 });
+	fenceOne.PushBack({ 246, 747, 85, 144 });
+	fenceOne.PushBack({ 403, 747, 85, 144 });
+	fenceOne.PushBack({ 560, 747, 85, 144 });
+	fenceOne.loop = true;
+	fenceOne.speed = 0.15f;
+
+	fenceTwo.PushBack({ 88, 747, 85, 144 });
+	fenceTwo.PushBack({ 246, 747, 85, 144 });
+	fenceTwo.PushBack({ 403, 747, 85, 144 });
+	fenceTwo.PushBack({ 560, 747, 85, 144 });
+	fenceTwo.loop = true;
+	fenceTwo.speed = 0.15f;
+
+	fenceThree.PushBack({ 180, 1263, 180, 180 });
+	fenceThree.PushBack({ 541, 1263, 180, 180 });
+	fenceThree.PushBack({ 722, 1263, 180, 180 });
+	fenceThree.PushBack({ 902, 1263, 180, 180 });
+	fenceThree.PushBack({ 1083, 1263, 180, 180 });
+	fenceThree.PushBack({ 1263, 1263, 180, 180 });
+	fenceThree.PushBack({ 1444, 1263, 180, 180 });
+	fenceThree.PushBack({ 1624, 1263, 180, 180 });
+	fenceThree.PushBack({ 1805, 1263, 180, 180 });
+	fenceThree.PushBack({ 1985, 1263, 180, 180 });
+	fenceThree.PushBack({ 2166, 1263, 180, 180 });
+	fenceThree.PushBack({ 2346, 1263, 180, 180 });
+	fenceThree.PushBack({ 2527, 1263, 180, 180 });
+	fenceThree.PushBack({ 2707, 1263, 180, 180 });
+	fenceThree.PushBack({ 2888, 1263, 180, 180 });
+	fenceThree.PushBack({ 3068, 1263, 180, 180 });
+	fenceThree.PushBack({ 3249, 1263, 180, 180 });
+	fenceThree.PushBack({ 3429, 1263, 180, 180 });
+	fenceThree.PushBack({ 3790, 1263, 180, 180 });
+	fenceThree.PushBack({ 4151, 1263, 180, 180 });
+	fenceThree.PushBack({ 4512, 1263, 180, 180 });
+	fenceThree.PushBack({ 4873, 1263, 180, 180 });
+	fenceThree.PushBack({ 5234, 1263, 180, 180 });
+	fenceThree.loop = false;
+	fenceThree.speed = 0.15f;
 
 	position.x = x;
 	position.y = y;
@@ -55,13 +95,54 @@ void Final_Boss::Update(float dt)
 		collider->SetPos(NewPosition.x, NewPosition.y);
 		FinalBoss_List.end->data->GetPosition(NewPosition.x, NewPosition.y);
 
+		if (currentAnim != &fenceTwo)
+		{
+			//idleDownAnim_Enemy1.Reset();
+			currentAnim = &fenceTwo;
+		}
 	}
 
 	if (app->player->pauseMenu == false)
 	{
 		FinalBoss_List.end->data->GetPosition(position.x, position.y);
+
+		if (app->player->activateFinalBoss == true)
+		{
+			//app->player->finalBossPhaseCounter++;
+			counter++;
+
+			if (app->player->finalBossPhaseCounter <= 240)
+			{
+				FinalBoss_List.end->data->body->SetLinearVelocity({ -0.0f, 1.0f });
+
+				if (currentAnim != &fenceOne)
+				{
+					//downWalkAnim_Enemy1.Reset();
+					currentAnim = &fenceOne;
+				}
+			}
+			if (app->player->finalBossPhaseCounter > 240)
+			{
+				FinalBoss_List.end->data->body->SetLinearVelocity({ 0.0f, 0.0f });
+
+				if (currentAnim != &fenceTwo)
+				{
+					//idleDownAnim_Enemy1.Reset();
+					currentAnim = &fenceTwo;
+				}
+			}
+
+			if (app->player->finalBossPlayerStrikes < 5 && app->player->finalBossPhaseCounter >= 6186 + 180)
+			{
+				if (currentAnim != &fenceThree)
+				{
+					//downDieAnim_Enemy1.Reset();
+					currentAnim = &fenceThree;
+				}
+			}
+
+			currentAnim->Update();
+		}
 	}
-
-
-	currentAnim = &fenceOne;
+	//currentAnim = &fenceOne;
 }
