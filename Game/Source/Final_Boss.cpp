@@ -57,7 +57,7 @@ Final_Boss::Final_Boss(int x, int y) : Entity(x, y)
 	fenceOne.loop = true;
 	fenceOne.speed = 0.15f;
 
-	fenceTwo.PushBack({ 0, 6144, 180, 180 });
+	fenceTwo.PushBack({ 180, 2888, 180, 180 });
 	fenceTwo.loop = true;
 	fenceTwo.speed = 0.15f;
 
@@ -121,7 +121,7 @@ void Final_Boss::Update(float dt)
 			currentAnim = &fenceTwo;
 		}
 	}
-
+	
 	if (app->player->pauseMenu == false)
 	{
 		FinalBoss_List.end->data->GetPosition(position.x, position.y);
@@ -133,7 +133,7 @@ void Final_Boss::Update(float dt)
 
 			if (app->player->finalBossPhaseCounter <= 240)
 			{
-				FinalBoss_List.end->data->body->SetLinearVelocity({ -0.0f, 1.0f });
+				FinalBoss_List.end->data->body->SetLinearVelocity({ 0.0f, 1.0f });
 
 				if (currentAnim != &fenceOne)
 				{
