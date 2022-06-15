@@ -152,6 +152,8 @@ bool TitleScreen::Start()
 	app->sceneMainMap->enableSceneBase = false;
 	app->sceneMainMap->enableSceneCave = false;
 
+	app->player->activateFinalBoss = false;
+
 	return true;
 }
 
