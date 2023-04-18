@@ -17,14 +17,10 @@ We are a group of students from the UPC Tech Talent Center in Barcelona. This ga
 final project.
 
 ### Developer Team
-* Otto Tolo
-
-    - Marketing
-    - Github account: [ottotolo](https://github.com/ottotolo)
 
 * Alejandro Martin
 
-    - Code
+    - Code Manager
     - Github account: [Alejandromo125](https://github.com/Alejandromo125)
 
 * Gerard Martinez
@@ -34,20 +30,21 @@ final project.
 
 * Álvaro Milla
 
-    - Design
+    - Design & Code
     - Github account: [mrmile](https://github.com/mrmile)
 
-* Ogylandy Yespagambetov
-
-    - QA
-    - Github account: [Oga29](https://github.com/Oga29)
 
 * Albert Ramisa
 
-    - UI
+    - UI & Code
     - Github account: [Taks7](https://github.com/Taks7)
+   
+* Ogylandy Yespagambetov
+
+   - QA
+   - Github account: [Oga29](https://github.com/Oga29)
 
 
 Project Repository: [https://github.com/mrmile/Project-2-rpg](https://github.com/mrmile/Project-2-rpg)
 
-Project Trailer [Trailer](https://youtu.be/Y10C91MdWW4)
+Project Trailer [Available on this site](https://sites.google.com/estudiantat.upc.edu/capitoliostudiosarea52/main-page)
