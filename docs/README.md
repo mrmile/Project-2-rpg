@@ -4,10 +4,9 @@
 
 ## Our Game
 
-Area 52 is an Open-World Zombie Apocalypse Survival where you will have to manage your resources and fight
-through the world's end to find a cure. This isometric new experience has everything you need from a game.
-A main story, multiple enemies, a engaging turn-based combat system and plenty of items to pick up around
-the map.
+Area 52 is an Open-World Zombie Apocalypse RPG where you will have to manage your resources and fight
+through the world's end to find a cure. This isometric experience contains a main story, multiple enemies,
+a turn-based combat system and items to pick up around the map.
 
 ![game_logo](https://user-images.githubusercontent.com/73582929/158075658-79c248a1-b4db-4ed4-95ba-0093499cb414.png)
 
@@ -47,4 +46,4 @@ final project.
 
 Project Repository: [https://github.com/mrmile/Project-2-rpg](https://github.com/mrmile/Project-2-rpg)
 
-Project Trailer [Available on this site](https://sites.google.com/estudiantat.upc.edu/capitoliostudiosarea52/main-page)
+Project Trailer [on Youtube](https://youtu.be/o_2CHTvVAbs)
